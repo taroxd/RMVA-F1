@@ -325,224 +325,224 @@
 			</OBJECT>
 			<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="特徴">
+				<param name="Name" value="特征">
 				<param name="Local" value="vx_user/010_003.html#01">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="使用効果">
+				<param name="Name" value="使用效果">
 				<param name="Local" value="vx_user/010_003.html#02">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="通常能力値">
+				<param name="Name" value="普通能力值">
 				<param name="Local" value="vx_user/010_003.html#03">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="追加能力値">
+				<param name="Name" value="添加能力值">
 				<param name="Local" value="vx_user/010_003.html#04">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="特殊能力値">
+				<param name="Name" value="特殊能力值">
 				<param name="Local" value="vx_user/010_003.html#05">
 				</OBJECT>
 			</UL>
 		</UL>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="スクリプト入門">
+		<param name="Name" value="脚本入门">
 		<param name="Local" value="intro/index.html">
 		<param name="ImageNumber" value="1">
 		</OBJECT>
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="基礎編">
+			<param name="Name" value="基础篇">
 			<param name="Local" value="intro/100_index.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="始めましょう">
+				<param name="Name" value="新的开始">
 				<param name="Local" value="intro/101_start.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="数値の計算">
+				<param name="Name" value="数值计算">
 				<param name="Local" value="intro/102_number.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="変数">
+				<param name="Name" value="变量">
 				<param name="Local" value="intro/103_variable.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="文字列">
+				<param name="Name" value="字符串">
 				<param name="Local" value="intro/104_string.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="条件分岐">
+				<param name="Name" value="分支条件">
 				<param name="Local" value="intro/105_branch.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="ループ">
+				<param name="Name" value="循环">
 				<param name="Local" value="intro/106_loop.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="関数">
+				<param name="Name" value="函数">
 				<param name="Local" value="intro/107_function.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="オブジェクト">
+				<param name="Name" value="对象">
 				<param name="Local" value="intro/108_object.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="画像の表示">
+				<param name="Name" value="显示图像">
 				<param name="Local" value="intro/109_graphics.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="配列">
+				<param name="Name" value="数组">
 				<param name="Local" value="intro/110_array.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="ハッシュ">
+				<param name="Name" value="哈希表">
 				<param name="Local" value="intro/111_hash.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="クラス定義">
+				<param name="Name" value="类定义">
 				<param name="Local" value="intro/112_class.html">
 				</OBJECT>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="解読編">
+			<param name="Name" value="解读篇">
 			<param name="Local" value="intro/200_index.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="データベース">
+				<param name="Name" value="数据库">
 				<param name="Local" value="intro/201_database.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Vocab モジュール">
+				<param name="Name" value="Vocab 模块">
 				<param name="Local" value="intro/202_vocab.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Sound モジュール">
+				<param name="Name" value="Sound 模块">
 				<param name="Local" value="intro/203_sound.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="Cache モジュール">
+				<param name="Name" value="Cache 模块">
 				<param name="Local" value="intro/204_cache.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="ゲームオブジェクト">
+				<param name="Name" value="游戏对象">
 				<param name="Local" value="intro/205_gameobjects.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="スプライトの管理">
+				<param name="Name" value="精灵管理">
 				<param name="Local" value="intro/206_sprites.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="ウィンドウの管理">
+				<param name="Name" value="窗口管理">
 				<param name="Local" value="intro/207_windows.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="シーンの管理">
+				<param name="Name" value="场景管理">
 				<param name="Local" value="intro/208_scene.html">
 				</OBJECT>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="実践編">
+			<param name="Name" value="实践篇">
 			<param name="Local" value="intro/300_index.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="タイマーの改造">
+				<param name="Name" value="计时器的改造">
 				<param name="Local" value="intro/301_timer.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="あらすじ画面の作成">
+				<param name="Name" value="制作剧情提示画面">
 				<param name="Local" value="intro/302_story.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="脱出アイテムの作成">
+				<param name="Name" value="制作逃跑道具">
 				<param name="Local" value="intro/303_escape.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="アイテム消費スキルの作成">
+				<param name="Name" value="制作消耗物品的技能">
 				<param name="Local" value="intro/304_itemcost.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="景品交換所の作成">
+				<param name="Name" value="制作礼品交换商店">
 				<param name="Local" value="intro/305_prizeshop.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="テレポートアイテムの作成">
+				<param name="Name" value="制作传送道具">
 				<param name="Local" value="intro/306_teleport.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="タイトル画面の改造">
+				<param name="Name" value="改造标题画面">
 				<param name="Local" value="intro/307_title.html">
 				</OBJECT>
 		</UL>
 	</UL>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="RGSS リファレンス">
+		<param name="Name" value="RGSS 参考">
 		<param name="Local" value="rgss/index.html">
 		<param name="ImageNumber" value="1">
 		</OBJECT>
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="RGSS の仕様">
+			<param name="Name" value="RGSS 规格">
 			<param name="Local" value="rgss/rgss.html">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="Ruby の文法">
+			<param name="Name" value="Ruby 语法">
 			<param name="Local" value="rgss/syntax00.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="字句構造と式">
+				<param name="Name" value="语法和表达式">
 				<param name="Local" value="rgss/syntax01.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="変数と定数">
+				<param name="Name" value="变量和常量">
 				<param name="Local" value="rgss/syntax02.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="リテラル">
+				<param name="Name" value="字面量">
 				<param name="Local" value="rgss/syntax03.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="演算子式">
+				<param name="Name" value="运算符">
 				<param name="Local" value="rgss/syntax04.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="制御構造">
+				<param name="Name" value="控制结构">
 				<param name="Local" value="rgss/syntax05.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="メソッド呼び出し">
+				<param name="Name" value="方法调用">
 				<param name="Local" value="rgss/syntax06.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="クラスとメソッドの定義">
+				<param name="Name" value="类定义与方法定义">
 				<param name="Local" value="rgss/syntax07.html">
 				</OBJECT>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="標準ライブラリ">
+			<param name="Name" value="标准库">
 			<param name="Local" value="rgss/s_index.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="組み込み関数">
+				<param name="Name" value="内建函数">
 				<param name="Local" value="rgss/s_functions.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="組み込み変数">
+				<param name="Name" value="内建变量">
 				<param name="Local" value="rgss/s_variables.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="組み込みクラス">
+				<param name="Name" value="内建类">
 				<param name="Local" value="rgss/s_classes.html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
@@ -664,7 +664,7 @@
 				</UL>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="組み込みモジュール">
+				<param name="Name" value="内建模块">
 				<param name="Local" value="rgss/s_modules.html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
@@ -703,22 +703,22 @@
 					</OBJECT>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="組み込み例外クラス">
+				<param name="Name" value="内建异常类">
 				<param name="Local" value="rgss/s_exceptions.html">
 				</OBJECT>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="ゲームライブラリ">
+			<param name="Name" value="游戏库">
 			<param name="Local" value="rgss/g_index.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="RGSS 組み込み関数">
+				<param name="Name" value="RGSS 内建函数">
 				<param name="Local" value="rgss/g_functions.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="RGSS 組み込みクラス">
+				<param name="Name" value="RGSS 内建类">
 				<param name="Local" value="rgss/g_classes.html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
@@ -777,7 +777,7 @@
 					</OBJECT>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="RGSS 組み込みモジュール">
+				<param name="Name" value="RGSS 内建模块">
 				<param name="Local" value="rgss/g_modules.html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
@@ -800,7 +800,7 @@
 					</OBJECT>
 			</UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="RPGVXAce データ構造">
+				<param name="Name" value="RPGVXAce 数据结构">
 				<param name="Local" value="rgss/g_rpg_data.html">
 				<param name="ImageNumber" value="1">
 				</OBJECT>
@@ -1000,17 +1000,17 @@
 			</UL>
 		</UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="付録">
+			<param name="Name" value="附录">
 			<param name="Local" value="rgss/appendix00.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="正規表現">
+				<param name="Name" value="正则表达式">
 				<param name="Local" value="rgss/appendix01.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="sprintf フォーマット">
+				<param name="Name" value="sprintf 格式">
 				<param name="Local" value="rgss/appendix02.html">
 				</OBJECT>
 		</UL>
