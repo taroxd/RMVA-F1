@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>RPG::EventCommand</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,33 +9,33 @@
 <body>
 
 <h1>RPG::EventCommand</h1>
-<p>イベントコマンドのデータクラス。</p>
+<p>�C�x���g�R�}���h�̃f�[�^�N���X�B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>参照元</h2>
+<h2>�Q�ƌ�</h2>
 <ul>
 <li><a href="gc_rpg_event_page.html">RPG::Event::Page</a></li>
 <li><a href="gc_rpg_troop_page.html">RPG::Troop::Page</a></li>
 <li><a href="gc_rpg_commonevent.html">RPG::CommonEvent</a></li>
 </ul>
 
-<h2>属性</h2>
+<h2>����</h2>
 <dl>
 <dt>code</dt>
-<dd><p>イベントコード。</p></dd>
+<dd><p>�C�x���g�R�[�h�B</p></dd>
 <dt>indent</dt>
-<dd><p>インデントの深さ。通常 0 で、[条件分岐] コマンドなどで
-一段深くなるごとに +1 されます。</p></dd>
+<dd><p>�C���f���g�̐[���B�ʏ� 0 �ŁA[��������] �R�}���h�Ȃǂ�
+��i�[���Ȃ邲�Ƃ� +1 ����܂��B</p></dd>
 <dt>parameters</dt>
-<dd><p>イベントコマンドの引数を格納した配列。
-内容はコマンドごとに異なります。</p></dd>
+<dd><p>�C�x���g�R�}���h�̈������i�[�����z��B
+���e�̓R�}���h���ƂɈقȂ�܂��B</p></dd>
 </dl>
 
-<h2>定義</h2>
+<h2>��`</h2>
 <pre>
 class RPG::EventCommand
   def initialize(code = 0, indent = 0, parameters = [])

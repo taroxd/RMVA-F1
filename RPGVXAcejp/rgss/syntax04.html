@@ -1,36 +1,36 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>演算子式</title>
+<title>���Z�q��</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>演算子式</h1>
+<h1>���Z�q��</h1>
 <ul>
-<li><a href="#L000286">代入</a>
+<li><a href="#L000286">���</a>
 <ul>
-<li><a href="#L000287">自己代入</a></li>
-<li><a href="#L000288">多重代入</a></li>
+<li><a href="#L000287">���ȑ��</a></li>
+<li><a href="#L000288">���d���</a></li>
 </ul></li>
 <li><a href="#L000290">and</a></li>
 <li><a href="#L000291">or</a></li>
 <li><a href="#L000292">not</a></li>
-<li><a href="#L000293">条件演算子</a></li>
+<li><a href="#L000293">�������Z�q</a></li>
 </ul>
-<p>例:</p>
+<p>��:</p>
 <pre>
 1+2*3/4
 </pre>
-<p>プログラミングの利便のために一部のメソッド呼び出しと制御構造は演算子形
-式をとります。Ruby には以下にあげる演算子があります。</p>
+<p>�v���O���~���O�̗��ւ̂��߂Ɉꕔ�̃��\�b�h�Ăяo���Ɛ���\���͉��Z�q�`
+�����Ƃ�܂��BRuby �ɂ͈ȉ��ɂ����鉉�Z�q������܂��B</p>
 <pre>
-高い   ::
+����   ::
        []
        **
-       -(単項)  +(単項)  !  ~
+       -(�P��)  +(�P��)  !  ~
        *  /  %
        +  -
        &lt;&lt; &gt;&gt;
@@ -41,65 +41,65 @@
        &amp;&amp;
        ||
        ..  ...
-       ?:(条件演算子)
+       ?:(�������Z�q)
        =(+=, -= ... )
        not
-低い   and or
+�Ⴂ   and or
 </pre>
-<p>左の「高い」「低い」は演算子の優先順位です。
-たとえば「&amp;&amp;」は「||」より優先順位が高いので、以下のように
-解釈されます。</p>
+<p>���́u�����v�u�Ⴂ�v�͉��Z�q�̗D�揇�ʂł��B
+���Ƃ��΁u&amp;&amp;�v�́u||�v���D�揇�ʂ������̂ŁA�ȉ��̂悤��
+���߂���܂��B</p>
 <pre>
 a &amp;&amp; b || c   # =&gt; (a &amp;&amp; b) || c
 a || b &amp;&amp; c   # =&gt;  a || (b &amp;&amp; c)
 </pre>
-<p>ほとんどの演算子は特別な形式のメソッド呼び出しですが、一部の
-ものは言語に組み込みで、再定義できません。</p>
+<p>�قƂ�ǂ̉��Z�q�͓��ʂȌ`���̃��\�b�h�Ăяo���ł����A�ꕔ��
+���̂͌���ɑg�ݍ��݂ŁA�Ē�`�ł��܂���B</p>
 <ul>
-<li><p>再定義できる演算子 (メソッド)</p>
-<p>+@, -@ は単項演算子 +, - を表し
-メソッド定義などではこの記法を利用します。</p>
+<li><p>�Ē�`�ł��鉉�Z�q (���\�b�h)</p>
+<p>+@, -@ �͒P�����Z�q +, - ��\��
+���\�b�h��`�Ȃǂł͂��̋L�@�𗘗p���܂��B</p>
 <pre>
 |  ^  &amp;  &lt;=&gt;  ==  ===  =~  &gt;   &gt;=  &lt;   &lt;=   &lt;&lt;  &gt;&gt;
 +  -  *  /    %   **   ~   +@  -@  []  []=  `
 </pre></li>
-<li><p>再定義できない演算子 (制御構造)</p>
-<p>演算子の組合せである自己代入演算子と !=, !~
-も再定義できません。</p>
+<li><p>�Ē�`�ł��Ȃ����Z�q (����\��)</p>
+<p>���Z�q�̑g�����ł��鎩�ȑ�����Z�q�� !=, !~
+���Ē�`�ł��܂���B</p>
 <pre>
 =  ?:  ..  ...  !  not  &amp;&amp;  and  ||  or  ::
 </pre></li>
 </ul>
 
-<h2><a name="L000286">代入</a></h2>
-<p>例:</p>
+<h2><a name="L000286">���</a></h2>
+<p>��:</p>
 <pre>
 foo = bar
 foo[0] = bar
 foo.bar = baz
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-変数 '=' 式
-定数 '=' 式
-式 '['expr..']' '=' 式
-式 '.' 識別子 '=' 式
+�ϐ� '=' ��
+�萔 '=' ��
+�� '['expr..']' '=' ��
+�� '.' ���ʎq '=' ��
 </pre>
-<p>代入式は変数などに値を設定するために用いられます。代入はロー
-カル変数や定数の宣言としても用いられます。代入式の左辺は以
-下のいずれかでなければなりません。</p>
+<p>������͕ϐ��Ȃǂɒl��ݒ肷�邽�߂ɗp�����܂��B����̓��[
+�J���ϐ���萔�̐錾�Ƃ��Ă��p�����܂��B������̍��ӂ͈�
+���̂����ꂩ�łȂ���΂Ȃ�܂���B</p>
 <ul>
-<li><p>変数</p>
+<li><p>�ϐ�</p>
 <pre>
-変数 '=' 式
+�ϐ� '=' ��
 </pre>
-<p>左辺値が変数の場合、式を評価した値が変数に代入されます。</p></li>
-<li><p>配列参照</p>
+<p>���Ӓl���ϐ��̏ꍇ�A����]�������l���ϐ��ɑ������܂��B</p></li>
+<li><p>�z��Q��</p>
 <pre>
-式1 '[' 式2 ... ']' '=' 式 n
+��1 '[' ��2 ... ']' '=' �� n
 </pre>
-<p>式 1 を評価して得られるオブジェクトに対しての、式 2 から式 n までを
-引数とする []= メソッド呼び出しに変換されます。</p>
+<p>�� 1 ��]�����ē�����I�u�W�F�N�g�ɑ΂��ẮA�� 2 ���玮 n �܂ł�
+�����Ƃ��� []= ���\�b�h�Ăяo���ɕϊ�����܂��B</p>
 <pre>
 class C
   def initialize
@@ -113,15 +113,15 @@ class C
   end
 end
 c = C.new
-p c[3]      # c.[]( 3 )  に変換され、その結果は 6
-p c[3] = 1  # c.[]=(3,1) に変換され、その結果は 1
+p c[3]      # c.[]( 3 )  �ɕϊ�����A���̌��ʂ� 6
+p c[3] = 1  # c.[]=(3,1) �ɕϊ�����A���̌��ʂ� 1
 </pre></li>
-<li><p>属性参照</p>
+<li><p>�����Q��</p>
 <pre>
-式1 '.' 識別子 '=' 式2
+��1 '.' ���ʎq '=' ��2
 </pre>
-<p>式 1 を評価して得られるオブジェクトに対して、
-識別子 = というメソッドを、式 2 を引数にして呼び出します。</p>
+<p>�� 1 ��]�����ē�����I�u�W�F�N�g�ɑ΂��āA
+���ʎq = �Ƃ������\�b�h���A�� 2 �������ɂ��ČĂяo���܂��B</p>
 <pre>
 class C
   def foo
@@ -132,62 +132,62 @@ class C
   end
 end
 c = C.new
-c.foo = 5   # c.foo=( 5 ) のように変換される
+c.foo = 5   # c.foo=( 5 ) �̂悤�ɕϊ������
 p c.foo     # =&gt; 5
 </pre>
-<p>属性は <a href="sc_module.html#L001113">attr_accessor</a> を使って
-同じように定義できます。</p>
+<p>������ <a href="sc_module.html#L001113">attr_accessor</a> ���g����
+�����悤�ɒ�`�ł��܂��B</p>
 <pre>
 class C
   attr_accessor :foo
 end
 c = C.new
-c.foo = 5   # c.foo=( 5 ) のように変換される
+c.foo = 5   # c.foo=( 5 ) �̂悤�ɕϊ������
 p c.foo     # =&gt; 5
 </pre></li>
 </ul>
-<h3><a name="L000287">自己代入</a></h3>
-<p>例:</p>
+<h3><a name="L000287">���ȑ��</a></h3>
+<p>��:</p>
 <pre>
 foo += 12       # foo = foo + 12
 foo *= 3        # foo = foo * 3
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-式1 op= 式2     # 式 1 は通常の代入の左辺のいずれか
+��1 op= ��2     # �� 1 �͒ʏ�̑���̍��ӂ̂����ꂩ
 </pre>
-<p>op は以下のいずれかです。演算子と = の間にスペースを空けては
-いけません。</p>
+<p>op �͈ȉ��̂����ꂩ�ł��B���Z�q�� = �̊ԂɃX�y�[�X���󂯂Ă�
+�����܂���B</p>
 <pre>
 +, -, *, /, %, **, &amp;, |, ^, &lt;&lt;, &gt;&gt;, &amp;&amp;, ||
 </pre>
-<p>この形式の代入は、ほとんどの場合において</p>
+<p>���̌`���̑���́A�قƂ�ǂ̏ꍇ�ɂ�����</p>
 <pre>
-式1 = 式1 op 式2
+��1 = ��1 op ��2
 </pre>
-<p>と評価されます。</p>
-<h3><a name="L000288">多重代入</a></h3>
-<p>例:</p>
+<p>�ƕ]������܂��B</p>
+<h3><a name="L000288">���d���</a></h3>
+<p>��:</p>
 <pre>
 foo, bar, baz = 1, 2, 3
 foo, = list()
 foo, *rest = list2()
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-式 [',' [ 式 ',' ... ] ['*' [ 式 ]]] = 式 [, 式 ... ]['*' 式 ]
-'*' [ 式 ] = 式 [, 式 ... ]['*' 式 ]
+�� [',' [ �� ',' ... ] ['*' [ �� ]]] = �� [, �� ... ]['*' �� ]
+'*' [ �� ] = �� [, �� ... ]['*' �� ]
 </pre>
-<p>多重代入は複数の式または配列から同時に代入を行います。左辺の
-各式はそれぞれ代入可能でなければなりません。右辺の式がひとつし
-か与えられなかった場合、式を評価した値は配列に変換されて、各
-要素が左辺のそれぞれの式に代入されます。左辺の要素の数よりも
-配列の要素の数の方が多い場合には、余った要素は無視されます。
-配列の要素が足りない場合には対応する要素の無い左辺には
-nil が代入されます。</p>
-<p>左辺の最後の式の直前に * がついていると、対応する
-左辺のない余った要素が配列として代入されます。余った要素が
-無いときには空の配列が代入されます。</p>
+<p>���d����͕����̎��܂��͔z�񂩂瓯���ɑ�����s���܂��B���ӂ�
+�e���͂��ꂼ�����\�łȂ���΂Ȃ�܂���B�E�ӂ̎����ЂƂ�
+���^�����Ȃ������ꍇ�A����]�������l�͔z��ɕϊ�����āA�e
+�v�f�����ӂ̂��ꂼ��̎��ɑ������܂��B���ӂ̗v�f�̐�����
+�z��̗v�f�̐��̕��������ꍇ�ɂ́A�]�����v�f�͖�������܂��B
+�z��̗v�f������Ȃ��ꍇ�ɂ͑Ή�����v�f�̖������ӂɂ�
+nil ���������܂��B</p>
+<p>���ӂ̍Ō�̎��̒��O�� * �����Ă���ƁA�Ή�����
+���ӂ̂Ȃ��]�����v�f���z��Ƃ��đ������܂��B�]�����v�f��
+�����Ƃ��ɂ͋�̔z�񂪑������܂��B</p>
 <pre>
 foo, bar  = [1, 2]      # foo = 1; bar = 2
 foo, bar  = 1, 2        # foo = 1; bar = 2
@@ -199,66 +199,66 @@ foo, *bar = 1, 2, 3     # foo = 1; bar = [2, 3]
 </pre>
 
 <h2><a name="L000290">and</a></h2>
-<p>例:</p>
+<p>��:</p>
 <pre>
 test &amp;&amp; set
 test and set
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-式 '&amp;&amp;' 式
-式 and 式
+�� '&amp;&amp;' ��
+�� and ��
 </pre>
-<p>まず、左辺を評価して、結果が真であった場合には右辺も評価しま
-す。and は同じ働きをする優先順位の低い演算子です。</p>
+<p>�܂��A���ӂ�]�����āA���ʂ��^�ł������ꍇ�ɂ͉E�ӂ��]������
+���Band �͓�������������D�揇�ʂ̒Ⴂ���Z�q�ł��B</p>
 
 <h2><a name="L000291">or</a></h2>
-<p>例:</p>
+<p>��:</p>
 <pre>
 demo || die
 demo or die
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-式 '||' 式
-式 or 式
+�� '||' ��
+�� or ��
 </pre>
-<p>まず左辺を評価して、結果が偽であった場合には右辺も評価します。
-or は同じ働きをする優先順位の低い演算子です。</p>
+<p>�܂����ӂ�]�����āA���ʂ��U�ł������ꍇ�ɂ͉E�ӂ��]�����܂��B
+or �͓�������������D�揇�ʂ̒Ⴂ���Z�q�ł��B</p>
 
 <h2><a name="L000292">not</a></h2>
-<p>例:</p>
+<p>��:</p>
 <pre>
 ! me
 not me
 i != you
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-'!' 式
-not 式
+'!' ��
+not ��
 </pre>
-<p>式の値が真であるとき偽を、偽であるとき真を返します。</p>
-<p>次の記法もできます。</p>
+<p>���̒l���^�ł���Ƃ��U���A�U�ł���Ƃ��^��Ԃ��܂��B</p>
+<p>���̋L�@���ł��܂��B</p>
 <pre>
-式 '!=' 式          # !(式 == 式) と同じ
-式 '=~' 式          # !(式 =~ 式) と同じ
+�� '!=' ��          # !(�� == ��) �Ɠ���
+�� '=~' ��          # !(�� =~ ��) �Ɠ���
 </pre>
 
-<h2><a name="L000293">条件演算子</a></h2>
-<p>例:</p>
+<h2><a name="L000293">�������Z�q</a></h2>
+<p>��:</p>
 <pre>
 obj == 1 ? foo : bar
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-式1 ? 式2 : 式3
+��1 ? ��2 : ��3
 </pre>
-<p>式 1 の結果によって式 2 または式 3 を返します。</p>
+<p>�� 1 �̌��ʂɂ���Ď� 2 �܂��͎� 3 ��Ԃ��܂��B</p>
 <pre>
-if 式1 then 式2 else 式3 end
+if ��1 then ��2 else ��3 end
 </pre>
-<p>とまったく同じです。</p>
+<p>�Ƃ܂����������ł��B</p>
 
 <h6></h6>
 </body>

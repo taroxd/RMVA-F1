@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Exception</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,47 +9,47 @@
 <body>
 
 <h1>Exception</h1>
-<p>全ての例外の祖先のクラスです。</p>
-<p>サブクラスについては<a href="s_exceptions.html">組み込み例外クラス</a>を
-参照してください。</p>
+<p>�S�Ă̗�O�̑c��̃N���X�ł��B</p>
+<p>�T�u�N���X�ɂ��Ă�<a href="s_exceptions.html">�g�ݍ��ݗ�O�N���X</a>��
+�Q�Ƃ��Ă��������B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>クラスメソッド</h2>
+<h2>�N���X���\�b�h</h2>
 <dl>
 <dt>Exception.new([<var>error_message</var>])</dt>
 <dd>
-<p>例外オブジェクトを生成して返します。引数としてエラーメッセージを表
-す文字列を与えることができます。このメッセージは属性 
-<a href="#L000732">message</a> の値になり、デフォルトの例外ハンドラで表示
-されます。</p></dd>
+<p>��O�I�u�W�F�N�g�𐶐����ĕԂ��܂��B�����Ƃ��ăG���[���b�Z�[�W��\
+���������^���邱�Ƃ��ł��܂��B���̃��b�Z�[�W�͑��� 
+<a href="#L000732">message</a> �̒l�ɂȂ�A�f�t�H���g�̗�O�n���h���ŕ\��
+����܂��B</p></dd>
 </dl>
 
-<h2>メソッド</h2>
+<h2>���\�b�h</h2>
 <dl>
 <dt>exception([<var>error_message</var>])</dt>
 <dd>
-<p>引数を指定しない場合は self を返します。そうでなければ、自身のコピー
-を生成し、<a href="#L000732">message</a> 属性を <var>error_message</var> にし
-て返します。</p>
-<p><a href="s_functions.html#L000388">raise</a> は、実質的に、例外オブジェクトの exception 
-メソッドの呼び出しです。</p></dd>
+<p>�������w�肵�Ȃ��ꍇ�� self ��Ԃ��܂��B�����łȂ���΁A���g�̃R�s�[
+�𐶐����A<a href="#L000732">message</a> ������ <var>error_message</var> �ɂ�
+�ĕԂ��܂��B</p>
+<p><a href="s_functions.html#L000388">raise</a> �́A�����I�ɁA��O�I�u�W�F�N�g�� exception 
+���\�b�h�̌Ăяo���ł��B</p></dd>
 <dt>backtrace</dt>
 <dd>
-<p>バックトレース情報を返します。</p>
+<p>�o�b�N�g���[�X����Ԃ��܂��B</p>
 <ul>
 <li><p>&quot;#{sourcefile}:#{sourceline}:in `#{method}'&quot;</p>
-<p>(メソッド内の場合)</p></li>
+<p>(���\�b�h���̏ꍇ)</p></li>
 <li><p>&quot;#{sourcefile}:#{sourceline}&quot;</p>
-<p>(トップレベルの場合)</p></li>
+<p>(�g�b�v���x���̏ꍇ)</p></li>
 </ul>
-<p>という形式の <a href="sc_string.html">String</a> の配列です。</p></dd>
+<p>�Ƃ����`���� <a href="sc_string.html">String</a> �̔z��ł��B</p></dd>
 <dt><a name="L000732">message</a>
 <dd>
-<p>エラーメッセージをあらわす文字列を返します。</p></dd>
+<p>�G���[���b�Z�[�W������킷�������Ԃ��܂��B</p></dd>
 </dl>
 
 <h6></h6>

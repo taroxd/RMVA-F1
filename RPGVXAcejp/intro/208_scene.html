@@ -1,51 +1,51 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>シーンの管理</title>
+<title>�V�[���̊Ǘ�</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>シーンの管理</h1>
+<h1>�V�[���̊Ǘ�</h1>
 <ul>
-<li><a href="#main">Main セクション</a></li>
-<li><a href="#manager">SceneManager モジュール</a></li>
-<li><a href="#scene">シーンクラス</a></li>
-<li><a href="#base">シーンの基本処理</a></li>
-<li><a href="#kind">シーンクラスの種類</a></li>
-<li><a href="#trans">シーン遷移</a></li>
+<li><a href="#main">Main �Z�N�V����</a></li>
+<li><a href="#manager">SceneManager ���W���[��</a></li>
+<li><a href="#scene">�V�[���N���X</a></li>
+<li><a href="#base">�V�[���̊�{����</a></li>
+<li><a href="#kind">�V�[���N���X�̎��</a></li>
+<li><a href="#trans">�V�[���J��</a></li>
 </ul>
 
-<p>マップ画面やメニュー画面など、ゲーム内で通常「画面」と呼ぶ概念を、
-プログラムでは<strong>シーン</strong>と呼びます。
-各シーンの遷移は、SceneManager モジュールによって管理されます。</p>
+<p>�}�b�v��ʂ⃁�j���[��ʂȂǁA�Q�[�����Œʏ�u��ʁv�ƌĂԊT�O���A
+�v���O�����ł�<strong>�V�[��</strong>�ƌĂт܂��B
+�e�V�[���̑J�ڂ́ASceneManager ���W���[���ɂ���ĊǗ�����܂��B</p>
 
 
-<h2><a name="main">Main セクション</a></h2>
-<p>はじめに、一番下にある Main セクションの内容を確認しましょう。
-コメントを除くと、Main セクションの内容は 1 行だけです。</p>
+<h2><a name="main">Main �Z�N�V����</a></h2>
+<p>�͂��߂ɁA��ԉ��ɂ��� Main �Z�N�V�����̓��e���m�F���܂��傤�B
+�R�����g�������ƁAMain �Z�N�V�����̓��e�� 1 �s�����ł��B</p>
 <pre>
 rgss_main { SceneManager.run }
 </pre>
-<p>実は、プリセットのスクリプトの中で、モジュール定義やクラス定義の
-外にあるのはこれだけです。ある意味で、スクリプトの本当の実行開始地点は
-ここだと考えることもできるでしょう。</p>
+<p>���́A�v���Z�b�g�̃X�N���v�g�̒��ŁA���W���[����`��N���X��`��
+�O�ɂ���̂͂��ꂾ���ł��B����Ӗ��ŁA�X�N���v�g�̖{���̎��s�J�n�n�_��
+�������ƍl���邱�Ƃ��ł���ł��傤�B</p>
 <p><a href="../rgss/g_functions.html#rgss_main">rgss_main</a>
-というのは RGSS3 で新たに加わった組み込み関数です。この関数は、
-基本的には { }で囲った部分を一度だけ実行しますが、その途中で F12
-キーによってゲームのリセットが行われたときは最初に戻るという処理を
-行います。リセット処理を無視すると、この行では SceneManager
-モジュールの run メソッドを呼び出しているだけということです。</p>
+�Ƃ����̂� RGSS3 �ŐV���ɉ�������g�ݍ��݊֐��ł��B���̊֐��́A
+��{�I�ɂ� { }�ň͂�����������x�������s���܂����A���̓r���� F12
+�L�[�ɂ���ăQ�[���̃��Z�b�g���s��ꂽ�Ƃ��͍ŏ��ɖ߂�Ƃ���������
+�s���܂��B���Z�b�g�����𖳎�����ƁA���̍s�ł� SceneManager
+���W���[���� run ���\�b�h���Ăяo���Ă��邾���Ƃ������Ƃł��B</p>
 
 
-<h2><a name="manager">SceneManager モジュール</a></h2>
-<p>SceneManager モジュールは、リストの上の方にあったにも関わらず、
-今までまったく内容に触れていませんでした。SceneManager
-はシーンの遷移を管理するモジュールです。</p>
-<p>まず、先ほど最初に呼び出されることを確認した、run
-メソッドに注目してください。</p>
+<h2><a name="manager">SceneManager ���W���[��</a></h2>
+<p>SceneManager ���W���[���́A���X�g�̏�̕��ɂ������ɂ��ւ�炸�A
+���܂ł܂��������e�ɐG��Ă��܂���ł����BSceneManager
+�̓V�[���̑J�ڂ��Ǘ����郂�W���[���ł��B</p>
+<p>�܂��A��قǍŏ��ɌĂяo����邱�Ƃ��m�F�����Arun
+���\�b�h�ɒ��ڂ��Ă��������B</p>
 <pre>
   def self.run
     DataManager.init
@@ -54,70 +54,70 @@ rgss_main { SceneManager.run }
     @scene.main while @scene
   end
 </pre>
-<p>内容は 4 行ですが、1 行ずつ見ていきましょう。</p>
+<p>���e�� 4 �s�ł����A1 �s�����Ă����܂��傤�B</p>
 <pre>
     DataManager.init
 </pre>
-<p>DataManager モジュールの init メソッドを呼び出します。<a
-href="201_database.html">データベース</a>のロードや<a
-href="205_gameobjects.html">ゲームオブジェクト</a>の初期化が
-この中で行われています。</p>
+<p>DataManager ���W���[���� init ���\�b�h���Ăяo���܂��B<a
+href="201_database.html">�f�[�^�x�[�X</a>�̃��[�h��<a
+href="205_gameobjects.html">�Q�[���I�u�W�F�N�g</a>�̏�������
+���̒��ōs���Ă��܂��B</p>
 <pre>
     Audio.setup_midi if use_midi?
 </pre>
-<p>データベースの [システム] タブで [起動時に MIDI を初期化]
-のオプションがチェックされている場合、MIDI の初期化を行います。</p>
+<p>�f�[�^�x�[�X�� [�V�X�e��] �^�u�� [�N������ MIDI ��������]
+�̃I�v�V�������`�F�b�N����Ă���ꍇ�AMIDI �̏��������s���܂��B</p>
 <pre>
     @scene = first_scene_class.new
 </pre>
-<p>同じ SceneManager モジュールの first_scene_class メソッドを呼び出し、
-戻り値として返されたクラスのインスタンスを作成、インスタンス変数 @scene
-にそれを代入します。これについては次節で詳しく解説します。</p>
+<p>���� SceneManager ���W���[���� first_scene_class ���\�b�h���Ăяo���A
+�߂�l�Ƃ��ĕԂ��ꂽ�N���X�̃C���X�^���X���쐬�A�C���X�^���X�ϐ� @scene
+�ɂ���������܂��B����ɂ��Ă͎��߂ŏڂ���������܂��B</p>
 <pre>
     @scene.main while @scene
 </pre>
-<p>ここで使われている while は<strong>修飾子</strong>形式です。if
-や unless と同様、while もこのような使い方ができるのです。
-基礎編で学習した基本的な<a
-href="106_loop.html">ループ</a
->の文法で書き直すと、次のようになります。</p>
+<p>�����Ŏg���Ă��� while ��<strong>�C���q</strong>�`���ł��Bif
+�� unless �Ɠ��l�Awhile �����̂悤�Ȏg�������ł���̂ł��B
+��b�҂Ŋw�K������{�I��<a
+href="106_loop.html">���[�v</a
+>�̕��@�ŏ��������ƁA���̂悤�ɂȂ�܂��B</p>
 <pre>
     while @scene
       @scene.main
     end
 </pre>
-<p>内容としては、インスタンス変数 @scene が nil でない間、@scene の main
-メソッドを呼び出し続けています。一見すると無限ループのように見えるかも
-しれませんが、main メソッドの中で SceneManager にアクセスし、@scene
-の指すオブジェクトを外から変更するという構造になっているため、
-問題はありません。</p>
+<p>���e�Ƃ��ẮA�C���X�^���X�ϐ� @scene �� nil �łȂ��ԁA@scene �� main
+���\�b�h���Ăяo�������Ă��܂��B�ꌩ����Ɩ������[�v�̂悤�Ɍ����邩��
+����܂��񂪁Amain ���\�b�h�̒��� SceneManager �ɃA�N�Z�X���A@scene
+�̎w���I�u�W�F�N�g���O����ύX����Ƃ����\���ɂȂ��Ă��邽�߁A
+���͂���܂���B</p>
 
 
-<h2><a name="scene">シーンクラス</a></h2>
-<p>再び 3 行目に戻ります。</p>
+<h2><a name="scene">�V�[���N���X</a></h2>
+<p>�Ă� 3 �s�ڂɖ߂�܂��B</p>
 <pre>
     @scene = first_scene_class.new
 </pre>
-<p>ここで呼び出されている first_scene_class メソッドの定義を見てみましょう。</p>
+<p>�����ŌĂяo����Ă��� first_scene_class ���\�b�h�̒�`�����Ă݂܂��傤�B</p>
 <pre>
   def self.first_scene_class
     $BTEST ? Scene_Battle : Scene_Title
   end
 </pre>
-? および : という記号は演算子形式の<a
-href="105_branch.html">条件分岐</a>です。$BTEST という変数の値が真なら
-Scene_Battle を、偽なら Scene_Title を返すことになります。Scene_Battle
-や Scene_Title というのはクラス名ですが、Ruby ではこのように、クラスを
-メソッドの戻り値とすることもできるのです。</p>
-<p>グローバル変数 $BTEST は RGSS によって自動的に設定される変数で、
-戦闘テストとして起動されたか否かを表しています。すなわち、戦闘テストで
-あればバトル画面、そうでなければタイトル画面が初期画面になります。</p>
+? ����� : �Ƃ����L���͉��Z�q�`����<a
+href="105_branch.html">��������</a>�ł��B$BTEST �Ƃ����ϐ��̒l���^�Ȃ�
+Scene_Battle ���A�U�Ȃ� Scene_Title ��Ԃ����ƂɂȂ�܂��BScene_Battle
+�� Scene_Title �Ƃ����̂̓N���X���ł����ARuby �ł͂��̂悤�ɁA�N���X��
+���\�b�h�̖߂�l�Ƃ��邱�Ƃ��ł���̂ł��B</p>
+<p>�O���[�o���ϐ� $BTEST �� RGSS �ɂ���Ď����I�ɐݒ肳���ϐ��ŁA
+�퓬�e�X�g�Ƃ��ċN�����ꂽ���ۂ���\���Ă��܂��B���Ȃ킿�A�퓬�e�X�g��
+����΃o�g����ʁA�����łȂ���΃^�C�g����ʂ�������ʂɂȂ�܂��B</p>
 
 
-<h2><a name="base">シーンの基本処理</a></h2>
-<p>SceneManager から呼び出される main メソッドは、シーンの最上位
-クラスである Scene_Base クラスで定義されています。
-確認しておきましょう。</p>
+<h2><a name="base">�V�[���̊�{����</a></h2>
+<p>SceneManager ����Ăяo����� main ���\�b�h�́A�V�[���̍ŏ��
+�N���X�ł��� Scene_Base �N���X�Œ�`����Ă��܂��B
+�m�F���Ă����܂��傤�B</p>
 <pre>
   def main
     start
@@ -127,150 +127,150 @@ Scene_Battle を、偽なら Scene_Title を返すことになります。Scene_
     terminate
   end
 </pre>
-<p>ここでは、次の五つのメソッドを順番に呼び出しています。</p>
+<p>�����ł́A���̌܂̃��\�b�h�����ԂɌĂяo���Ă��܂��B</p>
 <table border="1" cellspacing="0" cellpadding="2">
 <tr>
- <th>メソッド</th>
- <th>内容</th>
+ <th>���\�b�h</th>
+ <th>���e</th>
 </tr><tr>
  <td>start</td>
- <td>開始処理</td>
+ <td>�J�n����</td>
 </tr><tr>
  <td>post_start</td>
- <td>開始後処理</td>
+ <td>�J�n�㏈��</td>
 </tr><tr>
  <td>update</td>
- <td>フレーム更新</td>
+ <td>�t���[���X�V</td>
 </tr><tr>
  <td>pre_terminate</td>
- <td>終了前処理</td>
+ <td>�I���O����</td>
 </tr><tr>
  <td>terminate</td>
- <td>終了処理</td>
+ <td>�I������</td>
 </tr></table>
-<p>開始処理と開始後処理、終了処理と終了前処理の違いは、主に
-その画面のグラフィックが実際に表示されているか否かです。
-サブクラスでの再定義で処理を追加する際にそのタイミングを制御
-しやすいようにするため、このように細分化されています。</p>
+<p>�J�n�����ƊJ�n�㏈���A�I�������ƏI���O�����̈Ⴂ�́A���
+���̉�ʂ̃O���t�B�b�N�����ۂɕ\������Ă��邩�ۂ��ł��B
+�T�u�N���X�ł̍Ē�`�ŏ�����ǉ�����ۂɂ��̃^�C�~���O�𐧌�
+���₷���悤�ɂ��邽�߁A���̂悤�ɍו�������Ă��܂��B</p>
 <pre>
     update until scene_changing?
 </pre>
-<p>真ん中にあるこの記述は、シーン遷移 (画面切り替え) が指示される
-までの間、update メソッドを呼び出し続けるということを示しています。
-各シーンでフレームごとの処理が必要な場合は、この update メソッドを
-再定義することになります。</p>
+<p>�^�񒆂ɂ��邱�̋L�q�́A�V�[���J�� (��ʐ؂�ւ�) ���w�������
+�܂ł̊ԁAupdate ���\�b�h���Ăяo��������Ƃ������Ƃ������Ă��܂��B
+�e�V�[���Ńt���[�����Ƃ̏������K�v�ȏꍇ�́A���� update ���\�b�h��
+�Ē�`���邱�ƂɂȂ�܂��B</p>
 
 
-<h2><a name="kind">シーンクラスの種類</a></h2>
-<p>各シーンクラスに対応する画面を次の表に示します。クラス名とセクション名
-は完全に一対一で対応しています。</p>
+<h2><a name="kind">�V�[���N���X�̎��</a></h2>
+<p>�e�V�[���N���X�ɑΉ������ʂ����̕\�Ɏ����܂��B�N���X���ƃZ�N�V������
+�͊��S�Ɉ�Έ�őΉ����Ă��܂��B</p>
 <table border="1" cellspacing="0" cellpadding="2">
 <tr>
- <th>クラス</th>
- <th>内容</th>
- <th>スーパークラス</th>
+ <th>�N���X</th>
+ <th>���e</th>
+ <th>�X�[�p�[�N���X</th>
 </tr><tr>
  <td>Scene_Title</td>
- <td>タイトル画面</td>
+ <td>�^�C�g�����</td>
  <td>Scene_Base</td>
 </tr><tr>
  <td>Scene_Map</td>
- <td>マップ画面</td>
+ <td>�}�b�v���</td>
  <td>Scene_Base</td>
 </tr><tr>
  <td>Scene_MenuBase</td>
- <td>メニュー画面系の基本処理</td>
+ <td>���j���[��ʌn�̊�{����</td>
  <td>Scene_Base</td>
 </tr><tr>
  <td>Scene_Menu</td>
- <td>メニュー画面</td>
+ <td>���j���[���</td>
  <td>Scene_MenuBase</td>
 </tr><tr>
  <td>Scene_ItemBase</td>
- <td>アイテム画面とスキル画面の共通処理</td>
+ <td>�A�C�e����ʂƃX�L����ʂ̋��ʏ���</td>
  <td>Scene_MenuBase</td>
 </tr><tr>
  <td>Scene_Item</td>
- <td>アイテム画面</td>
+ <td>�A�C�e�����</td>
  <td>Scene_ItemBase</td>
 </tr><tr>
  <td>Scene_Skill</td>
- <td>スキル画面</td>
+ <td>�X�L�����</td>
  <td>Scene_ItemBase</td>
 </tr><tr>
  <td>Scene_Equip</td>
- <td>装備画面</td>
+ <td>�������</td>
  <td>Scene_MenuBase</td>
 </tr><tr>
  <td>Scene_Status</td>
- <td>ステータス画面</td>
+ <td>�X�e�[�^�X���</td>
  <td>Scene_MenuBase</td>
 </tr><tr>
  <td>Scene_File</td>
- <td>セーブ画面とロード画面の共通処理</td>
+ <td>�Z�[�u��ʂƃ��[�h��ʂ̋��ʏ���</td>
  <td>Scene_MenuBase</td>
 </tr><tr>
  <td>Scene_Save</td>
- <td>セーブ画面</td>
+ <td>�Z�[�u���</td>
  <td>Scene_File</td>
 </tr><tr>
  <td>Scene_Load</td>
- <td>ロード画面</td>
+ <td>���[�h���</td>
  <td>Scene_File</td>
 </tr><tr>
  <td>Scene_End</td>
- <td>ゲーム終了画面</td>
+ <td>�Q�[���I�����</td>
  <td>Scene_MenuBase</td>
 </tr><tr>
  <td>Scene_Shop</td>
- <td>ショップ画面</td>
+ <td>�V���b�v���</td>
  <td>Scene_MenuBase</td>
 </tr><tr>
  <td>Scene_Name</td>
- <td>名前入力画面</td>
+ <td>���O���͉��</td>
  <td>Scene_MenuBase</td>
 </tr><tr>
  <td>Scene_Debug</td>
- <td>デバッグ画面</td>
+ <td>�f�o�b�O���</td>
  <td>Scene_MenuBase</td>
 </tr><tr>
  <td>Scene_Battle</td>
- <td>バトル画面</td>
+ <td>�o�g�����</td>
  <td>Scene_Base</td>
 </tr><tr>
  <td>Scene_Gameover</td>
- <td>ゲームオーバー画面</td>
+ <td>�Q�[���I�[�o�[���</td>
  <td>Scene_Base</td>
 </tr></table>
-<p>メニュー画面系の基本となる Scene_MenuBase クラスは、非常に多くの
-クラスで継承されています。このクラスには、マップ画面をぼかした画像を
-背景として表示するなどの処理が含まれています。</p>
+<p>���j���[��ʌn�̊�{�ƂȂ� Scene_MenuBase �N���X�́A���ɑ�����
+�N���X�Ōp������Ă��܂��B���̃N���X�ɂ́A�}�b�v��ʂ��ڂ������摜��
+�w�i�Ƃ��ĕ\������Ȃǂ̏������܂܂�Ă��܂��B</p>
 
 
-<h2><a name="trans">シーン遷移</a></h2>
-<p>ゲーム中にシーンを切り替えるメソッドは、goto、call、return
-の 3 種類があります。</p>
-<p>一番単純なのは goto で、たとえばゲームオーバー画面のように
-一方通行の遷移を行う際に使用します。</p>
+<h2><a name="trans">�V�[���J��</a></h2>
+<p>�Q�[�����ɃV�[����؂�ւ��郁�\�b�h�́Agoto�Acall�Areturn
+�� 3 ��ނ�����܂��B</p>
+<p>��ԒP���Ȃ̂� goto �ŁA���Ƃ��΃Q�[���I�[�o�[��ʂ̂悤��
+����ʍs�̑J�ڂ��s���ۂɎg�p���܂��B</p>
 <pre>
 SceneManager.goto(Scene_Gameover)
 </pre>
-<p>call は、メニュー画面のように、呼び出し元のシーンに戻ることが
-ある場合に使用します。</p>
+<p>call �́A���j���[��ʂ̂悤�ɁA�Ăяo�����̃V�[���ɖ߂邱�Ƃ�
+����ꍇ�Ɏg�p���܂��B</p>
 <pre>
 SceneManager.call(Scene_Menu)
 </pre>
-<p>return は、call で呼び出されたシーンから元のシーンに戻す際に
-使用します。</p>
+<p>return �́Acall �ŌĂяo���ꂽ�V�[�����猳�̃V�[���ɖ߂��ۂ�
+�g�p���܂��B</p>
 <pre>
 SceneManager.return
 </pre>
-<p>シーン遷移が実際にどのように使われるかは、続く実践編でも
-解説します。</p>
-<p>なお、前作までは $scene というグローバル変数にシーンオブジェクト
-を代入する形でシーン遷移を行っていましたが、より本格的な SceneManager
-モジュールの導入に伴い、その方式は廃止されました。以前からのユーザーの
-方はご注意ください。</p>
+<p>�V�[���J�ڂ����ۂɂǂ̂悤�Ɏg���邩�́A�������H�҂ł�
+������܂��B</p>
+<p>�Ȃ��A�O��܂ł� $scene �Ƃ����O���[�o���ϐ��ɃV�[���I�u�W�F�N�g
+��������`�ŃV�[���J�ڂ��s���Ă��܂������A���{�i�I�� SceneManager
+���W���[���̓����ɔ����A���̕����͔p�~����܂����B�ȑO����̃��[�U�[��
+���͂����ӂ��������B</p>
 
 
 <h6></h6>

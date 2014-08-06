@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Comparable</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,38 +9,38 @@
 <body>
 
 <h1>Comparable</h1>
-<p>æ¯”è¼ƒæ¼”ç®—ã‚’è¨±ã™ã‚¯ãƒ©ã‚¹ã®ãŸã‚ã® Mix-inã€‚ã“ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼
-ãƒ‰ã™ã‚‹ã‚¯ãƒ©ã‚¹ã¯ã€åŸºæœ¬çš„ãªæ¯”è¼ƒæ¼”ç®—å­ã§ã‚ã‚‹ &lt;=&gt; æ¼”ç®—å­ã‚’å®šç¾©ã—ã¦ã„
-ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ä»–ã®æ¯”è¼ƒæ¼”ç®—å­ã¯ãã®å®šç¾©ã‚’åˆ©ç”¨ã—ã¦æ´¾ç”Ÿã§ãã¾ã™ã€‚</p>
+<p>”äŠr‰‰ŽZ‚ð‹–‚·ƒNƒ‰ƒX‚Ì‚½‚ß‚Ì Mix-inB‚±‚Ìƒ‚ƒWƒ…[ƒ‹‚ðƒCƒ“ƒNƒ‹[
+ƒh‚·‚éƒNƒ‰ƒX‚ÍAŠî–{“I‚È”äŠr‰‰ŽZŽq‚Å‚ ‚é &lt;=&gt; ‰‰ŽZŽq‚ð’è‹`‚µ‚Ä‚¢
+‚é•K—v‚ª‚ ‚è‚Ü‚·B‘¼‚Ì”äŠr‰‰ŽZŽq‚Í‚»‚Ì’è‹`‚ð—˜—p‚µ‚Ä”h¶‚Å‚«‚Ü‚·B</p>
 
-<h2>ãƒ¡ã‚½ãƒƒãƒ‰</h2>
+<h2>ƒƒ\ƒbƒh</h2>
 <dl>
 <dt><var>self</var> == <var>other</var></dt>
 <dd>
-<p>self ã¨ <var>other</var> ãŒç­‰ã—ã„æ™‚çœŸã‚’è¿”ã—ã¾ã™ã€‚</p>
-<p>&lt;=&gt; ãŒ nil ã‚’è¿”ã—ãŸã¨ã nil ã‚’è¿”ã—ã¾ã™ã€‚</p></dd>
+<p>self ‚Æ <var>other</var> ‚ª“™‚µ‚¢Žž^‚ð•Ô‚µ‚Ü‚·B</p>
+<p>&lt;=&gt; ‚ª nil ‚ð•Ô‚µ‚½‚Æ‚« nil ‚ð•Ô‚µ‚Ü‚·B</p></dd>
 <dt><var>self</var> &gt; <var>other</var></dt>
 <dd>
-<p>self ãŒ <var>other</var> ã‚ˆã‚Šå¤§ãã„æ™‚çœŸã‚’è¿”ã—ã¾ã™ã€‚</p>
-<p>&lt;=&gt; ãŒ nil ã‚’è¿”ã—ãŸã¨ãä¾‹å¤– <a href="s_exceptions.html#ArgumentError">ArgumentError</a> ãŒç™ºç”Ÿã—ã¾ã™ã€‚</p></dd>
+<p>self ‚ª <var>other</var> ‚æ‚è‘å‚«‚¢Žž^‚ð•Ô‚µ‚Ü‚·B</p>
+<p>&lt;=&gt; ‚ª nil ‚ð•Ô‚µ‚½‚Æ‚«—áŠO <a href="s_exceptions.html#ArgumentError">ArgumentError</a> ‚ª”­¶‚µ‚Ü‚·B</p></dd>
 <dt><var>self</var> &gt;= <var>other</var></dt>
 <dd>
-<p>self ãŒ <var>other</var> ã‚ˆã‚Šå¤§ãã„ã‹ç­‰ã—ã„æ™‚çœŸã‚’è¿”ã—ã¾ã™ã€‚</p>
-<p>&lt;=&gt; ãŒ nil ã‚’è¿”ã—ãŸã¨ãä¾‹å¤– <a href="s_exceptions.html#ArgumentError">ArgumentError</a> ãŒç™ºç”Ÿã—ã¾ã™ã€‚</p></dd>
+<p>self ‚ª <var>other</var> ‚æ‚è‘å‚«‚¢‚©“™‚µ‚¢Žž^‚ð•Ô‚µ‚Ü‚·B</p>
+<p>&lt;=&gt; ‚ª nil ‚ð•Ô‚µ‚½‚Æ‚«—áŠO <a href="s_exceptions.html#ArgumentError">ArgumentError</a> ‚ª”­¶‚µ‚Ü‚·B</p></dd>
 <dt><var>self</var> &lt; <var>other</var></dt>
 <dd>
-<p>self ãŒ <var>other</var> ã‚ˆã‚Šå°ã•ã„æ™‚çœŸã‚’è¿”ã—ã¾ã™ã€‚</p>
-<p>&lt;=&gt; ãŒ nil ã‚’è¿”ã—ãŸã¨ãä¾‹å¤– <a href="s_exceptions.html#ArgumentError">ArgumentError</a> ãŒç™ºç”Ÿã—ã¾ã™ã€‚</p></dd>
+<p>self ‚ª <var>other</var> ‚æ‚è¬‚³‚¢Žž^‚ð•Ô‚µ‚Ü‚·B</p>
+<p>&lt;=&gt; ‚ª nil ‚ð•Ô‚µ‚½‚Æ‚«—áŠO <a href="s_exceptions.html#ArgumentError">ArgumentError</a> ‚ª”­¶‚µ‚Ü‚·B</p></dd>
 <dt><var>self</var> &lt;= <var>other</var></dt>
 <dd>
-<p>self ãŒ <var>other</var> ã‚ˆã‚Šå°ã•ã„ã‹ç­‰ã—ã„æ™‚çœŸã‚’è¿”ã—ã¾ã™ã€‚</p>
-<p>&lt;=&gt; ãŒ nil ã‚’è¿”ã—ãŸã¨ãä¾‹å¤– <a href="s_exceptions.html#ArgumentError">ArgumentError</a> ãŒç™ºç”Ÿã—ã¾ã™ã€‚</p></dd>
+<p>self ‚ª <var>other</var> ‚æ‚è¬‚³‚¢‚©“™‚µ‚¢Žž^‚ð•Ô‚µ‚Ü‚·B</p>
+<p>&lt;=&gt; ‚ª nil ‚ð•Ô‚µ‚½‚Æ‚«—áŠO <a href="s_exceptions.html#ArgumentError">ArgumentError</a> ‚ª”­¶‚µ‚Ü‚·B</p></dd>
 <dt>between?(<var>min</var>, <var>max</var>)</dt>
 <dd>
-<p>self ãŒ <var>min</var> ã¨ <var>max</var> ã®ç¯„å›²å†… (<var>min</var>, <var>max</var> 
-ã‚’å«ã¿ã¾ã™) ã«ã‚ã‚‹æ™‚çœŸã‚’è¿”ã—ã¾ã™ã€‚</p>
-<p>self &lt;=&gt; <var>min</var> ã‹ã€self &lt;=&gt; max ãŒ nil ã‚’è¿”
-ã—ãŸã¨ãä¾‹å¤– <a href="s_exceptions.html#ArgumentError">ArgumentError</a> ãŒç™ºç”Ÿã—ã¾ã™ã€‚</p></dd>
+<p>self ‚ª <var>min</var> ‚Æ <var>max</var> ‚Ì”ÍˆÍ“à (<var>min</var>, <var>max</var> 
+‚ðŠÜ‚Ý‚Ü‚·) ‚É‚ ‚éŽž^‚ð•Ô‚µ‚Ü‚·B</p>
+<p>self &lt;=&gt; <var>min</var> ‚©Aself &lt;=&gt; max ‚ª nil ‚ð•Ô
+‚µ‚½‚Æ‚«—áŠO <a href="s_exceptions.html#ArgumentError">ArgumentError</a> ‚ª”­¶‚µ‚Ü‚·B</p></dd>
 </dl>
 
 <h6></h6>

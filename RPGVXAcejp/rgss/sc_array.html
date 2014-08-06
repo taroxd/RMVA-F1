@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Array</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,41 +9,41 @@
 <body>
 
 <h1>Array</h1>
-<p>配列クラス。配列の要素は任意の Ruby オブジェクトで
-す。<a href="syntax03.html#L000279">配列式</a>を参照してください。</p>
+<p>�z��N���X�B�z��̗v�f�͔C�ӂ� Ruby �I�u�W�F�N�g��
+���B<a href="syntax03.html#L000279">�z��</a>���Q�Ƃ��Ă��������B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>インクルードしているモジュール</h2>
+<h2>�C���N���[�h���Ă��郂�W���[��</h2>
 <ul>
 <li><a href="sm_enumerable.html">Enumerable</a></li>
 </ul>
 
-<h2>クラスメソッド</h2>
+<h2>�N���X���\�b�h</h2>
 <dl>
 <dt>Array[item,...]</dt>
 <dd>
-<p>引数を要素として持つ配列を生成します。</p></dd>
+<p>������v�f�Ƃ��Ď��z��𐶐����܂��B</p></dd>
 <dt><a name="Array.2enew" id="Array.2enew"></a>Array.new([<var>size</var>[, <var>val</var>]])</dt>
 <dt><a name="Array.2enew_2" id="Array.2enew_2"></a>Array.new(<var>ary</var>)</dt>
 <dt><a name="Array.2enew_3" id="Array.2enew_3"></a>Array.new(<var>size</var>) {|<var>index</var>| ... }</dt>
 <dd>
-<p>配列を生成します。<var>size</var> を指定したときにはその大きさの配列を
-生成し nil で初期化します。第二引数 <var>val</var> も指定したとき
-には nil の代わりにそのオブジェクトを全要素にセットします。
-(要素毎に <var>val</var> が複製されるわけではないことに注意してください。
-全要素が同じオブジェクト <var>val</var> を参照します<a href="trap_Array.html">trap::Array</a>)。</p>
-<p>二番目の形式では引数に指定した配列を複製して返します。</p>
+<p>�z��𐶐����܂��B<var>size</var> ���w�肵���Ƃ��ɂ͂��̑傫���̔z���
+������ nil �ŏ��������܂��B������ <var>val</var> ���w�肵���Ƃ�
+�ɂ� nil �̑���ɂ��̃I�u�W�F�N�g��S�v�f�ɃZ�b�g���܂��B
+(�v�f���� <var>val</var> �����������킯�ł͂Ȃ����Ƃɒ��ӂ��Ă��������B
+�S�v�f�������I�u�W�F�N�g <var>val</var> ���Q�Ƃ��܂�<a href="trap_Array.html">trap::Array</a>)�B</p>
+<p>��Ԗڂ̌`���ł͈����Ɏw�肵���z��𕡐����ĕԂ��܂��B</p>
 <pre>
 p Array.new([1,2,3]) # =&gt; [1,2,3]
 </pre>
 
-<p>三番目の形式では、ブロックの評価結果で値を設定します。ブロックは要
-素毎に実行されるので、全要素をあるオブジェクトの複製にすることがで
-きます。</p>
+<p>�O�Ԗڂ̌`���ł́A�u���b�N�̕]�����ʂŒl��ݒ肵�܂��B�u���b�N�͗v
+�f���Ɏ��s�����̂ŁA�S�v�f������I�u�W�F�N�g�̕����ɂ��邱�Ƃ���
+���܂��B</p>
 <pre>
 p Array.new(5) {|i| i }         # =&gt; [0, 1, 2, 3, 4]
 
@@ -63,33 +63,33 @@ ary.each {|obj| p obj.object_id }
 </dl>
 
 
-<h2>メソッド</h2>
+<h2>���\�b�h</h2>
 <dl>
 <dt>self[nth]</dt>
 <dd>
-<p><var>nth</var> 番目の要素を返します。先頭の要素が 0 番目になります。
-<var>nth</var> の値が負のときには末尾からのインデックスとみなします (末尾
-の要素が -1 番目) 。<var>nth</var> 番目の要素が存在しないときには 
-nil を返します。</p></dd>
+<p><var>nth</var> �Ԗڂ̗v�f��Ԃ��܂��B�擪�̗v�f�� 0 �ԖڂɂȂ�܂��B
+<var>nth</var> �̒l�����̂Ƃ��ɂ͖�������̃C���f�b�N�X�Ƃ݂Ȃ��܂� (����
+�̗v�f�� -1 �Ԗ�) �B<var>nth</var> �Ԗڂ̗v�f�����݂��Ȃ��Ƃ��ɂ� 
+nil ��Ԃ��܂��B</p></dd>
 <dt>self[start, <var>length</var>]</dt>
 <dd>
-<p><var>start</var> 番目から <var>length</var> 個の要素を含む部分配列を返します。
-<var>start</var> の値が負のときには末尾からのインデックスとみなします (末
-尾の要素が -1 番目) 。<var>length</var> が <var>start</var> 番目からの配列の
-長さより長いときには、越えた分の長さは無視されます。<var>length</var> が
-負のときには nil を返します。</p></dd>
+<p><var>start</var> �Ԗڂ��� <var>length</var> �̗v�f���܂ޕ����z���Ԃ��܂��B
+<var>start</var> �̒l�����̂Ƃ��ɂ͖�������̃C���f�b�N�X�Ƃ݂Ȃ��܂� (��
+���̗v�f�� -1 �Ԗ�) �B<var>length</var> �� <var>start</var> �Ԗڂ���̔z���
+������蒷���Ƃ��ɂ́A�z�������̒����͖�������܂��B<var>length</var> ��
+���̂Ƃ��ɂ� nil ��Ԃ��܂��B</p></dd>
 <dt>self[nth]=val</dt>
 <dd>
-<p><var>nth</var> 番目の要素を <var>val</var> に設定します。<var>nth</var> が配列の
-範囲を越えるときには配列の長さを自動的に拡張し、拡張した領域を
-nil で初期化します。</p>
-<p><var>val</var> を返します。</p></dd>
+<p><var>nth</var> �Ԗڂ̗v�f�� <var>val</var> �ɐݒ肵�܂��B<var>nth</var> ���z���
+�͈͂��z����Ƃ��ɂ͔z��̒����������I�Ɋg�����A�g�������̈��
+nil �ŏ��������܂��B</p>
+<p><var>val</var> ��Ԃ��܂��B</p></dd>
 <dt>self[start, <var>length</var>]=<var>val</var></dt>
 <dd>
-<p>インデックス <var>start</var> から <var>length</var> 個の要素を配列 
-<var>val</var> の内容で置き換えます。<var>val</var> が配列でないときには 
-val.to_ary もしくは [val] の内容で置換します。
-<var>val</var> を返します。</p>
+<p>�C���f�b�N�X <var>start</var> ���� <var>length</var> �̗v�f��z�� 
+<var>val</var> �̓��e�Œu�������܂��B<var>val</var> ���z��łȂ��Ƃ��ɂ� 
+val.to_ary �������� [val] �̓��e�Œu�����܂��B
+<var>val</var> ��Ԃ��܂��B</p>
 <pre>
 ary = [0, 1, 2, 3]
 ary[1, 2] = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]
@@ -101,49 +101,49 @@ p ary                        # =&gt; [0, &quot;inserted&quot;, &quot;a&quot;, 99
 </pre></dd>
 <dt><var>self</var> + <var>other</var></dt>
 <dd>
-<p>self と <var>other</var> の内容を繋げた新しい配列を返します。
-<var>other</var> が配列でなければ other.to_ary の戻り値を用います。
-その戻り値がまた配列でなかった場合は例外 <a href="s_exceptions.html#TypeError">TypeError</a> が発生し
-ます。</p>
+<p>self �� <var>other</var> �̓��e���q�����V�����z���Ԃ��܂��B
+<var>other</var> ���z��łȂ���� other.to_ary �̖߂�l��p���܂��B
+���̖߂�l���܂��z��łȂ������ꍇ�͗�O <a href="s_exceptions.html#TypeError">TypeError</a> ��������
+�܂��B</p>
 <pre>
 a = [1, 2]
 b = [8, 9]
 p a + b     # =&gt; [1, 2, 8, 9]
-p a         # =&gt; [1, 2]        (変化なし)
-p b         # =&gt; [8, 9]        (こちらも変化なし)
+p a         # =&gt; [1, 2]        (�ω��Ȃ�)
+p b         # =&gt; [8, 9]        (��������ω��Ȃ�)
 </pre></dd>
 <dt><var>self</var> * <var>times</var></dt>
 <dd>
-<p>配列の内容を繰り返した新しい配列を作成し返します。</p> 
+<p>�z��̓��e���J��Ԃ����V�����z����쐬���Ԃ��܂��B</p> 
 <pre>
 p [1, 2, 3] * 3  #=&gt; [1, 2, 3, 1, 2, 3, 1, 2, 3]
 </pre></dd>
 <dt><var>self</var> - <var>other</var></dt>
 <dd>
-<p>集合の差演算。self から <var>other</var> の要素を取り除いた内容の新しい配列を
-返します。</p></dd>
+<p>�W���̍����Z�Bself ���� <var>other</var> �̗v�f����菜�������e�̐V�����z���
+�Ԃ��܂��B</p></dd>
 <dt><var>self</var> &amp; <var>other</var></dt>
 <dd>
-<p>集合の積演算。両方の配列に含まれる要素からなる新しい配列を返します。
-重複する要素は取り除かれます。</p></dd>
+<p>�W���̐ω��Z�B�����̔z��Ɋ܂܂��v�f����Ȃ�V�����z���Ԃ��܂��B
+�d������v�f�͎�菜����܂��B</p></dd>
 <dt><var>self</var> | <var>other</var></dt>
 <dd>
-<p>集合の和演算。両方の配列にいずれかに含まれる要素を全て含む新しい配列を
-返します。重複する要素は取り除かれます。</p></dd>
+<p>�W���̘a���Z�B�����̔z��ɂ����ꂩ�Ɋ܂܂��v�f��S�Ċ܂ސV�����z���
+�Ԃ��܂��B�d������v�f�͎�菜����܂��B</p></dd>
 <dt><var>self</var> &lt;=&gt; <var>other</var></dt>
 <dd>
-<p>self と other の各要素をそれぞれ順に &lt;=&gt; で比較
-して、self が大きいときに正、等しいときに 0、小さいときに負の整数
-を返します。各要素が等しいまま、一方だけ配列の末尾に達したときは、よ
-り短い配列の方が小さいとみなします。</p></dd>
+<p>self �� other �̊e�v�f�����ꂼ�ꏇ�� &lt;=&gt; �Ŕ�r
+���āAself ���傫���Ƃ��ɐ��A�������Ƃ��� 0�A�������Ƃ��ɕ��̐���
+��Ԃ��܂��B�e�v�f���������܂܁A��������z��̖����ɒB�����Ƃ��́A��
+��Z���z��̕����������Ƃ݂Ȃ��܂��B</p></dd>
 <dt><var>self</var> == <var>other</var></dt>
 <dd>
-<p>self と other の各要素をそれぞれ順に == で比較し
-て、全要素が等しければ真を返します。</p></dd>
+<p>self �� other �̊e�v�f�����ꂼ�ꏇ�� == �Ŕ�r��
+�āA�S�v�f����������ΐ^��Ԃ��܂��B</p></dd>
 <dt>clear</dt>
 <dd>
-<p>配列の要素をすべて削除して空にします。
-self を返します。</p>
+<p>�z��̗v�f�����ׂč폜���ċ�ɂ��܂��B
+self ��Ԃ��܂��B</p>
 <pre>
 ary = [1, 2]
 ary.clear
@@ -152,16 +152,16 @@ p ary     # =&gt; []
 <dt>clone</dt>
 <dt>dup</dt>
 <dd>
-<p>レシーバと同じ内容を持つ新しい配列を返します。
-clone は freeze、特異メソッドなどの情報も含めた完全な複製を、dup は
-オブジェクトの内容のみの複製を作ります。どちらのメソッドも要素それ自体の
-コピーはしません。</p></dd>
+<p>���V�[�o�Ɠ������e�����V�����z���Ԃ��܂��B
+clone �� freeze�A���ك��\�b�h�Ȃǂ̏����܂߂����S�ȕ������Adup ��
+�I�u�W�F�N�g�̓��e�݂̂̕��������܂��B�ǂ���̃��\�b�h���v�f���ꎩ�̂�
+�R�s�[�͂��܂���B</p></dd>
 <dt>compact</dt>
 <dt>compact!</dt>
 <dd>
-<p>compact は self から nil である要素を取り除いた
-新しい配列を返します。compact! は変更を破壊的に行い、変更が
-行われた場合は self を、そうでなければ nil を返します。</p>
+<p>compact �� self ���� nil �ł���v�f����菜����
+�V�����z���Ԃ��܂��Bcompact! �͕ύX��j��I�ɍs���A�ύX��
+�s��ꂽ�ꍇ�� self ���A�����łȂ���� nil ��Ԃ��܂��B</p>
 <pre>
 ary = [1, nil, 2, nil, 3, nil]
 p ary.compact   # =&gt; [1, 2, 3]
@@ -172,29 +172,29 @@ p ary.compact!  # =&gt; nil
 </pre></dd>
 <dt>concat(<var>other</var>)</dt>
 <dd>
-<p>配列 <var>other</var> を self の末尾に (破壊的に) 連結します。
-self を返します。</p>
+<p>�z�� <var>other</var> �� self �̖����� (�j��I��) �A�����܂��B
+self ��Ԃ��܂��B</p>
 <pre>
 array = [1, 2]
 a     = [3, 4]
 array.concat a
 p array          # =&gt; [1, 2, 3, 4]
-p a              # =&gt; [3, 4]       # こちらは変わらない
+p a              # =&gt; [3, 4]       # ������͕ς��Ȃ�
 </pre></dd>
 <dt>delete(<var>val</var>)</dt>
 <dt>delete(<var>val</var>) { ... }</dt>
 <dd>
-<p><var>val</var> と == で等しい要素をすべて取り除きます。
-<var>val</var> と等しい要素が見つかった場合は、<em>val</em> を返します。</p>
-<p><var>val</var>と等しい要素がなければ nil を返しますが、ブロックが
-指定されていればブロックを評価してその結果を返します。</p>
+<p><var>val</var> �� == �œ������v�f�����ׂĎ�菜���܂��B
+<var>val</var> �Ɠ������v�f�����������ꍇ�́A<em>val</em> ��Ԃ��܂��B</p>
+<p><var>val</var>�Ɠ������v�f���Ȃ���� nil ��Ԃ��܂����A�u���b�N��
+�w�肳��Ă���΃u���b�N��]�����Ă��̌��ʂ�Ԃ��܂��B</p>
 <pre>
 array = [1, 2, 3, 2, 1]
 p array.delete(2)       # =&gt; 2
 p array                 # =&gt; [1, 3, 1]
 
-# ブロックなしの引数に nil を渡すとその戻り値から削除が
-# 行われたかどうかの判定をすることはできない
+# �u���b�N�Ȃ��̈����� nil ��n���Ƃ��̖߂�l����폜��
+# �s��ꂽ���ǂ����̔�������邱�Ƃ͂ł��Ȃ�
 ary = [nil,nil,nil]
 p ary.delete(nil)       # =&gt; nil
 p ary                   # =&gt; []
@@ -202,8 +202,8 @@ p ary.delete(nil)       # =&gt; nil
 </pre></dd>
 <dt>delete_at(<var>pos</var>)</dt>
 <dd>
-<p><var>pos</var> で指定された位置にある要素を取り除きそれを返します。
-<var>pos</var> が範囲外であったら nil を返します。</p>
+<p><var>pos</var> �Ŏw�肳�ꂽ�ʒu�ɂ���v�f����菜�������Ԃ��܂��B
+<var>pos</var> ���͈͊O�ł������� nil ��Ԃ��܂��B</p>
 <pre>
 array = [0, 1, 2, 3, 4]
 array.delete_at 2
@@ -212,42 +212,42 @@ p array             # =&gt; [0, 1, 3, 4]
 <dt>delete_if {|<var>x</var>| ... }</dt>
 <dt>reject! {|<var>x</var>| ... }</dt>
 <dd> 
-<p>要素を順番にブロックに渡して評価し、その結果が真になった要素を
-すべて削除します。</p> 
-<p>delete_if は常に self を返しますが、reject! は要素が
-1 つ以上削除されれば self を、 1 つも削除されなければ nil を返します。</p></dd> 
+<p>�v�f�����ԂɃu���b�N�ɓn���ĕ]�����A���̌��ʂ��^�ɂȂ����v�f��
+���ׂč폜���܂��B</p> 
+<p>delete_if �͏�� self ��Ԃ��܂����Areject! �͗v�f��
+1 �ȏ�폜������ self ���A 1 ���폜����Ȃ���� nil ��Ԃ��܂��B</p></dd> 
 <dt>each {|<var>item</var>| .... }</dt>
 <dd>
-<p>各要素に対してブロックを評価します。self を返します。</p>
+<p>�e�v�f�ɑ΂��ău���b�N��]�����܂��Bself ��Ԃ��܂��B</p>
 <pre>
-# 1、2、3 が順番に表示される
+# 1�A2�A3 �����Ԃɕ\�������
 [1, 2, 3].each do |i|
   puts i
 end
 </pre></dd>
 <dt>each_index {|<var>index</var>| .... }</dt>
 <dd>
-<p>各要素のインデックスに対してブロックを評価します。
-以下と同じです。</p>
+<p>�e�v�f�̃C���f�b�N�X�ɑ΂��ău���b�N��]�����܂��B
+�ȉ��Ɠ����ł��B</p>
 <pre>
 (0 ... ary.size).each {|index| ....  }
 </pre>
-<p>self を返します。</p></dd>
+<p>self ��Ԃ��܂��B</p></dd>
 <dt>empty?</dt>
 <dd>
-<p>配列の要素数が 0 のとき真を返します。</p></dd>
+<p>�z��̗v�f���� 0 �̂Ƃ��^��Ԃ��܂��B</p></dd>
 <dt>include?(<var>val</var>)</dt>
 <dd>
-<p>配列が <var>val</var> と == において等しい要素を持つときに真を返し
-ます。</p></dd>
+<p>�z�� <var>val</var> �� == �ɂ����ē������v�f�����Ƃ��ɐ^��Ԃ�
+�܂��B</p></dd>
 <dt>index(<var>val</var>)</dt>
 <dd>
-<p><var>val</var> と == で等しい最初の要素の位置を返します。
-等しい要素がひとつもなかったときには nil を返します。</p></dd>
+<p><var>val</var> �� == �œ������ŏ��̗v�f�̈ʒu��Ԃ��܂��B
+�������v�f���ЂƂ��Ȃ������Ƃ��ɂ� nil ��Ԃ��܂��B</p></dd>
 <dt>insert(<var>nth</var>, [<var>val</var>[, <var>val2</var> ...]])</dt>
 <dd>
-<p>インデックス <var>nth</var> の要素の直前に第 2 引数以降の値を挿入します。
-self を返します。以下のように定義されます。</p>
+<p>�C���f�b�N�X <var>nth</var> �̗v�f�̒��O�ɑ� 2 �����ȍ~�̒l��}�����܂��B
+self ��Ԃ��܂��B�ȉ��̂悤�ɒ�`����܂��B</p>
 <pre>
 class Array
   def insert( n, *vals )
@@ -261,18 +261,18 @@ ary = [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]
 ary.insert 2, 'a', 'b'
 p ary                  # =&gt; [&quot;foo&quot;, &quot;bar&quot;, &quot;a&quot;, &quot;b&quot;, &quot;baz&quot;]
 </pre>
-<p>引数 val をひとつも指定しなければ何もしません。</p></dd>
+<p>���� val ���ЂƂ��w�肵�Ȃ���Ή������܂���B</p></dd>
 <dt>length</dt>
 <dt>size</dt>
 <dd>
-<p>配列の長さを返します。配列が空のときは 0 を返します。</p></dd>
+<p>�z��̒�����Ԃ��܂��B�z�񂪋�̂Ƃ��� 0 ��Ԃ��܂��B</p></dd>
 <dt>nitems</dt>
 <dd>
-<p>nil でない要素の数を返します。</p></dd>
+<p>nil �łȂ��v�f�̐���Ԃ��܂��B</p></dd>
 <dt>pop</dt>
 <dd>
-<p>末尾の要素を取り除いてそれを返します。空配列のときは
-nil を返します。</p>
+<p>�����̗v�f����菜���Ă����Ԃ��܂��B��z��̂Ƃ���
+nil ��Ԃ��܂��B</p>
 <pre>
 array = [1, [2, 3], 4]
 p array.pop      # =&gt; 4
@@ -285,8 +285,8 @@ p array          # =&gt; []
 </pre></dd>
 <dt>push(<var>obj1</var>[, <var>obj2</var> ...])</dt>
 <dd>
-<p><var>obj1</var>, <var>obj2</var> ... を順番に配列の末尾に追加します。</p>
-<p>self を返します。</p>
+<p><var>obj1</var>, <var>obj2</var> ... �����Ԃɔz��̖����ɒǉ����܂��B</p>
+<p>self ��Ԃ��܂��B</p>
 <pre>
 array = [1, 2, 3]
 array.push 4
@@ -297,37 +297,37 @@ p array          # =&gt; [1, 2, 3, 4, [5, 6], 7, 8]
 <dt>reverse</dt>
 <dt>reverse!</dt>
 <dd>
-<p>reverse は全ての要素を逆順に並べた新しい配列を返します。
-reverse! は配列の要素を破壊的に変更します。</p>
-<p>reverse は、常に新しい配列を返し、reverse! は
-常に self を返します。</p></dd>
+<p>reverse �͑S�Ă̗v�f���t���ɕ��ׂ��V�����z���Ԃ��܂��B
+reverse! �͔z��̗v�f��j��I�ɕύX���܂��B</p>
+<p>reverse �́A��ɐV�����z���Ԃ��Areverse! ��
+��� self ��Ԃ��܂��B</p></dd>
 <dt>shift</dt>
 <dd>
-<p>配列の先頭の要素を取り除いてそれを返します。残りの要素はひとつずつ
-前に詰められます。空配列に対しては nil を返します。</p></dd>
+<p>�z��̐擪�̗v�f����菜���Ă����Ԃ��܂��B�c��̗v�f�͂ЂƂ���
+�O�ɋl�߂��܂��B��z��ɑ΂��Ă� nil ��Ԃ��܂��B</p></dd>
 <dt>sort</dt>
 <dt>sort!</dt>
 <dt>sort {|<var>a</var>, <var>b</var>| ... }</dt>
 <dt>sort! {|<var>a</var>, <var>b</var>| ... }</dt>
 <dd>
-<p>配列の内容をソートします。ブロックとともに呼び出されたときには
-ブロックに 2 引数を与えて評価し、その結果で比較します。
-ブロックがないときには &lt;=&gt; 演算子を使って比較します。sort! は
-配列の要素を破壊的に変更します。
+<p>�z��̓��e���\�[�g���܂��B�u���b�N�ƂƂ��ɌĂяo���ꂽ�Ƃ��ɂ�
+�u���b�N�� 2 ������^���ĕ]�����A���̌��ʂŔ�r���܂��B
+�u���b�N���Ȃ��Ƃ��ɂ� &lt;=&gt; ���Z�q���g���Ĕ�r���܂��Bsort! ��
+�z��̗v�f��j��I�ɕύX���܂��B
 </p>
-<p>sort はソートされた新しい配列を返し、sort! は
-常に self を返します。</p></dd>
+<p>sort �̓\�[�g���ꂽ�V�����z���Ԃ��Asort! ��
+��� self ��Ԃ��܂��B</p></dd>
 <dt>uniq</dt>
 <dt>uniq!</dt>
 <dd>
-<p>uniq は配列から重複した要素を取り除いた新しい配列を返します。
-取り除かれた要素の部分は前に詰められます。uniq! は削除を破壊
-的に行い、削除が行われた場合は self を、そうでなければ 
-nil を返します。</p></dd>
+<p>uniq �͔z�񂩂�d�������v�f����菜�����V�����z���Ԃ��܂��B
+��菜���ꂽ�v�f�̕����͑O�ɋl�߂��܂��Buniq! �͍폜��j��
+�I�ɍs���A�폜���s��ꂽ�ꍇ�� self ���A�����łȂ���� 
+nil ��Ԃ��܂��B</p></dd>
 <dt>unshift(<var>obj1</var>[, <var>obj2</var> ...])</dt>
 <dd>
-<p><var>obj1</var>, <var>obj2</var> ... を順番に配列の先頭に挿入します。</p>
-<p>self を返します。</p></dd>
+<p><var>obj1</var>, <var>obj2</var> ... �����Ԃɔz��̐擪�ɑ}�����܂��B</p>
+<p>self ��Ԃ��܂��B</p></dd>
 </dl>
 
 <h6></h6>

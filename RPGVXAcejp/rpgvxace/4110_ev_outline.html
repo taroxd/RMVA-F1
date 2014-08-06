@@ -1,38 +1,38 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>イベントの編集</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>�C�x���g�̕ҏW</title>
 <link href="../style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
-<h1>イベントの編集</h1>
+<h1>�C�x���g�̕ҏW</h1>
 
-<h2>イベントとは</h2>
+<h2>�C�x���g�Ƃ�</h2>
 
-<p>RPGでは人物との会話、宝箱からのアイテムの入手、ボス敵との戦闘などのできごとを通してゲームが進行します。本ソフトでは、そうした個々のできごとを“イベント”というデータで用意します。</p>
-<p>イベントとは、ゲーム中で何らかの処理を行なう仕掛けのことです。たとえばプレイヤーが話しかけるとメッセージを返す人物キャラクターは、イベントに人物のグラフィックを割り当て、画面に文章を表示させる処理を持たせることで表現できます。</p>
-<p>このイベントをプレイ状況やプレイヤーの働きかけによって“作動”させることで、ゲームにいろんなできごとをもたらす仕組みです。</p>
+<p>RPG�ł͐l���Ƃ̉�b�A�󔠂���̃A�C�e���̓���A�{�X�G�Ƃ̐퓬�Ȃǂ̂ł����Ƃ�ʂ��ăQ�[�����i�s���܂��B�{�\�t�g�ł́A���������X�̂ł����Ƃ��g�C�x���g�h�Ƃ����f�[�^�ŗp�ӂ��܂��B</p>
+<p>�C�x���g�Ƃ́A�Q�[�����ŉ��炩�̏������s�Ȃ��d�|���̂��Ƃł��B���Ƃ��΃v���C���[���b��������ƃ��b�Z�[�W��Ԃ��l���L�����N�^�[�́A�C�x���g�ɐl���̃O���t�B�b�N�����蓖�āA��ʂɕ��͂�\�������鏈�����������邱�Ƃŕ\���ł��܂��B</p>
+<p>���̃C�x���g���v���C�󋵂�v���C���[�̓��������ɂ���āg�쓮�h�����邱�ƂŁA�Q�[���ɂ����Ȃł����Ƃ������炷�d�g�݂ł��B</p>
 
-<h2>イベントの種類</h2>
+<h2>�C�x���g�̎��</h2>
 
-<p>イベントには以下の3種類があります。ゲームのストーリーや進行に関する処理は“マップイベント”で作成します。</p>
+<p>�C�x���g�ɂ͈ȉ���3��ނ�����܂��B�Q�[���̃X�g�[���[��i�s�Ɋւ��鏈���́g�}�b�v�C�x���g�h�ō쐬���܂��B</p>
 
 <dl>
-<dt>●マップイベント</dt>
-<dd> <p>マップ画面で実行するイベントです。人物との会話シーン、アイテムを入手できる宝箱などを表現するのに使用します。またグラフィックを持たないイベントにより、プレイヤーの場所移動や演出シーンなど、ゲームの仕組みや進行に関する処理も定義できます。</p>
-<p>作成・編集は、メインウィンドウのツールバーで［イベント］のボタン（またはメニューバーの ［モード］ →［イベント］）をクリックしてイベントの編集モードを切り替えることで行なえます。</p>
+<dt>���}�b�v�C�x���g</dt>
+<dd> <p>�}�b�v��ʂŎ��s����C�x���g�ł��B�l���Ƃ̉�b�V�[���A�A�C�e�������ł���󔠂Ȃǂ�\������̂Ɏg�p���܂��B�܂��O���t�B�b�N�������Ȃ��C�x���g�ɂ��A�v���C���[�̏ꏊ�ړ��≉�o�V�[���ȂǁA�Q�[���̎d�g�݂�i�s�Ɋւ��鏈������`�ł��܂��B</p>
+<p>�쐬�E�ҏW�́A���C���E�B���h�E�̃c�[���o�[�Łm�C�x���g�n�̃{�^���i�܂��̓��j���[�o�[�� �m���[�h�n ���m�C�x���g�n�j���N���b�N���ăC�x���g�̕ҏW���[�h��؂�ւ��邱�Ƃōs�Ȃ��܂��B</p>
 </dd>
 
-<dt>●バトルイベント</dt>
-<dd><p>戦闘画面で実行するイベントです。たとえば「敵のHPが一定以下になったときに変身する」といった処理に使用します。作成・編集はデータベースの<a href="3280_db_enemygroup.html">［敵グループ］</a>で行ないます。</p>
+<dt>���o�g���C�x���g</dt>
+<dd><p>�퓬��ʂŎ��s����C�x���g�ł��B���Ƃ��΁u�G��HP�����ȉ��ɂȂ����Ƃ��ɕϐg����v�Ƃ����������Ɏg�p���܂��B�쐬�E�ҏW�̓f�[�^�x�[�X��<a href="3280_db_enemygroup.html">�m�G�O���[�v�n</a>�ōs�Ȃ��܂��B</p>
 </dd>
 
-<dt>●コモンイベント </dt>
+<dt>���R�����C�x���g </dt>
 <dd>
-  <p>汎用的に実行するイベントです。マップイベントやバトルイベントから呼び出したり、特殊なアイテムを使用したときの処理を設定したりするのに使います。作成・編集はデータベースの <a href="3320_db_commonevent.html">［コモンイベント］</a> のタブで行ないます。</p>
+  <p>�ėp�I�Ɏ��s����C�x���g�ł��B�}�b�v�C�x���g��o�g���C�x���g����Ăяo������A����ȃA�C�e�����g�p�����Ƃ��̏�����ݒ肵���肷��̂Ɏg���܂��B�쐬�E�ҏW�̓f�[�^�x�[�X�� <a href="3320_db_commonevent.html">�m�R�����C�x���g�n</a> �̃^�u�ōs�Ȃ��܂��B</p>
 </dd>
 </dl>
 

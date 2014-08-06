@@ -1,164 +1,164 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>オブジェクト</title>
+<title>�I�u�W�F�N�g</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>オブジェクト</h1>
+<h1>�I�u�W�F�N�g</h1>
 <ul>
-<li><a href="#object">オブジェクトとクラス</a></li>
-<li><a href="#method">メソッド</a></li>
-<li><a href="#superclass">スーパークラス</a></li>
-<li><a href="#instance">インスタンスの生成</a></li>
+<li><a href="#object">�I�u�W�F�N�g�ƃN���X</a></li>
+<li><a href="#method">���\�b�h</a></li>
+<li><a href="#superclass">�X�[�p�[�N���X</a></li>
+<li><a href="#instance">�C���X�^���X�̐���</a></li>
 </ul>
 
-<p>Ruby はオブジェクト指向言語です。
-ここでは、<strong>オブジェクト</strong>とはどういうものかを
-解説します。</p>
+<p>Ruby �̓I�u�W�F�N�g�w������ł��B
+�����ł́A<strong>�I�u�W�F�N�g</strong>�Ƃ͂ǂ��������̂���
+������܂��B</p>
 
 
-<h2><a name="object">オブジェクトとクラス</a></h2>
-<p>Ruby で扱われるあらゆるデータは<strong>オブジェクト</strong>と
-呼ばれています。</p>
+<h2><a name="object">�I�u�W�F�N�g�ƃN���X</a></h2>
+<p>Ruby �ň����邠����f�[�^��<strong>�I�u�W�F�N�g</strong>��
+�Ă΂�Ă��܂��B</p>
 <pre>
-3               # 整数オブジェクト
-1.5             # 浮動小数点数オブジェクト
-&quot;Ruby&quot;          # 文字列オブジェクト
-1..10           # 範囲オブジェクト
+3               # �����I�u�W�F�N�g
+1.5             # ���������_���I�u�W�F�N�g
+&quot;Ruby&quot;          # ������I�u�W�F�N�g
+1..10           # �͈̓I�u�W�F�N�g
 </pre>
 
-<p>オブジェクトの種類のことを<strong>クラス</strong>と呼びます。
-たとえば文字列オブジェクトは String、範囲オブジェクトは Range と
-いうクラスに属しています。Ruby に組み込まれているクラスの一覧
-は、<a href="../rgss/index.html">RGSS リファレンス</a> の中にある
-<a href="../rgss/s_classes.html">組み込みクラス</a> のページで
-確認することができます。</p>
-<p>特定のクラスに属するオブジェクトであることを強調するため
-に、<strong>インスタンス</strong>という言葉を使うこともあります。
-クラスとは、言わばそれに属するオブジェクトにおける雛形となるものです。
-大まかな設計図がクラスに備わっていて、オブジェクトの振る舞いを決めている
-ことになります。オブジェクトは必ずいずれかのクラスに属しています。
-よって、「このクラスに属しているオブジェクト」という表現を「このクラスの
-インスタンス」と言い換えることができるということなのです。</p>
+<p>�I�u�W�F�N�g�̎�ނ̂��Ƃ�<strong>�N���X</strong>�ƌĂт܂��B
+���Ƃ��Ε�����I�u�W�F�N�g�� String�A�͈̓I�u�W�F�N�g�� Range ��
+�����N���X�ɑ����Ă��܂��BRuby �ɑg�ݍ��܂�Ă���N���X�̈ꗗ
+�́A<a href="../rgss/index.html">RGSS ���t�@�����X</a> �̒��ɂ���
+<a href="../rgss/s_classes.html">�g�ݍ��݃N���X</a> �̃y�[�W��
+�m�F���邱�Ƃ��ł��܂��B</p>
+<p>����̃N���X�ɑ�����I�u�W�F�N�g�ł��邱�Ƃ��������邽��
+�ɁA<strong>�C���X�^���X</strong>�Ƃ������t���g�����Ƃ�����܂��B
+�N���X�Ƃ́A����΂���ɑ�����I�u�W�F�N�g�ɂ����鐗�`�ƂȂ���̂ł��B
+��܂��Ȑ݌v�}���N���X�ɔ�����Ă��āA�I�u�W�F�N�g�̐U�镑�������߂Ă���
+���ƂɂȂ�܂��B�I�u�W�F�N�g�͕K�������ꂩ�̃N���X�ɑ����Ă��܂��B
+����āA�u���̃N���X�ɑ����Ă���I�u�W�F�N�g�v�Ƃ����\�����u���̃N���X��
+�C���X�^���X�v�ƌ��������邱�Ƃ��ł���Ƃ������ƂȂ̂ł��B</p>
 
 
-<h2><a name="method">メソッド</a></h2>
-<p>試しに <a href="../rgss/sc_string.html">String</a> クラスの
-ページがどうなっているか見てみましょう。今の段階では意味がよくわからない
-かもしれませんが、それは気にしなくて構いません。実際に自分でスクリプトを
-組むときにはこのリファレンスを頻繁に参照することになりますから、なるべく
-早いうちに慣れておく必要があるのです。</p>
-<p><strong>メソッド</strong>というものが羅列されているのが確認できた
-でしょうか。これは、そのクラスに属するオブジェクト専用の関数のような
-ものです。</p>
-<p>メソッド一覧の中ほどに size という項目がありますね。これを
-使ってみましょう。</p>
+<h2><a name="method">���\�b�h</a></h2>
+<p>������ <a href="../rgss/sc_string.html">String</a> �N���X��
+�y�[�W���ǂ��Ȃ��Ă��邩���Ă݂܂��傤�B���̒i�K�ł͈Ӗ����悭�킩��Ȃ�
+��������܂��񂪁A����͋C�ɂ��Ȃ��č\���܂���B���ۂɎ����ŃX�N���v�g��
+�g�ނƂ��ɂ͂��̃��t�@�����X��p�ɂɎQ�Ƃ��邱�ƂɂȂ�܂�����A�Ȃ�ׂ�
+���������Ɋ���Ă����K�v������̂ł��B</p>
+<p><strong>���\�b�h</strong>�Ƃ������̂����񂳂�Ă���̂��m�F�ł���
+�ł��傤���B����́A���̃N���X�ɑ�����I�u�W�F�N�g��p�̊֐��̂悤��
+���̂ł��B</p>
+<p>���\�b�h�ꗗ�̒��قǂ� size �Ƃ������ڂ�����܂��ˁB�����
+�g���Ă݂܂��傤�B</p>
 <pre>
 a = &quot;Ruby&quot;
 
 p a.size        # =&gt; 4
 </pre>
-<p>String クラスの size メソッドは、文字数を返すメソッド
-です。&quot;Ruby&quot; という文字列は 4 文字ですから
-4 という数字が返ってくるわけです (Ruby 1.9 からは全角文字も
-1 文字として数えられるようになっています) 。</p>
-<p>もうひとつ試してみましょう。文字列を大文字に変換する upcase
-メソッドです。</p>
+<p>String �N���X�� size ���\�b�h�́A��������Ԃ����\�b�h
+�ł��B&quot;Ruby&quot; �Ƃ���������� 4 �����ł�����
+4 �Ƃ����������Ԃ��Ă���킯�ł� (Ruby 1.9 ����͑S�p������
+1 �����Ƃ��Đ�������悤�ɂȂ��Ă��܂�) �B</p>
+<p>�����ЂƂ����Ă݂܂��傤�B�������啶���ɕϊ����� upcase
+���\�b�h�ł��B</p>
 <pre>
 a = &quot;Ruby&quot;
 
 p a.upcase      # =&gt; &quot;RUBY&quot;
 </pre>
-<p>このように、オブジェクトのメソッドを呼び出すときは変数名の後に
-&quot;.&quot; という記号を書き、その後に呼び出すメソッドを記述します。
-操作の対象となるオブジェクトのことを<strong>レシーバ</strong>と
-呼びます。ここでは a.upcase の a がレシーバです。</p>
-<p>ところで、文字列以外のオブジェクトに対して、たとえば upcase
-メソッドを呼び出したりしたらどうなるのでしょうか。</p>
+<p>���̂悤�ɁA�I�u�W�F�N�g�̃��\�b�h���Ăяo���Ƃ��͕ϐ����̌��
+&quot;.&quot; �Ƃ����L���������A���̌�ɌĂяo�����\�b�h���L�q���܂��B
+����̑ΏۂƂȂ�I�u�W�F�N�g�̂��Ƃ�<strong>���V�[�o</strong>��
+�Ăт܂��B�����ł� a.upcase �� a �����V�[�o�ł��B</p>
+<p>�Ƃ���ŁA������ȊO�̃I�u�W�F�N�g�ɑ΂��āA���Ƃ��� upcase
+���\�b�h���Ăяo�����肵����ǂ��Ȃ�̂ł��傤���B</p>
 <pre>
 a = 3
 
 p a.upcase      # ERROR!!
 </pre>
-<p>これはエラーになります。なぜなら 3 は整数であるため、upcase という
-メソッドは定義されていないからです。</p>
-<p>このようなメソッドの名前を暗記しようとする必要はありません。
-文字列に対して何かの操作を行いたい場合は String クラスのメソッドを使う
-ということだけ覚えておけば、リファレンスを開いて行いたい処理を探すだけ
-で良いからです。頻繁に使用するメソッドは、自然と覚えてしまうことになる
-でしょう。</p>
-<p>なお、Ruby では、たとえば「String クラスの size メソッド」を示す
-ときに String#size というふうに書く習慣があります。これは、Ruby
-にこういう文法があるということではなく、説明上の便宜的な記法です。
-リファレンスでもこの記法が使われているので、覚えておいてください。</p>
+<p>����̓G���[�ɂȂ�܂��B�Ȃ��Ȃ� 3 �͐����ł��邽�߁Aupcase �Ƃ���
+���\�b�h�͒�`����Ă��Ȃ�����ł��B</p>
+<p>���̂悤�ȃ��\�b�h�̖��O���ËL���悤�Ƃ���K�v�͂���܂���B
+������ɑ΂��ĉ����̑�����s�������ꍇ�� String �N���X�̃��\�b�h���g��
+�Ƃ������Ƃ����o���Ă����΁A���t�@�����X���J���čs������������T������
+�ŗǂ�����ł��B�p�ɂɎg�p���郁�\�b�h�́A���R�Ɗo���Ă��܂����ƂɂȂ�
+�ł��傤�B</p>
+<p>�Ȃ��ARuby �ł́A���Ƃ��΁uString �N���X�� size ���\�b�h�v������
+�Ƃ��� String#size �Ƃ����ӂ��ɏ����K��������܂��B����́ARuby
+�ɂ����������@������Ƃ������Ƃł͂Ȃ��A������̕֋X�I�ȋL�@�ł��B
+���t�@�����X�ł����̋L�@���g���Ă���̂ŁA�o���Ă����Ă��������B</p>
 
 
-<h2><a name="superclass">スーパークラス</a></h2>
-<p>3 や 65 などの整数は、<a href="../rgss/sc_fixnum.html">Fixnum</a>
-クラスのインスタンスです。</p>
-<p>Fixnum のメソッド一覧を見て、メソッドの数が少ないのを不思議に思った
-方はいませんか。もちろん、整数に対して使用できるメソッドがこれだけしか
-ないわけではありません。そのカギは<strong>スーパークラス</strong>と
-いう欄にあります。<a href="../rgss/sc_integer.html">Integer</a> と
-書かれていますね。</p>
-<p>Integer クラスには chr というメソッドがあります。これは、その数字を
-文字コードとする文字を返すというものです。試してみましょう。</p>
+<h2><a name="superclass">�X�[�p�[�N���X</a></h2>
+<p>3 �� 65 �Ȃǂ̐����́A<a href="../rgss/sc_fixnum.html">Fixnum</a>
+�N���X�̃C���X�^���X�ł��B</p>
+<p>Fixnum �̃��\�b�h�ꗗ�����āA���\�b�h�̐������Ȃ��̂�s�v�c�Ɏv����
+���͂��܂��񂩁B�������A�����ɑ΂��Ďg�p�ł��郁�\�b�h�����ꂾ������
+�Ȃ��킯�ł͂���܂���B���̃J�M��<strong>�X�[�p�[�N���X</strong>��
+�������ɂ���܂��B<a href="../rgss/sc_integer.html">Integer</a> ��
+������Ă��܂��ˁB</p>
+<p>Integer �N���X�ɂ� chr �Ƃ������\�b�h������܂��B����́A���̐�����
+�����R�[�h�Ƃ��镶����Ԃ��Ƃ������̂ł��B�����Ă݂܂��傤�B</p>
 <pre>
 a = 65
 
 p a.chr         # =&gt; &quot;A&quot;
 </pre>
-<p>きちんと呼び出すことができました。65 というのは Fixnum クラスの
-インスタンスだったはずなのに、なぜ Integer クラスのメソッドである chr
-を呼び出してもエラーにならないのでしょうか。それは、Fixnum クラスは
-Integer クラスから<strong>継承</strong>されているからです。</p>
-<p>継承というのは、あるクラスを拡張して新たなクラスを作ることです。
-基本的な振る舞いとなる元のクラスがあり、そこから派生した新しいクラス
-がある状態。このとき、元となったクラスを<strong>スーパークラス</strong>、
-新たなクラスを<strong>サブクラス</strong>と呼びます。</p>
-<p>つまり、Fixnum クラスというのは Integer クラスを拡張して作られた
-新しいクラスだということです。言い換えると、Integer クラスは Fixnum
-クラスのスーパークラスだということになります。Integer クラスの性質は
-継承によってすべて Fixnum クラスに受け継がれているため、メソッドなども
-そのまま使うことができるのです。もちろん、Integer クラスのスーパー
-クラスである <a href="../rgss/sc_numeric.html">Numeric</a> クラスや、
-そのまたスーパークラスの <a href="../rgss/sc_object.html">Object</a>
-クラスで定義されているメソッドも、Fixnum クラスのインスタンスから
-呼び出すことが可能です。</p>
-<p>ここまでの説明を読んで、なぜわざわざ複数のクラスに分割されている
-のか疑問に思った方もいるでしょう。少し難しい話になりますが、継承の
-意義は、別々のクラスに共通の振る舞いを持たせられることにあります。
-たとえば、浮動小数点数は <a href="../rgss/sc_float.html">Float</a>
-クラスのインスタンスで、これは Numeric クラスから継承されています。
-整数と浮動小数点数は異なるものですが、どちらも「数」を表すという
-点では共通しているため、その共通部分を Numeric クラスで定義すること
-で重複をなくしているというわけです。</p>
-<p>ツクールの概念で言うと、たとえば「装備品」というスーパークラス
-に対して「武器」「防具」というサブクラスがあります。「装備品」共通の
-特徴をスーパークラスで記述し、それぞれのサブクラスで「武器」と「防具」の
-違いを記述しているということです。</p>
+<p>������ƌĂяo�����Ƃ��ł��܂����B65 �Ƃ����̂� Fixnum �N���X��
+�C���X�^���X�������͂��Ȃ̂ɁA�Ȃ� Integer �N���X�̃��\�b�h�ł��� chr
+���Ăяo���Ă��G���[�ɂȂ�Ȃ��̂ł��傤���B����́AFixnum �N���X��
+Integer �N���X����<strong>�p��</strong>����Ă��邩��ł��B</p>
+<p>�p���Ƃ����̂́A����N���X���g�����ĐV���ȃN���X����邱�Ƃł��B
+��{�I�ȐU�镑���ƂȂ錳�̃N���X������A��������h�������V�����N���X
+�������ԁB���̂Ƃ��A���ƂȂ����N���X��<strong>�X�[�p�[�N���X</strong>�A
+�V���ȃN���X��<strong>�T�u�N���X</strong>�ƌĂт܂��B</p>
+<p>�܂�AFixnum �N���X�Ƃ����̂� Integer �N���X���g�����č��ꂽ
+�V�����N���X���Ƃ������Ƃł��B����������ƁAInteger �N���X�� Fixnum
+�N���X�̃X�[�p�[�N���X���Ƃ������ƂɂȂ�܂��BInteger �N���X�̐�����
+�p���ɂ���Ă��ׂ� Fixnum �N���X�Ɏ󂯌p����Ă��邽�߁A���\�b�h�Ȃǂ�
+���̂܂܎g�����Ƃ��ł���̂ł��B�������AInteger �N���X�̃X�[�p�[
+�N���X�ł��� <a href="../rgss/sc_numeric.html">Numeric</a> �N���X��A
+���̂܂��X�[�p�[�N���X�� <a href="../rgss/sc_object.html">Object</a>
+�N���X�Œ�`����Ă��郁�\�b�h���AFixnum �N���X�̃C���X�^���X����
+�Ăяo�����Ƃ��\�ł��B</p>
+<p>�����܂ł̐�����ǂ�ŁA�Ȃ��킴�킴�����̃N���X�ɕ�������Ă���
+�̂��^��Ɏv������������ł��傤�B��������b�ɂȂ�܂����A�p����
+�Ӌ`�́A�ʁX�̃N���X�ɋ��ʂ̐U�镑�������������邱�Ƃɂ���܂��B
+���Ƃ��΁A���������_���� <a href="../rgss/sc_float.html">Float</a>
+�N���X�̃C���X�^���X�ŁA����� Numeric �N���X����p������Ă��܂��B
+�����ƕ��������_���͈قȂ���̂ł����A�ǂ�����u���v��\���Ƃ���
+�_�ł͋��ʂ��Ă��邽�߁A���̋��ʕ����� Numeric �N���X�Œ�`���邱��
+�ŏd�����Ȃ����Ă���Ƃ����킯�ł��B</p>
+<p>�c�N�[���̊T�O�Ō����ƁA���Ƃ��΁u�����i�v�Ƃ����X�[�p�[�N���X
+�ɑ΂��āu����v�u�h��v�Ƃ����T�u�N���X������܂��B�u�����i�v���ʂ�
+�������X�[�p�[�N���X�ŋL�q���A���ꂼ��̃T�u�N���X�Łu����v�Ɓu�h��v��
+�Ⴂ���L�q���Ă���Ƃ������Ƃł��B</p>
 
 
-<h2><a name="instance">インスタンスの生成</a></h2>
-<p>クラスからインスタンス (オブジェクト) を作成する方法には、大きく
-分けて 2 種類があります。</p>
-<p>第一の方法は、<strong>リテラル</strong>を使う方法です。
-リテラルとはソースコード中に直接記述された値のことです。今まで
-65 とか &quot;Ruby&quot; というように当たり前のように値を書いて使って
-きましたが、これは厳密に言うと「リテラルを記述することで整数や文字列の
-インスタンスを生成した」ということなのです。</p>
-<p>第二の方法は、クラスをレシーバとして new
-というメソッドを使う方法です。たとえば範囲オブジェクトの場合は
-<a href="../rgss/sc_range.html">Range</a> クラスのインスタンス
-なので、Range.new というように呼び出します。後述しますが、
-自分で定義したクラスのインスタンスを生成するときには常にこちらの
-方法を使用することになります。</p>
-<p>次のコードは、どちらも範囲オブジェクトを作成して表示します。
-前者が第一の方法、後者が第二の方法を使用しています。</p>
+<h2><a name="instance">�C���X�^���X�̐���</a></h2>
+<p>�N���X����C���X�^���X (�I�u�W�F�N�g) ���쐬������@�ɂ́A�傫��
+������ 2 ��ނ�����܂��B</p>
+<p>���̕��@�́A<strong>���e����</strong>���g�����@�ł��B
+���e�����Ƃ̓\�[�X�R�[�h���ɒ��ڋL�q���ꂽ�l�̂��Ƃł��B���܂�
+65 �Ƃ� &quot;Ruby&quot; �Ƃ����悤�ɓ�����O�̂悤�ɒl�������Ďg����
+���܂������A����͌����Ɍ����Ɓu���e�������L�q���邱�ƂŐ����╶�����
+�C���X�^���X�𐶐������v�Ƃ������ƂȂ̂ł��B</p>
+<p>���̕��@�́A�N���X�����V�[�o�Ƃ��� new
+�Ƃ������\�b�h���g�����@�ł��B���Ƃ��Δ͈̓I�u�W�F�N�g�̏ꍇ��
+<a href="../rgss/sc_range.html">Range</a> �N���X�̃C���X�^���X
+�Ȃ̂ŁARange.new �Ƃ����悤�ɌĂяo���܂��B��q���܂����A
+�����Œ�`�����N���X�̃C���X�^���X�𐶐�����Ƃ��ɂ͏�ɂ������
+���@���g�p���邱�ƂɂȂ�܂��B</p>
+<p>���̃R�[�h�́A�ǂ�����͈̓I�u�W�F�N�g���쐬���ĕ\�����܂��B
+�O�҂����̕��@�A��҂����̕��@���g�p���Ă��܂��B</p>
 <pre>
 p 1..10               # =&gt; 1..10
 p Range.new(1, 10)    # =&gt; 1..10

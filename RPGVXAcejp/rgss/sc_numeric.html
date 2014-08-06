@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Numeric</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,50 +9,50 @@
 <body>
 
 <h1>Numeric</h1>
-<p>Numeric は数値の抽象クラスです。Ruby では異なる数値クラス間で演算を
-行うことができます。</p>
-<p>演算や比較を行うメソッド (+, -, *, /, &lt;=&gt;) などはサブクラスで定義されま
-す。また、効率のため Numeric のメソッドと同じメソッドがサブクラ
-スで再定義されている場合があります。</p>
+<p>Numeric �͐��l�̒��ۃN���X�ł��BRuby �ł͈قȂ鐔�l�N���X�Ԃŉ��Z��
+�s�����Ƃ��ł��܂��B</p>
+<p>���Z���r���s�����\�b�h (+, -, *, /, &lt;=&gt;) �Ȃǂ̓T�u�N���X�Œ�`�����
+���B�܂��A�����̂��� Numeric �̃��\�b�h�Ɠ������\�b�h���T�u�N��
+�X�ōĒ�`����Ă���ꍇ������܂��B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>インクルードしているモジュール</h2>
+<h2>�C���N���[�h���Ă��郂�W���[��</h2>
 <ul>
 <li><a href="sm_comparable.html">Comparable</a></li>
 </ul>
 
-<h2>メソッド</h2>
+<h2>���\�b�h</h2>
 <dl>
 <dt>+ <var>self</var></dt>
 <dd>
-<p>self 自身を返します。</p></dd>
+<p>self ���g��Ԃ��܂��B</p></dd>
 <dt>- <var>self</var></dt>
 <dd>
-<p>self の符号を反転させたものを返します。</p>
-<p>このメソッドは、二項演算子 - で 0 - self によって定義
-されています。</p></dd>
+<p>self �̕����𔽓]���������̂�Ԃ��܂��B</p>
+<p>���̃��\�b�h�́A�񍀉��Z�q - �� 0 - self �ɂ���Ē�`
+����Ă��܂��B</p></dd>
 <dt>abs</dt>
 <dd>
-<p>self の絶対値を返します。</p></dd>
+<p>self �̐�Βl��Ԃ��܂��B</p></dd>
 <dt>ceil</dt>
 <dd>
-<p>self と等しいかより大きい最小の整数 (天井) を返します。</p></dd>
+<p>self �Ɠ����������傫���ŏ��̐��� (�V��) ��Ԃ��܂��B</p></dd>
 <dt>floor</dt>
 <dd>
-<p>self を超えない最大の整数 (床) を返します。</p></dd>
+<p>self �𒴂��Ȃ��ő�̐��� (��) ��Ԃ��܂��B</p></dd>
 <dt>integer?</dt>
 <dd>
-<p>self が整数のとき、真を返します。</p></dd>
+<p>self �������̂Ƃ��A�^��Ԃ��܂��B</p></dd>
 <dt>round</dt>
 <dd>
-<p>self に最も近い整数を返します。</p></dd>
+<p>self �ɍł��߂�������Ԃ��܂��B</p></dd>
 <dt>truncate</dt>
 <dd>
-<p>小数点以下を切捨てます。</p></dd>
+<p>�����_�ȉ���؎̂Ă܂��B</p></dd>
 </dl>
 
 <h6></h6>

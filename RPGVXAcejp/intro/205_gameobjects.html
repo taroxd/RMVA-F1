@@ -1,30 +1,30 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>ゲームオブジェクト</title>
+<title>�Q�[���I�u�W�F�N�g</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>ゲームオブジェクト</h1>
+<h1>�Q�[���I�u�W�F�N�g</h1>
 <ul>
 <li><a href="#game_xxxx">$game_xxxx</a></li>
-<li><a href="#contents">ゲームオブジェクトの内容</a></li>
-<li><a href="#other">その他の関連クラス</a></li>
+<li><a href="#contents">�Q�[���I�u�W�F�N�g�̓��e</a></li>
+<li><a href="#other">���̑��̊֘A�N���X</a></li>
 </ul>
 
-<p>データベースは、原則としてゲーム中に書き換わることがない
-不変のデータです。それに対して、たとえばマップ画面上を動き回る
-キャラクターなど、その状態が刻々と変わっていくようなデータを
-扱うのが<strong>ゲームオブジェクト</strong>です。</p>
+<p>�f�[�^�x�[�X�́A�����Ƃ��ăQ�[�����ɏ�������邱�Ƃ��Ȃ�
+�s�ς̃f�[�^�ł��B����ɑ΂��āA���Ƃ��΃}�b�v��ʏ�𓮂����
+�L�����N�^�[�ȂǁA���̏�Ԃ����X�ƕς���Ă����悤�ȃf�[�^��
+�����̂�<strong>�Q�[���I�u�W�F�N�g</strong>�ł��B</p>
 
 
 <h2><a name="game_xxxx">$game_xxxx</a></h2>
-<p>DataManager セクションの中ほどに、create_game_objects というメソッドが
-あります。これも、データベースの作成と同じタイミングで呼び出される
-メソッドです。</p>
+<p>DataManager �Z�N�V�����̒��قǂɁAcreate_game_objects �Ƃ������\�b�h��
+����܂��B������A�f�[�^�x�[�X�̍쐬�Ɠ����^�C�~���O�ŌĂяo�����
+���\�b�h�ł��B</p>
 
 <pre>
   def self.create_game_objects
@@ -43,187 +43,187 @@
   end
 </pre>
 
-<p>データベースの $data_xxxx 系と同じように、これらも
-また<strong>グローバル変数</strong>です。Game_Xxxx という名前の
-クラスのインスタンスを作成し、これらの変数で参照できるようにして
-います。この Game_Xxxx という名前には見覚えがありますね。スクリプト
-エディタで、上のほうのセクションにこのような名前がついています。
-つまり、これらのセクションで定義されたクラスを、ここで実体化して
-いるというわけです。</p>
-<p>クラスの名前に .new をつけると「そのクラスのインスタンスを生成する」
-という意味になります。インスタンスとは何かを忘れてしまった方は、<a href=
-"108_object.html">オブジェクト</a>の復習をしてください。</p>
+<p>�f�[�^�x�[�X�� $data_xxxx �n�Ɠ����悤�ɁA������
+�܂�<strong>�O���[�o���ϐ�</strong>�ł��BGame_Xxxx �Ƃ������O��
+�N���X�̃C���X�^���X���쐬���A�����̕ϐ��ŎQ�Ƃł���悤�ɂ���
+���܂��B���� Game_Xxxx �Ƃ������O�ɂ͌��o��������܂��ˁB�X�N���v�g
+�G�f�B�^�ŁA��̂ق��̃Z�N�V�����ɂ��̂悤�Ȗ��O�����Ă��܂��B
+�܂�A�����̃Z�N�V�����Œ�`���ꂽ�N���X���A�����Ŏ��̉�����
+����Ƃ����킯�ł��B</p>
+<p>�N���X�̖��O�� .new ������Ɓu���̃N���X�̃C���X�^���X�𐶐�����v
+�Ƃ����Ӗ��ɂȂ�܂��B�C���X�^���X�Ƃ͉�����Y��Ă��܂������́A<a href=
+"108_object.html">�I�u�W�F�N�g</a>�̕��K�����Ă��������B</p>
 
 
-<h2><a name="contents">ゲームオブジェクトの内容</a></h2>
-<p>各オブジェクトは次の表のようになっています。データベースの場合と
-異なり、これらのオブジェクトが所属するクラスは RGSS にあらかじめ組み
-込まれているわけではなく、スクリプトエディタの中で定義されています。</p>
+<h2><a name="contents">�Q�[���I�u�W�F�N�g�̓��e</a></h2>
+<p>�e�I�u�W�F�N�g�͎��̕\�̂悤�ɂȂ��Ă��܂��B�f�[�^�x�[�X�̏ꍇ��
+�قȂ�A�����̃I�u�W�F�N�g����������N���X�� RGSS �ɂ��炩���ߑg��
+���܂�Ă���킯�ł͂Ȃ��A�X�N���v�g�G�f�B�^�̒��Œ�`����Ă��܂��B</p>
 <table border="1" cellspacing="0" cellpadding="2">
 <tr>
- <th>変数名</th>
- <th>内容</th>
- <th>クラス</th>
+ <th>�ϐ���</th>
+ <th>���e</th>
+ <th>�N���X</th>
 </tr><tr>
  <td>$game_temp</td>
- <td>一時データ</td>
+ <td>�ꎞ�f�[�^</td>
  <td>Game_Temp</td>
 </tr><tr>
  <td>$game_system</td>
- <td>システムデータ</td>
+ <td>�V�X�e���f�[�^</td>
  <td>Game_System</td>
 </tr><tr>
  <td>$game_timer</td>
- <td>タイマー</td>
+ <td>�^�C�}�[</td>
  <td>Game_Timer</td>
 </tr><tr>
  <td>$game_message</td>
- <td>メッセージ</td>
+ <td>���b�Z�[�W</td>
  <td>Game_Message</td>
 </tr><tr>
  <td>$game_switches</td>
- <td>スイッチ</td>
+ <td>�X�C�b�`</td>
  <td>Game_Switches</td>
 </tr><tr>
  <td>$game_variables</td>
- <td>変数</td>
+ <td>�ϐ�</td>
  <td>Game_Variables</td>
 </tr><tr>
  <td>$game_self_switches</td>
- <td>セルフスイッチ</td>
+ <td>�Z���t�X�C�b�`</td>
  <td>Game_SelfSwitches</td>
 </tr><tr>
  <td>$game_actors</td>
- <td>アクターリスト</td>
+ <td>�A�N�^�[���X�g</td>
  <td>Game_Actors</td>
 </tr><tr>
  <td>$game_party</td>
- <td>パーティ</td>
+ <td>�p�[�e�B</td>
  <td>Game_Party</td>
 </tr><tr>
  <td>$game_troop</td>
- <td>敵グループ</td>
+ <td>�G�O���[�v</td>
  <td>Game_Troop</td>
 </tr><tr>
  <td>$game_map</td>
- <td>マップ</td>
+ <td>�}�b�v</td>
  <td>Game_Map</td>
 </tr><tr>
  <td>$game_player</td>
- <td>プレイヤー</td>
+ <td>�v���C���[</td>
  <td>Game_Player</td>
 </tr></table>
-<p>これらのクラスは原則としてデータ構造を提供するだけで、グラフィックを
-表示したりボタン入力を受け付けたりする機能は持っていません。
-ただし Game_Player クラスだけは便宜上、方向ボタンによる移動や決定ボタン
-によるイベント起動などの処理を含んでいます。</p>
+<p>�����̃N���X�͌����Ƃ��ăf�[�^�\����񋟂��邾���ŁA�O���t�B�b�N��
+�\��������{�^�����͂��󂯕t�����肷��@�\�͎����Ă��܂���B
+������ Game_Player �N���X�����͕֋X��A�����{�^���ɂ��ړ��⌈��{�^��
+�ɂ��C�x���g�N���Ȃǂ̏������܂�ł��܂��B</p>
 
 
-<h2><a name="other">その他の関連クラス</a></h2>
-<p>グローバル変数から直接アクセスできるゲームオブジェクトは前述のもの
-だけですが、これらのオブジェクトの内部には、さらに別のゲームオブジェク
-トが含まれています。それらを以下の表に示します。</p>
+<h2><a name="other">���̑��̊֘A�N���X</a></h2>
+<p>�O���[�o���ϐ����璼�ڃA�N�Z�X�ł���Q�[���I�u�W�F�N�g�͑O�q�̂���
+�����ł����A�����̃I�u�W�F�N�g�̓����ɂ́A����ɕʂ̃Q�[���I�u�W�F�N
+�g���܂܂�Ă��܂��B�������ȉ��̕\�Ɏ����܂��B</p>
 <table border="1" cellspacing="0" cellpadding="2">
 <tr>
- <th>クラス</th>
- <th>内容</th>
- <th>説明</th>
+ <th>�N���X</th>
+ <th>���e</th>
+ <th>����</th>
 </tr><tr>
  <td>Game_Screen</td>
- <td>画面効果</td>
- <td>Game_Map、Game_Troop の内部で使用</td>
+ <td>��ʌ���</td>
+ <td>Game_Map�AGame_Troop �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_Picture</td>
- <td>ピクチャ</td>
- <td>Game_Pictures の内部で使用</td>
+ <td>�s�N�`��</td>
+ <td>Game_Pictures �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_Pictures</td>
- <td>ピクチャリスト</td>
- <td>Game_Screen の内部で使用</td>
+ <td>�s�N�`�����X�g</td>
+ <td>Game_Screen �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_BaseItem</td>
- <td>アイテムなど</td>
- <td>Game_Action、Game_Actor、Game_Party の内部で使用</td>
+ <td>�A�C�e���Ȃ�</td>
+ <td>Game_Action�AGame_Actor�AGame_Party �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_Action</td>
- <td>戦闘行動</td>
- <td>Game_Battler、Game_Actor の内部で使用</td>
+ <td>�퓬�s��</td>
+ <td>Game_Battler�AGame_Actor �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_ActionResult</td>
- <td>戦闘行動の結果</td>
- <td>Game_Battler の内部で使用</td>
+ <td>�퓬�s���̌���</td>
+ <td>Game_Battler �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_Actor</td>
- <td>アクター</td>
- <td>Game_Actors の内部で使用</td>
+ <td>�A�N�^�[</td>
+ <td>Game_Actors �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_Enemy</td>
- <td>敵キャラ</td>
- <td>Game_Troop の内部で使用</td>
+ <td>�G�L����</td>
+ <td>Game_Troop �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_CommonEvent</td>
- <td>コモンイベント</td>
- <td>Game_Map の内部で使用</td>
+ <td>�R�����C�x���g</td>
+ <td>Game_Map �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_Follower</td>
- <td>フォロワー (隊列歩行)</td>
- <td>Game_Followers の内部で使用</td>
+ <td>�t�H�����[ (������s)</td>
+ <td>Game_Followers �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_Followers</td>
- <td>フォロワーリスト</td>
- <td>Game_Player の内部で使用</td>
+ <td>�t�H�����[���X�g</td>
+ <td>Game_Player �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_Vehicle</td>
- <td>乗り物</td>
- <td>Game_Map の内部で使用</td>
+ <td>��蕨</td>
+ <td>Game_Map �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_Event</td>
- <td>マップイベント</td>
- <td>Game_Map の内部で使用</td>
+ <td>�}�b�v�C�x���g</td>
+ <td>Game_Map �̓����Ŏg�p</td>
 </tr><tr>
  <td>Game_Interpreter</td>
- <td>インタプリタ</td>
- <td>Game_Map、Game_Troop、Game_Event の内部で使用</td>
+ <td>�C���^�v���^</td>
+ <td>Game_Map�AGame_Troop�AGame_Event �̓����Ŏg�p</td>
 </tr></table>
-<p>さらに、重要なクラスとして以下のものがあります。</p>
+<p>����ɁA�d�v�ȃN���X�Ƃ��Ĉȉ��̂��̂�����܂��B</p>
 <table border="1" cellspacing="0" cellpadding="2">
 <tr>
- <th>クラス</th>
- <th>内容</th>
- <th>説明</th>
+ <th>�N���X</th>
+ <th>���e</th>
+ <th>����</th>
 </tr><tr>
  <td>Game_BattlerBase</td>
- <td>バトラー (基本)</td>
- <td>Game_Battler のスーパークラス</td>
+ <td>�o�g���[ (��{)</td>
+ <td>Game_Battler �̃X�[�p�[�N���X</td>
 </tr><tr>
  <td>Game_Battler</td>
- <td>バトラー</td>
- <td>Game_Actor、Game_Enemy のスーパークラス</td>
+ <td>�o�g���[</td>
+ <td>Game_Actor�AGame_Enemy �̃X�[�p�[�N���X</td>
 </tr><tr>
  <td>Game_Unit</td>
- <td>ユニット</td>
- <td>Game_Party、Game_Troop のスーパークラス</td>
+ <td>���j�b�g</td>
+ <td>Game_Party�AGame_Troop �̃X�[�p�[�N���X</td>
 </tr><tr>
  <td>Game_CharacterBase</td>
- <td>キャラクター (基本)</td>
- <td>Game_Character のスーパークラス</td>
+ <td>�L�����N�^�[ (��{)</td>
+ <td>Game_Character �̃X�[�p�[�N���X</td>
 </tr><tr>
  <td>Game_Character</td>
- <td>キャラクター</td>
- <td>Game_Player、Game_Event のスーパークラス</td>
+ <td>�L�����N�^�[</td>
+ <td>Game_Player�AGame_Event �̃X�[�p�[�N���X</td>
 </tr></table>
-<p>スーパークラスというのは、クラスを<strong>継承</strong>される
-側のことでした。アクターと敵キャラ、パーティと敵グループ、
-プレイヤーとイベントにはそれぞれ共通の性質がありますから、その
-共通部分をひとつのクラスにまとめているというわけです。</p>
-<p>この「スクリプト入門」はプリセットのスクリプトの大まかな全体像を
-把握することが目的なので、この章で取り上げたクラスの内容を個々に解説する
-ことまではできません。しかし、実際にスクリプトの改造に挑戦する際には、
-これらがどのような定義になっているかということはとても重要になって
-きます。</p>
-<p>解読の基本的な考え方は、Vocab、Sound、Cache モジュールで解説したのと
-同様です。最初のうちはよくわからなくても、興味のあるところを眺めてみる
-ことをお勧めします。</p>
+<p>�X�[�p�[�N���X�Ƃ����̂́A�N���X��<strong>�p��</strong>�����
+���̂��Ƃł����B�A�N�^�[�ƓG�L�����A�p�[�e�B�ƓG�O���[�v�A
+�v���C���[�ƃC�x���g�ɂ͂��ꂼ�ꋤ�ʂ̐���������܂�����A����
+���ʕ������ЂƂ̃N���X�ɂ܂Ƃ߂Ă���Ƃ����킯�ł��B</p>
+<p>���́u�X�N���v�g����v�̓v���Z�b�g�̃X�N���v�g�̑�܂��ȑS�̑���
+�c�����邱�Ƃ��ړI�Ȃ̂ŁA���̏͂Ŏ��グ���N���X�̓��e���X�ɉ������
+���Ƃ܂ł͂ł��܂���B�������A���ۂɃX�N���v�g�̉����ɒ��킷��ۂɂ́A
+����炪�ǂ̂悤�Ȓ�`�ɂȂ��Ă��邩�Ƃ������Ƃ͂ƂĂ��d�v�ɂȂ���
+���܂��B</p>
+<p>��ǂ̊�{�I�ȍl�����́AVocab�ASound�ACache ���W���[���ŉ�������̂�
+���l�ł��B�ŏ��̂����͂悭�킩��Ȃ��Ă��A�����̂���Ƃ���𒭂߂Ă݂�
+���Ƃ������߂��܂��B</p>
 
 
 <h6></h6>

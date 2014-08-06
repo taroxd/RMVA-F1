@@ -1,105 +1,105 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>シーン制御</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>�V�[������</title>
 <link href="../style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<h1>シーン制御</h1>
+<h1>�V�[������</h1>
 
-<h2><a name="scene01"></a>バトルの処理</h2>
-<img src="img/5310_01.png" alt="バトルの処理" class="float_r">
+<h2><a name="scene01"></a>�o�g���̏���</h2>
+<img src="img/5310_01.png" alt="�o�g���̏���" class="float_r">
 <dl>
-<dt>●機能</dt>
-<dd><p>敵グループを出現させて戦闘を行ないます。</p></dd>
-<dt>●設定項目</dt>
+<dt>���@�\</dt>
+<dd><p>�G�O���[�v���o�������Đ퓬���s�Ȃ��܂��B</p></dd>
+<dt>���ݒ荀��</dt>
 </dl>
 
 <dl><dd><dl>
-<dt>敵グループ</dt>
+<dt>�G�O���[�v</dt>
 <dd>
-  <p>対戦する敵グループを指定します。特定の敵グループと対戦させる場合は［直接指定］を選び、敵グループを指定します。敵グループのIDで指定するには［変数で指定］を選び、参照する変数を指定します。［ランダムエンカウントと同じ］を選ぶと、パーティがいるマップの［エンカウント］の設定にもとづいて選ばれた敵グループが出現します。</p>
+  <p>�ΐ킷��G�O���[�v���w�肵�܂��B����̓G�O���[�v�Ƒΐ킳����ꍇ�́m���ڎw��n��I�сA�G�O���[�v���w�肵�܂��B�G�O���[�v��ID�Ŏw�肷��ɂ́m�ϐ��Ŏw��n��I�сA�Q�Ƃ���ϐ����w�肵�܂��B�m�����_���G���J�E���g�Ɠ����n��I�ԂƁA�p�[�e�B������}�b�v�́m�G���J�E���g�n�̐ݒ�ɂ��ƂÂ��đI�΂ꂽ�G�O���[�v���o�����܂��B</p>
 </dd>
-<dt>逃走可能</dt>
-<dd><p>有効にすると戦闘中に［逃げる］のコマンドを有効にし、［勝った場合］［逃げた場合］のふたつに処理を分岐できます。</p></dd>
-<dt>負けた場合も継続</dt>
-<dd><p>有効にすると、パーティが全滅してもゲームオーバーにせず、［勝った場合］［負けた場合］のふたつに処理を分岐できます。</p></dd>
+<dt>�����\</dt>
+<dd><p>�L���ɂ���Ɛ퓬���Ɂm������n�̃R�}���h��L���ɂ��A�m�������ꍇ�n�m�������ꍇ�n�̂ӂ��ɏ����𕪊�ł��܂��B</p></dd>
+<dt>�������ꍇ���p��</dt>
+<dd><p>�L���ɂ���ƁA�p�[�e�B���S�ł��Ă��Q�[���I�[�o�[�ɂ����A�m�������ꍇ�n�m�������ꍇ�n�̂ӂ��ɏ����𕪊�ł��܂��B</p></dd>
 </dl></dd>
-<dt>●備考</dt>
-<dd><p>・バトルイベントでは使用できません。</p></dd>
+<dt>�����l</dt>
+<dd><p>�E�o�g���C�x���g�ł͎g�p�ł��܂���B</p></dd>
 </dl>
 <br>
 
-<h2><a name="scene02"></a>ショップの処理</h2>
-<img src="img/5310_02.png" alt="ショップの処理" class="float_r">
+<h2><a name="scene02"></a>�V���b�v�̏���</h2>
+<img src="img/5310_02.png" alt="�V���b�v�̏���" class="float_r">
 <dl>
-<dt>●機能</dt>
-<dd><p>武器や防具、アイテムの売買を行なうショップの処理を開始します。</p></dd>
-<dt>●設定項目</dt>
+<dt>���@�\</dt>
+<dd><p>�����h��A�A�C�e���̔������s�Ȃ��V���b�v�̏������J�n���܂��B</p></dd>
+<dt>���ݒ荀��</dt>
 </dl>
 
 <dl><dd><dl>
-<dt>商品リスト</dt>
-<dd><p>販売するものを指定します。リストの空欄をダブルクリックすると表示されるウィンドウで［商品］と［価格］を指定します。価格は［標準］にするとデータに設定された価格、［指定］でこのイベントコマンドのみに適用する価格を指定します。</p></dd>
-<dt>購入のみ</dt>
-<dd><p>有効にすると、所持品の売却ができないようにします。</p></dd>
+<dt>���i���X�g</dt>
+<dd><p>�̔�������̂��w�肵�܂��B���X�g�̋󗓂��_�u���N���b�N����ƕ\�������E�B���h�E�Łm���i�n�Ɓm���i�n���w�肵�܂��B���i�́m�W���n�ɂ���ƃf�[�^�ɐݒ肳�ꂽ���i�A�m�w��n�ł��̃C�x���g�R�}���h�݂̂ɓK�p���鉿�i���w�肵�܂��B</p></dd>
+<dt>�w���̂�</dt>
+<dd><p>�L���ɂ���ƁA�����i�̔��p���ł��Ȃ��悤�ɂ��܂��B</p></dd>
 </dl></dd></dl>
 <dl>
-<dt>●備考</dt>
-<dd><p>・バトルイベントでは使用できません。</p></dd>
+<dt>�����l</dt>
+<dd><p>�E�o�g���C�x���g�ł͎g�p�ł��܂���B</p></dd>
 </dl>
 <br>
 
-<h2><a name="scene03"></a>名前入力の処理</h2>
-<img src="img/5310_03.png" alt="名前入力の処理" class="float_r">
-<dl><dt>●機能</dt>
-<dd><p>アクターの名前の入力画面を表示し、プレイヤーが入力したものに変更します。</p></dd>
-<dt>●設定項目</dt></dl>
+<h2><a name="scene03"></a>���O���͂̏���</h2>
+<img src="img/5310_03.png" alt="���O���͂̏���" class="float_r">
+<dl><dt>���@�\</dt>
+<dd><p>�A�N�^�[�̖��O�̓��͉�ʂ�\�����A�v���C���[�����͂������̂ɕύX���܂��B</p></dd>
+<dt>���ݒ荀��</dt></dl>
 
 <dl><dd><dl>
-<dt>アクター</dt>
-<dd><p>名前の変更対象のアクターを指定します。</p></dd>
-<dt>最大文字数</dt>
-<dd><p>入力を受け付ける最大の文字数（1〜16）を指定します。</p></dd>
+<dt>�A�N�^�[</dt>
+<dd><p>���O�̕ύX�Ώۂ̃A�N�^�[���w�肵�܂��B</p></dd>
+<dt>�ő啶����</dt>
+<dd><p>���͂��󂯕t����ő�̕������i1�`16�j���w�肵�܂��B</p></dd>
 </dl></dd></dl>
 
 <dl>
-<dt>●備考</dt>
+<dt>�����l</dt>
 <dd>
-  <p>・バトルイベントでは使用できません。</p>
-  <p>・プレイ中の名前入力時は、方向ボタンでカーソルを移動し、決定ボタンで文字の追加、取り消しボタンで名前の最後尾の文字を削除できます。
+  <p>�E�o�g���C�x���g�ł͎g�p�ł��܂���B</p>
+  <p>�E�v���C���̖��O���͎��́A�����{�^���ŃJ�[�\�����ړ����A����{�^���ŕ����̒ǉ��A�������{�^���Ŗ��O�̍Ō���̕������폜�ł��܂��B
 </p></dd>
 </dl>
 <br>
 
-<h2><a name="scene04"></a>メニュー画面を開く</h2>
+<h2><a name="scene04"></a>���j���[��ʂ��J��</h2>
 <dl>
-<dt>●機能</dt>
-<dd><p>メニュー画面を呼び出します。設定項目はありません。</p></dd>
-<dt>●備考</dt>
-<dd><p>・バトルイベントでは使用できません。</p></dd>
+<dt>���@�\</dt>
+<dd><p>���j���[��ʂ��Ăяo���܂��B�ݒ荀�ڂ͂���܂���B</p></dd>
+<dt>�����l</dt>
+<dd><p>�E�o�g���C�x���g�ł͎g�p�ł��܂���B</p></dd>
 </dl>
 
-<h2><a name="scene05"></a>セーブ画面を開く</h2>
+<h2><a name="scene05"></a>�Z�[�u��ʂ��J��</h2>
 <dl>
-<dt>●機能</dt>
-<dd><p>セーブ画面を呼び出します。設定項目はありません。</p></dd>
-<dt>●備考</dt>
-<dd><p>・バトルイベントでは使用できません。</p></dd>
+<dt>���@�\</dt>
+<dd><p>�Z�[�u��ʂ��Ăяo���܂��B�ݒ荀�ڂ͂���܂���B</p></dd>
+<dt>�����l</dt>
+<dd><p>�E�o�g���C�x���g�ł͎g�p�ł��܂���B</p></dd>
 </dl>
 
-<h2><a name="scene06"></a>ゲームオーバー</h2>
+<h2><a name="scene06"></a>�Q�[���I�[�o�[</h2>
 <dl>
-<dt>●機能</dt>
-<dd><p>ゲームを強制終了し、ゲームオーバーの画面を表示します。設定項目はありません。</p></dd>
+<dt>���@�\</dt>
+<dd><p>�Q�[���������I�����A�Q�[���I�[�o�[�̉�ʂ�\�����܂��B�ݒ荀�ڂ͂���܂���B</p></dd>
 </dl>
 
-<h2><a name="scene07"></a>タイトル画面に戻す</h2>
+<h2><a name="scene07"></a>�^�C�g����ʂɖ߂�</h2>
 <dl>
-<dt>●機能</dt>
-<dd><p>ゲームを強制終了し、タイトル画面に戻ります。設定項目はありません。</p></dd>
+<dt>���@�\</dt>
+<dd><p>�Q�[���������I�����A�^�C�g����ʂɖ߂�܂��B�ݒ荀�ڂ͂���܂���B</p></dd>
 </dl>
 
 <h6></h6>

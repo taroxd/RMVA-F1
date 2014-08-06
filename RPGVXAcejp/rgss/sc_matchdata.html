@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>MatchData</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,53 +9,53 @@
 <body>
 
 <h1>MatchData</h1>
-<p>正規表現のマッチに関する情報を扱うためのクラス。
-このクラスのインスタンスは、</p>
+<p>���K�\���̃}�b�`�Ɋւ�������������߂̃N���X�B
+���̃N���X�̃C���X�^���X�́A</p>
 <ul>
 <li><a href="sc_regexp.html#L001314">Regexp.last_match</a></li>
 <li><a href="sc_regexp.html#L001322">Regexp#match</a></li>
 <li><a href="s_variables.html#L000428">$~</a></li>
 </ul>
-<p>などにより得られます。</p>
+<p>�Ȃǂɂ�蓾���܂��B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>メソッド</h2>
+<h2>���\�b�h</h2>
 <dl>
 <dt>self[n]</dt>
 <dd>
-<p><var>n</var> 番目の部分文字列を返します。0 はマッチ全体を意味します。
-<var>n</var> の値が負のときには末尾からのインデックスとみなします (末尾の
-要素が -1 番目) 。<var>n</var> 番目の要素が存在しないときには nil を
-返します。</p>
+<p><var>n</var> �Ԗڂ̕����������Ԃ��܂��B0 �̓}�b�`�S�̂��Ӗ����܂��B
+<var>n</var> �̒l�����̂Ƃ��ɂ͖�������̃C���f�b�N�X�Ƃ݂Ȃ��܂� (������
+�v�f�� -1 �Ԗ�) �B<var>n</var> �Ԗڂ̗v�f�����݂��Ȃ��Ƃ��ɂ� nil ��
+�Ԃ��܂��B</p>
 <pre>
 /(foo)(bar)(BAZ)?/ =~ &quot;foobarbaz&quot;
 p $~.to_a       # =&gt; [&quot;foobar&quot;, &quot;foo&quot;, &quot;bar&quot;, nil]
 p $~[0]         # =&gt; &quot;foobar&quot;
 p $~[1]         # =&gt; &quot;foo&quot;
 p $~[2]         # =&gt; &quot;bar&quot;
-p $~[3]         # =&gt; nil        (マッチしていない)
-p $~[4]         # =&gt; nil        (範囲外)
+p $~[3]         # =&gt; nil        (�}�b�`���Ă��Ȃ�)
+p $~[4]         # =&gt; nil        (�͈͊O)
 p $~[-2]        # =&gt; &quot;bar&quot;
 </pre></dd>
 <dt>post_match</dt>
 <dd>
-<p>マッチした部分より後ろの文字列を返します。</p></dd>
+<p>�}�b�`�������������̕������Ԃ��܂��B</p></dd>
 <dt>pre_match</dt>
 <dd>
-<p>マッチした部分より前の文字列を返します。</p></dd>
+<p>�}�b�`�����������O�̕������Ԃ��܂��B</p></dd>
 <dt>to_a</dt>
 <dd>
 <p><a href="s_variables.html#L000427">$&amp;</a>,
 <a href="s_variables.html#L000432">$1</a>,
 <a href="s_variables.html#L000433">$2</a>,
-... を格納した配列を返します。</p></dd>
+... ���i�[�����z���Ԃ��܂��B</p></dd>
 <dt>to_s</dt>
 <dd>
-<p>マッチした文字列全体を返します。</p></dd>
+<p>�}�b�`����������S�̂�Ԃ��܂��B</p></dd>
 </dl>
 
 <h6></h6>

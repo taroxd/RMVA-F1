@@ -1,112 +1,112 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>フロー制御</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>�t���[����</title>
 <link href="../style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<h1>フロー制御</h1>
+<h1>�t���[����</h1>
 
-<h2><a name="flow01"></a>条件分岐</h2>
-<img src="img/5130_01.png" alt="条件分岐" class="float_r">
+<h2><a name="flow01"></a>��������</h2>
+<img src="img/5130_01.png" alt="��������" class="float_r">
 <dl>
-<dt>●機能</dt>
+<dt>���@�\</dt>
 <dd>
-  <p>指定の条件に合致した場合のみ特別な処理を実行できるように、処理を分岐させるイベントコマンドを設定します。［条件に当てはまらない場合の処理を設定］を有効にすると、指定の条件を満たさない場合に分岐させることができます。</p>
+  <p>�w��̏����ɍ��v�����ꍇ�̂ݓ��ʂȏ��������s�ł���悤�ɁA�����𕪊򂳂���C�x���g�R�}���h��ݒ肵�܂��B�m�����ɓ��Ă͂܂�Ȃ��ꍇ�̏�����ݒ�n��L���ɂ���ƁA�w��̏����𖞂����Ȃ��ꍇ�ɕ��򂳂��邱�Ƃ��ł��܂��B</p>
 </dd>
-<dt>●設定項目</dt>
+<dt>���ݒ荀��</dt>
 <dd>
-  <p>条件は、以下の項目のなかから判定基準とともに指定します。</p>
+  <p>�����́A�ȉ��̍��ڂ̂Ȃ����画���ƂƂ��Ɏw�肵�܂��B</p>
 </dd>
-<dd><dl><dt>スイッチ</dt>
-<dd><p>スイッチの値を条件とします。対象のスイッチと値（ON／OFF）を指定します。</p></dd>
-<dt>変数</dt>
-<dd><p>変数の値の比較結果を条件とします。条件判定に用いる変数、比較の基準値、比較の方法を指定します。比較の基準値に変数を用いる場合は［変数］を選び、参照する変数を指定します。</p></dd>
-<dt>セルフスイッチ</dt>
-<dd><p>指定のセルフスイッチの値を条件とします。対象のスイッチと判定値（ON／OFF）を指定します。</p></dd>
-<dt>タイマー</dt>
-<dd><p>タイマーの残り時間を条件とします。基準の残り時間と判定基準（以上／以下）を指定します。</p></dd>
-<dt>アクター</dt>
-<dd><p>アクターの情報を条件とします。対象のアクター、参照する内容（パーティにいる／名前／スキル／武器／防具／ステート）、判定基準（具体的な項目）を指定します。</p></dd>
-<dt>敵キャラ</dt>
-<dd><p>戦闘中の敵キャラの状態を条件とします。対象の敵キャラと判定基準（出現している／ステート）を指定します。バトルイベントでのみ有効です。</p></dd>
-<dt>キャラクター</dt>
-<dd><p>プレイヤーまたはマップイベントの向きを条件とします。対象のキャラクターと向きを指定します。マップイベントでのみ有効です。</p></dd>
-<dt>乗り物</dt>
-<dd><p>プレイヤーが指定の乗り物（小型船／大型船／飛行船）に乗っているかどうかを条件とします。</p></dd>
-<dt>お金</dt>
-<dd><p>所持金を条件とします。金額と比較方法（以上／以下）を指定します。</p></dd>
-<dt>アイテム</dt>
-<dd><p>パーティが指定のアイテムを持っていることを条件とします。</p></dd>
-<dt>武器</dt>
-<dd><p>パーティが指定の武器を持っていることを条件とします。［装備品も含める］を有効すると、アクターが装備中のものも条件判定の対象とします。</p></dd>
-<dt>防具</dt>
-<dd><p>パーティが指定の防具を持っていることを条件とします。［装備品も含める］を有効すると、アクターが装備中のものも条件判定の対象とします。</p></dd>
-<dt>ボタン</dt>
-<dd><p>  指定のボタンが押されていることを条件とします。</p></dd>
-<dt>スクリプト</dt>
-<dd><p>  任意のRubyスクリプトを評価した結果を基準とします。</p></dd>
+<dd><dl><dt>�X�C�b�`</dt>
+<dd><p>�X�C�b�`�̒l�������Ƃ��܂��B�Ώۂ̃X�C�b�`�ƒl�iON�^OFF�j���w�肵�܂��B</p></dd>
+<dt>�ϐ�</dt>
+<dd><p>�ϐ��̒l�̔�r���ʂ������Ƃ��܂��B��������ɗp����ϐ��A��r�̊�l�A��r�̕��@���w�肵�܂��B��r�̊�l�ɕϐ���p����ꍇ�́m�ϐ��n��I�сA�Q�Ƃ���ϐ����w�肵�܂��B</p></dd>
+<dt>�Z���t�X�C�b�`</dt>
+<dd><p>�w��̃Z���t�X�C�b�`�̒l�������Ƃ��܂��B�Ώۂ̃X�C�b�`�Ɣ���l�iON�^OFF�j���w�肵�܂��B</p></dd>
+<dt>�^�C�}�[</dt>
+<dd><p>�^�C�}�[�̎c�莞�Ԃ������Ƃ��܂��B��̎c�莞�ԂƔ����i�ȏ�^�ȉ��j���w�肵�܂��B</p></dd>
+<dt>�A�N�^�[</dt>
+<dd><p>�A�N�^�[�̏��������Ƃ��܂��B�Ώۂ̃A�N�^�[�A�Q�Ƃ�����e�i�p�[�e�B�ɂ���^���O�^�X�L���^����^�h��^�X�e�[�g�j�A�����i��̓I�ȍ��ځj���w�肵�܂��B</p></dd>
+<dt>�G�L����</dt>
+<dd><p>�퓬���̓G�L�����̏�Ԃ������Ƃ��܂��B�Ώۂ̓G�L�����Ɣ����i�o�����Ă���^�X�e�[�g�j���w�肵�܂��B�o�g���C�x���g�ł̂ݗL���ł��B</p></dd>
+<dt>�L�����N�^�[</dt>
+<dd><p>�v���C���[�܂��̓}�b�v�C�x���g�̌����������Ƃ��܂��B�Ώۂ̃L�����N�^�[�ƌ������w�肵�܂��B�}�b�v�C�x���g�ł̂ݗL���ł��B</p></dd>
+<dt>��蕨</dt>
+<dd><p>�v���C���[���w��̏�蕨�i���^�D�^��^�D�^��s�D�j�ɏ���Ă��邩�ǂ����������Ƃ��܂��B</p></dd>
+<dt>����</dt>
+<dd><p>�������������Ƃ��܂��B���z�Ɣ�r���@�i�ȏ�^�ȉ��j���w�肵�܂��B</p></dd>
+<dt>�A�C�e��</dt>
+<dd><p>�p�[�e�B���w��̃A�C�e���������Ă��邱�Ƃ������Ƃ��܂��B</p></dd>
+<dt>����</dt>
+<dd><p>�p�[�e�B���w��̕���������Ă��邱�Ƃ������Ƃ��܂��B�m�����i���܂߂�n��L������ƁA�A�N�^�[���������̂��̂���������̑ΏۂƂ��܂��B</p></dd>
+<dt>�h��</dt>
+<dd><p>�p�[�e�B���w��̖h��������Ă��邱�Ƃ������Ƃ��܂��B�m�����i���܂߂�n��L������ƁA�A�N�^�[���������̂��̂���������̑ΏۂƂ��܂��B</p></dd>
+<dt>�{�^��</dt>
+<dd><p>  �w��̃{�^����������Ă��邱�Ƃ������Ƃ��܂��B</p></dd>
+<dt>�X�N���v�g</dt>
+<dd><p>  �C�ӂ�Ruby�X�N���v�g��]���������ʂ���Ƃ��܂��B</p></dd>
 </dl></dd></dl>
 <br>
 
-<h2><a name="flow02"></a>ループ</h2>
-<dl><dt>●機能</dt>
+<h2><a name="flow02"></a>���[�v</h2>
+<dl><dt>���@�\</dt>
 <dd>
-  <p>繰り返し処理を行なう［ループ］と［以上繰り返し］という制御用のイベントコマンドを追加します。これらの行の間に設定したイベントが繰り返し実行できるようになります。ループ処理の中でさらにループ処理を行なう“多重ループ”も可能です。</p></dd>
-<dt>●備考</dt>
+  <p>�J��Ԃ��������s�Ȃ��m���[�v�n�Ɓm�ȏ�J��Ԃ��n�Ƃ�������p�̃C�x���g�R�}���h��ǉ����܂��B�����̍s�̊Ԃɐݒ肵���C�x���g���J��Ԃ����s�ł���悤�ɂȂ�܂��B���[�v�����̒��ł���Ƀ��[�v�������s�Ȃ��g���d���[�v�h���\�ł��B</p></dd>
+<dt>�����l</dt>
 
-<dd><p>・［ループ］〜［以上繰り返し］内のイベントベントコマンドは無限に繰り返されます。繰り返し処理を終えるには［ループの中断］などのイベントコマンドを使います。</p></dd></dl>
+<dd><p>�E�m���[�v�n�`�m�ȏ�J��Ԃ��n���̃C�x���g�x���g�R�}���h�͖����ɌJ��Ԃ���܂��B�J��Ԃ��������I����ɂ́m���[�v�̒��f�n�Ȃǂ̃C�x���g�R�}���h���g���܂��B</p></dd></dl>
 
-<h2><a name="flow03"></a>ループの中断</h2>
-<dl><dt>●機能</dt>
-<dd><p>［ループ］のイベントコマンドで繰り返している処理を中断します。実行すると、［以上繰り返し］の次の行に設定したイベントコマンドに処理が移ります。設定項目はありません。</p></dd></dl>
+<h2><a name="flow03"></a>���[�v�̒��f</h2>
+<dl><dt>���@�\</dt>
+<dd><p>�m���[�v�n�̃C�x���g�R�}���h�ŌJ��Ԃ��Ă��鏈���𒆒f���܂��B���s����ƁA�m�ȏ�J��Ԃ��n�̎��̍s�ɐݒ肵���C�x���g�R�}���h�ɏ������ڂ�܂��B�ݒ荀�ڂ͂���܂���B</p></dd></dl>
 
-<h2><a name="flow04"></a>イベント処理の中断</h2>
-<dl><dt>●機能</dt>
-<dd><p>実行内容の処理を終了します。これ以降のイベントコマンドは処理されません。設定項目はありません。</p></dd></dl>
+<h2><a name="flow04"></a>�C�x���g�����̒��f</h2>
+<dl><dt>���@�\</dt>
+<dd><p>���s���e�̏������I�����܂��B����ȍ~�̃C�x���g�R�}���h�͏�������܂���B�ݒ荀�ڂ͂���܂���B</p></dd></dl>
 
-<h2><a name="flow05"></a>コモンイベント</h2>
-<img src="img/5130_05.png" alt="コモンイベント" class="float_r">
+<h2><a name="flow05"></a>�R�����C�x���g</h2>
+<img src="img/5130_05.png" alt="�R�����C�x���g" class="float_r">
 <dl>
-<dt>●機能</dt>
-<dd><p>コモンイベントを呼び出します。呼び出したコモンイベントの処理が終了すると、次のイベントコマンドの処理に移ります。</p></dd>
-<dt>●設定内容</dt>
-<dd><dl><dt>コモンイベント</dt>
-<dd><p>呼び出すコモンイベントを指定します。</p></dd></dl></dd></dl>
+<dt>���@�\</dt>
+<dd><p>�R�����C�x���g���Ăяo���܂��B�Ăяo�����R�����C�x���g�̏������I������ƁA���̃C�x���g�R�}���h�̏����Ɉڂ�܂��B</p></dd>
+<dt>���ݒ���e</dt>
+<dd><dl><dt>�R�����C�x���g</dt>
+<dd><p>�Ăяo���R�����C�x���g���w�肵�܂��B</p></dd></dl></dd></dl>
 <br>
 
-<h2><a name="flow06"></a>ラベル</h2>
-<img src="img/5130_06.png" alt="ラベル" class="float_r">
-<dl><dt>●機能</dt>
-<dd><p>［ラベルジャンプ］のイベントコマンドによる処理の移動先（目印）を作成します。</p></dd>
+<h2><a name="flow06"></a>���x��</h2>
+<img src="img/5130_06.png" alt="���x��" class="float_r">
+<dl><dt>���@�\</dt>
+<dd><p>�m���x���W�����v�n�̃C�x���g�R�}���h�ɂ�鏈���̈ړ���i�ڈ�j���쐬���܂��B</p></dd>
 
-<dt>●設定内容</dt>
-<dd><dl><dt>ラベル名</dt>
-<dd><p>  ラベルの名前を指定します。</p></dd></dl></dd>
+<dt>���ݒ���e</dt>
+<dd><dl><dt>���x����</dt>
+<dd><p>  ���x���̖��O���w�肵�܂��B</p></dd></dl></dd>
 </dl>
 <br>
 
-<h2><a name="flow07"></a>ラベルジャンプ</h2>
-<img src="img/5130_07.png" alt="ラベルジャンプ" class="float_r">
+<h2><a name="flow07"></a>���x���W�����v</h2>
+<img src="img/5130_07.png" alt="���x���W�����v" class="float_r">
 <dl>
-<dt>●機能</dt>
-<dd><p>処理対象の行を指定のラベルの位置に移動します。移動したラベルの次の行のイベントコマンドが処理されます。</p></dd>
-<dt>●設定内容</dt>
-<dd><dl><dt>ラベル名</dt>
-<dd><p>移動先のラベル名を指定します。指定できるラベルは、同一のイベントページの実行内容に設定したものに限られます。</p></dd></dl></dd></dl>
+<dt>���@�\</dt>
+<dd><p>�����Ώۂ̍s���w��̃��x���̈ʒu�Ɉړ����܂��B�ړ��������x���̎��̍s�̃C�x���g�R�}���h����������܂��B</p></dd>
+<dt>���ݒ���e</dt>
+<dd><dl><dt>���x����</dt>
+<dd><p>�ړ���̃��x�������w�肵�܂��B�w��ł��郉�x���́A����̃C�x���g�y�[�W�̎��s���e�ɐݒ肵�����̂Ɍ����܂��B</p></dd></dl></dd></dl>
 <br>
 
-<h2><a name="flow08"></a>注釈</h2>
-<img src="img/5130_08.png" alt="注釈" class="float_r">
+<h2><a name="flow08"></a>����</h2>
+<img src="img/5130_08.png" alt="����" class="float_r">
 <dl>
-<dt>●機能</dt>
-<dd><p>実行内容のリストに任意の文字をメモとして登録します。ゲームのプレイには一切影響しません。</p></dd>
+<dt>���@�\</dt>
+<dd><p>���s���e�̃��X�g�ɔC�ӂ̕����������Ƃ��ēo�^���܂��B�Q�[���̃v���C�ɂ͈�؉e�����܂���B</p></dd>
 
-<dt>●設定内容</dt>
-<dd><dl><dt>注釈</dt>
-<dd><p>注釈として表示する文字を指定します。</p></dd></dl></dd></dl>
+<dt>���ݒ���e</dt>
+<dd><dl><dt>����</dt>
+<dd><p>���߂Ƃ��ĕ\�����镶�����w�肵�܂��B</p></dd></dl></dd></dl>
 <br>
 
 <h6></h6>

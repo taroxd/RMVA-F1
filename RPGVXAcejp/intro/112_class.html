@@ -1,84 +1,84 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>クラス定義</title>
+<title>�N���X��`</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>クラス定義</h1>
+<h1>�N���X��`</h1>
 <ul>
-<li><a href="#define">クラスの定義</a></li>
-<li><a href="#method">メソッドの定義</a></li>
-<li><a href="#instance">インスタンス変数</a></li>
-<li><a href="#accessor">アクセサの定義</a></li>
-<li><a href="#initialize">オブジェクト初期化</a></li>
-<li><a href="#override">メソッドのオーバーライド</a></li>
+<li><a href="#define">�N���X�̒�`</a></li>
+<li><a href="#method">���\�b�h�̒�`</a></li>
+<li><a href="#instance">�C���X�^���X�ϐ�</a></li>
+<li><a href="#accessor">�A�N�Z�T�̒�`</a></li>
+<li><a href="#initialize">�I�u�W�F�N�g������</a></li>
+<li><a href="#override">���\�b�h�̃I�[�o�[���C�h</a></li>
 </ul>
 
-<p>基礎編の最後に、新しいクラスを定義する方法について解説します。</p>
+<p>��b�҂̍Ō�ɁA�V�����N���X���`������@�ɂ��ĉ�����܂��B</p>
 
 
-<h2><a name="define">クラスの定義</a></h2>
-<p>これまで <a href="../rgss/sc_string.html">String</a> クラスや
-<a href="../rgss/sc_array.html">Array</a> クラス、あるいは
-<a href="../rgss/gc_sprite.html">Sprite</a> クラスなど、あらかじめ
-システムに組み込まれたクラスを利用する方法について学習してきました。
-実はクラスは使うだけでなく、独自に定義することもできます。
-というより、「クラスを作ること」が「プログラミング」とほとんど同義
-だと言っても過言ではありません。プリセットのスクリプトも、その大部分が
-クラス定義なのです。</p>
-<p>たとえば Person というクラスを定義するには次のようにします。</p>
+<h2><a name="define">�N���X�̒�`</a></h2>
+<p>����܂� <a href="../rgss/sc_string.html">String</a> �N���X��
+<a href="../rgss/sc_array.html">Array</a> �N���X�A���邢��
+<a href="../rgss/gc_sprite.html">Sprite</a> �N���X�ȂǁA���炩����
+�V�X�e���ɑg�ݍ��܂ꂽ�N���X�𗘗p������@�ɂ��Ċw�K���Ă��܂����B
+���̓N���X�͎g�������łȂ��A�Ǝ��ɒ�`���邱�Ƃ��ł��܂��B
+�Ƃ������A�u�N���X����邱�Ɓv���u�v���O���~���O�v�ƂقƂ�Ǔ��`
+���ƌ����Ă��ߌ��ł͂���܂���B�v���Z�b�g�̃X�N���v�g���A���̑啔����
+�N���X��`�Ȃ̂ł��B</p>
+<p>���Ƃ��� Person �Ƃ����N���X���`����ɂ͎��̂悤�ɂ��܂��B</p>
 <pre>
 class Person
 end
 </pre>
-<p>クラス定義の外枠はたったこれだけです。
-これは「何もしないクラス」ですが、すでにこの段階で、</p>
+<p>�N���X��`�̊O�g�͂��������ꂾ���ł��B
+����́u�������Ȃ��N���X�v�ł����A���łɂ��̒i�K�ŁA</p>
 <pre>
 alex = Person.new
 </pre>
-<p>というように、Person クラスのインスタンスを作ることができま
-す。new というのは、<a href= "108_object.html">オブジェクト</a
->の章でインスタンスを生成する第二の方法として解説したメソッドです。</p>
-<p>継承の指定も簡単です。たとえば、Person クラスを継承して
-Man というクラスを定義するときには次のようにします。</p>
+<p>�Ƃ����悤�ɁAPerson �N���X�̃C���X�^���X����邱�Ƃ��ł���
+���Bnew �Ƃ����̂́A<a href= "108_object.html">�I�u�W�F�N�g</a
+>�̏͂ŃC���X�^���X�𐶐�������̕��@�Ƃ��ĉ���������\�b�h�ł��B</p>
+<p>�p���̎w����ȒP�ł��B���Ƃ��΁APerson �N���X���p������
+Man �Ƃ����N���X���`����Ƃ��ɂ͎��̂悤�ɂ��܂��B</p>
 <pre>
 class Man &lt; Person
 end
 </pre>
 
 
-<h2><a name="method">メソッドの定義</a></h2>
-<p>メソッドの定義方法は、普通の関数の場合と同じです。クラス定義の中に
-def 〜 end を書けば、それが自動的にそのクラスのメソッドになります。</p>
+<h2><a name="method">���\�b�h�̒�`</a></h2>
+<p>���\�b�h�̒�`���@�́A���ʂ̊֐��̏ꍇ�Ɠ����ł��B�N���X��`�̒���
+def �` end �������΁A���ꂪ�����I�ɂ��̃N���X�̃��\�b�h�ɂȂ�܂��B</p>
 <pre>
 class Person
   def hello
-    print &quot;こんにちは&quot;
+    print &quot;����ɂ���&quot;
   end
 end
 </pre>
-<p>ここでは、見ての通り &quot;こんにちは&quot; という文字列を表示するだけの
-hello メソッドを定義しています。この定義の後、<p>
+<p>�����ł́A���Ă̒ʂ� &quot;����ɂ���&quot; �Ƃ����������\�����邾����
+hello ���\�b�h���`���Ă��܂��B���̒�`�̌�A<p>
 <pre>
 alex = Person.new
-alex.hello                  # =&gt; こんにちは
+alex.hello                  # =&gt; ����ɂ���
 </pre>
-<p>このように hello メソッドを呼び出すことができるわけです。</p>
-<p>なお、ここでは詳しくは解説しませんが、Ruby で関数と呼んでいるもの
-は「どこからでも呼び出せる形のメソッド」に相違ありません。</p>
+<p>���̂悤�� hello ���\�b�h���Ăяo�����Ƃ��ł���킯�ł��B</p>
+<p>�Ȃ��A�����ł͏ڂ����͉�����܂��񂪁ARuby �Ŋ֐��ƌĂ�ł������
+�́u�ǂ�����ł��Ăяo����`�̃��\�b�h�v�ɑ��Ⴀ��܂���B</p>
 
 
-<h2><a name="instance">インスタンス変数</a></h2>
-<p>個々のオブジェクトに属する変数のことを<strong>インスタンス
-変数</strong>と呼びます。@ という文字で始まる名前の変数を
-使用すると、自動的にインスタンス変数として扱われます。
-ローカル変数は def 〜 end などのブロック内でしか有効になりませんが、
-インスタンス変数を使えば、そのオブジェクトが存在する限り、値が保存
-されるのです。</p>
+<h2><a name="instance">�C���X�^���X�ϐ�</a></h2>
+<p>�X�̃I�u�W�F�N�g�ɑ�����ϐ��̂��Ƃ�<strong>�C���X�^���X
+�ϐ�</strong>�ƌĂт܂��B@ �Ƃ��������Ŏn�܂閼�O�̕ϐ���
+�g�p����ƁA�����I�ɃC���X�^���X�ϐ��Ƃ��Ĉ����܂��B
+���[�J���ϐ��� def �` end �Ȃǂ̃u���b�N���ł����L���ɂȂ�܂��񂪁A
+�C���X�^���X�ϐ����g���΁A���̃I�u�W�F�N�g�����݂������A�l���ۑ�
+�����̂ł��B</p>
 <pre>
 class Person
   def name
@@ -90,33 +90,33 @@ class Person
   end
 
   def hello
-    print &quot;俺は&quot; + @name + &quot;だ&quot;
+    print &quot;����&quot; + @name + &quot;��&quot;
   end
 end
 
 alex = Person.new
-alex.name = &quot;アレックス&quot;
-alex.hello                  # =&gt; 俺はアレックスだ
+alex.name = &quot;�A���b�N�X&quot;
+alex.hello                  # =&gt; ���̓A���b�N�X��
 </pre>
-<p>この例では @name というインスタンス変数を用意し、name、name= という
-メソッドを使ってオブジェクトの外からアクセスできるようにしています。
-なお、末尾に = 記号のついたメソッドは、foo.name = bar
-の形式で呼び出されます。</p>
-<p>なお、インスタンス変数はグローバル変数と同様、一度も代入されていない
-変数を参照した場合はエラーにならずに nil が返されます。</p>
+<p>���̗�ł� @name �Ƃ����C���X�^���X�ϐ���p�ӂ��Aname�Aname= �Ƃ���
+���\�b�h���g���ăI�u�W�F�N�g�̊O����A�N�Z�X�ł���悤�ɂ��Ă��܂��B
+�Ȃ��A������ = �L���̂������\�b�h�́Afoo.name = bar
+�̌`���ŌĂяo����܂��B</p>
+<p>�Ȃ��A�C���X�^���X�ϐ��̓O���[�o���ϐ��Ɠ��l�A��x���������Ă��Ȃ�
+�ϐ����Q�Ƃ����ꍇ�̓G���[�ɂȂ炸�� nil ���Ԃ���܂��B</p>
 
 
-<h2><a name="accessor">アクセサの定義</a></h2>
-<p>name、name= のように、オブジェクト内部のデータを読み書きするための
-メソッドを<strong>アクセサ</strong>と呼びます。</p>
-<p>アクセサは、もっと簡単に次のように書くこともできます。</p>
+<h2><a name="accessor">�A�N�Z�T�̒�`</a></h2>
+<p>name�Aname= �̂悤�ɁA�I�u�W�F�N�g�����̃f�[�^��ǂݏ������邽�߂�
+���\�b�h��<strong>�A�N�Z�T</strong>�ƌĂт܂��B</p>
+<p>�A�N�Z�T�́A�����ƊȒP�Ɏ��̂悤�ɏ������Ƃ��ł��܂��B</p>
 <pre>
   attr_accessor :name
 </pre>
-<p>このように書くことで、: の右側に書いた名前と同名のインスタンス変数
-に対して読み込みおよび書き込みができるメソッドが自動的に定義されます。
-ここでは @name というインスタンス変数にアクセスできるメソッドという
-ことになります。つまり、</p>
+<p>���̂悤�ɏ������ƂŁA: �̉E���ɏ��������O�Ɠ����̃C���X�^���X�ϐ�
+�ɑ΂��ēǂݍ��݂���я������݂��ł��郁�\�b�h�������I�ɒ�`����܂��B
+�����ł� @name �Ƃ����C���X�^���X�ϐ��ɃA�N�Z�X�ł��郁�\�b�h�Ƃ���
+���ƂɂȂ�܂��B�܂�A</p>
 <pre>
   def name
     return @name
@@ -126,29 +126,29 @@ alex.hello                  # =&gt; 俺はアレックスだ
     @name = name
   end
 </pre>
-<p>と同じ意味になります。</p>
-<p>プリセットのスクリプトではこの attr_accessor が多用されています。
-取得 (読み込み) のメソッドのみを定義する場合は、attr_accessor の
-代わりに attr_reader を使用します。</p>
+<p>�Ɠ����Ӗ��ɂȂ�܂��B</p>
+<p>�v���Z�b�g�̃X�N���v�g�ł͂��� attr_accessor �����p����Ă��܂��B
+�擾 (�ǂݍ���) �̃��\�b�h�݂̂��`����ꍇ�́Aattr_accessor ��
+����� attr_reader ���g�p���܂��B</p>
 
 
-<h2><a name="initialize">オブジェクト初期化</a></h2>
-<p>オブジェクトが作成されたときに、インスタンス変数などを特定の値に
-初期化したいことがあります。initialize という名前のメソッドを定義して
-おくと、new で生成されたときに自動的に呼び出されます。</p>
+<h2><a name="initialize">�I�u�W�F�N�g������</a></h2>
+<p>�I�u�W�F�N�g���쐬���ꂽ�Ƃ��ɁA�C���X�^���X�ϐ��Ȃǂ����̒l��
+���������������Ƃ�����܂��Binitialize �Ƃ������O�̃��\�b�h���`����
+�����ƁAnew �Ő������ꂽ�Ƃ��Ɏ����I�ɌĂяo����܂��B</p>
 <pre>
 class Person
   def initialize
-    @name = &quot;名無しさん&quot;
+    @name = &quot;����������&quot;
   end
 end
 </pre>
-<p>2 行目から始まる initialize メソッドの定義では、インスタンス変数
-@name の初期値として &quot;名無しさん&quot; という文字列が代入されて
-います。このようにすることで、新しい Person オブジェクトが生成された
-際、インスタンス変数を自動的に初期化できるわけです。</p>
-<p>initialize メソッドに仮引数を設定した場合、new がその引数を取る
-ようになります。</p>
+<p>2 �s�ڂ���n�܂� initialize ���\�b�h�̒�`�ł́A�C���X�^���X�ϐ�
+@name �̏����l�Ƃ��� &quot;����������&quot; �Ƃ��������񂪑�������
+���܂��B���̂悤�ɂ��邱�ƂŁA�V���� Person �I�u�W�F�N�g���������ꂽ
+�ہA�C���X�^���X�ϐ��������I�ɏ������ł���킯�ł��B</p>
+<p>initialize ���\�b�h�ɉ�������ݒ肵���ꍇ�Anew �����̈��������
+�悤�ɂȂ�܂��B</p>
 <pre>
 class Person
   def initialize(name)
@@ -156,42 +156,42 @@ class Person
   end
 end
 
-alex = Person.new(&quot;アレックス&quot;)
+alex = Person.new(&quot;�A���b�N�X&quot;)
 </pre>
-<p>上の例では initialize メソッドに name という仮引数が設定されており、
-それをインスタンス変数 @name の初期値として使用するようになっています。
-引数 name は実際には Person クラスの new に渡すことになります。最後の行で
-Person オブジェクトを生成する際に &quot;アレックス&quot; という引数が指定
-されていますので、@name の値も &quot;アレックス&quot; に設定されます。</p>
+<p>��̗�ł� initialize ���\�b�h�� name �Ƃ������������ݒ肳��Ă���A
+������C���X�^���X�ϐ� @name �̏����l�Ƃ��Ďg�p����悤�ɂȂ��Ă��܂��B
+���� name �͎��ۂɂ� Person �N���X�� new �ɓn�����ƂɂȂ�܂��B�Ō�̍s��
+Person �I�u�W�F�N�g�𐶐�����ۂ� &quot;�A���b�N�X&quot; �Ƃ����������w��
+����Ă��܂��̂ŁA@name �̒l�� &quot;�A���b�N�X&quot; �ɐݒ肳��܂��B</p>
 
 
-<h2><a name="override">メソッドのオーバーライド</a></h2>
-<p>スーパークラスで定義されているのと同名のメソッドをサブクラスで
-再定義することを<strong>オーバーライド</strong>と呼びます。
-サブクラスのメソッドから、スーパークラスの同じメソッドを呼び出す
-場合は <strong>super</strong> というキーワードを使用します。</p>
+<h2><a name="override">���\�b�h�̃I�[�o�[���C�h</a></h2>
+<p>�X�[�p�[�N���X�Œ�`����Ă���̂Ɠ����̃��\�b�h���T�u�N���X��
+�Ē�`���邱�Ƃ�<strong>�I�[�o�[���C�h</strong>�ƌĂт܂��B
+�T�u�N���X�̃��\�b�h����A�X�[�p�[�N���X�̓������\�b�h���Ăяo��
+�ꍇ�� <strong>super</strong> �Ƃ����L�[���[�h���g�p���܂��B</p>
 <pre>
 class Hahaha
   def laugh(x)
-    return "は" * x
+    return "��" * x
   end
 end
 
 class Wahaha &lt; Hahaha
   def laugh(x)
-    return "わ" + super
+    return "��" + super
   end
 end
 
 man = Wahaha.new
-p man.laugh(4)      # =&gt; &quot;わはははは&quot;
+p man.laugh(4)      # =&gt; &quot;��͂͂͂�&quot;
 </pre>
-<p>この例では、Wahaha クラスの laugh メソッドがまず呼び出され、その
-中から super によって Hahaha クラスの laugh メソッドが呼び出されます。
-その結果、最後の行の laugh メソッド呼び出しは "わ" + "は" * 4 と解釈
-され、&quot;わはははは&quot; が出力されます。</p>
-<p>以上、駆け足でしたが、スクリプトを扱う上で必要な基礎知識を解説しました。
-次からは、いよいよプリセットスクリプトの解読に挑戦していきます。</p>
+<p>���̗�ł́AWahaha �N���X�� laugh ���\�b�h���܂��Ăяo����A����
+������ super �ɂ���� Hahaha �N���X�� laugh ���\�b�h���Ăяo����܂��B
+���̌��ʁA�Ō�̍s�� laugh ���\�b�h�Ăяo���� "��" + "��" * 4 �Ɖ���
+����A&quot;��͂͂͂�&quot; ���o�͂���܂��B</p>
+<p>�ȏ�A�삯���ł������A�X�N���v�g��������ŕK�v�Ȋ�b�m����������܂����B
+������́A���悢��v���Z�b�g�X�N���v�g�̉�ǂɒ��킵�Ă����܂��B</p>
 
 
 <h6></h6>

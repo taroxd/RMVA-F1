@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Font</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,84 +9,84 @@
 <body>
 
 <h1>Font</h1>
-<p>フォントのクラス。フォントは <a href="gc_bitmap.html">Bitmap</a> クラスの
-プロパティです。</p>
-<p>ゲームフォルダ直下に &quot;Fonts&quot;
-フォルダがある場合、その中のフォントファイルは
-システムにインストールされていなくても使用することができます。</p>
+<p>�t�H���g�̃N���X�B�t�H���g�� <a href="gc_bitmap.html">Bitmap</a> �N���X��
+�v���p�e�B�ł��B</p>
+<p>�Q�[���t�H���_������ &quot;Fonts&quot;
+�t�H���_������ꍇ�A���̒��̃t�H���g�t�@�C����
+�V�X�e���ɃC���X�g�[������Ă��Ȃ��Ă��g�p���邱�Ƃ��ł��܂��B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>クラスメソッド</h2>
+<h2>�N���X���\�b�h</h2>
 <dl>
 
 <dt>Font.new([<var>name</var>[, <var>size</var>]])</dt>
 <dd>
-<p>Font オブジェクトを生成します。</p></dd>
+<p>Font �I�u�W�F�N�g�𐶐����܂��B</p></dd>
 
 <dt>Font.exist?(<var>name</var>)</dt>
 <dd>
-<p>指定された名前のフォントがシステムに存在するとき真を返します。</p></dd>
+<p>�w�肳�ꂽ���O�̃t�H���g���V�X�e���ɑ��݂���Ƃ��^��Ԃ��܂��B</p></dd>
 
 </dl>
 
-<h2>プロパティ</h2>
+<h2>�v���p�e�B</h2>
 <dl>
 
 <dt>name</dt>
 <dd>
-<p>フォント名です。初期値は &quot;VL Gothic&quot;
-<span class="rgss3">(RGSS3)</span> です。</p>
-<p>文字列の配列を設定すると、希望順に複数指定することができます。</p>
+<p>�t�H���g���ł��B�����l�� &quot;VL Gothic&quot;
+<span class="rgss3">(RGSS3)</span> �ł��B</p>
+<p>������̔z���ݒ肷��ƁA��]���ɕ����w�肷�邱�Ƃ��ł��܂��B</p>
 <pre>
-font.name = [&quot;HGP行書体&quot;, &quot;ＭＳ ゴシック&quot;]
+font.name = [&quot;HGP�s����&quot;, &quot;�l�r �S�V�b�N&quot;]
 </pre>
-<p>上の例の場合、第一希望の &quot;HGP行書体&quot; がシステムに存在
-しなければ、第二希望の &quot;ＭＳ ゴシック&quot; が使用されること
-になります。</p>
+<p>��̗�̏ꍇ�A����]�� &quot;HGP�s����&quot; ���V�X�e���ɑ���
+���Ȃ���΁A����]�� &quot;�l�r �S�V�b�N&quot; ���g�p����邱��
+�ɂȂ�܂��B</p>
 </dd>
 
 <dt>size</dt>
 <dd>
-<p>フォントのサイズです。初期値は 24
-<span class="rgss3">(RGSS3)</span> です。 </p></dd>
+<p>�t�H���g�̃T�C�Y�ł��B�����l�� 24
+<span class="rgss3">(RGSS3)</span> �ł��B </p></dd>
 
 <dt>bold</dt>
 <dd>
-<p>ボールドフラグです。初期値は false です。</p></dd>
+<p>�{�[���h�t���O�ł��B�����l�� false �ł��B</p></dd>
 
 <dt>italic</dt>
 <dd>
-<p>イタリックフラグです。初期値は false です。</p></dd>
+<p>�C�^���b�N�t���O�ł��B�����l�� false �ł��B</p></dd>
 
 <dt>outline <span class="rgss3">(RGSS3)</span></dt>
 <dd>
-<p>縁取り文字のフラグです。初期値は true です。</p></dd>
+<p>����蕶���̃t���O�ł��B�����l�� true �ł��B</p></dd>
 
 <dt>shadow</dt>
 <dd>
-<p>影付き文字のフラグです。初期値は false
-<span class="rgss3">(RGSS3)</span> です。
-有効な場合、文字の右下に黒色で影を描画します。</p></dd>
+<p>�e�t�������̃t���O�ł��B�����l�� false
+<span class="rgss3">(RGSS3)</span> �ł��B
+�L���ȏꍇ�A�����̉E���ɍ��F�ŉe��`�悵�܂��B</p></dd>
 
 <dt>color</dt>
 <dd>
-<p>フォントの色 (<a href="gc_color.html">Color</a>) です。
-アルファ値も有効です。初期値は (255,255,255,255) です。</p>
-<p>アルファ値は、縁取り <span class="rgss3">(RGSS3)</span>
-や影の描画にも反映されます。</p></dd>
+<p>�t�H���g�̐F (<a href="gc_color.html">Color</a>) �ł��B
+�A���t�@�l���L���ł��B�����l�� (255,255,255,255) �ł��B</p>
+<p>�A���t�@�l�́A����� <span class="rgss3">(RGSS3)</span>
+��e�̕`��ɂ����f����܂��B</p></dd>
 
 <dt>out_color <span class="rgss3">(RGSS3)</span></dt>
 <dd>
-<p>縁取りの色 (<a href="gc_color.html">Color</a>) です。
-初期値は (0,0,0,128) です。</p></dd>
+<p>�����̐F (<a href="gc_color.html">Color</a>) �ł��B
+�����l�� (0,0,0,128) �ł��B</p></dd>
 
 </dl>
 
-<h2>クラスプロパティ</h2>
+<h2>�N���X�v���p�e�B</h2>
 <dl>
 
 <dt>default_name</dt>
@@ -98,10 +98,10 @@ font.name = [&quot;HGP行書体&quot;, &quot;ＭＳ ゴシック&quot;]
 <dt>default_color</dt>
 <dt>default_out_color <span class="rgss3">(RGSS3)</span></dt>
 <dd>
-<p>Font オブジェクトが新しく作成されたときに各要素に設定される
-デフォルト値を変更できます。</p>
+<p>Font �I�u�W�F�N�g���V�����쐬���ꂽ�Ƃ��Ɋe�v�f�ɐݒ肳���
+�f�t�H���g�l��ύX�ł��܂��B</p>
 <pre>
-Font.default_name = &quot;ＭＳ 明朝&quot;
+Font.default_name = &quot;�l�r ����&quot;
 Font.default_size = 22
 Font.default_bold = true
 </pre>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Float</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,14 +9,14 @@
 <body>
 
 <h1>Float</h1>
-<p>æµ®å‹•å°æ•°ç‚¹æ•°ã®ã‚¯ãƒ©ã‚¹ã€‚Float ã®å®Ÿè£…ã¯ C è¨€èªžã® double ã§ã™ã€‚</p>
+<p>•‚“®¬”“_”‚ÌƒNƒ‰ƒXBFloat ‚ÌŽÀ‘•‚Í C Œ¾Œê‚Ì double ‚Å‚·B</p>
 
-<h2>ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹</h2>
+<h2>ƒX[ƒp[ƒNƒ‰ƒX</h2>
 <ul>
 <li><a href="sc_numeric.html">Numeric</a></li>
 </ul>
 
-<h2>ãƒ¡ã‚½ãƒƒãƒ‰</h2>
+<h2>ƒƒ\ƒbƒh</h2>
 <dl>
 <dt><var>self</var> + <var>other</var></dt>
 <dt><var>self</var> - <var>other</var></dt>
@@ -25,25 +25,25 @@
 <dt><var>self</var> % <var>other</var></dt>
 <dt><var>self</var> ** <var>other</var></dt>
 <dd>
-<p>ç®—è¡“æ¼”ç®—å­ã€‚ãã‚Œãžã‚Œå’Œã€å·®ã€ç©ã€å•†ã€å‰°ä½™ã€å†ªã‚’è¨ˆç®—ã—ã¾ã™ã€‚</p></dd>
+<p>ŽZp‰‰ŽZŽqB‚»‚ê‚¼‚ê˜aA·AÏA¤Aè—]A™p‚ðŒvŽZ‚µ‚Ü‚·B</p></dd>
 <dt><var>self</var> &lt;=&gt; <var>other</var></dt>
 <dd>
-<p>self ã¨ other ã‚’æ¯”è¼ƒã—ã¦ã€self ãŒ
-å¤§ãã„ã¨ãã«æ­£ã€ç­‰ã—ã„ã¨ãã« 0ã€å°ã•ã„ã¨ãã«è² ã®æ•´æ•°ã‚’è¿”ã—ã¾ã™ã€‚</p></dd>
+<p>self ‚Æ other ‚ð”äŠr‚µ‚ÄAself ‚ª
+‘å‚«‚¢‚Æ‚«‚É³A“™‚µ‚¢‚Æ‚«‚É 0A¬‚³‚¢‚Æ‚«‚É•‰‚Ì®”‚ð•Ô‚µ‚Ü‚·B</p></dd>
 <dt><var>self</var> == <var>other</var></dt>
 <dt><var>self</var> &lt; <var>other</var></dt>
 <dt><var>self</var> &lt;= <var>other</var></dt>
 <dt><var>self</var> &gt; <var>other</var></dt>
 <dt><var>self</var> &gt;= <var>other</var></dt>
 <dd>
-<p>æ¯”è¼ƒæ¼”ç®—å­ã€‚</p></dd>
+<p>”äŠr‰‰ŽZŽqB</p></dd>
 <dt>finite?</dt>
 <dd>
-<p>æ•°å€¤ãŒ âˆž ã§ã‚‚ã€NaN ã§ã‚‚ãªã‘ã‚Œã°çœŸã‚’è¿”ã—ã¾ã™</p></dd>
+<p>”’l‚ª ‡ ‚Å‚àANaN ‚Å‚à‚È‚¯‚ê‚Î^‚ð•Ô‚µ‚Ü‚·</p></dd>
 <dt>infinite?</dt>
 <dd>
-<p>æ•°å€¤ãŒ +âˆž ã®ã¨ã 1ã€-âˆž ã®ã¨ã -1 ã‚’è¿”ã—ã¾ã™ã€‚ãã‚Œä»¥å¤–ã¯ nil ã‚’è¿”
-ã—ã¾ã™ã€‚æµ®å‹•å°æ•°ç‚¹æ•°ã® 0 ã«ã‚ˆã‚‹é™¤ç®—ã¯ âˆž ã§ã™ã€‚</p>
+<p>”’l‚ª +‡ ‚Ì‚Æ‚« 1A-‡ ‚Ì‚Æ‚« -1 ‚ð•Ô‚µ‚Ü‚·B‚»‚êˆÈŠO‚Í nil ‚ð•Ô
+‚µ‚Ü‚·B•‚“®¬”“_”‚Ì 0 ‚É‚æ‚éœŽZ‚Í ‡ ‚Å‚·B</p>
 <pre>
 inf = 1.0/0
 p inf
@@ -61,8 +61,8 @@ p inf.infinite?
 </pre></dd>
 <dt>nan?</dt>
 <dd>
-<p>æ•°å€¤ãŒ NaN (Not a number) ã®ã¨ãçœŸã‚’è¿”ã—ã¾ã™ã€‚æµ®å‹•å°æ•°ç‚¹æ•° 0 ã® 0 ã«
-ã‚ˆã‚‹é™¤ç®—ã¯ NaN ã§ã™ã€‚</p>
+<p>”’l‚ª NaN (Not a number) ‚Ì‚Æ‚«^‚ð•Ô‚µ‚Ü‚·B•‚“®¬”“_” 0 ‚Ì 0 ‚É
+‚æ‚éœŽZ‚Í NaN ‚Å‚·B</p>
 <pre>
 nan = 0.0/0.0
 p nan

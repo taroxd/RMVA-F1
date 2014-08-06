@@ -1,51 +1,51 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>組み込み変数</title>
+<title>�g�ݍ��ݕϐ�</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>組み込み変数</h1>
-<p>組み込み変数はグローバル変数の一種ですが、その値はグローバルとは
-限りません。</p>
-<p>以下、変数の値のスコープで大別していくつかの組み込み変数を列挙します。</p>
+<h1>�g�ݍ��ݕϐ�</h1>
+<p>�g�ݍ��ݕϐ��̓O���[�o���ϐ��̈��ł����A���̒l�̓O���[�o���Ƃ�
+����܂���B</p>
+<p>�ȉ��A�ϐ��̒l�̃X�R�[�v�ő�ʂ��Ă������̑g�ݍ��ݕϐ���񋓂��܂��B</p>
 
-<h2>ローカルスコープ</h2>
+<h2>���[�J���X�R�[�v</h2>
 <dl>
 <dt><a name="L000428">$~</a></dt>
 <dd>
-<p>現在のスコープで最後に成功したマッチに関する情報
-(<a href="sc_matchdata.html">MatchData</a> オブジェクト) 。
-これを設定すると $&amp; や $1 ... $9 などの
-値が変化します。</p>
-<p><a href="sc_regexp.html#L001314">Regexp.last_match</a> と同じ。</p></dd>
+<p>���݂̃X�R�[�v�ōŌ�ɐ��������}�b�`�Ɋւ�����
+(<a href="sc_matchdata.html">MatchData</a> �I�u�W�F�N�g) �B
+�����ݒ肷��� $&amp; �� $1 ... $9 �Ȃǂ�
+�l���ω����܂��B</p>
+<p><a href="sc_regexp.html#L001314">Regexp.last_match</a> �Ɠ����B</p></dd>
 <dt><a name="L000427">$&amp;</a></dt>
 <dd>
-<p>現在のスコープで最後に成功した正規表現のパターンマッチでマッチした
-文字列。最後のマッチが失敗していた場合には nil 。</p>
-<p><a href="sc_regexp.html#L001314">Regexp.last_match</a>[0] と同じ。</p></dd>
+<p>���݂̃X�R�[�v�ōŌ�ɐ����������K�\���̃p�^�[���}�b�`�Ń}�b�`����
+������B�Ō�̃}�b�`�����s���Ă����ꍇ�ɂ� nil �B</p>
+<p><a href="sc_regexp.html#L001314">Regexp.last_match</a>[0] �Ɠ����B</p></dd>
 <dt><a name="L000432">$1</a>
 <dt><a name="L000433">$2</a>
 <dt>$3 ...</dt>
 <dd>
-<p>最後に成功したパターンマッチで n 番目の括弧にマッチした値が格
-納されます。該当する括弧がなければ nil が入っています。</p>
+<p>�Ō�ɐ��������p�^�[���}�b�`�� n �Ԗڂ̊��ʂɃ}�b�`�����l���i
+�[����܂��B�Y�����銇�ʂ��Ȃ���� nil �������Ă��܂��B</p>
 <p><a href="sc_regexp.html#L001314">Regexp.last_match</a>[1],
-<a href="sc_regexp.html#L001314">Regexp.last_match</a>[2], ... と同じ。</p></dd>
+<a href="sc_regexp.html#L001314">Regexp.last_match</a>[2], ... �Ɠ����B</p></dd>
 </dl>
 
-<h2>グローバルスコープ</h2>
+<h2>�O���[�o���X�R�[�v</h2>
 <dl>
 <dt><a name="L000437">$!</a></dt>
 <dd>
-<p>最近の例外に関する情報。<a href="s_functions.html#L000388">raise</a> によって設定されま
-す。</p></dd>
+<p>�ŋ߂̗�O�Ɋւ�����B<a href="s_functions.html#L000388">raise</a> �ɂ���Đݒ肳���
+���B</p></dd>
 <dt><a name="L000462">$DEBUG</a></dt>
 <dd>
-<p>デバッグモードフラグ。</p></dd>
+<p>�f�o�b�O���[�h�t���O�B</p></dd>
 </dl>
 
 <h6></h6>

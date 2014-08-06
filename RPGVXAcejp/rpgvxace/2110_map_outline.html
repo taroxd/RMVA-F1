@@ -1,46 +1,46 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>マップの編集</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>�}�b�v�̕ҏW</title>
 <link href="../style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
-<h1><a name="key_map">マップの編集</a></h1>
+<h1><a name="key_map">�}�b�v�̕ҏW</a></h1>
 
-<h2>マップとは</h2>
+<h2>�}�b�v�Ƃ�</h2>
 
-<img src="img/2110_01.png" alt="マップエディター" class="float_r">
-<p>マップとはゲームの舞台を表現するデータです。プレイするゲームは、マップ上をプレイヤーのキャラクターが移動する画面を中心に展開します。</p>
-<p>マップのデザインは、“タイル”という構成用のパーツ（小片）を組み合わせることで編集します。</p>
+<img src="img/2110_01.png" alt="�}�b�v�G�f�B�^�[" class="float_r">
+<p>�}�b�v�Ƃ̓Q�[���̕����\������f�[�^�ł��B�v���C����Q�[���́A�}�b�v����v���C���[�̃L�����N�^�[���ړ������ʂ𒆐S�ɓW�J���܂��B</p>
+<p>�}�b�v�̃f�U�C���́A�g�^�C���h�Ƃ����\���p�̃p�[�c�i���Ёj��g�ݍ��킹�邱�ƂŕҏW���܂��B</p>
 
-<h2><a name="key_map_spec">マップの基本仕様</a></h2>
+<h2><a name="key_map_spec">�}�b�v�̊�{�d�l</a></h2>
 
 <dl>
-<dt><a name="key_map_tile">●タイルの役割</a></dt>
+<dt><a name="key_map_tile">���^�C���̖���</a></dt>
 
-<dd><p>タイルとは、マップの見た目となるグラフィックに、キャラクターが通行できるかなどの設定を付与したものです。</p>
-<p>ひとつのマップには、複数のタイルをまとめた“タイルセット”というデータをひとつ割り当てられ、それをもとにマップの形状をデザインできる仕組みです。使用するタイルセットを変えることで、マップの見た目を一変させることもできます。タイルセットの内容は<a href="3310_db_tileset.html">［データベース］</a>で編集します。</p></dd>
+<dd><p>�^�C���Ƃ́A�}�b�v�̌����ڂƂȂ�O���t�B�b�N�ɁA�L�����N�^�[���ʍs�ł��邩�Ȃǂ̐ݒ��t�^�������̂ł��B</p>
+<p>�ЂƂ̃}�b�v�ɂ́A�����̃^�C�����܂Ƃ߂��g�^�C���Z�b�g�h�Ƃ����f�[�^���ЂƂ��蓖�Ă��A��������ƂɃ}�b�v�̌`����f�U�C���ł���d�g�݂ł��B�g�p����^�C���Z�b�g��ς��邱�ƂŁA�}�b�v�̌����ڂ���ς����邱�Ƃ��ł��܂��B�^�C���Z�b�g�̓��e��<a href="3310_db_tileset.html">�m�f�[�^�x�[�X�n</a>�ŕҏW���܂��B</p></dd>
 
-<dt>●タイルの種別</dt>
+<dt>���^�C���̎��</dt>
 
 <dd>
-<img src="img/map3.png" alt="マップの構造" class="float_r">
-<p>ひとつのタイルセットには、A〜Eの5種類のタイルを含めることができます。Aは地形や地面などを表現する下層用、B〜Eは地上の樹木や看板などを表現するのに用いる上層用のタイルです。</p>
-<p>マップには、同じ位置に上層用と下層用のタイルを配置できます。この二層構造を利用することで、マップの表現の幅を広げることが可能です。</p>
-<p>標準（RTPに含まれるタイルセット）では、下層用に海や草原、床や壁などを表現するタイル、上層用には、それらを装飾するタイルが用意されています。</p><br></dd>
+<img src="img/map3.png" alt="�}�b�v�̍\��" class="float_r">
+<p>�ЂƂ̃^�C���Z�b�g�ɂ́AA�`E��5��ނ̃^�C�����܂߂邱�Ƃ��ł��܂��BA�͒n�`��n�ʂȂǂ�\�����鉺�w�p�AB�`E�͒n��̎��؂�ŔȂǂ�\������̂ɗp�����w�p�̃^�C���ł��B</p>
+<p>�}�b�v�ɂ́A�����ʒu�ɏ�w�p�Ɖ��w�p�̃^�C����z�u�ł��܂��B���̓�w�\���𗘗p���邱�ƂŁA�}�b�v�̕\���̕����L���邱�Ƃ��\�ł��B</p>
+<p>�W���iRTP�Ɋ܂܂��^�C���Z�b�g�j�ł́A���w�p�ɊC�⑐���A����ǂȂǂ�\������^�C���A��w�p�ɂ́A�����𑕏�����^�C�����p�ӂ���Ă��܂��B</p><br></dd>
 
-<dt>●マップの大きさと表示方法</dt>
+<dt>���}�b�v�̑傫���ƕ\�����@</dt>
 
-<dd><p>マップの大きさはタイルを単位とし、幅（横）は17〜500タイル、高さ（縦）13〜500タイルの間で指定できます。</p>
-<p>プレイするゲームの画面に一度に表示される範囲は、幅17タイル×高さ13タイル相当の大きさになります。これより大きいマップは、プレイヤーの位置を中心に表示範囲が自動的に移動します（スクロール処理）。またマップの端同士をつなぐことで、惑星のように循環移動できる舞台を表現できます（ループ処理）。</p></dd>
+<dd><p>�}�b�v�̑傫���̓^�C����P�ʂƂ��A���i���j��17�`500�^�C���A�����i�c�j13�`500�^�C���̊ԂŎw��ł��܂��B</p>
+<p>�v���C����Q�[���̉�ʂɈ�x�ɕ\�������͈͂́A��17�^�C���~����13�^�C�������̑傫���ɂȂ�܂��B������傫���}�b�v�́A�v���C���[�̈ʒu�𒆐S�ɕ\���͈͂������I�Ɉړ����܂��i�X�N���[�������j�B�܂��}�b�v�̒[���m���Ȃ����ƂŁA�f���̂悤�ɏz�ړ��ł��镑���\���ł��܂��i���[�v�����j�B</p></dd>
 
-<dt>●マップ上の位置</dt>
+<dt>���}�b�v��̈ʒu</dt>
 
-<dd><p>マップ上のタイルの位置は“マップ座標”で表わします。マップ座標は左上角のタイルを原点（0，0）とし、ここから右方向にXタイル離れた位置がX座標、Yタイル離れた位置がY座標となります。たとえば500×500タイルの大きさを持つマップの右下角のタイルのマップ座標は（499,499）となります。ステータスバーには、編集中のタイルのマップ座標が表示されます。</p>
-<p>このマップ座標は、変数をもとにパーティの移動先を指定したり、パーティの現在位置を監視するといったイベントコマンドの処理で利用できます。</p></dd>
+<dd><p>�}�b�v��̃^�C���̈ʒu�́g�}�b�v���W�h�ŕ\�킵�܂��B�}�b�v���W�͍���p�̃^�C�������_�i0�C0�j�Ƃ��A��������E������X�^�C�����ꂽ�ʒu��X���W�AY�^�C�����ꂽ�ʒu��Y���W�ƂȂ�܂��B���Ƃ���500�~500�^�C���̑傫�������}�b�v�̉E���p�̃^�C���̃}�b�v���W�́i499,499�j�ƂȂ�܂��B�X�e�[�^�X�o�[�ɂ́A�ҏW���̃^�C���̃}�b�v���W���\������܂��B</p>
+<p>���̃}�b�v���W�́A�ϐ������ƂɃp�[�e�B�̈ړ�����w�肵����A�p�[�e�B�̌��݈ʒu���Ď�����Ƃ������C�x���g�R�}���h�̏����ŗ��p�ł��܂��B</p></dd>
 </dl>
 
 <h6></h6>

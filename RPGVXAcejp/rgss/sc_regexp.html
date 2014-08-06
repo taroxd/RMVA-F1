@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Regexp</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,23 +9,23 @@
 <body>
 
 <h1>Regexp</h1>
-<p><a href="appendix01.html">正規表現</a>の
-クラス。<a href="syntax03.html#L000274">正規表現リテラル</a>を
-参照してください。</p>
+<p><a href="appendix01.html">���K�\��</a>��
+�N���X�B<a href="syntax03.html#L000274">���K�\�����e����</a>��
+�Q�Ƃ��Ă��������B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>クラスメソッド</h2>
+<h2>�N���X���\�b�h</h2>
 <dl>
 <dt><a name="L001314">Regexp.last_match</a></dt>
 <dd>
-<p>カレントスコープで最後に行った正規表現マッチの
-<a href="sc_matchdata.html">MatchData</a> オブジェクトを返します。
-このメソッドの呼び出しは <a href="s_variables.html#L000428">$~</a> の
-参照と同じです。</p>
+<p>�J�����g�X�R�[�v�ōŌ�ɍs�������K�\���}�b�`��
+<a href="sc_matchdata.html">MatchData</a> �I�u�W�F�N�g��Ԃ��܂��B
+���̃��\�b�h�̌Ăяo���� <a href="s_variables.html#L000428">$~</a> ��
+�Q�ƂƓ����ł��B</p>
 <pre>
 /(.)(.)/ =~ &quot;ab&quot;
 p Regexp.last_match      # =&gt; #&lt;MatchData:0x4599e58&gt;
@@ -36,11 +36,11 @@ p Regexp.last_match[3]   # =&gt; nil
 </pre></dd>
 <dt>Regexp.last_match([<var>nth</var>])</dt>
 <dd>
-<p>整数 <var>nth</var> が 0 の場合、マッチした文字列を返します
-(<a href="s_variables.html#L000427">$&amp;</a>) 。それ以外では、<var>nth</var> 番目の
-括弧にマッチした部分文字列を返します (<a href="s_variables.html#L000432">$1</a>,
-<a href="s_variables.html#L000433">$2</a>, ...) 。
-対応する括弧がない場合やマッチしなかった場合には nil を返します。</p>
+<p>���� <var>nth</var> �� 0 �̏ꍇ�A�}�b�`�����������Ԃ��܂�
+(<a href="s_variables.html#L000427">$&amp;</a>) �B����ȊO�ł́A<var>nth</var> �Ԗڂ�
+���ʂɃ}�b�`���������������Ԃ��܂� (<a href="s_variables.html#L000432">$1</a>,
+<a href="s_variables.html#L000433">$2</a>, ...) �B
+�Ή����銇�ʂ��Ȃ��ꍇ��}�b�`���Ȃ������ꍇ�ɂ� nil ��Ԃ��܂��B</p>
 <pre>
 /(.)(.)/ =~ &quot;ab&quot;
 p Regexp.last_match      # =&gt; #&lt;MatchData:0x4599e58&gt;
@@ -49,52 +49,52 @@ p Regexp.last_match(1)   # =&gt; &quot;a&quot;
 p Regexp.last_match(2)   # =&gt; &quot;b&quot;
 p Regexp.last_match(3)   # =&gt; nil
 </pre>
-<p>正規表現全体がマッチしなかった場合、引数なしの 
-Regexp.last_match は nil を返すため、
-last_match[1] の形式では例外
-<a href="s_exceptions.html#NameError">NameError</a> が発生します。
-対して、last_match(1) は nil を返します。</p></dd>
+<p>���K�\���S�̂��}�b�`���Ȃ������ꍇ�A�����Ȃ��� 
+Regexp.last_match �� nil ��Ԃ����߁A
+last_match[1] �̌`���ł͗�O
+<a href="s_exceptions.html#NameError">NameError</a> ���������܂��B
+�΂��āAlast_match(1) �� nil ��Ԃ��܂��B</p></dd>
 </dl>
 
-<h2>メソッド</h2>
+<h2>���\�b�h</h2>
 <dl>
 <dt><var>self</var> =~ <var>string</var></dt>
 <dt><var>self</var> === <var>string</var></dt>
 <dd>
-<p>文字列 <var>string</var> との正規表現マッチを行います。引数が文
-字列でないか、マッチしなければ false を、マッチすれば 
-true を返します。</p>
-<p>組み込み変数 <a href="s_variables.html#L000428">$~</a> にマッチに関する情報が
-設定されます。</p>
-<p><var>string</var> が nil でも <a href="sc_string.html">String</a>
-オブジェクトでもなければ例外 <a href="s_exceptions.html#TypeError">TypeError</a> が
-発生します。</p></dd>
+<p>������ <var>string</var> �Ƃ̐��K�\���}�b�`���s���܂��B��������
+����łȂ����A�}�b�`���Ȃ���� false ���A�}�b�`����� 
+true ��Ԃ��܂��B</p>
+<p>�g�ݍ��ݕϐ� <a href="s_variables.html#L000428">$~</a> �Ƀ}�b�`�Ɋւ�����
+�ݒ肳��܂��B</p>
+<p><var>string</var> �� nil �ł� <a href="sc_string.html">String</a>
+�I�u�W�F�N�g�ł��Ȃ���Η�O <a href="s_exceptions.html#TypeError">TypeError</a> ��
+�������܂��B</p></dd>
 <dt><a name="L001322">match(<var>str</var>)</a></dt>
 <dd>
-<p><a href="sc_matchdata.html">MatchData</a> オブジェクトを返す点を除い
-て、self =~ str と同じです。マッチしなかった場合 nil を返します。</p>
-<p>正規表現にマッチした部分文字列だけが必要な場合に、</p>
+<p><a href="sc_matchdata.html">MatchData</a> �I�u�W�F�N�g��Ԃ��_������
+�āAself =~ str �Ɠ����ł��B�}�b�`���Ȃ������ꍇ nil ��Ԃ��܂��B</p>
+<p>���K�\���Ƀ}�b�`�������������񂾂����K�v�ȏꍇ�ɁA</p>
 <pre>
 bar = /foo(.*)baz/.match(&quot;foobarbaz&quot;).to_a[1]
 
 _, foo, bar, baz = */(foo)(bar)(baz)/.match(&quot;foobarbaz&quot;)
 </pre>
-<p>のように使用できます (to_a は、マッチに失敗した場合を考慮しています) 。</p>
+<p>�̂悤�Ɏg�p�ł��܂� (to_a �́A�}�b�`�Ɏ��s�����ꍇ���l�����Ă��܂�) �B</p>
 </dd>
 <dt>to_s</dt>
 <dd>
-<p>正規表現の文字列表現を生成して返します。返される文字列は他の正規表
-現に埋め込んでもその意味が保持されるようになっています。</p>
+<p>���K�\���̕�����\���𐶐����ĕԂ��܂��B�Ԃ���镶����͑��̐��K�\
+���ɖ��ߍ���ł����̈Ӗ����ێ������悤�ɂȂ��Ă��܂��B</p>
 <pre>
 re = /foo|bar|baz/i
 p re.to_s       # =&gt; &quot;(?i-mx:foo|bar|baz)&quot;
 p /#{re}+/o     # =&gt; /(?i-mx:foo|bar|baz)+/
 </pre>
-<p>ただし、後方参照を含む正規表現は意図通りにはならない場合があります。
-これは現状、後方参照を番号でしか指定できないためです。</p>
+<p>�������A����Q�Ƃ��܂ސ��K�\���͈Ӑ}�ʂ�ɂ͂Ȃ�Ȃ��ꍇ������܂��B
+����͌���A����Q�Ƃ�ԍ��ł����w��ł��Ȃ����߂ł��B</p>
 <pre>
-re = /(foo|bar)\1/      # \1 は、foo か bar
-p /(baz)#{re}/          # \1 は、baz
+re = /(foo|bar)\1/      # \1 �́Afoo �� bar
+p /(baz)#{re}/          # \1 �́Abaz
 
 # =&gt; /(baz)(?-mix:(foo|bar)\1)/
 </pre></dd>

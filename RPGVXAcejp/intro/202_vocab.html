@@ -1,171 +1,171 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>Vocab モジュール</title>
+<title>Vocab ���W���[��</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>Vocab モジュール</h1>
+<h1>Vocab ���W���[��</h1>
 <ul>
-<li><a href="#define_module">モジュールの定義</a></li>
-<li><a href="#constant">定数</a></li>
+<li><a href="#define_module">���W���[���̒�`</a></li>
+<li><a href="#constant">�萔</a></li>
 <li><a href="#sprintf">sprintf</a></li>
-<li><a href="#module_method">モジュールメソッド</a></li>
-<li><a href="#read_terms">用語データの取得</a></li>
+<li><a href="#module_method">���W���[�����\�b�h</a></li>
+<li><a href="#read_terms">�p��f�[�^�̎擾</a></li>
 </ul>
 
-<p>上のセクションから順に見ていくことにしましょう。Vocab は、
-用語とメッセージを扱うモジュールです。</p>
+<p>��̃Z�N�V�������珇�Ɍ��Ă������Ƃɂ��܂��傤�BVocab �́A
+�p��ƃ��b�Z�[�W���������W���[���ł��B</p>
 
 
-<h2><a name="define_module">モジュールの定義</a></h2>
-<p>まずは、左のリストから Vocab セクションを選択してください。</p>
-<p>1 〜 6 行目はコメントですから問題ありませんね。8 行目を見てください。</p>
+<h2><a name="define_module">���W���[���̒�`</a></h2>
+<p>�܂��́A���̃��X�g���� Vocab �Z�N�V������I�����Ă��������B</p>
+<p>1 �` 6 �s�ڂ̓R�����g�ł������肠��܂���ˁB8 �s�ڂ����Ă��������B</p>
 <pre>
 module Vocab
 </pre>
-<p>ここでは、Vocab という名前の新しいモジュールを定義しています。
-基礎編で<a href="109_graphics.html">画像の表示</a>を行うときには
-Graphics という組み込みモジュールを使用しました。クラスと同様、
-モジュールを自分で定義することも可能です。具体的には、
+<p>�����ł́AVocab �Ƃ������O�̐V�������W���[�����`���Ă��܂��B
+��b�҂�<a href="109_graphics.html">�摜�̕\��</a>���s���Ƃ��ɂ�
+Graphics �Ƃ����g�ݍ��݃��W���[�����g�p���܂����B�N���X�Ɠ��l�A
+���W���[���������Œ�`���邱�Ƃ��\�ł��B��̓I�ɂ́A
 <pre>
-module モジュール名
+module ���W���[����
 end
 </pre>
-<p>という文法を使用します。これは<a href="112_class.html">クラス定義</a>の
-方法とほとんど同じです。モジュールは、インスタンスを作ることができない
-ということ以外、ほぼクラスと同じものだと考えておいても良いでしょう。</p>
-<p>実際には、モジュールにはもうひとつの重要な機能があります。
-基礎編の<a href="110_array.html">配列</a>の章で
-最後に解説した <a href="../rgss/sm_enumerable.html">Enumerable</a>
-モジュールのように、別のクラスに対して自分のメソッドを追加するという
-機能です。これを <strong>Mix-in</strong> と呼びます。ただしこれは「RGSS
-リファレンスにて『インクルードしているモジュール』に書かれている
-メソッドも使用できる」という理解があれば十分で、プリセットのスクリプト
-でも Mix-in は使用していませんので、さほど気にしなくても構いません。</p>
-<p>なお、Vocab という名前は vocabulary (語彙) という英単語を省略した
-ものです。</p>
+<p>�Ƃ������@���g�p���܂��B�����<a href="112_class.html">�N���X��`</a>��
+���@�ƂقƂ�Ǔ����ł��B���W���[���́A�C���X�^���X����邱�Ƃ��ł��Ȃ�
+�Ƃ������ƈȊO�A�قڃN���X�Ɠ������̂��ƍl���Ă����Ă��ǂ��ł��傤�B</p>
+<p>���ۂɂ́A���W���[���ɂ͂����ЂƂ̏d�v�ȋ@�\������܂��B
+��b�҂�<a href="110_array.html">�z��</a>�̏͂�
+�Ō�ɉ������ <a href="../rgss/sm_enumerable.html">Enumerable</a>
+���W���[���̂悤�ɁA�ʂ̃N���X�ɑ΂��Ď����̃��\�b�h��ǉ�����Ƃ���
+�@�\�ł��B����� <strong>Mix-in</strong> �ƌĂт܂��B����������́uRGSS
+���t�@�����X�ɂāw�C���N���[�h���Ă��郂�W���[���x�ɏ�����Ă���
+���\�b�h���g�p�ł���v�Ƃ�������������Ώ\���ŁA�v���Z�b�g�̃X�N���v�g
+�ł� Mix-in �͎g�p���Ă��܂���̂ŁA���قǋC�ɂ��Ȃ��Ă��\���܂���B</p>
+<p>�Ȃ��AVocab �Ƃ������O�� vocabulary (��b) �Ƃ����p�P����ȗ�����
+���̂ł��B</p>
 
 
-<h2><a name="constant">定数</a></h2>
-<p>アルファベットの大文字で始まる識別子は、<strong>定数</strong>として
-扱われます。定数とは、いったん定義されたら書き換わることがないような
-データのことです。定数という名前ですが、必ずしも「数」である必要は
-ありません。文字列やその他のオブジェクトも定数として使用できます。</p>
+<h2><a name="constant">�萔</a></h2>
+<p>�A���t�@�x�b�g�̑啶���Ŏn�܂鎯�ʎq�́A<strong>�萔</strong>�Ƃ���
+�����܂��B�萔�Ƃ́A���������`���ꂽ�珑������邱�Ƃ��Ȃ��悤��
+�f�[�^�̂��Ƃł��B�萔�Ƃ������O�ł����A�K�������u���v�ł���K�v��
+����܂���B������₻�̑��̃I�u�W�F�N�g���萔�Ƃ��Ďg�p�ł��܂��B</p>
 <pre>
-  ShopBuy         = &quot;購入する&quot;
-  ShopSell        = &quot;売却する&quot;
-  ShopCancel      = &quot;やめる&quot;
-  Possession      = &quot;持っている数&quot;
+  ShopBuy         = &quot;�w������&quot;
+  ShopSell        = &quot;���p����&quot;
+  ShopCancel      = &quot;��߂�&quot;
+  Possession      = &quot;�����Ă��鐔&quot;
 </pre>
-<p>Vocab セクションの 11 〜 14 行目では、このように定数を定義しています。
-この文字列の内容を書き換えれば、ショップ画面のコマンド名などを変更する
-ことができます。このように、あとから書き換える可能性があるものを一か所に
-まとめておくというのが、定数の一般的な利用方法のひとつです。</p>
-<img src="img/search.png" alt="全セクションから検索" class="float_r">
-<p>さて、この定数が実際にスクリプトのどこから参照されているのかを探して
-みましょう。このような場合には [全セクションから検索] 機能を使います。</p>
-<p>Ctrl+Shift+F を押して [全セクションから検索] ダイアログボックスを
-開き、ShopBuy という文字列を検索してみてください。このとき、通常の検索
-ウィンドウ (Ctrl+F) と間違わないように注意が必要です。今回は [単語単位]
-オプションにチェックを入れて検索してください。</p>
-<p>検索に成功すれば、2 件の検索結果が表示されるはずです。このうちひとつは
-現在開いている Vocab モジュール内での定義ですから、もうひとつの検索結果を
-ダブルクリックしてください。</p>
+<p>Vocab �Z�N�V������ 11 �` 14 �s�ڂł́A���̂悤�ɒ萔���`���Ă��܂��B
+���̕�����̓��e������������΁A�V���b�v��ʂ̃R�}���h���Ȃǂ�ύX����
+���Ƃ��ł��܂��B���̂悤�ɁA���Ƃ��珑��������\����������̂��ꂩ����
+�܂Ƃ߂Ă����Ƃ����̂��A�萔�̈�ʓI�ȗ��p���@�̂ЂƂł��B</p>
+<img src="img/search.png" alt="�S�Z�N�V�������猟��" class="float_r">
+<p>���āA���̒萔�����ۂɃX�N���v�g�̂ǂ�����Q�Ƃ���Ă���̂���T����
+�݂܂��傤�B���̂悤�ȏꍇ�ɂ� [�S�Z�N�V�������猟��] �@�\���g���܂��B</p>
+<p>Ctrl+Shift+F �������� [�S�Z�N�V�������猟��] �_�C�A���O�{�b�N�X��
+�J���AShopBuy �Ƃ�����������������Ă݂Ă��������B���̂Ƃ��A�ʏ�̌���
+�E�B���h�E (Ctrl+F) �ƊԈ��Ȃ��悤�ɒ��ӂ��K�v�ł��B����� [�P��P��]
+�I�v�V�����Ƀ`�F�b�N�����Č������Ă��������B</p>
+<p>�����ɐ�������΁A2 ���̌������ʂ��\�������͂��ł��B���̂����ЂƂ�
+���݊J���Ă��� Vocab ���W���[�����ł̒�`�ł�����A�����ЂƂ̌������ʂ�
+�_�u���N���b�N���Ă��������B</p>
 <pre>
     add_command(Vocab::ShopBuy,    :buy)
     add_command(Vocab::ShopSell,   :sell,   !@purchase_only)
     add_command(Vocab::ShopCancel, :cancel)
 </pre>
-<p>Window_ShopCommand というセクションが開き、上のような箇所にカーソルが
-移動しましたね。すなわちこれが、モジュール内の定数の参照の仕方です。</p>
+<p>Window_ShopCommand �Ƃ����Z�N�V�������J���A��̂悤�ȉӏ��ɃJ�[�\����
+�ړ����܂����ˁB���Ȃ킿���ꂪ�A���W���[�����̒萔�̎Q�Ƃ̎d���ł��B</p>
 <pre>
-モジュール名::定数名
+���W���[����::�萔��
 </pre>
-<p>'::' という演算子は、前章でデータベースの内容を解説するとき、RPG::Actor
-といった形でも出てきました。クラスやモジュールの名前も定数と同じように
-扱われますから、これはつまり RPG というモジュールの中で Actor という
-クラスが定義されている、という意味だったのです。</p>
-<p>Window_ShopCommand セクションのその他の部分は今は関係ありませんの
-で、Vocab モジュールに戻ってください。</p>
+<p>'::' �Ƃ������Z�q�́A�O�͂Ńf�[�^�x�[�X�̓��e���������Ƃ��ARPG::Actor
+�Ƃ������`�ł��o�Ă��܂����B�N���X�⃂�W���[���̖��O���萔�Ɠ����悤��
+�����܂�����A����͂܂� RPG �Ƃ������W���[���̒��� Actor �Ƃ���
+�N���X����`����Ă���A�Ƃ����Ӗ��������̂ł��B</p>
+<p>Window_ShopCommand �Z�N�V�����̂��̑��̕����͍��͊֌W����܂����
+�ŁAVocab ���W���[���ɖ߂��Ă��������B</p>
 
 
 <h2><a name="sprintf">sprintf</a></h2>
-<p>Vocab モジュールの定義を上から順に見ていくと、'%s' という
-記号が含まれた文字列が見つかります。</p>
+<p>Vocab ���W���[���̒�`���ォ�珇�Ɍ��Ă����ƁA'%s' �Ƃ���
+�L�����܂܂ꂽ�����񂪌�����܂��B</p>
 <pre>
-  Emerge          = "%sが出現！"
-  Preemptive      = "%sは先手を取った！"
-  Surprise        = "%sは不意をつかれた！"
-  EscapeStart     = "%sは逃げ出した！"
+  Emerge          = "%s���o���I"
+  Preemptive      = "%s�͐���������I"
+  Surprise        = "%s�͕s�ӂ����ꂽ�I"
+  EscapeStart     = "%s�͓����o�����I"
 </pre>
-<p>比較的わかりやすそうなものを抜き出してみました。
-これを見ると、'%s' という部分が、キャラクターやアイテムの
-名前などに置き換わるのだということが想像できると思います。</p>
-<p>これは、<a href="../rgss/s_functions.html#L000402">sprintf</a> という
-組み込み関数の<strong>書式文字列</strong>です。sprintf というのは
-C 言語などで伝統的に使用される関数です。s は string (文字列) の
-頭文字、print は出力の意味で、f は format (書式) の頭文字です。</a>
-<p>Ruby では、たとえば次のように使用します。TEST セクションで
-実験してみてください。</p>
+<p>��r�I�킩��₷�����Ȃ��̂𔲂��o���Ă݂܂����B
+���������ƁA'%s' �Ƃ����������A�L�����N�^�[��A�C�e����
+���O�Ȃǂɒu�������̂��Ƃ������Ƃ��z���ł���Ǝv���܂��B</p>
+<p>����́A<a href="../rgss/s_functions.html#L000402">sprintf</a> �Ƃ���
+�g�ݍ��݊֐���<strong>����������</strong>�ł��Bsprintf �Ƃ����̂�
+C ����Ȃǂœ`���I�Ɏg�p�����֐��ł��Bs �� string (������) ��
+�������Aprint �͏o�͂̈Ӗ��ŁAf �� format (����) �̓������ł��B</a>
+<p>Ruby �ł́A���Ƃ��Ύ��̂悤�Ɏg�p���܂��BTEST �Z�N�V������
+�������Ă݂Ă��������B</p>
 <pre>
-p sprintf(&quot;%sに %s のダメージを与えた！&quot;, &quot;ドラゴン&quot;, 999)
+p sprintf(&quot;%s�� %s �̃_���[�W��^�����I&quot;, &quot;�h���S��&quot;, 999)
 </pre>
-<p>書式文字列を最初の引数とし、2 番目以降に、埋め込む文字列や数値など順番に
-指定すると覚えてください。's' は文字列を埋め込む<strong>指示子</strong>です
-が、999 などの数値を指定しても、Ruby では自動的に文字列に変換されますから
-心配ありません。この例では文字列や数値を直接引数にしていますが、もちろん
-実際には変数を使用することのほうが多いでしょう。</p>
-<p>書式が適用された新しい文字列が sprintf の戻り値となりますので、それを
-別の変数に代入したり、例のように p 関数などを使って表示したりすることが
-できます。</p>
-<p>sprintf を使うと、文字列を埋め込むだけでなく、数値を指定した桁数だけ出力
-したりなど、いろいろな細かい制御が可能です。現時点では '%s' の役割がわかれば
-問題ありませんが、将来必要になったときには <a href="../rgss/appendix02.html">
-sprintf フォーマット</a>を参照してください。</p>
+<p>������������ŏ��̈����Ƃ��A2 �Ԗڈȍ~�ɁA���ߍ��ޕ�����␔�l�ȂǏ��Ԃ�
+�w�肷��Ɗo���Ă��������B's' �͕�����𖄂ߍ���<strong>�w���q</strong>�ł�
+���A999 �Ȃǂ̐��l���w�肵�Ă��ARuby �ł͎����I�ɕ�����ɕϊ�����܂�����
+�S�z����܂���B���̗�ł͕�����␔�l�𒼐ڈ����ɂ��Ă��܂����A�������
+���ۂɂ͕ϐ����g�p���邱�Ƃ̂ق��������ł��傤�B</p>
+<p>�������K�p���ꂽ�V���������� sprintf �̖߂�l�ƂȂ�܂��̂ŁA�����
+�ʂ̕ϐ��ɑ��������A��̂悤�� p �֐��Ȃǂ��g���ĕ\�������肷�邱�Ƃ�
+�ł��܂��B</p>
+<p>sprintf ���g���ƁA������𖄂ߍ��ނ����łȂ��A���l���w�肵�����������o��
+������ȂǁA���낢��ȍׂ������䂪�\�ł��B�����_�ł� '%s' �̖������킩���
+��肠��܂��񂪁A�����K�v�ɂȂ����Ƃ��ɂ� <a href="../rgss/appendix02.html">
+sprintf �t�H�[�}�b�g</a>���Q�Ƃ��Ă��������B</p>
 
 
-<h2><a name="module_method">モジュールメソッド</a></h2>
-<p>さらに順に見ていくと、次のような個所があります。</p>
+<h2><a name="module_method">���W���[�����\�b�h</a></h2>
+<p>����ɏ��Ɍ��Ă����ƁA���̂悤�Ȍ�������܂��B</p>
 <pre>
   def self.basic(basic_id)
     $data_system.terms.basic[basic_id]
   end
 </pre>
-<p>メソッドの定義のように見えますが、'self.' という文字がついていますね。
-これは<strong>モジュールメソッド</strong>の定義です。</p>
-<p>ちなみに、同じ定義をクラス定義の中で行った場合は<strong>クラス
-メソッド</strong>と呼び、これらを合わせて、より一般的には<strong>特異
-メソッド</strong>とも呼びます。この概念は Ruby 独特のものなので、ほかの
-言語の経験者の方であっても少し戸惑ってしまうかもしれません。</p>
-<p>難しい話はさておき、モジュール内でメソッドを定義するときには 'self.'
-をメソッド名の前につけると覚えておけば、実用上は十分です。</p>
-<p>上のように定義しておくことで、</p>
+<p>���\�b�h�̒�`�̂悤�Ɍ����܂����A'self.' �Ƃ������������Ă��܂��ˁB
+�����<strong>���W���[�����\�b�h</strong>�̒�`�ł��B</p>
+<p>���Ȃ݂ɁA������`���N���X��`�̒��ōs�����ꍇ��<strong>�N���X
+���\�b�h</strong>�ƌĂсA���������킹�āA����ʓI�ɂ�<strong>����
+���\�b�h</strong>�Ƃ��Ăт܂��B���̊T�O�� Ruby �Ɠ��̂��̂Ȃ̂ŁA�ق���
+����̌o���҂̕��ł����Ă������˘f���Ă��܂���������܂���B</p>
+<p>����b�͂��Ă����A���W���[�����Ń��\�b�h���`����Ƃ��ɂ� 'self.'
+�����\�b�h���̑O�ɂ���Ɗo���Ă����΁A���p��͏\���ł��B</p>
+<p>��̂悤�ɒ�`���Ă������ƂŁA</p>
 <pre>
 Vocab.basic(0)
 </pre>
-または
+�܂���
 <pre>
 Vocab::basic(0)
 </pre>
-<p>このような呼び出し方ができるようになります。実際のスクリプトでは、
-定数の参照方法と見た目を統一するために後者の記法を使用しています。</p>
-<p>もし、このメソッドの定義を、</p>
+<p>���̂悤�ȌĂяo�������ł���悤�ɂȂ�܂��B���ۂ̃X�N���v�g�ł́A
+�萔�̎Q�ƕ��@�ƌ����ڂ𓝈ꂷ�邽�߂Ɍ�҂̋L�@���g�p���Ă��܂��B</p>
+<p>�����A���̃��\�b�h�̒�`���A</p>
 <pre>
   def basic(basic_id)
     $data_system.terms.basic[basic_id]
   end
 </pre>
-<p>このように「普通のメソッド」として書いてしまうと、Vocab.basic(0)
-のような参照方法では「メソッドが見つからない」というエラーになって
-しまいますので注意してください。</p>
-<p>なお、<a href="107_function.html">関数</a>の定義方法を学習した際、
-途中で中断する場合以外は return を省略することが可能と説明しました。
-ここでは return を省略した書き方になっていますが、省略せずに書くと
-次のようになります。</p>
+<p>���̂悤�Ɂu���ʂ̃��\�b�h�v�Ƃ��ď����Ă��܂��ƁAVocab.basic(0)
+�̂悤�ȎQ�ƕ��@�ł́u���\�b�h��������Ȃ��v�Ƃ����G���[�ɂȂ���
+���܂��܂��̂Œ��ӂ��Ă��������B</p>
+<p>�Ȃ��A<a href="107_function.html">�֐�</a>�̒�`���@���w�K�����ہA
+�r���Œ��f����ꍇ�ȊO�� return ���ȗ����邱�Ƃ��\�Ɛ������܂����B
+�����ł� return ���ȗ������������ɂȂ��Ă��܂����A�ȗ������ɏ�����
+���̂悤�ɂȂ�܂��B</p>
 <pre>
   def self.basic(basic_id)
     return $data_system.terms.basic[basic_id]
@@ -173,35 +173,35 @@ Vocab::basic(0)
 </pre>
 
 
-<h2><a name="read_terms">用語データの取得</a></h2>
-<p>メソッドの内容を確認しておきましょう。</p>
+<h2><a name="read_terms">�p��f�[�^�̎擾</a></h2>
+<p>���\�b�h�̓��e���m�F���Ă����܂��傤�B</p>
 <pre>
     $data_system.terms.basic[basic_id]
 </pre>
-<p>前章で<a href="201_database.html">データベース</a>のアクセス方法を
-きちんと確認した方なら、これは難しくはないでしょう。</p>
-<p>$data_system は <a href="../rgss/gc_rpg_system.html">RPG::System</a>
-クラスのインスタンスを指す変数で、その中の terms という属性は
+<p>�O�͂�<a href="201_database.html">�f�[�^�x�[�X</a>�̃A�N�Z�X���@��
+������Ɗm�F�������Ȃ�A����͓���͂Ȃ��ł��傤�B</p>
+<p>$data_system �� <a href="../rgss/gc_rpg_system.html">RPG::System</a>
+�N���X�̃C���X�^���X���w���ϐ��ŁA���̒��� terms �Ƃ���������
 <a href="../rgss/gc_rpg_system_terms.html">RPG::System::Terms</a>
-クラスのインスタンスを指しています。basic は基本ステータスの文字列が
-格納された配列を指しており、たとえば basic_id が 0 なら [レベル] に
-対応する用語を取得することになります。
-ツクールのデータベースでは [システム] と [用語] のタブが分かれていますが、
-データ上では [用語] は [システム] の一項目という扱いになっています。</p>
-<p>さらに続けて見ていくと、次のような行があります。</p>
+�N���X�̃C���X�^���X���w���Ă��܂��Bbasic �͊�{�X�e�[�^�X�̕�����
+�i�[���ꂽ�z����w���Ă���A���Ƃ��� basic_id �� 0 �Ȃ� [���x��] ��
+�Ή�����p����擾���邱�ƂɂȂ�܂��B
+�c�N�[���̃f�[�^�x�[�X�ł� [�V�X�e��] �� [�p��] �̃^�u��������Ă��܂����A
+�f�[�^��ł� [�p��] �� [�V�X�e��] �̈ꍀ�ڂƂ��������ɂȂ��Ă��܂��B</p>
+<p>����ɑ����Č��Ă����ƁA���̂悤�ȍs������܂��B</p>
 <pre>
-  def self.level;       basic(0);     end   # レベル
+  def self.level;       basic(0);     end   # ���x��
 </pre>
-<p>同じような定義が大量にあるため、セミコロンを使用することでメソッドの
-定義を一行で済ませています。普通の書き方をすると次のようになります。</p>
+<p>�����悤�Ȓ�`����ʂɂ��邽�߁A�Z�~�R�������g�p���邱�ƂŃ��\�b�h��
+��`����s�ōς܂��Ă��܂��B���ʂ̏�����������Ǝ��̂悤�ɂȂ�܂��B</p>
 <pre>
-  # レベル
+  # ���x��
   def self.level
     basic(0)
   end
 </pre>
-<p>これは、Vocab::basic(0) の代わりに、わかりやすく Vocab::level
-と書けるようにするためのメソッドです。残りの行の役割も同様です。</p>
+<p>����́AVocab::basic(0) �̑���ɁA�킩��₷�� Vocab::level
+�Ə�����悤�ɂ��邽�߂̃��\�b�h�ł��B�c��̍s�̖��������l�ł��B</p>
 
 
 <h6></h6>

@@ -1,241 +1,241 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>素材規格</title>
+<title>�f�ދK�i</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>素材規格</h1>
+<h1>�f�ދK�i</h1>
 
 <ul>
-<li><a href="#graphics">グラフィック素材</a></li>
-<li><a href="#tileset">タイルセット詳細</a></li>
-<li><a href="#windowskin">ウィンドウスキン詳細</a></li>
-<li><a href="#audio">オーディオ素材</a></li>
-<li><a href="#movie">ムービー素材</a></li>
+<li><a href="#graphics">�O���t�B�b�N�f��</a></li>
+<li><a href="#tileset">�^�C���Z�b�g�ڍ�</a></li>
+<li><a href="#windowskin">�E�B���h�E�X�L���ڍ�</a></li>
+<li><a href="#audio">�I�[�f�B�I�f��</a></li>
+<li><a href="#movie">���[�r�[�f��</a></li>
 </ul>
 
-<p>VX Ace では、グラフィックやオーディオなどあらゆる素材にオリジナルの
-ファイルを使用することができます。</p>
-<p>メインメニューの [ツール] から [素材管理] を選択すると、
-各種素材のインポートやエクスポートをするためのダイアログボックスが
-表示されます。ゲームフォルダに直接ファイルをコピーしても問題はありま
-せんが、素材管理ウィンドウには透明色設定などの機能もありますので、
-慣れないうちはこちらを使用すると良いでしょう。</p>
+<p>VX Ace �ł́A�O���t�B�b�N��I�[�f�B�I�Ȃǂ�����f�ނɃI���W�i����
+�t�@�C�����g�p���邱�Ƃ��ł��܂��B</p>
+<p>���C�����j���[�� [�c�[��] ���� [�f�ފǗ�] ��I������ƁA
+�e��f�ނ̃C���|�[�g��G�N�X�|�[�g�����邽�߂̃_�C�A���O�{�b�N�X��
+�\������܂��B�Q�[���t�H���_�ɒ��ڃt�@�C�����R�s�[���Ă����͂����
+���񂪁A�f�ފǗ��E�B���h�E�ɂ͓����F�ݒ�Ȃǂ̋@�\������܂��̂ŁA
+����Ȃ������͂�������g�p����Ɨǂ��ł��傤�B</p>
 
-<h2><a name="graphics">グラフィック素材</a></h2>
-<p>PNG ファイルと JPG ファイルを使用することができます。 PNG ファイルは、 32 ビットカラー (アルファチャネル) に完全対応しています。</p>
+<h2><a name="graphics">�O���t�B�b�N�f��</a></h2>
+<p>PNG �t�@�C���� JPG �t�@�C�����g�p���邱�Ƃ��ł��܂��B PNG �t�@�C���́A 32 �r�b�g�J���[ (�A���t�@�`���l��) �Ɋ��S�Ή����Ă��܂��B</p>
 <dl>
 
-<dt>キャラクター (Graphics/Characters)</dt>
+<dt>�L�����N�^�[ (Graphics/Characters)</dt>
 <dd>
-<p>マップ画面上で表示するキャラクターの画像を収めたファイルです。</p>
-<p>1 キャラクターあたりのサイズは任意で、 4 方向 (下、左、右、上) × 3 パターンの計 12 パターンを規定の順序で並べます。1 点のファイルには、この 1 キャラクターを、縦に 2 体、横に 4 体の計 8 体分並べて収めてください。 1 キャラクターのサイズは、この 1 ファイルの、幅の 1/12、高さの 1/8 から算出されます。</p>
-<p>なお、VX Ace では、建物との重なりをより自然に見せるために、キャラクターがタイルから上に 4 ドット分ずれて表示される仕様となっています。</p>
+<p>�}�b�v��ʏ�ŕ\������L�����N�^�[�̉摜�����߂��t�@�C���ł��B</p>
+<p>1 �L�����N�^�[������̃T�C�Y�͔C�ӂŁA 4 ���� (���A���A�E�A��) �~ 3 �p�^�[���̌v 12 �p�^�[�����K��̏����ŕ��ׂ܂��B1 �_�̃t�@�C���ɂ́A���� 1 �L�����N�^�[���A�c�� 2 �́A���� 4 �̂̌v 8 �̕����ׂĎ��߂Ă��������B 1 �L�����N�^�[�̃T�C�Y�́A���� 1 �t�@�C���́A���� 1/12�A������ 1/8 ����Z�o����܂��B</p>
+<p>�Ȃ��AVX Ace �ł́A�����Ƃ̏d�Ȃ����莩�R�Ɍ����邽�߂ɁA�L�����N�^�[���^�C�������� 4 �h�b�g������ĕ\�������d�l�ƂȂ��Ă��܂��B</p>
 <ul class="square">
-<li>ファイル名の頭に "!" をつけることで、 4 ドットずれる仕様が適用されなくなり、茂み属性による半透明処理の影響も受けなくなります。主にドアや宝箱といったマップのオブジェクトタイプのキャラクターに使用します。特殊文字 "$" との併用が可能です。
-<li>ファイル名の頭に "$" をつけることで、 1 キャラクター＝ 1 ファイルとして扱うことができるようになります。この場合、 1 キャラクターのサイズは、1 ファイルの幅の 1/3、 高さの 1/4 がキャラクターのサイズとして扱われます。特殊文字 "!" との併用が可能です。
+<li>�t�@�C�����̓��� "!" �����邱�ƂŁA 4 �h�b�g�����d�l���K�p����Ȃ��Ȃ�A�΂ݑ����ɂ�锼���������̉e�����󂯂Ȃ��Ȃ�܂��B��Ƀh�A��󔠂Ƃ������}�b�v�̃I�u�W�F�N�g�^�C�v�̃L�����N�^�[�Ɏg�p���܂��B���ꕶ�� "$" �Ƃ̕��p���\�ł��B
+<li>�t�@�C�����̓��� "$" �����邱�ƂŁA 1 �L�����N�^�[�� 1 �t�@�C���Ƃ��Ĉ������Ƃ��ł���悤�ɂȂ�܂��B���̏ꍇ�A 1 �L�����N�^�[�̃T�C�Y�́A1 �t�@�C���̕��� 1/3�A ������ 1/4 ���L�����N�^�[�̃T�C�Y�Ƃ��Ĉ����܂��B���ꕶ�� "!" �Ƃ̕��p���\�ł��B
 </ul>
 </dd>
 
-<dt>顔グラフィック (Graphics/Faces)</dt>
+<dt>��O���t�B�b�N (Graphics/Faces)</dt>
 <dd>
-<p>主にメニューやメッセージウィンドウで表示する顔グラフィックの画像を収めたファイルです。</p>
-<p>顔グラフィック 1 枚あたり 96&times;96 の画像を、横に 4 枚、縦に 2 枚の計 8 枚分並べたものを 1 ファイルとします。</p>
+<p>��Ƀ��j���[�⃁�b�Z�[�W�E�B���h�E�ŕ\�������O���t�B�b�N�̉摜�����߂��t�@�C���ł��B</p>
+<p>��O���t�B�b�N 1 �������� 96&times;96 �̉摜���A���� 4 ���A�c�� 2 ���̌v 8 �������ׂ����̂� 1 �t�@�C���Ƃ��܂��B</p>
 </dd>
 
-<dt>戦闘グラフィック (Graphics/Battlers)</dt>
+<dt>�퓬�O���t�B�b�N (Graphics/Battlers)</dt>
 <dd>
-<p>バトル画面上で表示する敵キャラの画像を収めたファイルです。</p>
-<p>サイズは任意ですが、基本的には 544&times;296 のバトル画面に収まるサイズにする必要があります。</p>
+<p>�o�g����ʏ�ŕ\������G�L�����̉摜�����߂��t�@�C���ł��B</p>
+<p>�T�C�Y�͔C�ӂł����A��{�I�ɂ� 544&times;296 �̃o�g����ʂɎ��܂�T�C�Y�ɂ���K�v������܂��B</p>
 </dd>
 
-<dt>アニメーション (Graphics/Animations)</dt>
+<dt>�A�j���[�V���� (Graphics/Animations)</dt>
 <dd>
-<p>主にバトル画面でエフェクトとして表示するアニメーション用の画像を収めたファイルです。</p>
-<p>セル 1 枚あたり 192&times;192 の画像を横方向に 5 枚並べたものを 1 ブロックとし、そのブロックを必要なだけ縦に長くしたものを 1 ファイルとします。 1 ファイルには、最大で 20 ブロック (100 セルぶん) まで収められますが、読み込み速度などの関係上、あまり大きな画像は望ましくありません。</p>
+<p>��Ƀo�g����ʂŃG�t�F�N�g�Ƃ��ĕ\������A�j���[�V�����p�̉摜�����߂��t�@�C���ł��B</p>
+<p>�Z�� 1 �������� 192&times;192 �̉摜���������� 5 �����ׂ����̂� 1 �u���b�N�Ƃ��A���̃u���b�N��K�v�Ȃ����c�ɒ����������̂� 1 �t�@�C���Ƃ��܂��B 1 �t�@�C���ɂ́A�ő�� 20 �u���b�N (100 �Z���Ԃ�) �܂Ŏ��߂��܂����A�ǂݍ��ݑ��x�Ȃǂ̊֌W��A���܂�傫�ȉ摜�͖]�܂�������܂���B</p>
 </dd>
 
-<dt>タイルセット (Graphics/Tilesets)</dt>
+<dt>�^�C���Z�b�g (Graphics/Tilesets)</dt>
 <dd>
-<p>マップを構成するタイルを収めたファイルです。</p>
-<p><a href="#tileset">タイルセット詳細</a>を参照してください。</p>
+<p>�}�b�v���\������^�C�������߂��t�@�C���ł��B</p>
+<p><a href="#tileset">�^�C���Z�b�g�ڍ�</a>���Q�Ƃ��Ă��������B</p>
 </dd>
 
-<dt>戦闘背景 (Graphics/Battlebacks1, Graphics/Battlebacks2)</dt>
+<dt>�퓬�w�i (Graphics/Battlebacks1, Graphics/Battlebacks2)</dt>
 <dd>
-<p>バトル画面の背景として使用する画像を収めたファイルです。</p>
-<p>Battlebacks1 には主に床の絵、Battlebacks2 には主に壁の絵を描き、それを任意に組み合わせて戦闘背景とします。</p>
-<p>サイズは、画面より一回り大きい 580&times;444 です。</p>
+<p>�o�g����ʂ̔w�i�Ƃ��Ďg�p����摜�����߂��t�@�C���ł��B</p>
+<p>Battlebacks1 �ɂ͎�ɏ��̊G�ABattlebacks2 �ɂ͎�ɕǂ̊G��`���A�����C�ӂɑg�ݍ��킹�Đ퓬�w�i�Ƃ��܂��B</p>
+<p>�T�C�Y�́A��ʂ�����傫�� 580&times;444 �ł��B</p>
 </dd>
 
-<dt>遠景 (Graphics/Parallaxes)</dt>
+<dt>���i (Graphics/Parallaxes)</dt>
 <dd>
-<p>マップの奥に表示する画像 (遠景) を収めたファイルです。</p>
-<p>サイズの制限は特にありません。ループさせたい場合は、Web サイトなどに使う壁紙の要領で上下左右がつながるように作成します。</p>
+<p>�}�b�v�̉��ɕ\������摜 (���i) �����߂��t�@�C���ł��B</p>
+<p>�T�C�Y�̐����͓��ɂ���܂���B���[�v���������ꍇ�́AWeb �T�C�g�ȂǂɎg���ǎ��̗v�̂ŏ㉺���E���Ȃ���悤�ɍ쐬���܂��B</p>
 </dd>
 
-<dt>タイトル (Graphics/Titles1, Graphics/Titles2)</dt>
+<dt>�^�C�g�� (Graphics/Titles1, Graphics/Titles2)</dt>
 <dd>
-<p>タイトル画面で表示する画像を収めたファイルです。</p>
-<p>Titles1 にはメインの背景、Titles2 には枠などを描き、それを任意に組み合わせてタイトル画面とします。</p>
-<p>サイズは 544&times;416 です。</p>
+<p>�^�C�g����ʂŕ\������摜�����߂��t�@�C���ł��B</p>
+<p>Titles1 �ɂ̓��C���̔w�i�ATitles2 �ɂ͘g�Ȃǂ�`���A�����C�ӂɑg�ݍ��킹�ă^�C�g����ʂƂ��܂��B</p>
+<p>�T�C�Y�� 544&times;416 �ł��B</p>
 </dd>
 
-<dt>フキダシアイコン (Graphics/System/Balloon.png)</dt>
+<dt>�t�L�_�V�A�C�R�� (Graphics/System/Balloon.png)</dt>
 <dd>
-<p>イベントコマンド [フキダシアイコンの表示] の実行時に表示されるアイコンを収めたファイルです。</p>
-<p>サイズは 256&times;320 となります。この中に、1 パターンあたりのサイズを 32&times;32 とした、8 パターンのアニメーション &times; 10 種類のフキダシアイコンを並べてください。</p>
+<p>�C�x���g�R�}���h [�t�L�_�V�A�C�R���̕\��] �̎��s���ɕ\�������A�C�R�������߂��t�@�C���ł��B</p>
+<p>�T�C�Y�� 256&times;320 �ƂȂ�܂��B���̒��ɁA1 �p�^�[��������̃T�C�Y�� 32&times;32 �Ƃ����A8 �p�^�[���̃A�j���[�V���� &times; 10 ��ނ̃t�L�_�V�A�C�R������ׂĂ��������B</p>
 </dd>
 
-<dt>アイコン (Graphics/System/IconSet.png)</dt>
+<dt>�A�C�R�� (Graphics/System/IconSet.png)</dt>
 <dd>
-<p>スキルやアイテムの名前の横に表示するアイコン画像を収めたファイルです。</p>
-<p>アイコン 1 個あたり 24&times;24 の画像を、横方向に 16 個、縦方向に必要なだけ並べます。</p>
-<p>なお、能力強化および弱体の状態を示すのに使うアイコン番号は 64〜95 で固定となっています。</p>
+<p>�X�L����A�C�e���̖��O�̉��ɕ\������A�C�R���摜�����߂��t�@�C���ł��B</p>
+<p>�A�C�R�� 1 ������ 24&times;24 �̉摜���A�������� 16 �A�c�����ɕK�v�Ȃ������ׂ܂��B</p>
+<p>�Ȃ��A�\�͋�������ю�̂̏�Ԃ������̂Ɏg���A�C�R���ԍ��� 64�`95 �ŌŒ�ƂȂ��Ă��܂��B</p>
 </dd>
 
-<dt>戦闘開始時効果 (Graphics/System/BattleStart.png)</dt>
+<dt>�퓬�J�n������ (Graphics/System/BattleStart.png)</dt>
 <dd>
-<p>戦闘開始時に表示するエフェクトの画像を収めたファイルです。</p>
-<p>サイズは 544&times;416 で、グレースケール 256 色の PNG ファイルでなければなりません。パレット番号の小さいほうから大きいほうに向かって画面が書き換わります。</p>
+<p>�퓬�J�n���ɕ\������G�t�F�N�g�̉摜�����߂��t�@�C���ł��B</p>
+<p>�T�C�Y�� 544&times;416 �ŁA�O���[�X�P�[�� 256 �F�� PNG �t�@�C���łȂ���΂Ȃ�܂���B�p���b�g�ԍ��̏������ق�����傫���ق��Ɍ������ĉ�ʂ����������܂��B</p>
 </dd>
 
-<dt>飛行船の影 (Graphics/System/Shadow.png)</dt>
+<dt>��s�D�̉e (Graphics/System/Shadow.png)</dt>
 <dd>
-<p>飛行船に乗っているときに表示される影の部分の画像を収めたファイルです。</p>
-<p>サイズは任意です。</p>
+<p>��s�D�ɏ���Ă���Ƃ��ɕ\�������e�̕����̉摜�����߂��t�@�C���ł��B</p>
+<p>�T�C�Y�͔C�ӂł��B</p>
 </dd>
 
-<dt>ゲームオーバー (Graphics/System/Gameover.png)</dt>
+<dt>�Q�[���I�[�o�[ (Graphics/System/Gameover.png)</dt>
 <dd>
-<p>ゲームオーバー画面で表示する画像を収めたファイルです。</p>
-<p>サイズは 544&times;416 です。</p>
+<p>�Q�[���I�[�o�[��ʂŕ\������摜�����߂��t�@�C���ł��B</p>
+<p>�T�C�Y�� 544&times;416 �ł��B</p>
 </dd>
 
-<dt>ウィンドウスキン (Graphics/System/Window.png)</dt>
+<dt>�E�B���h�E�X�L�� (Graphics/System/Window.png)</dt>
 <dd>
-<p>ウィンドウを構成する画像などを収めたファイルです。</p>
-<p><a href="#windowskin">ウィンドウスキン詳細</a>を参照してください。</p>
+<p>�E�B���h�E���\������摜�Ȃǂ����߂��t�@�C���ł��B</p>
+<p><a href="#windowskin">�E�B���h�E�X�L���ڍ�</a>���Q�Ƃ��Ă��������B</p>
 </dd>
 
-<dt>ピクチャ (Graphics/Pictures)</dt>
+<dt>�s�N�`�� (Graphics/Pictures)</dt>
 <dd>
-<p>ゲーム中にイベントを使って表示するための画像を収めたファイルです。</p>
-<p>サイズは任意です。</p>
+<p>�Q�[�����ɃC�x���g���g���ĕ\�����邽�߂̉摜�����߂��t�@�C���ł��B</p>
+<p>�T�C�Y�͔C�ӂł��B</p>
 </dd>
 
 </dl>
 
 
-<h2><a name="tileset">タイルセット詳細</a></h2>
-<p>タイル 1 個あたりは 32&times;32 で、これらを以下の規則に従って A 〜 E の 5 種類のセットにまとめる必要があります。</p>
-<p>なお、データベース［タイルセット］の［モード］に設定した内容によって、仕様が変化するものがあります。［モード］を［VX 互換タイプ］にした場合の仕様については、『RPGツクールVX』の素材規格をご参照ください。</p>
+<h2><a name="tileset">�^�C���Z�b�g�ڍ�</a></h2>
+<p>�^�C�� 1 ������� 32&times;32 �ŁA�������ȉ��̋K���ɏ]���� A �` E �� 5 ��ނ̃Z�b�g�ɂ܂Ƃ߂�K�v������܂��B</p>
+<p>�Ȃ��A�f�[�^�x�[�X�m�^�C���Z�b�g�n�́m���[�h�n�ɐݒ肵�����e�ɂ���āA�d�l���ω�������̂�����܂��B�m���[�h�n���mVX �݊��^�C�v�n�ɂ����ꍇ�̎d�l�ɂ��ẮA�wRPG�c�N�[��VX�x�̑f�ދK�i�����Q�Ƃ��������B</p>
 
 <dl>
-<dt>セット A</dt>
+<dt>�Z�b�g A</dt>
 <dd>
-<p>マップ描画の際に、下層扱いとなるセットです。このセットはさらに細かく 5 つのパーツにわかれており、ほとんどのパーツは "オートタイル" と呼ばれる、境界線が自動的に作成される特殊なタイルによって構成されています。</p>
+<p>�}�b�v�`��̍ۂɁA���w�����ƂȂ�Z�b�g�ł��B���̃Z�b�g�͂���ɍׂ��� 5 �̃p�[�c�ɂ킩��Ă���A�قƂ�ǂ̃p�[�c�� "�I�[�g�^�C��" �ƌĂ΂��A���E���������I�ɍ쐬��������ȃ^�C���ɂ���č\������Ă��܂��B</p>
 
-<p>オートタイルは、原則として下図のような並びの 6 個のパターンが基本構造となります。</p>
-<img src="img/tileset1.png" alt="オートタイル" width="64"
+<p>�I�[�g�^�C���́A�����Ƃ��ĉ��}�̂悤�ȕ��т� 6 �̃p�^�[������{�\���ƂȂ�܂��B</p>
+<img src="img/tileset1.png" alt="�I�[�g�^�C��" width="64"
  style="float:left;margin-top=1.0em;margin-right=1.5em;margin-bottom=1.0em">
 <dl style="float:left;">
 <dt>a</dt>
-<dd>代表パターン (タイルパレット表示用)</dd>
+<dd>��\�p�^�[�� (�^�C���p���b�g�\���p)</dd>
 <dt>b</dt>
-<dd>四隅に境界を持つパターン</dd>
+<dd>�l���ɋ��E�����p�^�[��</dd>
 <dt>c</dt>
-<dd>集合パターン ( 8 方向の境界と中央でひとまとまりの対象を表す)</dd>
+<dd>�W���p�^�[�� ( 8 �����̋��E�ƒ����łЂƂ܂Ƃ܂�̑Ώۂ�\��)</dd>
 </dl>
 <br>
-<img src="img/tileset5.png" alt="半透明にならない森タイル" class="float_r">
-<p>オートタイルの画像で、右下から ( 4 , 4 ) の位置が透明だった場合、そのオートタイルは“森タイプ”と判定されます。森タイプのオートタイルに茂み属性がつけられた場合、右下隅と左下隅の境界線を含む以下の 8 種類のタイル上では歩行グラフィックが半透明になりません。</p>
+<img src="img/tileset5.png" alt="�������ɂȂ�Ȃ��X�^�C��" class="float_r">
+<p>�I�[�g�^�C���̉摜�ŁA�E������ ( 4 , 4 ) �̈ʒu�������������ꍇ�A���̃I�[�g�^�C���́g�X�^�C�v�h�Ɣ��肳��܂��B�X�^�C�v�̃I�[�g�^�C���ɖ΂ݑ���������ꂽ�ꍇ�A�E�����ƍ������̋��E�����܂ވȉ��� 8 ��ނ̃^�C����ł͕��s�O���t�B�b�N���������ɂȂ�܂���B</p>
 <br>
 
 <dl>
-<dt> パーツ 1</dt>
+<dt> �p�[�c 1</dt>
 <dd>
 <div align="center"><img src="img/tileset2.png" alt="TileA1"></div>
-<p>サイズは 512&times;384 です。上図のように 5 パターンのブロックを組みあわせて構成します。基本的に、このパーツにあるタイル同士は、隣接しても境界線が作成されません。</p>
-<p>小型船・大型船での通行が可能なのは、このパーツのタイルのみです。ただし、歩行できるようにタイルセットで通行設定された場合は、小型船・大型船で進入できなくなります。</p>
+<p>�T�C�Y�� 512&times;384 �ł��B��}�̂悤�� 5 �p�^�[���̃u���b�N��g�݂��킹�č\�����܂��B��{�I�ɁA���̃p�[�c�ɂ���^�C�����m�́A�אڂ��Ă����E�����쐬����܂���B</p>
+<p>���^�D�E��^�D�ł̒ʍs���\�Ȃ̂́A���̃p�[�c�̃^�C���݂̂ł��B�������A���s�ł���悤�Ƀ^�C���Z�b�g�Œʍs�ݒ肳�ꂽ�ꍇ�́A���^�D�E��^�D�Ői���ł��Ȃ��Ȃ�܂��B</p>
 <dl>
-<dt>ブロック A</dt>
+<dt>�u���b�N A</dt>
 <dd>
-<p>海タイルとして使われるオートタイルです。オートタイル基本構造のパターンを 3 つ横に並べて配置することで、アニメーションさせることができます。</p>
+<p>�C�^�C���Ƃ��Ďg����I�[�g�^�C���ł��B�I�[�g�^�C����{�\���̃p�^�[���� 3 ���ɕ��ׂĔz�u���邱�ƂŁA�A�j���[�V���������邱�Ƃ��ł��܂��B</p>
 </dd>
-<dt>ブロック B</dt>
+<dt>�u���b�N B</dt>
 <dd>
-<p>深海タイルとして使われるオートタイルです。このブロックのタイルのみ、パーツ 1 のタイルと隣接したときに海タイルの境界線が作成されます。また、このブロックの透明色部分には、ブロック A のタイルが自動的に補完されます。ブロック A と同じく、オートタイル基本構造のパターンを 3 つ横に並べて配置することでアニメーションさせることが可能です。</p>
-<p>なお、このブロックのタイルは、小型船での通行ができません。</p>
+<p>�[�C�^�C���Ƃ��Ďg����I�[�g�^�C���ł��B���̃u���b�N�̃^�C���̂݁A�p�[�c 1 �̃^�C���Ɨאڂ����Ƃ��ɊC�^�C���̋��E�����쐬����܂��B�܂��A���̃u���b�N�̓����F�����ɂ́A�u���b�N A �̃^�C���������I�ɕ⊮����܂��B�u���b�N A �Ɠ������A�I�[�g�^�C����{�\���̃p�^�[���� 3 ���ɕ��ׂĔz�u���邱�ƂŃA�j���[�V���������邱�Ƃ��\�ł��B</p>
+<p>�Ȃ��A���̃u���b�N�̃^�C���́A���^�D�ł̒ʍs���ł��܂���B</p>
 </dd>
-<dt>ブロック C</dt>
+<dt>�u���b�N C</dt>
 <dd>
-<p>ブロック A の海タイルを装飾するオートタイルです。このブロックの透明色部分には、ブロック A のタイルが自動的に補完されます。</p>
-<p>なお、このブロックのタイルは、小型船・大型船での通行ができません。</p>
+<p>�u���b�N A �̊C�^�C���𑕏�����I�[�g�^�C���ł��B���̃u���b�N�̓����F�����ɂ́A�u���b�N A �̃^�C���������I�ɕ⊮����܂��B</p>
+<p>�Ȃ��A���̃u���b�N�̃^�C���́A���^�D�E��^�D�ł̒ʍs���ł��܂���B</p>
 </dd>
-<dt>ブロック D</dt>
+<dt>�u���b�N D</dt>
 <dd>
-<p>水タイルとして使われるオートタイルです。オートタイル基本構造のパターンを 3 つ横に並べて配置することでアニメーションさせることができます。</p>
+<p>���^�C���Ƃ��Ďg����I�[�g�^�C���ł��B�I�[�g�^�C����{�\���̃p�^�[���� 3 ���ɕ��ׂĔz�u���邱�ƂŃA�j���[�V���������邱�Ƃ��ł��܂��B</p>
 </dd>
-<dt>ブロック E</dt>
+<dt>�u���b�N E</dt>
 <dd>
-<p>滝タイルとして使われます。横方向に 2 個のタイルで集合パターンを形成し、3 つ縦に並べて配置することでアニメーションさせることができます。</p>
-<p>なお、このブロックのタイルは、小型船・大型船での通行ができません。</p>
+<p>��^�C���Ƃ��Ďg���܂��B�������� 2 �̃^�C���ŏW���p�^�[�����`�����A3 �c�ɕ��ׂĔz�u���邱�ƂŃA�j���[�V���������邱�Ƃ��ł��܂��B</p>
+<p>�Ȃ��A���̃u���b�N�̃^�C���́A���^�D�E��^�D�ł̒ʍs���ł��܂���B</p>
 </dd>
 </dl>
 </dd>
 </dl>
 
 <dl>
-<dt> パーツ 2</dt>
+<dt> �p�[�c 2</dt>
 <dd>
 <div align="center"><img src="img/tileset3.png" alt="TileA2"></div>
-<p>サイズは 512&times;384 です。上図のように 2 パターンのブロックを組みあわせたものを、縦に 4 つ並べて構成します。このパーツのみ、データベース［タイルセット］の［モード］に設定した内容によって、仕様が変化します。</p>
-<img src="img/tileset4.png" alt="テーブル" style="float:right">
-<p>このパーツにカウンター属性がつけられた場合、テーブルを表現するオートタイルとして使われ、配置した際にパターン下端の 8 ドット分が下にずれて表示されます。</p><br>
+<p>�T�C�Y�� 512&times;384 �ł��B��}�̂悤�� 2 �p�^�[���̃u���b�N��g�݂��킹�����̂��A�c�� 4 ���ׂč\�����܂��B���̃p�[�c�̂݁A�f�[�^�x�[�X�m�^�C���Z�b�g�n�́m���[�h�n�ɐݒ肵�����e�ɂ���āA�d�l���ω����܂��B</p>
+<img src="img/tileset4.png" alt="�e�[�u��" style="float:right">
+<p>���̃p�[�c�ɃJ�E���^�[����������ꂽ�ꍇ�A�e�[�u����\������I�[�g�^�C���Ƃ��Ďg���A�z�u�����ۂɃp�^�[�����[�� 8 �h�b�g�������ɂ���ĕ\������܂��B</p><br>
 
 <dl>
-<dt>ブロック A (フィールドタイプ)</dt>
+<dt>�u���b�N A (�t�B�[���h�^�C�v)</dt>
 <dd>
-<img src="img/tileset3a.png" alt="TileA2-ブロックA-フィールドタイプ" class="float_r">
-<p>4 パターンのオートタイルで構成され、実際のタイルセットでは、1 のみ、1 と 2 が重なったもの、3 のみ、3 と 4 が重なったものとして扱われます。</p></dd><br>
-<dt>ブロック B (フィールドタイプ)</dt>
+<img src="img/tileset3a.png" alt="TileA2-�u���b�NA-�t�B�[���h�^�C�v" class="float_r">
+<p>4 �p�^�[���̃I�[�g�^�C���ō\������A���ۂ̃^�C���Z�b�g�ł́A1 �̂݁A1 �� 2 ���d�Ȃ������́A3 �̂݁A3 �� 4 ���d�Ȃ������̂Ƃ��Ĉ����܂��B</p></dd><br>
+<dt>�u���b�N B (�t�B�[���h�^�C�v)</dt>
 <dd>
-<p>4 つのパターンを収めることができ、実際のタイルセットではブロック A のタイルと重ねて配置できる<a href="2120_map_design.html#notice">特殊仕様</a>のタイルとなります。</p></dd>
-<dt>ブロック A (エリアタイプ)</dt>
+<p>4 �̃p�^�[�������߂邱�Ƃ��ł��A���ۂ̃^�C���Z�b�g�ł̓u���b�N A �̃^�C���Əd�˂Ĕz�u�ł���<a href="2120_map_design.html#notice">����d�l</a>�̃^�C���ƂȂ�܂��B</p></dd>
+<dt>�u���b�N A (�G���A�^�C�v)</dt>
 <dd>
-<p>4 パターンのオートタイルで構成され、実際のタイルセットでは、左から 3 パターンは互いに境界線が競合し合わないもの、右端の 1 パターンが他のタイルとの境界線がつかないものとして扱われます。</p></dd>
-<dt>ブロック B (エリアタイプ)</dt>
+<p>4 �p�^�[���̃I�[�g�^�C���ō\������A���ۂ̃^�C���Z�b�g�ł́A������ 3 �p�^�[���݂͌��ɋ��E��������������Ȃ����́A�E�[�� 1 �p�^�[�������̃^�C���Ƃ̋��E�������Ȃ����̂Ƃ��Ĉ����܂��B</p></dd>
+<dt>�u���b�N B (�G���A�^�C�v)</dt>
 <dd>
-<p>4 つのパターンを収めることができ、実際のタイルセットではブロック A のタイルと重ねて配置できるタイルとなります。</p></dd>
+<p>4 �̃p�^�[�������߂邱�Ƃ��ł��A���ۂ̃^�C���Z�b�g�ł̓u���b�N A �̃^�C���Əd�˂Ĕz�u�ł���^�C���ƂȂ�܂��B</p></dd>
 </dl>
 </dd>
 </dl>
 
 <dl>
-<dt> パーツ 3</dt>
+<dt> �p�[�c 3</dt>
 <dd>
-<p>主に建物の外観として使われるオートタイルです。サイズは 512&times;256 で、オートタイルの集合パターンのみで形成されたものを、横に 8 つ、縦に 4 つ並べて構成します。</p>
-<p>このパーツのタイルは、マップ描画時に縦方向に 2 つ以上並べて配置することで、隣接する右側のタイルに影が自動生成されます。ただし、その隣接したタイルがパーツ 2 (ブロック C を除く) かパーツ 5 以外のものだった場合、影の自動生成は行なわれません。</p>
+<p>��Ɍ����̊O�ςƂ��Ďg����I�[�g�^�C���ł��B�T�C�Y�� 512&times;256 �ŁA�I�[�g�^�C���̏W���p�^�[���݂̂Ō`�����ꂽ���̂��A���� 8 �A�c�� 4 ���ׂč\�����܂��B</p>
+<p>���̃p�[�c�̃^�C���́A�}�b�v�`�掞�ɏc������ 2 �ȏ���ׂĔz�u���邱�ƂŁA�אڂ���E���̃^�C���ɉe��������������܂��B�������A���̗אڂ����^�C�����p�[�c 2 (�u���b�N C ������) ���p�[�c 5 �ȊO�̂��̂������ꍇ�A�e�̎��������͍s�Ȃ��܂���B</p>
 </dd>
 </dl>
 
 <dl>
-<dt> パーツ 4</dt>
+<dt> �p�[�c 4</dt>
 <dd>
-<p>主に壁として使われるオートタイルです。ダンジョン生成の壁にも使用されます。サイズは 512&times;480 です。オートタイル基本構造と、オートタイルの集合パターンのみを縦に並べたものを、横に 8 つ、縦に 3 つ並べて構成します。</p>
-<p>このパーツのタイルは、マップ描画時に縦方向に 2 つ以上並べて配置することで、隣接する右側のタイルに影が自動生成されます。ただし、その隣接したタイルがパーツ 2 (ブロック C を除く) かパーツ 5 以外のものだった場合、影の自動生成は行なわれません。</p>
+<p>��ɕǂƂ��Ďg����I�[�g�^�C���ł��B�_���W���������̕ǂɂ��g�p����܂��B�T�C�Y�� 512&times;480 �ł��B�I�[�g�^�C����{�\���ƁA�I�[�g�^�C���̏W���p�^�[���݂̂��c�ɕ��ׂ����̂��A���� 8 �A�c�� 3 ���ׂč\�����܂��B</p>
+<p>���̃p�[�c�̃^�C���́A�}�b�v�`�掞�ɏc������ 2 �ȏ���ׂĔz�u���邱�ƂŁA�אڂ���E���̃^�C���ɉe��������������܂��B�������A���̗אڂ����^�C�����p�[�c 2 (�u���b�N C ������) ���p�[�c 5 �ȊO�̂��̂������ꍇ�A�e�̎��������͍s�Ȃ��܂���B</p>
 </dd>
 </dl>
 
 <dl>
-<dt> パーツ 5</dt>
+<dt> �p�[�c 5</dt>
 <dd>
-<p>サイズは 256&times;512 で、この中にタイルを 8&times;16 個並べてください。このファイルに収められているタイルは、すべて通常タイル扱いとなります。上から 3、5、7 行目のタイルはダンジョン生成の床にも使用されます。</p>
+<p>�T�C�Y�� 256&times;512 �ŁA���̒��Ƀ^�C���� 8&times;16 ���ׂĂ��������B���̃t�@�C���Ɏ��߂��Ă���^�C���́A���ׂĒʏ�^�C�������ƂȂ�܂��B�ォ�� 3�A5�A7 �s�ڂ̃^�C���̓_���W���������̏��ɂ��g�p����܂��B</p>
 </dd>
 </dl>
 
@@ -243,104 +243,104 @@
 </dl>
 
 <dl>
-<dt>セット B 〜セット E</dt>
+<dt>�Z�b�g B �`�Z�b�g E</dt>
 <dd>
-<p>マップ描画の際に、上層扱いとなるセットです。</p>
-<p>それぞれサイズは 512&times;512 で、この中にタイルを 16&times;16 個並べてください。</p>
+<p>�}�b�v�`��̍ۂɁA��w�����ƂȂ�Z�b�g�ł��B</p>
+<p>���ꂼ��T�C�Y�� 512&times;512 �ŁA���̒��Ƀ^�C���� 16&times;16 ���ׂĂ��������B</p>
 <ul class="square">
-<li>セット B の一番左上のタイルは、上層に何も置かれていない状態を表すため、必ず空白にしておきます。</li>
+<li>�Z�b�g B �̈�ԍ���̃^�C���́A��w�ɉ����u����Ă��Ȃ���Ԃ�\�����߁A�K���󔒂ɂ��Ă����܂��B</li>
 </ul>
 </dd>
 </dl>
 
 
-<h2><a name="windowskin">ウィンドウスキン詳細</a></h2>
-<img src="img/windowskin.png" alt="ウィンドウスキン" class="float_r">
-<p>ウィンドウスキンは、128&times;128 の画像です。通常、32 ビットの PNG ファイルを使用します。</p>
+<h2><a name="windowskin">�E�B���h�E�X�L���ڍ�</a></h2>
+<img src="img/windowskin.png" alt="�E�B���h�E�X�L��" class="float_r">
+<p>�E�B���h�E�X�L���́A128&times;128 �̉摜�ł��B�ʏ�A32 �r�b�g�� PNG �t�@�C�����g�p���܂��B</p>
 <dl>
 <dt>A</dt>
 <dd>
-<p>ウィンドウの背景 1 。 64&times;64 のパターンが、実際のウィンドウに合わせて拡大縮小して描画されます。厳密には、ウィンドウの周囲を 2 ドットずつ小さくしたサイズになります。これは角の丸いウィンドウを自然に見せるための仕様です。</p>
+<p>�E�B���h�E�̔w�i 1 �B 64&times;64 �̃p�^�[�����A���ۂ̃E�B���h�E�ɍ��킹�Ċg��k�����ĕ`�悳��܂��B�����ɂ́A�E�B���h�E�̎��͂� 2 �h�b�g�������������T�C�Y�ɂȂ�܂��B����͊p�̊ۂ��E�B���h�E�����R�Ɍ����邽�߂̎d�l�ł��B</p>
 </dd>
 <dt>B</dt>
 <dd>
-<p>ウィンドウの背景 2 。 64&times;64 のパターンが、背景 1 の上に重なるようにタイリング状に描画されます。</p>
+<p>�E�B���h�E�̔w�i 2 �B 64&times;64 �̃p�^�[�����A�w�i 1 �̏�ɏd�Ȃ�悤�Ƀ^�C�����O��ɕ`�悳��܂��B</p>
 </dd>
 <dt>C</dt>
 <dd>
-<p>ウィンドウの枠および矢印。四隅の 16&times;16 はそのまま描画され、残りの枠 (辺の部分) はウィンドウに合わせて 16 ドットの太さでタイリング状に描画されます。矢印は、ウィンドウの内容をスクロールできる場合の目印として使用します。</p>
+<p>�E�B���h�E�̘g����і��B�l���� 16&times;16 �͂��̂܂ܕ`�悳��A�c��̘g (�ӂ̕���) �̓E�B���h�E�ɍ��킹�� 16 �h�b�g�̑����Ń^�C�����O��ɕ`�悳��܂��B���́A�E�B���h�E�̓��e���X�N���[���ł���ꍇ�̖ڈ�Ƃ��Ďg�p���܂��B</p>
 </dd>
 <dt>D</dt>
 <dd>
-<p>コマンドカーソル。ウィンドウ内で選択されている項目を表すために使用します。周囲の 2 ドットは縦横のみに拡大縮小され、残りはカーソルの大きさに合わせて平面的に拡大縮小して描画されます。</p>
+<p>�R�}���h�J�[�\���B�E�B���h�E���őI������Ă��鍀�ڂ�\�����߂Ɏg�p���܂��B���͂� 2 �h�b�g�͏c���݂̂Ɋg��k������A�c��̓J�[�\���̑傫���ɍ��킹�ĕ��ʓI�Ɋg��k�����ĕ`�悳��܂��B</p>
 </dd>
 <dt>E</dt>
 <dd>
-<p>ポーズサイン。メッセージウィンドウのボタン入力待ち状態を表すために使用します。 16&times;16 のパターン 4 種でアニメーションします。</p>
+<p>�|�[�Y�T�C���B���b�Z�[�W�E�B���h�E�̃{�^�����͑҂���Ԃ�\�����߂Ɏg�p���܂��B 16&times;16 �̃p�^�[�� 4 ��ŃA�j���[�V�������܂��B</p>
 </dd>
 <dt>F</dt>
 <dd>
-<p>イベントコマンド [文章の表示] の制御文字で使用できる文字色です。 8&times;8 の画像を横方向に 8 枚 (色) 並べたものを縦方向に 4 個並べます。</p>
+<p>�C�x���g�R�}���h [���͂̕\��] �̐��䕶���Ŏg�p�ł��镶���F�ł��B 8&times;8 �̉摜���������� 8 �� (�F) ���ׂ����̂��c������ 4 ���ׂ܂��B</p>
 </dd>
 </dl>
 
 
-<h2><a name="audio">オーディオ素材</a></h2>
-<p>OGG、WMA、MP3、WAV、MID の 5 種類のファイルを使用することができ
-ます (MID 形式は BGM と ME のみ) 。原則として、全てのタイプの素材に
-ついて OGG ファイルの使用が推奨されます。</p>
+<h2><a name="audio">�I�[�f�B�I�f��</a></h2>
+<p>OGG�AWMA�AMP3�AWAV�AMID �� 5 ��ނ̃t�@�C�����g�p���邱�Ƃ��ł�
+�܂� (MID �`���� BGM �� ME �̂�) �B�����Ƃ��āA�S�Ẵ^�C�v�̑f�ނ�
+���� OGG �t�@�C���̎g�p����������܂��B</p>
 
 <dl>
 
 <dt>BGM (Audio/BGM)</dt>
 <dd>
-<p>背景音楽 (BackGround Music) です。</p>
+<p>�w�i���y (BackGround Music) �ł��B</p>
 </dd>
 
 <dt>BGS (Audio/BGS)</dt>
 <dd>
-<p>背景音 (BackGround Sound) です。</p>
+<p>�w�i�� (BackGround Sound) �ł��B</p>
 </dd>
 
 <dt>ME (Audio/ME)</dt>
 <dd>
-<p>効果音楽 (Music Effect) です。</p>
+<p>���ʉ��y (Music Effect) �ł��B</p>
 </dd>
 
 <dt>SE (Audio/SE)</dt>
 <dd>
-<p>効果音 (Sound Effect) です。</p>
+<p>���ʉ� (Sound Effect) �ł��B</p>
 </dd>
 
 </dl>
 
-<p>各ファイル形式の特徴は、以下の通りです。</p>
+<p>�e�t�@�C���`���̓����́A�ȉ��̒ʂ�ł��B</p>
 
 <table class="sys" border="1" cellspacing="0" cellpadding="4">
 <tr>
-<th>OGG</th><td>音質、圧縮率ともに優れた音声圧縮形式である Ogg Vorbis
-のデータを含むファイルです。演奏時間が 3 秒以上のファイルは自動的に
-ストリーム再生されます。このとき、コメントとして LOOPSTART、LOOPLENGTH
-という値が埋め込まれていると、その数値に対応するサンプル位置をリピート
-の範囲として認識します。</td>
+<th>OGG</th><td>�����A���k���Ƃ��ɗD�ꂽ�������k�`���ł��� Ogg Vorbis
+�̃f�[�^���܂ރt�@�C���ł��B���t���Ԃ� 3 �b�ȏ�̃t�@�C���͎����I��
+�X�g���[���Đ�����܂��B���̂Ƃ��A�R�����g�Ƃ��� LOOPSTART�ALOOPLENGTH
+�Ƃ����l�����ߍ��܂�Ă���ƁA���̐��l�ɑΉ�����T���v���ʒu�����s�[�g
+�͈̔͂Ƃ��ĔF�����܂��B</td>
 </tr><tr>
-<th>WMA</th><td>Windows Media Player で使用されている音声圧縮形式
-です。DirectShow により演奏されます。</td>
+<th>WMA</th><td>Windows Media Player �Ŏg�p����Ă��鉹�����k�`��
+�ł��BDirectShow �ɂ�艉�t����܂��B</td>
 </tr><tr>
-<th>MP3</th><td>普及率の高い音声圧縮形式です。DirectShow により演奏され
-ます。特徴は WMA と同じです。</td>
+<th>MP3</th><td>���y���̍����������k�`���ł��BDirectShow �ɂ�艉�t����
+�܂��B������ WMA �Ɠ����ł��B</td>
 </tr><tr>
-<th>WAV</th><td>Windows 標準のサウンド形式です。通常の無圧縮 WAV の
-ほか、Microsoft ADPCM の読み込みもサポートしています。</td>
+<th>WAV</th><td>Windows �W���̃T�E���h�`���ł��B�ʏ�̖����k WAV ��
+�ق��AMicrosoft ADPCM �̓ǂݍ��݂��T�|�[�g���Ă��܂��B</td>
 </tr><tr>
-<th>MID</th><td>DirectMusic Synthesizer で演奏される MIDI ファイル
-です。BGM の場合、MIDI データ中にコントロールチェンジの 111 番があると、
-曲を最後まで演奏したあとのリピート位置の目印として認識します。</td>
+<th>MID</th><td>DirectMusic Synthesizer �ŉ��t����� MIDI �t�@�C��
+�ł��BBGM �̏ꍇ�AMIDI �f�[�^���ɃR���g���[���`�F���W�� 111 �Ԃ�����ƁA
+�Ȃ��Ō�܂ŉ��t�������Ƃ̃��s�[�g�ʒu�̖ڈ�Ƃ��ĔF�����܂��B</td>
 </tr></table>
 
-<h2><a name="movie">ムービー素材</a></h2>
-<p>Movies フォルダに格納してください。使用できるのは、OGV (Ogg Theora形式) のファイルのみです。</p>
-<p>ムービーはゲーム画面中央に重ねて表示されます。ムービーがゲーム画面 (544×416) を超える大きさの場合、画面に収まらない部分はカットされます。</p>
+<h2><a name="movie">���[�r�[�f��</a></h2>
+<p>Movies �t�H���_�Ɋi�[���Ă��������B�g�p�ł���̂́AOGV (Ogg Theora�`��) �̃t�@�C���݂̂ł��B</p>
+<p>���[�r�[�̓Q�[����ʒ����ɏd�˂ĕ\������܂��B���[�r�[���Q�[����� (544�~416) �𒴂���傫���̏ꍇ�A��ʂɎ��܂�Ȃ������̓J�b�g����܂��B</p>
 
 <h6></h6>
 </body>

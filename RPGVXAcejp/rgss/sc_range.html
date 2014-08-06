@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Range</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,56 +9,56 @@
 <body>
 
 <h1>Range</h1>
-<p>範囲オブジェクトのクラス。<a href="syntax03.html#L000281">範囲式</a>を
-参照してください。</p>
+<p>�͈̓I�u�W�F�N�g�̃N���X�B<a href="syntax03.html#L000281">�͈͎�</a>��
+�Q�Ƃ��Ă��������B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>インクルードしているモジュール</h2>
+<h2>�C���N���[�h���Ă��郂�W���[��</h2>
 <ul>
 <li><a href="sm_enumerable.html">Enumerable</a></li>
 </ul>
 
 
-<h2>クラスメソッド</h2>
+<h2>�N���X���\�b�h</h2>
 <dl>
 <dt>Range.new(<var>first</var>, <var>last</var>[, <var>exclude_end</var>])</dt>
 <dd> 
-<p><var>first</var> から <var>last</var> までの範囲オブジェクトを生成して
-返します。<var>exclude_end</var> が真ならば終端を含まない範囲オブジェクトを
-生成します。<var>exclude_end</var> 省略時には終端を含みます。</p>
+<p><var>first</var> ���� <var>last</var> �܂ł͈̔̓I�u�W�F�N�g�𐶐�����
+�Ԃ��܂��B<var>exclude_end</var> ���^�Ȃ�ΏI�[���܂܂Ȃ��͈̓I�u�W�F�N�g��
+�������܂��B<var>exclude_end</var> �ȗ����ɂ͏I�[���܂݂܂��B</p>
 </dl> 
 
 
-<h2>メソッド</h2>
+<h2>���\�b�h</h2>
 <dl>
 <dt><var>self</var> === <var>other</var></dt>
 <dd>
-<p>このメソッドは主に <a href="syntax05.html#L000301">case</a> 文での比較に用いられます。
-<var>other</var> が範囲内に含まれているときに真を返します。</p></dd>
+<p>���̃��\�b�h�͎�� <a href="syntax05.html#L000301">case</a> ���ł̔�r�ɗp�����܂��B
+<var>other</var> ���͈͓��Ɋ܂܂�Ă���Ƃ��ɐ^��Ԃ��܂��B</p></dd>
 <dt>begin</dt>
 <dt>first</dt>
 <dd>
-<p>最初の要素を返します。</p></dd>
+<p>�ŏ��̗v�f��Ԃ��܂��B</p></dd>
 <dt>each {|<var>item</var>|  ... }</dt>
 <dd>
-<p>範囲内の要素に対して繰り返します。</p>
+<p>�͈͓��̗v�f�ɑ΂��ČJ��Ԃ��܂��B</p>
 </dd>
 <dt>end</dt>
 <dt>last</dt>
 <dd>
-<p>終端を返します。範囲オブジェクトが終端を含むかどうかは関係ありませ
-ん。</p>
+<p>�I�[��Ԃ��܂��B�͈̓I�u�W�F�N�g���I�[���܂ނ��ǂ����͊֌W����܂�
+��B</p>
 <pre>
 p (1..5).end   # =&gt; 5
 p (1...5).end  # =&gt; 5
 </pre></dd>
 <dt>exclude_end?</dt>
 <dd>
-<p>範囲オブジェクトが終端を含まないとき真を返します。</p></dd>
+<p>�͈̓I�u�W�F�N�g���I�[���܂܂Ȃ��Ƃ��^��Ԃ��܂��B</p></dd>
 </dl>
 
 <h6></h6>

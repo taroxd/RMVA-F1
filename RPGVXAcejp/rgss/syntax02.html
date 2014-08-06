@@ -1,59 +1,59 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>変数と定数</title>
+<title>�ϐ��ƒ萔</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>変数と定数</h1>
+<h1>�ϐ��ƒ萔</h1>
 <ul>
-<li><a href="#L000225">ローカル変数</a></li>
-<li><a href="#L000226">インスタンス変数</a></li>
-<li><a href="#L000227">クラス変数</a></li>
-<li><a href="#L000228">グローバル変数</a></li>
-<li><a href="#L000229">疑似変数</a></li>
-<li><a href="#L000236">定数</a></li>
+<li><a href="#L000225">���[�J���ϐ�</a></li>
+<li><a href="#L000226">�C���X�^���X�ϐ�</a></li>
+<li><a href="#L000227">�N���X�ϐ�</a></li>
+<li><a href="#L000228">�O���[�o���ϐ�</a></li>
+<li><a href="#L000229">�^���ϐ�</a></li>
+<li><a href="#L000236">�萔</a></li>
 </ul>
-<p>Ruby の変数と定数の種別は変数名の最初の一文字によって、
-ローカル変数、
-インスタンス変数、
-クラス変数、
-グローバル変数、
-定数
-のいずれかに区別されます。
-通常の変数の二文字目以降は英数字または '_' ですが、組み込み変数の一部には
-「'$' + 1 文字の記号」という変数があります (<a href="s_variables.html">組み
-込み変数</a>を参照) 。</p>
-<p>変数や定数は、特定のオブジェクトを指し示すものです。変数や定数への代入は、
-それらが新しいオブジェクトを指すようにするための操作です。したがって、代入に
-よりオブジェクトがコピーされて新しく作られることはありません。</p>
+<p>Ruby �̕ϐ��ƒ萔�̎�ʂ͕ϐ����̍ŏ��̈ꕶ���ɂ���āA
+���[�J���ϐ��A
+�C���X�^���X�ϐ��A
+�N���X�ϐ��A
+�O���[�o���ϐ��A
+�萔
+�̂����ꂩ�ɋ�ʂ���܂��B
+�ʏ�̕ϐ��̓񕶎��ڈȍ~�͉p�����܂��� '_' �ł����A�g�ݍ��ݕϐ��̈ꕔ�ɂ�
+�u'$' + 1 �����̋L���v�Ƃ����ϐ�������܂� (<a href="s_variables.html">�g��
+���ݕϐ�</a>���Q��) �B</p>
+<p>�ϐ���萔�́A����̃I�u�W�F�N�g���w���������̂ł��B�ϐ���萔�ւ̑���́A
+����炪�V�����I�u�W�F�N�g���w���悤�ɂ��邽�߂̑���ł��B���������āA�����
+���I�u�W�F�N�g���R�s�[����ĐV��������邱�Ƃ͂���܂���B</p>
 
-<h2><a name="L000225">ローカル変数</a></h2>
-<p>例:</p>
+<h2><a name="L000225">���[�J���ϐ�</a></h2>
+<p>��:</p>
 <pre>
 foobar
 </pre>
-<p>小文字または '_' で始まる識別子はローカル変数またはメソッド呼び出しです。</p>
-<p>ローカル変数のスコープ (クラス、モジュール、メソッド定義の本体) における
-小文字で始まる識別子への最初の代入は、そのスコープに属するローカル変数の宣言
-になります。宣言されていない識別子の参照は引数の無いメソッド呼び出しとみな
-されます。</p>
+<p>�������܂��� '_' �Ŏn�܂鎯�ʎq�̓��[�J���ϐ��܂��̓��\�b�h�Ăяo���ł��B</p>
+<p>���[�J���ϐ��̃X�R�[�v (�N���X�A���W���[���A���\�b�h��`�̖{��) �ɂ�����
+�������Ŏn�܂鎯�ʎq�ւ̍ŏ��̑���́A���̃X�R�[�v�ɑ����郍�[�J���ϐ��̐錾
+�ɂȂ�܂��B�錾����Ă��Ȃ����ʎq�̎Q�Ƃ͈����̖������\�b�h�Ăяo���Ƃ݂�
+����܂��B</p>
 
-<h2><a name="L000226">インスタンス変数</a></h2>
-<p>例:</p>
+<h2><a name="L000226">�C���X�^���X�ϐ�</a></h2>
+<p>��:</p>
 <pre>
 @foobar
 </pre>
-<p>'@' で始まる変数はインスタンス変数であり、特定の
-オブジェクトに所属しています。インスタンス変数はそのクラスま
-たはサブクラスのメソッドから参照できます。初期化されていない
-インスタンス変数を参照したときの値は nil です。</p>
+<p>'@' �Ŏn�܂�ϐ��̓C���X�^���X�ϐ��ł���A�����
+�I�u�W�F�N�g�ɏ������Ă��܂��B�C���X�^���X�ϐ��͂��̃N���X��
+���̓T�u�N���X�̃��\�b�h����Q�Ƃł��܂��B����������Ă��Ȃ�
+�C���X�^���X�ϐ����Q�Ƃ����Ƃ��̒l�� nil �ł��B</p>
 
-<h2><a name="L000227">クラス変数</a></h2>
-<p>例:</p>
+<h2><a name="L000227">�N���X�ϐ�</a></h2>
+<p>��:</p>
 <pre>
 class Foo
   @@foo = 1
@@ -63,64 +63,64 @@ class Foo
 end
 </pre>
 
-<p><code>@@</code>で始まる変数はクラス変数です。クラス変数はクラス定義
-の中で定義され、クラスの特異メソッド、インスタンスメソッドなどから参照／
-代入ができます。</p>
-<p>クラス変数と<a href="#L000236">定数</a>の違いは以下の通りです。</p>
+<p><code>@@</code>�Ŏn�܂�ϐ��̓N���X�ϐ��ł��B�N���X�ϐ��̓N���X��`
+�̒��Œ�`����A�N���X�̓��ك��\�b�h�A�C���X�^���X���\�b�h�Ȃǂ���Q�Ɓ^
+������ł��܂��B</p>
+<p>�N���X�ϐ���<a href="#L000236">�萔</a>�̈Ⴂ�͈ȉ��̒ʂ�ł��B</p>
 <ul>
-<li>再代入可能(定数は警告を出す)</li>
-<li>クラスの外から直接参照できない(継承されたクラスからは参照／代入可能)</li>
+<li>�đ���\(�萔�͌x�����o��)</li>
+<li>�N���X�̊O���璼�ڎQ�Ƃł��Ȃ�(�p�����ꂽ�N���X����͎Q�Ɓ^����\)</li>
 </ul>
 
-<h2><a name="L000228">グローバル変数</a></h2>
-<p>例:</p>
+<h2><a name="L000228">�O���[�o���ϐ�</a></h2>
+<p>��:</p>
 <pre>
 $foobar
 </pre>
-<p>'$' で始まる変数はグローバル変数で、プログラムの
-どこからでも参照できます (その分、利用には注意が必要です) 。
-グローバル変数には宣言は必要ありません。
-初期化されていないグローバル変数を参照したときの値は
-nil です。</p>
+<p>'$' �Ŏn�܂�ϐ��̓O���[�o���ϐ��ŁA�v���O������
+�ǂ�����ł��Q�Ƃł��܂� (���̕��A���p�ɂ͒��ӂ��K�v�ł�) �B
+�O���[�o���ϐ��ɂ͐錾�͕K�v����܂���B
+����������Ă��Ȃ��O���[�o���ϐ����Q�Ƃ����Ƃ��̒l��
+nil �ł��B</p>
 
-<h2><a name="L000229">疑似変数</a></h2>
-<p>通常の変数以外に、疑似変数と呼ばれる特殊な変数があります。</p>
+<h2><a name="L000229">�^���ϐ�</a></h2>
+<p>�ʏ�̕ϐ��ȊO�ɁA�^���ϐ��ƌĂ΂�����ȕϐ�������܂��B</p>
 <dl>
 <dt>self</dt>
 <dd>
-<p>現在のメソッドの実行主体。</p>
+<p>���݂̃��\�b�h�̎��s��́B</p>
 </dd>
 <dt>nil</dt>
 <dd>
-<p><a href="sc_nilclass.html">NilClass</a> クラスの唯一の
-インスタンス。偽を表します。</p>
+<p><a href="sc_nilclass.html">NilClass</a> �N���X�̗B���
+�C���X�^���X�B�U��\���܂��B</p>
 </dd>
 <dt>true</dt>
 <dd>
-<p><a href="sc_trueclass.html">TrueClass</a> クラスの唯一の
-インスタンス。真を表します。</p>
+<p><a href="sc_trueclass.html">TrueClass</a> �N���X�̗B���
+�C���X�^���X�B�^��\���܂��B</p>
 </dd>
 <dt>false</dt>
 <dd>
-<p><a href="sc_falseclass.html">FalseClass</a> クラスの唯一の
-インスタンス。偽を表します。</p>
+<p><a href="sc_falseclass.html">FalseClass</a> �N���X�̗B���
+�C���X�^���X�B�U��\���܂��B</p>
 </dd>
 </dl>
-<p>疑似変数の値を変更することはできません。
-擬似変数へ代入すると文法エラーになります。</p>
+<p>�^���ϐ��̒l��ύX���邱�Ƃ͂ł��܂���B
+�[���ϐ��֑������ƕ��@�G���[�ɂȂ�܂��B</p>
 
-<h2><a name="L000236">定数</a></h2>
-<p>例:</p>
+<h2><a name="L000236">�萔</a></h2>
+<p>��:</p>
 <pre>
 FOOBAR
 </pre>
-<p>アルファベット大文字で始まる識別子は定数です。
-定数の定義 (と初期化) は代入によって行われますが、メソッドの中では定義
-できません。定義されていない定数にアクセスすると例外
-<a href="s_exceptions.html#NameError">NameError</a> が発生します。</p>
-<p>定数はその定数が定義されたクラス / モジュールの中、クラスを継承している
-クラス、モジュールをインクルードしているクラスまたはモジュールから参照する
-ことができます。定数を外部から参照するためには '::' 演算子を用います。</p>
+<p>�A���t�@�x�b�g�啶���Ŏn�܂鎯�ʎq�͒萔�ł��B
+�萔�̒�` (�Ə�����) �͑���ɂ���čs���܂����A���\�b�h�̒��ł͒�`
+�ł��܂���B��`����Ă��Ȃ��萔�ɃA�N�Z�X����Ɨ�O
+<a href="s_exceptions.html#NameError">NameError</a> ���������܂��B</p>
+<p>�萔�͂��̒萔����`���ꂽ�N���X / ���W���[���̒��A�N���X���p�����Ă���
+�N���X�A���W���[�����C���N���[�h���Ă���N���X�܂��̓��W���[������Q�Ƃ���
+���Ƃ��ł��܂��B�萔���O������Q�Ƃ��邽�߂ɂ� '::' ���Z�q��p���܂��B</p>
 <pre>
 class Foo
   FOO = 'FOO'
@@ -132,7 +132,7 @@ end
 
 p Foo::FOO          # =&gt; &quot;FOO&quot;
 </pre>
-<p>また、クラスやモジュールの名前も定数と同じ扱いになります。</p>
+<p>�܂��A�N���X�⃂�W���[���̖��O���萔�Ɠ��������ɂȂ�܂��B</p>
 
 <h6></h6>
 </body>

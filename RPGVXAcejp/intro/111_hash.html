@@ -1,110 +1,110 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>ハッシュ</title>
+<title>�n�b�V��</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>ハッシュ</h1>
+<h1>�n�b�V��</h1>
 <ul>
-<li><a href="#generate">ハッシュの生成</a></li>
-<li><a href="#add">ハッシュへの値の追加</a></li>
-<li><a href="#manage">ハッシュの操作</a></li>
-<li><a href="#loop">ハッシュによるループ</a></li>
+<li><a href="#generate">�n�b�V���̐���</a></li>
+<li><a href="#add">�n�b�V���ւ̒l�̒ǉ�</a></li>
+<li><a href="#manage">�n�b�V���̑���</a></li>
+<li><a href="#loop">�n�b�V���ɂ�郋�[�v</a></li>
 </ul>
 
-<p>配列とよく似たデータ構造に<strong>ハッシュ</strong>というものが
-あります。</p>
+<p>�z��Ƃ悭�����f�[�^�\����<strong>�n�b�V��</strong>�Ƃ������̂�
+����܂��B</p>
 
 
-<h2><a name="generate">ハッシュの生成</a></h2>
-<p>ハッシュは連想配列とも呼ばれます。配列との違いは、値を取り出すため
-の<strong>キー</strong> (配列の添字に相当するもの) として、任意の
-オブジェクトを使用できることです。ハッシュは {} という記号の中に
-要素を並べることで生成できます。</p>
+<h2><a name="generate">�n�b�V���̐���</a></h2>
+<p>�n�b�V���͘A�z�z��Ƃ��Ă΂�܂��B�z��Ƃ̈Ⴂ�́A�l�����o������
+��<strong>�L�[</strong> (�z��̓Y���ɑ����������) �Ƃ��āA�C�ӂ�
+�I�u�W�F�N�g���g�p�ł��邱�Ƃł��B�n�b�V���� {} �Ƃ����L���̒���
+�v�f����ׂ邱�ƂŐ����ł��܂��B</p>
 <pre>
-a = {&quot;アレックス&quot;=&gt;2000, &quot;ザック&quot;=&gt;2003}
+a = {&quot;�A���b�N�X&quot;=&gt;2000, &quot;�U�b�N&quot;=&gt;2003}
 </pre>
-<p>この例では、&quot;アレックス&quot; と &quot;ザック&quot; が値を取り出す
-ためのキーで、2000 と 2003 が実際の値です。このように、ハッシュを直接生成
-するときには =&gt; という記号を使ってキーと値を並べます。</p>
-<p>ハッシュの中のオブジェクトを取り出す際には、このようにします。</p>
+<p>���̗�ł́A&quot;�A���b�N�X&quot; �� &quot;�U�b�N&quot; ���l�����o��
+���߂̃L�[�ŁA2000 �� 2003 �����ۂ̒l�ł��B���̂悤�ɁA�n�b�V���𒼐ڐ���
+����Ƃ��ɂ� =&gt; �Ƃ����L�����g���ăL�[�ƒl����ׂ܂��B</p>
+<p>�n�b�V���̒��̃I�u�W�F�N�g�����o���ۂɂ́A���̂悤�ɂ��܂��B</p>
 <pre>
-a = {&quot;アレックス&quot;=&gt;2000, &quot;ザック&quot;=&gt;2003}
+a = {&quot;�A���b�N�X&quot;=&gt;2000, &quot;�U�b�N&quot;=&gt;2003}
 
-p a[&quot;アレックス&quot;]        # =&gt; 2000
-p a[&quot;ザック&quot;]            # =&gt; 2003
-p a[&quot;ウサぴょん&quot;]        # =&gt; nil
+p a[&quot;�A���b�N�X&quot;]        # =&gt; 2000
+p a[&quot;�U�b�N&quot;]            # =&gt; 2003
+p a[&quot;�E�T�҂��&quot;]        # =&gt; nil
 </pre>
-<p>最後の例からわかるように、存在しないキーを指定した場合は nil が返り
-ます。</p>
-<p>ここでは文字列をキーとしましたが、もちろん文字列でなくても構いません。
-キーとして整数しか使用しないデータでも、その番号が飛び飛びになるような
-場合には配列よりハッシュを使ったほうが便利なことがあります。</p>
-<p>なお、ハッシュの逆引き、つまり「値に対応するキーを調べる」場合には
-[] の中に値を書いてキーを取り出すことはできません。ここでは解説しません
-が、そのような操作をするためのメソッドは別に用意されています。</p>
+<p>�Ō�̗Ⴉ��킩��悤�ɁA���݂��Ȃ��L�[���w�肵���ꍇ�� nil ���Ԃ�
+�܂��B</p>
+<p>�����ł͕�������L�[�Ƃ��܂������A������񕶎���łȂ��Ă��\���܂���B
+�L�[�Ƃ��Đ��������g�p���Ȃ��f�[�^�ł��A���̔ԍ�����є�тɂȂ�悤��
+�ꍇ�ɂ͔z����n�b�V�����g�����ق����֗��Ȃ��Ƃ�����܂��B</p>
+<p>�Ȃ��A�n�b�V���̋t�����A�܂�u�l�ɑΉ�����L�[�𒲂ׂ�v�ꍇ�ɂ�
+[] �̒��ɒl�������ăL�[�����o�����Ƃ͂ł��܂���B�����ł͉�����܂���
+���A���̂悤�ȑ�������邽�߂̃��\�b�h�͕ʂɗp�ӂ���Ă��܂��B</p>
 
 
-<h2><a name="add">ハッシュへの値の追加</a></h2>
-<p>実際には、ハッシュはプログラム中で直接データを指定して生成するよりも、
-まず空のハッシュを作っておいてデータを追加していくことのほうが多いかも
-しれません。空のハッシュを生成するときは、単に {} と書くだけです。</p>
-<pre>
-a = {}
-</pre>
-<p>配列の要素に代入するのと全く同じように、ハッシュに値を追加することが
-できます。</p>
+<h2><a name="add">�n�b�V���ւ̒l�̒ǉ�</a></h2>
+<p>���ۂɂ́A�n�b�V���̓v���O�������Œ��ڃf�[�^���w�肵�Đ�����������A
+�܂���̃n�b�V��������Ă����ăf�[�^��ǉ����Ă������Ƃ̂ق�����������
+����܂���B��̃n�b�V���𐶐�����Ƃ��́A�P�� {} �Ə��������ł��B</p>
 <pre>
 a = {}
-a[&quot;アレックス&quot;] = 2000
-
-p a                 # =&gt; {&quot;アレックス&quot;=&gt;2000}
 </pre>
-
-
-<h2><a name="manage">ハッシュの操作</a></h2>
-<p>ハッシュは <a href="../rgss/sc_hash.html">Hash</a> クラスの
-オブジェクトです。配列と同じように、このクラスで定義されている
-メソッドを呼び出すことによってデータの操作を行うことができます。</p>
-<p>たとえば、ハッシュから値を削除する場合は delete というメソッド
-を使用します。</p>
+<p>�z��̗v�f�ɑ������̂ƑS�������悤�ɁA�n�b�V���ɒl��ǉ����邱�Ƃ�
+�ł��܂��B</p>
 <pre>
-a = {&quot;アレックス&quot;=&gt;2000, &quot;ザック&quot;=&gt;2003}
-a.delete(&quot;ザック&quot;)
+a = {}
+a[&quot;�A���b�N�X&quot;] = 2000
 
-p a                 # =&gt; {&quot;アレックス&quot;=&gt;2000}
+p a                 # =&gt; {&quot;�A���b�N�X&quot;=&gt;2000}
 </pre>
-<p>ハッシュが特定のキーを持っているかどうか知りたい場合は、include?
-というメソッドを使用します。</p>
+
+
+<h2><a name="manage">�n�b�V���̑���</a></h2>
+<p>�n�b�V���� <a href="../rgss/sc_hash.html">Hash</a> �N���X��
+�I�u�W�F�N�g�ł��B�z��Ɠ����悤�ɁA���̃N���X�Œ�`����Ă���
+���\�b�h���Ăяo�����Ƃɂ���ăf�[�^�̑�����s�����Ƃ��ł��܂��B</p>
+<p>���Ƃ��΁A�n�b�V������l���폜����ꍇ�� delete �Ƃ������\�b�h
+���g�p���܂��B</p>
 <pre>
-a = {&quot;アレックス&quot;=&gt;2000, &quot;ザック&quot;=&gt;2003}
+a = {&quot;�A���b�N�X&quot;=&gt;2000, &quot;�U�b�N&quot;=&gt;2003}
+a.delete(&quot;�U�b�N&quot;)
 
-p a.include?(&quot;アレックス&quot;)    # =&gt; true
-p a.include?(&quot;ウサぴょん&quot;)    # =&gt; false
+p a                 # =&gt; {&quot;�A���b�N�X&quot;=&gt;2000}
 </pre>
-<p>3 行目では include? メソッドを使って、ハッシュに
-&quot;アレックス&quot; というキーが含まれているかどうかを確認して
-います。この場合、1 行目のハッシュの生成で &quot;アレックス&quot; と
-いうキーが設定されていますので、true (真) と出力されます。
-同じく 4 行目では &quot;ウサぴょん&quot; というキーが含まれているか
-どうかを確認しています。そのようなキーは存在しませんので、false (偽)
-と出力されます。</p>
+<p>�n�b�V��������̃L�[�������Ă��邩�ǂ����m�肽���ꍇ�́Ainclude?
+�Ƃ������\�b�h���g�p���܂��B</p>
+<pre>
+a = {&quot;�A���b�N�X&quot;=&gt;2000, &quot;�U�b�N&quot;=&gt;2003}
+
+p a.include?(&quot;�A���b�N�X&quot;)    # =&gt; true
+p a.include?(&quot;�E�T�҂��&quot;)    # =&gt; false
+</pre>
+<p>3 �s�ڂł� include? ���\�b�h���g���āA�n�b�V����
+&quot;�A���b�N�X&quot; �Ƃ����L�[���܂܂�Ă��邩�ǂ������m�F����
+���܂��B���̏ꍇ�A1 �s�ڂ̃n�b�V���̐����� &quot;�A���b�N�X&quot; ��
+�����L�[���ݒ肳��Ă��܂��̂ŁAtrue (�^) �Əo�͂���܂��B
+������ 4 �s�ڂł� &quot;�E�T�҂��&quot; �Ƃ����L�[���܂܂�Ă��邩
+�ǂ������m�F���Ă��܂��B���̂悤�ȃL�[�͑��݂��܂���̂ŁAfalse (�U)
+�Əo�͂���܂��B</p>
 
 
-<h2><a name="loop">ハッシュによるループ</a></h2>
-<p>Hash クラスには、キーの一覧を配列として取得する keys という
-メソッドがあります。</p>
+<h2><a name="loop">�n�b�V���ɂ�郋�[�v</a></h2>
+<p>Hash �N���X�ɂ́A�L�[�̈ꗗ��z��Ƃ��Ď擾���� keys �Ƃ���
+���\�b�h������܂��B</p>
 <pre>
 a = {3=&gt;6, 4=&gt;10, 5=&gt;15}
 p a.keys            # => [3, 4, 5]
 </pre>
-<p>このように、=&gt; の左側にあるキーの一覧が配列として出力されます。</p>
-<p>前章<a href="110_array.html">配列</a>の最後に学習した<strong
->イテレータ</strong>を使って、ハッシュのキーによるループを記述できます。</p>
+<p>���̂悤�ɁA=&gt; �̍����ɂ���L�[�̈ꗗ���z��Ƃ��ďo�͂���܂��B</p>
+<p>�O��<a href="110_array.html">�z��</a>�̍Ō�Ɋw�K����<strong
+>�C�e���[�^</strong>���g���āA�n�b�V���̃L�[�ɂ�郋�[�v���L�q�ł��܂��B</p>
 <pre>
 a = {3=&gt;6, 4=&gt;10, 5=&gt;15}
 
@@ -112,9 +112,9 @@ a.keys.each do |k|
   p k
 end
 </pre>
-<p>これを実行すると 3、4、5 が表示されます。</p>
-<p>また、values というメソッドを使用すれば、値のほうの一覧を配列と
-して取得できます。</p>
+<p>��������s����� 3�A4�A5 ���\������܂��B</p>
+<p>�܂��Avalues �Ƃ������\�b�h���g�p����΁A�l�̂ق��̈ꗗ��z���
+���Ď擾�ł��܂��B</p>
 <pre>
 a = {3=&gt;6, 4=&gt;10, 5=&gt;15}
 
@@ -122,10 +122,10 @@ a.values.each do |v|
   p v
 end
 </pre>
-<p>これを実行すると 6、10、15 が表示されます。</p>
-<p>なお、古いバージョンの Ruby ではハッシュの格納順序は不定
-でしたが、RGSS3 で採用している Ruby 1.9 からは順序が保証される
-ようになりました。</p>
+<p>��������s����� 6�A10�A15 ���\������܂��B</p>
+<p>�Ȃ��A�Â��o�[�W������ Ruby �ł̓n�b�V���̊i�[�����͕s��
+�ł������ARGSS3 �ō̗p���Ă��� Ruby 1.9 ����͏������ۏ؂����
+�悤�ɂȂ�܂����B</p>
 <pre>
 a = {3=&gt;6, 5=&gt;15, 4=&gt;10}
 
@@ -133,8 +133,8 @@ a.keys.each do |k|
   p k
 end
 </pre>
-<p>たとえばこのように登録順序を入れ替えた場合、出力は必ず
-3、5、4 の順となります。</p>
+<p>���Ƃ��΂��̂悤�ɓo�^���������ւ����ꍇ�A�o�͕͂K��
+3�A5�A4 �̏��ƂȂ�܂��B</p>
 
 
 <h6></h6>

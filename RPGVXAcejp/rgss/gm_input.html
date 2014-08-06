@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Input</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,22 +9,22 @@
 <body>
 
 <h1>Input</h1>
-<p>ゲームパッドやキーボードからの入力情報を扱うモジュール。</p>
-<p>RGSS3 では、ボタンを番号ではなくシンボルで管理するようになりました。
+<p>�Q�[���p�b�h��L�[�{�[�h����̓��͏����������W���[���B</p>
+<p>RGSS3 �ł́A�{�^����ԍ��ł͂Ȃ��V���{���ŊǗ�����悤�ɂȂ�܂����B
 <span class="rgss3">(RGSS3)</span></p>
 
-<h2>モジュールメソッド</h2>
+<h2>���W���[�����\�b�h</h2>
 <dl>
 
 <dt>Input.update</dt>
 <dd>
-<p>入力情報を更新します。原則として 1 フレームに 1 回呼び出します。</p></dd>
+<p>���͏����X�V���܂��B�����Ƃ��� 1 �t���[���� 1 ��Ăяo���܂��B</p></dd>
 
 <dt>Input.press?(<var>sym</var>)
 <span class="rgss3">(RGSS3)</span></dt>
 <dd>
-<p>シンボル <var>sym</var> に対応するボタンが、現在押されているかどうかを判定します。</p>
-<p>押されていれば true、押されていなければ false を返します。</p>
+<p>�V���{�� <var>sym</var> �ɑΉ�����{�^�����A���݉�����Ă��邩�ǂ����𔻒肵�܂��B</p>
+<p>������Ă���� true�A������Ă��Ȃ���� false ��Ԃ��܂��B</p>
 <pre>
 if Input.press?(:C)
   do_something
@@ -35,56 +35,56 @@ end
 <dt>Input.trigger?(<var>sym</var>)
 <span class="rgss3">(RGSS3)</span></dt>
 <dd>
-<p>シンボル <var>sym</var> に対応するボタンが、新たに押されたかどうかを判定します。</p>
-<p>押されていない状態から押された状態に変わった瞬間のみ「新たに押された」とみなされます。</p>
-<p>押されていれば true、押されていなければ false を返します。</p></dd>
+<p>�V���{�� <var>sym</var> �ɑΉ�����{�^�����A�V���ɉ����ꂽ���ǂ����𔻒肵�܂��B</p>
+<p>������Ă��Ȃ���Ԃ��牟���ꂽ��Ԃɕς�����u�Ԃ̂݁u�V���ɉ����ꂽ�v�Ƃ݂Ȃ���܂��B</p>
+<p>������Ă���� true�A������Ă��Ȃ���� false ��Ԃ��܂��B</p></dd>
 
 <dt>Input.repeat?(<var>sym</var>)
 <span class="rgss3">(RGSS3)</span></dt>
 <dd>
-<p>シンボル <var>sym</var> に対応するボタンが、新たに押されたかどうかを判定します。</p>
-<p>trigger? と異なり、ボタンを押し続けた場合のリピートを考慮します。</p>
-<p>押されていれば true、押されていなければ false を返します。</p></dd>
+<p>�V���{�� <var>sym</var> �ɑΉ�����{�^�����A�V���ɉ����ꂽ���ǂ����𔻒肵�܂��B</p>
+<p>trigger? �ƈقȂ�A�{�^���������������ꍇ�̃��s�[�g���l�����܂��B</p>
+<p>������Ă���� true�A������Ă��Ȃ���� false ��Ԃ��܂��B</p></dd>
 
 <dt>Input.dir4</dt>
 <dd>
-<p>方向ボタンの状態を判定し、4 方向入力に特化した形で、テンキーの数字に対応する
-整数 (2, 4, 6, 8) を返します。</p>
-<p>方向ボタンが押されていない場合 (またはそれと同等とみなされる
-場合) は 0 を返します。</p></dd>
+<p>�����{�^���̏�Ԃ𔻒肵�A4 �������͂ɓ��������`�ŁA�e���L�[�̐����ɑΉ�����
+���� (2, 4, 6, 8) ��Ԃ��܂��B</p>
+<p>�����{�^����������Ă��Ȃ��ꍇ (�܂��͂���Ɠ����Ƃ݂Ȃ����
+�ꍇ) �� 0 ��Ԃ��܂��B</p></dd>
 
 <dt>Input.dir8</dt>
 <dd>
-<p>方向ボタンの状態を判定し、8 方向入力に特化した形で、テンキーの数字に対応する
-整数 (1, 2, 3, 4, 6, 7, 8, 9) を返します。</p>
-<p>方向ボタンが押されていない場合 (またはそれと同等とみなされる
-場合) は 0 を返します。</p></dd>
+<p>�����{�^���̏�Ԃ𔻒肵�A8 �������͂ɓ��������`�ŁA�e���L�[�̐����ɑΉ�����
+���� (1, 2, 3, 4, 6, 7, 8, 9) ��Ԃ��܂��B</p>
+<p>�����{�^����������Ă��Ȃ��ꍇ (�܂��͂���Ɠ����Ƃ݂Ȃ����
+�ꍇ) �� 0 ��Ԃ��܂��B</p></dd>
 
 </dl>
 
-<h2>定数</h2>
+<h2>�萔</h2>
 <dl>
 
-<p>これらの定数名はそのままシンボルの名前になっています。
-たとえば方向ボタンの右であれば :RIGHT という表記で指定できます。
+<p>�����̒萔���͂��̂܂܃V���{���̖��O�ɂȂ��Ă��܂��B
+���Ƃ��Ε����{�^���̉E�ł���� :RIGHT �Ƃ����\�L�Ŏw��ł��܂��B
 <span class="rgss3">(RGSS3)</span></p>
 
 <dt>DOWN LEFT RIGHT UP</dt>
 <dd>
-<p>方向ボタンの下、左、右、上に対応するシンボルです。</p></dd>
+<p>�����{�^���̉��A���A�E�A��ɑΉ�����V���{���ł��B</p></dd>
 
 <dt>A B C X Y Z L R</dt>
 <dd>
-<p>各々のボタンに対応するシンボルです。</p></dd>
+<p>�e�X�̃{�^���ɑΉ�����V���{���ł��B</p></dd>
 
 <dt>SHIFT CTRL ALT</dt>
 <dd>
-<p>キーボードの SHIFT、CTRL、ALT キーに直接対応するシンボルです。</p></dd>
+<p>�L�[�{�[�h�� SHIFT�ACTRL�AALT �L�[�ɒ��ڑΉ�����V���{���ł��B</p></dd>
 
 <dt>F5 F6 F7 F8 F9</dt>
 <dd>
-<p>キーボードの各ファンクションキーに対応するシンボルです。これ以外のキーは
-システムに予約されているため、取得することはできません。</p></dd>
+<p>�L�[�{�[�h�̊e�t�@���N�V�����L�[�ɑΉ�����V���{���ł��B����ȊO�̃L�[��
+�V�X�e���ɗ\�񂳂�Ă��邽�߁A�擾���邱�Ƃ͂ł��܂���B</p></dd>
 
 </dl>
 

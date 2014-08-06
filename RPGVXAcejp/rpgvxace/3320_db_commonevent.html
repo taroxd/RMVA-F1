@@ -1,54 +1,54 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>コモンイベントの設定</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>�R�����C�x���g�̐ݒ�</title>
 <link href="../style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
-<h1><a name="key_commonevent">コモンイベントの設定</a></h1>
+<h1><a name="key_commonevent">�R�����C�x���g�̐ݒ�</a></h1>
 
-<h2>データの役割</h2>
+<h2>�f�[�^�̖���</h2>
 
-<p>コモンイベントとは、ゲーム中に任意のタイミングで実行できるイベントのことです。プレイの状況の定期的な監視したり、アイテムやスキルを使用時に何らかの処理を行なうなど、ゲーム全体で汎用的に実行する処理を定義できます。作成したコモンイベントは、［コモンイベント］のイベントコマンドや、特定のスイッチの“ON”する処理によって実行できます。</p>
+<p>�R�����C�x���g�Ƃ́A�Q�[�����ɔC�ӂ̃^�C�~���O�Ŏ��s�ł���C�x���g�̂��Ƃł��B�v���C�̏󋵂̒���I�ȊĎ�������A�A�C�e����X�L�����g�p���ɉ��炩�̏������s�Ȃ��ȂǁA�Q�[���S�̂Ŕėp�I�Ɏ��s���鏈�����`�ł��܂��B�쐬�����R�����C�x���g�́A�m�R�����C�x���g�n�̃C�x���g�R�}���h��A����̃X�C�b�`�́gON�h���鏈���ɂ���Ď��s�ł��܂��B</p>
 
-<h2>設定項目の内容</h2>
+<h2>�ݒ荀�ڂ̓��e</h2>
 
-<div align="center"><img src="img/3320_01.png" alt="コモンイベント"></div>
+<div align="center"><img src="img/3320_01.png" alt="�R�����C�x���g"></div>
 <dl>
-<dt>●名前</dt>
-<dd><p>コモンイベントの名前です。この名前はエディタのみで使用されます（プレイ中のゲームへの影響はありません）。</p></dd>
-<dt><a name="key_commonevent_trigger">●トリガー</a></dt>
+<dt>�����O</dt>
+<dd><p>�R�����C�x���g�̖��O�ł��B���̖��O�̓G�f�B�^�݂̂Ŏg�p����܂��i�v���C���̃Q�[���ւ̉e���͂���܂���j�B</p></dd>
+<dt><a name="key_commonevent_trigger">���g���K�[</a></dt>
 <dd>
-  <p>［実行内容］の処理を開始するタイミングを以下から指定します。なお［自動実行］と［並列処理］はマップ画面を表示中のみ有効です。</p>
+  <p>�m���s���e�n�̏������J�n����^�C�~���O���ȉ�����w�肵�܂��B�Ȃ��m�������s�n�Ɓm���񏈗��n�̓}�b�v��ʂ�\�����̂ݗL���ł��B</p>
 </dd>
 </dl>
 
 <dl><dd><dl>
-<dt>なし</dt>
-<dd><p>［コモンイベント］のイベントコマンドなどで明示的に呼び出したときに処理を開始します。</p></dd>
-<dt>自動実行</dt>
-<dd><p>［条件スイッチ］に指定したスイッチがONになったときに処理を開始します。</p></dd>
-<dt>並列処理</dt>
-<dd><p>［条件スイッチ］に指定したスイッチがONになったときに処理を開始し、スイッチがONである間も周期的に処理を繰り返します。</p></dd>
+<dt>�Ȃ�</dt>
+<dd><p>�m�R�����C�x���g�n�̃C�x���g�R�}���h�ȂǂŖ����I�ɌĂяo�����Ƃ��ɏ������J�n���܂��B</p></dd>
+<dt>�������s</dt>
+<dd><p>�m�����X�C�b�`�n�Ɏw�肵���X�C�b�`��ON�ɂȂ����Ƃ��ɏ������J�n���܂��B</p></dd>
+<dt>���񏈗�</dt>
+<dd><p>�m�����X�C�b�`�n�Ɏw�肵���X�C�b�`��ON�ɂȂ����Ƃ��ɏ������J�n���A�X�C�b�`��ON�ł���Ԃ������I�ɏ������J��Ԃ��܂��B</p></dd>
 </dl></dd></dl>
 
 <dl>
-<dt>●条件スイッチ</dt>
-<dd><p>トリガーに［自動実行］または［並列処理］を指定した場合、処理開始の合図となるスイッチを指定します。同じスイッチを指定したコモンイベントが複数ある場合、ID番号が最も若いもの（リストの上にあるもの）が実行対象になります。</p></dd>
+<dt>�������X�C�b�`</dt>
+<dd><p>�g���K�[�Ɂm�������s�n�܂��́m���񏈗��n���w�肵���ꍇ�A�����J�n�̍��}�ƂȂ�X�C�b�`���w�肵�܂��B�����X�C�b�`���w�肵���R�����C�x���g����������ꍇ�AID�ԍ����ł��Ⴂ���́i���X�g�̏�ɂ�����́j�����s�ΏۂɂȂ�܂��B</p></dd>
 
-<dt>●実行内容</dt>
-<dd><p>コモンイベントで実行する処理を、イベントコマンドをもとに設定します。編集方法はマップイベントの<a href="4140_ev_mapevent_setting.html#command_list">［実行内容］</a>と同じです。</p>
+<dt>�����s���e</dt>
+<dd><p>�R�����C�x���g�Ŏ��s���鏈�����A�C�x���g�R�}���h�����Ƃɐݒ肵�܂��B�ҏW���@�̓}�b�v�C�x���g��<a href="4140_ev_mapevent_setting.html#command_list">�m���s���e�n</a>�Ɠ����ł��B</p>
 </dd>
 </dl>
 
-<h2>自動実行、並列処理のトリガーを使用する場合の注意</h2>
+<h2>�������s�A���񏈗��̃g���K�[���g�p����ꍇ�̒���</h2>
 
-<p>トリガーに［自動実行］または［並列処理］に指定したイベントは、［条件スイッチ］に指定したスイッチの値が“ON”になっている間、［実行内容］の処理が繰り返し行なわれます。</p>
-<p>この繰り返し処理を止めるには、条件としているスイッチの値をを“OFF”にする措置が必要です。こうした制御を行なわないと、処理の内容によってはプレイヤーが一切操作できなくなる可能性があります。</p>
-<p>テストプレー中に操作不能になった場合は、ゲームのウィンドウを［×］ボタンで閉じるか、［Alt］＋［F4］キーを押して強制終了してください。</p>
+<p>�g���K�[�Ɂm�������s�n�܂��́m���񏈗��n�Ɏw�肵���C�x���g�́A�m�����X�C�b�`�n�Ɏw�肵���X�C�b�`�̒l���gON�h�ɂȂ��Ă���ԁA�m���s���e�n�̏������J��Ԃ��s�Ȃ��܂��B</p>
+<p>���̌J��Ԃ��������~�߂�ɂ́A�����Ƃ��Ă���X�C�b�`�̒l�����gOFF�h�ɂ���[�u���K�v�ł��B��������������s�Ȃ�Ȃ��ƁA�����̓��e�ɂ���Ă̓v���C���[����ؑ���ł��Ȃ��Ȃ�\��������܂��B</p>
+<p>�e�X�g�v���[���ɑ���s�\�ɂȂ����ꍇ�́A�Q�[���̃E�B���h�E���m�~�n�{�^���ŕ��邩�A�mAlt�n�{�mF4�n�L�[�������ċ����I�����Ă��������B</p>
 
 
 <h6></h6>

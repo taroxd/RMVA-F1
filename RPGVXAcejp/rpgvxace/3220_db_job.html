@@ -1,80 +1,80 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>職業の設定</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<title>�E�Ƃ̐ݒ�</title>
 <link href="../style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
 
-<h1><a name="key_job">職業の設定</a></h1>
+<h1><a name="key_job">�E�Ƃ̐ݒ�</a></h1>
 
-<h2>データの役割</h2>
+<h2>�f�[�^�̖���</h2>
 
-<p>アクターの能力に関する特徴をまとめたのが職業のデータです。アクターは、いずれかの職業に属する必要があり、その設定をもとにレベルアップの仕方や能力値の上がり方、習得できるスキルなどが決まります。職業固有の特徴も付与できます。</p>
+<p>�A�N�^�[�̔\�͂Ɋւ���������܂Ƃ߂��̂��E�Ƃ̃f�[�^�ł��B�A�N�^�[�́A�����ꂩ�̐E�Ƃɑ�����K�v������A���̐ݒ�����ƂɃ��x���A�b�v�̎d����\�͒l�̏オ����A�K���ł���X�L���Ȃǂ����܂�܂��B�E�ƌŗL�̓������t�^�ł��܂��B</p>
 
-<h2>設定項目の内容</h2>
+<h2>�ݒ荀�ڂ̓��e</h2>
 
-<div align="center"><img src="img/3220_01.png" alt="職業"></div>
+<div align="center"><img src="img/3220_01.png" alt="�E��"></div>
 <dl>
-<dt>●名前</dt>
-<dd><p>職業の名前です。プレイ中、メニュー画面やステータス一覧画面の上部に表示されます。</p></dd>
+<dt>�����O</dt>
+<dd><p>�E�Ƃ̖��O�ł��B�v���C���A���j���[��ʂ�X�e�[�^�X�ꗗ��ʂ̏㕔�ɕ\������܂��B</p></dd>
 
-<dt>●経験値曲線</dt>
+<dt>���o���l�Ȑ�</dt>
 <dd>
-<img src="img/3220_02.png" alt="経験値曲線" class="float_r">
-<p>レベルアップの基準となる経験値の設定です。アクターがレベルごとの必要経験値を獲得するごとに、アクターのレベルが1段階アップし、能力値が上昇したりスキルを習得したりします。</p>
-<p>必要経験値は、設定欄の［…］をクリックすると表示されるウィンドウで下記の4つの値をもとに設定します。ウィンドウの［次のレベルまで］タブでは、各レベルごとの必要経験値が一覧表示され、背景にはグラフで示されます。これらを参考にしながら設定するとよいでしょう。［累計］タブでは、各レベルに達するまでの経験値の累計を表示します。</p><br>
+<img src="img/3220_02.png" alt="�o���l�Ȑ�" class="float_r">
+<p>���x���A�b�v�̊�ƂȂ�o���l�̐ݒ�ł��B�A�N�^�[�����x�����Ƃ̕K�v�o���l���l�����邲�ƂɁA�A�N�^�[�̃��x����1�i�K�A�b�v���A�\�͒l���㏸������X�L�����K�������肵�܂��B</p>
+<p>�K�v�o���l�́A�ݒ藓�́m�c�n���N���b�N����ƕ\�������E�B���h�E�ŉ��L��4�̒l�����Ƃɐݒ肵�܂��B�E�B���h�E�́m���̃��x���܂Łn�^�u�ł́A�e���x�����Ƃ̕K�v�o���l���ꗗ�\������A�w�i�ɂ̓O���t�Ŏ�����܂��B�������Q�l�ɂ��Ȃ���ݒ肷��Ƃ悢�ł��傤�B�m�݌v�n�^�u�ł́A�e���x���ɒB����܂ł̌o���l�̗݌v��\�����܂��B</p><br>
 </dd>
 </dl>
   
 <dl><dd><dl>
-<dt>基本値</dt>
-<dd><p>必要経験値を算出するための基準値です。値を小さくすると全体的に必要経験値が下がります。</p></dd>
+<dt>��{�l</dt>
+<dd><p>�K�v�o���l���Z�o���邽�߂̊�l�ł��B�l������������ƑS�̓I�ɕK�v�o���l��������܂��B</p></dd>
 
-<dt>補正値</dt>
-<dd><p>各レベルの必要経験値に指定値を加算します。</p></dd>
+<dt>�␳�l</dt>
+<dd><p>�e���x���̕K�v�o���l�Ɏw��l�����Z���܂��B</p></dd>
 
-<dt>増加度A</dt>
-<dd><p>必要経験値の増加量を調節します。値を大きくすると、レベルの上昇に応じて必要経験値が比例的に増加します。</p></dd>
+<dt>�����xA</dt>
+<dd><p>�K�v�o���l�̑����ʂ𒲐߂��܂��B�l��傫������ƁA���x���̏㏸�ɉ����ĕK�v�o���l�����I�ɑ������܂��B</p></dd>
 
-<dt>増加度B</dt>
-<dd><p>必要経験値の増加量を調節します。値を大きくすると、主に高いレベルで必要経験値の増加率が大きくなります。</p></dd>
+<dt>�����xB</dt>
+<dd><p>�K�v�o���l�̑����ʂ𒲐߂��܂��B�l��傫������ƁA��ɍ������x���ŕK�v�o���l�̑��������傫���Ȃ�܂��B</p></dd>
 </dl></dd></dl>
 
 <dl>
-<dt>●能力値成長曲線</dt>
-<dd><p>レベルごとの能力値の設定です。グラフをダブルクリックすると設定ウィンドウが開きます。設定方法は後述の<a href="#status_setting">“能力値成長曲線の設定方法”</a>をご覧ください。</p>
+<dt>���\�͒l�����Ȑ�</dt>
+<dd><p>���x�����Ƃ̔\�͒l�̐ݒ�ł��B�O���t���_�u���N���b�N����Ɛݒ�E�B���h�E���J���܂��B�ݒ���@�͌�q��<a href="#status_setting">�g�\�͒l�����Ȑ��̐ݒ���@�h</a>���������������B</p>
 </dd>
 
-<dt>●スキル</dt>
-<dd><p>レベルアップに応じて習得するスキルです。欄内をダブルクリックすると表示されるウィンドウで、習得するレベルとスキルを指定します。［メモ］はゲーム作成中のメモ書きに使えます。</p></dd>
+<dt>���X�L��</dt>
+<dd><p>���x���A�b�v�ɉ����ďK������X�L���ł��B�������_�u���N���b�N����ƕ\�������E�B���h�E�ŁA�K�����郌�x���ƃX�L�����w�肵�܂��B�m�����n�̓Q�[���쐬���̃��������Ɏg���܂��B</p></dd>
 
-<dt>●特徴</dt>
+<dt>������</dt>
 <dd>
-  <p>この職業を設定したアクターに与える特徴です。詳細は<a href="3410_db_feature.html">“特徴の設定方法”</a>を参照してください。</p>
+  <p>���̐E�Ƃ�ݒ肵���A�N�^�[�ɗ^��������ł��B�ڍׂ�<a href="3410_db_feature.html">�g�����̐ݒ���@�h</a>���Q�Ƃ��Ă��������B</p>
 </dd>
 </dl>
 
-<h2><a name="status_setting">能力値成長曲線の設定方法</a></h2>
-<img src="img/3220_03.png" alt="能力値成長曲線" class="float_r">
-<p>［能力値成長曲線］のウィンドウでは、レベルごとの能力値を以下の項目をもとに指定します。能力値の名前のタブをクリックすることで編集対象を切り替えられます。編集後［OK］をクリックすると指定した値が反映されます（［キャンセル］をクリックすると内容が破棄されます）。</p><br>
+<h2><a name="status_setting">�\�͒l�����Ȑ��̐ݒ���@</a></h2>
+<img src="img/3220_03.png" alt="�\�͒l�����Ȑ�" class="float_r">
+<p>�m�\�͒l�����Ȑ��n�̃E�B���h�E�ł́A���x�����Ƃ̔\�͒l���ȉ��̍��ڂ����ƂɎw�肵�܂��B�\�͒l�̖��O�̃^�u���N���b�N���邱�ƂŕҏW�Ώۂ�؂�ւ����܂��B�ҏW��mOK�n���N���b�N����Ǝw�肵���l�����f����܂��i�m�L�����Z���n���N���b�N����Ɠ��e���j������܂��j�B</p><br>
 
 <dl>
-<dt>●簡単設定</dt>
-<dd><p>全レベルの能力値にあらかじめ用意された値を適用します。値のパターンには［A］〜［E］の5種類あり、それぞれのボタンをクリックすると適用されます。</p></dd>
+<dt>���ȒP�ݒ�</dt>
+<dd><p>�S���x���̔\�͒l�ɂ��炩���ߗp�ӂ��ꂽ�l��K�p���܂��B�l�̃p�^�[���ɂ́mA�n�`�mE�n��5��ނ���A���ꂼ��̃{�^�����N���b�N����ƓK�p����܂��B</p></dd>
 
-<dt>●レベル／値</dt>
-<dd><p>レベルごとの能力値を直接編集します。［レベル］で対象のレベル数（1〜99）を指定した後、そのレベルのときの能力値を［値］（最大HP／最大MPは1〜9999、これら以外は1〜999）に指定します。</p></dd>
+<dt>�����x���^�l</dt>
+<dd><p>���x�����Ƃ̔\�͒l�𒼐ڕҏW���܂��B�m���x���n�őΏۂ̃��x�����i1�`99�j���w�肵����A���̃��x���̂Ƃ��̔\�͒l���m�l�n�i�ő�HP�^�ő�MP��1�`9999�A�����ȊO��1�`999�j�Ɏw�肵�܂��B</p></dd>
 
-<dt>●曲線生成</dt>
-<dd><p>レベル1とレベル99のときの値をもとに、その間のレベルの値を自動算出します。</p>
-<p>クリックすると表示される［曲線生成］ウィンドウで、［レベル1］［レベル99］に、それぞれのレベルのときの値（最大HP／最大MPは1〜9999、これら以外は1〜999）を指定します。</p>
-<p>次にスライダーで成長タイプを決めます。左側（早熟）にするとレベルの上昇に合わせて成長率（能力値の上昇分）が緩やかになり、右側（晩熟）にするほど成長率が高くなります。［OK］ボタンをクリックすると指定内容に基づいて能力値が設定されます。</p></dd>
+<dt>���Ȑ�����</dt>
+<dd><p>���x��1�ƃ��x��99�̂Ƃ��̒l�����ƂɁA���̊Ԃ̃��x���̒l�������Z�o���܂��B</p>
+<p>�N���b�N����ƕ\�������m�Ȑ������n�E�B���h�E�ŁA�m���x��1�n�m���x��99�n�ɁA���ꂼ��̃��x���̂Ƃ��̒l�i�ő�HP�^�ő�MP��1�`9999�A�����ȊO��1�`999�j���w�肵�܂��B</p>
+<p>���ɃX���C�_�[�Ő����^�C�v�����߂܂��B�����i���n�j�ɂ���ƃ��x���̏㏸�ɍ��킹�Đ������i�\�͒l�̏㏸���j���ɂ₩�ɂȂ�A�E���i�ӏn�j�ɂ���قǐ������������Ȃ�܂��B�mOK�n�{�^�����N���b�N����Ǝw����e�Ɋ�Â��Ĕ\�͒l���ݒ肳��܂��B</p></dd>
 
-<dt>●グラフ</dt>
-<dd><p>各レベルに設定された能力値を棒グラフで表示します。表示範囲をクリック／ドラッグすると、その箇所に応じたレベルの能力値が変わります。</p></dd>
+<dt>���O���t</dt>
+<dd><p>�e���x���ɐݒ肳�ꂽ�\�͒l��_�O���t�ŕ\�����܂��B�\���͈͂��N���b�N�^�h���b�O����ƁA���̉ӏ��ɉ��������x���̔\�͒l���ς��܂��B</p></dd>
 </dl>
 
 <h6></h6>

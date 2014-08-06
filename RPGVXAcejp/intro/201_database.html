@@ -1,31 +1,31 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>データベース</title>
+<title>�f�[�^�x�[�X</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>データベース</h1>
+<h1>�f�[�^�x�[�X</h1>
 <ul>
 <li><a href="#data_xxxx">$data_xxxx</a></li>
-<li><a href="#contents">データベースの内容</a></li>
-<li><a href="#access">データベースへのアクセス</a></li>
+<li><a href="#contents">�f�[�^�x�[�X�̓��e</a></li>
+<li><a href="#access">�f�[�^�x�[�X�ւ̃A�N�Z�X</a></li>
 </ul>
 
-<p>解読編では、プリセットのスクリプトが何をしているのか読み解く
-ためのヒントを提供していきます。</p>
-<p>ここでは、VX Ace の<strong>データベース</strong>がスクリプト内で
-どのように扱われているかを解説します。</p>
+<p>��Ǖ҂ł́A�v���Z�b�g�̃X�N���v�g���������Ă���̂��ǂ݉���
+���߂̃q���g��񋟂��Ă����܂��B</p>
+<p>�����ł́AVX Ace ��<strong>�f�[�^�x�[�X</strong>���X�N���v�g����
+�ǂ̂悤�Ɉ����Ă��邩��������܂��B</p>
 
 
 <h2><a name="data_xxxx">$data_xxxx</a></h2>
-<p>スクリプトエディタ左側のリストから、DataManager という名前の
-セクションを探してください。このセクションの始めのほうに、次のような
-部分を見つけることができるでしょう。この load_normal_database は、
-ゲーム起動直後、タイトル画面が表示される前に呼び出されるメソッドです。</p>
+<p>�X�N���v�g�G�f�B�^�����̃��X�g����ADataManager �Ƃ������O��
+�Z�N�V������T���Ă��������B���̃Z�N�V�����̎n�߂̂ق��ɁA���̂悤��
+�����������邱�Ƃ��ł���ł��傤�B���� load_normal_database �́A
+�Q�[���N������A�^�C�g����ʂ��\�������O�ɌĂяo����郁�\�b�h�ł��B</p>
 
 <pre>
   def self.load_normal_database
@@ -46,114 +46,114 @@
   end
 </pre>
 
-<p>ここではツクールによって保存された
-ファイルからデータベースの情報を読み込み、各種データをスクリプト
-から参照できるようにしています。$ という文字で始まる変数
-は<strong>グローバル変数</strong>ですから、これらのデータは今後、
-スクリプトのどこからでも参照できるということがわかります。</p>
-<p>load_data というのは <a href="../rgss/g_functions.html">RGSS
-組み込み関数</a>のひとつで、指定されたファイルからデータを読み
-込む関数です。たとえば最初の行は、Data フォルダ内の Actors.rvdata2
-というファイルから読み込んだデータを $data_actors という変数に
-代入するという意味になります。</p>
-<p>なお、メソッド定義の最初に self. と書かれているのは
-<strong>モジュールメソッド</strong>の定義であるためです。
-これに関しては次章で解説しますので、今はメソッドの内容だけに
-注目してください。</p>
+<p>�����ł̓c�N�[���ɂ���ĕۑ����ꂽ
+�t�@�C������f�[�^�x�[�X�̏���ǂݍ��݁A�e��f�[�^���X�N���v�g
+����Q�Ƃł���悤�ɂ��Ă��܂��B$ �Ƃ��������Ŏn�܂�ϐ�
+��<strong>�O���[�o���ϐ�</strong>�ł�����A�����̃f�[�^�͍���A
+�X�N���v�g�̂ǂ�����ł��Q�Ƃł���Ƃ������Ƃ��킩��܂��B</p>
+<p>load_data �Ƃ����̂� <a href="../rgss/g_functions.html">RGSS
+�g�ݍ��݊֐�</a>�̂ЂƂŁA�w�肳�ꂽ�t�@�C������f�[�^��ǂ�
+���ފ֐��ł��B���Ƃ��΍ŏ��̍s�́AData �t�H���_���� Actors.rvdata2
+�Ƃ����t�@�C������ǂݍ��񂾃f�[�^�� $data_actors �Ƃ����ϐ���
+�������Ƃ����Ӗ��ɂȂ�܂��B</p>
+<p>�Ȃ��A���\�b�h��`�̍ŏ��� self. �Ə�����Ă���̂�
+<strong>���W���[�����\�b�h</strong>�̒�`�ł��邽�߂ł��B
+����Ɋւ��Ă͎��͂ŉ�����܂��̂ŁA���̓��\�b�h�̓��e������
+���ڂ��Ă��������B</p>
 
 
-<h2><a name="contents">データベースの内容</a></h2>
-<p>各オブジェクトは次の表のようになっています。</p>
+<h2><a name="contents">�f�[�^�x�[�X�̓��e</a></h2>
+<p>�e�I�u�W�F�N�g�͎��̕\�̂悤�ɂȂ��Ă��܂��B</p>
 <table border="1" cellspacing="0" cellpadding="2">
 <tr>
- <th>変数名</th>
- <th>内容</th>
- <th>クラス</th>
+ <th>�ϐ���</th>
+ <th>���e</th>
+ <th>�N���X</th>
 </tr><tr>
  <td>$data_actors</td>
- <td>アクター</td>
+ <td>�A�N�^�[</td>
  <td><a href="../rgss/gc_rpg_actor.html">RPG::Actor</a>
-     の配列</td>
+     �̔z��</td>
 </tr><tr>
  <td>$data_classes</td>
- <td>職業</td>
+ <td>�E��</td>
  <td><a href="../rgss/gc_rpg_class.html">RPG::Class</a>
-     の配列</td>
+     �̔z��</td>
 </tr><tr>
  <td>$data_skills</td>
- <td>スキル</td>
+ <td>�X�L��</td>
  <td><a href="../rgss/gc_rpg_skill.html">RPG::Skill</a>
-     の配列</td>
+     �̔z��</td>
 </tr><tr>
  <td>$data_items</td>
- <td>アイテム</td>
+ <td>�A�C�e��</td>
  <td><a href="../rgss/gc_rpg_item.html">RPG::Item</a>
-     の配列</td>
+     �̔z��</td>
 </tr><tr>
  <td>$data_weapons</td>
- <td>武器</td>
+ <td>����</td>
  <td><a href="../rgss/gc_rpg_weapon.html">RPG::Weapon</a>
-      の配列</td>
+      �̔z��</td>
 </tr><tr>
  <td>$data_armors</td>
- <td>防具</td>
+ <td>�h��</td>
  <td><a href="../rgss/gc_rpg_armor.html">RPG::Armor</a>
-     の配列</td>
+     �̔z��</td>
 </tr><tr>
  <td>$data_enemies</td>
- <td>敵キャラ</td>
+ <td>�G�L����</td>
  <td><a href="../rgss/gc_rpg_enemy.html">RPG::Enemy</a>
-     の配列</td>
+     �̔z��</td>
 </tr><tr>
  <td>$data_troops</td>
- <td>敵グループ</td>
+ <td>�G�O���[�v</td>
  <td><a href="../rgss/gc_rpg_troop.html">RPG::Troop</a>
-     の配列</td>
+     �̔z��</td>
 </tr><tr>
  <td>$data_states</td>
- <td>ステート</td>
+ <td>�X�e�[�g</td>
  <td><a href="../rgss/gc_rpg_state.html">RPG::State</a>
-     の配列</td>
+     �̔z��</td>
 </tr><tr>
  <td>$data_animations</td>
- <td>アニメーション</td>
+ <td>�A�j���[�V����</td>
  <td><a href="../rgss/gc_rpg_animation.html">RPG::Animation</a>
-     の配列</td>
+     �̔z��</td>
 </tr><tr>
  <td>$data_tilesets</td>
- <td>タイルセット</td>
+ <td>�^�C���Z�b�g</td>
  <td><a href="../rgss/gc_rpg_tileset.html">RPG::Tileset</a>
-     の配列</td>
+     �̔z��</td>
 </tr><tr>
  <td>$data_common_events</td>
- <td>コモンイベント</td>
+ <td>�R�����C�x���g</td>
  <td><a href="../rgss/gc_rpg_commonevent.html">RPG::CommonEvent</a>
-     の配列</td>
+     �̔z��</td>
 </tr><tr>
  <td>$data_system</td>
- <td>システム (用語を含む)</td>
+ <td>�V�X�e�� (�p����܂�)</td>
  <td><a href="../rgss/gc_rpg_system.html">RPG::System</a>
      </td>
 </tr><tr>
  <td>$data_mapinfos</td>
- <td>マップ情報</td>
+ <td>�}�b�v���</td>
  <td><a href="../rgss/gc_rpg_mapinfo.html">RPG::MapInfo</a>
-     のハッシュ</td>
+     �̃n�b�V��</td>
 </tr></table>
-<p>アクターからコモンイベントまでの 11 種のデータは、データベースで
-表示される番号に対応した配列になっています。
-ただし VX Ace ではデータ ID が 1 番から始まりますので、データ ID と
-配列の添字を揃えるために、配列の最初 (0 番目) の要素は nil になって
-います。</p>
+<p>�A�N�^�[����R�����C�x���g�܂ł� 11 ��̃f�[�^�́A�f�[�^�x�[�X��
+�\�������ԍ��ɑΉ������z��ɂȂ��Ă��܂��B
+������ VX Ace �ł̓f�[�^ ID �� 1 �Ԃ���n�܂�܂��̂ŁA�f�[�^ ID ��
+�z��̓Y���𑵂��邽�߂ɁA�z��̍ŏ� (0 �Ԗ�) �̗v�f�� nil �ɂȂ���
+���܂��B</p>
 
 
-<h2><a name="access">データベースへのアクセス</a></h2>
-<p>さて、基礎編と同じように TEST セクションでデータベースに
-アクセスする実験をしてみたいところですが、ひとつ問題が
-あります。DataManager モジュールは一番上のセクションを実行する時点では
-まだ定義されていないということです。</p>
-<p>そこで、次のように、load_normal_database メソッドの内容と同じ処理を
-書いてしまいましょう。</p>
+<h2><a name="access">�f�[�^�x�[�X�ւ̃A�N�Z�X</a></h2>
+<p>���āA��b�҂Ɠ����悤�� TEST �Z�N�V�����Ńf�[�^�x�[�X��
+�A�N�Z�X������������Ă݂����Ƃ���ł����A�ЂƂ�肪
+����܂��BDataManager ���W���[���͈�ԏ�̃Z�N�V���������s���鎞�_�ł�
+�܂���`����Ă��Ȃ��Ƃ������Ƃł��B</p>
+<p>�����ŁA���̂悤�ɁAload_normal_database ���\�b�h�̓��e�Ɠ���������
+�����Ă��܂��܂��傤�B</p>
 <pre>
 $data_actors        = load_data(&quot;Data/Actors.rvdata2&quot;)
 $data_classes       = load_data(&quot;Data/Classes.rvdata2&quot;)
@@ -170,35 +170,35 @@ $data_common_events = load_data(&quot;Data/CommonEvents.rvdata2&quot;)
 $data_system        = load_data(&quot;Data/System.rvdata2&quot;)
 $data_mapinfos      = load_data(&quot;Data/MapInfos.rvdata2&quot;)
 </pre>
-<p>こうすれば $data_actors 等の変数を参照することができます
-ね。<a href="110_array.html">配列</a>の使用方法は覚えていますか？</p>
-<p>たとえば、次のスクリプトはアクター 1 番の二つ名を表示します。
-これは <a href="../rgss/gc_rpg_actor.html">RPG::Actor</a> のページを
-見るとすぐに見つかるはずです。</p>
+<p>��������� $data_actors ���̕ϐ����Q�Ƃ��邱�Ƃ��ł��܂�
+�ˁB<a href="110_array.html">�z��</a>�̎g�p���@�͊o���Ă��܂����H</p>
+<p>���Ƃ��΁A���̃X�N���v�g�̓A�N�^�[ 1 �Ԃ̓����\�����܂��B
+����� <a href="../rgss/gc_rpg_actor.html">RPG::Actor</a> �̃y�[�W��
+����Ƃ����Ɍ�����͂��ł��B</p>
 <pre>
 p $data_actors[1].nickname
 </pre>
-<p>次のスクリプトは敵キャラ 2 番の名前を表示します。
-name は、<td><a href="../rgss/gc_rpg_enemy.html">RPG::Enemy</a>
-ではなくそのスーパークラスの
+<p>���̃X�N���v�g�͓G�L���� 2 �Ԃ̖��O��\�����܂��B
+name �́A<td><a href="../rgss/gc_rpg_enemy.html">RPG::Enemy</a>
+�ł͂Ȃ����̃X�[�p�[�N���X��
 <a href="../rgss/gc_rpg_baseitem.html">RPG::BaseItem</a>
-で定義されています。</p>
+�Œ�`����Ă��܂��B</p>
 <pre>
 p $data_enemies[2].name
 </pre>
-<p>次のスクリプトはアイテム 3 番に指定されているアイコンの
-番号を表示します。</p>
+<p>���̃X�N���v�g�̓A�C�e�� 3 �ԂɎw�肳��Ă���A�C�R����
+�ԍ���\�����܂��B</p>
 <pre>
 p $data_items[3].icon_index
 </pre>
-<p>次のスクリプトはスイッチ 4 番の名前を表示します。</p>
+<p>���̃X�N���v�g�̓X�C�b�` 4 �Ԃ̖��O��\�����܂��B</p>
 <pre>
 p $data_system.switches[4]
 </pre>
-<p>データベースにアクセスしたい場合は、この要領で、参照したいデータの
-属性 (変数) 名をリファレンスで調べれば良いのです。</p>
-<p>いくつか実験してみて、データを正常に取得できていることが確認でき
-たら次に進みましょう。</p>
+<p>�f�[�^�x�[�X�ɃA�N�Z�X�������ꍇ�́A���̗v�̂ŁA�Q�Ƃ������f�[�^��
+���� (�ϐ�) �������t�@�����X�Œ��ׂ�Ηǂ��̂ł��B</p>
+<p>�������������Ă݂āA�f�[�^�𐳏�Ɏ擾�ł��Ă��邱�Ƃ��m�F�ł�
+���玟�ɐi�݂܂��傤�B</p>
 
 
 <h6></h6>

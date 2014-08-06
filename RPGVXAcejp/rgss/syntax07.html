@@ -1,31 +1,31 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>クラスとメソッドの定義</title>
+<title>�N���X�ƃ��\�b�h�̒�`</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>クラスとメソッドの定義</h1>
+<h1>�N���X�ƃ��\�b�h�̒�`</h1>
 <ul>
-<li><a href="#L000327">クラス定義</a></li>
-<li><a href="#L000329">モジュール定義</a></li>
-<li><a href="#L000330">メソッド定義</a>
+<li><a href="#L000327">�N���X��`</a></li>
+<li><a href="#L000329">���W���[����`</a></li>
+<li><a href="#L000330">���\�b�h��`</a>
 <ul>
-<li><a href="#L000332">メソッドの評価</a></li>
+<li><a href="#L000332">���\�b�h�̕]��</a></li>
 </ul></li>
-<li><a href="#L000333">特異メソッド定義</a></li>
-<li><a href="#L000334">クラスメソッド定義</a></li>
-<li><a href="#L000336">定義に関する操作</a>
+<li><a href="#L000333">���ك��\�b�h��`</a></li>
+<li><a href="#L000334">�N���X���\�b�h��`</a></li>
+<li><a href="#L000336">��`�Ɋւ��鑀��</a>
 <ul>
 <li><a href="#L000337">alias</a></li>
 </ul></li>
 </ul>
 
-<h2><a name="L000327">クラス定義</a></h2>
-<p>例:</p>
+<h2><a name="L000327">�N���X��`</a></h2>
+<p>��:</p>
 <pre>
 class Foo &lt; Super
   def test
@@ -34,18 +34,18 @@ class Foo &lt; Super
      :
 end
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-class 識別子 ['&lt;' superclass ]
-  式 ..
+class ���ʎq ['&lt;' superclass ]
+  �� ..
 end
 </pre>
-<p>クラスを定義します。クラス名はアルファベットの大文字で始まる識別子です。</p>
-<p>クラス定義は、識別子で指定した定数へのクラスの代入になります
-(Ruby では、クラスもオブジェクトのひとつで <a href="sc_class.html">Class</a>
-クラスのインスタンスです) 。</p>
-<p>クラスがすでに定義されているとき、さらに同じクラス名でクラス定義を書くと
-クラスの定義の追加になります。</p>
+<p>�N���X���`���܂��B�N���X���̓A���t�@�x�b�g�̑啶���Ŏn�܂鎯�ʎq�ł��B</p>
+<p>�N���X��`�́A���ʎq�Ŏw�肵���萔�ւ̃N���X�̑���ɂȂ�܂�
+(Ruby �ł́A�N���X���I�u�W�F�N�g�̂ЂƂ� <a href="sc_class.html">Class</a>
+�N���X�̃C���X�^���X�ł�) �B</p>
+<p>�N���X�����łɒ�`����Ă���Ƃ��A����ɓ����N���X���ŃN���X��`��������
+�N���X�̒�`�̒ǉ��ɂȂ�܂��B</p>
 <pre>
 class Foo &lt; Array
   def foo
@@ -57,25 +57,25 @@ class Foo
   end
 end
 </pre>
-<p>クラス定義式の中は self がそのクラスであること以外に
-トップレベルとの違いはありません。クラス定義式中には任意の式を書くことが
-できクラス定義の際に実行されます。</p>
-<p>クラス定義はネスト (入れ子) にして定義できます。以下の例で入れ子の外側の
-クラス Foo と内側のクラス Bar の間には (定数 Bar が Foo の中の定数 Foo::Bar
-であること以外には) 継承関係などの機能的な関連はまったくありません。
-クラスのネストは、意味的に関連するクラスを外側のクラス / モジュールで
-ひとまとまりにしたり、包含関係を表すために使用されます。</p>
+<p>�N���X��`���̒��� self �����̃N���X�ł��邱�ƈȊO��
+�g�b�v���x���Ƃ̈Ⴂ�͂���܂���B�N���X��`�����ɂ͔C�ӂ̎����������Ƃ�
+�ł��N���X��`�̍ۂɎ��s����܂��B</p>
+<p>�N���X��`�̓l�X�g (����q) �ɂ��Ē�`�ł��܂��B�ȉ��̗�œ���q�̊O����
+�N���X Foo �Ɠ����̃N���X Bar �̊Ԃɂ� (�萔 Bar �� Foo �̒��̒萔 Foo::Bar
+�ł��邱�ƈȊO�ɂ�) �p���֌W�Ȃǂ̋@�\�I�Ȋ֘A�͂܂���������܂���B
+�N���X�̃l�X�g�́A�Ӗ��I�Ɋ֘A����N���X���O���̃N���X / ���W���[����
+�ЂƂ܂Ƃ܂�ɂ�����A��܊֌W��\�����߂Ɏg�p����܂��B</p>
 <pre>
 class Foo
   class Bar
   end
 end
 </pre>
-<p>クラス定義式は、最後に評価した式の結果を返します。最後に評価した式
-が値を返さない場合は nil を返します。</p>
+<p>�N���X��`���́A�Ō�ɕ]���������̌��ʂ�Ԃ��܂��B�Ō�ɕ]��������
+���l��Ԃ��Ȃ��ꍇ�� nil ��Ԃ��܂��B</p>
 
-<h2><a name="L000329">モジュール定義</a></h2>
-<p>例:</p>
+<h2><a name="L000329">���W���[����`</a></h2>
+<p>��:</p>
 <pre>
 module Foo
   def test
@@ -84,24 +84,24 @@ module Foo
      :
 end
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-module 識別子
-  式 ..
+module ���ʎq
+  �� ..
 end
 </pre>
-<p>モジュールを定義します。モジュール名はアルファベットの大文字で始まる
-識別子です。</p>
-<p>モジュール定義は、識別子で指定した定数へのモジュールの代入になります
-(Ruby では、モジュールもオブジェクトのひとつで <a href="sc_module.html">Module</a>
-クラスのインスタンスです) 。</p>
-<p>モジュールがすでに定義されいるとき、さらに同じモジュール名でモジュール定
-義を書くとモジュールの定義の追加になります。</p>
-<p>モジュール定義式は、最後に評価した式の結果を返します。最後に評価した式
-が値を返さない場合は nil を返します。</p>
+<p>���W���[�����`���܂��B���W���[�����̓A���t�@�x�b�g�̑啶���Ŏn�܂�
+���ʎq�ł��B</p>
+<p>���W���[����`�́A���ʎq�Ŏw�肵���萔�ւ̃��W���[���̑���ɂȂ�܂�
+(Ruby �ł́A���W���[�����I�u�W�F�N�g�̂ЂƂ� <a href="sc_module.html">Module</a>
+�N���X�̃C���X�^���X�ł�) �B</p>
+<p>���W���[�������łɒ�`���ꂢ��Ƃ��A����ɓ������W���[�����Ń��W���[����
+�`�������ƃ��W���[���̒�`�̒ǉ��ɂȂ�܂��B</p>
+<p>���W���[����`���́A�Ō�ɕ]���������̌��ʂ�Ԃ��܂��B�Ō�ɕ]��������
+���l��Ԃ��Ȃ��ꍇ�� nil ��Ԃ��܂��B</p>
 
-<h2><a name="L000330">メソッド定義</a></h2>
-<p>例:</p>
+<h2><a name="L000330">���\�b�h��`</a></h2>
+<p>��:</p>
 <pre>
 def fact(n)
   if n == 1 then
@@ -111,140 +111,140 @@ def fact(n)
   end
 end
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-def メソッド名 ['(' [arg ['=' default]] ... [',' '*' arg] ')']
-  式 ..
+def ���\�b�h�� ['(' [arg ['=' default]] ... [',' '*' arg] ')']
+  �� ..
 [rescue [error_type,..] [then]
-  式 ..]..
+  �� ..]..
 [ensure
-  式 ..]
+  �� ..]
 end
 </pre>
-<p>この定義のある場所にメソッドを定義します。すなわち、クラス / モジュール
-定義中ならばそのクラス / モジュールのメソッドを定義します。トップレベル
-ならばどこからでも呼べるメソッドを定義します。このようなメソッドは結果
-として他の言語における「関数」のように使えます。</p>
-<p>メソッド名としては通常の識別子の他に、再定義可能な演算子 (例: ==, +, - 
-など <a href="syntax04.html">演算子式</a>を参照) も指定できます。</p>
-<p>仮引数にデフォルト式が与えられた場合、メソッド呼び出しで実引数を省略し
-たときのデフォルト値になります (デフォルト式の評価は呼び出し時にメソッ
-ド定義内のコンテキストで行われます) 。</p>
-<p>最後の仮引数の直前に * がある場合には残りの実引数はみな配列とし
-てこの引数に格納されます。</p>
-<p>例:</p>
+<p>���̒�`�̂���ꏊ�Ƀ��\�b�h���`���܂��B���Ȃ킿�A�N���X / ���W���[��
+��`���Ȃ�΂��̃N���X / ���W���[���̃��\�b�h���`���܂��B�g�b�v���x��
+�Ȃ�΂ǂ�����ł��Ăׂ郁�\�b�h���`���܂��B���̂悤�ȃ��\�b�h�͌���
+�Ƃ��đ��̌���ɂ�����u�֐��v�̂悤�Ɏg���܂��B</p>
+<p>���\�b�h���Ƃ��Ă͒ʏ�̎��ʎq�̑��ɁA�Ē�`�\�ȉ��Z�q (��: ==, +, - 
+�Ȃ� <a href="syntax04.html">���Z�q��</a>���Q��) ���w��ł��܂��B</p>
+<p>�������Ƀf�t�H���g�����^����ꂽ�ꍇ�A���\�b�h�Ăяo���Ŏ��������ȗ���
+���Ƃ��̃f�t�H���g�l�ɂȂ�܂� (�f�t�H���g���̕]���͌Ăяo�����Ƀ��\�b
+�h��`���̃R���e�L�X�g�ōs���܂�) �B</p>
+<p>�Ō�̉������̒��O�� * ������ꍇ�ɂ͎c��̎������݂͂Ȕz��Ƃ�
+�Ă��̈����Ɋi�[����܂��B</p>
+<p>��:</p>
 <pre>
-# 引数のないメソッド。以下 end は省略
+# �����̂Ȃ����\�b�h�B�ȉ� end �͏ȗ�
 def foo
 end
 
-# 引数のあるメソッド
+# �����̂��郁�\�b�h
 def foo(arg, arg2)
 
-# デフォルト引数のあるメソッド
+# �f�t�H���g�����̂��郁�\�b�h
 def foo(arg = nil)
 
-# すべて持つ
+# ���ׂĎ���
 def foo(arg, arg2, arg3 = nil, *rest)
 
-# 演算子形式
+# ���Z�q�`��
 def ==(other)
 def +(other)
 def *(other)
 </pre>
-<p>メソッド定義において、仮引数はその種類毎に以下の順序でしか指定すること
-はできません。いずれも省略することは可能です。</p>
+<p>���\�b�h��`�ɂ����āA�������͂��̎�ޖ��Ɉȉ��̏����ł����w�肷�邱��
+�͂ł��܂���B��������ȗ����邱�Ƃ͉\�ł��B</p>
 <ul>
-<li>デフォルト式のない引数 (複数指定可)</li>
-<li>デフォルト式のある引数 (複数指定可)</li>
-<li>* を伴う引数 (1 つだけ指定可)</li>
+<li>�f�t�H���g���̂Ȃ����� (�����w���)</li>
+<li>�f�t�H���g���̂������ (�����w���)</li>
+<li>* �𔺂����� (1 �����w���)</li>
 </ul>
-<p>そのほか特殊な形式をとるメソッド定義を以下に挙げます。</p>
+<p>���̂ق�����Ȍ`�����Ƃ郁�\�b�h��`���ȉ��ɋ����܂��B</p>
 <pre>
-# 単項プラス / マイナス
+# �P���v���X / �}�C�i�X
 def +@
 def -@
 
-# 要素代入
+# �v�f���
 def foo=(value)             # obj.foo = value
 
-# [] と []=
+# [] �� []=
 def [](key)                 # obj[key]
 def []=(key, value)         # obj[key] = value
 def []=(key, key2, value)   # obj[key, key2] = value
 </pre>
-<p>またメソッド実行時の例外を捕捉するために
-<a href="syntax05.html#L000314">begin</a> 式と同様の rescue、 ensure 節を
-指定できます。</p>
-<p>メソッド定義式は、nil を返します。</p>
-<h3><a name="L000332">メソッドの評価</a></h3>
-<p>メソッドが呼び出されると、以下の順で式が評価されます。</p>
+<p>�܂����\�b�h���s���̗�O��ߑ����邽�߂�
+<a href="syntax05.html#L000314">begin</a> ���Ɠ��l�� rescue�A ensure �߂�
+�w��ł��܂��B</p>
+<p>���\�b�h��`���́Anil ��Ԃ��܂��B</p>
+<h3><a name="L000332">���\�b�h�̕]��</a></h3>
+<p>���\�b�h���Ăяo�����ƁA�ȉ��̏��Ŏ����]������܂��B</p>
 <ul>
-<li>指定されていれば引数のデフォルト式</li>
-<li>メソッドの本体</li>
-<li>指定されていれば例外の発生の有無によりメソッド定義式の rescue 
-  節または else 節</li>
-<li>指定されていれば ensure 節</li>
+<li>�w�肳��Ă���Έ����̃f�t�H���g��</li>
+<li>���\�b�h�̖{��</li>
+<li>�w�肳��Ă���Η�O�̔����̗L���ɂ�胁�\�b�h��`���� rescue 
+  �߂܂��� else ��</li>
+<li>�w�肳��Ă���� ensure ��</li>
 </ul>
-<p>引数のデフォルト式も含め、すべてそのメソッドのコンテキストで評価されま
-す。</p>
-<p>メソッドの戻り値は <a href="syntax05.html#L000317">return</a> に渡した値です。return 
-が呼び出されなかった場合は、メソッドの本体から ensure 節実行直前
-までの最後に評価した式の値を返します。</p>
-<p>またメソッドは定義する前に呼び出すことはできません。たとえば</p>
+<p>�����̃f�t�H���g�����܂߁A���ׂĂ��̃��\�b�h�̃R���e�L�X�g�ŕ]�������
+���B</p>
+<p>���\�b�h�̖߂�l�� <a href="syntax05.html#L000317">return</a> �ɓn�����l�ł��Breturn 
+���Ăяo����Ȃ������ꍇ�́A���\�b�h�̖{�̂��� ensure �ߎ��s���O
+�܂ł̍Ō�ɕ]���������̒l��Ԃ��܂��B</p>
+<p>�܂����\�b�h�͒�`����O�ɌĂяo�����Ƃ͂ł��܂���B���Ƃ���</p>
 <pre>
 foo
 def foo
   print &quot;foo\n&quot;
 end
 </pre>
-<p>は未定義メソッドの呼び出しで例外 <a href="s_exceptions.html#NameError">NameError</a> を発生させます。</p>
+<p>�͖���`���\�b�h�̌Ăяo���ŗ�O <a href="s_exceptions.html#NameError">NameError</a> �𔭐������܂��B</p>
 
-<h2><a name="L000333">特異メソッド定義</a></h2>
-<p>例:</p>
+<h2><a name="L000333">���ك��\�b�h��`</a></h2>
+<p>��:</p>
 <pre>
 def foo.test
   print &quot;this is foo\n&quot;
 end
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-def 式 '.' 識別子 ['(' [ 引数 ['=' default]] ... [',' '*' 引数 ]')']
-  式 ..
+def �� '.' ���ʎq ['(' [ ���� ['=' default]] ... [',' '*' ���� ]')']
+  �� ..
 [rescue [error_type,..] [then]
-  式 ..]..
+  �� ..]..
 [else
-  式 ..]
+  �� ..]
 [ensure
-  式 ..]
+  �� ..]
 end
 </pre>
-<p>特異メソッドとはクラスではなくある特定のオブジェクトに固有の
-メソッドです。特異メソッドの定義はネストできます。</p>
-<p>クラスの特異メソッドはそのサブクラスにも継承されます。言い替
-えればクラスの特異メソッドは他のオブジェクト指向システムにお
-けるクラスメソッドの働きをすることになります。</p>
-<p>特異メソッド定義式は、nil を返します。</p>
+<p>���ك��\�b�h�Ƃ̓N���X�ł͂Ȃ��������̃I�u�W�F�N�g�ɌŗL��
+���\�b�h�ł��B���ك��\�b�h�̒�`�̓l�X�g�ł��܂��B</p>
+<p>�N���X�̓��ك��\�b�h�͂��̃T�u�N���X�ɂ��p������܂��B������
+����΃N���X�̓��ك��\�b�h�͑��̃I�u�W�F�N�g�w���V�X�e���ɂ�
+����N���X���\�b�h�̓��������邱�ƂɂȂ�܂��B</p>
+<p>���ك��\�b�h��`���́Anil ��Ԃ��܂��B</p>
 
-<h2><a name="L000334">クラスメソッド定義</a></h2>
-<p>Ruby におけるクラスメソッドとはクラスの特異メソッドのことです。Ruby で
-は、クラスもオブジェクトなので、普通のオブジェクトと同様に特異メソッド
-を定義できます。</p>
-<p>したがって、何らかの方法でクラスオブジェクトにメソッドを定義すれば、そ
-れがクラスメソッドとなります。具体的には以下のようにして定義することが
-できます (モジュールも同様です) 。</p>
+<h2><a name="L000334">�N���X���\�b�h��`</a></h2>
+<p>Ruby �ɂ�����N���X���\�b�h�Ƃ̓N���X�̓��ك��\�b�h�̂��Ƃł��BRuby ��
+�́A�N���X���I�u�W�F�N�g�Ȃ̂ŁA���ʂ̃I�u�W�F�N�g�Ɠ��l�ɓ��ك��\�b�h
+���`�ł��܂��B</p>
+<p>���������āA���炩�̕��@�ŃN���X�I�u�W�F�N�g�Ƀ��\�b�h���`����΁A��
+�ꂪ�N���X���\�b�h�ƂȂ�܂��B��̓I�ɂ͈ȉ��̂悤�ɂ��Ē�`���邱�Ƃ�
+�ł��܂� (���W���[�������l�ł�) �B</p>
 <pre>
-# 特異メソッド方式。
+# ���ك��\�b�h�����B
 class Hoge
   def Hoge.foo
   end
 end
 
-# クラス定義の外でも良い
+# �N���X��`�̊O�ł��ǂ�
 def Hoge.bar
 end
 
-# 以下のようにすればクラス名が変わってもメソッド部の変更が不要
+# �ȉ��̂悤�ɂ���΃N���X�����ς���Ă����\�b�h���̕ύX���s�v
 class Hoge
   def self.baz
   end
@@ -252,42 +252,42 @@ end
 </pre>
 
 
-<h2><a name="L000336">定義に関する操作</a></h2>
+<h2><a name="L000336">��`�Ɋւ��鑀��</a></h2>
 <h3><a name="L000337">alias</a></h3>
-<p>例:</p>
+<p>��:</p>
 <pre>
 alias foo bar
 alias :foo :bar
 </pre>
-<p>文法:</p>
+<p>���@:</p>
 <pre>
-alias 新メソッド名 旧メソッド名
+alias �V���\�b�h�� �����\�b�h��
 </pre>
-<p>メソッドあるいはグローバル変数に別名をつけます。メソッド名に
-は識別子そのものか <a href="sc_symbol.html">Symbol</a> を指定します (obj.method
-のような式を書くことはできません) 。alias の引数はメソッド
-呼び出し等の一切の評価は行われません。</p>
-<p>別名を付けられたメソッドは、その時点でのメソッド定義を引き継
-ぎ、元のメソッドが再定義されても、再定義前の古いメソッドと同
-じ働きをします。あるメソッドの動作を変え、再定義するメソッド
-で元のメソッドの結果を利用したいときなどに利用されます。</p>
+<p>���\�b�h���邢�̓O���[�o���ϐ��ɕʖ������܂��B���\�b�h����
+�͎��ʎq���̂��̂� <a href="sc_symbol.html">Symbol</a> ���w�肵�܂� (obj.method
+�̂悤�Ȏ����������Ƃ͂ł��܂���) �Balias �̈����̓��\�b�h
+�Ăяo�����̈�؂̕]���͍s���܂���B</p>
+<p>�ʖ���t����ꂽ���\�b�h�́A���̎��_�ł̃��\�b�h��`�������p
+���A���̃��\�b�h���Ē�`����Ă��A�Ē�`�O�̌Â����\�b�h�Ɠ�
+�����������܂��B���郁�\�b�h�̓����ς��A�Ē�`���郁�\�b�h
+�Ō��̃��\�b�h�̌��ʂ𗘗p�������Ƃ��Ȃǂɗ��p����܂��B</p>
 <pre>
-# メソッド foo を定義
+# ���\�b�h foo ���`
 def foo
   &quot;foo&quot;
 end
 
-# 別名を設定 (メソッド定義の待避)
+# �ʖ���ݒ� (���\�b�h��`�̑Ҕ�)
 alias :_orig_foo :foo
 
-# foo を再定義 (元の定義を利用)
+# foo ���Ē�` (���̒�`�𗘗p)
 def foo
   _orig_foo * 2
 end
 
 p foo  # =&gt; &quot;foofoo&quot;
 </pre>
-<p>alias 式は nil を返します。</p>
+<p>alias ���� nil ��Ԃ��܂��B</p>
 
 
 <h6></h6>

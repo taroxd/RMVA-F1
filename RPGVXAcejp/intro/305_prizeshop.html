@@ -1,84 +1,84 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>景品交換所の作成</title>
+<title>�i�i�������̍쐬</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>景品交換所の作成</h1>
+<h1>�i�i�������̍쐬</h1>
 <ul>
-<li><a href="#constant">定数の定義</a></li>
-<li><a href="#command">コマンドの変更</a></li>
-<li><a href="#money">所持金表示の変更</a></li>
-<li><a href="#buy">購入処理の変更</a></li>
-<li><a href="#terminate">終了処理の追加</a></li>
+<li><a href="#constant">�萔�̒�`</a></li>
+<li><a href="#command">�R�}���h�̕ύX</a></li>
+<li><a href="#money">�������\���̕ύX</a></li>
+<li><a href="#buy">�w�������̕ύX</a></li>
+<li><a href="#terminate">�I�������̒ǉ�</a></li>
 </ul>
 
-<p>ショップ画面の改造方法を解説します。</p>
-<p>例として、変数の値を所持金とみなしてアイテムと交換できる
-「景品交換所」を作成します。</p>
+<p>�V���b�v��ʂ̉������@��������܂��B</p>
+<p>��Ƃ��āA�ϐ��̒l���������Ƃ݂Ȃ��ăA�C�e���ƌ����ł���
+�u�i�i�������v���쐬���܂��B</p>
 
 
-<h2><a name="constant">定数の定義</a></h2>
-<p>これまでの例では、たとえば変数 7 番を参照する際に
-$game_variables[7] などと直接数字を指定してきました。
-これはサンプルコードのわかりやすさを重視したためですが、
-実際には、後から変更する可能性のある値は<strong>定数</strong
->として定義するのが、より良い方法です。</p>
-<p>定数については <a href="202_vocab.html">Vocab モジュール</a
->の章で解説したように、大文字で始まる識別子を定義するだけです。
-慣習的に、全て大文字の名前がよく使われています。</p>
-<p>今回は、スイッチ 20 番が ON
-のときに呼び出されたショップを「景品交換所」とみなし、変数
-20 番の値を所持金とする仕様とします。</p>
+<h2><a name="constant">�萔�̒�`</a></h2>
+<p>����܂ł̗�ł́A���Ƃ��Εϐ� 7 �Ԃ��Q�Ƃ���ۂ�
+$game_variables[7] �Ȃǂƒ��ڐ������w�肵�Ă��܂����B
+����̓T���v���R�[�h�̂킩��₷�����d���������߂ł����A
+���ۂɂ́A�ォ��ύX����\���̂���l��<strong>�萔</strong
+>�Ƃ��Ē�`����̂��A���ǂ����@�ł��B</p>
+<p>�萔�ɂ��Ă� <a href="202_vocab.html">Vocab ���W���[��</a
+>�̏͂ŉ�������悤�ɁA�啶���Ŏn�܂鎯�ʎq���`���邾���ł��B
+���K�I�ɁA�S�đ啶���̖��O���悭�g���Ă��܂��B</p>
+<p>����́A�X�C�b�` 20 �Ԃ� ON
+�̂Ƃ��ɌĂяo���ꂽ�V���b�v���u�i�i�������v�Ƃ݂Ȃ��A�ϐ�
+20 �Ԃ̒l���������Ƃ���d�l�Ƃ��܂��B</p>
 <pre>
 PRIZE_SHOP_SID = 20
 PRIZE_SHOP_VID = 20
 </pre>
-<p>スイッチ ID を SID、変数 ID を VID と省略して命名しました。
-これはクラス定義の外側に直に書いておけば OK
-です。特に複数の個所で同じ数値を使用する場合、このように
-定数として定義しておけば、後で変更したくなったときに
-変更漏れなどのミスが生じる危険がなくなります。</p>
-<p>実装に入る前に、テストプレイのため、変数 20 番に適当な値を
-入れ、スイッチ 20 番を ON にした状態でショップを呼び出すイベントを
-作成しておいてください。</p>
+<p>�X�C�b�` ID �� SID�A�ϐ� ID �� VID �Əȗ����Ė������܂����B
+����̓N���X��`�̊O���ɒ��ɏ����Ă����� OK
+�ł��B���ɕ����̌��œ������l���g�p����ꍇ�A���̂悤��
+�萔�Ƃ��Ē�`���Ă����΁A��ŕύX�������Ȃ����Ƃ���
+�ύX�R��Ȃǂ̃~�X��������댯���Ȃ��Ȃ�܂��B</p>
+<p>�����ɓ���O�ɁA�e�X�g�v���C�̂��߁A�ϐ� 20 �ԂɓK���Ȓl��
+����A�X�C�b�` 20 �Ԃ� ON �ɂ�����ԂŃV���b�v���Ăяo���C�x���g��
+�쐬���Ă����Ă��������B</p>
 
 
-<h2><a name="command">コマンドの変更</a></h2>
-<p>まずは、ショップ画面の［購入する］コマンドの名前を［交換する］に
-変更し、さらに［売却する］コマンドを消去します。</p>
-<p>［購入する］などのコマンドを選択するウィンドウに対応する
-クラスは、Window_ShopCommand です。</p>
+<h2><a name="command">�R�}���h�̕ύX</a></h2>
+<p>�܂��́A�V���b�v��ʂ́m�w������n�R�}���h�̖��O���m��������n��
+�ύX���A����Ɂm���p����n�R�}���h���������܂��B</p>
+<p>�m�w������n�Ȃǂ̃R�}���h��I������E�B���h�E�ɑΉ�����
+�N���X�́AWindow_ShopCommand �ł��B</p>
 <pre>
 class Window_ShopCommand
   alias xxx001_make_command_list make_command_list
   def make_command_list
     if $game_switches[PRIZE_SHOP_SID]
-      add_command(&quot;交換する&quot;, :buy)
-      add_command(&quot;やめる&quot;,   :cancel)
+      add_command(&quot;��������&quot;, :buy)
+      add_command(&quot;��߂�&quot;,   :cancel)
     else
       xxx001_make_command_list
     end
   end
 end
 </pre>
-<p>先ほど定義した定数を参照し、特定のスイッチが ON
-の場合に［交換する］と［やめる］を表示するようにしました。</p>
-<p>add_command メソッドについては<a
-href="302_story.html">あらすじ画面の作成</a>で
-解説しましたから、内容は理解しやすいかと思います。
-通常ショップの購入処理をそのまま使いたいので、シンボルは
-:buy のままとしています。</p>
+<p>��قǒ�`�����萔���Q�Ƃ��A����̃X�C�b�`�� ON
+�̏ꍇ�Ɂm��������n�Ɓm��߂�n��\������悤�ɂ��܂����B</p>
+<p>add_command ���\�b�h�ɂ��Ă�<a
+href="302_story.html">���炷����ʂ̍쐬</a>��
+������܂�������A���e�͗������₷�����Ǝv���܂��B
+�ʏ�V���b�v�̍w�����������̂܂܎g�������̂ŁA�V���{����
+:buy �̂܂܂Ƃ��Ă��܂��B</p>
 
 
-<h2><a name="money">所持金表示の変更</a></h2>
-<p>所持金を表示するウィンドウで、お金の代わりに変数の値を
-表示するようにします。これは Window_Gold クラスの value
-メソッドを再定義すれば可能です。</p>
+<h2><a name="money">�������\���̕ύX</a></h2>
+<p>��������\������E�B���h�E�ŁA�����̑���ɕϐ��̒l��
+�\������悤�ɂ��܂��B����� Window_Gold �N���X�� value
+���\�b�h���Ē�`����Ή\�ł��B</p>
 <pre>
 class Window_Gold
   alias xxx001_value value
@@ -91,29 +91,29 @@ class Window_Gold
   end
 end
 </pre>
-<p>同様に通貨単位を変更するため、currency_unit メソッドを
-再定義します。ここではカジノのコインのようなものを想定して
-&quot;枚&quot; と表示させています。</p>
+<p>���l�ɒʉݒP�ʂ�ύX���邽�߁Acurrency_unit ���\�b�h��
+�Ē�`���܂��B�����ł̓J�W�m�̃R�C���̂悤�Ȃ��̂�z�肵��
+&quot;��&quot; �ƕ\�������Ă��܂��B</p>
 <pre>
 class Window_Gold
   alias xxx001_currency_unit currency_unit
   def currency_unit
     if $game_switches[PRIZE_SHOP_SID]
-      &quot;枚&quot;
+      &quot;��&quot;
     else
       xxx001_currency_unit
     end
   end
 end
 </pre>
-<p>このウィンドウに表示されている値と通貨単位は、商品の選択や
-個数入力のときにも自動的に使用されます。</p>
+<p>���̃E�B���h�E�ɕ\������Ă���l�ƒʉݒP�ʂ́A���i�̑I����
+�����͂̂Ƃ��ɂ������I�Ɏg�p����܂��B</p>
 
 
-<h2><a name="buy">購入処理の変更</a></h2>
-<p>実際に商品の購入を決定したときには、Scene_Shop クラスの
-do_buy メソッドが呼び出されます。これを再定義して、お金の代わりに
-変数の値を減らすようにします。</p>
+<h2><a name="buy">�w�������̕ύX</a></h2>
+<p>���ۂɏ��i�̍w�������肵���Ƃ��ɂ́AScene_Shop �N���X��
+do_buy ���\�b�h���Ăяo����܂��B������Ē�`���āA�����̑����
+�ϐ��̒l�����炷�悤�ɂ��܂��B</p>
 <pre>
 class Scene_Shop
   alias xxx001_do_buy do_buy
@@ -127,16 +127,16 @@ class Scene_Shop
   end
 end
 </pre>
-<p>引数 number は購入個数、@item は購入するアイテム、buying_price
-はそのアイテムの値段です。</p>
-<p>ここで呼び出している gain_item は Game_Party クラスのメソッド
-で、購入したアイテムを指定した数だけ増やす処理を行っています。</p>
+<p>���� number �͍w�����A@item �͍w������A�C�e���Abuying_price
+�͂��̃A�C�e���̒l�i�ł��B</p>
+<p>�����ŌĂяo���Ă��� gain_item �� Game_Party �N���X�̃��\�b�h
+�ŁA�w�������A�C�e�����w�肵�����������₷�������s���Ă��܂��B</p>
 
 
-<h2><a name="terminate">終了処理の追加</a></h2>
-<p>解読編の<a href="208_scene.html">シーンの管理</a>にて解説したように、
-シーンクラスには開始処理や終了処理を行うメソッドが用意されています。</p>
-<p>今回は、終了処理を行う terminate メソッドを以下のように再定義します。</p>
+<h2><a name="terminate">�I�������̒ǉ�</a></h2>
+<p>��Ǖ҂�<a href="208_scene.html">�V�[���̊Ǘ�</a>�ɂĉ�������悤�ɁA
+�V�[���N���X�ɂ͊J�n������I���������s�����\�b�h���p�ӂ���Ă��܂��B</p>
+<p>����́A�I���������s�� terminate ���\�b�h���ȉ��̂悤�ɍĒ�`���܂��B</p>
 <pre>
 class Scene_Shop
   alias xxx001_terminate terminate
@@ -146,8 +146,8 @@ class Scene_Shop
   end
 end
 </pre>
-<p>これで、ショップ画面を閉じたとき、「景品交換所」識別用の
-スイッチを自動的に OFF にすることができます。</p>
+<p>����ŁA�V���b�v��ʂ�����Ƃ��A�u�i�i�������v���ʗp��
+�X�C�b�`�������I�� OFF �ɂ��邱�Ƃ��ł��܂��B</p>
 
 
 

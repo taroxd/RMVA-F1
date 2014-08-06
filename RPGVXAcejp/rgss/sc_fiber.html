@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Fiber</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,40 +9,40 @@
 <body>
 
 <h1>Fiber</h1>
-<p>ノンプリエンプティブな軽量スレッド (以下ファイバーと呼ぶ) を提供します。
-他の言語では coroutine あるいは semicoroutine と呼ばれることもあります。</p>
-<p>ファイバーのコンテキストは、明示的に指定しない限り切り替わりません。
-またファイバーは親子関係を持ちます。Fiber#resume を呼んだファイバーが親になり
-呼ばれたファイバーが子になります。親子関係を壊すような遷移 (例えば
-自分の親の親のファイバーへ切り替えるような処理) はできません。
-例外 FiberError が発生します。
-できることは</p>
+<p>�m���v���G���v�e�B�u�Ȍy�ʃX���b�h (�ȉ��t�@�C�o�[�ƌĂ�) ��񋟂��܂��B
+���̌���ł� coroutine ���邢�� semicoroutine �ƌĂ΂�邱�Ƃ�����܂��B</p>
+<p>�t�@�C�o�[�̃R���e�L�X�g�́A�����I�Ɏw�肵�Ȃ�����؂�ւ��܂���B
+�܂��t�@�C�o�[�͐e�q�֌W�������܂��BFiber#resume ���Ă񂾃t�@�C�o�[���e�ɂȂ�
+�Ă΂ꂽ�t�@�C�o�[���q�ɂȂ�܂��B�e�q�֌W���󂷂悤�ȑJ�� (�Ⴆ��
+�����̐e�̐e�̃t�@�C�o�[�֐؂�ւ���悤�ȏ���) �͂ł��܂���B
+��O FiberError ���������܂��B
+�ł��邱�Ƃ�</p>
 <ul>
-<li>Fiber#resume により子へコンテキストを切り替える</li>
-<li>Fiber.yield により親へコンテキストを切り替える</li>
+<li>Fiber#resume �ɂ��q�փR���e�L�X�g��؂�ւ���</li>
+<li>Fiber.yield �ɂ��e�փR���e�L�X�g��؂�ւ���</li>
 </ul>
 <p>
-の二通りです。この親子関係は動的なものであり
-親ファイバーへコンテキストを切り替えた時点で解消されます。
+�̓�ʂ�ł��B���̐e�q�֌W�͓��I�Ȃ��̂ł���
+�e�t�@�C�o�[�փR���e�L�X�g��؂�ւ������_�ŉ�������܂��B
 </p>
-<p>ファイバーが終了するとその親にコンテキストが切り替わります。</p>
+<p>�t�@�C�o�[���I������Ƃ��̐e�ɃR���e�L�X�g���؂�ւ��܂��B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
 
-<h2>ショートチュートリアル</h2>
+<h2>�V���[�g�`���[�g���A��</h2>
 <p>
-ファイバーは処理のあるポイントで他のルーチンにコンテキストを切り替え、
-またそのポイントから再開するという目的のために使います。Fiber.new
-により与えられたブロックとともにファイバーを生成します。
-生成したファイバーに対して Fiber#resume を呼ぶことによりコンテキストを
-切り替えます。
-子ファイバーのブロック中で Fiber.yield を呼ぶと親にコンテキストを
-切り替えます。
-Fiber.yield の引数が、親での Fiber#resume の返り値になります。</p>
+�t�@�C�o�[�͏����̂���|�C���g�ő��̃��[�`���ɃR���e�L�X�g��؂�ւ��A
+�܂����̃|�C���g����ĊJ����Ƃ����ړI�̂��߂Ɏg���܂��BFiber.new
+�ɂ��^����ꂽ�u���b�N�ƂƂ��Ƀt�@�C�o�[�𐶐����܂��B
+���������t�@�C�o�[�ɑ΂��� Fiber#resume ���ĂԂ��Ƃɂ��R���e�L�X�g��
+�؂�ւ��܂��B
+�q�t�@�C�o�[�̃u���b�N���� Fiber.yield ���ĂԂƐe�ɃR���e�L�X�g��
+�؂�ւ��܂��B
+Fiber.yield �̈������A�e�ł� Fiber#resume �̕Ԃ�l�ɂȂ�܂��B</p>
 <pre>
 f = Fiber.new do
   n = 0
@@ -64,15 +64,15 @@ end
 </pre>
 
 
-<h2>特異メソッド</h2>
+<h2>���ك��\�b�h</h2>
 <dl>
 <dt>new {|<var>obj</var>| ... }</dt>
 <dd>
-<p>与えられたブロックとともにファイバーを生成して返します。
-ブロックは Fiber#resume
-に与えられた引数をその引数として実行されます。</p>
-<p>ブロックが終了した場合は親にコンテキストが切り替わります。
-その時ブロックの評価値が返されます。</p>
+<p>�^����ꂽ�u���b�N�ƂƂ��Ƀt�@�C�o�[�𐶐����ĕԂ��܂��B
+�u���b�N�� Fiber#resume
+�ɗ^����ꂽ���������̈����Ƃ��Ď��s����܂��B</p>
+<p>�u���b�N���I�������ꍇ�͐e�ɃR���e�L�X�g���؂�ւ��܂��B
+���̎��u���b�N�̕]���l���Ԃ���܂��B</p>
 <pre>
 a = nil
 f = Fiber.new do |obj|
@@ -89,11 +89,11 @@ p b  #=&gt; :hoge
 
 <dt>yield(<var>*arg = nil</var>)</dt>
 <dd>
-<p>現在のファイバーの親にコンテキストを切り替えます。</p>
-<p>コンテキストの切り替えの際に Fiber#resume
-に与えられた引数を yield メソッドは返します。</p>
+<p>���݂̃t�@�C�o�[�̐e�ɃR���e�L�X�g��؂�ւ��܂��B</p>
+<p>�R���e�L�X�g�̐؂�ւ��̍ۂ� Fiber#resume
+�ɗ^����ꂽ������ yield ���\�b�h�͕Ԃ��܂��B</p>
 <p><var>arg</var>
-には、現在のファイバーの親に渡したいオブジェクトを指定します。</p>
+�ɂ́A���݂̃t�@�C�o�[�̐e�ɓn�������I�u�W�F�N�g���w�肵�܂��B</p>
 <pre>
 a = nil
 f = Fiber.new do
@@ -110,20 +110,20 @@ p a  #=&gt; :foo
 
 </dl>
 
-<h2>インスタンスメソッド</h2>
+<h2>�C���X�^���X���\�b�h</h2>
 <dl>
 
 <dt>resume(<var>*arg = nil</var>)</dt>
 <dd>
 <p>
-自身が表すファイバーへコンテキストを切り替えます。
-自身は resume を呼んだファイバーの子となります。
+���g���\���t�@�C�o�[�փR���e�L�X�g��؂�ւ��܂��B
+���g�� resume ���Ă񂾃t�@�C�o�[�̎q�ƂȂ�܂��B
 </p>
-<p>コンテキストの切り替えの際に Fiber.yield
-に与えられた引数を resume メソッドは返します。
+<p>�R���e�L�X�g�̐؂�ւ��̍ۂ� Fiber.yield
+�ɗ^����ꂽ������ resume ���\�b�h�͕Ԃ��܂��B
 </p>
 <p><var>arg</var>
-には、self が表すファイバーに渡したいオブジェクトを指定します。</p>
+�ɂ́Aself ���\���t�@�C�o�[�ɓn�������I�u�W�F�N�g���w�肵�܂��B</p>
 <pre>
 f = Fiber.new do
   Fiber.yield(:hoge)

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>RPG::Enemy::Action</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,50 +9,50 @@
 <body>
 
 <h1>RPG::Enemy::Action</h1>
-<p>敵キャラの [戦闘行動] のデータクラス。</p>
+<p>�G�L������ [�퓬�s��] �̃f�[�^�N���X�B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>参照元</h2>
+<h2>�Q�ƌ�</h2>
 <ul>
 <li><a href="gc_rpg_enemy.html">RPG::Enemy</a></li>
 </ul>
 
-<h2>属性</h2>
+<h2>����</h2>
 <dl>
 
 <dt>skill_id</dt>
-<dd><p>戦闘行動として採用するスキルの ID。</p></dd>
+<dd><p>�퓬�s���Ƃ��č̗p����X�L���� ID�B</p></dd>
 
 <dt>condition_type</dt>
-<dd><p>行動条件のタイプ。</p>
+<dd><p>�s�������̃^�C�v�B</p>
 <ul>
-    <li>0 : 常時</li>
-    <li>1 : ターン数</li>
+    <li>0 : �펞</li>
+    <li>1 : �^�[����</li>
     <li>2 : HP</li>
     <li>3 : MP</li>
-    <li>4 : ステート</li>
-    <li>5 : パーティレベル</li>
-    <li>6 : スイッチ</li>
+    <li>4 : �X�e�[�g</li>
+    <li>5 : �p�[�e�B���x��</li>
+    <li>6 : �X�C�b�`</li>
 </ul></dd>
 
 <dt>condition_param1</dt>
 <dt>condition_param2</dt>
-<dd><p>行動条件のパラメータ。全タイプで共用となります。</p>
-<p>たとえば条件が [HP] の場合は、condition_param1 に下限、
-condition_param2 に上限の値が入ります。</p>
+<dd><p>�s�������̃p�����[�^�B�S�^�C�v�ŋ��p�ƂȂ�܂��B</p>
+<p>���Ƃ��Ώ����� [HP] �̏ꍇ�́Acondition_param1 �ɉ����A
+condition_param2 �ɏ���̒l������܂��B</p>
 </dd>
 
 <dt>rating</dt>
-<dd><p>優先度 (1..10) 。</p></dd>
+<dd><p>�D��x (1..10) �B</p></dd>
 
 </dl>
 
 
-<h2>定義</h2>
+<h2>��`</h2>
 <pre>
 class RPG::Enemy::Action
   def initialize

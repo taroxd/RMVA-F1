@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Sprite</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,161 +9,161 @@
 <body>
 
 <h1>Sprite</h1>
-<p>スプライトのクラス。スプライトは、ゲーム画面上にキャラクター等を
-表示するための基本概念です。</p>
+<p>�X�v���C�g�̃N���X�B�X�v���C�g�́A�Q�[����ʏ�ɃL�����N�^�[����
+�\�����邽�߂̊�{�T�O�ł��B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>クラスメソッド</h2>
+<h2>�N���X���\�b�h</h2>
 <dl>
 
 <dt>Sprite.new([<var>viewport</var>])</dt>
 <dd>
-<p>Sprite オブジェクトを生成します。必要に応じてビューポート
-(<a href="gc_viewport.html">Viewport</a>) を指定します。</p></dd>
+<p>Sprite �I�u�W�F�N�g�𐶐����܂��B�K�v�ɉ����ăr���[�|�[�g
+(<a href="gc_viewport.html">Viewport</a>) ���w�肵�܂��B</p></dd>
 
 </dl>
 
-<h2>メソッド</h2>
+<h2>���\�b�h</h2>
 <dl>
 
 <dt>dispose</dt>
 <dd>
-<p>スプライトを解放します。すでに解放されている場合は何も行いません。</p></dd>
+<p>�X�v���C�g��������܂��B���łɉ������Ă���ꍇ�͉����s���܂���B</p></dd>
 
 <dt>disposed?</dt>
 <dd>
-<p>スプライトがすでに解放されている場合に真を返します。</p></dd>
+<p>�X�v���C�g�����łɉ������Ă���ꍇ�ɐ^��Ԃ��܂��B</p></dd>
 
 <dt><a name="flash">flash(<var>color</var>, <var>duration</var>)</a></dt>
 <dd>
-<p>スプライトのフラッシュを開始します。<var>duration</var> は
-フラッシュにかけるフレーム数です。</p>
-<p><var>color</var> に nil を指定した場合は、フラッシュの時間分
-スプライト自体を消去します。</p>
+<p>�X�v���C�g�̃t���b�V�����J�n���܂��B<var>duration</var> ��
+�t���b�V���ɂ�����t���[�����ł��B</p>
+<p><var>color</var> �� nil ���w�肵���ꍇ�́A�t���b�V���̎��ԕ�
+�X�v���C�g���̂��������܂��B</p>
 </dd>
 
 <dt>update</dt>
 <dd>
-<p>スプライトのフラッシュ、および波形描画の位相
- を進めます。
-このメソッドは、原則として 1 フレームに 1 回呼び出します。</p>
-<p>フラッシュや波形描画の必要がない場合は呼び出さなくても構いません。</p>
+<p>�X�v���C�g�̃t���b�V���A����єg�`�`��̈ʑ�
+ ��i�߂܂��B
+���̃��\�b�h�́A�����Ƃ��� 1 �t���[���� 1 ��Ăяo���܂��B</p>
+<p>�t���b�V����g�`�`��̕K�v���Ȃ��ꍇ�͌Ăяo���Ȃ��Ă��\���܂���B</p>
 </dd>
 
-<dt>width</dt><dd><p>スプライトの幅を取得します。src_rect.width と等価です。</p></dd>
+<dt>width</dt><dd><p>�X�v���C�g�̕����擾���܂��Bsrc_rect.width �Ɠ����ł��B</p></dd>
 
-<dt>height</dt><dd><p>スプライトの高さを取得します。src_rect.height と等価です。</p></dd>
+<dt>height</dt><dd><p>�X�v���C�g�̍������擾���܂��Bsrc_rect.height �Ɠ����ł��B</p></dd>
 
 </dl>
 
-<h2>プロパティ</h2>
+<h2>�v���p�e�B</h2>
 <dl>
 
 <dt>bitmap</dt>
 <dd>
-<p>転送元とするビットマップ (<a href="gc_bitmap.html">Bitmap</a>) への参照です。</p></dd>
+<p>�]�����Ƃ���r�b�g�}�b�v (<a href="gc_bitmap.html">Bitmap</a>) �ւ̎Q�Ƃł��B</p></dd>
 
 <dt>src_rect</dt>
 <dd>
-<p>ビットマップから転送される矩形 (<a href="gc_rect.html">Rect</a>) です。</p></dd>
+<p>�r�b�g�}�b�v����]��������` (<a href="gc_rect.html">Rect</a>) �ł��B</p></dd>
 
 <dt>viewport</dt><dd>
-<p>スプライトが関連付けられているビューポート
- (<a href="gc_viewport.html">Viewport</a>) への参照です。</p></dd>
+<p>�X�v���C�g���֘A�t�����Ă���r���[�|�[�g
+ (<a href="gc_viewport.html">Viewport</a>) �ւ̎Q�Ƃł��B</p></dd>
 
 <dt>visible</dt>
 <dd>
-<p>スプライトの可視状態です。真のとき可視になります。初期値は true です。</p></dd>
+<p>�X�v���C�g�̉���Ԃł��B�^�̂Ƃ����ɂȂ�܂��B�����l�� true �ł��B</p></dd>
 
 <dt><a name="x">x</a></dt>
 <dd>
-<p>スプライトの X 座標です。</p></dd>
+<p>�X�v���C�g�� X ���W�ł��B</p></dd>
 
 <dt>y</dt>
 <dd>
-<p>スプライトの Y 座標です。</p></dd>
+<p>�X�v���C�g�� Y ���W�ł��B</p></dd>
 
 <dt>z</dt>
 <dd>
-<p>スプライトの Z 座標です。この値が大きいものほど手前に表示されます。</p>
-<p>Z 座標が同一の場合は Y 座標が大きいものほど  、
-Y 座標も同一の場合は後に生成されたオブジェクトほど手前に表示されます。</p></dd>
+<p>�X�v���C�g�� Z ���W�ł��B���̒l���傫�����̂قǎ�O�ɕ\������܂��B</p>
+<p>Z ���W������̏ꍇ�� Y ���W���傫�����̂ق�  �A
+Y ���W������̏ꍇ�͌�ɐ������ꂽ�I�u�W�F�N�g�قǎ�O�ɕ\������܂��B</p></dd>
 
 <dt>ox</dt>
 <dd>
-<p>スプライトの転送元原点の X 座標です。</p></dd>
+<p>�X�v���C�g�̓]�������_�� X ���W�ł��B</p></dd>
 
 <dt>oy</dt>
 <dd>
-<p>スプライトの転送元原点の Y 座標です。</p></dd>
+<p>�X�v���C�g�̓]�������_�� Y ���W�ł��B</p></dd>
 
 <dt>zoom_x</dt>
 <dd>
-<p>スプライトの X 方向拡大率です。1.0 で等倍になります。</p></dd>
+<p>�X�v���C�g�� X �����g�嗦�ł��B1.0 �œ��{�ɂȂ�܂��B</p></dd>
 
 <dt>zoom_y</dt>
 <dd>
-<p>スプライトの Y 方向拡大率です。1.0 で等倍になります。</p></dd>
+<p>�X�v���C�g�� Y �����g�嗦�ł��B1.0 �œ��{�ɂȂ�܂��B</p></dd>
 
 <dt>angle</dt>
 <dd>
-<p>スプライトの回転角度です。反時計回りを正とする 360 度系で指定します。
-回転描画には時間がかかりますので、多用は避けてください。</p></dd>
+<p>�X�v���C�g�̉�]�p�x�ł��B�����v���𐳂Ƃ��� 360 �x�n�Ŏw�肵�܂��B
+��]�`��ɂ͎��Ԃ�������܂��̂ŁA���p�͔����Ă��������B</p></dd>
 
 <dt>wave_amp</dt><dt>wave_length</dt><dt>wave_speed</dt><dt>wave_phase</dt><dd>
-<p>波形描画のための振幅、周期、速度、位相です。波形描画とは、スプライトを
-正弦波関数によりラインごとに横にずらして描画するもので、いわゆるラスタ
-スクロールのような表現を行います。<p>
-<p>wave_amp には波形の振幅を、wave_length には波形の周期を、それぞれ
-ピクセル数で指定します。</p>
-<p>wave_speed は波形がアニメーションする速度を指定します。
-規定値は 360 で、値が大きいほど速くなります。</p>
-<p>wave_phase はスプライトの一番上のラインでの位相を 360 度系の
-角度で指定します。これは update メソッドが呼ばれるごとに更新されます。
-波形描画を行うスプライト同士で同期を取る必要がある場合以外、特にこの
-プロパティを使用する必要はありません。</p>
+<p>�g�`�`��̂��߂̐U���A�����A���x�A�ʑ��ł��B�g�`�`��Ƃ́A�X�v���C�g��
+�����g�֐��ɂ�胉�C�����Ƃɉ��ɂ��炵�ĕ`�悷����̂ŁA�����郉�X�^
+�X�N���[���̂悤�ȕ\�����s���܂��B<p>
+<p>wave_amp �ɂ͔g�`�̐U�����Awave_length �ɂ͔g�`�̎������A���ꂼ��
+�s�N�Z�����Ŏw�肵�܂��B</p>
+<p>wave_speed �͔g�`���A�j���[�V�������鑬�x���w�肵�܂��B
+�K��l�� 360 �ŁA�l���傫���قǑ����Ȃ�܂��B</p>
+<p>wave_phase �̓X�v���C�g�̈�ԏ�̃��C���ł̈ʑ��� 360 �x�n��
+�p�x�Ŏw�肵�܂��B����� update ���\�b�h���Ă΂�邲�ƂɍX�V����܂��B
+�g�`�`����s���X�v���C�g���m�œ��������K�v������ꍇ�ȊO�A���ɂ���
+�v���p�e�B���g�p����K�v�͂���܂���B</p>
 </dd>
 
 <dt>mirror</dt>
 <dd>
-<p>スプライトの左右反転フラグです。真のとき反転して描画されます。初期値は
-false です。</p></dd>
+<p>�X�v���C�g�̍��E���]�t���O�ł��B�^�̂Ƃ����]���ĕ`�悳��܂��B�����l��
+false �ł��B</p></dd>
 
 <dt>bush_depth</dt>
 <dt>bush_opacity</dt><dd>
-<p>スプライトの茂みの深さと不透明度です。この効果により、キャラクターの足元が
-茂みなどに隠れているような表現を行います。</p>
-<p>bush_depth には茂み部分のピクセル数を指定します。規定値は 0 です。</p>
-<p>bush_opacity には茂み部分を描画する不透明度を 0 〜 255 の範囲で指定します。
-範囲外の値は自動で修正されます。規定値は 128 です。</P>
-<p>bush_opacity の値は opacity との乗算で扱われます。たとえば opacity と
-bush_opacity の両方が 128 であれば、半透明の半透明とみなされ、実際の不透明度
-は 64 になります。</p></dd>
+<p>�X�v���C�g�̖΂݂̐[���ƕs�����x�ł��B���̌��ʂɂ��A�L�����N�^�[�̑�����
+�΂݂ȂǂɉB��Ă���悤�ȕ\�����s���܂��B</p>
+<p>bush_depth �ɂ͖΂ݕ����̃s�N�Z�������w�肵�܂��B�K��l�� 0 �ł��B</p>
+<p>bush_opacity �ɂ͖΂ݕ�����`�悷��s�����x�� 0 �` 255 �͈̔͂Ŏw�肵�܂��B
+�͈͊O�̒l�͎����ŏC������܂��B�K��l�� 128 �ł��B</P>
+<p>bush_opacity �̒l�� opacity �Ƃ̏�Z�ň����܂��B���Ƃ��� opacity ��
+bush_opacity �̗����� 128 �ł���΁A�������̔������Ƃ݂Ȃ���A���ۂ̕s�����x
+�� 64 �ɂȂ�܂��B</p></dd>
 
 <dt>opacity</dt>
 <dd>
-<p>スプライトの不透明度です。0 〜 255 の範囲で指定します。範囲外の値は
-自動で修正されます。</p></dd>
+<p>�X�v���C�g�̕s�����x�ł��B0 �` 255 �͈̔͂Ŏw�肵�܂��B�͈͊O�̒l��
+�����ŏC������܂��B</p></dd>
 
 <dt>blend_type</dt>
 <dd>
-<p>スプライトの合成方法 (0:通常、1:加算、2:減算) です。</p></dd>
+<p>�X�v���C�g�̍������@ (0:�ʏ�A1:���Z�A2:���Z) �ł��B</p></dd>
 
 <dt>color</dt>
 <dd>
-<p>スプライトにブレンドする色 (<a href="gc_color.html">Color</a>) です。
-ブレンドの割合にはアルファ値が使用されます。</p>
-<p><a href="#flash">flash</a> によってブレンドされる色とは別に
-管理されます。ただし、表示の際にはアルファ値の大きいほうの色が優先して
-ブレンドされます。</p></dd>
+<p>�X�v���C�g�Ƀu�����h����F (<a href="gc_color.html">Color</a>) �ł��B
+�u�����h�̊����ɂ̓A���t�@�l���g�p����܂��B</p>
+<p><a href="#flash">flash</a> �ɂ���ău�����h�����F�Ƃ͕ʂ�
+�Ǘ�����܂��B�������A�\���̍ۂɂ̓A���t�@�l�̑傫���ق��̐F���D�悵��
+�u�����h����܂��B</p></dd>
 
 <dt>tone</dt>
 <dd>
-<p>スプライトの色調 (<a href="gc_tone.html">Tone</a>) です。</p></dd>
+<p>�X�v���C�g�̐F�� (<a href="gc_tone.html">Tone</a>) �ł��B</p></dd>
 
 </dl>
 

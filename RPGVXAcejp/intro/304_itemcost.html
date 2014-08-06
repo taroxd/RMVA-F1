@@ -1,73 +1,73 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>アイテム消費スキルの作成</title>
+<title>�A�C�e������X�L���̍쐬</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>アイテム消費スキルの作成</h1>
+<h1>�A�C�e������X�L���̍쐬</h1>
 <ul>
-<li><a href="#data">スキルとアイテムの作成</a></li>
-<li><a href="#regexp">正規表現</a></li>
-<li><a href="#item_id">アイテム ID の取得</a></li>
-<li><a href="#payable">コストの支払い可能判定</a></li>
-<li><a href="#pay">コストの支払い</a></li>
+<li><a href="#data">�X�L���ƃA�C�e���̍쐬</a></li>
+<li><a href="#regexp">���K�\��</a></li>
+<li><a href="#item_id">�A�C�e�� ID �̎擾</a></li>
+<li><a href="#payable">�R�X�g�̎x�����\����</a></li>
+<li><a href="#pay">�R�X�g�̎x����</a></li>
 </ul>
 
-<p>スキルに対して、MP および TP
-以外の消費コストを設定する方法を解説します。</p>
-<p>例として、アイテムを消費するスキルを作成します。</p>
+<p>�X�L���ɑ΂��āAMP ����� TP
+�ȊO�̏���R�X�g��ݒ肷����@��������܂��B</p>
+<p>��Ƃ��āA�A�C�e���������X�L�����쐬���܂��B</p>
 
 
-<h2><a name="data">スキルとアイテムの作成</a></h2>
-<p>データベースを開き、テスト用のデータを作成します。</p>
-<p>データの内容は何でも構いませんが、たとえば「『毒矢』というアイテムを
-消費することで『ポイズンショット』というスキルが使える」などと設定すると
-わかりやすいかもしれません。ただしこれはサンプルなので、スキルの種類は
-本当に戦闘用にしなくてもかまいません。
-たとえば［使用可能時］を［常時］、［効果範囲］を［なし］にしておけば
-動作確認がしやすくなります。</p>
-<p>消費するアイテムの設定としては、スキル側のメモに
+<h2><a name="data">�X�L���ƃA�C�e���̍쐬</a></h2>
+<p>�f�[�^�x�[�X���J���A�e�X�g�p�̃f�[�^���쐬���܂��B</p>
+<p>�f�[�^�̓��e�͉��ł��\���܂��񂪁A���Ƃ��΁u�w�Ŗ�x�Ƃ����A�C�e����
+����邱�ƂŁw�|�C�Y���V���b�g�x�Ƃ����X�L�����g����v�ȂǂƐݒ肷���
+�킩��₷����������܂���B����������̓T���v���Ȃ̂ŁA�X�L���̎�ނ�
+�{���ɐ퓬�p�ɂ��Ȃ��Ă����܂��܂���B
+���Ƃ��΁m�g�p�\���n���m�펞�n�A�m���ʔ͈́n���m�Ȃ��n�ɂ��Ă�����
+����m�F�����₷���Ȃ�܂��B</p>
+<p>�����A�C�e���̐ݒ�Ƃ��ẮA�X�L�����̃�����
 &lt;ITEM_COST <var>n</var>&gt;
-と入力してください。<var>n</var> にはアイテム ID
-を指定します。たとえば「毒矢」のアイテム ID が 25
-番であれば、「ポイズンショット」のメモに &lt;ITEM_COST 25&gt;
-と入力するということです。</p>
-<p>作成したスキルは、任意のアクターに覚えさせましょう。
-スキルを覚えさせるには、アクターの職業を見て、対応する職業に
-追加してください。また、必要になるアイテムを入手するイベントを
-忘れずに作成してください。</p>
+�Ɠ��͂��Ă��������B<var>n</var> �ɂ̓A�C�e�� ID
+���w�肵�܂��B���Ƃ��΁u�Ŗ�v�̃A�C�e�� ID �� 25
+�Ԃł���΁A�u�|�C�Y���V���b�g�v�̃����� &lt;ITEM_COST 25&gt;
+�Ɠ��͂���Ƃ������Ƃł��B</p>
+<p>�쐬�����X�L���́A�C�ӂ̃A�N�^�[�Ɋo�������܂��傤�B
+�X�L�����o��������ɂ́A�A�N�^�[�̐E�Ƃ����āA�Ή�����E�Ƃ�
+�ǉ����Ă��������B�܂��A�K�v�ɂȂ�A�C�e������肷��C�x���g��
+�Y�ꂸ�ɍ쐬���Ă��������B</p>
 
 
-<h2><a name="regexp">正規表現</a></h2>
-<p>前章では、メモの文字列に対して include?
-メソッドを使って判定を行いましたが、アイテム ID
-などのパラメータを指定したい場合、それでは不都合です。</p>
-<p>このような場合、<strong>正規表現</strong>という機能を
-使用します。正規表現とは、一つの文字列で複数の文字列を表現する
-記法のことです。Ruby だけではなく、他の言語やツール、テキスト
-エディタの検索機能などに広く採用されています。</p>
-<p>Ruby の場合は、/ という記号で囲った部分が正規表現と
-みなされ、<a href="../rgss/sc_regexp.html">Regexp</a>
-クラスのインスタンスになります。今回のメモ表記に対応する
-正規表現は次のようになります。</p>
+<h2><a name="regexp">���K�\��</a></h2>
+<p>�O�͂ł́A�����̕�����ɑ΂��� include?
+���\�b�h���g���Ĕ�����s���܂������A�A�C�e�� ID
+�Ȃǂ̃p�����[�^���w�肵�����ꍇ�A����ł͕s�s���ł��B</p>
+<p>���̂悤�ȏꍇ�A<strong>���K�\��</strong>�Ƃ����@�\��
+�g�p���܂��B���K�\���Ƃ́A��̕�����ŕ����̕������\������
+�L�@�̂��Ƃł��BRuby �����ł͂Ȃ��A���̌����c�[���A�e�L�X�g
+�G�f�B�^�̌����@�\�ȂǂɍL���̗p����Ă��܂��B</p>
+<p>Ruby �̏ꍇ�́A/ �Ƃ����L���ň͂������������K�\����
+�݂Ȃ���A<a href="../rgss/sc_regexp.html">Regexp</a>
+�N���X�̃C���X�^���X�ɂȂ�܂��B����̃����\�L�ɑΉ�����
+���K�\���͎��̂悤�ɂȂ�܂��B</p>
 <pre>
 /&lt;ITEM_COST\s*(\d+)&gt;/
 </pre>
-\s は空白文字、\d は数字、* は 0 回以上の繰り返し、+
-は 1 回以上の繰り返し、()
-は後で参照するためのグループ化を示しています。</p>
-<p>正規表現の記法について詳しくは、RGSS リファレンスの<a 
-href="../rgss/appendix01.html">正規表現</a
->のページを参照してください。</p>
+\s �͋󔒕����A\d �͐����A* �� 0 ��ȏ�̌J��Ԃ��A+
+�� 1 ��ȏ�̌J��Ԃ��A()
+�͌�ŎQ�Ƃ��邽�߂̃O���[�v���������Ă��܂��B</p>
+<p>���K�\���̋L�@�ɂ��ďڂ����́ARGSS ���t�@�����X��<a 
+href="../rgss/appendix01.html">���K�\��</a
+>�̃y�[�W���Q�Ƃ��Ă��������B</p>
 
 
-<h2><a name="item_id">アイテム ID の取得</a></h2>
-<p>では、実際に正規表現を使って、消費アイテムの ID
-を取得するメソッドを作成します。</p>
+<h2><a name="item_id">�A�C�e�� ID �̎擾</a></h2>
+<p>�ł́A���ۂɐ��K�\�����g���āA����A�C�e���� ID
+���擾���郁�\�b�h���쐬���܂��B</p>
 <pre>
 class RPG::Skill
   def item_cost
@@ -75,36 +75,36 @@ class RPG::Skill
   end
 end
 </pre>
-<p>今回は
+<p>�����
 <a href="../rgss/gc_rpg_skill.html">RPG::Skill</a>
-クラスにメソッドを追加することにしました。このように RGSS
-内部で定義されているクラスであっても、これまでと同じ方法で
-定義を変更することが可能です。なお item_cost メソッドは再定義
-ではなく純粋な追加なので、エイリアスは不要です。</p>
-<p>内容の解説に移ります。</p>
+�N���X�Ƀ��\�b�h��ǉ����邱�Ƃɂ��܂����B���̂悤�� RGSS
+�����Œ�`����Ă���N���X�ł����Ă��A����܂łƓ������@��
+��`��ύX���邱�Ƃ��\�ł��B�Ȃ� item_cost ���\�b�h�͍Ē�`
+�ł͂Ȃ������Ȓǉ��Ȃ̂ŁA�G�C���A�X�͕s�v�ł��B</p>
+<p>���e�̉���Ɉڂ�܂��B</p>
 <pre>
     /&lt;ITEM_COST\s*(\d+)&gt;/ =~ note ? $1.to_i : 0
 </pre>
-<p>=~ という演算子は、文字列 (の一部) が正規表現にマッチするか
-否かを判定するものです。</p>
-<p>note は前章でも使った、メモに対応する文字列です。自分自身の
-メソッドなのでレシーバは省略しています。</p>
-<p>$1 というのは<a href="../rgss/s_variables.html">組み込み変数</a
->の一種で、正規表現の括弧内の部分が格納されるものです。たとえば
-&lt;ITEM_COST 25&gt; という指定であれば $1 の内容は
-&quot;25&quot; になるわけです。これは文字列なので、to_i
-メソッドを用いて整数に変換しています。</p>
-<p>まとめると、消費アイテムの ID が指定されていればその ID
-を、指定されていなければ 0 を返すというメソッドになります。</p>
+<p>=~ �Ƃ������Z�q�́A������ (�̈ꕔ) �����K�\���Ƀ}�b�`���邩
+�ۂ��𔻒肷����̂ł��B</p>
+<p>note �͑O�͂ł��g�����A�����ɑΉ����镶����ł��B�������g��
+���\�b�h�Ȃ̂Ń��V�[�o�͏ȗ����Ă��܂��B</p>
+<p>$1 �Ƃ����̂�<a href="../rgss/s_variables.html">�g�ݍ��ݕϐ�</a
+>�̈��ŁA���K�\���̊��ʓ��̕������i�[�������̂ł��B���Ƃ���
+&lt;ITEM_COST 25&gt; �Ƃ����w��ł���� $1 �̓��e��
+&quot;25&quot; �ɂȂ�킯�ł��B����͕�����Ȃ̂ŁAto_i
+���\�b�h��p���Đ����ɕϊ����Ă��܂��B</p>
+<p>�܂Ƃ߂�ƁA����A�C�e���� ID ���w�肳��Ă���΂��� ID
+���A�w�肳��Ă��Ȃ���� 0 ��Ԃ��Ƃ������\�b�h�ɂȂ�܂��B</p>
 
 
-<h2><a name="payable">コストの支払い可能判定</a></h2>
-<p>Game_BattlerBase クラスの skill_cost_payable?
-メソッドが、スキルの消費コストが支払い可能か否かを判定する役割を
-担っており、ここで false を返せば、そのスキルは使用できないと判定
-されるようになっています。</p>
-<p>ただし今回は「アイテム消費」であって敵キャラには関係が
-ないので、サブクラスの Game_Actor にてこれを再定義します。</p>
+<h2><a name="payable">�R�X�g�̎x�����\����</a></h2>
+<p>Game_BattlerBase �N���X�� skill_cost_payable?
+���\�b�h���A�X�L���̏���R�X�g���x�����\���ۂ��𔻒肷�������
+�S���Ă���A������ false ��Ԃ��΁A���̃X�L���͎g�p�ł��Ȃ��Ɣ���
+�����悤�ɂȂ��Ă��܂��B</p>
+<p>����������́u�A�C�e������v�ł����ēG�L�����ɂ͊֌W��
+�Ȃ��̂ŁA�T�u�N���X�� Game_Actor �ɂĂ�����Ē�`���܂��B</p>
 <pre>
 class Game_Actor
   alias xxx001_skill_cost_payable? skill_cost_payable?
@@ -115,34 +115,34 @@ class Game_Actor
   end
 end
 </pre>
-<p><a href="201_database.html">データベース</a>の解説で触れた
-ように、$data_items はアイテムの配列であり、最初 (0 番目) の
-要素は nil になっています。先ほど作成した item_cost
-メソッドは消費アイテムが指定されていないとき 0 を返しますから、</p>
+<p><a href="201_database.html">�f�[�^�x�[�X</a>�̉���ŐG�ꂽ
+�悤�ɁA$data_items �̓A�C�e���̔z��ł���A�ŏ� (0 �Ԗ�) ��
+�v�f�� nil �ɂȂ��Ă��܂��B��قǍ쐬���� item_cost
+���\�b�h�͏���A�C�e�����w�肳��Ă��Ȃ��Ƃ� 0 ��Ԃ��܂�����A</p>
 <pre>
     item = $data_items[skill.item_cost]
 </pre>
-<p>ここの item には、消費アイテムが指定されていれば
-そのオブジェクトが、指定されていなければ nil
-が代入されることになります。</p>
+<p>������ item �ɂ́A����A�C�e�����w�肳��Ă����
+���̃I�u�W�F�N�g���A�w�肳��Ă��Ȃ���� nil
+���������邱�ƂɂȂ�܂��B</p>
 <pre>
     xxx001_skill_cost_payable?(skill) &&
     (!item || $game_party.has_item?(item))
 </pre>
-<p>!item というのは、item が偽であるかを判定するイディオム
-です (nil なら偽とみなされます) 。$game_party.has_item?
-は、パーティがそのアイテムを 1
-個以上所持しているかを判定するメソッドです。</p>
-<p>すなわちこの式は、本来の使用可能条件 (MP
-など) を満たし、かつ、「消費アイテムが指定されていないか、または
-指定された消費アイテムをパーティが所持している」という条件を
-判定しています。</p>
+<p>!item �Ƃ����̂́Aitem ���U�ł��邩�𔻒肷��C�f�B�I��
+�ł� (nil �Ȃ�U�Ƃ݂Ȃ���܂�) �B$game_party.has_item?
+�́A�p�[�e�B�����̃A�C�e���� 1
+�ȏ㏊�����Ă��邩�𔻒肷�郁�\�b�h�ł��B</p>
+<p>���Ȃ킿���̎��́A�{���̎g�p�\���� (MP
+�Ȃ�) �𖞂����A���A�u����A�C�e�����w�肳��Ă��Ȃ����A�܂���
+�w�肳�ꂽ����A�C�e�����p�[�e�B���������Ă���v�Ƃ���������
+���肵�Ă��܂��B</p>
 
 
-<h2><a name="pay">コストの支払い</a></h2>
-<p>スキルを実際に使用したとき、コストの支払い処理を行うのは
-pay_skill_cost メソッドです。同様に Game_Actor
-クラスで再定義します。</p>
+<h2><a name="pay">�R�X�g�̎x����</a></h2>
+<p>�X�L�������ۂɎg�p�����Ƃ��A�R�X�g�̎x�����������s���̂�
+pay_skill_cost ���\�b�h�ł��B���l�� Game_Actor
+�N���X�ōĒ�`���܂��B</p>
 <pre>
 class Game_Actor
   alias xxx001_pay_skill_cost pay_skill_cost
@@ -153,16 +153,16 @@ class Game_Actor
   end
 end
 </pre>
-<p>$game_party.lose_item は、パーティが所持しているアイテムを
-指定個数だけ減らすメソッドです。</p>
+<p>$game_party.lose_item �́A�p�[�e�B���������Ă���A�C�e����
+�w����������炷���\�b�h�ł��B</p>
 <pre>
     $game_party.lose_item(item, 1) if item
 </pre>
-<p>これは、item が nil 以外であれば lose_item
-メソッドを呼び出し、そのアイテムを 1 個減らすという意味です。</p>
-<p>今回解説した消費コストの改造は、色々と応用が効きます。HP
-の消費やお金の消費、あるいは使用者の状態変化など、興味があれば
-ぜひ挑戦してみてください。</p>
+<p>����́Aitem �� nil �ȊO�ł���� lose_item
+���\�b�h���Ăяo���A���̃A�C�e���� 1 ���炷�Ƃ����Ӗ��ł��B</p>
+<p>��������������R�X�g�̉����́A�F�X�Ɖ��p�������܂��BHP
+�̏���₨���̏���A���邢�͎g�p�҂̏�ԕω��ȂǁA�����������
+���В��킵�Ă݂Ă��������B</p>
 
 
 <h6></h6>

@@ -1,207 +1,207 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>条件分岐</title>
+<title>��������</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>条件分岐</h1>
+<h1>��������</h1>
 <ul>
-<li><a href="#compare">比較演算子</a></li>
-<li><a href="#boolean">真偽値</a></li>
-<li><a href="#logical">論理演算子</a></li>
-<li><a href="#if">if 〜 elsif 〜 else 〜 end</a></li>
-<li><a href="#unless">unless 〜 end</a></li>
-<li><a href="#case">case 〜 end</a></li>
-<li><a href="#if2">条件演算子</a></li>
-<li><a href="#modifier">修飾子</a></li>
+<li><a href="#compare">��r���Z�q</a></li>
+<li><a href="#boolean">�^�U�l</a></li>
+<li><a href="#logical">�_�����Z�q</a></li>
+<li><a href="#if">if �` elsif �` else �` end</a></li>
+<li><a href="#unless">unless �` end</a></li>
+<li><a href="#case">case �` end</a></li>
+<li><a href="#if2">�������Z�q</a></li>
+<li><a href="#modifier">�C���q</a></li>
 </ul>
 
-<p>特定の条件を満たしているか否かによって、その後の動作が変わるようにするの
-が<strong>条件分岐</strong>です。</p>
+<p>����̏����𖞂����Ă��邩�ۂ��ɂ���āA���̌�̓��삪�ς��悤�ɂ����
+��<strong>��������</strong>�ł��B</p>
 
 
-<h2><a name="compare">比較演算子</a></h2>
-<p>具体的に処理を分岐させる方法を学ぶ前に、その条件となる式で使われる演算子
-を覚えておきましょう。</p>
-<p>次の 6 つの演算子を<strong>比較演算子</strong>と呼びます。これらの演算子は、
-与えられた式 (数値や文字列など) を比べて、その結果を返します。</p>
+<h2><a name="compare">��r���Z�q</a></h2>
+<p>��̓I�ɏ����𕪊򂳂�����@���w�ԑO�ɁA���̏����ƂȂ鎮�Ŏg���鉉�Z�q
+���o���Ă����܂��傤�B</p>
+<p>���� 6 �̉��Z�q��<strong>��r���Z�q</strong>�ƌĂт܂��B�����̉��Z�q�́A
+�^����ꂽ�� (���l�╶����Ȃ�) ���ׂāA���̌��ʂ�Ԃ��܂��B</p>
 <table border="1" cellspacing="0" cellpadding="2">
   <tr>
     <td width=40>==</td>
-    <td>等しい</td>
+    <td>������</td>
   </tr>
   <tr>
     <td width=40>!=</td>
-    <td>等しくない</td>
+    <td>�������Ȃ�</td>
   </tr>
   <tr>
     <td width=40>&lt;</td>
-    <td>小さい</td>
+    <td>������</td>
   </tr>
   <tr>
     <td width=40>&gt;</td>
-    <td>大きい</td>
+    <td>�傫��</td>
   </tr>
   <tr>
     <td width=40>&lt;=</td>
-    <td>小さいか等しい</td>
+    <td>��������������</td>
   <tr>
     <td width=40>&gt;=</td>
-    <td>大きいか等しい</td>
+    <td>�傫����������</td>
   </tr>
 </table>
-<p>ここで重要なのは、等しいことを判定する演算子は = ではなく == で
-あるということです。すでに学習したように、= という記号は比較ではなく
-代入を表します。混同しないように注意してください。</p>
+<p>�����ŏd�v�Ȃ̂́A���������Ƃ𔻒肷�鉉�Z�q�� = �ł͂Ȃ� == ��
+����Ƃ������Ƃł��B���łɊw�K�����悤�ɁA= �Ƃ����L���͔�r�ł͂Ȃ�
+�����\���܂��B�������Ȃ��悤�ɒ��ӂ��Ă��������B</p>
 
 
-<h2><a name="boolean">真偽値</a></h2>
+<h2><a name="boolean">�^�U�l</a></h2>
 
-<p>比較演算子の演算結果は<strong>真偽値</strong>と呼ばれます。
-真 (合っている) か、偽 (間違っている) かのふたつの状態を示すから
-です。</p>
-<p>式が合っていれば <strong>true</strong>、間違っていれば
-<strong>false</strong> という値になります。確認してみましょう。</p>
+<p>��r���Z�q�̉��Z���ʂ�<strong>�^�U�l</strong>�ƌĂ΂�܂��B
+�^ (�����Ă���) ���A�U (�Ԉ���Ă���) ���̂ӂ��̏�Ԃ���������
+�ł��B</p>
+<p>���������Ă���� <strong>true</strong>�A�Ԉ���Ă����
+<strong>false</strong> �Ƃ����l�ɂȂ�܂��B�m�F���Ă݂܂��傤�B</p>
 <pre>
-p (&quot;おはよう&quot; == &quot;おはよう&quot;)        # =&gt; true
-p (&quot;おはよう&quot; == &quot;こんばんは&quot;)      # =&gt; false
+p (&quot;���͂悤&quot; == &quot;���͂悤&quot;)        # =&gt; true
+p (&quot;���͂悤&quot; == &quot;����΂��&quot;)      # =&gt; false
 p (3 + 1 == 3 + 5)                  # =&gt; false
 p (3 + 1 == 2 + 2)                  # =&gt; true
 </pre>
 
 
-<h2><a name="logical">論理演算子</a></h2>
-<p>次の 6 つの演算子を<strong>論理演算子</strong>と呼びます。</p>
+<h2><a name="logical">�_�����Z�q</a></h2>
+<p>���� 6 �̉��Z�q��<strong>�_�����Z�q</strong>�ƌĂт܂��B</p>
 <table border="1" cellspacing="0" cellpadding="2">
   <tr>
     <td width=40>and<br>&amp;&amp;</td>
-    <td>「〜、かつ、〜」という意味</td>
+    <td>�u�`�A���A�`�v�Ƃ����Ӗ�</td>
   </tr>
   <tr>
     <td width=40>or<br>||</td>
-    <td>「〜、または、〜」という意味</td>
+    <td>�u�`�A�܂��́A�`�v�Ƃ����Ӗ�</td>
   </tr>
   <tr>
     <td width=40>not<br>!</td>
-    <td>「〜でない」という意味</td>
+    <td>�u�`�łȂ��v�Ƃ����Ӗ�</td>
   </tr>
 </table>
-<p>英単語の演算子と記号の演算子は、どちらも基本的には同じ意味です。
-プリセットのスクリプトでは、主に記号のほうを使用しています。これら
-の論理演算子を使うことで、より複雑な条件を指定することができます。</p>
+<p>�p�P��̉��Z�q�ƋL���̉��Z�q�́A�ǂ������{�I�ɂ͓����Ӗ��ł��B
+�v���Z�b�g�̃X�N���v�g�ł́A��ɋL���̂ق����g�p���Ă��܂��B�����
+�̘_�����Z�q���g�����ƂŁA��蕡�G�ȏ������w�肷�邱�Ƃ��ł��܂��B</p>
 <pre>
 p (100 > 77 and 1 + 1 == 2)         # =&gt; true
 p (100 > 77 &amp;&amp; 1 + 1 == 2)          # =&gt; true
 </pre>
-<p>1 行目の式と 2 行目の式は、いずれも同じ「100 は 77より大きく かつ
-1 + 1 は 2 である」という内容を表しています。
-もちろん、100 は 77 よりも大きい数ですし、1 + 1 の答は 2 となります
-ので、両方の式が成立するということになります。
-したがって true (真、合っている) が出力されます。</p>
-<p>では、次の式はどうでしょうか。</p>
+<p>1 �s�ڂ̎��� 2 �s�ڂ̎��́A������������u100 �� 77���傫�� ����
+1 + 1 �� 2 �ł���v�Ƃ������e��\���Ă��܂��B
+�������A100 �� 77 �����傫�����ł����A1 + 1 �̓��� 2 �ƂȂ�܂�
+�̂ŁA�����̎�����������Ƃ������ƂɂȂ�܂��B
+���������� true (�^�A�����Ă���) ���o�͂���܂��B</p>
+<p>�ł́A���̎��͂ǂ��ł��傤���B</p>
 <pre>
 p (1 + 1 == 3 or 2 + 2 == 3)        # =&gt; false
 p (1 + 1 == 3 || 2 + 2 == 3)        # =&gt; false
 </pre>
-<p>1 行目の式と 2 行目の式は、いずれも「1 + 1 は 3 である または
-2 + 2 は 3 である」という内容を表しています。しかしながら、1 + 1 は
-3 ではありませんし、2 + 2 も 3 ではないので、この場合、両方の式が
-成立しないということになります。比較演算子 or (||) では、どちらか一方の
-式が成立していれば true (真、合っている) になりますが、ここでは両方の式
-が成立していないため、false (偽、間違っている) と出力されます。
-<p>また、not (!) は、上に挙げた例とは少し違い、not (!) のうしろにある
-条件 (式) が成立していない、という内容を表します。true と false を逆に
-する演算子と考えてください。</p>
+<p>1 �s�ڂ̎��� 2 �s�ڂ̎��́A��������u1 + 1 �� 3 �ł��� �܂���
+2 + 2 �� 3 �ł���v�Ƃ������e��\���Ă��܂��B�������Ȃ���A1 + 1 ��
+3 �ł͂���܂��񂵁A2 + 2 �� 3 �ł͂Ȃ��̂ŁA���̏ꍇ�A�����̎���
+�������Ȃ��Ƃ������ƂɂȂ�܂��B��r���Z�q or (||) �ł́A�ǂ��炩�����
+�����������Ă���� true (�^�A�����Ă���) �ɂȂ�܂����A�����ł͗����̎�
+���������Ă��Ȃ����߁Afalse (�U�A�Ԉ���Ă���) �Əo�͂���܂��B
+<p>�܂��Anot (!) �́A��ɋ�������Ƃ͏����Ⴂ�Anot (!) �̂�����ɂ���
+���� (��) ���������Ă��Ȃ��A�Ƃ������e��\���܂��Btrue �� false ���t��
+���鉉�Z�q�ƍl���Ă��������B</p>
 <pre>
 p (not true)                        # =&gt; false
 p (! true)                          # =&gt; false
 </pre>
-<p>この場合は「true でない」という内容になるので、false が出力され
-ます。</p>
+<p>���̏ꍇ�́utrue �łȂ��v�Ƃ������e�ɂȂ�̂ŁAfalse ���o�͂���
+�܂��B</p>
 
-<p>なお、+ や - などの計算に使う演算子だけでなく、比較演算子や論理演算子
-にも優先順位が存在します。ここでは、== などの比較演算子は &amp;&amp;
-などの論理演算子よりも優先順位が高いということを覚えておけば十分です。
-詳しくは、RGSS リファレンスの<a
-href="../rgss/syntax04.html">演算子式</a>を参照してください。</p>
+<p>�Ȃ��A+ �� - �Ȃǂ̌v�Z�Ɏg�����Z�q�����łȂ��A��r���Z�q��_�����Z�q
+�ɂ��D�揇�ʂ����݂��܂��B�����ł́A== �Ȃǂ̔�r���Z�q�� &amp;&amp;
+�Ȃǂ̘_�����Z�q�����D�揇�ʂ������Ƃ������Ƃ��o���Ă����Ώ\���ł��B
+�ڂ����́ARGSS ���t�@�����X��<a
+href="../rgss/syntax04.html">���Z�q��</a>���Q�Ƃ��Ă��������B</p>
 
 
-<h2><a name="if">if 〜 elsif 〜 else 〜 end</a></h2>
-<p>if 〜 end というのは条件分岐の構文です。これは英語の if (もし〜であるなら) と
-同じで、「もし、if のあとに続く条件に当てはまるのならば、以下の処理を実行する」と
-いった意味になります。次の例では 3〜5 行目が条件分岐になっています。</p>
+<h2><a name="if">if �` elsif �` else �` end</a></h2>
+<p>if �` end �Ƃ����̂͏�������̍\���ł��B����͉p��� if (�����`�ł���Ȃ�) ��
+�����ŁA�u�����Aif �̂��Ƃɑ��������ɓ��Ă͂܂�̂Ȃ�΁A�ȉ��̏��������s����v��
+�������Ӗ��ɂȂ�܂��B���̗�ł� 3�`5 �s�ڂ���������ɂȂ��Ă��܂��B</p>
 <pre>
-a = 20              # 変数 a に 20 を代入する。
+a = 20              # �ϐ� a �� 20 ��������B
 
-if a &gt;= 10          # もし a が 10 以上であれば、
-  print &quot;big&quot;       #   big と表示する。
-end                 # 分岐終了。
+if a &gt;= 10          # ���� a �� 10 �ȏ�ł���΁A
+  print &quot;big&quot;       #   big �ƕ\������B
+end                 # ����I���B
 </pre>
-<p>条件が満たされない場合にも処理を行いたい場合は else を、
-条件が満たされない場合にさらに条件を指定する場合は elsif を使います。</p>
+<p>��������������Ȃ��ꍇ�ɂ��������s�������ꍇ�� else ���A
+��������������Ȃ��ꍇ�ɂ���ɏ������w�肷��ꍇ�� elsif ���g���܂��B</p>
 <pre>
-a = 7               # 変数 a に 7 を代入する。
+a = 7               # �ϐ� a �� 7 ��������B
 
-if a &gt;= 10          # もし a が 10 以上であれば、
-  print &quot;big&quot;       #   big と表示する。
-elsif a &gt;= 5        # それ以外で a が 5 以上であれば、
-  print &quot;medium&quot;    #   medium と表示する。
-else                # それ以外であれば、
-  print &quot;small&quot;     #   small と表示する。
-end                 # 分岐終了。
+if a &gt;= 10          # ���� a �� 10 �ȏ�ł���΁A
+  print &quot;big&quot;       #   big �ƕ\������B
+elsif a &gt;= 5        # ����ȊO�� a �� 5 �ȏ�ł���΁A
+  print &quot;medium&quot;    #   medium �ƕ\������B
+else                # ����ȊO�ł���΁A
+  print &quot;small&quot;     #   small �ƕ\������B
+end                 # ����I���B
 </pre>
 
 
-<h2><a name="unless">unless 〜 end</a></h2>
-<p>if とは逆に、ある条件が満たされて<strong>いない</strong>ときに
-何らかの処理を行いたい場合、unless を使います。</p>
+<h2><a name="unless">unless �` end</a></h2>
+<p>if �Ƃ͋t�ɁA������������������<strong>���Ȃ�</strong>�Ƃ���
+���炩�̏������s�������ꍇ�Aunless ���g���܂��B</p>
 <pre>
-a = 7               # 変数 a に 7 を代入する。
+a = 7               # �ϐ� a �� 7 ��������B
 
-unless a &gt;= 10      # もし a が 10 以上でないならば、
-  print &quot;small&quot;     #   small と表示する。
-end                 # 分岐終了。
+unless a &gt;= 10      # ���� a �� 10 �ȏ�łȂ��Ȃ�΁A
+  print &quot;small&quot;     #   small �ƕ\������B
+end                 # ����I���B
 </pre>
-<p>上の例はあまり良い例ではありませんが、文脈により、unless を使った
-ほうがわかりやすくなる場合があります。</p>
+<p>��̗�͂��܂�ǂ���ł͂���܂��񂪁A�����ɂ��Aunless ���g����
+�ق����킩��₷���Ȃ�ꍇ������܂��B</p>
 
 
-<h2><a name="case">case 〜 end</a></h2>
-<p>特定の変数の値によって分岐させたい場合は、case を使うと便利です。</p>
+<h2><a name="case">case �` end</a></h2>
+<p>����̕ϐ��̒l�ɂ���ĕ��򂳂������ꍇ�́Acase ���g���ƕ֗��ł��B</p>
 <pre>
-a = 0               # 変数 a に 0 を代入する。
+a = 0               # �ϐ� a �� 0 ��������B
 
-case a              # 分岐開始。
-when 0              #  a が 0 のとき、
-  print &quot;グー&quot;      #   グー と表示する。
-when 1              #  a が 1 のとき、
-  print &quot;チョキ&quot;    #   チョキ と表示する。
-when 2              #  a が 2 のとき、
-  print &quot;パー&quot;      #   パー と表示する。
-end                 # 分岐終了。
+case a              # ����J�n�B
+when 0              #  a �� 0 �̂Ƃ��A
+  print &quot;�O�[&quot;      #   �O�[ �ƕ\������B
+when 1              #  a �� 1 �̂Ƃ��A
+  print &quot;�`���L&quot;    #   �`���L �ƕ\������B
+when 2              #  a �� 2 �̂Ƃ��A
+  print &quot;�p�[&quot;      #   �p�[ �ƕ\������B
+end                 # ����I���B
 </pre>
-<p>1 行目の a = のあとの 0 という値を 1 や 2 に変更して、きちんと分岐できて
-いることを確認してみましょう。a に 1 を代入すると &quot;チョキ&quot; という
-文字列が表示され、2 を代入すると &quot;パー&quot; と表示されます。</@>
+<p>1 �s�ڂ� a = �̂��Ƃ� 0 �Ƃ����l�� 1 �� 2 �ɕύX���āA������ƕ���ł���
+���邱�Ƃ��m�F���Ă݂܂��傤�Ba �� 1 ��������� &quot;�`���L&quot; �Ƃ���
+�����񂪕\������A2 ��������� &quot;�p�[&quot; �ƕ\������܂��B</@>
 
 
-<h2><a name="if2">条件演算子</a></h2>
-<p>? および : という記号を使う、演算子形式の条件分岐もあります。</p>
+<h2><a name="if2">�������Z�q</a></h2>
+<p>? ����� : �Ƃ����L�����g���A���Z�q�`���̏������������܂��B</p>
 <pre>
 a = 3
 
 p (a &gt;= 10 ? &quot;big&quot; : &quot;small&quot;)   # =&gt; &quot;small&quot;
 </pre>
-<p>この例では、変数 a の値が 10 以上であるときに &quot;big&quot;、9 以下である
-ときに &quot;small&quot; と表示します。条件演算子の文法は「条件式 ? 真のときの
-値 : 偽のときの値」となります。条件式が a &gt;= 10、真のときの値が
-&quot;big&quot;、偽のときの値が &quot;small&quot; に該当し、それぞれ ? と : を
-使って示されているということです。</p>
-<p>もちろん if を使ってもまったく同じことが可能です。</p>
+<p>���̗�ł́A�ϐ� a �̒l�� 10 �ȏ�ł���Ƃ��� &quot;big&quot;�A9 �ȉ��ł���
+�Ƃ��� &quot;small&quot; �ƕ\�����܂��B�������Z�q�̕��@�́u������ ? �^�̂Ƃ���
+�l : �U�̂Ƃ��̒l�v�ƂȂ�܂��B�������� a &gt;= 10�A�^�̂Ƃ��̒l��
+&quot;big&quot;�A�U�̂Ƃ��̒l�� &quot;small&quot; �ɊY�����A���ꂼ�� ? �� : ��
+�g���Ď�����Ă���Ƃ������Ƃł��B</p>
+<p>������� if ���g���Ă��܂������������Ƃ��\�ł��B</p>
 <pre>
 a = 3
 
@@ -211,18 +211,18 @@ else
   p "small"
 end
 </pre>
-<p>if を使った文法ではたとえばこのように書くことになりますが、条件演算子を
-使った方が、より簡潔に書けるというメリットがあります。この記法はプリセットの
-スクリプトでも多用されていますので、覚えておくと良いでしょう。</p>
+<p>if ���g�������@�ł͂��Ƃ��΂��̂悤�ɏ������ƂɂȂ�܂����A�������Z�q��
+�g���������A���Ȍ��ɏ�����Ƃ��������b�g������܂��B���̋L�@�̓v���Z�b�g��
+�X�N���v�g�ł����p����Ă��܂��̂ŁA�o���Ă����Ɨǂ��ł��傤�B</p>
 
 
-<h2><a name="modifier">修飾子</a></h2>
-<p>次のように、行いたい処理の後に if や unless を書くことができます。</p>
+<h2><a name="modifier">�C���q</a></h2>
+<p>���̂悤�ɁA�s�����������̌�� if �� unless ���������Ƃ��ł��܂��B</p>
 <pre>
-print &quot;big&quot; if a &gt;= 10      # a が 10 以上なら big と表示
+print &quot;big&quot; if a &gt;= 10      # a �� 10 �ȏ�Ȃ� big �ƕ\��
 </pre>
-<p>いろいろな文法があって覚えるのが大変ですが、やっている内容は同じです。
-そのときそのときで、わかりやすく書ける文法を選択すれば良いのです。</p>
+<p>���낢��ȕ��@�������Ċo����̂���ςł����A����Ă�����e�͓����ł��B
+���̂Ƃ����̂Ƃ��ŁA�킩��₷�������镶�@��I������Ηǂ��̂ł��B</p>
 <p></p>
 
 

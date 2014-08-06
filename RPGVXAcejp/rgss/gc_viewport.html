@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Viewport</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,93 +9,93 @@
 <body>
 
 <h1>Viewport</h1>
-<p>ビューポートのクラス。画面の一部にスプライトを表示し、他の部分に
-はみ出さないようにしたい場合に使用します。</p>
+<p>�r���[�|�[�g�̃N���X�B��ʂ̈ꕔ�ɃX�v���C�g��\�����A���̕�����
+�͂ݏo���Ȃ��悤�ɂ������ꍇ�Ɏg�p���܂��B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>クラスメソッド</h2>
+<h2>�N���X���\�b�h</h2>
 <dl>
 
 <dt>Viewport.new(<var>x</var>, <var>y</var>, <var>width</var>, <var>height</var>)</dt>
 <dt>Viewport.new(<var>rect</var>)</dt>
 <dt>Viewport.new <span class="rgss3">(RGSS3)</span></dt>
 <dd>
-<p>Viewport オブジェクトを生成します。</p>
-<p>引数を指定しない場合は画面と同じサイズになります。
+<p>Viewport �I�u�W�F�N�g�𐶐����܂��B</p>
+<p>�������w�肵�Ȃ��ꍇ�͉�ʂƓ����T�C�Y�ɂȂ�܂��B
 <span class="rgss3">(RGSS3)</span></p></dd>
 
 </dl>
 
-<h2>メソッド</h2>
+<h2>���\�b�h</h2>
 <dl>
 
 <dt>dispose</dt>
 <dd>
-<p>ビューポートを解放します。すでに解放されている場合は何も行いません。</p>
-<p>この操作により、関連付けられている他のオブジェクトが自動的に解放される
-ことはありません。 </p>
+<p>�r���[�|�[�g��������܂��B���łɉ������Ă���ꍇ�͉����s���܂���B</p>
+<p>���̑���ɂ��A�֘A�t�����Ă��鑼�̃I�u�W�F�N�g�������I�ɉ�������
+���Ƃ͂���܂���B </p>
 </dd>
 
 <dt>disposed?</dt>
 <dd>
-<p>ビューポートがすでに解放されている場合に真を返します。</p></dd>
+<p>�r���[�|�[�g�����łɉ������Ă���ꍇ�ɐ^��Ԃ��܂��B</p></dd>
 
 <dt><a name="flash">flash(<var>color</var>, <var>duration</var>)</a></dt>
 <dd>
-<p>ビューポートのフラッシュを開始します。<var>duration</var> は
-フラッシュにかけるフレーム数です。</p>
-<p><var>color</var> に nil を指定した場合は、フラッシュの時間分
-ビューポート自体を消去します。</p>
+<p>�r���[�|�[�g�̃t���b�V�����J�n���܂��B<var>duration</var> ��
+�t���b�V���ɂ�����t���[�����ł��B</p>
+<p><var>color</var> �� nil ���w�肵���ꍇ�́A�t���b�V���̎��ԕ�
+�r���[�|�[�g���̂��������܂��B</p>
 </dd>
 
 <dt>update</dt>
 <dd>
-<p>ビューポートのフラッシュを進めます。
-このメソッドは、原則として 1 フレームに 1 回呼び出します。</p>
-<p>フラッシュの必要がない場合は呼び出さなくても構いません。</p></dd>
+<p>�r���[�|�[�g�̃t���b�V����i�߂܂��B
+���̃��\�b�h�́A�����Ƃ��� 1 �t���[���� 1 ��Ăяo���܂��B</p>
+<p>�t���b�V���̕K�v���Ȃ��ꍇ�͌Ăяo���Ȃ��Ă��\���܂���B</p></dd>
 
 </dl>
 
-<h2>プロパティ</h2>
+<h2>�v���p�e�B</h2>
 <dl>
 
 <dt>rect</dt>
 <dd>
-<p>ビューポートとして設定する矩形 (<a href="gc_rect.html">Rect</a>) です。</p></dd>
+<p>�r���[�|�[�g�Ƃ��Đݒ肷���` (<a href="gc_rect.html">Rect</a>) �ł��B</p></dd>
 
 <dt>visible</dt>
 <dd>
-<p>ビューポートの可視状態です。真のとき可視になります。初期値は true です。</p></dd>
+<p>�r���[�|�[�g�̉���Ԃł��B�^�̂Ƃ����ɂȂ�܂��B�����l�� true �ł��B</p></dd>
 
 <dt>z</dt>
 <dd>
-<p>ビューポートの Z 座標です。この値が大きいものほど手前に表示されます。</p>
-<p>Z 座標が同一の場合は後に生成されたオブジェクトほど手前に表示されます。</p></dd>
+<p>�r���[�|�[�g�� Z ���W�ł��B���̒l���傫�����̂قǎ�O�ɕ\������܂��B</p>
+<p>Z ���W������̏ꍇ�͌�ɐ������ꂽ�I�u�W�F�N�g�قǎ�O�ɕ\������܂��B</p></dd>
 
 <dt>ox</dt>
 <dd>
-<p>ビューポートの転送元原点の X 座標です。
-この値を変化させることによって画面のシェイクなどを行います。</p></dd>
+<p>�r���[�|�[�g�̓]�������_�� X ���W�ł��B
+���̒l��ω������邱�Ƃɂ���ĉ�ʂ̃V�F�C�N�Ȃǂ��s���܂��B</p></dd>
 
 <dt>oy</dt>
 <dd>
-<p>ビューポートの転送元原点の Y 座標です。
-この値を変化させることによって画面のシェイクなどを行います。</p></dd>
+<p>�r���[�|�[�g�̓]�������_�� Y ���W�ł��B
+���̒l��ω������邱�Ƃɂ���ĉ�ʂ̃V�F�C�N�Ȃǂ��s���܂��B</p></dd>
 
 <dt>color</dt>
 <dd>
-<p>ビューポートにブレンドする色 (<a href="gc_color.html">Color</a>) です。
-ブレンドの割合にはアルファ値が使用されます。</p>
-<p><a href="#flash">flash</a> によってブレンドされる色とは別に
-管理されます。</p></dd>
+<p>�r���[�|�[�g�Ƀu�����h����F (<a href="gc_color.html">Color</a>) �ł��B
+�u�����h�̊����ɂ̓A���t�@�l���g�p����܂��B</p>
+<p><a href="#flash">flash</a> �ɂ���ău�����h�����F�Ƃ͕ʂ�
+�Ǘ�����܂��B</p></dd>
 
 <dt>tone</dt>
 <dd>
-<p>ビューポートの色調 (<a href="gc_tone.html">Tone</a>) です。</p></dd>
+<p>�r���[�|�[�g�̐F�� (<a href="gc_tone.html">Tone</a>) �ł��B</p></dd>
 
 </dl>
 

@@ -1,30 +1,30 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>組み込み関数</title>
+<title>�g�ݍ��݊֐�</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>組み込み関数</h1>
-<p>Ruby には厳密な意味では関数はありませんが、<a href="sm_kernel.html">Kernel</a>
-モジュールで定義されているメソッドは (どこからでも関数形式で呼び出せるので)
-他言語における関数のように使えます。これらのメソッドを再定義する
-場合は他の場所への影響を考えて行う必要があります。</p>
+<h1>�g�ݍ��݊֐�</h1>
+<p>Ruby �ɂ͌����ȈӖ��ł͊֐��͂���܂��񂪁A<a href="sm_kernel.html">Kernel</a>
+���W���[���Œ�`����Ă��郁�\�b�h�� (�ǂ�����ł��֐��`���ŌĂяo����̂�)
+������ɂ�����֐��̂悤�Ɏg���܂��B�����̃��\�b�h���Ē�`����
+�ꍇ�͑��̏ꏊ�ւ̉e�����l���čs���K�v������܂��B</p>
 <dl>
 <dt>block_given?</dt>
 <dd>
-<p>メソッドにブロックが与えられているときには真、そうでないときに偽を返しま
-す。<a href="syntax06.html#L000323">イテレータ</a>を参照してください。</p></dd>
+<p>���\�b�h�Ƀu���b�N���^�����Ă���Ƃ��ɂ͐^�A�����łȂ��Ƃ��ɋU��Ԃ���
+���B<a href="syntax06.html#L000323">�C�e���[�^</a>���Q�Ƃ��Ă��������B</p></dd>
 <dt><a name="L000355">catch(<var>tag</var>) {|<var>tag</var>| .... }</a></dt>
 <dd>
-<p>ブロックを実行してその値を返します。ブロックの実行中に
-<var>tag</var> と同じ名前の <a href="#L000413">throw</a> が行われた
-場合は、その throw の第二引数を戻り値とします。</p>
-<p>ネストしたループは <a href="syntax05.html#L000308">break</a> によって一気に抜
-けることはできません。このような場合に catch を使用します。</p>
+<p>�u���b�N�����s���Ă��̒l��Ԃ��܂��B�u���b�N�̎��s����
+<var>tag</var> �Ɠ������O�� <a href="#L000413">throw</a> ���s��ꂽ
+�ꍇ�́A���� throw �̑�������߂�l�Ƃ��܂��B</p>
+<p>�l�X�g�������[�v�� <a href="syntax05.html#L000308">break</a> �ɂ���Ĉ�C�ɔ�
+���邱�Ƃ͂ł��܂���B���̂悤�ȏꍇ�� catch ���g�p���܂��B</p>
 <pre>
 catch(:loop1) {
   for i in 1..2
@@ -36,50 +36,50 @@ catch(:loop1) {
 </pre></dd>
 <dt>eval(<var>expr</var>)</dt>
 <dd>
-<p>文字列 <var>expr</var> を Ruby プログラムとして評価してその結果を返します。</p></dd>
+<p>������ <var>expr</var> �� Ruby �v���O�����Ƃ��ĕ]�����Ă��̌��ʂ�Ԃ��܂��B</p></dd>
 <dt><a name="L000363">exit</a></dt>
 <dd>
-<p>Ruby プログラムの実行を終了します。</p>
-<p>exit は例外 <a href="s_exceptions.html#SystemExit">SystemExit</a> を発生させ
-ることによってプログラムの実行を終了させますので、
-必要に応じて <a href="syntax05.html#L000314">rescue</a> 節で捕捉することができます。</p></dd>
+<p>Ruby �v���O�����̎��s���I�����܂��B</p>
+<p>exit �͗�O <a href="s_exceptions.html#SystemExit">SystemExit</a> �𔭐�����
+�邱�Ƃɂ���ăv���O�����̎��s���I�������܂��̂ŁA
+�K�v�ɉ����� <a href="syntax05.html#L000314">rescue</a> �߂ŕߑ����邱�Ƃ��ł��܂��B</p></dd>
 <dt>loop { ... }</dt>
 <dd>
-<p>(中断されない限り) 永遠にブロックの評価を繰り返します。</p></dd>
+<p>(���f����Ȃ�����) �i���Ƀu���b�N�̕]�����J��Ԃ��܂��B</p></dd>
 <dt><a name="L000379">open(<var>file</var>[, <var>mode</var>])</a>
 <dt>open(<var>file</var>[, <var>mode</var>]) {|<var>io</var>| ... }</dt>
 <dd>
-<p><var>file</var> をオープンして、<a href="sc_file.html">File</a> オブジェクトを返します。
-<var>mode</var> は、以下の文字列を指定します。省略時は &quot;r&quot; が指定されたもの
-とみなします。</p>
+<p><var>file</var> ���I�[�v�����āA<a href="sc_file.html">File</a> �I�u�W�F�N�g��Ԃ��܂��B
+<var>mode</var> �́A�ȉ��̕�������w�肵�܂��B�ȗ����� &quot;r&quot; ���w�肳�ꂽ����
+�Ƃ݂Ȃ��܂��B</p>
 <ul>
-<li>&quot;r&quot;: ファイルを読み込みモードでオープンします。</li>
-<li>&quot;w&quot;: ファイルを書き込みモードでオープンします。
-オープン時にファイルがすでに存在していればその内容を空にします。</li>
-<li>&quot;a&quot;: ファイルを書き込みモードでオープンします。
-出力は<em>常に</em>ファイルの末尾に追加されます。</li>
+<li>&quot;r&quot;: �t�@�C����ǂݍ��݃��[�h�ŃI�[�v�����܂��B</li>
+<li>&quot;w&quot;: �t�@�C�����������݃��[�h�ŃI�[�v�����܂��B
+�I�[�v�����Ƀt�@�C�������łɑ��݂��Ă���΂��̓��e����ɂ��܂��B</li>
+<li>&quot;a&quot;: �t�@�C�����������݃��[�h�ŃI�[�v�����܂��B
+�o�͂�<em>���</em>�t�@�C���̖����ɒǉ�����܂��B</li>
 </ul>
-<p>&quot;+&quot; があれば、ファイルは読み書き両用モード (RDWR) でオープ
-ンされます。</p>
+<p>&quot;+&quot; ������΁A�t�@�C���͓ǂݏ������p���[�h (RDWR) �ŃI�[�v
+������܂��B</p>
 <ul>
-<li>&quot;r+&quot;: ファイルの読み書き位置は先頭にセットされます。</li>
-<li>&quot;w+&quot;: &quot;r+&quot; と同じですが、オープン時にファイルが
-すでに存在していればその内容を空にします。</li>
-<li>&quot;a+&quot;: &quot;r+&quot; と同じですが、オープン時にファイルが
-すでに存在していれば読み書き位置がファイルの末尾にセットされます。</li>
+<li>&quot;r+&quot;: �t�@�C���̓ǂݏ����ʒu�͐擪�ɃZ�b�g����܂��B</li>
+<li>&quot;w+&quot;: &quot;r+&quot; �Ɠ����ł����A�I�[�v�����Ƀt�@�C����
+���łɑ��݂��Ă���΂��̓��e����ɂ��܂��B</li>
+<li>&quot;a+&quot;: &quot;r+&quot; �Ɠ����ł����A�I�[�v�����Ƀt�@�C����
+���łɑ��݂��Ă���Γǂݏ����ʒu���t�@�C���̖����ɃZ�b�g����܂��B</li>
 </ul>
-<p>これらのいずれに対しても &quot;b&quot; フラグを (&quot;r+b&quot; のように)
-つけることができます。この場合、バイナリモードでオープンします。</p>
-<p>open がブロックとともに呼び出されたとき、open は
-ファイルをオープンしてブロックを実行し、ブロックの実行が終了するとファイル
-をクローズします。この場合はブロックを評価した結果を返します。つま
-り、以下のようになります。</p>
+<p>�����̂�����ɑ΂��Ă� &quot;b&quot; �t���O�� (&quot;r+b&quot; �̂悤��)
+���邱�Ƃ��ł��܂��B���̏ꍇ�A�o�C�i�����[�h�ŃI�[�v�����܂��B</p>
+<p>open ���u���b�N�ƂƂ��ɌĂяo���ꂽ�Ƃ��Aopen ��
+�t�@�C�����I�[�v�����ău���b�N�����s���A�u���b�N�̎��s���I������ƃt�@�C��
+���N���[�Y���܂��B���̏ꍇ�̓u���b�N��]���������ʂ�Ԃ��܂��B��
+��A�ȉ��̂悤�ɂȂ�܂��B</p>
 <pre>
 open(path, mode) do |f|
    ...
 end
 
-# 上記とほぼ同じコード
+# ��L�Ƃقړ����R�[�h
 f = open(path, mode)
 begin
    ...
@@ -89,36 +89,36 @@ end
 </pre></dd>
 <dt><a name="p">p(<var>obj</var>, [<var>obj2</var>, ...])</a></dt>
 <dd>
-<p><var>obj</var> を人間に読みやすい形で出力します。以下のコードと同じです
-(<a href="sc_object.html#L000572">Object#inspect</a> 参照) 。</p>
+<p><var>obj</var> ��l�Ԃɓǂ݂₷���`�ŏo�͂��܂��B�ȉ��̃R�[�h�Ɠ����ł�
+(<a href="sc_object.html#L000572">Object#inspect</a> �Q��) �B</p>
 <pre>
 print obj.inspect, &quot;\n&quot;, obj2.inspect, &quot;\n&quot;, ...
 </pre>
-<p>nil を返します。</p></dd>
+<p>nil ��Ԃ��܂��B</p></dd>
 <dt><a name="print">print(<var>arg</var>[, ...])</a></dt>
 <dd>
-<p>引数を順に出力します。
-文字列以外のオブジェクトが引数として与えられた場合には、
-当該オブジェクトを to_s メソッドにより文字列に変換
-してから出力します。
-ただし、nil に対しては文字列 &quot;nil&quot; を出力します。</p>
-<p>nil を返します。</p></dd>
+<p>���������ɏo�͂��܂��B
+������ȊO�̃I�u�W�F�N�g�������Ƃ��ė^����ꂽ�ꍇ�ɂ́A
+���Y�I�u�W�F�N�g�� to_s ���\�b�h�ɂ�蕶����ɕϊ�
+���Ă���o�͂��܂��B
+�������Anil �ɑ΂��Ă͕����� &quot;nil&quot; ���o�͂��܂��B</p>
+<p>nil ��Ԃ��܂��B</p></dd>
 
 <dt><a name="printf"></a>printf(<var>format</var>[, <var>arg</var>[, ...]])</dt>
 <dd>
-<p>C 言語の printf と同じように、<var>format</var> に従い引数を文字列に変
-換して出力します。引数を 1 つも指定しなければ何もしません。</p>
-<p>Ruby における format 文字列の拡張については
-<a href="appendix02.html">sprintf フォーマット</a>
-の項を参照してください。</p>
-<p>nil を返します。</p></dd>
+<p>C ����� printf �Ɠ����悤�ɁA<var>format</var> �ɏ]�������𕶎���ɕ�
+�����ďo�͂��܂��B������ 1 ���w�肵�Ȃ���Ή������܂���B</p>
+<p>Ruby �ɂ����� format ������̊g���ɂ��Ă�
+<a href="appendix02.html">sprintf �t�H�[�}�b�g</a>
+�̍����Q�Ƃ��Ă��������B</p>
+<p>nil ��Ԃ��܂��B</p></dd>
 
 <dt><a name="putc"></a>putc(<var>ch</var>)</dt>
 <dd>
-<p>文字 <var>ch</var> を出力します。
-<var>ch</var> が数字なら 0 〜 255 の範囲の対応する文字を出力
-します。<var>ch</var> が文字列なら、その先頭の文字を出力します。</p>
-<p><var>ch</var> を返します。</p>
+<p>���� <var>ch</var> ���o�͂��܂��B
+<var>ch</var> �������Ȃ� 0 �` 255 �͈̔͂̑Ή����镶�����o��
+���܂��B<var>ch</var> ��������Ȃ�A���̐擪�̕������o�͂��܂��B</p>
+<p><var>ch</var> ��Ԃ��܂��B</p>
 <pre>
 putc("ch")
 putc(?c)
@@ -128,19 +128,19 @@ putc(99)
 </dd>
 <dt><a name="puts"></a>puts([<var>obj</var>[, <var>obj2</var>[, ....]]] )</dt>
 <dd>
-<p><var>obj</var> と改行を順番に出力します。
-引数がなければ改行のみを出力します。</p>
-<p>引数が配列の場合、その要素と改行を順に出力します。
-配列や文字列以外のオブジェクトが引数として与えられた場合には、
-当該オブジェクトを最初に to_ary により配列へ、
-次に to_s メソッドにより文字列へ変換を試みます。
-ただし、nil に対しては文字列 "nil" を出力します。</p>
-<p>末尾が改行で終っている引数に対しては puts 自身
-は改行を出力しません。</p>
+<p><var>obj</var> �Ɖ��s�����Ԃɏo�͂��܂��B
+�������Ȃ���Ή��s�݂̂��o�͂��܂��B</p>
+<p>�������z��̏ꍇ�A���̗v�f�Ɖ��s�����ɏo�͂��܂��B
+�z��╶����ȊO�̃I�u�W�F�N�g�������Ƃ��ė^����ꂽ�ꍇ�ɂ́A
+���Y�I�u�W�F�N�g���ŏ��� to_ary �ɂ��z��ցA
+���� to_s ���\�b�h�ɂ�蕶����֕ϊ������݂܂��B
+�������Anil �ɑ΂��Ă͕����� "nil" ���o�͂��܂��B</p>
+<p>���������s�ŏI���Ă�������ɑ΂��Ă� puts ���g
+�͉��s���o�͂��܂���B</p>
 <pre>
 puts "foo", "bar\n", "baz"
-puts ""    # 改行のみ出力
-puts       # 改行のみ出力
+puts ""    # ���s�̂ݏo��
+puts       # ���s�̂ݏo��
 puts "foo"
 =&gt; foo
    bar
@@ -150,38 +150,38 @@ puts "foo"
    foo
 </pre>
 
-<p>nil を返します。</p>
+<p>nil ��Ԃ��܂��B</p>
 
 <dt><a name="L000388">raise</a>
 <dt>raise(<var>message</var>)</dt>
 <dt>raise(<var>exception</var>)</dt>
 <dt>raise(<var>error_type</var>, <var>message</var>)</dt>
 <dd>
-<p>例外を発生させます。<a href="syntax05.html#L000313">raise</a> を参照して
-ください。</p>
+<p>��O�𔭐������܂��B<a href="syntax05.html#L000313">raise</a> ���Q�Ƃ���
+���������B</p>
 <dt><a name="L000393">rand([<var>max=0</var>])</a></dt>
 <dd>
-<p>0 以上 <var>max</var> 未満の範囲の整数の乱数を発生します。
-まだ <a href="#L000404">srand</a> が
-呼ばれていなければ自動的に srand を呼び出します。</p>
-<p><var>max</var> に nil または 0 を指定すると 0 以上 1 未
-満の実数値 <a href="sc_float.html">Float</a> で乱数を与えます。</p></dd>
+<p>0 �ȏ� <var>max</var> �����͈̔͂̐����̗����𔭐����܂��B
+�܂� <a href="#L000404">srand</a> ��
+�Ă΂�Ă��Ȃ���Ύ����I�� srand ���Ăяo���܂��B</p>
+<p><var>max</var> �� nil �܂��� 0 ���w�肷��� 0 �ȏ� 1 ��
+���̎����l <a href="sc_float.html">Float</a> �ŗ�����^���܂��B</p></dd>
 <dt><a name="sprintf">sprintf(<var>format</var>[, <var>arg</var>[, ...]])</a>
 <dd>
-<p><var>format</var> 文字列を C 言語の sprintf と同じよう
-に解釈し、引数をフォーマットした文字列を返します。</p>
-<p>詳細は <a href="appendix02.html">sprintf フォーマット</a>を参照してください。</p></dd>
+<p><var>format</var> ������� C ����� sprintf �Ɠ����悤
+�ɉ��߂��A�������t�H�[�}�b�g�����������Ԃ��܂��B</p>
+<p>�ڍׂ� <a href="appendix02.html">sprintf �t�H�[�}�b�g</a>���Q�Ƃ��Ă��������B</p></dd>
 <dt><a name="L000404">srand([<var>seed</var>])</a></dt>
 <dd>
-<p><a href="#L000393">rand</a> の乱数の種を設定し、古い初期値を返
-します。初期値が省略されたときには現在の時間などを種にします。</p></dd>
+<p><a href="#L000393">rand</a> �̗����̎��ݒ肵�A�Â������l���
+���܂��B�����l���ȗ����ꂽ�Ƃ��ɂ͌��݂̎��ԂȂǂ���ɂ��܂��B</p></dd>
 <dt><a name="L000413">throw(<var>tag</var>[, <var>value</var>])</a></dt>
 <dd>
-<p>同じ <var>tag</var> を指定した <a href="#L000355">catch</a> のブロックの
-終わりまで (メソッドを越えて) 脱出します。もし同じ <var>tag</var> で
-待っている catch が存在しない場合は <a href="s_exceptions.html#NameError">NameError</a> で
-スレッドが終了します。<var>tag</var> は文字列またはシンボルです。
-<var>value</var> は catch の戻り値になります。</p></dd>
+<p>���� <var>tag</var> ���w�肵�� <a href="#L000355">catch</a> �̃u���b�N��
+�I���܂� (���\�b�h���z����) �E�o���܂��B�������� <var>tag</var> ��
+�҂��Ă��� catch �����݂��Ȃ��ꍇ�� <a href="s_exceptions.html#NameError">NameError</a> ��
+�X���b�h���I�����܂��B<var>tag</var> �͕�����܂��̓V���{���ł��B
+<var>value</var> �� catch �̖߂�l�ɂȂ�܂��B</p></dd>
 </dl>
 
 <h6></h6>

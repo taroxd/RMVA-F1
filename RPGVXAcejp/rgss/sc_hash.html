@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Hash</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,86 +9,86 @@
 <body>
 
 <h1>Hash</h1>
-<p>ハッシュのクラス。<a href="syntax03.html#L000280">ハッシュ式</a>を
-参照してください。</p>
+<p>�n�b�V���̃N���X�B<a href="syntax03.html#L000280">�n�b�V����</a>��
+�Q�Ƃ��Ă��������B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>インクルードされているモジュール</h2>
+<h2>�C���N���[�h����Ă��郂�W���[��</h2>
 <ul>
 <li><a href="sm_enumerable.html">Enumerable</a></li>
 </ul>
 
-<h2>メソッド</h2>
+<h2>���\�b�h</h2>
 <dl>
 <dt>self[key]</dt>
 <dd>
-<p><var>key</var> に関連づけられた値を返します。該当するキーが登
-録されていないときには、デフォルト値 (設定されていないときには
-nil) を返します。</p></dd>
+<p><var>key</var> �Ɋ֘A�Â���ꂽ�l��Ԃ��܂��B�Y������L�[���o
+�^����Ă��Ȃ��Ƃ��ɂ́A�f�t�H���g�l (�ݒ肳��Ă��Ȃ��Ƃ��ɂ�
+nil) ��Ԃ��܂��B</p></dd>
 <dt>self[key]=value</dt>
 <dd>
-<p><var>key</var> に対して <var>value</var> を関連づけます。<var>value</var> を返し
-ます。</p></dd>
+<p><var>key</var> �ɑ΂��� <var>value</var> ���֘A�Â��܂��B<var>value</var> ��Ԃ�
+�܂��B</p></dd>
 <dt>clear</dt>
 <dd>
-<p>ハッシュの中身を空にします。self を返します。</p></dd>
+<p>�n�b�V���̒��g����ɂ��܂��Bself ��Ԃ��܂��B</p></dd>
 <dt>clone</dt>
 <dt>dup</dt>
 <dd>
-<p>レシーバと同じ内容を持つ新しいハッシュを返します。フリーズしたハッ
-シュの clone は同様にフリーズされたハッシュを返しますが、
-dup は内容の等しいフリーズされていないハッシュを返します。</p>
-<p><var>value</var> を返します。</p></dd>
+<p>���V�[�o�Ɠ������e�����V�����n�b�V����Ԃ��܂��B�t���[�Y�����n�b
+�V���� clone �͓��l�Ƀt���[�Y���ꂽ�n�b�V����Ԃ��܂����A
+dup �͓��e�̓������t���[�Y����Ă��Ȃ��n�b�V����Ԃ��܂��B</p>
+<p><var>value</var> ��Ԃ��܂��B</p></dd>
 <dt>delete(<var>key</var>)</dt>
 <dt>delete(<var>key</var>) {|<var>key</var>| ... }</dt>
 <dd>
-<p><var>key</var> に対する関連を取り除きます。取り除かれた値を返しますが、
-<var>key</var> に対応する値が存在しないときには nil を返します。</p>
-<p>ブロックが与えられたときには <var>key</var> にマッチするものがな
-かったときに評価し、その結果を返します。</p></dd>
+<p><var>key</var> �ɑ΂���֘A����菜���܂��B��菜���ꂽ�l��Ԃ��܂����A
+<var>key</var> �ɑΉ�����l�����݂��Ȃ��Ƃ��ɂ� nil ��Ԃ��܂��B</p>
+<p>�u���b�N���^����ꂽ�Ƃ��ɂ� <var>key</var> �Ƀ}�b�`������̂���
+�������Ƃ��ɕ]�����A���̌��ʂ�Ԃ��܂��B</p></dd>
 <dt>each {|<var>key</var>, <var>value</var>| ... }</dt>
 <dt>each_pair {|<var>key</var>, <var>value</var>| ... }</dt>
 <dd>
-<p><var>key</var> と <var>value</var> を引数としてブロックを評価します。
-self を返します。</p></dd>
+<p><var>key</var> �� <var>value</var> �������Ƃ��ău���b�N��]�����܂��B
+self ��Ԃ��܂��B</p></dd>
 <dt>each_key {|<var>key</var>| ... }</dt>
 <dd>
-<p><var>key</var> を引数としてブロックを評価します。
-self を返します。</p></dd>
+<p><var>key</var> �������Ƃ��ău���b�N��]�����܂��B
+self ��Ԃ��܂��B</p></dd>
 <dt>each_value {|<var>value</var>| ... }</dt>
 <dd>
-<p><var>value</var>を引数としてブロックを評価します。
-self を返します。</p></dd>
+<p><var>value</var>�������Ƃ��ău���b�N��]�����܂��B
+self ��Ԃ��܂��B</p></dd>
 <dt>empty?</dt>
 <dd>
-<p>ハッシュが空のとき真を返します。</p></dd>
+<p>�n�b�V������̂Ƃ��^��Ԃ��܂��B</p></dd>
 <dt>has_key?(<var>key</var>)</dt>
 <dt>include?(<var>key</var>)</dt>
 <dd>
-<p>ハッシュが <var>key</var> をキーとして持つとき真を返します。</p></dd>
+<p>�n�b�V���� <var>key</var> ���L�[�Ƃ��Ď��Ƃ��^��Ԃ��܂��B</p></dd>
 <dt>has_value?(<var>value</var>)</dt>
 <dd>
-<p>ハッシュが <var>value</var> を値として持つとき真を返します。
-値の一致判定は == で行われます。</p></dd>
+<p>�n�b�V���� <var>value</var> ��l�Ƃ��Ď��Ƃ��^��Ԃ��܂��B
+�l�̈�v����� == �ōs���܂��B</p></dd>
 <dt>index(<var>val</var>)</dt>
 <dd>
-<p><var>val</var> に対応するキーを返します。対応する要素が存在しないときには 
-nil を返します。</p>
-<p>該当するキーが複数存在する場合、どのキーを返すかは不定です。</p></dd>
+<p><var>val</var> �ɑΉ�����L�[��Ԃ��܂��B�Ή�����v�f�����݂��Ȃ��Ƃ��ɂ� 
+nil ��Ԃ��܂��B</p>
+<p>�Y������L�[���������݂���ꍇ�A�ǂ̃L�[��Ԃ����͕s��ł��B</p></dd>
 <dt>keys</dt>
 <dd>
-<p>全キーの配列を返します。</p></dd>
+<p>�S�L�[�̔z���Ԃ��܂��B</p></dd>
 <dt>length</dt>
 <dt>size</dt>
 <dd>
-<p>ハッシュの要素の数を返します。</p></dd>
+<p>�n�b�V���̗v�f�̐���Ԃ��܂��B</p></dd>
 <dt>values</dt>
 <dd>
-<p>ハッシュの全値の配列を返します。</p></dd>
+<p>�n�b�V���̑S�l�̔z���Ԃ��܂��B</p></dd>
 </dl>
 
 <h6></h6>

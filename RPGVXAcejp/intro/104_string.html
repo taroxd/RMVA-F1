@@ -1,110 +1,110 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>文字列</title>
+<title>������</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>文字列</h1>
+<h1>������</h1>
 <ul>
 <li><a href="#print">print</a></li>
-<li><a href="#subst">変数への代入</a></li>
-<li><a href="#backslash">バックスラッシュ記法</a></li>
-<li><a href="#unfold">式展開</a></li>
+<li><a href="#subst">�ϐ��ւ̑��</a></li>
+<li><a href="#backslash">�o�b�N�X���b�V���L�@</a></li>
+<li><a href="#unfold">���W�J</a></li>
 </ul>
 
-<p>一般に、文字が連なったデータのことを<strong>文字列</strong>と呼びます。</p>
+<p>��ʂɁA�������A�Ȃ����f�[�^�̂��Ƃ�<strong>������</strong>�ƌĂт܂��B</p>
 
 
 <h2><a name="print">print</a></h2>
-<p>ダブルクォート &quot; &quot; またはシングルクォート ' ' で囲まれた
-部分は、そのまま文字列のデータとして扱われます。</p>
+<p>�_�u���N�H�[�g &quot; &quot; �܂��̓V���O���N�H�[�g ' ' �ň͂܂ꂽ
+�����́A���̂܂ܕ�����̃f�[�^�Ƃ��Ĉ����܂��B</p>
 <pre>
-p &quot;ツクール&quot;                    # =&gt; &quot;ツクール&quot;
-p 'ツクール'                    # =&gt; &quot;ツクール&quot;
+p &quot;�c�N�[��&quot;                    # =&gt; &quot;�c�N�[��&quot;
+p '�c�N�[��'                    # =&gt; &quot;�c�N�[��&quot;
 </pre>
-<p>p だとダブルクォートまで一緒に出力されてしまうので、代わりに
-print という命令を使ってみましょう。</p>
+<p>p ���ƃ_�u���N�H�[�g�܂ňꏏ�ɏo�͂���Ă��܂��̂ŁA�����
+print �Ƃ������߂��g���Ă݂܂��傤�B</p>
 <pre>
-print &quot;ツクール&quot;                # =&gt; ツクール
+print &quot;�c�N�[��&quot;                # =&gt; �c�N�[��
 </pre>
-<p>今度はダブルクォートがつかなくなりました。p は値の内容を人間にわかり
-やすい形で表示する命令なので、文字列だということが一目でわかるように
-ダブルクォートつきで表示されていたのです。print は p と似ていますが、
-こちらは文字列そのものを表示することができます。</p>
+<p>���x�̓_�u���N�H�[�g�����Ȃ��Ȃ�܂����Bp �͒l�̓��e��l�Ԃɂ킩��
+�₷���`�ŕ\�����閽�߂Ȃ̂ŁA�����񂾂Ƃ������Ƃ���ڂł킩��悤��
+�_�u���N�H�[�g���ŕ\������Ă����̂ł��Bprint �� p �Ǝ��Ă��܂����A
+������͕����񂻂̂��̂�\�����邱�Ƃ��ł��܂��B</p>
 
 
-<h2><a name="subst">変数への代入</a></h2>
-<p>文字列も数値とまったく同じように、変数に代入することができます。</p>
+<h2><a name="subst">�ϐ��ւ̑��</a></h2>
+<p>����������l�Ƃ܂����������悤�ɁA�ϐ��ɑ�����邱�Ƃ��ł��܂��B</p>
 <pre>
-a = &quot;ツクール&quot;
-print a                         # =&gt; ツクール
+a = &quot;�c�N�[��&quot;
+print a                         # =&gt; �c�N�[��
 </pre>
-<p>文字列に文字列を足すと、連結された文字列が答となります。</p>
+<p>������ɕ�����𑫂��ƁA�A�����ꂽ�����񂪓��ƂȂ�܂��B</p>
 <pre>
 a = &quot;RPG&quot;
-b = &quot;ツクール&quot;
-print a + b                     # =&gt; RPGツクール
+b = &quot;�c�N�[��&quot;
+print a + b                     # =&gt; RPG�c�N�[��
 </pre>
-<p>文字列に整数を掛けると、その回数だけ繰り返された文字列が答となります。</p>
+<p>������ɐ������|����ƁA���̉񐔂����J��Ԃ��ꂽ�����񂪓��ƂȂ�܂��B</p>
 <pre>
-a = &quot;ツクール&quot;
-print a * 2                     # =&gt; ツクールツクール
+a = &quot;�c�N�[��&quot;
+print a * 2                     # =&gt; �c�N�[���c�N�[��
 </pre>
 
 
-<h2><a name="backslash">バックスラッシュ記法</a></h2>
-<p>文字列中の円記号 &yen; は、それに続く文字によって改行などの特殊な
-文字として扱われます。たとえば &yen;n というのは改行を表します。</p>
-<p>バックスラッシュ記法には &yen;t (タブ) や &yen;s (スペース) など
-いろいろなものがありますが、今は &yen;n が改行を表すこと
-と、&yen;&yen; と円記号をふたつ重ねたときに &yen; 文字そのものを表
-すこと、このふたつを覚えておいてください。</p>
+<h2><a name="backslash">�o�b�N�X���b�V���L�@</a></h2>
+<p>�����񒆂̉~�L�� &yen; �́A����ɑ��������ɂ���ĉ��s�Ȃǂ̓����
+�����Ƃ��Ĉ����܂��B���Ƃ��� &yen;n �Ƃ����͉̂��s��\���܂��B</p>
+<p>�o�b�N�X���b�V���L�@�ɂ� &yen;t (�^�u) �� &yen;s (�X�y�[�X) �Ȃ�
+���낢��Ȃ��̂�����܂����A���� &yen;n �����s��\������
+�ƁA&yen;&yen; �Ɖ~�L�����ӂ��d�˂��Ƃ��� &yen; �������̂��̂�\
+�����ƁA���̂ӂ����o���Ă����Ă��������B</p>
 <pre>
-a = &quot;RPGツクールVX Ace&quot;
+a = &quot;RPG�c�N�[��VX Ace&quot;
 b = &quot;\\13,440&quot;
-print a + &quot;\n&quot; + b              # =&gt; RPGツクールVX Ace
+print a + &quot;\n&quot; + b              # =&gt; RPG�c�N�[��VX Ace
                                 #    \13,440
 </pre>
-<p>シングルクォート '' で囲まれた文字列では、&yen;&yen; (円記号その
-もの) と &yen;' (シングルクォート) を除いてバックスラッシュ記法は
-使えません。このため、文字そのものを表現したい場合はこちらを使った
-ほうが便利なことがあります。</p>
+<p>�V���O���N�H�[�g '' �ň͂܂ꂽ������ł́A&yen;&yen; (�~�L������
+����) �� &yen;' (�V���O���N�H�[�g) �������ăo�b�N�X���b�V���L�@��
+�g���܂���B���̂��߁A�������̂��̂�\���������ꍇ�͂�������g����
+�ق����֗��Ȃ��Ƃ�����܂��B</p>
 <pre>
-print 'ツクール\n'              # =&gt; ツクール\n
+print '�c�N�[��\n'              # =&gt; �c�N�[��\n
 </pre>
-<p>ところで、なぜ円記号なのに「バックスラッシュ記法」と呼ぶのでしょう
-か。それは、日本語フォントで円記号 &yen; が割り当てられている場所が、
-本来バックスラッシュ <span class="western">\</span> の文字コードで
-あるためです。文字の見た目は違いますが、コンピュータの内部情報的には
-同じものなのです。</p>
+<p>�Ƃ���ŁA�Ȃ��~�L���Ȃ̂Ɂu�o�b�N�X���b�V���L�@�v�ƌĂԂ̂ł��傤
+���B����́A���{��t�H���g�ŉ~�L�� &yen; �����蓖�Ă��Ă���ꏊ���A
+�{���o�b�N�X���b�V�� <span class="western">\</span> �̕����R�[�h��
+���邽�߂ł��B�����̌����ڂ͈Ⴂ�܂����A�R���s���[�^�̓������I�ɂ�
+�������̂Ȃ̂ł��B</p>
 
 
-<h2><a name="unfold">式展開</a></h2>
-<p>文字列の中には、#{式} という形式で式の内容を埋め込むことができます。</p>
+<h2><a name="unfold">���W�J</a></h2>
+<p>������̒��ɂ́A#{��} �Ƃ����`���Ŏ��̓��e�𖄂ߍ��ނ��Ƃ��ł��܂��B</p>
 <pre>
 game = &quot;RPG&quot;
-print &quot;#{game}ツクール&quot;         # =&gt; RPGツクール
+print &quot;#{game}�c�N�[��&quot;         # =&gt; RPG�c�N�[��
 </pre>
-<p>上記の例では、1 行目で game という名前の変数に &quot;RPG&quot; という
-文字列を代入しています。2 行目では、文字列の #{game} という部分に変数 game
-に代入されている文字列 &quot;RPG&quot; を埋め込み、あとに
-続く &quot;ツクール&quot; と組み合わせて、ひとつの文字列として出力して
-います。VX Ace のイベントコマンド [文章の表示] では、文章内に &yen;V[n] や
-&yen;N[n] などの制御文字を使うことで変数の値やアクターの名前をメッセージに
-埋め込むことができますが、それと似たような機能だと考えてください。</p>
-<p>これはもちろん、</p>
+<p>��L�̗�ł́A1 �s�ڂ� game �Ƃ������O�̕ϐ��� &quot;RPG&quot; �Ƃ���
+������������Ă��܂��B2 �s�ڂł́A������� #{game} �Ƃ��������ɕϐ� game
+�ɑ������Ă��镶���� &quot;RPG&quot; �𖄂ߍ��݁A���Ƃ�
+���� &quot;�c�N�[��&quot; �Ƒg�ݍ��킹�āA�ЂƂ̕�����Ƃ��ďo�͂���
+���܂��BVX Ace �̃C�x���g�R�}���h [���͂̕\��] �ł́A���͓��� &yen;V[n] ��
+&yen;N[n] �Ȃǂ̐��䕶�����g�����Ƃŕϐ��̒l��A�N�^�[�̖��O�����b�Z�[�W��
+���ߍ��ނ��Ƃ��ł��܂����A����Ǝ����悤�ȋ@�\���ƍl���Ă��������B</p>
+<p>����͂������A</p>
 <pre>
 game = &quot;RPG&quot;
-print game + &quot;ツクール&quot;         # =&gt; RPGツクール
+print game + &quot;�c�N�[��&quot;         # =&gt; RPG�c�N�[��
 </pre>
-<p>このように書いても同じことですが、式展開の記法を使うことでプログラムを
-より読みやすくできる場合があるため、この機能が用意されています。</p>
-<p>なお、バックスラッシュ記法と同様、シングルクォート '' で囲まれた
-文字列では式展開も有効になりません。</p>
+<p>���̂悤�ɏ����Ă��������Ƃł����A���W�J�̋L�@���g�����ƂŃv���O������
+���ǂ݂₷���ł���ꍇ�����邽�߁A���̋@�\���p�ӂ���Ă��܂��B</p>
+<p>�Ȃ��A�o�b�N�X���b�V���L�@�Ɠ��l�A�V���O���N�H�[�g '' �ň͂܂ꂽ
+������ł͎��W�J���L���ɂȂ�܂���B</p>
 
 
 <h6></h6>

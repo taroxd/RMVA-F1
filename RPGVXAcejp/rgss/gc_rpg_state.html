@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>RPG::State</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,56 +9,56 @@
 <body>
 
 <h1>RPG::State</h1>
-<p>ã‚¹ãƒ†ãƒ¼ãƒˆã®ãƒ‡ãƒ¼ã‚¿ã‚¯ãƒ©ã‚¹ã€‚</p>
+<p>ƒXƒe[ƒg‚Ìƒf[ƒ^ƒNƒ‰ƒXB</p>
 
-<h2>ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹</h2>
+<h2>ƒX[ƒp[ƒNƒ‰ƒX</h2>
 <ul>
 <li><a href="gc_rpg_baseitem.html">RPG::BaseItem</a></li>
 </ul>
 
-<h2>å±æ€§</h2>
+<h2>‘®«</h2>
 <dl>
 <dt>restriction</dt>
-<dd><p>è¡Œå‹•åˆ¶ç´„ã€‚</p>
+<dd><p>s“®§–ñB</p>
 <ul>
-    <li>0 : ãªã—</li>
-    <li>1 : æ•µã‚’æ”»æ’ƒã™ã‚‹</li>
-    <li>2 : æ•µã‹å‘³æ–¹ã‚’æ”»æ’ƒã™ã‚‹</li>
-    <li>3 : å‘³æ–¹ã‚’æ”»æ’ƒã™ã‚‹</li>
-    <li>4 : è¡Œå‹•ã§ããªã„</li>
+    <li>0 : ‚È‚µ</li>
+    <li>1 : “G‚ğUŒ‚‚·‚é</li>
+    <li>2 : “G‚©–¡•û‚ğUŒ‚‚·‚é</li>
+    <li>3 : –¡•û‚ğUŒ‚‚·‚é</li>
+    <li>4 : s“®‚Å‚«‚È‚¢</li>
 </ul></dd>
 <dt>priority</dt>
-<dd><p>è¡¨ç¤ºå„ªå…ˆåº¦ (0..100) ã€‚</p></dd>
+<dd><p>•\¦—Dæ“x (0..100) B</p></dd>
 <dt>remove_at_battle_end</dt>
-<dd><p>æˆ¦é—˜çµ‚äº†æ™‚ã«è§£é™¤ (true / false) ã€‚</p></dd>
+<dd><p>í“¬I—¹‚É‰ğœ (true / false) B</p></dd>
 <dt>remove_by_restriction</dt>
-<dd><p>è¡Œå‹•åˆ¶ç´„ã«ã‚ˆã£ã¦è§£é™¤ (true / false) ã€‚</p></dd>
+<dd><p>s“®§–ñ‚É‚æ‚Á‚Ä‰ğœ (true / false) B</p></dd>
 <dt>auto_removal_timing</dt>
-<dd><p>è‡ªå‹•è§£é™¤ã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã€‚</p>
+<dd><p>©“®‰ğœ‚Ìƒ^ƒCƒ~ƒ“ƒOB</p>
 <ul>
-    <li>0 : ãªã—</li>
-    <li>1 : è¡Œå‹•çµ‚äº†æ™‚</li>
-    <li>2 : ã‚¿ãƒ¼ãƒ³çµ‚äº†æ™‚</li>
+    <li>0 : ‚È‚µ</li>
+    <li>1 : s“®I—¹</li>
+    <li>2 : ƒ^[ƒ“I—¹</li>
 </ul></dd>
 <dt>min_turns</dt>
 <dt>max_turns</dt>
-<dd><p>ç¶™ç¶šã‚¿ãƒ¼ãƒ³æ•°ã®æœ€å°å€¤ã¨æœ€å¤§å€¤ã€‚</p></dd>
+<dd><p>Œp‘±ƒ^[ƒ“”‚ÌÅ¬’l‚ÆÅ‘å’lB</p></dd>
 <dt>remove_by_damage</dt>
-<dd><p>ãƒ€ãƒ¡ãƒ¼ã‚¸ã§è§£é™¤ (true / false) ã€‚</p></dd>
+<dd><p>ƒ_ƒ[ƒW‚Å‰ğœ (true / false) B</p></dd>
 <dt>chance_by_damage</dt>
-<dd><p>ãƒ€ãƒ¡ãƒ¼ã‚¸ã§è§£é™¤ã•ã‚Œã‚‹ç¢ºç‡ (%) ã€‚</p></dd>
+<dd><p>ƒ_ƒ[ƒW‚Å‰ğœ‚³‚ê‚éŠm—¦ (%) B</p></dd>
 <dt>remove_by_walking</dt>
-<dd><p>æ­©æ•°ã§è§£é™¤ (true / false) ã€‚</p></dd>
+<dd><p>•à”‚Å‰ğœ (true / false) B</p></dd>
 <dt>steps_to_remove</dt>
-<dd><p>è§£é™¤ã•ã‚Œã‚‹ã¾ã§ã®æ­©æ•°ã€‚</p></dd>
+<dd><p>‰ğœ‚³‚ê‚é‚Ü‚Å‚Ì•à”B</p></dd>
 <dt>message1</dt>
 <dt>message2</dt>
 <dt>message3</dt>
 <dt>message4</dt>
-<dd><p>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€‚ä¸Šã‹ã‚‰ã€å‘³æ–¹ã€æ•µã€ç¶™ç¶šã€è§£é™¤ã€‚</p></dd>
+<dd><p>ƒƒbƒZ[ƒWBã‚©‚çA–¡•ûA“GAŒp‘±A‰ğœB</p></dd>
 </dl>
 
-<h2>å®šç¾©</h2>
+<h2>’è‹`</h2>
 <pre>
 class RPG::State &lt; RPG::BaseItem
   def initialize

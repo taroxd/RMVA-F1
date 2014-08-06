@@ -1,82 +1,82 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>組み込み例外クラス</title>
+<title>�g�ݍ��ݗ�O�N���X</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>組み込み例外クラス</h1>
+<h1>�g�ݍ��ݗ�O�N���X</h1>
 <dl>
 <dt><a href="sc_exception.html">Exception</a></dt>
-<dd>全ての例外の祖先のクラスです。
+<dd>�S�Ă̗�O�̑c��̃N���X�ł��B
 <dl>
 <dt><a name="NoMemoryError"><em>NoMemoryError</em></a></dt>
-<dd>大きすぎるメモリを一度に確保しようとしたときに発生します。</dd>
+<dd>�傫�����郁��������x�Ɋm�ۂ��悤�Ƃ����Ƃ��ɔ������܂��B</dd>
 <dt><a name="ScriptError"><em>ScriptError</em></a></dt>
-<dd>スクリプトのエラーを表す例外です。
+<dd>�X�N���v�g�̃G���[��\����O�ł��B
 <dl>
 <dt><a name="NotImplementedError"><em>NotImplementedError</em></a></dt>
-<dd>実装されていない機能が呼び出されたときに発生します。</dd>
+<dd>��������Ă��Ȃ��@�\���Ăяo���ꂽ�Ƃ��ɔ������܂��B</dd>
 <dt><a name="SyntaxError"><em>SyntaxError</em></a></dt>
-<dd>文法エラーがあったときに発生します。</dd>
+<dd>���@�G���[���������Ƃ��ɔ������܂��B</dd>
 </dl></dd>
 <dt><a name="StandardError"><em>StandardError</em></a></dt>
-<dd>この例外クラスとそのサブクラスは、<a href="syntax05.html#L000314">rescue 節</a>でクラ
-スを省略したときにも捕捉できます。
+<dd>���̗�O�N���X�Ƃ��̃T�u�N���X�́A<a href="syntax05.html#L000314">rescue ��</a>�ŃN��
+�X���ȗ������Ƃ��ɂ��ߑ��ł��܂��B
 <dl>
 <dt><a name="ArgumentError"><em>ArgumentError</em></a></dt>
-<dd>引数の数が合っていないときや、値が正しくないときに発生します。</dd>
+<dd>�����̐��������Ă��Ȃ��Ƃ���A�l���������Ȃ��Ƃ��ɔ������܂��B</dd>
 <dt><a name="IndexError"><em>IndexError</em></a></dt>
-<dd>添字が範囲外のときに発生します。</dd>
+<dd>�Y�����͈͊O�̂Ƃ��ɔ������܂��B</dd>
 <dt><a name="IOError"><em>IOError</em></a></dt>
-<dd>I/O でエラーが起きたときに発生します。
+<dd>I/O �ŃG���[���N�����Ƃ��ɔ������܂��B
 <dl>
 <dt><a name="EOFError"><em>EOFError</em></a></dt>
-<dd>EOF (End Of File) に達したときに発生します。</dd>
+<dd>EOF (End Of File) �ɒB�����Ƃ��ɔ������܂��B</dd>
 </dl></dd>
 <dt><a name="LocalJumpError"><em>LocalJumpError</em></a></dt>
-<dd>制御構造のジャンプ先が見つからないときに発生します。</dd>
+<dd>����\���̃W�����v�悪������Ȃ��Ƃ��ɔ������܂��B</dd>
 <dt><a name="NameError"><em>NameError</em></a></dt>
-<dd>未定義のローカル変数や定数を使用したときに発生します。
+<dd>����`�̃��[�J���ϐ���萔���g�p�����Ƃ��ɔ������܂��B
 <dl>
 <dt><a name="NoMethodError"><em>NoMethodError</em></a></dt>
-<dd>定義されていないメソッドの呼び出しが行われたときに発生します。</dd>
+<dd>��`����Ă��Ȃ����\�b�h�̌Ăяo�����s��ꂽ�Ƃ��ɔ������܂��B</dd>
 </dl></dd>
 <dt><a name="RangeError"><em>RangeError</em></a></dt>
-<dd>範囲に関する例外。範囲外の数値変換 (<a href="sc_bignum.html">Bignum</a>
-から <a href="sc_fixnum.html">Fixnum</a> への変換) などにより発生します。
+<dd>�͈͂Ɋւ����O�B�͈͊O�̐��l�ϊ� (<a href="sc_bignum.html">Bignum</a>
+���� <a href="sc_fixnum.html">Fixnum</a> �ւ̕ϊ�) �Ȃǂɂ�蔭�����܂��B
 <dl>
 <dt><a name="FloatDomainError"><em>FloatDomainError</em></a></dt>
-<dd>正負の無限大や NaN (Not a Number) を <a href="sc_bignum.html">Bignum</a> に変換しようと
-したり、NaN との比較を行ったときに発生します。</dd>
+<dd>�����̖������ NaN (Not a Number) �� <a href="sc_bignum.html">Bignum</a> �ɕϊ����悤��
+������ANaN �Ƃ̔�r���s�����Ƃ��ɔ������܂��B</dd>
 </dl></dd>
 <dt><a name="RegexpError"><em>RegexpError</em></a></dt>
-<dd>正規表現のコンパイルに失敗した場合に発生します。</dd>
+<dd>���K�\���̃R���p�C���Ɏ��s�����ꍇ�ɔ������܂��B</dd>
 <dt><a name="RuntimeError"><em>RuntimeError</em></a></dt>
-<dd>実行時例外です。例外を指定しない <a href="s_functions.html#L000388">raise</a>
-の呼び出しはこの例外を発生させます。</dd>
+<dd>���s����O�ł��B��O���w�肵�Ȃ� <a href="s_functions.html#L000388">raise</a>
+�̌Ăяo���͂��̗�O�𔭐������܂��B</dd>
 <dt><a name="SystemCallError"><em>SystemCallError</em></a></dt>
-<dd>システムコールが失敗したときに発生する例外です。
+<dd>�V�X�e���R�[�������s�����Ƃ��ɔ��������O�ł��B
 <dl>
 <dt><a name="Errno"><em>Errno::EXXX</em></a></dt>
-<dd>各 errno に対応する例外クラスです。実際のクラス名については 
-<a href="sm_errno.html">Errno</a> モジュールを参照してください。</dd>
+<dd>�e errno �ɑΉ������O�N���X�ł��B���ۂ̃N���X���ɂ��Ă� 
+<a href="sm_errno.html">Errno</a> ���W���[�����Q�Ƃ��Ă��������B</dd>
 </dl></dd>
 <dt><a name="SystemStackError"><em>SystemStackError</em></a></dt>
-<dd>スタックレベルが深くなりすぎたときに発生します。</dd>
+<dd>�X�^�b�N���x�����[���Ȃ肷�����Ƃ��ɔ������܂��B</dd>
 <dt><a name="TypeError"><em>TypeError</em></a></dt>
-<dd>不正な型を使用したときに発生します。</dd>
+<dd>�s���Ȍ^���g�p�����Ƃ��ɔ������܂��B</dd>
 <dt><a name="ZeroDivisionError"><em>ZeroDivisionError</em></a></dt>
-<dd>0 で除算を行ったときに発生します。</dd>
+<dd>0 �ŏ��Z���s�����Ƃ��ɔ������܂��B</dd>
 </dl></dd>
 <dt><a name="SystemExit"><em>SystemExit</em></a></dt>
-<dd>プログラムを終了させます。<a href="s_functions.html#L000363">exit</a> を
-参照してください。</dd>
+<dd>�v���O�������I�������܂��B<a href="s_functions.html#L000363">exit</a> ��
+�Q�Ƃ��Ă��������B</dd>
 <dt><a name="fatal"><em>fatal</em></a></dt>
-<dd>致命的なエラー (内部的なエラー) のときに発生します。このオブジェクトは通常の方法では見えません。</dd>
+<dd>�v���I�ȃG���[ (�����I�ȃG���[) �̂Ƃ��ɔ������܂��B���̃I�u�W�F�N�g�͒ʏ�̕��@�ł͌����܂���B</dd>
 </dl></dd>
 </dl>
 

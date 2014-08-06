@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>RPG::Actor</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,44 +9,44 @@
 <body>
 
 <h1>RPG::Actor</h1>
-<p>ã‚¢ã‚¯ã‚¿ãƒ¼ã®ãƒ‡ãƒ¼ã‚¿ã‚¯ãƒ©ã‚¹ã€‚</p>
+<p>ƒAƒNƒ^[‚Ìƒf[ƒ^ƒNƒ‰ƒXB</p>
 
-<h2>ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹</h2>
+<h2>ƒX[ƒp[ƒNƒ‰ƒX</h2>
 <ul>
 <li><a href="gc_rpg_baseitem.html">RPG::BaseItem</a></li>
 </ul>
 
-<h2>å±žæ€§</h2>
+<h2>‘®«</h2>
 <dl>
 <dt>nickname</dt>
-<dd><p>äºŒã¤åã€‚</p></dd>
+<dd><p>“ñ‚Â–¼B</p></dd>
 <dt>class_id</dt>
-<dd><p>è·æ¥­ IDã€‚</p></dd>
+<dd><p>E‹Æ IDB</p></dd>
 <dt>initial_level</dt>
-<dd><p>åˆæœŸãƒ¬ãƒ™ãƒ«ã€‚</p></dd>
+<dd><p>‰ŠúƒŒƒxƒ‹B</p></dd>
 <dt>max_level</dt>
-<dd><p>æœ€é«˜ãƒ¬ãƒ™ãƒ«ã€‚</p></dd>
+<dd><p>Å‚ƒŒƒxƒ‹B</p></dd>
 <dt>character_name</dt>
-<dd><p>æ­©è¡Œã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã®ãƒ•ã‚¡ã‚¤ãƒ«åã€‚</p></dd>
+<dd><p>•àsƒOƒ‰ƒtƒBƒbƒN‚Ìƒtƒ@ƒCƒ‹–¼B</p></dd>
 <dt>character_index</dt>
-<dd><p>æ­©è¡Œã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ (0..7) ã€‚</p></dd>
+<dd><p>•àsƒOƒ‰ƒtƒBƒbƒN‚ÌƒCƒ“ƒfƒbƒNƒX (0..7) B</p></dd>
 <dt>face_name</dt>
-<dd><p>é¡”ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã®ãƒ•ã‚¡ã‚¤ãƒ«åã€‚</p></dd>
+<dd><p>ŠçƒOƒ‰ƒtƒBƒbƒN‚Ìƒtƒ@ƒCƒ‹–¼B</p></dd>
 <dt>face_index</dt>
-<dd><p>é¡”ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ (0..7) ã€‚</p></dd>
+<dd><p>ŠçƒOƒ‰ƒtƒBƒbƒN‚ÌƒCƒ“ƒfƒbƒNƒX (0..7) B</p></dd>
 <dt>equips</dt>
-<dd><p>åˆæœŸè£…å‚™ã€‚ä»¥ä¸‹ã‚’æ·»å­—ã¨ã™ã‚‹ã€æ­¦å™¨ ID ã¾ãŸã¯é˜²å…· ID ã®é…åˆ—ã§ã™ã€‚</p>
+<dd><p>‰Šú‘•”õBˆÈ‰º‚ð“YŽš‚Æ‚·‚éA•Ší ID ‚Ü‚½‚Í–h‹ï ID ‚Ì”z—ñ‚Å‚·B</p>
 <ul>
-<li>0 : æ­¦å™¨</li>
-<li>1 : ç›¾</li>
-<li>2 : é ­</li>
-<li>3 : èº«ä½“</li>
-<li>4 : è£…é£¾å“</li>
+<li>0 : •Ší</li>
+<li>1 : ‚</li>
+<li>2 : “ª</li>
+<li>3 : g‘Ì</li>
+<li>4 : ‘•ü•i</li>
 </ul></dd>
 </dl>
 
 
-<h2>å®šç¾©</h2>
+<h2>’è‹`</h2>
 <pre>
 class RPG::Actor &lt; RPG::BaseItem
   def initialize

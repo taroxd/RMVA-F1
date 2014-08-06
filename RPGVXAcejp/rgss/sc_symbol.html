@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Symbol</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,37 +9,37 @@
 <body>
 
 <h1>Symbol</h1>
-<p>シンボルを表すクラス。<a href="syntax03.html#L000282">シンボル</a>を
-参照してください。</p>
+<p>�V���{����\���N���X�B<a href="syntax03.html#L000282">�V���{��</a>��
+�Q�Ƃ��Ă��������B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>メソッド</h2>
+<h2>���\�b�h</h2>
 <dl>
 <dt><a name="L001480">id2name</a>
 <dd>
-<p>シンボルに対応する文字列を返します。</p>
-<p>文字列に対応するシンボルを得るには 
-<a href="sc_string.html#L001398">String#to_sym</a> を使います。</p>
+<p>�V���{���ɑΉ����镶�����Ԃ��܂��B</p>
+<p>������ɑΉ�����V���{���𓾂�ɂ� 
+<a href="sc_string.html#L001398">String#to_sym</a> ���g���܂��B</p>
 <pre>
 p :foo.id2name.to_sym == :foo       # =&gt; true
 </pre></dd>
 <dt><a name="L001482">to_i</a></dt>
 <dd>
-<p>シンボルに対応する整数を返します。</p>
-<p>この整数から対応するシンボルを得るには
-<a href="sc_fixnum.html#L001220">Fixnum#to_sym</a> を使います。</p>
+<p>�V���{���ɑΉ����鐮����Ԃ��܂��B</p>
+<p>���̐�������Ή�����V���{���𓾂�ɂ�
+<a href="sc_fixnum.html#L001220">Fixnum#to_sym</a> ���g���܂��B</p>
 <pre>
 p :foo.to_i                         # =&gt; 8881
 p :foo.to_i.to_sym                  # =&gt; :foo
 </pre>
-<p>Ruby の実装では予約語、変数名、メソッド名などをこの整数で管理してい
-ます。オブジェクトに対応する整数
-(<a href="sc_object.html#L000571">Object#object_id</a> で得ら
-れます) と Symbol に対応する整数は別のものです。</p></dd>
+<p>Ruby �̎����ł͗\���A�ϐ����A���\�b�h���Ȃǂ����̐����ŊǗ����Ă�
+�܂��B�I�u�W�F�N�g�ɑΉ����鐮��
+(<a href="sc_object.html#L000571">Object#object_id</a> �œ���
+��܂�) �� Symbol �ɑΉ����鐮���͕ʂ̂��̂ł��B</p></dd>
 </dl>
 
 <h6></h6>

@@ -1,78 +1,78 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>タイマーの改造</title>
+<title>�^�C�}�[�̉���</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>タイマーの改造</h1>
+<h1>�^�C�}�[�̉���</h1>
 <ul>
-<li><a href="#event">イベントの作成</a></li>
-<li><a href="#material">スクリプト素材の作成</a></li>
-<li><a href="#find">改造個所の探し方</a></li>
-<li><a href="#redefine">クラスとメソッドの再定義</a></li>
-<li><a href="#change">メソッド定義の変更</a></li>
-<li><a href="#alias">エイリアス</a></li>
+<li><a href="#event">�C�x���g�̍쐬</a></li>
+<li><a href="#material">�X�N���v�g�f�ނ̍쐬</a></li>
+<li><a href="#find">�������̒T����</a></li>
+<li><a href="#redefine">�N���X�ƃ��\�b�h�̍Ē�`</a></li>
+<li><a href="#change">���\�b�h��`�̕ύX</a></li>
+<li><a href="#alias">�G�C���A�X</a></li>
 </ul>
 
-<p>実践編では、実際にゲームの改造を行いながら、必要な知識を解説して
-いきます。</p>
-<p>まずは簡単な例として、イベントコマンド［タイマーの操作］で使用する
-タイマーの表示を変更することを目標とします。</p>
+<p>���H�҂ł́A���ۂɃQ�[���̉������s���Ȃ���A�K�v�Ȓm�����������
+�����܂��B</p>
+<p>�܂��͊ȒP�ȗ�Ƃ��āA�C�x���g�R�}���h�m�^�C�}�[�̑���n�Ŏg�p����
+�^�C�}�[�̕\����ύX���邱�Ƃ�ڕW�Ƃ��܂��B</p>
 
 
-<h2><a name="event">イベントの作成</a></h2>
-<img src="img/timer.png" alt="タイマーイベント" class="float_r">
-<p>最初に、いったんスクリプトエディタを閉じ、テスト用のイベントを
-作成します。</p>
-<p>右の画面写真のように、自動実行イベントに [タイマーの操作] を設定し、
-テストプレイでタイマーがどのように表示されるか、すぐに確認できる
-状態にしておいてください。</p>
+<h2><a name="event">�C�x���g�̍쐬</a></h2>
+<img src="img/timer.png" alt="�^�C�}�[�C�x���g" class="float_r">
+<p>�ŏ��ɁA��������X�N���v�g�G�f�B�^����A�e�X�g�p�̃C�x���g��
+�쐬���܂��B</p>
+<p>�E�̉�ʎʐ^�̂悤�ɁA�������s�C�x���g�� [�^�C�}�[�̑���] ��ݒ肵�A
+�e�X�g�v���C�Ń^�C�}�[���ǂ̂悤�ɕ\������邩�A�����Ɋm�F�ł���
+��Ԃɂ��Ă����Ă��������B</p>
 <div class="clear_both"></div>
 
 
-<h2><a name="material">スクリプト素材の作成</a></h2>
-<p>基礎編の最初で一番上に作成したセクションはもう使用しませんので、
-削除してください。代わりに、下の方にある「▼ 素材」というセクション
-の下に新しいセクションを作成してください。名前は適当で結構です。</p>
-<p>プリセットのスクリプトを直接編集しても構わないのですが、自分が
-改変した部分を一か所にまとめておけば、いろいろと便利です。
-このため、改造したスクリプトを素材として他人に配布するつもりがない
-場合でも「素材」のような扱いで作成することをお勧めします。</p>
+<h2><a name="material">�X�N���v�g�f�ނ̍쐬</a></h2>
+<p>��b�҂̍ŏ��ň�ԏ�ɍ쐬�����Z�N�V�����͂����g�p���܂���̂ŁA
+�폜���Ă��������B����ɁA���̕��ɂ���u�� �f�ށv�Ƃ����Z�N�V����
+�̉��ɐV�����Z�N�V�������쐬���Ă��������B���O�͓K���Ō��\�ł��B</p>
+<p>�v���Z�b�g�̃X�N���v�g�𒼐ڕҏW���Ă��\��Ȃ��̂ł����A������
+���ς����������ꂩ���ɂ܂Ƃ߂Ă����΁A���낢��ƕ֗��ł��B
+���̂��߁A���������X�N���v�g��f�ނƂ��đ��l�ɔz�z������肪�Ȃ�
+�ꍇ�ł��u�f�ށv�̂悤�Ȉ����ō쐬���邱�Ƃ������߂��܂��B</p>
 
 
-<h2><a name="find">改造個所の探し方</a></h2>
-<p>スクリプト素材を作成する際、最初にすることは、どのあたりを改造
-すれば目的の動作が得られるかの見当をつけることです。</p>
-<p>今回はタイマーの改造をしたいので、まずは「タイマー」という文字列
-を全セクションから検索してみましょう。[単語単位] オプションには
-チェックを入れないでください。検索結果が何件か表示されたら、
-順に見ていけば、タイマーの表示に関係のありそうな部分を見つけることが
-できます。</p>
-<p>この場合は <strong>Sprite_Timer</strong> クラスが正解です。<a
-href="206_sprites.html">スプライトの管理</a>の最初の表にも載って
-いますね。改造個所の特定はいつもこのように簡単ではありませんが、
-コツを覚えれば、比較的短時間で探すことができるようになります。</p>
+<h2><a name="find">�������̒T����</a></h2>
+<p>�X�N���v�g�f�ނ��쐬����ہA�ŏ��ɂ��邱�Ƃ́A�ǂ̂����������
+����ΖړI�̓��삪�����邩�̌��������邱�Ƃł��B</p>
+<p>����̓^�C�}�[�̉������������̂ŁA�܂��́u�^�C�}�[�v�Ƃ���������
+��S�Z�N�V�������猟�����Ă݂܂��傤�B[�P��P��] �I�v�V�����ɂ�
+�`�F�b�N�����Ȃ��ł��������B�������ʂ��������\�����ꂽ��A
+���Ɍ��Ă����΁A�^�C�}�[�̕\���Ɋ֌W�̂��肻���ȕ����������邱�Ƃ�
+�ł��܂��B</p>
+<p>���̏ꍇ�� <strong>Sprite_Timer</strong> �N���X�������ł��B<a
+href="206_sprites.html">�X�v���C�g�̊Ǘ�</a>�̍ŏ��̕\�ɂ��ڂ���
+���܂��ˁB�������̓���͂������̂悤�ɊȒP�ł͂���܂��񂪁A
+�R�c���o����΁A��r�I�Z���ԂŒT�����Ƃ��ł���悤�ɂȂ�܂��B</p>
 
 
-<h2><a name="redefine">クラスとメソッドの再定義</a></h2>
-<p>素材の位置に新しく作成したセクションに移動し、次のように
-入力してください。</p>
+<h2><a name="redefine">�N���X�ƃ��\�b�h�̍Ē�`</a></h2>
+<p>�f�ނ̈ʒu�ɐV�����쐬�����Z�N�V�����Ɉړ����A���̂悤��
+���͂��Ă��������B</p>
 <pre>
 class Sprite_Timer
 end
 </pre>
-<p>Ruby では、いったん定義したクラスを後から変更することができます。
-この中にメソッドなどを記述すれば、それは Sprite_Timer クラス自体の
-定義として扱われるというわけです。</p>
-<p>オリジナルの Sprite_Timer クラスを読んでいくと、create_bitmap
-というメソッドが見つかるはずです。これは、スプライトの転送元
-ビットマップを作成し、文字のサイズと色を設定するという内容の
-メソッドです。今回はこの部分を改造したいので、create_bitmap
-メソッドをコピーし、素材の方に貼り付けます。</p>
+<p>Ruby �ł́A���������`�����N���X���ォ��ύX���邱�Ƃ��ł��܂��B
+���̒��Ƀ��\�b�h�Ȃǂ��L�q����΁A����� Sprite_Timer �N���X���̂�
+��`�Ƃ��Ĉ�����Ƃ����킯�ł��B</p>
+<p>�I���W�i���� Sprite_Timer �N���X��ǂ�ł����ƁAcreate_bitmap
+�Ƃ������\�b�h��������͂��ł��B����́A�X�v���C�g�̓]����
+�r�b�g�}�b�v���쐬���A�����̃T�C�Y�ƐF��ݒ肷��Ƃ������e��
+���\�b�h�ł��B����͂��̕����������������̂ŁAcreate_bitmap
+���\�b�h���R�s�[���A�f�ނ̕��ɓ\��t���܂��B</p>
 <pre>
 class Sprite_Timer
   def create_bitmap
@@ -82,11 +82,11 @@ class Sprite_Timer
   end
 end
 </pre>
-<p>同名のメソッドを定義した場合、後から定義された方が優先されます
-ので、これで create_bitmap メソッドだけを差し替えることができます。</p>
+<p>�����̃��\�b�h���`�����ꍇ�A�ォ���`���ꂽ�����D�悳��܂�
+�̂ŁA����� create_bitmap ���\�b�h�����������ւ��邱�Ƃ��ł��܂��B</p>
 
-<h2><a name="change">メソッド定義の変更</a></h2>
-<p>実際にタイマーの表示を変更してみましょう。</p>
+<h2><a name="change">���\�b�h��`�̕ύX</a></h2>
+<p>���ۂɃ^�C�}�[�̕\����ύX���Ă݂܂��傤�B</p>
 <pre>
 class Sprite_Timer
   def create_bitmap
@@ -96,23 +96,23 @@ class Sprite_Timer
   end
 end
 </pre>
-<p>上記のように数字を変更し、テストプレイをしてください。タイマーが
-大きな赤い字で表示されていれば成功です。</p>
-<p>ここで変更した数字の意味がよくわからない方は、自分で他の数字に
-変更してみて、どのような表示になるかを実験してみましょう。
-設定内容の詳細を確認したい場合は、<a
-href="../rgss/gc_bitmap.html">Bitmap</a>、<a
-href="../rgss/gc_font.html">Font</a>、<a
+<p>��L�̂悤�ɐ�����ύX���A�e�X�g�v���C�����Ă��������B�^�C�}�[��
+�傫�ȐԂ����ŕ\������Ă���ΐ����ł��B</p>
+<p>�����ŕύX���������̈Ӗ����悭�킩��Ȃ����́A�����ő��̐�����
+�ύX���Ă݂āA�ǂ̂悤�ȕ\���ɂȂ邩���������Ă݂܂��傤�B
+�ݒ���e�̏ڍׂ��m�F�������ꍇ�́A<a
+href="../rgss/gc_bitmap.html">Bitmap</a>�A<a
+href="../rgss/gc_font.html">Font</a>�A<a
 href="../rgss/gc_color.html">Color</a>
-クラスのリファレンスを参照してください。</p>
+�N���X�̃��t�@�����X���Q�Ƃ��Ă��������B</p>
 
 
-<h2><a name="alias">エイリアス</a></h2>
-<p>以上で「タイマーを大きな赤い字で表示するスクリプト素材」が完成した
-わけですが、本当に「素材」として配布する場合、既存のメソッド全体を
-置き換えてしまうと、他の素材との競合が問題になる可能性があります。
-メソッドを置き換えるのではなく、既存の処理の前や後ろに何かを追加したい
-場合は<strong>エイリアス</strong> (別名) という機能を使用します。
+<h2><a name="alias">�G�C���A�X</a></h2>
+<p>�ȏ�Łu�^�C�}�[��傫�ȐԂ����ŕ\������X�N���v�g�f�ށv����������
+�킯�ł����A�{���Ɂu�f�ށv�Ƃ��Ĕz�z����ꍇ�A�����̃��\�b�h�S�̂�
+�u�������Ă��܂��ƁA���̑f�ނƂ̋��������ɂȂ�\��������܂��B
+���\�b�h��u��������̂ł͂Ȃ��A�����̏����̑O����ɉ�����ǉ�������
+�ꍇ��<strong>�G�C���A�X</strong> (�ʖ�) �Ƃ����@�\���g�p���܂��B
 <pre>
 class Sprite_Timer
   alias xxx001_create_bitmap create_bitmap
@@ -122,24 +122,24 @@ class Sprite_Timer
   end
 end
 </pre>
-<p>上記のようにすると、古い create_bitmap メソッドの内容を実行した
-上で、フォントの色だけを変更することができます。</p>
+<p>��L�̂悤�ɂ���ƁA�Â� create_bitmap ���\�b�h�̓��e�����s����
+��ŁA�t�H���g�̐F������ύX���邱�Ƃ��ł��܂��B</p>
 <pre>
   alias xxx001_create_bitmap create_bitmap
 </pre>
-<p>この行で、古い create_bitmap メソッドに xxx001_create_bitmap
-という別名をつけて退避させています。このようにしておけば、新しい
-create_bitmap の中で古い処理を呼び出すことができるというわけです。
-ただし、エイリアスの名前自体が被るとやはり競合が発生してしまいます
-から、xxx001 の部分が他の素材と被らないよう、独自の名前をつける
-ことが必要となります。これは、自分自身が複数の素材で同じ個所を
-再定義する場合でも同様です。</p>
-<p>やや混乱を招きやすい部分ですが、create_bitmap メソッドを再定義
-することによって、古いほうの create_bitmap メソッドの内容が上書き
-されるわけではありません。別のメソッドが同じ名前で定義され、外から
-見たときだけメソッドの内容が入れ替わっているように見えるという
-イメージです。古いメソッドをエイリアスで退避しておけば、その内容が
-再定義の影響を受けて変化するようなことはありません。</p>
+<p>���̍s�ŁA�Â� create_bitmap ���\�b�h�� xxx001_create_bitmap
+�Ƃ����ʖ������đޔ������Ă��܂��B���̂悤�ɂ��Ă����΁A�V����
+create_bitmap �̒��ŌÂ��������Ăяo�����Ƃ��ł���Ƃ����킯�ł��B
+�������A�G�C���A�X�̖��O���̂����Ƃ�͂苣�����������Ă��܂��܂�
+����Axxx001 �̕��������̑f�ނƔ��Ȃ��悤�A�Ǝ��̖��O������
+���Ƃ��K�v�ƂȂ�܂��B����́A�������g�������̑f�ނœ�������
+�Ē�`����ꍇ�ł����l�ł��B</p>
+<p>��⍬���������₷�������ł����Acreate_bitmap ���\�b�h���Ē�`
+���邱�Ƃɂ���āA�Â��ق��� create_bitmap ���\�b�h�̓��e���㏑��
+�����킯�ł͂���܂���B�ʂ̃��\�b�h���������O�Œ�`����A�O����
+�����Ƃ��������\�b�h�̓��e������ւ���Ă���悤�Ɍ�����Ƃ���
+�C���[�W�ł��B�Â����\�b�h���G�C���A�X�őޔ����Ă����΁A���̓��e��
+�Ē�`�̉e�����󂯂ĕω�����悤�Ȃ��Ƃ͂���܂���B</p>
 
 
 <h6></h6>

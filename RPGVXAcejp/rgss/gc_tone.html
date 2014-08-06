@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>Tone</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,64 +9,64 @@
 <body>
 
 <h1>Tone</h1>
-<p>色調のクラス。各要素は浮動小数点数
-(<a href="sc_float.html">Float</a>) で管理されます。</p>
+<p>�F���̃N���X�B�e�v�f�͕��������_��
+(<a href="sc_float.html">Float</a>) �ŊǗ�����܂��B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>クラスメソッド</h2>
+<h2>�N���X���\�b�h</h2>
 <dl>
 
 <dt>Tone.new(<var>red</var>, <var>green</var>, <var>blue</var>[, <var>gray</var>])</dt>
 <dt>Tone.new <span class="rgss3">(RGSS3)</span></dt>
 <dd>
-<p>Tone オブジェクトを生成します。<var>gray</var>
-を省略した場合は 0 になります。</p>
-<p>引数を指定しない場合の初期値は (0, 0, 0, 0) となります。
+<p>Tone �I�u�W�F�N�g�𐶐����܂��B<var>gray</var>
+���ȗ������ꍇ�� 0 �ɂȂ�܂��B</p>
+<p>�������w�肵�Ȃ��ꍇ�̏����l�� (0, 0, 0, 0) �ƂȂ�܂��B
 <span class="rgss3">(RGSS3)</span></p></dd>
 
 </dl>
 
-<h2>メソッド</h2>
+<h2>���\�b�h</h2>
 <dl>
 
 <dt>set(<var>red</var>, <var>green</var>, <var>blue</var>[, <var>gray</var>])</dt>
 <dt>set(<var>tone</var>) <span class="rgss3">(RGSS3)</span></dt>
 <dd>
-<p>全要素をまとめて設定します。</p>
-<p>2 番目の形式では、別の Tone オブジェクトから全要素をコピーします。
+<p>�S�v�f���܂Ƃ߂Đݒ肵�܂��B</p>
+<p>2 �Ԗڂ̌`���ł́A�ʂ� Tone �I�u�W�F�N�g����S�v�f���R�s�[���܂��B
 <span class="rgss3">(RGSS3)</span></p>
 </dd>
 
 </dl>
 
-<h2>プロパティ</h2>
+<h2>�v���p�e�B</h2>
 <dl>
 
 <dt>red</dt>
 <dd>
-<p>赤成分のカラーバランス調整値 (-255 〜 255) です。
-範囲外の値は自動で修正されます。</p></dd>
+<p>�Ԑ����̃J���[�o�����X�����l (-255 �` 255) �ł��B
+�͈͊O�̒l�͎����ŏC������܂��B</p></dd>
 
 <dt>green</dt>
 <dd>
-<p>緑成分のカラーバランス調整値 (-255 〜 255) です。
-範囲外の値は自動で修正されます。</p></dd>
+<p>�ΐ����̃J���[�o�����X�����l (-255 �` 255) �ł��B
+�͈͊O�̒l�͎����ŏC������܂��B</p></dd>
 
 <dt>blue</dt>
 <dd>
-<p>青成分のカラーバランス調整値 (-255 〜 255) です。
-範囲外の値は自動で修正されます。</p></dd>
+<p>�����̃J���[�o�����X�����l (-255 �` 255) �ł��B
+�͈͊O�̒l�͎����ŏC������܂��B</p></dd>
 
 <dt>gray</dt>
 <dd>
-<p>グレースケール化フィルタの強さ (0 〜 255) です。
-範囲外の値は自動で修正されます。</p>
-<p>この値が 0 以外の場合、色成分のバランス調整だけの場合よりも
-余分に処理時間がかかります。</p>
+<p>�O���[�X�P�[�����t�B���^�̋��� (0 �` 255) �ł��B
+�͈͊O�̒l�͎����ŏC������܂��B</p>
+<p>���̒l�� 0 �ȊO�̏ꍇ�A�F�����̃o�����X���������̏ꍇ����
+�]���ɏ������Ԃ�������܂��B</p>
 </dd>
 
 </dl>

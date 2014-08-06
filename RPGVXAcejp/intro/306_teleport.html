@@ -1,48 +1,48 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>テレポートアイテムの作成</title>
+<title>�e���|�[�g�A�C�e���̍쐬</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>テレポートアイテムの作成</h1>
+<h1>�e���|�[�g�A�C�e���̍쐬</h1>
 <ul>
-<li><a href="#data">アイテムデータの作成</a></li>
-<li><a href="#window">ウィンドウの作成</a></li>
-<li><a href="#show">ウィンドウの表示</a></li>
-<li><a href="#places">場所テーブルの作成</a></li>
-<li><a href="#select">テレポート位置の選択</a></li>
-<li><a href="#handler">ハンドラの設定</a></li>
+<li><a href="#data">�A�C�e���f�[�^�̍쐬</a></li>
+<li><a href="#window">�E�B���h�E�̍쐬</a></li>
+<li><a href="#show">�E�B���h�E�̕\��</a></li>
+<li><a href="#places">�ꏊ�e�[�u���̍쐬</a></li>
+<li><a href="#select">�e���|�[�g�ʒu�̑I��</a></li>
+<li><a href="#handler">�n���h���̐ݒ�</a></li>
 </ul>
 
-<p>メニュー画面でアイテムやスキルを選択したときに、さらに別の
-ウィンドウで選択処理を行う方法を解説します。</p>
-<p>例として、町などのリストから任意の場所を選択して瞬間移動する
-アイテムを作成します。</p>
+<p>���j���[��ʂŃA�C�e����X�L����I�������Ƃ��ɁA����ɕʂ�
+�E�B���h�E�őI���������s�����@��������܂��B</p>
+<p>��Ƃ��āA���Ȃǂ̃��X�g����C�ӂ̏ꏊ��I�����ďu�Ԉړ�����
+�A�C�e�����쐬���܂��B</p>
 
 
-<h2><a name="data">アイテムデータの作成</a></h2>
-<p><a href="303_escape.html">脱出アイテムの作成</a>のときと
-同じように、テレポート用アイテムのデータを設定します。</p>
-<p>効果範囲は［なし］、使用可能時は［メニューのみ］とし、メモには
-&lt;TELEPORT&gt; と入力しましょう (&lt;&gt;を含む) 。
-設定が終わったら、イベントコマンド［アイテムの増減］を含んだ
-イベントを作成し、効果をテストできるようにしてください。</p>
-<p>なお、便宜上［アイテム］を使用して説明していますが、ここで
-作成するスクリプトはそのままで［スキル］にも対応しています。
-つまり、スキルのメモに &lt;TELEPORT&gt; と書き、効果範囲と使用可能時を
-同様に設定すれば、それだけでスキルも作成することが可能です。</p>
+<h2><a name="data">�A�C�e���f�[�^�̍쐬</a></h2>
+<p><a href="303_escape.html">�E�o�A�C�e���̍쐬</a>�̂Ƃ���
+�����悤�ɁA�e���|�[�g�p�A�C�e���̃f�[�^��ݒ肵�܂��B</p>
+<p>���ʔ͈͂́m�Ȃ��n�A�g�p�\���́m���j���[�̂݁n�Ƃ��A�����ɂ�
+&lt;TELEPORT&gt; �Ɠ��͂��܂��傤 (&lt;&gt;���܂�) �B
+�ݒ肪�I�������A�C�x���g�R�}���h�m�A�C�e���̑����n���܂�
+�C�x���g���쐬���A���ʂ��e�X�g�ł���悤�ɂ��Ă��������B</p>
+<p>�Ȃ��A�֋X��m�A�C�e���n���g�p���Đ������Ă��܂����A������
+�쐬����X�N���v�g�͂��̂܂܂Łm�X�L���n�ɂ��Ή����Ă��܂��B
+�܂�A�X�L���̃����� &lt;TELEPORT&gt; �Ə����A���ʔ͈͂Ǝg�p�\����
+���l�ɐݒ肷��΁A���ꂾ���ŃX�L�����쐬���邱�Ƃ��\�ł��B</p>
 
 
-<h2><a name="window">ウィンドウの作成</a></h2>
-<p>テレポート位置を選択させるためのウィンドウクラスを作成します。</p>
-<p>今回は Window_Selectable クラスではなく、Window_Command
-クラスを継承してみましょう。使い分けはケースバイ
-ケースですが、Window_Command クラスを使えば選択肢を描画するコードを
-自分で書く必要がないため、比較的扱いが簡単です。</p>
+<h2><a name="window">�E�B���h�E�̍쐬</a></h2>
+<p>�e���|�[�g�ʒu��I�������邽�߂̃E�B���h�E�N���X���쐬���܂��B</p>
+<p>����� Window_Selectable �N���X�ł͂Ȃ��AWindow_Command
+�N���X���p�����Ă݂܂��傤�B�g�������̓P�[�X�o�C
+�P�[�X�ł����AWindow_Command �N���X���g���ΑI������`�悷��R�[�h��
+�����ŏ����K�v���Ȃ����߁A��r�I�������ȒP�ł��B</p>
 <pre>
 class Window_Teleport &lt; Window_Command
   def initialize
@@ -52,17 +52,17 @@ class Window_Teleport &lt; Window_Command
   end
 end
 </pre>
-<p>Window_Command クラスの initialize メソッドは、X
-座標および Y 座標の二つの引数を取ります。座標の指定は今回
-不要なので、Window_Teleport クラスの initialize メソッドは
-引数なしとし、super(0, 0) という形でスーパークラスのメソッドを
-呼び出すことで X 座標、Y 座標とも 0 に設定しています。</p>
-<p>続いて hide メソッドを呼び出して非表示状態に、deactivate
-メソッドを呼び出して非アクティブ状態にしています。このウィンドウが
-実際に作成されるのはアイテム画面に移った時点なので、アイテムを
-選択してもいないのに表示されてしまっては都合が悪いからです。</p>
-<p>次にサイズの指定が必要です。次のコードを Window_Teleport
-クラスの中に記述してください。</p>
+<p>Window_Command �N���X�� initialize ���\�b�h�́AX
+���W����� Y ���W�̓�̈��������܂��B���W�̎w��͍���
+�s�v�Ȃ̂ŁAWindow_Teleport �N���X�� initialize ���\�b�h��
+�����Ȃ��Ƃ��Asuper(0, 0) �Ƃ����`�ŃX�[�p�[�N���X�̃��\�b�h��
+�Ăяo�����Ƃ� X ���W�AY ���W�Ƃ� 0 �ɐݒ肵�Ă��܂��B</p>
+<p>������ hide ���\�b�h���Ăяo���Ĕ�\����ԂɁAdeactivate
+���\�b�h���Ăяo���Ĕ�A�N�e�B�u��Ԃɂ��Ă��܂��B���̃E�B���h�E��
+���ۂɍ쐬�����̂̓A�C�e����ʂɈڂ������_�Ȃ̂ŁA�A�C�e����
+�I�����Ă����Ȃ��̂ɕ\������Ă��܂��Ă͓s������������ł��B</p>
+<p>���ɃT�C�Y�̎w�肪�K�v�ł��B���̃R�[�h�� Window_Teleport
+�N���X�̒��ɋL�q���Ă��������B</p>
 <pre>
   def window_width
     return 240
@@ -71,23 +71,23 @@ end
     Graphics.height
   end
 </pre>
-<p>Window_Command クラスでは、ウィンドウの幅と高さを自分自身の
-window_width、window_height メソッドを呼ぶことで取得するように
-なっています。これは、たとえばコマンドの数によってウィンドウの
-高さを調整するなどの処理を柔軟に行えるようにするための設計です。</p>
-<p>今回は、幅として 240、高さとして Graphics.height
-を返しています。なお、<a href="../rgss/gm_graphics.html#height"
->Graphics.height</a> というのは画面全体の高さを返すメソッドです。</p>
+<p>Window_Command �N���X�ł́A�E�B���h�E�̕��ƍ������������g��
+window_width�Awindow_height ���\�b�h���ĂԂ��ƂŎ擾����悤��
+�Ȃ��Ă��܂��B����́A���Ƃ��΃R�}���h�̐��ɂ���ăE�B���h�E��
+�����𒲐�����Ȃǂ̏������_��ɍs����悤�ɂ��邽�߂̐݌v�ł��B</p>
+<p>����́A���Ƃ��� 240�A�����Ƃ��� Graphics.height
+��Ԃ��Ă��܂��B�Ȃ��A<a href="../rgss/gm_graphics.html#height"
+>Graphics.height</a> �Ƃ����͉̂�ʑS�̂̍�����Ԃ����\�b�h�ł��B</p>
 
 
-<h2><a name="show">ウィンドウの表示</a></h2>
-<p>前項で作成したウィンドウを、Scene_ItemBase
-クラスのインスタンス変数として持たせます。次のように start
-メソッドを再定義し、Window_Teleport クラスのインスタンスを生成
-する処理を加えます。なお、<a href="302_story.html"
->あらすじ画面の作成</a>の際にも触れましたが、Window_Base
-クラスに全ウィンドウの解放処理が含まれているため、dispose
-を記述する必要はありません。</a>
+<h2><a name="show">�E�B���h�E�̕\��</a></h2>
+<p>�O���ō쐬�����E�B���h�E���AScene_ItemBase
+�N���X�̃C���X�^���X�ϐ��Ƃ��Ď������܂��B���̂悤�� start
+���\�b�h���Ē�`���AWindow_Teleport �N���X�̃C���X�^���X�𐶐�
+���鏈���������܂��B�Ȃ��A<a href="302_story.html"
+>���炷����ʂ̍쐬</a>�̍ۂɂ��G��܂������AWindow_Base
+�N���X�ɑS�E�B���h�E�̉���������܂܂�Ă��邽�߁Adispose
+���L�q����K�v�͂���܂���B</a>
 <pre>
 class Scene_ItemBase
   alias xxx001_start start
@@ -97,7 +97,7 @@ class Scene_ItemBase
   end
 end
 </pre>
-<p>続いて determine_item メソッドを再定義します。</p>
+<p>������ determine_item ���\�b�h���Ē�`���܂��B</p>
 <pre>
   alias xxx001_determine_item determine_item
   def determine_item
@@ -108,51 +108,51 @@ end
     end
   end
 </pre>
-<p>determine_item は、アイテムにカーソルを合わせて決定ボタンを
-押した瞬間に呼び出されるメソッドです。ここでは、メモに
-&lt;TELEPORT&gt; という文字列が含まれていれば show_sub_window
-メソッドを呼び出し、そうでなければ通常の処理を行うように
-指定しています。</p>
-<p>show_sub_window は、アイテム画面やスキル画面の上に別の
-ウィンドウを表示するためのメソッドです。デフォルトではアクターの
-選択のみに使用しています。このメソッドはビューポートの位置などを
-操作することで、ウィンドウ同士が重なって見た目が不自然にならない
-ように処理を行っています。ただし、前提として、ウィンドウの高さが
-画面全体の高さと一致している必要があります。</p>
-<p>途中ですが、ここで一度テストプレイしてみましょう。アイテムを
-選択した瞬間に操作不能になってしまいますが、ウィンドウがどのように
-表示されるかは確認することができるでしょう。</p>
+<p>determine_item �́A�A�C�e���ɃJ�[�\�������킹�Č���{�^����
+�������u�ԂɌĂяo����郁�\�b�h�ł��B�����ł́A������
+&lt;TELEPORT&gt; �Ƃ��������񂪊܂܂�Ă���� show_sub_window
+���\�b�h���Ăяo���A�����łȂ���Βʏ�̏������s���悤��
+�w�肵�Ă��܂��B</p>
+<p>show_sub_window �́A�A�C�e����ʂ�X�L����ʂ̏�ɕʂ�
+�E�B���h�E��\�����邽�߂̃��\�b�h�ł��B�f�t�H���g�ł̓A�N�^�[��
+�I���݂̂Ɏg�p���Ă��܂��B���̃��\�b�h�̓r���[�|�[�g�̈ʒu�Ȃǂ�
+���삷�邱�ƂŁA�E�B���h�E���m���d�Ȃ��Č����ڂ��s���R�ɂȂ�Ȃ�
+�悤�ɏ������s���Ă��܂��B�������A�O��Ƃ��āA�E�B���h�E�̍�����
+��ʑS�̂̍����ƈ�v���Ă���K�v������܂��B</p>
+<p>�r���ł����A�����ň�x�e�X�g�v���C���Ă݂܂��傤�B�A�C�e����
+�I�������u�Ԃɑ���s�\�ɂȂ��Ă��܂��܂����A�E�B���h�E���ǂ̂悤��
+�\������邩�͊m�F���邱�Ƃ��ł���ł��傤�B</p>
 
 
-<h2><a name="places">場所テーブルの作成</a></h2>
-<p>テレポート先の場所データを定数として用意しましょう。</p>
-<p>Ruby の配列は数値でも文字列でも自由に格納できるので、このような
-テーブルを直に記述するのに便利です。</p>
+<h2><a name="places">�ꏊ�e�[�u���̍쐬</a></h2>
+<p>�e���|�[�g��̏ꏊ�f�[�^��萔�Ƃ��ėp�ӂ��܂��傤�B</p>
+<p>Ruby �̔z��͐��l�ł�������ł����R�Ɋi�[�ł���̂ŁA���̂悤��
+�e�[�u���𒼂ɋL�q����̂ɕ֗��ł��B</p>
 <pre>
 TELEPORT_PLACES =
 [
-  [41, &quot;場所Ａ&quot;, 1, 10, 10],
-  [42, &quot;場所Ｂ&quot;, 2, 25, 20],
-  [43, &quot;場所Ｃ&quot;, 3, 30, 15],
+  [41, &quot;�ꏊ�`&quot;, 1, 10, 10],
+  [42, &quot;�ꏊ�a&quot;, 2, 25, 20],
+  [43, &quot;�ꏊ�b&quot;, 3, 30, 15],
 ]
 </pre>
-<p>ここでは、スイッチ ID、テレポート先の名前、マップ ID、X
-座標、Y 座標として使用することを意図しました。これらを格納した
-配列を一単位とし、さらにそれが配列の中にあるという構造です。</p>
-<p>スイッチ ID というのは、指定したスイッチが ON のときに
-その場所にテレポート可能にするという意味です。たとえば新しい町を
-訪れたときなどにスイッチを ON にし、以後はその町にテレポートできる
-ようにするといった目的に使用します。</p>
-<p>動作確認のため、テスト用プロジェクトで有効な場所を示すように
-書き換えてください。サンプルとして三か所のデータを並べてあります
-が、もちろんいくつでも構いません。また、指定した ID のスイッチを
-ON にするイベントを作成しておいてください。</p>
+<p>�����ł́A�X�C�b�` ID�A�e���|�[�g��̖��O�A�}�b�v ID�AX
+���W�AY ���W�Ƃ��Ďg�p���邱�Ƃ��Ӑ}���܂����B�������i�[����
+�z�����P�ʂƂ��A����ɂ��ꂪ�z��̒��ɂ���Ƃ����\���ł��B</p>
+<p>�X�C�b�` ID �Ƃ����̂́A�w�肵���X�C�b�`�� ON �̂Ƃ���
+���̏ꏊ�Ƀe���|�[�g�\�ɂ���Ƃ����Ӗ��ł��B���Ƃ��ΐV��������
+�K�ꂽ�Ƃ��ȂǂɃX�C�b�`�� ON �ɂ��A�Ȍ�͂��̒��Ƀe���|�[�g�ł���
+�悤�ɂ���Ƃ������ړI�Ɏg�p���܂��B</p>
+<p>����m�F�̂��߁A�e�X�g�p�v���W�F�N�g�ŗL���ȏꏊ�������悤��
+���������Ă��������B�T���v���Ƃ��ĎO�����̃f�[�^����ׂĂ���܂�
+���A������񂢂��ł��\���܂���B�܂��A�w�肵�� ID �̃X�C�b�`��
+ON �ɂ���C�x���g���쐬���Ă����Ă��������B</p>
 
 
-<h2><a name="select">テレポート位置の選択</a></h2>
-<p>テレポートウィンドウに、先ほど作成した場所データを表示できる
-ようにします。</p>
-<p>Window_Teleport クラスの中に、次のコードを追加してください。</p>
+<h2><a name="select">�e���|�[�g�ʒu�̑I��</a></h2>
+<p>�e���|�[�g�E�B���h�E�ɁA��قǍ쐬�����ꏊ�f�[�^��\���ł���
+�悤�ɂ��܂��B</p>
+<p>Window_Teleport �N���X�̒��ɁA���̃R�[�h��ǉ����Ă��������B</p>
 <pre>
   def make_command_list
     TELEPORT_PLACES.each do |place|
@@ -162,18 +162,18 @@ ON にするイベントを作成しておいてください。</p>
     end
   end
 </pre>
-<p>配列の each メソッドによりループを行い、指定されたスイッチが
-ON であれば、該当する場所の名前をコマンドとして追加するようにして
-います。</p>
-<p>add_command の 4 番目の引数には「拡張データ」を指定することが
-できます。拡張データとは、コマンドに付随する任意のデータの
-ことで、ここでは場所データ自体を持たせています。
-3 番目の引数については次章で解説します。</p>
+<p>�z��� each ���\�b�h�ɂ�胋�[�v���s���A�w�肳�ꂽ�X�C�b�`��
+ON �ł���΁A�Y������ꏊ�̖��O���R�}���h�Ƃ��Ēǉ�����悤�ɂ���
+���܂��B</p>
+<p>add_command �� 4 �Ԗڂ̈����ɂ́u�g���f�[�^�v���w�肷�邱�Ƃ�
+�ł��܂��B�g���f�[�^�Ƃ́A�R�}���h�ɕt������C�ӂ̃f�[�^��
+���ƂŁA�����ł͏ꏊ�f�[�^���̂��������Ă��܂��B
+3 �Ԗڂ̈����ɂ��Ă͎��͂ŉ�����܂��B</p>
 
 
-<h2><a name="handler">ハンドラの設定</a></h2>
-<p>最後に、決定とキャンセルのハンドリングを行います。</p>
-<p>Scene_ItemBase クラスの start メソッドを次のように修正してください。</p>
+<h2><a name="handler">�n���h���̐ݒ�</a></h2>
+<p>�Ō�ɁA����ƃL�����Z���̃n���h�����O���s���܂��B</p>
+<p>Scene_ItemBase �N���X�� start ���\�b�h�����̂悤�ɏC�����Ă��������B</p>
 <pre>
   alias xxx001_start start
   def start
@@ -183,8 +183,8 @@ ON であれば、該当する場所の名前をコマンドとして追加す�
     @teleport_window.set_handler(:cancel, method(:on_teleport_cancel))
   end
 </pre>
-<p>続いて on_teleport メソッドおよび on_teleport_cancel
-メソッドを実装します。</p>
+<p>������ on_teleport ���\�b�h����� on_teleport_cancel
+���\�b�h���������܂��B</p>
 <pre>
   def on_teleport
     place = @teleport_window.current_ext
@@ -195,18 +195,18 @@ ON であれば、該当する場所の名前をコマンドとして追加す�
     hide_sub_window(@teleport_window)
   end
 </pre>
-<p>current_ext メソッドは、現在選択されているコマンドに対応する
-拡張データを取得するものです。ここでは場所データ自体を示している
-ので、そこからマップ ID と座標を取り出して場所移動を行います。</p>
-<p>hide_sub_window メソッドは、show_sub_window
-メソッドの逆の処理を行います。キャンセルボタンが押されたときに
-ウィンドウを消し、アイテムの選択に戻るということです。</p>
-<p>以上でテレポートの基本処理は完成です。実用的には、この他に
-テレポート自体を無効にする処理などが必要ですが、<a href=
-"303_escape.html">脱出アイテムの作成</a>ですでに解説済みなので
-ここでは省略します。ただし、脱出アイテムのスクリプトをそのまま
-素材として残している方は、同じ個所を再定義することになります。
-したがって、エイリアス名の衝突による競合に注意が必要です。</p>
+<p>current_ext ���\�b�h�́A���ݑI������Ă���R�}���h�ɑΉ�����
+�g���f�[�^���擾������̂ł��B�����ł͏ꏊ�f�[�^���̂������Ă���
+�̂ŁA��������}�b�v ID �ƍ��W�����o���ďꏊ�ړ����s���܂��B</p>
+<p>hide_sub_window ���\�b�h�́Ashow_sub_window
+���\�b�h�̋t�̏������s���܂��B�L�����Z���{�^���������ꂽ�Ƃ���
+�E�B���h�E�������A�A�C�e���̑I���ɖ߂�Ƃ������Ƃł��B</p>
+<p>�ȏ�Ńe���|�[�g�̊�{�����͊����ł��B���p�I�ɂ́A���̑���
+�e���|�[�g���̂𖳌��ɂ��鏈���Ȃǂ��K�v�ł����A<a href=
+"303_escape.html">�E�o�A�C�e���̍쐬</a>�ł��łɉ���ς݂Ȃ̂�
+�����ł͏ȗ����܂��B�������A�E�o�A�C�e���̃X�N���v�g�����̂܂�
+�f�ނƂ��Ďc���Ă�����́A���������Ē�`���邱�ƂɂȂ�܂��B
+���������āA�G�C���A�X���̏Փ˂ɂ�鋣���ɒ��ӂ��K�v�ł��B</p>
 
 
 <h6></h6>

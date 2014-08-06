@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="zh">
+<html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <title>RPG::System</title>
 <link href="../style.css" type="text/css" rel="stylesheet">
@@ -9,129 +9,129 @@
 <body>
 
 <h1>RPG::System</h1>
-<p>システムのデータクラス。</p>
+<p>�V�X�e���̃f�[�^�N���X�B</p>
 
-<h2>スーパークラス</h2>
+<h2>�X�[�p�[�N���X</h2>
 <ul>
 <li><a href="sc_object.html">Object</a></li>
 </ul>
 
-<h2>属性</h2>
+<h2>����</h2>
 <dl>
 <dt>game_title</dt>
-<dd><p>ゲームタイトル。</p></dd>
+<dd><p>�Q�[���^�C�g���B</p></dd>
 <dt>version_id</dt>
-<dd><p>更新チェック用の乱数。
-ツクールでデータを保存するたびに異なる値に書き換えられます。</p></dd>
+<dd><p>�X�V�`�F�b�N�p�̗����B
+�c�N�[���Ńf�[�^��ۑ����邽�тɈقȂ�l�ɏ����������܂��B</p></dd>
 <dt>japanese</dt>
-<dd><p>日本語版では常に true になります。</p></dd>
+<dd><p>���{��łł͏�� true �ɂȂ�܂��B</p></dd>
 <dt>party_members</dt>
-<dd><p>初期パーティ。アクター ID の配列です。</p></dd>
+<dd><p>�����p�[�e�B�B�A�N�^�[ ID �̔z��ł��B</p></dd>
 <dt>currency_unit</dt>
-<dd><p>通貨単位。</p></dd>
+<dd><p>�ʉݒP�ʁB</p></dd>
 <dt>window_tone</dt>
-<dd><p>ウィンドウカラー
-(<a href="gc_tone.html">Tone</a>)。</p></dd>
+<dd><p>�E�B���h�E�J���[
+(<a href="gc_tone.html">Tone</a>)�B</p></dd>
 <dt>elements</dt>
-<dd><p>属性名のリスト。属性 ID を
-添字に取る文字列の配列で、0 番目の要素は nil です。</p></dd>
+<dd><p>�������̃��X�g�B���� ID ��
+�Y���Ɏ�镶����̔z��ŁA0 �Ԗڂ̗v�f�� nil �ł��B</p></dd>
 <dt>skill_types</dt>
-<dd><p>スキルタイプ名のリスト。スキルタイプ ID を
-添字に取る文字列の配列で、0 番目の要素は nil です。</p></dd>
+<dd><p>�X�L���^�C�v���̃��X�g�B�X�L���^�C�v ID ��
+�Y���Ɏ�镶����̔z��ŁA0 �Ԗڂ̗v�f�� nil �ł��B</p></dd>
 <dt>weapon_types</dt>
-<dd><p>武器タイプ名のリスト。武器タイプ ID を
-添字に取る文字列の配列で、0 番目の要素は nil です。</p></dd>
+<dd><p>����^�C�v���̃��X�g�B����^�C�v ID ��
+�Y���Ɏ�镶����̔z��ŁA0 �Ԗڂ̗v�f�� nil �ł��B</p></dd>
 <dt>armor_types</dt>
-<dd><p>防具タイプ名のリスト。防具タイプ ID を
-添字に取る文字列の配列で、0 番目の要素は nil です。</p></dd>
+<dd><p>�h��^�C�v���̃��X�g�B�h��^�C�v ID ��
+�Y���Ɏ�镶����̔z��ŁA0 �Ԗڂ̗v�f�� nil �ł��B</p></dd>
 <dt>switches</dt>
-<dd><p>スイッチ名のリスト。スイッチ ID を
-添字に取る文字列の配列で、0 番目の要素は nil です。</p></dd>
+<dd><p>�X�C�b�`���̃��X�g�B�X�C�b�` ID ��
+�Y���Ɏ�镶����̔z��ŁA0 �Ԗڂ̗v�f�� nil �ł��B</p></dd>
 <dt>variables</dt>
-<dd><p>変数名のリスト。変数 ID を
-添字に取る文字列の配列で、0 番目の要素は nil です。</p></dd>
+<dd><p>�ϐ����̃��X�g�B�ϐ� ID ��
+�Y���Ɏ�镶����̔z��ŁA0 �Ԗڂ̗v�f�� nil �ł��B</p></dd>
 <dt>boat</dt>
-<dd><p>小型船の設定 (<a href="gc_rpg_system_vehicle.html"
->RPG::System::Vehicle</a>) 。</p></dd>
+<dd><p>���^�D�̐ݒ� (<a href="gc_rpg_system_vehicle.html"
+>RPG::System::Vehicle</a>) �B</p></dd>
 <dt>ship</dt>
-<dd><p>大型船の設定 (<a href="gc_rpg_system_vehicle.html"
->RPG::System::Vehicle</a>) 。</p></dd>
+<dd><p>��^�D�̐ݒ� (<a href="gc_rpg_system_vehicle.html"
+>RPG::System::Vehicle</a>) �B</p></dd>
 <dt>airship</dt>
-<dd><p>飛行船の設定 (<a href="gc_rpg_system_vehicle.html"
->RPG::System::Vehicle</a>) 。</p></dd>
+<dd><p>��s�D�̐ݒ� (<a href="gc_rpg_system_vehicle.html"
+>RPG::System::Vehicle</a>) �B</p></dd>
 <dt>title1_name</dt>
-<dd><p>タイトル（背景）グラフィックのファイル名。</p></dd>
+<dd><p>�^�C�g���i�w�i�j�O���t�B�b�N�̃t�@�C�����B</p></dd>
 <dt>title2_name</dt>
-<dd><p>タイトル（枠）グラフィックのファイル名。</p></dd>
+<dd><p>�^�C�g���i�g�j�O���t�B�b�N�̃t�@�C�����B</p></dd>
 <dt>opt_draw_title</dt>
-<dd><p>オプション［ゲームタイトルの描画］の真偽値。</p></dd>
+<dd><p>�I�v�V�����m�Q�[���^�C�g���̕`��n�̐^�U�l�B</p></dd>
 <dt>opt_use_midi</dt>
-<dd><p>オプション［起動時に MIDI を初期化］の真偽値。</p></dd>
+<dd><p>�I�v�V�����m�N������ MIDI ���������n�̐^�U�l�B</p></dd>
 <dt>opt_transparent</dt>
-<dd><p>オプション［透明状態で開始］の真偽値。</p></dd>
+<dd><p>�I�v�V�����m������ԂŊJ�n�n�̐^�U�l�B</p></dd>
 <dt>opt_followers</dt>
-<dd><p>オプション［パーティの隊列歩行］の真偽値。</p></dd>
+<dd><p>�I�v�V�����m�p�[�e�B�̑�����s�n�̐^�U�l�B</p></dd>
 <dt>opt_slip_death</dt>
-<dd><p>オプション［スリップダメージで戦闘不能］の真偽値。</p></dd>
+<dd><p>�I�v�V�����m�X���b�v�_���[�W�Ő퓬�s�\�n�̐^�U�l�B</p></dd>
 <dt>opt_floor_death</dt>
-<dd><p>オプション［床ダメージで戦闘不能］の真偽値。</p></dd>
+<dd><p>�I�v�V�����m���_���[�W�Ő퓬�s�\�n�̐^�U�l�B</p></dd>
 <dt>opt_display_tp</dt>
-<dd><p>オプション［バトル画面で TP を表示］の真偽値。</p></dd>
+<dd><p>�I�v�V�����m�o�g����ʂ� TP ��\���n�̐^�U�l�B</p></dd>
 <dt>opt_extra_exp</dt>
-<dd><p>オプション［控えメンバーも経験値を獲得］の真偽値。</p></dd>
+<dd><p>�I�v�V�����m�T�������o�[���o���l���l���n�̐^�U�l�B</p></dd>
 <dt>title_bgm</dt>
-<dd><p>タイトル BGM
-(<a href="gc_rpg_bgm.html">RPG::BGM</a>) 。</p></dd>
+<dd><p>�^�C�g�� BGM
+(<a href="gc_rpg_bgm.html">RPG::BGM</a>) �B</p></dd>
 <dt>battle_bgm</dt>
-<dd><p>戦闘 BGM
-(<a href="gc_rpg_bgm.html">RPG::BGM</a>) 。</p></dd>
+<dd><p>�퓬 BGM
+(<a href="gc_rpg_bgm.html">RPG::BGM</a>) �B</p></dd>
 <dt>battle_end_me</dt>
-<dd><p>戦闘終了 ME
-(<a href="gc_rpg_me.html">RPG::ME</a>) 。</p></dd>
+<dd><p>�퓬�I�� ME
+(<a href="gc_rpg_me.html">RPG::ME</a>) �B</p></dd>
 <dt>gameover_me</dt>
-<dd><p>ゲームオーバー ME
-(<a href="gc_rpg_me.html">RPG::ME</a>) 。</p></dd>
+<dd><p>�Q�[���I�[�o�[ ME
+(<a href="gc_rpg_me.html">RPG::ME</a>) �B</p></dd>
 <dt>sounds</dt>
-<dd><p>効果音。<a
-href="gc_rpg_se.html">RPG::SE</a> の配列です。</p></dd>
+<dd><p>���ʉ��B<a
+href="gc_rpg_se.html">RPG::SE</a> �̔z��ł��B</p></dd>
 <dt>start_map_id</dt>
-<dd><p>プレイヤーの初期位置の、マップ ID。</p></dd>
+<dd><p>�v���C���[�̏����ʒu�́A�}�b�v ID�B</p></dd>
 <dt>start_x</dt>
-<dd><p>プレイヤーの初期位置の、マップ X 座標。</p></dd>
+<dd><p>�v���C���[�̏����ʒu�́A�}�b�v X ���W�B</p></dd>
 <dt>start_y</dt>
-<dd><p>プレイヤーの初期位置の、マップ Y 座標。</p></dd>
+<dd><p>�v���C���[�̏����ʒu�́A�}�b�v Y ���W�B</p></dd>
 <dt>terms</dt>
-<dd><p>用語 (<a href="gc_rpg_system_terms.html"
->RPG::System::Terms</a>) 。</p></dd>
+<dd><p>�p�� (<a href="gc_rpg_system_terms.html"
+>RPG::System::Terms</a>) �B</p></dd>
 <dt>test_battlers</dt>
-<dd><p>戦闘テストのパーティ設定。<a href="gc_rpg_system_testbattler.html"
->RPG::System::TestBattler</a> の配列です。</p></dd>
+<dd><p>�퓬�e�X�g�̃p�[�e�B�ݒ�B<a href="gc_rpg_system_testbattler.html"
+>RPG::System::TestBattler</a> �̔z��ł��B</p></dd>
 <dt>test_troop_id</dt>
-<dd><p>戦闘テストの敵グループ ID。</p></dd>
+<dd><p>�퓬�e�X�g�̓G�O���[�v ID�B</p></dd>
 <dt>battleback1_name</dt>
-<dd><p>敵グループの編集および戦闘テストで
-使用する、戦闘背景（床）グラフィックのファイル名。</p></dd>
+<dd><p>�G�O���[�v�̕ҏW����ѐ퓬�e�X�g��
+�g�p����A�퓬�w�i�i���j�O���t�B�b�N�̃t�@�C�����B</p></dd>
 <dt>battleback2_name</dt>
-<dd><p>敵グループの編集および戦闘テストで
-使用する、戦闘背景（壁）グラフィックのファイル名。</p></dd>
+<dd><p>�G�O���[�v�̕ҏW����ѐ퓬�e�X�g��
+�g�p����A�퓬�w�i�i�ǁj�O���t�B�b�N�̃t�@�C�����B</p></dd>
 <dt>battler_name</dt>
-<dd><p>アニメーションの編集で
-使用する、戦闘グラフィックのファイル名。</p></dd>
+<dd><p>�A�j���[�V�����̕ҏW��
+�g�p����A�퓬�O���t�B�b�N�̃t�@�C�����B</p></dd>
 <dt>battler_hue</dt>
-<dd><p>アニメーションの編集で
-使用する、戦闘グラフィックの色相変化値 (0..360) 。</p></dd>
+<dd><p>�A�j���[�V�����̕ҏW��
+�g�p����A�퓬�O���t�B�b�N�̐F���ω��l (0..360) �B</p></dd>
 <dt>edit_map_id</dt>
-<dd><p>内部用。現在編集しているマップの ID。</p></dd>
+<dd><p>�����p�B���ݕҏW���Ă���}�b�v�� ID�B</p></dd>
 </dl>
 
-<h2>内部クラス</h2>
+<h2>�����N���X</h2>
 <ul>
 <li><a href="gc_rpg_system_vehicle.html">RPG::System::Vehicle</a></li>
 <li><a href="gc_rpg_system_terms.html">RPG::System::Terms</a></li>
 <li><a href="gc_rpg_system_testbattler.html">RPG::System::TestBattler</a></li>
 </ul>
 
-<h2>定義</h2>
+<h2>��`</h2>
 <pre>
 class RPG::System
   def initialize
