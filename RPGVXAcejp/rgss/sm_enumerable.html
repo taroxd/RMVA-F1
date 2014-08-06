@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Enumerable</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Enumerable</h1>
+<p>繰り返しを行うクラスのための Mix-in。このモジュールの
+メソッドは全て each を用いて定義されているので、インクルード
+するクラスには each が定義されていなければなりません。</p>
+
+<h2>メソッド</h2>
+<dl>
+<dt>all?</dt>
+<dt>all? {|<var>item</var>| ... }</dt>
+<dd>
+<p>すべての要素が真である場合に true を返します。偽である要素が
+あれば、ただちに false を返します。</p>
+<p>ブロックを伴う場合は、各要素に対してブロックを評価し、すべての結果
+が真である場合に true を返します。ブロックが偽を返した時点で、
+ただちに false を返します。</p>
+<pre>
+p [1,2,3].all? {|v| v &gt; 0}   # =&gt; true
+p [1,2,3].all? {|v| v &gt; 1}   # =&gt; false
+</pre></dd>
+<dt>any?</dt>
+<dt>any? {|<var>item</var>| ... }</dt>
+<dd>
+<p>すべての要素が偽である場合に false を返します。真である要素
+があれば、ただちに true を返します。</p>
+<p>ブロックを伴う場合は、各要素に対してブロックを評価し、すべての結果
+が偽である場合に false を返します。ブロックが真を返した時点
+で、ただちに true を返します。</p>
+<pre>
+p [1,2,3].any? {|v| v &gt; 3}   # =&gt; false
+p [1,2,3].any? {|v| v &gt; 1}   # =&gt; true
+</pre></dd>
+<dt>collect {|<var>item</var>| ... }</dt>
+<dd>
+<p>各要素に対してブロックを評価した結果を全て含む配列を返します。</p></dd>
+<dt>find {|<var>item</var>| ... }</dt>
+<dd>
+<p>要素に対してブロックを評価した値が真になった最初の要素を返します。
+真になる要素がひとつもなかった場合は nil を返します。</p></dd>
+<dt>find_all {|<var>item</var>| ... }</dt>
+<dt>select {|<var>item</var>| ... }</dt>
+<dd>
+<p>各要素に対してブロックを評価した値が真であった要素を全て含む配列を
+返します。真になる要素がひとつもなかった場合は空の配列を返します。</p></dd>
+<dt>include?(<var>val</var>)</dt>
+<dd>
+<p><var>val</var> と == の関係にある要素を含むとき真を返します。</p></dd>
+<dt>inject([<var>init</var>]) {|<var>result</var>, <var>item</var>| ... }</dt>
+<dd>
+<p>最初に初期値 <var>init</var> と <code>self</code> の最初の要素を引数にブロック
+を実行します。2 回目以降のループでは、前のブロックの実行結果と 
+<code>self</code> の次の要素を引数に順次ブロックを実行します。そうして最
+後の要素まで繰り返し、最後のブロックの実行結果を返します。</p> 
+<p>要素が空の場合は <var>init</var> を返します。</p> 
+<p>初期値 <var>init</var> を省略した場合は、最初に先頭の要素と 2 番目の要
+素をブロックに渡します。この場合、要素が 1 つしかなければブロック
+を実行せずに最初の要素を返します。要素が空なら nil を返します。</p>
+<dl>
+<dt>例</dt>
+<dd>
+<p>合計の計算</p>
+<pre>
+p [1,2,3,4,5].inject(0) {|result, item| result + item }
+  =&gt; 15
+</pre>
+<p>これは以下のように書くのと同じです。</p>
+<pre>
+result = 0
+[1,2,3,4,5].each {|v| result += v }
+p result
+=&gt; 15
+</pre>
+</dd>
+</dl></dd>
+<dt>max</dt>
+<dd>
+<p>最大の要素を返します。全要素が互いに &lt;=&gt; メソッドで比較でき
+ることを仮定しています。</p></dd>
+<dt>max {|<var>a</var>, <var>b</var>| ... }</dt>
+<dd>
+<p>ブロックの評価値を元に各要素を比較し、最大の要素を返します。</p>
+<p>ブロックの値は、a&gt;b のとき正、a==b のとき 0、a&lt;b 
+のとき負の整数を、期待しています。ブロックが整数以外を返したときは
+例外 <a href="s_exceptions.html#TypeError">TypeError</a> が発生します。</p></dd>
+<dt>max_by {|<var>item</var>| ... }</dt>
+<dd>
+<p>ブロックの評価結果を &lt;=&gt; で比較し、最大の要素を返します。
+要素が存在しなければ nil を返します。</p></dd>
+<dt>min</dt>
+<dd>
+<p>最小の要素を返します。全要素が互いに &lt;=&gt; メソッドで比較でき
+ることを仮定しています。</p></dd>
+<dt>min {|<var>a</var>, <var>b</var>| ... }</dt>
+<dd>
+<p>ブロックの評価値で各要素を比較し、最小の要素を返します。</p>
+<p>ブロックの値は、a&gt;b のとき正、a==b のとき 0、a&lt;b 
+のとき負の整数を、期待しています。ブロックが整数以外を返したときは
+例外 TypeError が発生します。</p></dd>
+<dt>min_by {|<var>item</var>| ... }</dt>
+<dd>
+<p>ブロックの評価結果を &lt;=&gt; で比較し、最小の要素を返します。
+要素が存在しなければ nil を返します。</p></dd>
+<dt>sort</dt>
+<dt>sort {|<var>a</var>, <var>b</var>| ... }</dt>
+<dd>
+<p>全ての要素を昇順にソートした配列を生成して返します。</p>
+<p>ブロックなしのときは &lt;=&gt; メソッドを要素に対して呼び、その結
+果をもとにソートします。</p>
+<p>&lt;=&gt; 以外でソートしたい場合は、ブロックを指定します。この場合
+ブロックの評価結果を元にソートします。ブロックの値は、a&gt;b のとき
+正、a==b のとき 0、a&lt;b のとき負の整数を期待しています。ブロックが整数
+以外を返したときは例外 <a href="s_exceptions.html#TypeError">TypeError</a>
+が発生します。</p></dd>
+<dt>sort_by {|<var>item</var>| ... }</dt>
+<dd>
+<p>ブロックの評価結果を &lt;=&gt; メソッドで比較することで、self
+を昇順にソートします。ソートされた配列を新たに生成して返します。</p>
+<dt>to_a</dt>
+<dt>entries</dt>
+<dd>
+<p>全ての要素を含む配列を返します。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

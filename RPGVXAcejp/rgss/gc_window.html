@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Window</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Window</h1>
+<p>ゲーム内のウィンドウのクラス。内部的には複数のスプライトで構成されています。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>クラスメソッド</h2>
+<dl>
+
+<dt>Window.new([<var>x</var>, <var>y</var>, <var>width</var>, <var>height</var>])
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>Window オブジェクトを生成します。必要に応じて位置とサイズを指定します。</p></dd>
+
+</dl>
+
+<h2>メソッド</h2>
+<dl>
+
+<dt>dispose</dt>
+<dd>
+<p>ウィンドウを解放します。すでに解放されている場合は何も行いません。</p></dd>
+
+<dt>disposed?</dt>
+<dd>
+<p>ウィンドウがすでに解放されている場合に真を返します。</p></dd>
+
+<dt>update</dt>
+<dd>
+<p>カーソルの点滅、ポーズサインのアニメーションを進めます。
+このメソッドは、原則として 1 フレームに 1 回呼び出します。</p></dd>
+
+<dt>move(<var>x</var>, <var>y</var>, <var>width</var>, <var>height</var>)
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>X 座標、Y 座標、幅、高さをまとめて設定します。</p></dd>
+
+<dt>open?
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>ウィンドウが完全に開いた状態 (openness == 255) のときに真を返します。</p></dd>
+
+<dt>close?
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>ウィンドウが完全に閉じた状態 (openness == 0) のときに真を返します。</p></dd>
+
+</dl>
+
+<h2>プロパティ</h2>
+<dl>
+
+<dt>windowskin</dt>
+<dd>
+<p>ウィンドウスキンとして使用するビットマップ
+(<a href="gc_bitmap.html">Bitmap</a>) への参照です。</p>
+<p>スキンの仕様は前作 VX とほぼ同一です。<a href=
+"../rpgvx/resource.html#windowskin">素材規格：ウィンドウスキン詳細</a
+>を参照してください。</p></dd>
+
+<dt>contents</dt>
+<dd>
+<p>ウィンドウ内容として表示するビットマップ
+(<a href="gc_bitmap.html">Bitmap</a>) への参照です。</p></dd>
+
+<dt>cursor_rect</dt>
+<dd>
+<p>カーソルの矩形 (<a href="gc_rect.html">Rect</a>) です。</p>
+<p>ウィンドウ内容を基準とした座標で指定します。
+<span class="rgss3">(RGSS3)</span></p></dd>
+
+<dt>viewport</dt><dd>
+<p>ウィンドウが関連付けられているビューポート
+ (<a href="gc_viewport.html">Viewport</a>) への参照です。</p></dd>
+
+<dt>active</dt>
+<dd>
+<p>カーソルの点滅状態です。真のとき点滅します。初期値は true です。</p></dd>
+
+<dt>visible</dt>
+<dd>
+<p>ウィンドウの可視状態です。真のとき可視になります。初期値は true です。</p></dd>
+
+<dt>arrows_visible <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>スクロール用矢印の可視状態です。真のとき可視になります。初期値は true です。</p></dd>
+
+<dt>pause</dt>
+<dd>
+<p>ポーズサインの可視状態です。ポーズサインとは、メッセージウィンドウの
+ボタン入力待ち状態を表す記号のことです。真のとき可視になります。初期値は false です。</p></dd>
+
+<dt>x</dt>
+<dd>
+<p>ウィンドウの X 座標です。</p></dd>
+
+<dt>y</dt>
+<dd>
+<p>ウィンドウの Y 座標です。</p></dd>
+
+<dt>width</dt>
+<dd>
+<p>ウィンドウの幅です。</p></dd>
+
+<dt>height</dt>
+<dd>
+<p>ウィンドウの高さです。</p></dd>
+
+<dt>z</dt>
+<dd>
+<p>ウィンドウの Z 座標です。この値が大きいものほど手前に表示されます。</p>
+<p>Z 座標が同一の場合は後に生成されたオブジェクトほど手前に表示されます。</p>
+<p>初期値は 100 <span class="rgss3">(RGSS3)</span> です。</p></dd>
+
+<dt>ox</dt>
+<dd>
+<p>ウィンドウ内容の転送元原点の X 座標です。この値を変化させることによって
+スクロールを行います。</p>
+<p>カーソルに対しても影響します。
+<span class="rgss3">(RGSS3)</span></p></dd>
+
+<dt>oy</dt>
+<dd>
+<p>ウィンドウ内容の転送元原点の Y 座標です。この値を変化させることによって
+スクロールを行います。</p>
+<p>カーソルに対しても影響します。
+<span class="rgss3">(RGSS3)</span></p></dd>
+
+<dt>padding <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>ウィンドウの枠と内容の間にある余白の大きさです。初期値は
+12 <span class="rgss3">(RGSS3)</span> です。</p></dd>
+
+<dt>padding_bottom <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>下端専用の padding です。padding
+と同時に変更されるため、padding よりも後に設定する必要があります。</p></dd>
+
+<dt>opacity</dt>
+<dd>
+<p>ウィンドウの不透明度 (0 〜 255)
+です。範囲外の値は自動で修正されます。初期値は
+255 です。</p></dd>
+
+<dt>back_opacity</dt>
+<dd>
+<p>ウィンドウ背景の不透明度 (0 〜 255)
+です。範囲外の値は自動で修正されます。初期値は
+192 <span class="rgss3">(RGSS3)</span> です。</p></dd>
+
+<dt>contents_opacity</dt>
+<dd>
+<p>ウィンドウ内容の不透明度 (0 〜 255)
+です。範囲外の値は自動で修正されます。初期値は
+255 です。</p></dd>
+
+<dt>openness</dt><dd>
+<p>ウィンドウのオープン度 (0 〜 255) です。範囲外の値は自動で修正されます。</p>
+<p>この値を 0 (完全に閉じた状態) から 255 (完全に開いた状態) まで段階的に変化させる
+ことによって、ウィンドウが開いたり閉じたりするアニメーションを行います。オープン度が
+255 未満のとき、ウィンドウの内容は表示されません。初期値は 255 です。</p>
+</dd>
+
+<dt>tone <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>ウィンドウ背景の色調 (<a href="gc_tone.html">Tone</a>) です。</p></dd>
+
+</dl>
+
+<h6></h6>
+</body>
+</html>

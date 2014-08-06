@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Tileset</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Tileset</h1>
+<p>タイルセットのデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>id</dt>
+<dd><p>ID。</p></dd>
+<dt>name</dt>
+<dd><p>名前。</p></dd>
+<dt>mode</dt>
+<dd><p>モード (0:フィールドタイプ、1:エリアタイプ、2:VX 互換タイプ) 。</p></dd>
+<dt>tileset_names[<var>index</var>]</dt>
+<dd>
+<p>番号 <var>index</var> (0 〜 8) のタイルセットとして使用する
+グラフィックのファイル名。</p>
+<p>番号とセットの対応は以下のようになります。</p>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+ <th>0</th><td>TileA1</td> <th>1</th><td>TileA2</td> <th>2</th><td>TileA3</td>
+</tr><tr>
+ <th>3</th><td>TileA4</td> <th>4</th><td>TileA5</td> <th>5</th><td>TileB</td>
+</tr><tr>
+ <th>6</th><td>TileC</td> <th>7</th><td>TileD</td> <th>8</th><td>TileE</td>
+</tr></table>
+</dd>
+<dt>flags</dt>
+<dd><p>フラグテーブル。各種フラグを格納した
+一次元配列 (<a href="gc_table.html">Table</a>) です。</p>
+<p>タイル ID を添字として取ります。各ビットの対応は以下の通りです。</p>
+<ul>
+<li>0x0001 : 下方向通行不可。</li>
+<li>0x0002 : 左方向通行不可。</li>
+<li>0x0004 : 右方向通行不可。</li>
+<li>0x0008 : 上方向通行不可。</li>
+<li>0x0010 : 通常キャラの上に表示。</li> 
+<li>0x0020 : 梯子。</li>
+<li>0x0040 : 茂み。</li>
+<li>0x0080 : カウンター。</li>
+<li>0x0100 : ダメージ床。</li>
+<li>0x0200 : 小型船通行禁止。</li> 
+<li>0x0400 : 大型船通行禁止。</li> 
+<li>0x0800 : 飛行船着陸禁止。</li> 
+<li>0xF000 : 地形タグ。</li> 
+</ul>
+<p>ビット演算に関してはこのマニュアルでは解説して
+いませんが、C 言語などと共通です。必要な場合は、インターネット
+にて「16 進数 ビット演算」等のキーワードで検索することを
+お勧めします。</p>
+</dd>
+<dt>note</dt>
+<dd><p>メモ。</p></dd>
+</dl>
+
+<h2>定義</h2>
+<pre>
+class RPG::Tileset
+  def initialize
+    @id = 0
+    @mode = 1
+    @name = ''
+    @tileset_names = Array.new(9).collect{''}
+    @flags = Table.new(8192)
+    @flags[0] = 0x0010
+    (2048..2815).each {|i| @flags[i] = 0x000F}
+    (4352..8191).each {|i| @flags[i] = 0x000F}
+    @note = ''
+  end
+  attr_accessor :id
+  attr_accessor :mode
+  attr_accessor :name
+  attr_accessor :tileset_names
+  attr_accessor :flags
+  attr_accessor :note
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

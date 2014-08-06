@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>File</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>File</h1>
+<p>ファイルアクセスのためのクラス。通常 <a href="s_functions.html#L000379">open</a>
+または <a href="#L000976">File.open</a> を使って生成します。</p>
+<p>オープンしたまま参照されなくなった File オブジェクトは、次のガーベージ
+コレクトで close されて捨てられます。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_io.html">IO</a></li>
+</ul>
+
+<h2>クラスメソッド</h2>
+<dl>
+<dt>File.mtime(<var>filename</var>)</dt>
+<dd>
+<p>ファイルの最終更新時刻 (<a href="sc_time.html">Time</a> オブジェクト) を
+返します。</p>
+<p>取得に失敗した場合は例外
+<a href="s_exceptions.html#Errno">Errno::EXXX</a> が発生します。</p></dd>
+<dt><a name="L000960">File.basename(<var>filename</var>[, <var>suffix</var>])</a></dt>
+<dd>
+<p><var>filename</var> の一番後ろのスラッシュに続く要素を返します。もし、
+引数 <var>suffix</var> が与えられて、かつそれが <var>filename</var> の末尾に
+一致するなら、それを取り除いたものを返します。</p>
+<pre>
+p File.basename(&quot;ruby/ruby.c&quot;)        # =&gt; &quot;ruby.c&quot;
+p File.basename(&quot;ruby/ruby.c&quot;, &quot;.c&quot;)  # =&gt; &quot;ruby&quot;
+p File.basename(&quot;ruby/ruby.c&quot;, &quot;.*&quot;)  # =&gt; &quot;ruby&quot;
+p File.basename(&quot;ruby/ruby.exe&quot;, &quot;.*&quot;)  # =&gt; &quot;ruby&quot;
+</pre>
+<p><a href="#L000967">File.dirname</a>, <a href="#L000969">File.extname</a> も参照。</p></dd>
+<dt>File.delete(<var>filename</var> ... )</dt>
+<dd>
+<p>ファイルを削除します。削除したファイルの数を返します。削除に失敗し
+た場合は例外 <a href="s_exceptions.html#Errno">Errno::EXXX</a> が発生します。</p>
+<p>このメソッドは通常ファイルの削除用で、ディレクトリを削除することは
+できません。</p></dd>
+<dt><a name="L000967">File.dirname(<var>filename</var>)</a></dt>
+<dd>
+<p><var>filename</var> の一番後ろのスラッシュより前を文
+字列として返します。スラッシュを含まないファイル名に対しては
+&quot;.&quot;(カレントディレクトリ) を返します。</p>
+<pre>
+p File.dirname(&quot;dir/file.ext&quot;)    # =&gt; &quot;dir&quot;
+p File.dirname(&quot;file.ext&quot;)        # =&gt; &quot;.&quot;
+p File.dirname(&quot;foo/bar/&quot;)        # =&gt; &quot;foo&quot;
+p File.dirname(&quot;foo//bar&quot;)        # =&gt; &quot;foo&quot;
+</pre>
+<p><a href="#L000960">File.basename</a>, <a href="#L000969">File.extname</a> も参照。</p>
+</dd>
+<dt>File.expand_path(<var>path</var>[, <var>default_dir</var>])</dt>
+<dd>
+<p><var>path</var> を絶対パスに展開した文字列を返します。
+<var>path</var> が相対パスであれば <var>default_dir</var> を基準にします。
+<var>default_dir</var> が nil かまたは与えられなかったときにはカ
+レントディレクトリが使われます。</p>
+<pre>
+p File.expand_path(&quot;..&quot;)         # =&gt; &quot;/home/matz/work&quot;
+p File.expand_path(&quot;..&quot;, &quot;/tmp&quot;) # =&gt; &quot;/&quot;
+</pre></dd>
+<dt><a name="L000969">File.extname(<var>filename</var>)</a></dt>
+<dd>
+<p>ファイル名 <var>filename</var> の拡張子部分 (最後の &quot;.&quot; に続く文字列) を
+返します。ディレクトリ名に含まれる &quot;.&quot; や、ファイル名先頭の &quot;.&quot; 
+は拡張子の一部としてはみなされません。<var>filename</var> に拡張子が含
+まれない場合は空文字列を返します。</p>
+<pre>
+p File.extname(&quot;foo/foo.txt&quot;)     # =&gt; &quot;.txt&quot;
+p File.extname(&quot;foo/foo.tar.gz&quot;)  # =&gt; &quot;.gz&quot;
+p File.extname(&quot;foo/bar&quot;)         # =&gt; &quot;&quot;
+p File.extname(&quot;foo/.bar&quot;)        # =&gt; &quot;&quot;
+p File.extname(&quot;foo.txt/bar&quot;)     # =&gt; &quot;&quot;
+p File.extname(&quot;.foo&quot;)            # =&gt; &quot;&quot;
+</pre>
+<p><a href="#L000960">File.basename</a>, <a href="#L000967">File.dirname</a> も参照。</p></dd>
+<dt><a name="L000976">File.open(<var>path</var>[, <var>mode</var>])</a>
+<dt>File.open(<var>path</var>[, <var>mode</var>]) {|<var>file</var>| ... }</dt>
+<dd>
+<p><var>path</var> で指定されるファイルをオープンし、ファイルオブジェクトを
+返します。ファイルのオープンに失敗した場合は例外
+<a href="s_exceptions.html#Errno">Errno::EXXX</a> が発生します。</p>
+<p>引数 <var>mode</var> については 組み込み関数 
+<a href="s_functions.html#L000379">open</a> と同じです。</p>
+<p>open() はブロックを指定することができます。
+ブロックを指定して呼び出した場合は、ファイルオブジェクトを
+与えられてブロックが実行されます。ブロックの実行が終了すると、
+ファイルは自動的にクローズされます。</p>
+<p>ブロックが指定されたときのこのメソッドの戻り値はブロックの実行結果
+です。</p></dd>
+<dt>File.rename(<var>from</var>, <var>to</var>)</dt>
+<dd>
+<p>ファイルの名前を変更します。ディレクトリが異なる場合には移動も行い
+ます。移動先のファイルが存在するときには上書きされます。</p>
+<p>ファイルの移動に成功した場合 0 を返します。失敗した場合は例外 
+<a href="s_exceptions.html#Errno">Errno::EXXX</a> が発生します。</p></dd>
+</dl>
+
+<h2>メソッド</h2>
+<dl>
+<dt>mtime</dt>
+<dd>
+<p>ファイルの最終更新時刻 (<a href="sc_time.html">Time</a> オブジェクト) を
+返します。</p>
+<p>取得に失敗した場合は例外
+<a href="s_exceptions.html#Errno">Errno::EXXX</a> が発生します。</p></dd>
+<dt>path</dt>
+<dd>
+<p>オープンしているファイルのパスを返します。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

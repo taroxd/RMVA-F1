@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>IO</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>IO</h1>
+<p>IO クラスは基本的な入出力機能を実装します。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>インクルードされているモジュール</h2>
+<ul>
+<li><a href="sm_enumerable.html">Enumerable</a></li>
+</ul>
+
+<h2>メソッド</h2>
+<dl>
+<dt>binmode</dt>
+<dd>
+<p>ストリームをバイナリモードにします。
+バイナリモードから通常のモードに戻す方法は再オープンしかありません。</p>
+<p>self を返します。</p></dd>
+<dt>close</dt>
+<dd>
+<p>入出力ポートをクローズします。close に失敗した場合は例外
+<a href="s_exceptions.html#Errno">Errno::EXXX</a> が発生します。</p>
+<p>nil を返します。</p></dd>
+<dt>each_line {|<var>line</var>| ... }</dt>
+<dd>
+<p>IO ポートから 1 行ずつ読み込みます。</p>
+<p>self を返します。</p></dd>
+<dt>each_byte {|<var>ch</var>| ... }</dt>
+<dd>
+<p>IO ポートから 1 バイトずつ読み込みます。</p>
+<p>self を返します。</p></dd>
+<dt>eof?</dt>
+<dd>
+<p>ストリームがファイルの終端に達した場合真を返します。</p></dd>
+<dt>pos</dt>
+<dd>
+<p>ファイルポインタの現在の位置を返します。</p></dd>
+<dt>pos=<var>n</var></dt>
+<dd>
+<p>ファイルポインタを指定位置に移動します。</p></dd>
+<dt>read([<var>length</var>])</dt>
+<dd>
+<p><var>length</var> バイト読み込んで、その文字列を返します。
+<var>length</var> が省略されたときには、EOF までの
+全てのデータを読み込みます。</p>
+<p>IO がすでに EOF に達していれば nil を返します。</p>
+<p>データの読み込みに失敗した場合は例外
+<a href="s_exceptions.html#Errno">Errno::EXXX</a> が発生しま
+す。<var>length</var> が負の場合、例外
+<a href="s_exceptions.html#ArgumentError">ArgumentError</a> が発生します。</p></dd>
+<dt>readlines([<var>rs</var>])</dt>
+<dd>
+<p>データを全て読み込んで、その各行を要素としてもつ配列を返します。
+IO がすでに EOF に達していれば空配列 [] を返します。</p>
+<p>行の区切りは引数 <var>rs</var> で指定した文字列になります。<var>rs</var> の
+デフォルト値は &quot;\n&quot; です。</p>
+<p><var>rs</var> に nil を指定すると行区切りなしとみなします。
+空文字列 &quot;&quot; を指定すると連続する改行を行の区切りとみなします
+(パラグラフモード) 。</p></dd>
+<dt>write(<var>str</var>)</dt>
+<dd>
+<p>IO ポートに対して <var>str</var> を出力します。<var>str</var> が文字列でなけ
+れば to_s による文字列化を試みます。</p>
+<p>実際に出力できたバイト数を返します。出力に失敗した場合は例外 
+<a href="s_exceptions.html#Errno">Errno::EXXX</a> が発生します。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

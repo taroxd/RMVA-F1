@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>正規表現</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>正規表現</h1>
+<ul>
+<li><a href="#L000160">後方参照</a></li>
+<li><a href="#L000161">文字クラス</a></li>
+</ul>
+<p>以下は、ruby がサポートする正規表現記号 (メタ文字) の一覧です。</p>
+<ul>
+<li>\ を伴わない英数字 はメタ文字ではない</li>
+<li>\ を伴う記号 はメタ文字ではない</li>
+</ul>
+<p>という規則があります。</p>
+<ul>
+<li><p>^</p>
+<p>行頭。文字列の先頭や改行文字の直後の位置にマッチします。</p></li>
+<li><p>$</p>
+<p>行末。文字列の末尾や改行文字の直前の位置にマッチします。</p>
+<pre>
+p &quot;\n&quot;.gsub(/$/, &quot;o&quot;)     # =&gt; &quot;o\no&quot;
+</pre></li>
+<li><p>.</p>
+<p>改行を除く任意の 1 文字 (マルチバイト文字の場合、1 バイトではなく
+その 1 文字) にマッチします。正規表現オプション m (複数行モー
+ド。<a href="syntax03.html#L000274">正規表現リテラル</a>を参照) では、
+改行を含む任意の1 文字にマッチします。</p>
+<pre>
+p /./e =~ &quot; あ &quot;[0,1]     # =&gt; nil
+</pre></li>
+<li><p>\w</p>
+<p>英数字。[0-9A-Za-z_] と同じ。</p>
+<p>日本語のいわゆる全角文字にもマッチします。</p></li>
+<li><p>\W</p>
+<p>非英数字。\w 以外の一文字。</p></li>
+<li><p>\s</p>
+<p>空白文字。[ \t\n\r\f] と同じ。</p></li>
+<li><p>\S</p>
+<p>非空白文字。[ \t\n\r\f] 以外の一文字。</p></li>
+<li><p>\d</p>
+<p>数字。[0-9] と同じ。</p></li>
+<li><p>\D</p>
+<p>非数字。</p></li>
+<li><p>\A</p>
+<p>文字列先頭。^ とは異なり改行の有無には影響しません。</p></li>
+<li><p>\Z</p>
+<p>文字列末尾。文字列が改行で終っていればその改行の直前にもマッチします。</p>
+<pre>
+p &quot;\n&quot;.gsub(/\Z/, &quot;o&quot;)     # =&gt; &quot;o\no&quot;
+</pre></li>
+<li><p>\z</p>
+<p>文字列末尾。$ や \Z とは異なり改行の有無には影響しません。</p></li>
+<li><p>\b</p>
+<p>文字クラス指定の外では語境界 (\w と \W のあいだにマッチ) 。
+文字クラス指定内ではバックスペース (0x08) 。</p></li>
+<li><p>\B</p>
+<p>非語境界。</p></li>
+<li><p>\G</p>
+<p>前回マッチした箇所 (の直後) にマッチ (幅を持たない) 。
+初回だけは先頭位置にマッチします (\A と同じ) 。</p>
+<p><a href="sc_string.html#L001412">scan</a>
+や、<a href="sc_string.html#L001390">gsub</a> で
+使用できます。前回マッチした場所の後からマッチさせたい場合に使用します。</p>
+<pre>
+# 先頭から 3 桁ずつの数値を (数値が続く限り) 取り出す。
+str = &quot;123456 789&quot;
+str.scan(/\G\d\d\d/) {|m| p m }
+</pre></li>
+<li><p>[ ]</p>
+<p>文字クラス指定。<a href="#L000161">文字クラス</a>を参照。</p></li>
+<li><p>*</p>
+<p>直前の表現の 0 回以上の繰り返し。できるだけ長くマッチしようとする。</p></li>
+<li><p>*?</p>
+<p>量指定子 (quantifiers) 。
+直前の表現の 0 回以上の繰り返し (最短一致) 。</p></li>
+<li><p>+</p>
+<p>量指定子 (quantifiers) 。
+直前の表現の 1 回以上の繰り返し。</p></li>
+<li><p>+?</p>
+<p>量指定子 (quantifiers) 。
+直前の表現の 1 回以上の繰り返し (最短一致) 。</p></li>
+<li>{m}</li>
+<li>{m,}</li>
+<li><p>{m,n}</p>
+<p>範囲指定繰り返し制御 (interval quantifier) 。
+それぞれ直前の正規表現の</p>
+<ul>
+<li>m 回</li>
+<li>m 回以上</li>
+<li>m 回以上、最大 n 回</li>
+</ul>
+<p>の繰り返し。{,n} や、{,} に対するマッチは必ず失敗する。</p>
+<pre>
+str = &quot;foofoofoo&quot;
+p str[/(foo){1}/]   # =&gt; &quot;foo&quot;
+p str[/(foo){2,}/]  # =&gt; &quot;foofoofoo&quot;
+p str[/(foo){1,2}/] # =&gt; &quot;foofoo&quot;
+</pre>
+<p>正規表現 ?, *, + はそれぞれ {0,1}, {0,}
+{1,} と同じです。</p></li>
+<li>{m}?</li>
+<li>{m,}?</li>
+<li><p>{m,n}?</p>
+<p>範囲指定繰り返し制御 (interval quantifier) 。
+それぞれ直前の正規表現の</p>
+<ul>
+<li>m 回</li>
+<li>m 回以上</li>
+<li>m 回以上、最大 n 回</li>
+</ul>
+<p>の繰り返し (最短一致) 。</p></li>
+<li><p>?</p>
+<p>量指定子 (quantifiers) 。
+直前の正規表現の 0 または 1 回の繰り返し。</p></li>
+<li><p>??</p>
+<p>量指定子 (quantifiers) 。
+直前の正規表現の 0 または 1 回の繰り返し (最短一致) 。</p></li>
+<li><p>|</p>
+<p>選択 (alternative) 。</p></li>
+<li><p>( )</p>
+<p>正規表現のグループ化。括弧の中の正規表現にマッチした文字列は後方参照
+のために記憶されます。</p></li>
+<li><p>\1, \2 ... \<var>n</var></p>
+<p>後方参照 (back reference) 。<a href="#L000160">後方参照</a>を参照。</p></li>
+<li><p>(?# )</p>
+<p>コメント。括弧の中の任意の文字列は無視されます。</p></li>
+<li><p>(?: )</p>
+<p>後方参照を伴わないグループ化。つまり、\1, \2 (あるいは、
+<a href="s_variables.html#L000432">$1</a>,
+<a href="s_variables.html#L000433">$2</a>) などの対象にはならず、 
+単純なグループ化の用途で使用します。</p>
+<pre>
+/(abc)/ =~ &quot;abc&quot;
+p $1
+=&gt; &quot;abc&quot;
+
+/(?:abc)/ =~ &quot;abc&quot;
+p $1
+=&gt; nil
+</pre></li>
+<li><p>(?= )</p>
+<p>先読み (lookahead) 。
+パターンによる位置指定 (幅を持たない) 。</p>
+<pre>
+(?=re1)re2
+</pre>
+<p>という表現は、re1 と re2 両方にマッチするものにマッチする正規表現で
+す。</p>
+<pre>
+re1(?=re2)
+</pre>
+<p>という表現は、後に re2 とマッチする文字列が続く、正規表現 re1 です。</p>
+<pre>
+p /foo(?=bar)/ =~ &quot;foobar&quot;      # =&gt; 0
+p $&amp;    # =&gt; &quot;foo&quot;   (bar の部分の情報はない)
+</pre></li>
+<li><p>(?! )</p>
+<p>否定先読み (negative lookahead) 。
+パターンの否定による位置指定 (幅を持たない) 。</p>
+<pre>
+(?!re1)re2
+</pre>
+<p>という表現は、re1 にマッチしないが re2 にはマッチする正規表現です。</p>
+<pre>
+# 000 を除く 3 桁の数字
+re = /(?!000)\d\d\d/
+p re =~ &quot;000&quot;   # =&gt; nil
+p re =~ &quot;012&quot;   # =&gt; 0
+p re =~ &quot;123&quot;   # =&gt; 0
+
+# C 言語の識別子 ([A-Za-z_] で始まり、[0-9A-Za-z_] が続く文字列)
+/\b(?![0-9])\w+\b/
+</pre></li>
+</ul>
+
+<h2><a name="L000160">後方参照</a></h2>
+<p>正規表現 \1 \2 ... \n は、後方参照です。<var>n</var> 番目の
+括弧 (正規表現 ( ) グルーピング) にマッチした文字列にマッチします。</p>
+<pre>
+/((foo)bar)\1\2/
+</pre>
+<p>は、</p>
+<pre>
+/((foo)bar)foobarfoo/
+</pre>
+<p>と同じです。</p>
+<p>例:</p>
+<pre>
+re = /(foo|bar|baz)\1/
+p re =~ 'foofoo'   # =&gt; 0
+p re =~ 'barbar'   # =&gt; 0
+p re =~ 'bazbaz'   # =&gt; 0
+p re =~ 'foobar'   # =&gt; nil
+</pre>
+<p>対応する括弧は、後方参照よりも左側にないといけません。</p>
+<p>対応する括弧の中に後方参照があれば常にマッチに失敗します。
+また、対応する括弧がない 1 桁の後方参照も常にマッチに失敗します。</p>
+<pre>
+p /(\1)/ =~ &quot;foofoofoo&quot; # =&gt; nil
+p /(foo)\2/ =~ &quot;foo\2&quot;  # =&gt; nil
+</pre>
+<p>2 桁以上の後方参照も指定できますが、<a href="syntax03.html#L000255">バック
+スラッシュ記法</a>の \nnn (8 進 nnn に対応する文字) と混同しない
+ように注意する必要があります。数値が 1 桁なら常に後方参照です。2 桁以上の指定では、
+対応する括弧がなければ 8 進コードとみなされます。</p>
+<p>また、逆に正規表現中に 8 進で 1 桁のコードを記述するには \01 など 0 で
+始める必要があります (\0 という後方参照はないので曖昧になりません) 。</p>
+<pre>
+p   /\1/ =~ &quot;\1&quot;   # =&gt; nil     # 対応する括弧のない後方参照
+p  /\01/ =~ &quot;\1&quot;   # =&gt; 0       8 進コード
+p  /\11/ =~ &quot;\11&quot;  # =&gt; 0       8 進コード
+
+# 8 進コード (対応する括弧がないので)
+p /(.)\10/ =~ &quot;1\10&quot; # =&gt; 0
+
+# 後方参照 (対応する括弧があるので)
+p /((((((((((.))))))))))\10/ =~ &quot;aa&quot;  # =&gt; 0
+
+# 8 進コード (ただし、&quot;\0&quot; + &quot;8&quot; になっている
+# \08 という 8 進コードはないので)
+p /(.)\08/ =~ &quot;1\0008&quot; # =&gt; 0
+
+# 後方参照に続けて数字を書きたいなら括弧でグループ化して区切る
+# などするしかない。
+p /(.)(\1)1/ =~ &quot;111&quot;   # =&gt; 0
+</pre>
+
+<h2><a name="L000161">文字クラス</a></h2>
+<p>正規表現 [ ] は、文字クラス指定です。[] 内に列挙したいずれかの一
+文字にマッチします。</p>
+<p>たとえば、/[abc]/ は、&quot;a&quot;, &quot;b&quot;, &quot;c&quot; いずれか一文字にマッチします。
+ASCII コード順で連続する文字列は間に '-' を置いて /[a-c]/ のように書
+くこともできます。また、先頭が '^' であれば指定した文字以外の一文字
+とマッチします。</p>
+<p>先頭以外にある '^' はその文字そのものとマッチします。また、先頭、末尾
+にある '-' は、その文字そのものとマッチします。</p>
+<pre>
+p /[a^]/ =~ &quot;^&quot;   # =&gt; 0
+p /[-a]/ =~ &quot;-&quot;   # =&gt; 0
+p /[a-]/ =~ &quot;-&quot;   # =&gt; 0
+p /[-]/ =~ &quot;-&quot;   # =&gt; 0
+</pre>
+<p>空の文字クラスはエラーになります。</p>
+<pre>
+p /[]/ =~ &quot;&quot;
+p /[^]/ =~ &quot;^&quot;
+# =&gt; invalid regular expression; empty character class: /[^]/
+</pre>
+<p>先頭 (あるいは否定の &quot;^&quot; の直後) にある &quot;]&quot; は、
+文字クラスの終わりではなく &quot;]&quot; そのものを表します。
+このような &quot;]&quot; は、バックスラッシュエスケープを行うことが推奨されます。</p>
+<pre>
+p /[]]/ =~ &quot;]&quot;       # =&gt; 0
+p /[^]]/ =~ &quot;]&quot;      # =&gt; nil
+</pre>
+<p>&quot;^&quot;, &quot;-&quot;, &quot;]&quot; そして &quot;\\&quot;(バックスラッシュ)
+は、バックスラッシュでエスケープして、その文字にマッチさせることができます。</p>
+<pre>
+p /[\^]/ =~ &quot;^&quot;   # =&gt; 0
+p /[\-]/ =~ &quot;-&quot;   # =&gt; 0
+p /[\]]/ =~ &quot;]&quot;   # =&gt; 0
+p /[\\]/ =~ &quot;\\&quot;  # =&gt; 0
+</pre>
+<p>[] 内には文字列と同じ<a href="syntax03.html#L000255">バックスラッシュ記法</a>と、
+正規表現 \w, \W, \s, \S, \d, \D (これらは文字クラスの略記法です) が
+使用できます。</p>
+<p>否定による以下のような文字クラスは改行文字にもマッチすることに
+注意してください (正規表現 \W,\D も同様) 。</p>
+<pre>
+p /[^a-z]/ =~ &quot;\n&quot;    # =&gt; 0
+</pre>
+
+<h6></h6>
+</body>
+</html>

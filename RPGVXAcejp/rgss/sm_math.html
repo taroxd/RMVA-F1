@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Math</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Math</h1>
+<p>浮動小数点演算をサポートするモジュール。</p>
+
+<h2>モジュール関数</h2>
+<dl>
+<dt>Math.acos(<var>x</var>)</dt>
+<dt>Math.asin(<var>x</var>)</dt>
+<dt>Math.atan(<var>x</var>)</dt>
+<dd>
+<p><var>x</var> の逆三角関数の値をラジアンで返します。</p>
+<p>返される値の範囲はそれぞれ [0, + π] 、[-π/2, +π/2] 、
+(-π/2, +π/2) です。</p>
+<p>acos(x), asin(x) では <var>x</var> は -1.0 &lt;= <var>x</var> &lt;= 1 の範囲内でな
+ければなりません (普通、NaN を返します) 。</p>
+<p>acos(), asin() は範囲外の引数に対して、例
+外 <a href="s_exceptions.html#Errno">Errno::EDOM</a> が発生します。</p></dd>
+<dt>Math.atan2(<var>y</var>, <var>x</var>)</dt>
+<dd>
+<p><var>y</var>/<var>x</var> のアークタンジェントを [-π, π] の範囲で返します。</p></dd>
+<dt>Math.acosh(<var>x</var>)</dt>
+<dt>Math.asinh(<var>x</var>)</dt>
+<dt>Math.atanh(<var>x</var>)</dt>
+<dd>
+<p><var>x</var> の逆双曲線関数の値を返します。</p>
+<pre>
+asinh(x) = log(x + sqrt(x * x + 1))
+acosh(x) = log(x + sqrt(x * x - 1)) [x &gt;= 1]
+atanh(x) = log((1+x)/(1-x)) / 2     [-1 &lt; x &lt; 1]
+</pre>
+<p>acosh(x) では <var>x</var> は<var>x</var> &gt;= 1 の範囲内でなければなりません
+(普通、例外 <a href="s_exceptions.html#Errno">Errno::EDOM</a> が発生します) 。</p>
+<p>atanh(x) では <var>x</var> は -1.0 &lt; <var>x</var> &lt; 1 の範囲内でなければな
+りません (普通、例外 <a href="s_exceptions.html#Errno">Errno::EDOM</a> が発生します) 。</p></dd>
+<dt>Math.cos(<var>x</var>)</dt>
+<dt>Math.sin(<var>x</var>)</dt>
+<dt>Math.tan(<var>x</var>)</dt>
+<dd>
+<p>ラジアンで表された <var>x</var> の三角関数の値を [-1, 1] の範囲で
+返します。</p></dd>
+<dt>Math.cosh(<var>x</var>)</dt>
+<dt>Math.sinh(<var>x</var>)</dt>
+<dt>Math.tanh(<var>x</var>)</dt>
+<dd>
+<p><var>x</var> の双曲線関数の値を返します。</p>
+<pre>
+cosh(x) = (exp(x) + exp(-x)) / 2
+sinh(x) = (exp(x) - exp(-x)) / 2
+tanh(x) = sinh(x) / cosh(x)
+</pre></dd>
+<dt>Math.erf(<var>x</var>)</dt>
+<dt>Math.erfc(<var>x</var>)</dt>
+<dd>
+<p>x の誤差関数 (erf) 、相補誤差関数 (erfc) の値を返します。</p></dd>
+<dt>Math.exp(<var>x</var>)</dt>
+<dd>
+<p><var>x</var> の指数関数の値を返します。</p></dd>
+<dt>Math.frexp(<var>x</var>)</dt>
+<dd>
+<p>実数 <var>x</var> の指数部と仮数部を返します。</p></dd>
+<dt>Math.hypot(<var>x</var>, <var>y</var>)</dt>
+<dd>
+<p>sqrt(x*x + y*y) を返します。</p></dd>
+<dt>Math.ldexp(<var>x</var>, <var>exp</var>)</dt>
+<dd>
+<p>実数 <var>x</var> に 2 の <var>exp</var> 乗をかけた数を返します。</p></dd>
+<dt>Math.log(<var>x</var>)</dt>
+<dd>
+<p><var>x</var> の自然対数を返します。</p>
+<p><var>x</var> は正の値でなければなりません (普通、負の値に対して NaN を 0
+に対して -Infinity を返します) 。</p>
+<p>範囲外の引数に対して、負の場合に例外 
+<a href="s_exceptions.html#Errno">Errno::EDOM</a> が 0 の場合に
+<a href="s_exceptions.html#Errno">Errno::ERANGE</a> が発生します。</p></dd>
+<dt>Math.log10(<var>x</var>)</dt>
+<dd>
+<p><var>x</var> の常用対数を返します。</p>
+<p><var>x</var> は正の値でなければなりません (普通、負の値に対して NaN を 0
+に対して -Infinity を返します) 。</p>
+<p>範囲外の引数に対して、負の場合に例外 
+<a href="s_exceptions.html#Errno">Errno::EDOM</a> が 0 の場合に
+<a href="s_exceptions.html#Errno">Errno::ERANGE</a> が発生します。</p></dd>
+<dt>Math.sqrt(<var>x</var>)</dt>
+<dd>
+<p><var>x</var> の平方根を返します。<var>x</var> の値が負である>ときには例外 
+<a href="s_exceptions.html#ArgumentError">ArgumentError</a> が発生します。</p>
+<p>普通、x が負の場合、例外 
+<a href="s_exceptions.html#Errno">Errno::EDOM</a> が発生します。</p></dd>
+</dl>
+
+<h2>定数</h2>
+<dl>
+<dt>E</dt>
+<dd>
+<p>自然対数の底</p>
+<pre>
+p Math::E
+# =&gt; 2.718281828
+</pre></dd>
+<dt>PI</dt>
+<dd>
+<p>円周率</p>
+<pre>
+p Math::PI
+# =&gt; 3.141592654
+</pre></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

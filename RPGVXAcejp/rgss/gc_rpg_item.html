@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Item</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Item</h1>
+<p>アイテムのデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="gc_rpg_usableitem.html">RPG::UsableItem</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>itype_id</dt>
+<dd><p>アイテムタイプ ID。</p>
+<ul>
+    <li>1 : 通常</li>
+    <li>2 : 大事なもの</li>
+</ul></dd>
+<dt>price</dt>
+<dd><p>価格。</p></dd>
+<dt>consumable</dt>
+<dd><p>消耗するかどうかの真偽値。</p></dd>
+</dl>
+
+
+<h2>メソッド</h2>
+<dl>
+
+<dt>key_item?</dt>
+<dd>
+<p>アイテムタイプが［大事なもの］か否かを判定します。itype_id の値が
+2 のときに真を返します。</p>
+</dd>
+</dl>
+
+
+<h2>定義</h2>
+<pre>
+class RPG::Item &lt; RPG::UsableItem
+  def initialize
+    super
+    @scope = 7
+    @itype_id = 1
+    @price = 0
+    @consumable = true
+  end
+  def key_item?
+    @itype_id == 2
+  end
+  attr_accessor :itype_id
+  attr_accessor :price
+  attr_accessor :consumable
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

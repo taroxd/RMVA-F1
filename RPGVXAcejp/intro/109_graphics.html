@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>画像の表示</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>画像の表示</h1>
+<ul>
+<li><a href="#graphics">Graphics モジュール</a></li>
+<li><a href="#sprite">スプライトとビットマップ</a></li>
+<li><a href="#property">プロパティ</a></li>
+<li><a href="#input">Input モジュール</a></li>
+</ul>
+
+<p>オブジェクトを理解したところで少し気分を変えて、RGSS のゲーム
+ライブラリを使って画像を表示してみましょう。</p>
+
+
+<h2><a name="graphics">Graphics モジュール</a></h2>
+<p>RGSS のゲームライブラリの中でもっとも重要なのは
+<a href="../rgss/gm_graphics.html">Graphics</a> モジュールです。
+これは、文字通りゲーム内のグラフィック全般を処理するためのメソッドの
+集まりで、ゲーム画面に表示されるすべてのグラフィックは、このモジュールの
+機能を使って処理されています。</p>
+<p><strong>モジュール</strong>というのは、同じ分野のメソッドを
+集めた入れ物のようなものだと考えてください。クラスに似ていますが、
+モジュールのインスタンスを生成することはできませんし、その必要も
+ありません。</p>
+<p>それではまず、次のように入力してください。</p>
+<pre>
+loop do
+  Graphics.update
+end
+</pre>
+<p>loop do 〜 end というのは無限ループを作成する方法でしたね。囲まれた
+ところの処理、ここでは Graphics.update という行の実行を何度も繰り返すと
+いう意味になります。この真ん中の行では、Graphics モジュールの update メ
+ソッドを呼び出しています。これはオブジェクトのメソッド呼び出しと同じ形
+式ですから比較的わかりやすいでしょう。</p>
+<p>Graphics.update は、ゲーム画面を更新して、時間を 1 フレーム進めると
+いう役割を果たします。このタイミングで、画面に表示されているグラフィック
+が一斉に書き換わるということです。この形が RGSS でのゲーム実行の基本と
+なります。RPG という大規模なゲームを実行する複雑なスクリプトも、この
+基本形にいろいろな処理を付け足して作られているのです。</p>
+<p>なお、ここで挙げた例だけでは何も表示されません。真っ黒な画面を何度も
+書き直すという処理を繰り返しているだけです。以降で、実際に画像を表示する
+方法を学んでいきましょう。</p>
+
+
+<h2><a name="sprite">スプライトとビットマップ</a></h2>
+<p>先ほどのスクリプトに 2 行追加して、次のようにしてみましょう。
+画面左上にガイコツの画像が表示されれば成功です。</p>
+<pre>
+skeleton = Sprite.new
+skeleton.bitmap = Bitmap.new(&quot;Graphics/Battlers/Skeleton&quot;)
+
+loop do
+  Graphics.update
+end
+</pre>
+<p><a href="../rgss/gc_sprite.html">Sprite</a> と
+<a href="../rgss/gc_bitmap.html">Bitmap</a> という新しいクラスが
+出てきました。Sprite はゲーム画面上に何らかの画像を表示するための
+基本概念となる<strong>スプライト</strong>を、Bitmap はスプライト
+などの転送元となる<strong>ビットマップ</strong>の内容そのものを
+表すクラスです。</p>
+<p>1 行目では、Sprite クラスのインスタンスを新しく作成し、それを
+skeleton という変数に代入しています。この Sprite.new というのは、
+前章で学習した、インスタンスを生成する第二の方法です。</p>
+<p>2 行目では、RTP に含まれている画像ファイル
+(&quot;Skeleton&quot;) を読み込んで Bitmap クラスのインスタンスを
+新しく作成しています。そのうえで、skeleton オブジェクトの bitmap という
+プロパティ (後述) に対してそれを設定しています。こうすることで、この
+ビットマップをスプライトの転送元として割り当てるという意味になるの
+です。</p>
+<p>Bitmap.new の引数として指定するパス名は、区切り文字に &yen; では
+なく / を使用していることに注意してください。文字列の「バックスラッ
+シュ記法」の項ですでに学習したように &yen; は文字列中で特別な意味を
+持つため、/ を使用したほうが間違いがないためです。</p>
+
+
+<h2><a name="property">プロパティ</a></h2>
+<p><a href="../rgss/gc_sprite.html">Sprite</a> クラスの bitmap の
+ようなものを<strong>プロパティ</strong>と呼びます。
+実はこれは Ruby 言語仕様にある概念ではなく、RGSS 独自の用語です。
+ゲームライブラリには代入演算子を使って内容の設定ができるように定義
+されているメソッドが多いため、そのようなものを便宜的にプロパティと
+呼んでいます。たとえば、スプライトの座標を表す x、y という
+プロパティの値を変更すると、このようになります。</p>
+<pre>
+skeleton = Sprite.new
+skeleton.bitmap = Bitmap.new(&quot;Graphics/Battlers/Skeleton&quot;)
+skeleton.x = 272
+skeleton.y = 208
+
+loop do
+  Graphics.update
+end
+</pre>
+<p>3 行目では、スプライトの X 座標を指定するプロパティ x に 272 という値を
+設定しています。同じく 4 行目では、スプライトの Y 座標を指定するプロパティ
+y に 208 という値を設定しています。これを実行すると、スプライトの表示位置が
+画面中央付近になっているはずです。</p>
+<p>さらに手を加えてみましょう。</p>
+<pre>
+skeleton = Sprite.new
+skeleton.bitmap = Bitmap.new(&quot;Graphics/Battlers/Skeleton&quot;)
+skeleton.ox = skeleton.bitmap.width / 2
+skeleton.oy = skeleton.bitmap.height / 2
+skeleton.x = 272
+skeleton.y = 208
+
+loop do
+  Graphics.update
+end
+</pre>
+<p>完全に中央に表示されるようになりましたね。これは ox、oy という
+プロパティを設定することで、スプライトの<strong>原点</strong>を変更
+したためです。VX Ace のイベントコマンド [ピクチャの表示] では原点を
+[左上]、[中心] から選択することができますが、それと同じ概念です。
+デフォルトの状態では、原点は画像の左上になっています。代入演算子の
+右側で呼び出されている width、height というのは
+<a href="../rgss/gc_bitmap.html">Bitmap</a> クラスのメソッドで、
+それぞれ画像の幅と高さを取得するものです。それらを 2 で割った値、
+つまり画像の中心を原点として設定したというわけです。</p>
+
+
+<h2><a name="input">Input モジュール</a></h2>
+<p>入力についても簡単に解説しておきましょう。RGSS
+には、プレイヤーのボタン入力情報を取得するための
+<a href="../rgss/gm_input.html">Input</a> モジュールが
+用意されています。</p>
+<p>loop do 〜 end の中を次のように変更してください。</p>
+<pre>
+loop do
+  Graphics.update
+  Input.update
+  if Input.press?(:RIGHT)
+    skeleton.x += 1
+  end
+  if Input.press?(:LEFT)
+    skeleton.x -= 1
+  end
+end
+</pre>
+<p>これは、方向ボタンの左右入力に応じてスプライトを移動するという
+スクリプトです。実行してみましょう。</p>
+<p>Input.update は、入力情報を更新するメソッドです。メソッドが
+呼び出された瞬間に、RGSS で扱う全てのボタンが押されているか否かを
+判定し、モジュール内部の情報を更新します。</p>
+<p>Input.press? は、引数として指定したボタンが押されていれば
+true、押されていなければ false を返すメソッドです。ボタンの名前を
+指定するときには<strong>シンボル</strong>を使用します。ここでは、
+コロン (&quot;:&quot;) にボタン名を続けて書くと覚えておいて
+ください。たとえば方向ボタンの右であれば :RIGHT という表記で指定
+できます。そのほかのボタン名については
+<a href="../rgss/gm_input.html">Input</a>
+モジュールのリファレンスを参照してください。</p>
+<p>余裕があれば、ここで解説しなかったメソッドやプロパティを使用
+したり、上下の入力も受け付けるようにするなど、いろいろと実験して
+みると良いでしょう。自分で考えてスクリプトを書いてみることが
+RGSS 習得への早道となります。</p>
+
+
+<h6></h6>
+
+</body>
+</html>

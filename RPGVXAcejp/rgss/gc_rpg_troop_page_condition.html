@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Troop::Page::Condition</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Troop::Page::Condition</h1>
+<p>バトルイベントの [条件] のデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>参照元</h2>
+<ul>
+<li><a href="gc_rpg_troop_page.html">RPG::Troop::Page</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>turn_ending</dt>
+<dd><p>条件 [ターン終了時] が有効かどうかを示す真偽値。</p></dd>
+<dt>turn_valid</dt>
+<dd><p>条件 [ターン数] が有効かどうかを示す真偽値。</p></dd>
+<dt>enemy_valid</dt>
+<dd><p>条件 [敵キャラ] が有効かどうかを示す真偽値。</p></dd>
+<dt>actor_valid</dt>
+<dd><p>条件 [アクター] が有効かどうかを示す真偽値。</p></dd>
+<dt>switch_valid</dt>
+<dd><p>条件 [スイッチ] が有効かどうかを示す真偽値。</p></dd>
+<dt>turn_a</dt>
+<dt>turn_b</dt>
+<dd><p>条件 [ターン数] に指定された A、B の値。A + B * X の形で入力されます。</p></dd>
+<dt>enemy_index</dt>
+<dd><p>条件 [敵キャラ] に指定された、敵グループメンバーのインデックス (0..7)。</p></dd>
+<dt>enemy_hp</dt>
+<dd><p>条件 [敵キャラ] に指定された HP の割合 (%) 。</p>
+<dt>actor_id</dt>
+<dd><p>条件 [アクター] に指定されたアクターの ID。</p>
+<dt>actor_hp</dt>
+<dd><p>条件 [アクター] に指定された HP の割合 (%) 。</p>
+<dt>switch_id</dt>
+<dd><p>条件 [スイッチ] に指定されたスイッチの ID。</p></dd>
+</dl>
+
+<h2>定義</h2>
+<pre>
+class RPG::Troop::Page::Condition
+  def initialize
+    @turn_ending = false
+    @turn_valid = false
+    @enemy_valid = false
+    @actor_valid = false
+    @switch_valid = false
+    @turn_a = 0
+    @turn_b = 0
+    @enemy_index = 0
+    @enemy_hp = 50
+    @actor_id = 1
+    @actor_hp = 50
+    @switch_id = 1
+  end
+  attr_accessor :turn_ending
+  attr_accessor :turn_valid
+  attr_accessor :enemy_valid
+  attr_accessor :actor_valid
+  attr_accessor :switch_valid
+  attr_accessor :turn_a
+  attr_accessor :turn_b
+  attr_accessor :enemy_index
+  attr_accessor :enemy_hp
+  attr_accessor :actor_id
+  attr_accessor :actor_hp
+  attr_accessor :switch_id
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>メソッド呼び出し</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>メソッド呼び出し</h1>
+<ul>
+<li><a href="#L000322">super</a></li>
+<li><a href="#L000323">イテレータ</a></li>
+<li><a href="#L000324">yield</a></li>
+</ul>
+<p>例:</p>
+<pre>
+foo.bar()
+foo.bar
+bar()
+print &quot;hello world\n&quot;
+print
+</pre>
+<p>文法:</p>
+<pre>
+[式 '.'] 識別子 ['(' 式 ... ['*' [式]] ')']
+</pre>
+<p>メソッド呼び出し式はレシーバ ('.' の左側の式の値) のメソッドを呼び
+出します。レシーバが指定されないときは self のメソッドを呼び出しま
+す。</p>
+<p>メソッド名には通常の識別子の他、識別子に ? または ! の
+続いたものが許されます。慣習として、述語 (真偽値を返すメソッド) には ?
+を、同名の (! の無い) メソッドに比べてより破壊的な作用をもつメソッ
+ド (例: tr と tr!) には ! をつけるように
+なっています。</p>
+<p>最後の引数の直前に * がついている場合、その引数の値が展開されて
+渡されます。</p>
+<pre>
+foo(*[1,2,3])   # foo(1,2,3) と同じ
+</pre>
+
+<h2><a name="L000322">super</a></h2>
+<p>例:</p>
+<pre>
+super
+super(1,2,3)
+</pre>
+<p>文法:</p>
+<pre>
+super
+super(式 , ... )
+</pre>
+<p>super は現在のメソッドがオーバーライドしているメソッドを呼び出し
+ます。括弧と引数が省略された場合には現在のメソッドの引数がそのまま引き
+渡されます。引数を渡さずにオーバーライドしたメソッドを呼び出すには 
+super() と括弧を明示します。</p>
+<pre>
+class Foo
+  def foo(arg=nil)
+    p arg
+  end
+end
+
+class Bar &lt; Foo
+  def foo(arg)
+    super(5)       # 5 を引数にして呼び出す
+    super(arg)     # 5 を引数にして呼び出す
+    super          # 5 を引数にして呼び出す super(arg) の略記法
+    arg = 1
+    super          # 1 を引数にして呼び出す super(arg) の略記法
+    super()        # 引数なしで呼び出す
+  end
+end
+Bar.new.foo 5
+</pre>
+
+<h2><a name="L000323">イテレータ</a></h2>
+<p>例:</p>
+<pre>
+[1,2,3].each do |i| print i*2, &quot;\n&quot; end
+[1,2,3].each {|i| print i*2, &quot;\n&quot; }
+</pre>
+<p>文法:</p>
+<pre>
+method(arg1, arg2, ...)  do ['|' 式 ... '|'] 式 ... end
+method(arg1, arg2, ...) '{' ['|' 式 ... '|'] 式 ... '}'
+</pre>
+<p>イテレータとは制御構造 (特にループ) の抽象化のために用いられるメソッド
+です。do ... end または { ... }  で囲まれたコードの断片 (ブロックと呼ばれる)
+を後ろに付けてメソッドを呼び出すと、そのメソッドの内部からブロックを評価
+できます。このようなブロックを呼び出すメソッドをイテレータと呼びます。
+イテレータからのブロックの呼び出しは <a href="#L000324">yield</a> を
+用います。yield に渡された値は | と | の間に挟まれた変数に代入されます。</p>
+<p>{ ...  } の方が do ...  end ブロックよりも強く結合します。</p>
+<pre>
+foobar a, b do .. end   # foobar がイテレータとして呼び出されます
+foobar a, b { .. }      # b がイテレータとして呼び出されます
+</pre>
+<p>ブロックの中で初めて代入された (宣言された) ローカル変数はその
+ブロックの中でだけ有効です。</p>
+<pre>
+foobar {
+  i = 20                # ローカル変数 'i' が宣言された
+   ...
+}
+                        # 'i' はここでは未定義
+foobar a, b do
+  i = 11                # まったく別の変数 i の宣言
+   ...
+end
+</pre>
+<p>イテレータの戻り値は、通常のメソッドと同様ですが、ブロックの中から
+<a href="syntax05.html#L000308">break</a> により中断された場合は nil を
+返します。break に引数を指定した場合はその値がイテレータの戻り値になります。</p>
+
+<h2><a name="L000324">yield</a></h2>
+<p>例:</p>
+<pre>
+yield data
+</pre>
+<p>文法:</p>
+<pre>
+yield '(' [ 式 [',' 式 ... ]] ')'
+yield [ 式 [',' 式 ... ]]
+</pre>
+<p>引数をブロックの引数として渡してブロックを評価
+します。yield は<a href="#L000323">イテレータ</a>を定義する
+ために<a href="syntax07.html#L000330">メソッド定義</a>内で使用します。</p>
+<pre>
+def foo
+  yield(1,2)
+end
+
+foo {|a,b| p [a,b]}
+</pre>
+<p>ブロック引数の代入は<a href="syntax04.html#L000288">多重代入</a>と
+同じルールで行われます。また yield を実行したメソッドにブロックが
+渡されていない (イテレータではない) ときは
+例外 <a href="s_exceptions.html#LocalJumpError">LocalJumpError</a> が
+発生します。</p>
+<p>yield はブロック内で最後に評価した式の値を返します。
+また、<a href="syntax05.html#L000309">next</a> によりブロックの実行が
+中断された場合は nil を返します。next に引数を指定した場合はその値
+が yield の戻り値になります。</p>
+
+<h6></h6>
+</body>
+</html>

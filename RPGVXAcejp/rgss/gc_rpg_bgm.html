@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::BGM</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::BGM</h1>
+<p>BGM のデータクラス。<a href="gm_audio.html">Audio</a> モジュールを使って
+自分自身を演奏する機能を持っています。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="gc_rpg_audiofile.html">RPG::AudioFile</a></li>
+</ul>
+
+<h2>参照元</h2>
+<ul>
+<li><a href="gc_rpg_map.html">RPG::Map</a></li>
+<li><a href="gc_rpg_system.html">RPG::System</a></li>
+<li><a href="gc_rpg_system_vehicle.html">RPG::System::Vehicle</a></li>
+<li><a href="gc_rpg_eventcommand.html">RPG::EventCommand</a></li>
+</ul>
+
+<h2>クラスメソッド</h2>
+<dl>
+
+<dt>RPG::BGM.last</dt>
+<dd>
+<p>現在演奏中の BGM (RPG::BGM) を取得します。</p>
+<p>同時に、取得したオブジェクトに現在の再生位置を保存します。</p>
+<p>演奏中の BGM がない場合は、内容が空のオブジェクトを返します。</p>
+</dd>
+
+<dt>RPG::BGM.stop</dt>
+<dd>
+<p>BGM を停止します。</p>
+</dd>
+
+<dt>RPG::BGM.fade(<var>time</var>)</dt>
+<dd>
+<p>BGM のフェードアウトを開始します。<var>time</var> は、
+フェードアウトにかける時間をミリ秒単位で指定します。</p>
+</dd>
+
+</dl>
+
+<h2>メソッド</h2>
+<dl>
+
+<dt>play([<var>pos</var>])</dt>
+<dd>
+<p>この BGM の演奏を開始します。</p>
+<p>ogg または wav の場合は、<var>pos</var> で演奏開始位置を指定できます。</p>
+</dd>
+
+<dt>replay</dt>
+<dd>
+<p>RPG::BGM.last で取得した BGM の演奏を再開します。</p>
+</dd>
+
+</dl>
+
+<h2>定義</h2>
+<pre>
+class RPG::BGM &lt; RPG::AudioFile
+  @@last = RPG::BGM.new
+  def play(pos = 0)
+    if @name.empty?
+      Audio.bgm_stop
+      @@last = RPG::BGM.new
+    else
+      Audio.bgm_play('Audio/BGM/' + @name, @volume, @pitch, pos)
+      @@last = self.clone
+    end
+  end
+  def replay
+    play(@pos)
+  end
+  def self.stop
+    Audio.bgm_stop
+    @@last = RPG::BGM.new
+  end
+  def self.fade(time)
+    Audio.bgm_fade(time)
+    @@last = RPG::BGM.new
+  end
+  def self.last
+    @@last.pos = Audio.bgm_pos
+    @@last
+  end
+  attr_accessor :pos
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

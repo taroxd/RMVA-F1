@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::MoveRoute</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::MoveRoute</h1>
+<p>移動ルートのデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>参照元</h2>
+<ul>
+<li><a href="gc_rpg_eventpage.html">RPG::EventPage</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>repeat</dt>
+<dd><p>オプション [動作を繰り返す] の真偽値。</p></dd>
+<dt>skippable</dt>
+<dd><p>オプション [移動できない場合は飛ばす] の真偽値。</p></dd>
+<dt>wait</dt>
+<dd><p>オプション [移動が終わるまでウェイト] の真偽値。</p></dd>
+<dt>list</dt>
+<dd><p>実行内容。<a
+href="gc_rpg_movecommand.html">RPG::MoveCommand</a>
+の配列です。</p></dd>
+</dl>
+
+<h2>定義</h2>
+<pre>
+class RPG::MoveRoute
+  def initialize
+    @repeat = true
+    @skippable = false
+    @wait = false
+    @list = [RPG::MoveCommand.new]
+  end
+  attr_accessor :repeat
+  attr_accessor :skippable
+  attr_accessor :wait
+  attr_accessor :list
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

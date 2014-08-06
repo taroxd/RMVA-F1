@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Module</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Module</h1>
+<p>モジュールのクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>メソッド</h2>
+<dl>
+<dt><var>self</var> === <var>obj</var></dt>
+<dd>
+<p>このメソッドは主に <a href="syntax05.html#L000301">case</a> 文での比較に用いられます。
+<var>obj</var> が self と <a href="sc_object.html#L000580">Object#kind_of?</a>
+の関係があるとき、真になります。つまり、<a href="syntax05.html#L000301">case</a> ではクラ
+ス、モジュールの所属関係をチェックすることになります。</p>
+<pre>
+str = String.new
+case str
+when String     # String === str を評価する
+  p true        # =&gt; true
+end
+</pre></dd>
+</dl>
+
+<h2>プライベートメソッド</h2>
+<dl>
+<dt><a name="L001113">attr_accessor(<var>name</var>  ... )</a></dt>
+<dd>
+<p>属性 <var>name</var> に対する読み込みメソッドと書き込みメソッドの両方を
+定義します。<var>name</var> は <a href="sc_symbol.html">Symbol</a> か文字列で
+指定します。</p>
+<p>このメソッドで定義されるメソッドの定義は以下の通りです。</p>
+<pre>
+def name
+  @name
+end
+def name=(val)
+  @name = val
+end
+</pre></dd>
+<dt>attr_reader(<var>name</var>  ... )</dt>
+<dd>
+<p>属性 <var>name</var> の読み込みメソッドを定義します。
+<var>name</var> は <a href="sc_symbol.html">Symbol</a> か文字列で指定します。</p>
+<p>このメソッドで定義されるメソッドの定義は以下の通りです。</p>
+<pre>
+def name
+  @name
+end
+</pre></dd>
+<dt>attr_writer(<var>name</var>  ... )</dt>
+<dd>
+<p>属性 <var>name</var> への書き込みメソッド (name=) を定義します。
+<var>name</var> は <a href="sc_symbol.html">Symbol</a> か文字列で指定します。</p>
+<p>このメソッドで定義されるメソッドの定義は以下の通りです。</p>
+<pre>
+def name=(val)
+  @name = val
+end
+</pre></dd>
+<dt><a name="L001119">include(<var>module</var> ... )</a></dt>
+<dd>
+<p>指定されたモジュールの性質 (メソッドや定数) を追加します。self を返し
+ます。include は多重継承の代わりに用いられる Mix-in を実現するために
+使われます。</p>
+<pre>
+class C
+  include FileTest
+  include Math
+end
+</pre>
+<p>モジュールの機能追加は、クラスの継承関係の間にそのモジュールが挿入
+されることで実現されています。従って、メソッドの探索などはスーパー
+クラスに優先されて追加したモジュールから探索されます。</p>
+<p>同じモジュールを二回以上 include すると二回目以降は無視されます。
+また、モジュールの継承関係が循環してしまうような include を行うと、例外
+<a href="s_exceptions.html#ArgumentError">ArgumentError</a> が発生します。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

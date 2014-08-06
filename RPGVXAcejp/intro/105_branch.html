@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>条件分岐</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>条件分岐</h1>
+<ul>
+<li><a href="#compare">比較演算子</a></li>
+<li><a href="#boolean">真偽値</a></li>
+<li><a href="#logical">論理演算子</a></li>
+<li><a href="#if">if 〜 elsif 〜 else 〜 end</a></li>
+<li><a href="#unless">unless 〜 end</a></li>
+<li><a href="#case">case 〜 end</a></li>
+<li><a href="#if2">条件演算子</a></li>
+<li><a href="#modifier">修飾子</a></li>
+</ul>
+
+<p>特定の条件を満たしているか否かによって、その後の動作が変わるようにするの
+が<strong>条件分岐</strong>です。</p>
+
+
+<h2><a name="compare">比較演算子</a></h2>
+<p>具体的に処理を分岐させる方法を学ぶ前に、その条件となる式で使われる演算子
+を覚えておきましょう。</p>
+<p>次の 6 つの演算子を<strong>比較演算子</strong>と呼びます。これらの演算子は、
+与えられた式 (数値や文字列など) を比べて、その結果を返します。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr>
+    <td width=40>==</td>
+    <td>等しい</td>
+  </tr>
+  <tr>
+    <td width=40>!=</td>
+    <td>等しくない</td>
+  </tr>
+  <tr>
+    <td width=40>&lt;</td>
+    <td>小さい</td>
+  </tr>
+  <tr>
+    <td width=40>&gt;</td>
+    <td>大きい</td>
+  </tr>
+  <tr>
+    <td width=40>&lt;=</td>
+    <td>小さいか等しい</td>
+  <tr>
+    <td width=40>&gt;=</td>
+    <td>大きいか等しい</td>
+  </tr>
+</table>
+<p>ここで重要なのは、等しいことを判定する演算子は = ではなく == で
+あるということです。すでに学習したように、= という記号は比較ではなく
+代入を表します。混同しないように注意してください。</p>
+
+
+<h2><a name="boolean">真偽値</a></h2>
+
+<p>比較演算子の演算結果は<strong>真偽値</strong>と呼ばれます。
+真 (合っている) か、偽 (間違っている) かのふたつの状態を示すから
+です。</p>
+<p>式が合っていれば <strong>true</strong>、間違っていれば
+<strong>false</strong> という値になります。確認してみましょう。</p>
+<pre>
+p (&quot;おはよう&quot; == &quot;おはよう&quot;)        # =&gt; true
+p (&quot;おはよう&quot; == &quot;こんばんは&quot;)      # =&gt; false
+p (3 + 1 == 3 + 5)                  # =&gt; false
+p (3 + 1 == 2 + 2)                  # =&gt; true
+</pre>
+
+
+<h2><a name="logical">論理演算子</a></h2>
+<p>次の 6 つの演算子を<strong>論理演算子</strong>と呼びます。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+  <tr>
+    <td width=40>and<br>&amp;&amp;</td>
+    <td>「〜、かつ、〜」という意味</td>
+  </tr>
+  <tr>
+    <td width=40>or<br>||</td>
+    <td>「〜、または、〜」という意味</td>
+  </tr>
+  <tr>
+    <td width=40>not<br>!</td>
+    <td>「〜でない」という意味</td>
+  </tr>
+</table>
+<p>英単語の演算子と記号の演算子は、どちらも基本的には同じ意味です。
+プリセットのスクリプトでは、主に記号のほうを使用しています。これら
+の論理演算子を使うことで、より複雑な条件を指定することができます。</p>
+<pre>
+p (100 > 77 and 1 + 1 == 2)         # =&gt; true
+p (100 > 77 &amp;&amp; 1 + 1 == 2)          # =&gt; true
+</pre>
+<p>1 行目の式と 2 行目の式は、いずれも同じ「100 は 77より大きく かつ
+1 + 1 は 2 である」という内容を表しています。
+もちろん、100 は 77 よりも大きい数ですし、1 + 1 の答は 2 となります
+ので、両方の式が成立するということになります。
+したがって true (真、合っている) が出力されます。</p>
+<p>では、次の式はどうでしょうか。</p>
+<pre>
+p (1 + 1 == 3 or 2 + 2 == 3)        # =&gt; false
+p (1 + 1 == 3 || 2 + 2 == 3)        # =&gt; false
+</pre>
+<p>1 行目の式と 2 行目の式は、いずれも「1 + 1 は 3 である または
+2 + 2 は 3 である」という内容を表しています。しかしながら、1 + 1 は
+3 ではありませんし、2 + 2 も 3 ではないので、この場合、両方の式が
+成立しないということになります。比較演算子 or (||) では、どちらか一方の
+式が成立していれば true (真、合っている) になりますが、ここでは両方の式
+が成立していないため、false (偽、間違っている) と出力されます。
+<p>また、not (!) は、上に挙げた例とは少し違い、not (!) のうしろにある
+条件 (式) が成立していない、という内容を表します。true と false を逆に
+する演算子と考えてください。</p>
+<pre>
+p (not true)                        # =&gt; false
+p (! true)                          # =&gt; false
+</pre>
+<p>この場合は「true でない」という内容になるので、false が出力され
+ます。</p>
+
+<p>なお、+ や - などの計算に使う演算子だけでなく、比較演算子や論理演算子
+にも優先順位が存在します。ここでは、== などの比較演算子は &amp;&amp;
+などの論理演算子よりも優先順位が高いということを覚えておけば十分です。
+詳しくは、RGSS リファレンスの<a
+href="../rgss/syntax04.html">演算子式</a>を参照してください。</p>
+
+
+<h2><a name="if">if 〜 elsif 〜 else 〜 end</a></h2>
+<p>if 〜 end というのは条件分岐の構文です。これは英語の if (もし〜であるなら) と
+同じで、「もし、if のあとに続く条件に当てはまるのならば、以下の処理を実行する」と
+いった意味になります。次の例では 3〜5 行目が条件分岐になっています。</p>
+<pre>
+a = 20              # 変数 a に 20 を代入する。
+
+if a &gt;= 10          # もし a が 10 以上であれば、
+  print &quot;big&quot;       #   big と表示する。
+end                 # 分岐終了。
+</pre>
+<p>条件が満たされない場合にも処理を行いたい場合は else を、
+条件が満たされない場合にさらに条件を指定する場合は elsif を使います。</p>
+<pre>
+a = 7               # 変数 a に 7 を代入する。
+
+if a &gt;= 10          # もし a が 10 以上であれば、
+  print &quot;big&quot;       #   big と表示する。
+elsif a &gt;= 5        # それ以外で a が 5 以上であれば、
+  print &quot;medium&quot;    #   medium と表示する。
+else                # それ以外であれば、
+  print &quot;small&quot;     #   small と表示する。
+end                 # 分岐終了。
+</pre>
+
+
+<h2><a name="unless">unless 〜 end</a></h2>
+<p>if とは逆に、ある条件が満たされて<strong>いない</strong>ときに
+何らかの処理を行いたい場合、unless を使います。</p>
+<pre>
+a = 7               # 変数 a に 7 を代入する。
+
+unless a &gt;= 10      # もし a が 10 以上でないならば、
+  print &quot;small&quot;     #   small と表示する。
+end                 # 分岐終了。
+</pre>
+<p>上の例はあまり良い例ではありませんが、文脈により、unless を使った
+ほうがわかりやすくなる場合があります。</p>
+
+
+<h2><a name="case">case 〜 end</a></h2>
+<p>特定の変数の値によって分岐させたい場合は、case を使うと便利です。</p>
+<pre>
+a = 0               # 変数 a に 0 を代入する。
+
+case a              # 分岐開始。
+when 0              #  a が 0 のとき、
+  print &quot;グー&quot;      #   グー と表示する。
+when 1              #  a が 1 のとき、
+  print &quot;チョキ&quot;    #   チョキ と表示する。
+when 2              #  a が 2 のとき、
+  print &quot;パー&quot;      #   パー と表示する。
+end                 # 分岐終了。
+</pre>
+<p>1 行目の a = のあとの 0 という値を 1 や 2 に変更して、きちんと分岐できて
+いることを確認してみましょう。a に 1 を代入すると &quot;チョキ&quot; という
+文字列が表示され、2 を代入すると &quot;パー&quot; と表示されます。</@>
+
+
+<h2><a name="if2">条件演算子</a></h2>
+<p>? および : という記号を使う、演算子形式の条件分岐もあります。</p>
+<pre>
+a = 3
+
+p (a &gt;= 10 ? &quot;big&quot; : &quot;small&quot;)   # =&gt; &quot;small&quot;
+</pre>
+<p>この例では、変数 a の値が 10 以上であるときに &quot;big&quot;、9 以下である
+ときに &quot;small&quot; と表示します。条件演算子の文法は「条件式 ? 真のときの
+値 : 偽のときの値」となります。条件式が a &gt;= 10、真のときの値が
+&quot;big&quot;、偽のときの値が &quot;small&quot; に該当し、それぞれ ? と : を
+使って示されているということです。</p>
+<p>もちろん if を使ってもまったく同じことが可能です。</p>
+<pre>
+a = 3
+
+if a >= 10
+  p "big"
+else
+  p "small"
+end
+</pre>
+<p>if を使った文法ではたとえばこのように書くことになりますが、条件演算子を
+使った方が、より簡潔に書けるというメリットがあります。この記法はプリセットの
+スクリプトでも多用されていますので、覚えておくと良いでしょう。</p>
+
+
+<h2><a name="modifier">修飾子</a></h2>
+<p>次のように、行いたい処理の後に if や unless を書くことができます。</p>
+<pre>
+print &quot;big&quot; if a &gt;= 10      # a が 10 以上なら big と表示
+</pre>
+<p>いろいろな文法があって覚えるのが大変ですが、やっている内容は同じです。
+そのときそのときで、わかりやすく書ける文法を選択すれば良いのです。</p>
+<p></p>
+
+
+
+<h6></h6>
+
+</body>
+</html>

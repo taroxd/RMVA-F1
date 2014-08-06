@@ -1,0 +1,377 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>制御構造</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>制御構造</h1>
+<ul>
+<li><a href="#L000296">条件分岐</a>
+<ul>
+<li><a href="#L000297">if</a></li>
+<li><a href="#L000298">if 修飾子</a></li>
+<li><a href="#L000299">unless</a></li>
+<li><a href="#L000300">unless 修飾子</a></li>
+<li><a href="#L000301">case</a></li>
+</ul></li>
+<li><a href="#L000302">繰り返し</a>
+<ul>
+<li><a href="#L000303">while</a></li>
+<li><a href="#L000304">while 修飾子</a></li>
+<li><a href="#L000305">until</a></li>
+<li><a href="#L000306">until 修飾子</a></li>
+<li><a href="#L000307">for</a></li>
+<li><a href="#L000308">break</a></li>
+<li><a href="#L000309">next</a></li>
+</ul></li>
+<li><a href="#L000312">例外処理</a>
+<ul>
+<li><a href="#L000313">raise</a></li>
+<li><a href="#L000314">begin</a></li>
+<li><a href="#L000315">rescue 修飾子</a></li>
+</ul></li>
+<li><a href="#L000316">メソッド終了</a>
+<ul>
+<li><a href="#L000317">return</a></li>
+</ul></li>
+</ul>
+<p>Ruby では (C 言語などとは異なり) 制御構造は式であって、何らかの値を返します。</p>
+<p>Ruby は C 言語や Perl から引き継いだ制御構造を持ちますが、
+その他に<a href="syntax06.html#L000323">イテレータ</a>というループ抽象化の機
+能があります。イテレータは繰り返しを始めとする制御構造をユーザーが定義する事が
+できるものです。</p>
+
+<h2><a name="L000296">条件分岐</a></h2>
+<h3><a name="L000297">if</a></h3>
+<p>例:</p>
+<pre>
+if age &gt;= 12 then
+  print &quot;adult fee\n&quot;
+else
+  print &quot;child fee\n&quot;
+end
+gender = if foo.gender == &quot;male&quot; then &quot;male&quot; else &quot;female&quot; end
+</pre>
+<p>文法:</p>
+<pre>
+if 式 [then]
+  式 ...
+[elsif 式 [then]
+  式 ... ]
+...
+[else
+  式 ... ]
+end
+</pre>
+<p>条件式を評価した結果が真であるとき、then 以下の式を評価します。
+if の条件式が偽であれば elsif の条件を評価します。
+elsif 節は複数指定でき、全ての if および elsif の条件式が偽であったとき
+else 節があればその式が評価されます。</p>
+<p>if 式は、条件が成立した節 (あるいは else 節) の最後に評価した式の結果を
+返します。else 節がなくいずれの条件も成り立たなければ nil を返します。</p>
+<p>Ruby では false または nil だけが偽で、それ以外は 0 や空文字列も含め
+全て真です。</p>
+<p>Ruby では if を繋げるのは elsif であり、else if でも elif でもないことに
+注意してください。</p>
+<h3><a name="L000298">if 修飾子</a></h3>
+<p>例:</p>
+<pre>
+print &quot;debug\n&quot; if $DEBUG
+</pre>
+<p>文法:</p>
+<pre>
+式 if 式
+</pre>
+<p>右辺の条件が成立するときに、左辺の式を評価してその結果を返します。
+条件が成立しなければ nil を返します。</p>
+<h3><a name="L000299">unless</a></h3>
+<p>例:</p>
+<pre>
+unless baby?
+  feed_meat
+else
+  feed_milk
+end
+</pre>
+<p>文法:</p>
+<pre>
+unless 式 [then]
+  式 ...
+[else
+  式 ... ]
+end
+</pre>
+<p>unless は if と反対で、条件式が
+偽のときに then 以下の式を評価します。unless 式に
+elsif を指定することはできません。</p>
+<h3><a name="L000300">unless 修飾子</a></h3>
+<p>例:</p>
+<pre>
+print &quot;stop\n&quot; unless valid(passwd)
+</pre>
+<p>文法:</p>
+<pre>
+式 unless 式
+</pre>
+<p>右辺の条件が成立しないときに、左辺の式を評価してその結果を返します。
+条件が成立しなければ nil を返します。</p>
+<h3><a name="L000301">case</a></h3>
+<p>例:</p>
+<pre>
+case $age
+when 0 .. 2
+  &quot;baby&quot;
+when 3 .. 6
+  &quot;little child&quot;
+when 7 .. 12
+  &quot;child&quot;
+when 13 .. 18
+  &quot;youth&quot;
+else
+  &quot;adult&quot;
+end
+</pre>
+<p>文法:</p>
+<pre>
+case 式
+[when 式 [, 式] ... [then]
+  式 ..]..
+[else
+  式 ..]
+end
+</pre>
+<p>case はひとつの式に対する一致判定による分岐を行います。when 節で指定
+された値と最初の式を評価した結果とを演算子 === を用いて比較して、一致する
+場合には when 節の本体を評価します。</p>
+<p>case は、条件が成立した when 節 (あるいは else 節) の最後に評価した式の
+結果を返します。いずれの条件も成り立たなければ nil を返します。</p>
+
+<h2><a name="L000302">繰り返し</a></h2>
+<h3><a name="L000303">while</a></h3>
+<p>例:</p>
+<pre>
+ary = [0,2,4,8,16,32,64,128,256,512,1024]
+i = 0
+while i &lt; ary.length
+  print ary[i]
+  i += 1
+end
+</pre>
+<p>文法:</p>
+<pre>
+while 式 [do]
+   ...
+end
+</pre>
+<p>式を評価した値が真の間、本体を繰り返し実行します。</p>
+<p>while は nil を返します。また、引数を伴った break により while 式の
+戻り値をその値にすることもできます。</p>
+<h3><a name="L000304">while 修飾子</a></h3>
+<p>例:</p>
+<pre>
+sleep(60) while io_not_ready?
+</pre>
+<p>文法:</p>
+<pre>
+式 while 式
+</pre>
+<p>右辺の式を評価した値が真の間、左辺を繰り返し実行します。左辺の式が
+begin である場合には、それを最初に一回評価してから繰り返します。</p>
+<p>while 修飾した式は nil を返します。また、引数を伴った break により
+while 修飾した式の戻り値をその値にすることもできます。</p>
+<h3><a name="L000305">until</a></h3>
+<p>例:</p>
+<pre>
+until f.eof?
+  print f.gets
+end
+</pre>
+<p>文法:</p>
+<pre>
+until 式 [do]
+   ...
+end
+</pre>
+<p>式を評価した値が真になるまで、本体を繰り返して実行します。</p>
+<p>until は nil を返します。また、引数を伴った break により until 式の
+戻り値をその値にすることもできます。</p>
+<h3><a name="L000306">until 修飾子</a></h3>
+<p>例:</p>
+<pre>
+print(f.gets) until f.eof?
+</pre>
+<p>文法:</p>
+<pre>
+式 until 式
+</pre>
+<p>右辺の式を評価した値が真になるまで、左辺を繰り返して実行します。左辺の式が
+begin である場合には、それを最初に一回評価してから繰り返します。</p>
+<p>until 修飾した式は nil を返します。また、引数を伴った break により
+until 修飾した式の戻り値をその値にすることもできます。</p>
+<h3><a name="L000307">for</a></h3>
+<p>例:</p>
+<pre>
+for i in [1, 2, 3]
+  print i*2, &quot;\n&quot;
+end
+</pre>
+<p>文法:</p>
+<pre>
+for lhs ...  in 式 [do]
+  式 ..
+end
+</pre>
+<p>式を評価した結果のオブジェクトの各要素に対して本体を繰り返し
+て実行します。これは以下の式とほぼ同じです。</p>
+<pre>
+(式).each '{' '|' lhs..'|' 式 .. '}'
+</pre>
+<p>「ほぼ」というのは、do  ...  end または { } によるブロックは
+新しいローカル変数の有効範囲を導入するのに対し、for はローカル変数の
+スコープに影響を及ぼさない点が異なるからです。</p>
+<p>for は、in に指定したオブジェクトの each 
+メソッドの戻り値を返します。</p>
+<h3><a name="L000308">break</a></h3>
+<p>例:</p>
+<pre>
+i = 0
+while i &lt; 3
+  print i, &quot;\n&quot;
+  break
+end
+</pre>
+<p>文法:</p>
+<pre>
+break [式]
+</pre>
+<p>break はもっとも内側のループを脱出します。ループとは</p>
+<ul>
+<li>while</li>
+<li>until</li>
+<li>for</li>
+<li>イテレータ</li>
+</ul>
+<p>のいずれかを指します。C 言語と異なり、break はループを脱出する作用
+だけを持ち、case を抜ける作用は持ちません。</p>
+<p>break によりループを抜けた for やイテレータは nil を返します。
+ただし、引数を指定した場合はループの戻り値はその引数になります。</p>
+<h3><a name="L000309">next</a></h3>
+<p>例:</p>
+<pre>
+str.each_line do |line|
+  next if line.empty?
+  print line
+end
+</pre>
+<p>文法:</p>
+<pre>
+next [式]
+</pre>
+<p>next はもっとも内側のループの次の繰り返しにジャンプ
+します。<a href="syntax06.html#L000323">イテレータ</a>で
+は、<a href="syntax06.html#L000324">yield</a> 呼び出しの脱出になります。</p>
+<p>next により抜けた yield は nil を返します。ただし、引数を指定した
+場合、yield の戻り値はその引数になります。</p>
+
+<h2><a name="L000312">例外処理</a></h2>
+<h3><a name="L000313">raise</a></h3>
+<p>例:</p>
+<pre>
+raise
+raise &quot;you lose&quot;
+raise SyntaxError.new(&quot;invalid syntax&quot;)
+raise SyntaxError, &quot;invalid syntax&quot;
+</pre>
+<p>文法:</p>
+<pre>
+raise
+raise message
+raise exception
+raise error_type, message
+</pre>
+<p>例外を発生させます。第一の形式では直前の例外を再発生させます。
+第二の形式 (引数が文字列の場合) では、その文字列をメッセージとする
+<a href="s_exceptions.html#RuntimeError">RuntimeError</a> 例外を発生させます。
+第三の形式 (引数が例外オブジェクトの場合) では、その例外を発生させます。
+第四の形式では第一引数で指定された例外を、第二引数をメッセージとして発生
+させます。</p>
+<p>発生した例外は begin 式の rescue 節で捕らえることができます。</p>
+<p><a href="s_functions.html#L000388">raise</a> は実際には Ruby の予約語では
+なく、組み込み関数です。</p>
+<h3><a name="L000314">begin</a></h3>
+<p>例:</p>
+<pre>
+begin
+  do_something
+rescue
+  recover
+ensure
+  must_to_do
+end
+</pre>
+<p>文法:</p>
+<pre>
+begin
+  式 ..
+[rescue [error_type,..] [then]
+  式 ..]..
+[ensure
+  式 ..]
+end
+</pre>
+<p>本体の実行中に例外が発生した場合、rescue 節 (複数指定できます) が
+与えられていれば例外を捕捉できます。発生した例外と一致する 
+rescue 節が存在するときには rescue 節の本体が実行されます。
+発生した例外は、組み込み変数 <a href="s_variables.html#L000437">$!</a> を使って
+参照することができます。</p>
+<p><var>error_type</var> が省略されたときは
+<a href="s_exceptions.html#StandardError">StandardError</a> の
+サブクラスである全ての例外を捕捉します。Ruby のほとんどの組み込み例外は
+<a href="s_exceptions.html#StandardError">StandardError</a> のサブクラス
+です。<a href="s_exceptions.html">組み込み例外クラス</a>を参照してください。</p>
+<p>rescue では <var>error_type</var> は通常の引数と同じように評価され、
+そのいずれかが一致すれば本体が実行されます。<var>error_type</var> を評価し
+た値がクラスやモジュールでない場合には例外
+<a href="s_exceptions.html#TypeError">TypeError</a> が発生します。</p>
+<p>ensure 節が存在するときは begin 式を終了する直前に必ず ensure 節の
+本体を評価します。</p>
+<p>begin は、本体または rescue 節で最後に評価した式の結果を返します。</p>
+<h3><a name="L000315">rescue 修飾子</a></h3>
+<p>例:</p>
+<pre>
+File.open(&quot;file&quot;) rescue print &quot;can't open\n&quot;
+</pre>
+<p>文法:</p>
+<pre>
+式1 rescue 式2
+</pre>
+<p>式 1 で例外が発生したとき、式 2 を評価します。
+捕捉する例外クラスを指定することはできません (つま
+り、<a href="s_exceptions.html#StandardError">StandardError</a> 例外クラスの
+サブクラスだけしか捕捉できません) 。</p>
+<p>rescue 修飾子を伴う式は、例外が発生しなければ式 1、例外が発生すれば式 2
+の結果を返します。</p>
+
+<h2><a name="L000316">メソッド終了</a></h2>
+<h3><a name="L000317">return</a></h3>
+<p>例:</p>
+<pre>
+return
+return 12
+return 1,2,3
+</pre>
+<p>文法:</p>
+<pre>
+return [式[',' 式 ... ]]
+</pre>
+<p>式の値を戻り値としてメソッドの実行を終了します。式が 2 つ以上
+与えられたときには、それらを要素とする配列をメソッドの戻り値と
+します。式が省略された場合には nil を戻り値とします。</p>
+
+<h6></h6>
+</body>
+</html>

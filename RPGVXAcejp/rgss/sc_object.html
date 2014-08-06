@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Object</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Object</h1>
+<p>全てのクラスのスーパークラス。
+オブジェクトの一般的な振舞いを定義します。</p>
+
+<h2>インクルードしているモジュール</h2>
+<ul>
+<li><a href="sm_kernel.html">Kernel</a></li>
+</ul>
+
+<h2>メソッド</h2>
+<dl>
+<dt><a name="L000555"><var>self</var> == <var>other</var></a></dt>
+<dd>
+<p>self と <var>other</var> が等しいかどうか判定します。
+デフォルトでは equal? と同じ効果です。</p>
+<p>このメソッドは各クラスの性質に合わせて再定義するべきです。</p></dd>
+<dt><var>self</var> === <var>other</var></dt>
+<dd>
+<p>このメソッドは <a href="syntax05.html#L000301">case</a> 
+文での比較に用いられます。デフォルトは
+<a href="#L000555">Object#==</a> と同じ働きをしますが、
+この挙動はサブクラスで所属性のチェックを実現するため
+適宜再定義されます。</p></dd>
+<dt>class</dt>
+<dd>
+<p>レシーバのクラスを返します。</p></dd>
+<dt>clone</dt>
+<dt>dup</dt>
+<dd>
+<p>オブジェクトの複製を作ります。
+clone は freeze、特異メソッドなどの情報も含めた完全な複製を、dup は
+オブジェクトの内容のみの複製を作ります。</p>
+<p>clone や dup は「浅い (shallow)」コピーであることに注意
+してください。オブジェクト自身を複製するだけで、オブジェクトの指し
+ている先 (たとえば配列の要素など) までは複製しません。</p>
+<p>また複製したオブジェクトに対して</p>
+<pre>
+obj.equal?(obj.clone)
+</pre>
+<p>は一般に成立しませんが、</p>
+<pre>
+obj == obj.clone
+</pre>
+<p>は多くの場合に成立します。</p>
+<p>true、false、nil、<a href="sc_numeric.html">Numeric</a> オブジェクト、<a
+href="sc_symbol.html">Symbol</a> オブジェクトなどを複製しようとすると例外
+<a href="s_exceptions.html#TypeError">TypeError</a> が発生します。</p></dd>
+<dt>equal?(<var>other</var>)</dt>
+<dd>
+<p>other が self 自身のとき、真を返します。
+このメソッドを再定義してはいけません。</p></dd>
+<dt>freeze</dt>
+<dd>
+<p>オブジェクトの内容の変更を禁止します。
+フリーズされたオブジェクトの変更は例外
+<a href="s_exceptions.html#TypeError">TypeError</a> を発生させます。</p></dd>
+<dt>frozen?</dt>
+<dd>
+<p>オブジェクトの内容の変更が禁止されているときに真を返します。</p></dd>
+<dt><a name="L000572">inspect</a></dt>
+<dd>
+<p>オブジェクトを人間が読める形式の文字列に変換します。</p></dd>
+<dt>instance_of?(<var>klass</var>)</dt>
+<dd>
+<p>self がクラス <var>klass</var> の直接のインスタンスであるとき、
+真を返します。obj.instance_of?(c) が成立するときには、常に
+obj.kind_of?(c) も成立します。</p></dd>
+
+
+
+<dt><a name="instance_variable_get">instance_variable_get(<var>var</var>)</a></dt>
+<dd> 
+<p>オブジェクトのインスタンス変数の値を取得して返します。</p>
+<p><var>var</var> にはインスタンス変数名を文字列か <a href="sc_symbol.html">Symbol</a> で指定しま
+す。</p>
+<p>インスタンス変数が定義されていなければ nil を返します。</p>
+<pre>
+class Foo
+  def initialize
+    @foo = 1
+  end
+end
+
+obj = Foo.new
+p obj.instance_variable_get("@foo")     # =&gt; 1
+p obj.instance_variable_get(:@foo)      # =&gt; 1
+p obj.instance_variable_get(:@bar)      # =&gt; nil
+</pre></dd>
+<dt><a name="instance_variable_set">instance_variable_set(<var>var</var>, <var>val</var>)</a></dt>
+<dd> 
+<p>オブジェクトのインスタンス変数に値 <var>val</var> を設定して <var>val</var> 
+を返します。</p>
+<p><var>var</var> にはインスタンス変数名を文字列か <a href="sc_symbol.html">Symbol</a> で指定しま
+す。</p>
+<p>インスタンス変数が定義されていなければ新たに定義されます。</p>
+<pre>
+obj = Object.new
+p obj.instance_variable_set("@foo", 1)  # =&gt; 1
+p obj.instance_variable_set(:@foo, 2)   # =&gt; 2
+p obj.instance_variable_get(:@foo)      # =&gt; 2
+</pre></dd>
+<dt><a name="instance_variables">instance_variables</a></dt>
+<dd> 
+<p>オブジェクトのインスタンス変数名を文字列の配列として返します。</p>
+<pre>
+obj = Object.new
+obj.instance_eval { @foo, @bar = nil }
+p obj.instance_variables
+
+# =&gt; ["@foo", "@bar"]
+</pre></dd>
+
+
+<dt>is_a?(<var>mod</var>)</dt>
+<dt><a name="L000580">kind_of?(<var>mod</var>)</a></dt>
+<dd>
+<p>self が、クラス <var>mod</var> とそのサブクラス、および
+モジュール <var>mod</var> をインクルードしたクラスとそのサブクラス、
+のいずれかのインスタンスであるとき真を返します。</p>
+<pre>
+module M
+end
+class C &lt; Object
+  include M
+end
+class S &lt; C
+end
+
+obj = S.new
+p obj.is_a? S       # true
+p obj.is_a? M       # true
+p obj.is_a? C       # true
+p obj.is_a? Object  # true
+p obj.is_a? Hash    # false
+</pre></dd>
+
+<dt><a name="method">method(<var>name</var>)</a></dt>
+<dd>
+<p>self のメソッド <var>name</var> をオブジェクト化した <a
+href="sc_method.html">Method</a> オブジェクトを返します。<var>name</var>
+は <a href="sc_symbol.html">Symbol</a> または文字列で指定します。</p></dd>
+
+<dt>nil?</dt>
+<dd>
+<p>レシーバが nil であれば真を返します。</p></dd>
+
+<dt>respond_to?(<var>name</var>[, <var>priv</var>=<var>false</var>])</dt>
+<dd>
+<p>オブジェクトが public メソッド <var>name</var> を持つとき真を返します。</p>
+<p><var>name</var> は <a href="sc_symbol.html">Symbol</a> または文字列です。<var>priv</var> が真のとき
+は private メソッドに対しても真を返します。</p></dd>
+<dt>send(<var>name</var>[, <var>args</var> ... ])</dt> 
+<dt>send(<var>name</var>[, <var>args</var> ... ]) { .... }</code></dt> 
+<dd> 
+<p>オブジェクトのメソッド <var>name</var> を、引数に <var>args</var>
+を渡して呼び出し、メソッドの実行結果を返します。</p>
+<p>ブロック付きで呼ばれたときはブロックもそのまま引き渡します。メソッド名
+<var>name</var> は文字列か <a href="sc_symbol.html">Symbol</a> です。</p></dd>
+
+<dt><a name="L000571">object_id</a></dt>
+<dd>
+<p>各オブジェクトに対して一意な整数を返します。あるオブジェクトに対し
+てどのような整数が割り当てられるかは不定です。</p></dd>
+<dt>to_ary</dt>
+<dd>
+<p>オブジェクトの配列への暗黙の変換が必要なときに内部で呼ばれます。</p></dd>
+<dt>to_hash</dt>
+<dd>
+<p>オブジェクトのハッシュへの暗黙の変換が必要なときに内部で呼ばれます。</p></dd>
+<dt>to_int</dt>
+<dd>
+<p>オブジェクトの整数への暗黙の変換が必要なときに内部で呼ばれます。</p></dd>
+<dt>to_s</dt>
+<dd>
+<p>オブジェクトの文字列表現を返します。</p>
+<p><a href="s_functions.html#print">print</a> や
+<a href="s_functions.html#sprintf">sprintf</a> は文字列以外の
+オブジェクトが引数に渡された場合このメソッドを使って文字列に変換し
+ます。</p></dd>
+<dt>to_str</dt>
+<dd>
+<p>オブジェクトの文字列への暗黙の変換が必要なときに呼ばれます。</p></dd>
+</dl>
+
+<h2>プライベートメソッド</h2>
+<dl>
+<dt><a name="L000609">initialize</a></dt>
+<dd>
+<p>ユーザー定義クラスのオブジェクト初期化メソッド。このメソッドは 
+<a href="sc_class.html#L001138">Class#new</a> から新しく生成されたオブジェクトの
+初期化のために呼び出されます。デフォルトの動作ではなにもしません。
+サブクラスではこのメソッドを必要に応じて再定義されることが期待されていま
+す。initialize には <a href="sc_class.html#L001138">Class#new</a> に
+与えられた引数がそのまま渡されます。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

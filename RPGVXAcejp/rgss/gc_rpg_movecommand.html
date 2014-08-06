@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::MoveRoute</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::MoveCommand</h1>
+<p>移動コマンドのデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>参照元</h2>
+<ul>
+<li><a href="gc_rpg_moveroute.html">RPG::MoveRoute</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>code</dt>
+<dd><p>移動コマンドコード。</p></dd>
+<dt>parameters</dt>
+<dd><p>移動コマンドの引数を格納した配列。内容はコマンドごとに異なります。</p></dd>
+</dl>
+
+<h2>定義</h2>
+<pre>
+class RPG::MoveCommand
+  def initialize(code = 0, parameters = [])
+    @code = code
+    @parameters = parameters
+  end
+  attr_accessor :code
+  attr_accessor :parameters
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

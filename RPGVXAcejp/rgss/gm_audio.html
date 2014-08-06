@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Audio</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Audio</h1>
+<p>ミュージック、サウンドにかかわる処理を行うモジュール。</p>
+
+<h2>モジュールメソッド</h2>
+<dl>
+
+<dt>Audio.setup_midi
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>DirectMusic による MIDI 演奏の準備を行います。</p>
+<p>RGSS2 において起動時に行っていた処理を、任意のタイミングで
+実行できるようにメソッド化したものです。</p>
+<p>このメソッドを呼んでいなくても MIDI 演奏はできますが、Windows Vista
+以降において初回の演奏時に 1 〜 2 秒の遅延が生じます。</p>
+</dd>
+
+<dt><a name="bgm_play">Audio.bgm_play(<var>filename</var>[, <var>volume</var>[, <var>pitch</var>[, <var>pos</var>]]])</a>
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>BGM の演奏を開始します。順にファイル名、ボリューム、ピッチ、再生開始位置を指定します。</p>
+<p>再生開始位置 <span class="rgss3">(RGSS3)</span> は ogg または wav の場合のみ有効です。</p>
+<p><a href="rgss.html#rgss_rtp">RGSS-RTP</a> に含まれるファイルも
+自動的に探します。拡張子は省略可能です。</p></dd>
+
+<dt>Audio.bgm_stop</dt>
+<dd>
+<p>BGM の演奏を停止します。</p></dd>
+
+<dt>Audio.bgm_fade(<var>time</var>)</dt>
+<dd>
+<p>BGM のフェードアウトを開始します。<var>time</var> は、
+フェードアウトにかける時間をミリ秒単位で指定します。</p></dd>
+
+<dt>Audio.bgm_pos
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>BGM の再生位置を取得します。ogg または wav
+の場合のみ有効です。有効でない場合は 0 を返します。</p></dd>
+
+<dt><a name="bgs_play">Audio.bgs_play(<var>filename</var>[, <var>volume</var>[, <var>pitch</var>[, <var>pos</var>]]])</a>
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>BGS の演奏を開始します。順にファイル名、ボリューム、ピッチ、再生開始位置を指定します。</p>
+<p>再生開始位置 <span class="rgss3">(RGSS3)</span> は ogg または wav の場合のみ有効です。</p>
+<p><a href="rgss.html#rgss_rtp">RGSS-RTP</a> に含まれるファイルも
+自動的に探します。拡張子は省略可能です。</p></dd>
+
+<dt>Audio.bgs_stop</dt>
+<dd>
+<p>BGS の演奏を停止します。</p></dd>
+
+<dt>Audio.bgs_fade(<var>time</var>)</dt>
+<dd>
+<p>BGS のフェードアウトを開始します。<var>time</var> は、
+フェードアウトにかける時間をミリ秒単位で指定します。</p></dd>
+
+<dt>Audio.bgs_pos
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>BGS の再生位置を取得します。ogg または wav
+の場合のみ有効です。有効でない場合は 0 を返します。</p></dd>
+
+<dt><a name="me_play">Audio.me_play(<var>filename</var>[, <var>volume</var>[, <var>pitch</var>]])</a></dt>
+<dd>
+<p>ME の演奏を開始します。順にファイル名、ボリューム、ピッチを指定します。</p>
+<p><a href="rgss.html#rgss_rtp">RGSS-RTP</a> に含まれるファイルも
+自動的に探します。拡張子は省略可能です。</p>
+<p>ME の演奏中は BGM が一時停止します。BGM が復帰するタイミングは
+ RGSS1 とはやや異なります。 </p>
+
+
+</dd>
+
+<dt>Audio.me_stop</dt>
+<dd>
+<p>ME の演奏を停止します。</p></dd>
+
+<dt>Audio.me_fade(<var>time</var>)</dt>
+<dd>
+<p>ME のフェードアウトを開始します。<var>time</var> は、
+フェードアウトにかける時間をミリ秒単位で指定します。</p></dd>
+
+<dt><a name="se_play">Audio.se_play(<var>filename</var>[, <var>volume</var>[, <var>pitch</var>]])</a></dt>
+<dd>
+<p>SE の演奏を開始します。順にファイル名、ボリューム、ピッチを指定します。</p>
+<p><a href="rgss.html#rgss_rtp">RGSS-RTP</a> に含まれるファイルも
+自動的に探します。拡張子は省略可能です。</p>
+<p>きわめて短期間に同じ SE を演奏しようとした場合、音割れを防止するため、
+自動的に間引き処理を行います。</p></dd>
+
+<dt>Audio.se_stop</dt>
+<dd>
+<p>すべての SE の演奏を停止します。</p></dd>
+
+</dl>
+
+<h6></h6>
+</body>
+</html>

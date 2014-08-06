@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Tilemap</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Tilemap</h1>
+<p>タイルマップを管理するクラス。タイルマップは 2D ゲームのマップ表示に
+特化した概念で、内部的には複数のスプライトで構成されています。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>クラスメソッド</h2>
+<dl>
+
+<dt>Tilemap.new([<var>viewport</var>])</dt>
+<dd>
+<p>Tilemap オブジェクトを生成します。必要に応じてビューポート
+(<a href="gc_viewport.html">Viewport</a>) を指定します。</p></dd>
+
+</dl>
+
+<h2>メソッド</h2>
+<dl>
+
+<dt>dispose</dt>
+<dd>
+<p>タイルマップを解放します。すでに解放されている場合は何も行いません。</p></dd>
+
+<dt>disposed?</dt>
+<dd>
+<p>タイルマップがすでに解放されている場合に真を返します。</p></dd>
+
+<dt>update</dt>
+<dd>
+<p>オートタイルのアニメーションなどを進めます。
+このメソッドは、原則として 1 フレームに 1 回呼び出します。</p></dd>
+
+</dl>
+
+<h2>プロパティ</h2>
+<dl>
+
+<dt>bitmaps[<var>index</var>]</dt><dd>
+<p>番号 <var>index</var> (0 〜 8) のタイルセットとして使用する
+ビットマップ (<a href="gc_bitmap.html">Bitmap</a>) への参照です。</p>
+<p>番号とセットの対応は以下のようになります。</p>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+ <th>0</th><td>TileA1</td> <th>1</th><td>TileA2</td> <th>2</th><td>TileA3</td>
+</tr><tr>
+ <th>3</th><td>TileA4</td> <th>4</th><td>TileA5</td> <th>5</th><td>TileB</td>
+</tr><tr>
+ <th>6</th><td>TileC</td> <th>7</th><td>TileD</td> <th>8</th><td>TileE</td>
+</tr></table>
+</dd>
+
+<dt>map_data</dt>
+<dd>
+<p>マップデータ (<a href="gc_table.html">Table</a>) への参照です。
+横サイズ * 縦サイズ * 3 の 3 次元配列を設定します。</p></dd>
+
+<dt>flash_data</dt>
+<dd>
+<p>シミュレーションゲームの移動範囲の表示などに使用する、
+フラッシュデータ (<a href="gc_table.html">Table</a>) への参照です。
+横サイズ * 縦サイズの 2 次元配列を設定します。必ずマップデータと
+同じサイズでなければなりません。各要素は、タイルのフラッシュ色を
+RGB 各 4 ビットで表します。たとえば 0xf84 の場合は、RGB(15,8,4) の
+色でフラッシュします。</p></dd>
+
+<dt>flags <span class="rgss3">(RGSS3)</span></dt><dd>
+<p>フラグテーブル (<a href="gc_table.html">Table</a>) への参照です。
+タイル ID に対応した要素を持つ 1 次元配列を設定します。</p></dd>
+
+<dt>viewport</dt><dd>
+<p>タイルマップが関連付けられているビューポート
+ (<a href="gc_viewport.html">Viewport</a>) への参照です。</p></dd>
+
+<dt>visible</dt>
+<dd>
+<p>タイルマップの可視状態です。真のとき可視になります。初期値は true です。</p></dd>
+
+<dt>ox</dt>
+<dd>
+<p>タイルマップの転送元原点の X 座標です。
+この値を変化させることによってスクロールを行います。</p></dd>
+
+<dt>oy</dt>
+<dd>
+<p>タイルマップの転送元原点の Y 座標です。
+この値を変化させることによってスクロールを行います。</p></dd>
+
+</dl>
+
+<h2>備考</h2>
+
+<p>タイルマップを構成する各スプライトの Z 座標は特定の値に固定されています。</p>
+<ol>
+<li>キャラクターの下に表示されるべきタイルの Z 座標は 0 です。</li>
+<li>キャラクターの上に表示されるべきタイルの Z 座標は 200 です。 </li>
+</ol>
+<p>マップ上に表示させるキャラクターの Z 座標は、これを前提として決定しなければなりません。</p>
+
+
+<h6></h6>
+</body>
+</html>

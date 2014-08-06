@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RGSS の仕様</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RGSS の仕様</h1>
+<ul>
+<li><a href="#whats_new">RGSS3 の新機能</a></li>
+<li><a href="#game_run">ゲームの起動</a></li>
+<li><a href="#game_ini">Game.ini</a></li>
+<li><a href="#rgss_rtp">RGSS-RTP</a>
+<ul>
+<li><a href="#rgss_rtp_install">インストール情報</a></li>
+</ul></li>
+<li><a href="#encryption_archive">暗号化アーカイブ</a></li>
+<li><a href="#others">その他</a>
+<ul>
+<li><a href="#ext_lib">拡張ライブラリ</a></li>
+<li><a href="#character_code">文字コード</a></li>
+<li><a href="#property">プロパティ</a></li>
+</ul></li>
+</ul>
+
+
+<h2><a name="whats_new">RGSS3 の新機能</a>
+<span class="rgss3">(RGSS3)</span>
+</h2>
+<p>『RPGツクールVX Ace』に組み込まれている RGSS3 では、『RPGツクールVX』の
+RGSS2 からいくつか変更されている点があります。主要な変更点は次のとおりです。</p>
+
+<ul>
+
+<li>Ruby 1.9.2 を用いて再構築されました。Ruby 1.9
+には、処理速度の向上をはじめとしたさまざまな改良が含まれています。</li>
+
+<li>日本語版と英語版の DLL が統合されました。Windows が日本語環境であるかを
+自動判別し、それ以外であれば英語でメッセージを表示します。</li>
+
+<li>暗号化アーカイブの内部仕様が刷新され、大容量のゲームで起動に
+時間がかかる問題が解消されました。</li>
+
+<li>F12 キーによるリセットで戻る位置を制御できるようになりました。
+<a href="g_functions.html#rgss_main">rgss_main</a>
+関数を使用します。</li>
+
+<li><a href="gc_window.html">Window</a> クラスにて、
+枠と内容の間にある余白を調整できるようになりました。</li>
+
+<li><a href="gc_font.html">Font</a> クラスにて、縁取り文字の
+描画が標準でサポートされました。</li>
+
+<li>エディタ側のオプションにて、テストプレイ時にデバッグ出力用の
+コンソールウィンドウを開くことが可能になりました。</li>
+
+<li>上記に伴い、print 関数と p 関数でメッセージボックスに
+出力する仕様は廃止されました。これらの関数はそれぞれ
+<a href="g_functions.html#msgbox">msgbox</a> および
+<a href="g_functions.html#msgbox_p">msgbox_p</a> と改名されました。</li>
+
+<li>Ogg Theora ムービーの再生がサポートされました。<a href="gm_graphics.html#play_movie">Graphics.play_movie</a>
+メソッドを使用します。</li>
+
+<li><a href="gm_audio.html">Audio</a> モジュールにて、ogg および wav
+ファイルの途中からの再生がサポートされました。</li>
+
+<li><a href="gm_input.html">Input</a> モジュールにて、ボタン名を
+シンボルで指定できるようになりました。Input.trigger?(:C)
+というように、従来よりも短く表記できます。</li>
+
+<li>Syntax Error が発生したとき、その詳細をメッセージボックスに
+表示するようになりました。</li>
+
+</ul>
+
+<p>上記のほかにも、いくつかの細かい変更が加えられています。</p>
+<p>このマニュアルでは、RGSS3 で新しく追加された機能、仕様が
+変更された部分などに <span class="rgss3">(RGSS3)</span> という印を
+つけています。</p>
+
+
+<h2><a name="game_run">ゲームの起動</a></h2>
+<img src="img/folder.png" alt="ゲームフォルダ" class="float_r">
+<p>RGSS は通常、ゲーム起動ファイル Game.exe (Windows のオプション
+「登録されている拡張子は表示しない」が有効になっている場合は、Game とのみ
+表示されます) のアイコンをダブルクリックすることにより実行します。
+このファイルがあるフォルダを「ゲームフォルダ」と呼びます。</p>
+<p>ツクールで編集中のゲームは、メニューの [テストプレイ]、またはデータベース
+[敵グループ] の [戦闘テスト] から起動することができます。これらの場合、
+グローバル変数 $TEST の値が true にセットされます。
+戦闘テストの場合は $BTEST という変数も true になります。</p>
+
+<p>ゲームの動作は、構成設定ファイル <a href="#game_ini">Game.ini</a>
+で指定します。</p>
+
+<h2><a name="game_ini">Game.ini</a></h2>
+<p>Game.ini ファイルはツクールにより自動的に作成、更新されますが、
+メモ帳などのテキストエディタで直接編集することもできます。</p>
+<p>例:</p>
+<pre>
+[Game]
+RTP=RPGVXAce
+Library=System\RGSS300.dll
+Scripts=Data\Scripts.rvdata2
+Title=RubyQuest
+</pre>
+<dl>
+<dt>RTP</dt>
+<dd>
+<p>このゲームで使用する <a href="#rgss_rtp">RGSS-RTP</a> の登録名。
+通常「RPGVXAce」です。</p>
+<p>指定された RTP がインストールされていない場合は
+エラーメッセージが表示されます。</p>
+</dd>
+<dt>Library</dt>
+<dd>
+<p>RGSS 本体の DLL 名。このファイルは通常、ゲームフォルダ内の
+&quot;System&quot; フォルダにコピーされたものを使用します。
+<span class="rgss3">(RGSS3)</span></p>
+</dd>
+<dt>Scripts</dt>
+<dd>
+<p>スクリプトが格納されているデータファイル。ゲームフォルダからの相対パスで
+指定します。</p>
+<p>Ruby は拡張子 .rb のテキストファイルをスクリプトとして実行するのが普通
+ですが、RGSS では独自形式でパッケージングされた単一のファイルを使用します。
+このファイルは通常、ツクールのスクリプトエディタを通さないと編集することは
+できません。データは複数のセクションから成っており、リストの表示順に実行
+されていきます。</p>
+</dd>
+<dt>Title</dt>
+<dd>
+<p>ゲームタイトル。ウィンドウのタイトルバーにこの名前が表示されます。</p>
+</dd>
+</dl>
+
+<h2><a name="rgss_rtp">RGSS-RTP</a></h2>
+<p>RTP (Run-Time Package) は、配布するゲームデータの容量を小さくするための
+機構です。RTP には、多くのゲームで共通して使用される汎用的な画像、音声素材
+などが含まれています。ゲームをプレイする側は、それらの素材データをあらかじ
+め共通ファイルとしてインストールおくことにより、重複するファイルを何度も
+ダウンロードする必要がなくなるという利点があります。</p>
+<p>RTP の構成ファイルは、組み込みゲームライブラリの以下のメソッドに
+おいて、ゲームフォルダに存在するのと同じようにアクセスすることができます。
+これらのメソッドに渡すファイル名は、すべて拡張子を省略することが可能です
+(&quot;.png&quot; や &quot;.mid&quot; などが自動的に判定されます) 。</p>
+<p><a
+href="gc_bitmap.html#new">Bitmap.new</a>、<a
+href="gm_audio.html#bgm_play">Audio.bgm_play</a>、<a
+href="gm_audio.html#bgs_play">Audio.bgs_play</a>、<a
+href="gm_audio.html#me_play">Audio.me_play</a>、<a
+href="gm_audio.html#se_play">Audio.se_play</a>、<a
+href="gm_graphics.html#transition">Graphics.transition</a></p>
+<h3><a name="rgss_rtp_install">インストール情報</a></h3>
+<p>『RPGツクールVX Ace』標準の RTP は &quot;RPGVXAce&quot; 一種類のみですが、
+構造的には異なる RTP を使用することもできるようになっています。インストーラ
+作成の知識があれば、以下の規則に従い、ユーザーレベルで独自の RTP を作成する
+ことも可能です。</p>
+<p>RTP はデフォルトで、次のフォルダにインストールされます。
+</p>
+<pre>
+[CommonFilesFolder]\Enterbrain\RGSS3\[RTPName]
+</pre>
+ここで [CommonFilesFolder] は Windows の「共通ファイルフォルダ」の
+場所、[RTPName] は RTP の登録名です。実際には次のようなパス名になります。
+<pre>
+C:\Program Files\Common Files\Enterbrain\RGSS3\Standard
+</pre>
+<p>RTP のインストーラは、レジストリキー
+&quot;HKEY_LOCAL_MACHINE\SOFTWARE\Enterbrain\RGSS3\RTP&quot; に文字列値
+(名前は RTP の登録名) を作成し、その値としてパス名を設定します。このキーに
+設定されている文字列が、RGSS から RTP として認識されることになります。
+</p>
+
+<h2><a name="encryption_archive">暗号化アーカイブ</a></h2>
+<p>暗号化アーカイブは、ゲームの内容を他人に解析、改造されにくくするための
+機構です。通常 Game.rgss3a という名前のファイルで、これにはすべてのデータ
+ファイルと画像ファイルが含まれています (音声ファイル、フォントファイルは
+含まれません) 。
+ツクールで [ゲームデータの圧縮] を行うときに [暗号化アーカイブを作成する]
+チェックボックスにチェックを入れることで作成できます。</p>
+<p>暗号化アーカイブ内にあるファイルは、組み込みゲームライブラリの以下の
+メソッドにおいて、ゲームフォルダに存在するのと同じようにアクセスすることが
+できます。</p>
+<p><a href="g_functions.html#load_data">load_data</a>、<a
+href="gc_bitmap.html#new">Bitmap.new</a>、<a
+href="gm_graphics.html#transition">Graphics.transition</a></p>
+<p>ゲームフォルダに暗号化アーカイブが存在する
+場合、<a href="#game_ini">Game.ini</a> の Sctipts で定義されるスクリプト
+データ (通常 Data\Scripts.rvdata) は必ずアーカイブ内から読み出されます。
+これは、外部のスクリプトによってアーカイブ内のファイルが読み取られて
+しまうことを防止するための制限です。</p>
+<p>機能の性質上、暗号化アーカイブの内部フォーマットは公開されません。
+これを解析することはご遠慮ください。</p>
+
+<h2><a name="others">その他</a></h2>
+
+<h3><a name="ext_lib">拡張ライブラリ</a></h3>
+<p>RGSS は C 言語で書かれた Ruby の拡張ライブラリをロードすることができません。
+このため、以下の拡張ライブラリは例外的に組み込み扱いになっています。</p>
+<ul>
+    <li>dl</li>
+    <li>zlib</li>
+    <li>single_byte</li>
+    <li>utf_16_32</li>
+    <li>japanese_sjis</li>
+    <li>Win32API</li>
+</ul>
+
+<h3><a name="character_code">文字コード</a></h3>
+<p>RGSS の処理する文字コードは UTF-8 です。UTF-8 とは、Unicode (世界中の文字
+を表現可能にする文字コード) の表記方法の一種です。</p>
+<p>ツクールの出力するスクリプトデータや、その他の文字列データはすべて UTF-8
+になっており、通常、文字コードの違いを特に意識する必要はありません。</p>
+
+<h3><a name="property">プロパティ</a></h2>
+<p><a href="g_index.html">ゲームライブラリ</a>の解説において「プロパティ」
+という用語が使用されています。これは Ruby の言語仕様にある概念ではなく、RGSS
+独自の用語です。</p>
+<p>たとえばスプライトの X 座標 (<a href="gc_sprite.html#x">Sprite#x</a>) は、
+次のように取得、設定が可能です。</p>
+<pre>
+x = sprite1.x         # 取得
+sprite2.x = x + 32    # 設定
+</pre>
+<p>この x のように、代入演算子を使って取得 (読み込み) と設定 (書き込み) の
+両方ができるように定義されているメソッドを、便宜的にプロパティと呼んでいます。</p>
+
+<p><a href="gc_color.html">Color</a> クラスや <a href="gc_tone.html">Tone</a>
+クラス、<a href="gc_rect.html">Rect</a> クラスなどのオブジェクトがプロパティとして
+定義されている場合、呼び出し元に返されるのはそのオブジェクト自体への参照であり、
+コピーではありません。したがって、</p>
+<pre>
+color = font1.color
+color.set(255, 0, 0)
+</pre>
+<p>このような書き方でもフォントの色が変更されることになります。</p>
+
+
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Marshal</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Marshal</h1>
+<p>Ruby オブジェクトをファイル (または文字列) に書き出したり、読み戻したり
+する機能を提供するモジュール。</p>
+
+<h2>モジュール関数</h2>
+<dl>
+<dt>Marshal.dump(<var>obj</var>[, <var>port</var>][, <var>limit</var>])</dt>
+<dd>
+<p><var>obj</var> を再帰的にファイルに書き出します。</p>
+<p><a href="sc_file.html">File</a> や <a href="c_matchdata.html">MatchData</a>
+のインスタンス、特異メソッドを定義したオブジェクトなど、ファイルに書き出せない
+オブジェクトも存在します。そのようなオブジェクトをファイルに書き出そうとすると
+例外 <a href="s_exceptions.html#TypeError">TypeError</a> が発生します。</p>
+<p><var>port</var> には IO (またはそのサブクラス) のインスタンスを指定
+します。この場合、<var>port</var> を返します。省略した場合には 
+dump はそのオブジェクトをダンプした文字列を返します。</p>
+<p><var>limit</var> を指定した場合、<var>limit</var> 段以上深くリンクした
+オブジェクトをダンプできません (デフォルトは 100 レベル) 。
+負の <var>limit</var> を指定すると深さチェックを行いません。</p></dd>
+<dt>Marshal.load(<var>port</var>)</dt>
+<dd>
+<p><var>port</var> からマーシャルデータ (Marshal.dump が出力する文字列)
+を読み込んで、元のオブジェクトと同じ状態をもつオブジェクトを生成しま
+す。<var>port</var> は文字列か IO (またはそのサブクラス) のインスタンス
+を指定します。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

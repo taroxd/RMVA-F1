@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Event::Page::Condition</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Event::Page::Condition</h1>
+<p>イベントページの [条件] のデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>参照元</h2>
+<ul>
+<li><a href="gc_rpg_event_page.html">RPG::Event::Page</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>switch1_valid</dt>
+<dd><p>条件 [スイッチ] (一番目) が有効かどうかを示す真偽値。</p></dd>
+<dt>switch2_valid</dt>
+<dd><p>条件 [スイッチ] (二番目) が有効かどうかを示す真偽値。</p></dd>
+<dt>variable_valid</dt>
+<dd><p>条件 [変数] が有効かどうかを示す真偽値。</p></dd>
+<dt>self_switch_valid</dt>
+<dd><p>条件 [セルフスイッチ] が有効かどうかを示す真偽値。</p></dd>
+<dt>item_valid</dt>
+<dd><p>条件 [アイテム] が有効かどうかを示す真偽値。</p></dd>
+<dt>actor_valid</dt>
+<dd><p>条件 [アクター] が有効かどうかを示す真偽値。</p></dd>
+<dt>switch1_id</dt>
+<dd><p>条件 [スイッチ] (一番目) が有効なとき、そのスイッチ ID。</p></dd>
+<dt>switch2_id</dt>
+<dd><p>条件 [スイッチ] (二番目) が有効なとき、そのスイッチ ID。</p></dd>
+<dt>variable_id</dt>
+<dd><p>条件 [変数] が有効なとき、その変数 ID。</p></dd>
+<dt>variable_value</dt>
+<dd><p>条件 [変数] が有効なとき、その変数の基準値 (x 以上) 。</p></dd>
+<dt>self_switch_ch</dt>
+<dd><p>条件 [セルフスイッチ] が有効なとき、
+その文字 (&quot;A&quot;..&quot;D&quot;) 。</p></dd>
+<dt>item_id</dt>
+<dd><p>条件 [アイテム] が有効なとき、そのアイテム ID。</p></dd>
+<dt>actor_id</dt>
+<dd><p>条件 [アクター] が有効なとき、そのアクター ID。</p></dd>
+</dl>
+
+<h2>定義</h2>
+<pre>
+class RPG::Event::Page::Condition
+  def initialize
+    @switch1_valid = false
+    @switch2_valid = false
+    @variable_valid = false
+    @self_switch_valid = false
+    @item_valid = false
+    @actor_valid = false
+    @switch1_id = 1
+    @switch2_id = 1
+    @variable_id = 1
+    @variable_value = 0
+    @self_switch_ch = 'A'
+    @item_id = 1
+    @actor_id = 1
+  end
+  attr_accessor :switch1_valid
+  attr_accessor :switch2_valid
+  attr_accessor :variable_valid
+  attr_accessor :self_switch_valid
+  attr_accessor :item_valid
+  attr_accessor :actor_valid
+  attr_accessor :switch1_id
+  attr_accessor :switch2_id
+  attr_accessor :variable_id
+  attr_accessor :variable_value
+  attr_accessor :self_switch_ch
+  attr_accessor :item_id
+  attr_accessor :actor_id
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

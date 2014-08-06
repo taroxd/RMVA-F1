@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Sound モジュール</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Sound モジュール</h1>
+<ul>
+<li><a href="#se_object">効果音オブジェクト</a></li>
+<li><a href="#data_def">組み込みクラスの定義</a></li>
+<li><a href="#audio">Audio モジュール</a></li>
+<li><a href="#check_empty">空文字列の判定</a></li>
+<li><a href="#nest">ネストした定義</a></li>
+</ul>
+
+<p>Sound は、データベースの [システム] で設定されている効果音を簡単に
+演奏するためのモジュールです。</p>
+
+
+<h2><a name="se_object">効果音オブジェクト</a></h2>
+<p>左のリストから Sound セクションを選択してください。</p>
+<pre>
+module Sound
+</pre>
+<p>この行は、前章で学習した Vocab とまったく同じ、モジュールの定義です。</p>
+<pre>
+  def self.play_system_sound(n)
+    $data_system.sounds[n].play
+  end
+</pre>
+<p>play_system_sound というモジュールメソッドを定義しています。</p>
+<p>$data_system はおなじみ、<a href="../rgss/gc_rpg_system.html"
+>RPG::System</a> クラスのインスタンスを指すグローバル変数です。</p>
+<p>sounds はリファレンスにも書かれているとおり、<a
+href="../rgss/gc_rpg_se.html">RPG::SE</a> クラスのインスタンスを
+格納した配列となっています。これはいわば「効果音オブジェクト」です。
+各々の効果音には名前がつけられておらず、データベース上での表示順に、
+配列の添字が対応しています。すなわち 0 が [カーソル移動] 、1 が
+[決定] といった具合です。</p>
+<p>効果音オブジェクトには、ツクールで設定された SE のファイル名、
+ボリューム、ピッチのデータが記憶されており、さらに、自分自身を演奏
+する play メソッドが用意されています。ですから、たとえばこのメソッド
+に引数 0 を指定して呼び出せば、[カーソル移動] として設定された SE
+を演奏するということになるのです。play_cursor
+というメソッドが、ちょうどその動作を行っています。</p>
+<pre>
+  def self.play_cursor
+    play_system_sound(0)
+  end
+</pre>
+<p>実際に効果音を演奏したいときには、次のようにモジュールメソッドを
+呼び出します。</p>
+<pre>
+Sound.play_cursor
+</pre>
+<p>効果音を演奏する場面でこのように書くことができれば、いちいち
+$data_system.sounds[0].play などと書くよりも読みやすくなります。
+それが、この Sound モジュールの目的です。[全セクションから検索] を
+使って調べてみると、実際にこの呼び出しを行っている箇所をたくさん
+見つけることができるでしょう。</p>
+<p>以後、このセクションでは同じようなメソッドの定義が効果音の数だけ
+続いているだけですから、セクション自体に見るべきところはありません。
+代わりに、RPG::SE クラスについて深く調べてみることにしましょう。</p>
+
+
+<h2><a name="data_def">データクラスの定義</a></h2>
+<p>効果音オブジェクトが play というメソッドを持っていて、それを
+呼び出せば効果音を演奏することができるということはわかりました。
+しかし、効果音というのはあくまでもデータですから、内部的な動作が
+わからないままだと都合が悪いこともあるでしょう。</p>
+<p>まずは <a href="../rgss/gc_rpg_se.html">RPG::SE</a> クラス
+の内容をリファレンスで確認してみます。<strong>定義</strong>と
+いう欄に、次のようなスクリプトが書かれていますね。</p>
+<pre>
+class RPG::SE &lt; RPG::AudioFile
+  def play
+    unless @name.empty?
+      Audio.se_play('Audio/SE/' + @name, @volume, @pitch)
+    end
+  end
+  def self.stop
+    Audio.se_stop
+  end
+end
+</pre>
+<p>このスクリプトは、スクリプトエディタ上にはありません。RGSS の
+内部で、RPG::SE というクラスがこのように定義されているということを
+明記しているのです。<a href="../rgss/gc_rpg_system.html"
+>RPG::System</a> をはじめ、データベースの内容を扱うクラスの
+リファレンスには必ずこの定義がついていますから、内部が気になった
+場合は読んでみると良いでしょう。</p>
+
+
+<h2><a name="audio">Audio モジュール</a></h2>
+<p>RPG::SE クラスの定義にはいくつかのポイントがありますが、まずは
+この行に注目してみましょう。</p>
+<pre>
+      Audio.se_play('Audio/SE/' + @name, @volume, @pitch)
+</pre>
+<p>ここでは <a href="../rgss/gm_audio.html">Audio</a> モジュールの
+se_play というメソッドを呼び出しています。実際に効果音の演奏を行う
+のは Audio モジュールなのです。Audio モジュールのメソッドを直接
+呼び出すことはあまりありませんが、基礎編で使用した <a 
+href="../rgss/gm_graphics.html">Graphics</a> と並ぶ重要なものです
+から、こういうモジュールがあるということは覚えておいてください。</p>
+<p>さて、@ という文字で始まる名前の変数は<strong>インスタンス
+変数</strong>でした。忘れてしまった方は、基礎編の<a href=
+"112_class.html">クラス定義</a>を復習してください。ここでは
+@name、@volume、@pitch という三つのインスタンス変数が使用されて
+います。名前から見当がつくように、それぞれ SE のファイル名、ボリューム、
+ピッチを指しています。@name が指すファイル名はフォルダを含みませんので、
+&quot;Audio/SE/&quot; という文字列と連結することでパス名を作成して
+います。</p>
+
+
+<h2><a name="check_empty">空文字列の判定</a></h2>
+<p>RPG::SE クラスの play メソッドの内容は、実際には次の 3 行です。</p>
+<pre>
+    unless @name.empty?
+      Audio.se_play('Audio/SE/' + @name, @volume, @pitch)
+    end
+</pre>
+<p>unless というキーワードは、基礎編の<a href="105_branch.html"
+>条件分岐</a>ですでに学習しました。if の逆で、条件を満たしていない
+ときに何かの処理を実行する、という制御構造です。</p>
+<p>empty? というメソッドは今までに出てきていません。名前から機能を
+何となく類推できそうではありますが、具体的にはどこで調べたら良いの
+でしょうか。こういう場合は、メソッドの<strong>レシーバ</strong>が
+何のオブジェクトであるのかを考えます。@name はファイル名ですから、
+文字列オブジェクトだと推測できますね。文字列と言えば <a href=
+"../rgss/sc_string.html">String</a> クラスです。リファレンスを
+開いて、empty? という名前のメソッドを探しましょう。</p>
+<p>リファレンスにあるとおり、文字列オブジェクトの empty? メソッド
+は、その文字列が空であるときに true を返します。ここでは unless で
+判定していますから、つまり「ファイル名が空ではない」という条件で
+分岐しているということになります。
+ツクール側で SE を [なし] に設定した場合、@name は空文字列に
+なっています。ここで確認をしないと、&quot;Audio/SE/&quot; という
+名前の SE を演奏しろという命令が Audio モジュールに届いてしまい、
+当然そのようなファイルはありませんからエラーになってしまいます。
+それを回避するために、この条件分岐が入っているわけです。</p>
+
+
+<h2><a name="nest">ネストした定義</a></h2>
+<p>次は、クラス定義の外枠に注目します。</p>
+<pre>
+class RPG::SE &lt; RPG::AudioFile
+end
+</pre>
+<p>RPG::SE という名前のクラスを定義しているようにも見えますが、
+これは RPG モジュールの中の SE というクラスを定義するという意味です。
+具体的には、以下と同じです。</p>
+<pre>
+module RPG
+  class SE &lt; AudioFile
+  end
+end
+</pre>
+<p>Ruby では、このようにモジュールやクラスの中で、さらに別の
+モジュールやクラスを定義することができます。参照方法は前章で
+学習した<strong>定数</strong>と同じですから、このクラスは RPG::SE
+となるわけです。ただし、前者の記法では、RPG という名前のモジュール
+またはクラスがあらかじめ定義されていない場合はエラーになります。</p>
+<p>同じモジュール内で参照する場合は、'RPG::' のような指定を省略する
+ことも可能です。ここでスーパークラスとして指定されている AudioFile
+は、実際には <a href="../rgss/gc_rpg_audiofile.html">RPG::AudioFile</a>
+クラスですが、同じ RPG モジュール内にあるため、後者の記法では
+モジュール名を省略した形になっています。</p>
+<p>RPG::SE クラスの探検はこれくらいにしておきましょう。
+スーパークラスとサブクラスの関係について忘れてしまった
+方は、<a href="108_object.html">オブジェクト</a>や<a
+href="112_class.html">クラス定義</a>の復習を
+しておいてください。</p>
+
+<h6></h6>
+
+</body>
+</html>

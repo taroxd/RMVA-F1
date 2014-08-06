@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::MapInfo</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::MapInfo</h1>
+<p>マップ情報のデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>name</dt>
+<dd><p>名前。</p></dd>
+<dt>parent_id</dt>
+<dd><p>親マップの ID。</p></dd>
+<dt>order</dt>
+<dd><p>ツクール内部で使用するマップツリー表示順序。</p></dd>
+<dt>expanded</dt>
+<dd><p>ツクール内部で使用するマップツリー展開フラグ。</p></dd>
+<dt>scroll_x</dt>
+<dd><p>ツクール内部で使用する X 方向のスクロール位置。</p></dd>
+<dt>scroll_y</dt>
+<dd><p>ツクール内部で使用する Y 方向のスクロール位置。</p></dd>
+</dl>
+
+<h2>定義</h2>
+<pre>
+class RPG::MapInfo
+  def initialize
+    @name = ''
+    @parent_id = 0
+    @order = 0
+    @expanded = false
+    @scroll_x = 0
+    @scroll_y = 0
+  end
+  attr_accessor :name
+  attr_accessor :parent_id
+  attr_accessor :order
+  attr_accessor :expanded
+  attr_accessor :scroll_x
+  attr_accessor :scroll_y
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

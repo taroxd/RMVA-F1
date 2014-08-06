@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>スキル・アイテム</TITLE>
+<LINK rel="stylesheet" href="style.css" type="text/css">
+</HEAD>
+<BODY>
+<H1>スキル・アイテム</H1>
+<UL>
+  <LI><A href="#01">ダメージ計算式の設定方法</A>
+  <LI><A href="#02">回復効果の設定方法</A>
+  <LI><A href="#03">［物理攻撃］の設定方法</A>
+  <LI><A href="#04">［MP にダメージ］の設定方法</A>
+  <LI><A href="#05">［ダメージを吸収］の設定方法</A>
+  <LI><A href="#06">［防御力無視］の設定方法</A>
+  <LI><A href="#07">［ステート変化］の設定方法</A>
+  <LI><A href="#08">［コモンイベント］の設定方法</A>
+  <LI><A href="#09">［成長効果］の設定方法</A>
+  <LI><A href="#10">「能力強化・弱体」関連スキル（アイテム）の作り方</A>
+</UL>
+<H2><A name="01"></A>ダメージ計算式の設定方法</H2>
+<P>VX Ace では、一つ一つのスキル（アイテム）ごとにダメージ計算式を設定出来るようになり、様々なパラメーターを手軽に計算式に盛り込むことが出来るようになりました。ですが、［簡単設定］は設定項目が
+VX と同じ（「精神関係度」が「魔法関係度」に名称変更されています）ですので、これを使えば VX と同じ計算式を設定することが可能です。</P>
+<P><IMG src="img/010/010_002c_01.png" width="293" height="154" border="0" class="float_n"></P>
+<P>なお、VX Ace では「魔法防御」という新たなパラメーターが加わっていますので、魔法（VX では精神）関連スキルの計算式が VX とは若干異なります。VXとまったく同じようにしたい場合は、次のようにしてください。</P>
+<OL>
+  <LI>［簡単設定］の［基本効果量］と［魔法関係度］に VX の時と同じ数値を設定して［OK］をクリックする
+  <LI>表示された［計算式］にある「b.mdf」に掛けられている数値を半分にする
+  <LI>表示された［計算式］にある「b.mdf」を「b.mat」に変更する
+</OL>
+<P>これで、VX とまったく同じ計算式になります。ただし、この計算式では「魔法防御」が一切関係なくなっていますので、関係させたい場合は手順 3 は行わず、手順
+1 と 2 のみを行うと良いでしょう。</P>
+<H2><A name="02"></A>回復効果の設定方法</H2>
+<P>回復アイテムに設定する「回復効果」ですが、VX Ace ではスキルにも設定出来るようになりました。</P>
+<P class="red">［スキル / アイテム］使用効果 − 回復</P>
+<P><IMG src="img/010/010_002c_02.png" width="331" height="308" border="0" class="float_n"></P>
+<UL>
+  <LI>回復量を「固定値 + 割合」以外で決定させたい場合は、ダメージのタイプを［HP 回復］もしくは［MP 回復］にした上でダメージ計算式を使用してください。
+</UL>
+<H2><A name="03"></A>［物理攻撃］の設定方法</H2>
+<P>スキル（アイテム）の命中判定を通常攻撃と同じにしたい場合の設定方法です。</P>
+<P class="red">［スキル / アイテム］発動 − 命中タイプ − 物理攻撃</P>
+<P><IMG src="img/010/010_002c_03.png" width="351" height="120" border="0" class="float_n"></P>
+<UL>
+  <LI>これで、VX 同様の設定になります。
+</UL>
+<H2><A name="04"></A>［ＭＰにダメージ］の設定方法</H2>
+<P>ダメージを与える対象を HP ではなく MP にしたい場合の設定方法です。</P>
+<P class="red">［スキル / アイテム］ダメージ − タイプ − MP ダメージ</P>
+<P><IMG src="img/010/010_002c_04.png" width="303" height="64" border="0" class="float_n"></P>
+<UL>
+  <LI>これで、VX 同様の設定になります。
+</UL>
+<H2><A name="05"></A>［ダメージを吸収］の設定方法</H2>
+<P>ダメージを与えると同時に使用者が回復するようにしたい場合の設定方法です。</P>
+
+<P class="red">［スキル / アイテム］ダメージ − タイプ − HP 吸収 / MP 吸収</P>
+<P><IMG src="img/010/010_002c_05.png" width="301" height="126" border="0" class="float_n"></P>
+<UL>
+  <LI>これで、VX 同様の設定になります。
+</UL>
+<H2><A name="06"></A>［防御力無視］の設定方法</H2>
+<P>対象者の防御力や魔法防御（VX では精神力）を無視してダメージを与えるスキル（アイテム）を作成する場合の設定方法です。</P>
+<P class="red">［スキル / アイテム］ダメージ − 簡単設定 − ［対象者の防御力を無視する］をチェック</P>
+<P><IMG src="img/010/010_002c_06.png" width="293" height="154" border="0" class="float_n"></P>
+<UL>
+  <LI>計算式を直接編集する場合は、防御力（b.def）、魔法防御（b.mdf）に関する記述を削除してください。
+</UL>
+<TABLE border="1" cellpadding="2" cellspacing="1" class="sys">
+  <TBODY>
+    <TR>
+      <TD class="vx_topic">攻撃方法</TD>
+      <TD class="vx_topic">通常の計算式</TD>
+      <TD class="vx_topic">防御力無視の計算式</TD>
+    </TR>
+    <TR>
+      <TD class="vx_line1">通常攻撃</TD>
+      <TD class="vx_line1">a.atk * 4 - b.def * 2</TD>
+      <TD class="vx_line1">a.atk * 4</TD>
+    </TR>
+    <TR>
+      <TD class="vx_line2">ファイア</TD>
+      <TD class="vx_line2">150 + a.mat * 2 - b.mdf * 2</TD>
+      <TD class="vx_line2">150 + a.mat * 2</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<H2><A name="07"></A>［ステート変化］の設定方法</H2>
+<P>対象者にステートを付加したり、対象者のステートを解除したりする場合の設定方法です。</P>
+<P class="red">［スキル / アイテム］使用効果 − ステート − ステート付加 / ステート解除</P>
+<P><IMG src="img/010/010_002c_07.png" width="662" height="308" border="0" class="float_n"></P>
+<UL>
+  <LI>VX 同様の設定にしたい場合は、いずれの場合も <B>100%</B> に設定してください。
+</UL>
+<H2><A name="08"></A>［コモンイベント］の設定方法</H2>
+<P>スキル（アイテム）使用後にコモンイベントを呼び出す方法です。</P>
+<P class="red">［スキル / アイテム］使用効果 − その他 − コモンイベント</P>
+<P><IMG src="img/010/010_002c_08.png" width="331" height="308" border="0" class="float_n"></P>
+<UL>
+  <LI>これで、VX 同様の設定になります。
+</UL>
+<H2><A name="09"></A>［成長効果］の設定方法</H2>
+<P>アクターの能力値を上昇させるスキル（アイテム）を作成したい場合の設定方法です。</P>
+<P class="red">［スキル / アイテム］使用効果 − その他 − 成長</P>
+<P><IMG src="img/010/010_002c_09.png" width="331" height="308" border="0" class="float_n"></P>
+<UL>
+  <LI>VX Ace では、スキルにも設定可能になりました。
+</UL>
+<H2><A name="10"></A>「能力強化・弱体」関連スキル（アイテム）の作り方</H2>
+<P>スキル（アイテム）によって対象の攻撃力や防御力といった能力値を強化したり、弱体化したりする場合、VX ではステートを使いましたが、VX Ace ではステートを使わずに設定出来るようになりました。</P>
+<P class="red">［スキル / アイテム］使用効果 − 能力値 − 能力強化 / 能力弱体</P>
+<P><IMG src="img/010/010_002c_10.png" width="662" height="308" border="0" class="float_n"></P>
+<UL>
+  <LI>強化、弱体化ともに 2 段階まで重ね掛けが可能です。
+  <LI>1 段階につき、能力値が 25% 変動します。
+  <LI>能力値の変動量を細かく設定したい場合は、重ね掛けが不可能になりますが VX 同様にステートを使って設定してください。
+</UL>
+<HR>
+</BODY>
+</HTML>
