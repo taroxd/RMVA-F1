@@ -1,4 +1,4 @@
-body         { font-family: "微软雅黑", Verdana;
+body         { font-family: "Microsoft YaHei", Verdana;
                background-image: url('img/back.png');
                color: black;
                margin-left: 1.8em;
@@ -13,7 +13,7 @@ a:active     { color: #FF0000;
 a:hover      { color: #FF0000;
                text-decoration:underline; }
 br           { clear: both; }
-h1           { font-family: "微软雅黑", Times New Roman;
+h1           { font-family: "Microsoft YaHei", Times New Roman;
                font-size: 200%;
                line-height: 120%;
                margin-bottom: 1.0em;
@@ -22,7 +22,7 @@ h1           { font-family: "微软雅黑", Times New Roman;
                border-bottom: 0.1em solid;
                border-color: #E04000;
                clear: both; }
-h2           { font-family: "微软雅黑", Verdana;
+h2           { font-family: "Microsoft YaHei", Verdana;
                font-size: 180%;
                line-height: 110%;
                margin-top: 1.0em;
@@ -35,7 +35,7 @@ h2           { font-family: "微软雅黑", Verdana;
                border: 0.1em dashed;
                border-color: #E04000;
                clear: both; }
-h3           { font-family: "微软雅黑", Times New Roman;
+h3           { font-family: "Microsoft YaHei", Times New Roman;
                font-size: 160%;
                line-height: 150%;
                margin-bottom: 0.5em; }
