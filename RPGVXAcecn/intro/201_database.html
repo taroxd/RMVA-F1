@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>データベース</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>データベース</h1>
+<ul>
+<li><a href="#data_xxxx">$data_xxxx</a></li>
+<li><a href="#contents">データベースの内容</a></li>
+<li><a href="#access">データベースへのアクセス</a></li>
+</ul>
+
+<p>解読編では、プリセットのスクリプトが何をしているのか読み解く
+ためのヒントを提供していきます。</p>
+<p>ここでは、VX Ace の<strong>データベース</strong>がスクリプト内で
+どのように扱われているかを解説します。</p>
+
+
+<h2><a name="data_xxxx">$data_xxxx</a></h2>
+<p>スクリプトエディタ左側のリストから、DataManager という名前の
+セクションを探してください。このセクションの始めのほうに、次のような
+部分を見つけることができるでしょう。この load_normal_database は、
+ゲーム起動直後、タイトル画面が表示される前に呼び出されるメソッドです。</p>
+
+<pre>
+  def self.load_normal_database
+    $data_actors        = load_data(&quot;Data/Actors.rvdata2&quot;)
+    $data_classes       = load_data(&quot;Data/Classes.rvdata2&quot;)
+    $data_skills        = load_data(&quot;Data/Skills.rvdata2&quot;)
+    $data_items         = load_data(&quot;Data/Items.rvdata2&quot;)
+    $data_weapons       = load_data(&quot;Data/Weapons.rvdata2&quot;)
+    $data_armors        = load_data(&quot;Data/Armors.rvdata2&quot;)
+    $data_enemies       = load_data(&quot;Data/Enemies.rvdata2&quot;)
+    $data_troops        = load_data(&quot;Data/Troops.rvdata2&quot;)
+    $data_states        = load_data(&quot;Data/States.rvdata2&quot;)
+    $data_animations    = load_data(&quot;Data/Animations.rvdata2&quot;)
+    $data_tilesets      = load_data(&quot;Data/Tilesets.rvdata2&quot;)
+    $data_common_events = load_data(&quot;Data/CommonEvents.rvdata2&quot;)
+    $data_system        = load_data(&quot;Data/System.rvdata2&quot;)
+    $data_mapinfos      = load_data(&quot;Data/MapInfos.rvdata2&quot;)
+  end
+</pre>
+
+<p>ここではツクールによって保存された
+ファイルからデータベースの情報を読み込み、各種データをスクリプト
+から参照できるようにしています。$ という文字で始まる変数
+は<strong>グローバル変数</strong>ですから、これらのデータは今後、
+スクリプトのどこからでも参照できるということがわかります。</p>
+<p>load_data というのは <a href="../rgss/g_functions.html">RGSS
+組み込み関数</a>のひとつで、指定されたファイルからデータを読み
+込む関数です。たとえば最初の行は、Data フォルダ内の Actors.rvdata2
+というファイルから読み込んだデータを $data_actors という変数に
+代入するという意味になります。</p>
+<p>なお、メソッド定義の最初に self. と書かれているのは
+<strong>モジュールメソッド</strong>の定義であるためです。
+これに関しては次章で解説しますので、今はメソッドの内容だけに
+注目してください。</p>
+
+
+<h2><a name="contents">データベースの内容</a></h2>
+<p>各オブジェクトは次の表のようになっています。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>変数名</th>
+ <th>内容</th>
+ <th>クラス</th>
+</tr><tr>
+ <td>$data_actors</td>
+ <td>アクター</td>
+ <td><a href="../rgss/gc_rpg_actor.html">RPG::Actor</a>
+     の配列</td>
+</tr><tr>
+ <td>$data_classes</td>
+ <td>職業</td>
+ <td><a href="../rgss/gc_rpg_class.html">RPG::Class</a>
+     の配列</td>
+</tr><tr>
+ <td>$data_skills</td>
+ <td>スキル</td>
+ <td><a href="../rgss/gc_rpg_skill.html">RPG::Skill</a>
+     の配列</td>
+</tr><tr>
+ <td>$data_items</td>
+ <td>アイテム</td>
+ <td><a href="../rgss/gc_rpg_item.html">RPG::Item</a>
+     の配列</td>
+</tr><tr>
+ <td>$data_weapons</td>
+ <td>武器</td>
+ <td><a href="../rgss/gc_rpg_weapon.html">RPG::Weapon</a>
+      の配列</td>
+</tr><tr>
+ <td>$data_armors</td>
+ <td>防具</td>
+ <td><a href="../rgss/gc_rpg_armor.html">RPG::Armor</a>
+     の配列</td>
+</tr><tr>
+ <td>$data_enemies</td>
+ <td>敵キャラ</td>
+ <td><a href="../rgss/gc_rpg_enemy.html">RPG::Enemy</a>
+     の配列</td>
+</tr><tr>
+ <td>$data_troops</td>
+ <td>敵グループ</td>
+ <td><a href="../rgss/gc_rpg_troop.html">RPG::Troop</a>
+     の配列</td>
+</tr><tr>
+ <td>$data_states</td>
+ <td>ステート</td>
+ <td><a href="../rgss/gc_rpg_state.html">RPG::State</a>
+     の配列</td>
+</tr><tr>
+ <td>$data_animations</td>
+ <td>アニメーション</td>
+ <td><a href="../rgss/gc_rpg_animation.html">RPG::Animation</a>
+     の配列</td>
+</tr><tr>
+ <td>$data_tilesets</td>
+ <td>タイルセット</td>
+ <td><a href="../rgss/gc_rpg_tileset.html">RPG::Tileset</a>
+     の配列</td>
+</tr><tr>
+ <td>$data_common_events</td>
+ <td>コモンイベント</td>
+ <td><a href="../rgss/gc_rpg_commonevent.html">RPG::CommonEvent</a>
+     の配列</td>
+</tr><tr>
+ <td>$data_system</td>
+ <td>システム (用語を含む)</td>
+ <td><a href="../rgss/gc_rpg_system.html">RPG::System</a>
+     </td>
+</tr><tr>
+ <td>$data_mapinfos</td>
+ <td>マップ情報</td>
+ <td><a href="../rgss/gc_rpg_mapinfo.html">RPG::MapInfo</a>
+     のハッシュ</td>
+</tr></table>
+<p>アクターからコモンイベントまでの 11 種のデータは、データベースで
+表示される番号に対応した配列になっています。
+ただし VX Ace ではデータ ID が 1 番から始まりますので、データ ID と
+配列の添字を揃えるために、配列の最初 (0 番目) の要素は nil になって
+います。</p>
+
+
+<h2><a name="access">データベースへのアクセス</a></h2>
+<p>さて、基礎編と同じように TEST セクションでデータベースに
+アクセスする実験をしてみたいところですが、ひとつ問題が
+あります。DataManager モジュールは一番上のセクションを実行する時点では
+まだ定義されていないということです。</p>
+<p>そこで、次のように、load_normal_database メソッドの内容と同じ処理を
+書いてしまいましょう。</p>
+<pre>
+$data_actors        = load_data(&quot;Data/Actors.rvdata2&quot;)
+$data_classes       = load_data(&quot;Data/Classes.rvdata2&quot;)
+$data_skills        = load_data(&quot;Data/Skills.rvdata2&quot;)
+$data_items         = load_data(&quot;Data/Items.rvdata2&quot;)
+$data_weapons       = load_data(&quot;Data/Weapons.rvdata2&quot;)
+$data_armors        = load_data(&quot;Data/Armors.rvdata2&quot;)
+$data_enemies       = load_data(&quot;Data/Enemies.rvdata2&quot;)
+$data_troops        = load_data(&quot;Data/Troops.rvdata2&quot;)
+$data_states        = load_data(&quot;Data/States.rvdata2&quot;)
+$data_animations    = load_data(&quot;Data/Animations.rvdata2&quot;)
+$data_tilesets      = load_data(&quot;Data/Tilesets.rvdata2&quot;)
+$data_common_events = load_data(&quot;Data/CommonEvents.rvdata2&quot;)
+$data_system        = load_data(&quot;Data/System.rvdata2&quot;)
+$data_mapinfos      = load_data(&quot;Data/MapInfos.rvdata2&quot;)
+</pre>
+<p>こうすれば $data_actors 等の変数を参照することができます
+ね。<a href="110_array.html">配列</a>の使用方法は覚えていますか？</p>
+<p>たとえば、次のスクリプトはアクター 1 番の二つ名を表示します。
+これは <a href="../rgss/gc_rpg_actor.html">RPG::Actor</a> のページを
+見るとすぐに見つかるはずです。</p>
+<pre>
+p $data_actors[1].nickname
+</pre>
+<p>次のスクリプトは敵キャラ 2 番の名前を表示します。
+name は、<td><a href="../rgss/gc_rpg_enemy.html">RPG::Enemy</a>
+ではなくそのスーパークラスの
+<a href="../rgss/gc_rpg_baseitem.html">RPG::BaseItem</a>
+で定義されています。</p>
+<pre>
+p $data_enemies[2].name
+</pre>
+<p>次のスクリプトはアイテム 3 番に指定されているアイコンの
+番号を表示します。</p>
+<pre>
+p $data_items[3].icon_index
+</pre>
+<p>次のスクリプトはスイッチ 4 番の名前を表示します。</p>
+<pre>
+p $data_system.switches[4]
+</pre>
+<p>データベースにアクセスしたい場合は、この要領で、参照したいデータの
+属性 (変数) 名をリファレンスで調べれば良いのです。</p>
+<p>いくつか実験してみて、データを正常に取得できていることが確認でき
+たら次に進みましょう。</p>
+
+
+<h6></h6>
+
+</body>
+</html>

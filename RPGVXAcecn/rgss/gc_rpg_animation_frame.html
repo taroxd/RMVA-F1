@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Animation::Frame</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Animation::Frame</h1>
+<p>アニメーションフレームのデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>参照元</h2>
+<ul>
+<li><a href="gc_rpg_animation.html">RPG::Animation</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>cell_max</dt>
+<dd><p>セルの数。フレームに存在する最大のセル番号と同じです。</p></dd>
+<dt>cell_data</dt>
+<dd><p>セルの内容を格納した二次元配列
+(<a href="gc_table.html">Table</a>) 。</p>
+<p>具体的には、cell_data[<var>cell_index</var>, <var>data_index</var>] という
+形式になっています。</p>
+<p><var>data_index</var> の範囲は 0..7 で、セルの各情報を表します
+(0:パターン、1:X 座標、2:Y 座標、3:拡大率、4:回転角度、5:左右
+反転、6:不透明度、7:合成方法) 。パターンはツクールで表示される番号から
+1 を引いた数字です。-1 はそのセルが欠番であることを意味します。</p></dd>
+</dl>
+
+<h2>定義</h2>
+<pre>
+class RPG::Animation::Frame
+  def initialize
+    @cell_max = 0
+    @cell_data = Table.new(0, 0)
+  end
+  attr_accessor :cell_max
+  attr_accessor :cell_data
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

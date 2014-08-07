@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Hash</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Hash</h1>
+<p>ハッシュのクラス。<a href="syntax03.html#L000280">ハッシュ式</a>を
+参照してください。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>インクルードされているモジュール</h2>
+<ul>
+<li><a href="sm_enumerable.html">Enumerable</a></li>
+</ul>
+
+<h2>メソッド</h2>
+<dl>
+<dt>self[key]</dt>
+<dd>
+<p><var>key</var> に関連づけられた値を返します。該当するキーが登
+録されていないときには、デフォルト値 (設定されていないときには
+nil) を返します。</p></dd>
+<dt>self[key]=value</dt>
+<dd>
+<p><var>key</var> に対して <var>value</var> を関連づけます。<var>value</var> を返し
+ます。</p></dd>
+<dt>clear</dt>
+<dd>
+<p>ハッシュの中身を空にします。self を返します。</p></dd>
+<dt>clone</dt>
+<dt>dup</dt>
+<dd>
+<p>レシーバと同じ内容を持つ新しいハッシュを返します。フリーズしたハッ
+シュの clone は同様にフリーズされたハッシュを返しますが、
+dup は内容の等しいフリーズされていないハッシュを返します。</p>
+<p><var>value</var> を返します。</p></dd>
+<dt>delete(<var>key</var>)</dt>
+<dt>delete(<var>key</var>) {|<var>key</var>| ... }</dt>
+<dd>
+<p><var>key</var> に対する関連を取り除きます。取り除かれた値を返しますが、
+<var>key</var> に対応する値が存在しないときには nil を返します。</p>
+<p>ブロックが与えられたときには <var>key</var> にマッチするものがな
+かったときに評価し、その結果を返します。</p></dd>
+<dt>each {|<var>key</var>, <var>value</var>| ... }</dt>
+<dt>each_pair {|<var>key</var>, <var>value</var>| ... }</dt>
+<dd>
+<p><var>key</var> と <var>value</var> を引数としてブロックを評価します。
+self を返します。</p></dd>
+<dt>each_key {|<var>key</var>| ... }</dt>
+<dd>
+<p><var>key</var> を引数としてブロックを評価します。
+self を返します。</p></dd>
+<dt>each_value {|<var>value</var>| ... }</dt>
+<dd>
+<p><var>value</var>を引数としてブロックを評価します。
+self を返します。</p></dd>
+<dt>empty?</dt>
+<dd>
+<p>ハッシュが空のとき真を返します。</p></dd>
+<dt>has_key?(<var>key</var>)</dt>
+<dt>include?(<var>key</var>)</dt>
+<dd>
+<p>ハッシュが <var>key</var> をキーとして持つとき真を返します。</p></dd>
+<dt>has_value?(<var>value</var>)</dt>
+<dd>
+<p>ハッシュが <var>value</var> を値として持つとき真を返します。
+値の一致判定は == で行われます。</p></dd>
+<dt>index(<var>val</var>)</dt>
+<dd>
+<p><var>val</var> に対応するキーを返します。対応する要素が存在しないときには 
+nil を返します。</p>
+<p>該当するキーが複数存在する場合、どのキーを返すかは不定です。</p></dd>
+<dt>keys</dt>
+<dd>
+<p>全キーの配列を返します。</p></dd>
+<dt>length</dt>
+<dt>size</dt>
+<dd>
+<p>ハッシュの要素の数を返します。</p></dd>
+<dt>values</dt>
+<dd>
+<p>ハッシュの全値の配列を返します。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

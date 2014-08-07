@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Map</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Map</h1>
+<p>マップのデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>display_name</dt>
+<dd><p>マップの表示名。</p></dd>
+<dt>tileset_id</dt>
+<dd><p>マップで使用するタイルセットの ID。</p></dd>
+<dt>width</dt>
+<dd><p>マップの幅。</p></dd>
+<dt>height</dt>
+<dd><p>マップの高さ。</p></dd>
+<dt>scroll_type</dt>
+<dd><p>スクロールタイプ (0: ループしない、1:縦のみ
+ループする、2:横のみループする、3:縦横ともループする)。</p></dd>
+<dt>specify_battleback</dt>
+<dd><p>戦闘背景指定が有効かどうかを示す真偽値。</p></dd>
+<dt>battleback1_name</dt>
+<dd><p>戦闘背景指定が有効なとき、床グラフィックのファイル名。</p></dd>
+<dt>battleback2_name</dt>
+<dd><p>戦闘背景指定が有効なとき、壁グラフィックのファイル名。</p></dd>
+<dt>autoplay_bgm</dt>
+<dd><p>BGM 自動切り替えが有効かどうかを示す真偽値。</p></dd>
+<dt>bgm</dt>
+<dd><p>BGM 自動切り替えが有効なとき、その BGM
+(<a href="gc_rpg_bgm.html">RPG::BGM</a>) 。</p></dd>
+<dt>autoplay_bgs</dt>
+<dd><p>BGS 自動切り替えが有効かどうかを示す真偽値。</p></dd>
+<dt>bgs</dt>
+<dd><p>BGS 自動切り替えが有効なとき、その BGS
+(<a href="gc_rpg_bgs.html">RPG::BGS</a>) 。</p></dd>
+<dt>disable_dashing</dt>
+<dd><p>[ダッシュを禁止する] オプションの真偽値。</p></dd>
+<dt>encounter_list</dt>
+<dd><p>エンカウントリスト。<a
+href="gc_rpg_map_encounter.html">RPG::Map::Encounter</a>
+の配列です。</p></dd>
+<dt>encounter_step</dt>
+<dd><p>平均エンカウント歩数。</p></dd>
+<dt>parallax_name</dt>
+<dd><p>遠景グラフィックのファイル名。</p></dd>
+<dt>parallax_loop_x</dt>
+<dd><p>遠景の [横方向ループ] オプションの真偽値。</p></dd>
+<dt>parallax_loop_y</dt>
+<dd><p>遠景の [縦方向ループ] オプションの真偽値。</p></dd>
+<dt>parallax_sx</dt>
+<dd><p>遠景が横方向に自動スクロールする速度。</p></dd>
+<dt>parallax_sy</dt>
+<dd><p>遠景が縦方向に自動スクロールする速度。</p></dd>
+<dt>parallax_show</dt>
+<dd><p>遠景の [マップエディタに表示する] オプションの真偽値。</p></dd>
+<dt>note</dt>
+<dd><p>メモ。</p></dd>
+<dt>data</dt>
+<dd><p>マップデータ本体。タイル ID および付随するデータの
+三次元配列 (<a href="gc_table.html">Table</a>) です。</p></dd>
+<dt>events</dt>
+<dd><p>マップイベント。イベント ID を
+キー、<a href="gc_rpg_event.html">RPG::Event</a>
+のインスタンスを値とするハッシュです。</p></dd>
+</dl>
+
+<h2>内部クラス</h2>
+<ul>
+<li><a href="gc_rpg_map_encounter.html">RPG::Map::Encounter</a></li>
+</ul>
+
+<h2>定義</h2>
+<pre>
+class RPG::Map
+  def initialize(width, height)
+    @display_name = ''
+    @tileset_id = 1
+    @width = width
+    @height = height
+    @scroll_type = 0
+    @specify_battleback = false
+    @battleback_floor_name = ''
+    @battleback_wall_name = ''
+    @autoplay_bgm = false
+    @bgm = RPG::BGM.new
+    @autoplay_bgs = false
+    @bgs = RPG::BGS.new('', 80)
+    @disable_dashing = false
+    @encounter_list = []
+    @encounter_step = 30
+    @parallax_name = ''
+    @parallax_loop_x = false
+    @parallax_loop_y = false
+    @parallax_sx = 0
+    @parallax_sy = 0
+    @parallax_show = false
+    @note = ''
+    @data = Table.new(width, height, 4)
+    @events = {}
+  end
+  attr_accessor :display_name
+  attr_accessor :tileset_id
+  attr_accessor :width
+  attr_accessor :height
+  attr_accessor :scroll_type
+  attr_accessor :specify_battleback
+  attr_accessor :battleback1_name
+  attr_accessor :battleback2_name
+  attr_accessor :autoplay_bgm
+  attr_accessor :bgm
+  attr_accessor :autoplay_bgs
+  attr_accessor :bgs
+  attr_accessor :disable_dashing
+  attr_accessor :encounter_list
+  attr_accessor :encounter_step
+  attr_accessor :parallax_name
+  attr_accessor :parallax_loop_x
+  attr_accessor :parallax_loop_y
+  attr_accessor :parallax_sx
+  attr_accessor :parallax_sy
+  attr_accessor :parallax_show
+  attr_accessor :note
+  attr_accessor :data
+  attr_accessor :events
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

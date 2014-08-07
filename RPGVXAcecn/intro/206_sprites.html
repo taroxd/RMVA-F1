@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>スプライトの管理</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>スプライトの管理</h1>
+<ul>
+<li><a href="#sprite">スプライト</a></li>
+<li><a href="#spriteset">スプライトセット</a></li>
+<li><a href="#z">Z 座標とビューポート</a></li>
+<li><a href="#map">Spriteset_Map</a></li>
+<li><a href="#battle">Spriteset_Battle</a></li>
+</ul>
+
+<p>ゲームオブジェクトそのものは、画面に表示するためのメソッドなど
+は何ひとつ持っていません。ゲームオブジェクトの内容を反映し、画面に
+グラフィックとして表示するためのクラスが必要です。</p>
+
+
+<h2><a name="sprite">スプライト</a></h2>
+<p>スクリプトエディタ左側のリストにあるセクションの中で、Game_Xxxx
+の役割はすでに解説しました。次に目に付くのは Sprite_Xxxx という名前
+のセクションでしょう。これらはそのままクラス名になっています。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>クラス</th>
+ <th>内容</th>
+ <th>スーパークラス</th>
+</tr><tr>
+ <td>Sprite_Base</td>
+ <td>アニメーション効果が使用できるスプライト</td>
+ <td><a href="../rgss/gc_sprite.html">Sprite</a></td>
+</tr><tr>
+ <td>Sprite_Character</td>
+ <td>キャラクター表示用</td>
+ <td>Sprite_Base</td>
+</tr><tr>
+ <td>Sprite_Battler</td>
+ <td>バトラー表示用</td>
+ <td>Sprite_Base</td>
+</tr><tr>
+ <td>Sprite_Picture</td>
+ <td>ピクチャ表示用</td>
+ <td><a href="../rgss/gc_sprite.html">Sprite</a></td>
+</tr><tr>
+ <td>Sprite_Timer</td>
+ <td>タイマー表示用</td>
+ <td><a href="../rgss/gc_sprite.html">Sprite</a></td>
+</tr></table>
+<p>これらのクラスは、基礎編で学習した
+<a href="../rgss/gc_sprite.html">Sprite</a> クラスを継承し、各画像の
+スプライトを実際に表示させる機能を持っています。</p>
+<p>各スプライトクラスのインスタンスは、対応するゲームオブジェクトを
+常時監視しており、その状態が変化したとき、それを自動的に画面に反映
+させるようになっています。たとえば Sprite_Character はキャラクター
+表示用のスプライトですから、Game_Character から継承されたクラスの
+インスタンスを監視しています。キャラクターがマップ上で少しでも動けば、
+その動きを即座にスプライトに反映できるわけです。実際には、この「反映」
+の処理は update という名前のメソッドが呼び出された時点で行われています。
+このメソッドを呼び出しているのは、次に解説する<strong>スプライト
+セット</strong>です。</p>
+
+
+<h2><a name="spriteset">スプライトセット</a></h2>
+<p>スプライトセットには次の三つのクラスがあります。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>クラス</th>
+ <th>内容</th>
+</tr><tr>
+ <td>Spriteset_Weather</td>
+ <td>天候エフェクト</td>
+</tr><tr>
+ <td>Spriteset_Map</td>
+ <td>マップ画面表示用</td>
+</tr><tr>
+ <td>Spriteset_Battle</td>
+ <td>バトル画面表示用</td>
+</tr></table>
+<p>このうち、Spriteset_Weather クラスは Spriteset_Map の内部でのみ
+使用されます。</p>
+<p>Spriteset_Map クラスと Spriteset_Battle クラスは、
+それぞれの画面を構成するほとんどすべての画像 (ウィンドウ以外) を
+一元的に管理しています。前項で解説したスプライトクラスはもちろん、
+マップそのものや遠景など、あらゆるグラフィックオブジェクトが集めら
+れ、update という名前のメソッドを呼び出すだけで、すべてのグラフィック
+がゲームの状況にあわせて更新されるようになっています。</p>
+<p>スプライトセットの update メソッドを呼び出しているのは、
+後の章で解説する<strong>シーンクラス</strong>です。</p>
+
+
+<h2><a name="z">Z 座標とビューポート</a></h2>
+<p>各スプライトは、画面のどの位置に表示するかを表す X 座標と
+Y 座標以外に、スプライト同士がどのような順序で重なり合うかを表す
+Z 座標という値を持っています。原則として、Z 座標の値が大きいもの
+ほど手前に表示されるようになっています。Z 座標が同一の場合は Y
+座標が大きいものほど、Y 座標も同一の場合は後に生成されたオブジェクト
+ほど手前に表示されます。</p>
+<p>また、スプライトセットの中では<strong>ビューポート</strong
+>という概念が使用されています。ビューポートは
+<a href="../rgss/gc_viewport.html">Viewport</a>
+クラスに属するオブジェクトで、スプライトの「入れ物」として機能します。</p>
+<p>スプライトがビューポートに関連付けられているとき、その Z 座標は
+ビューポート内での優先順位を表すものとなります。これは完全に親子関係
+になっているため、スプライトの Z 座標を大きくしても、上位のビューポート
+に含まれるスプライトより手前に表示されることはありません。</p>
+
+
+<h2><a name="map">Spriteset_Map</a></h2>
+<p>マップ画面のグラフィックをまとめる Spriteset_Map クラスの
+オブジェクトには、次のようなビューポートおよびスプライトが
+含まれています。括弧内の数字は Z 座標です。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <td>@viewport3 (100)</td>
+ <td colspan="2">画面の明るさ調整用</td>
+</tr><tr>
+ <td rowspan="3">@viewport2 (50)</td>
+ <td>@timer_sprite (200)</td>
+ <td>タイマー</td>
+</tr><tr>
+ <td>@picture_sprites (1..100)</td>
+ <td>ピクチャ</td>
+</tr><tr>
+ <td>@weather (0)</td>
+ <td>天候</td>
+</tr><tr>
+ <td rowspan="4">@viewport1 (0)</td>
+ <td>@shadow_sprite (180)</td>
+ <td>飛行船の影</td>
+</tr><tr>
+ <td>@character_sprites (0..200)</td>
+ <td>キャラクター</td>
+</tr><tr>
+ <td>@tilemap (0..200)</td>
+ <td>マップ</td>
+</tr><tr>
+ <td>@parallax (-100)</td>
+ <td>遠景</td>
+</tr></table>
+
+
+<h2><a name="battle">Spriteset_Battle</a></h2>
+<p>バトル画面のグラフィックをまとめる Spriteset_Battle クラスの
+オブジェクトには、次のようなビューポートおよびスプライトが
+含まれています。括弧内の数字は Z 座標です。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <td>@viewport3 (100)</td>
+ <td colspan="2">画面の明るさ調整用</td>
+</tr><tr>
+ <td rowspan="2">@viewport2 (50)</td>
+ <td>@timer_sprite (200)</td>
+ <td>タイマー</td>
+</tr><tr>
+ <td>@picture_sprites (1..100)</td>
+ <td>ピクチャ</td>
+</tr><tr>
+ <td rowspan="3">@viewport1 (0)</td>
+ <td>@enemy_sprites (100)</td>
+ <td>敵キャラ</td>
+</tr><tr>
+ <td>@back2_sprite (1)</td>
+ <td>戦闘背景 (壁)</td>
+</tr><tr>
+ <td>@back1_sprite (0)</td>
+ <td>戦闘背景 (床)</td>
+</tr></table>
+
+
+<h6></h6>
+
+</body>
+</html>

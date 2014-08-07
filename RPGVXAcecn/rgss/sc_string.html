@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>String</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>String</h1>
+<p>文字列クラス。任意の長さの文字列を扱うことができま
+す。<a href="syntax03.html#L000254">文字列リテラル</a>を参照してください。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>インクルードしているモジュール</h2>
+<ul>
+<li><a href="sm_comparable.html">Comparable</a></li>
+<li><a href="sm_enumerable.html">Enumerable</a></li>
+</ul>
+
+<h2>メソッド</h2>
+<dl>
+<dt><var>self</var> + <var>other</var></dt>
+<dd>
+<p>文字列を連結した新しい文字列を返します。</p></dd>
+<dt><var>self</var> * <var>times</var></dt>
+<dd>
+<p>文字列の内容を <var>times</var> 回だけ繰り返した新しい文字列を作成して
+返します。</p></dd>
+<dt><var>self</var> &lt;=&gt; <var>other</var></dt>
+<dd>
+<p>self と <var>other</var> を ASCII コード順で比較して、self が大きい
+ときに正、等しいときに 0、小さいときに負の整数を返します。</p></dd>
+<dt><var>self</var> == <var>other</var></dt>
+<dd>
+<p>文字列が等しいかどうか判定します。</p></dd>
+<dt>self[<var>nth</var>, <var>len</var>]</dt>
+<dd>
+<p><var>nth</var> 文字番目から長さ <var>len</var> 文字の部分文字列を返しま
+す。<var>nth</var> が負の場合は文字列の末尾から数えます。</p>
+<p><var>nth</var> が範囲外を指す場合は nil を返します。</p></dd>
+<dt>self[regexp]</dt>
+<dd>
+<p><var>regexp</var> にマッチする最初の部分文字列を返します。組み込み変数 
+<a href="s_variables.html#L000428">$~</a> にマッチに関する情報が設定されます。</p>
+<p><var>regexp</var> にマッチしない場合 nil を返します。</p>
+<pre>
+p &quot;foobar&quot;[/bar/]   # =&gt; &quot;bar&quot;
+</pre></dd>
+<dt><a name="L001349">self[<var>nth</var>, <var>len</var>]=<var>val</var></a></dt>
+<dd>
+<p><var>nth</var> 文字番目から長さ <var>len</var> 文字の部分文字
+列を文字列 <var>val</var> で置き換えます。<var>nth</var> が負の場
+合は文字列の末尾から数えます。</p>
+<p><var>val</var> を返します。</p></dd>
+<dt>self[regexp]=val</dt>
+<dd>
+<p>正規表現 <var>regexp</var> にマッチする最初の部分文字列を文字列 
+<var>val</var> で置き換えます。</p>
+<p>正規表現がマッチしなければ例外
+<a href="s_exceptions.html#IndexError">IndexError</a> が発生します。</p>
+<p><var>val</var> を返します。</p></dd>
+<dt>clone</dt>
+<dt>dup</dt>
+<dd>
+<p>文字列と同じ内容を持つ新しい文字列を返します。フリーズした文字列の 
+clone はフリーズされた文字列を返しますが、dup は内容の
+等しいフリーズされていない文字列を返します。</p></dd>
+<dt>concat(<var>other</var>)</dt>
+<dd>
+<p>文字列 <var>other</var> の内容を self に連結します。self を
+返します。</p></dd>
+<dt><a name="L001383">downcase</a></dt>
+<dt>downcase!</dt>
+<dd>
+<p>文字列中のアルファベット大文字をすべて小文字に置き換えます。</p>
+<p>downcase は変更後の文字列を生成して返します。
+downcase! は self を変更して返しますが、置換が起こら
+なかった場合は nil を返します。</p>
+<p><a href="#L001450">upcase</a> も参照してください。</p></dd>
+<dt>each_line {|<var>line</var>| ... }</dt>
+<dd>
+<p>文字列中の各行に対して繰り返します。</p>
+<p>self を返します。</p></dd>
+<dt>each_byte {|<var>byte</var>| ... }</dt>
+<dd>
+<p>文字列の各バイトに対して繰り返します。self を返します。</p>
+<dt>empty?</dt>
+<dd>
+<p>文字列が空 (つまり長さ 0) のとき、真を返します。</p></dd>
+<dt><a name="L001390">gsub(<var>pattern</var>) {|<var>matched</var>| .... }</a></dt>
+<dt>gsub!(<var>pattern</var>) {|<var>matched</var>| .... }</dt>
+<dd>
+<p>文字列中で <var>pattern</var> にマッチする部分<em>全て</em>を、
+ブロックを評価した結果で置換を行います。ブロックには引数として
+マッチした部分文字列が渡されます。
+ブロックの中からは組み込み変数 
+<a href="s_variables.html">$&lt;digits&gt;</a> を参照できます。</p>
+<pre>
+p 'abcabc'.gsub(/b/) {|s| s.upcase }    # =&gt; &quot;aBcaBc&quot;
+p 'abcabc'.gsub(/b/) { $&amp;.upcase }      # =&gt; &quot;aBcaBc&quot;
+p 'abbbcd'.gsub(/a(b+)/) { $1 }         # =&gt; &quot;bbbcd&quot;
+</pre>
+<p>gsub は置換後の文字列を生成して返します。gsub! は self を変更して
+返しますが、置換が起こらなかった場合は nil を返します。</p>
+<p><a href="#L001433">sub</a> も参照してください。</p></dd>
+<dt><a name="L001393"></a><var>include?(<var>substr</var>)</var></dt>
+<dd>
+<p>文字列中に部分文字列 <var>substr</var> が含まれていれば真を返します。</p>
+<p><var>substr</var> が 0 から 255 の範囲の <a href="sc_fixnum.html">Fixnum</a> の場合、文字コー
+ドとみなして、その文字が含まれていれば真を返します。</p></dd>
+<dt><a name="L001394"></a><var>index(<var>pattern</var>[, <var>pos</var>])</var></dt>
+<dd>
+<p>部分文字列の探索を左端から右端に向かって行います。見つかった部分文
+字列の左端の位置を返します。見つからなければ <var>nil</var> を返します。</p>
+<p>引数 <var>pattern</var> には探索する部分文字列の指定を文字列、文字コー
+ドを示す 0 から 255 の整数、正規表現のいずれかで指定します。</p>
+<p><var>pos</var> が与えられた時にはその位置から探索します。<var>pos</var> の省
+略時の値は 0 です。</p></dd>
+<dt>insert(<var>nth</var>, <var>other</var>)</dt>
+<dd>
+<p><var>nth</var> 番目の文字の直前に文字列 <var>other</var> を挿入
+します。self を返します。</p>
+<pre>
+p &quot;foobaz&quot;.insert(3, &quot;bar&quot;)         # =&gt; &quot;foobarbaz&quot;
+</pre></dd>
+<dt><a name="L001398">to_sym</a></dt>
+<dd>
+<p>文字列に対応するシンボル値 (<a href="sc_symbol.html">Symbol</a>) を返します。</p>
+<p>シンボルに対応する文字列を得るには
+<a href="sc_symbol.html#L001480">Symbol#id2name</a> を使います。</p>
+<pre>
+p &quot;foo&quot;.to_sym                      # =&gt; :foo
+p &quot;foo&quot;.to_sym.to_s == &quot;foo&quot;        # =&gt; true
+</pre></dd>
+<dt>length</dt>
+<dt>size</dt>
+<dd>
+<p>文字列の文字数を返します。</p></dd>
+<dt><a name="L001412">scan(<var>re</var>)</a>
+<dt>scan(<var>re</var>) {|<var>s</var>| ... }</dt>
+<dd>
+<p>self に対して正規表現 <var>re</var> で繰り返しマッチを行い、マッ
+チした部分文字列の配列を返します。</p>
+<pre>
+p &quot;foobarbazfoobarbaz&quot;.scan(/ba./)
+# =&gt; [&quot;bar&quot;, &quot;baz&quot;, &quot;bar&quot;, &quot;baz&quot;]
+
+p &quot;あいうえお&quot;.scan(/./)
+# =&gt; [&quot;あ&quot;, &quot;い&quot;, &quot;う&quot;, &quot;え&quot;, &quot;お&quot;]
+</pre>
+<p>ブロックを指定して呼び出した場合は、マッチした部分文字列 (括弧を含
+む場合は括弧で括られたパターンにマッチした文字列の配列) をブロック
+のパラメータとします。ブロックを指定した場合は self を返しま
+す。</p>
+<pre>
+&quot;foobarbazfoobarbaz&quot;.scan(/ba./) {|s| p s}
+# =&gt; &quot;bar&quot;
+     &quot;baz&quot;
+     &quot;bar&quot;
+     &quot;baz&quot;
+</pre>
+</dd>
+<dt>slice(<var>nth</var>, <var>len</var>)</dt>
+<dt>slice(<var>regexp</var>)</dt>
+<dd>
+<p><a href="#L001349">self[]</a> と同じです。</p></dd>
+<dt>slice!(<var>nth</var>, <var>len</var>)</dt>
+<dt>slice!(<var>regexp</var>)</dt>
+<dd>
+<p>指定した範囲 (<a href="#L001349">self[]</a> 参照) を文字列から取り除いたう
+えで取り除いた部分文字列を返します。</p>
+<p>引数が範囲外を指す場合は nil を返します。</p></dd>
+<dt><a name="L001433">sub(<var>pattern</var>) {|<var>matched</var>| ... }</a></dt>
+<dt>sub!(<var>pattern</var>) {|<var>matched</var>| ... }</dt>
+<dd>
+<p>文字列中で <var>pattern</var> に<em>最初に</em>マッチする部分を、
+ブロックを評価した値で置き換えます。</p>
+<p>sub は置換後の文字列を生成して返します。
+sub! は self を変更して返しますが、置換が起こら
+なかった場合は nil を返します。</p>
+<p>マッチを一度しか行わない点を除けば <a href="#L001390">gsub</a> と
+同じです。</p></dd>
+<dt>to_f</dt>
+<dd>
+<p>文字列を 10 進数表現と解釈して、
+浮動小数点数 <a href="sc_float.html">Float</a> に変換します。</p></dd>
+<dt>to_i([<var>base</var>])</dt>
+<dd>
+<p>文字列を数値表現と解釈して、整数に変換します。</p>
+<p>基数 <var>base</var> を指定することでデフォルトの 10 進以外
+に 2 ～ 36 進数への変換を行うことができます。</p></dd>
+<dt><a name="L001450">upcase</a></dt>
+<dt>upcase!</dt>
+<dd>
+<p>文字列中のアルファベット小文字をすべて大文字に置き換えます。</p>
+<p>upcase は置換後の文字列を生成して返します。
+upcase! は self を変更して返しますが、置換が起こら
+なかった場合は nil を返します。</p>
+<p><a href="#L001383">downcase</a> も参照してください。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

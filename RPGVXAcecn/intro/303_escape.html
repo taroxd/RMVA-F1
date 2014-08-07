@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>脱出アイテムの作成</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>脱出アイテムの作成</h1>
+<ul>
+<li><a href="#data">アイテムデータの作成</a></li>
+<li><a href="#use">アイテムの使用処理</a></li>
+<li><a href="#scene">シーン遷移</a></li>
+<li><a href="#transfer">場所移動</a></li>
+<li><a href="#disable">アイテムの無効化</a></li>
+</ul>
+
+<p>メニュー画面からアイテムやスキルを使用したときに
+独自の処理を行う方法を解説します。</p>
+<p>例として、ダンジョンなどから脱出し、入口へ瞬間移動する
+アイテムを作成します。</p>
+
+
+<h2><a name="data">アイテムデータの作成</a></h2>
+<p>スクリプトを作成する前に、データベースを開き、脱出アイテムのデータを
+設定します。適当な位置に新しい項目を作成してください。</p>
+<p>効果範囲は［なし］、使用可能時は［メニューのみ］とし、メモに
+&lt;ESCAPE&gt; と入力しておきましょう (&lt;&gt;を含む) 。</p>
+<p>独自の効果を持つアイテムやスキルを作成する場合、
+設定項目［メモ］を利用すると便利です。スクリプトにて、メモに特定の
+キーワードが含まれているか否かによって判定することで、名前や ID
+で判定するよりも汎用性が増すからです。今回は &lt;ESCAPE&gt;
+というキーワードが含まれているとき、脱出アイテムとみなします。</p>
+<p>データベースの設定が終わったら、イベントコマンド［アイテムの増減］を
+含んだイベントを作成し、そのアイテムをテストプレイですぐに使える状態に
+しておいてください。</p>
+
+
+<h2><a name="use">アイテムの使用処理</a></h2>
+<p>メニュー画面からアイテムやスキルを使用したとき、その処理を行うのは
+Scene_ItemBase クラスの use_item メソッドです (item
+という名前が付いていますが、スキルの処理も含みます) 。
+最初のステップとして、次のように再定義してみましょう。</p>
+<pre>
+class Scene_ItemBase
+  alias xxx001_use_item use_item
+  def use_item
+    xxx001_use_item
+    use_escape_item if item.note.include?(&quot;&lt;ESCAPE&gt;&quot;)
+  end
+  def use_escape_item
+    print &quot;脱出！\n&quot;
+  end
+end
+</pre>
+<p>ここでは、使用されたアイテムの［メモ］に &lt;ESCAPE&gt;
+という文字列が含まれていれば use_escape_item
+メソッドを呼び出すという処理を追加しました。</p>
+<pre>
+    use_escape_item if item.note.include?(&quot;&lt;ESCAPE&gt;&quot;)
+</pre>
+<p>item というのは、使用されたアイテムのオブジェクト、つまり
+<a href="../rgss/gc_rpg_item.html">RPG::Item</a> や
+<a href="../rgss/gc_rpg_skill.html">RPG::Skill</a> のインスタンスを
+返すメソッドです (これは Scene_ItemBase クラスではなく、継承先の
+Scene_Item および Scene_Skill クラスで定義されています) 。note
+は［メモ］に対応する文字列です。文字列クラス
+<a href="../rgss/sc_string.html">String</a> の
+include? メソッドは、特定の部分文字列が含まれるかを判定します。</p>
+<p>use_escape_item
+メソッドの内容としては、ダミーの処理としてひとまず &quot;脱出！&quot;
+という文字列をコンソールに出力するようにしています。</p>
+<pre>
+  def use_escape_item
+    print &quot;脱出！\n&quot;
+  end
+</pre>
+<p>実際にテストプレイを行って、先ほど作成した脱出アイテムを使用し、
+メソッドが正常に呼び出されることを確認してから次に進みましょう。</p>
+
+
+<h2><a name="scene">シーン遷移</a></h2>
+<p>アイテムを使用したとき、自動的にマップ画面に戻るように
+することができます。use_escape_item
+メソッドを次のように書き換えてください。前章では call
+メソッドを使用しましたが、呼び出し元の画面に戻る必要がないときには
+goto メソッドを使用します。</p>
+<pre>
+  def use_escape_item
+    SceneManager.goto(Scene_Map)
+  end
+</pre>
+<p>Scene_Map は、その名の通りマップ画面に対応するシーンクラス
+です。SceneManager モジュールの goto メソッドをこのように呼び出す
+ことで、アイテムを使用したとき、自動的にマップ画面に戻るように
+することができます。</p>
+
+
+<h2><a name="transfer">場所移動</a></h2>
+<p>プレイヤーに対応するクラス Game_Player には、場所移動を予約する
+reserve_transfer メソッドがあります。</p>
+<pre>
+  def use_escape_item
+    $game_player.reserve_transfer(1, 10, 8)
+    SceneManager.goto(Scene_Map)
+  end
+</pre>
+<p>引数の順序は、マップ ID、X 座標、Y 座標の順です。上記の例では
+ マップ ID = 1、X = 10、Y = 8
+の地点への場所移動を指示しています。このように、まずは適当な地点を
+決め打ちで指定し、正常に移動できるか実験してみてください。</p>
+<p>場所移動の動作が確認できたら、ゲーム内の変数で移動先を設定
+できるように変更します。</p>
+<pre>
+  def use_escape_item
+    m = $game_variables[21]
+    x = $game_variables[22]
+    y = $game_variables[23]
+    $game_player.reserve_transfer(m, x, y)
+    SceneManager.goto(Scene_Map)
+  end
+</pre>
+<p>例では変数 21 ～ 23 番を移動先として使用しています。
+もちろん、使用する変数番号はこの通りでなくても構いません。</p>
+
+
+<h2><a name="disable">アイテムの無効化</a></h2>
+<p>脱出アイテムは、ダンジョンの外では使用できないようにしたいことが
+多いでしょう。アイテムの使用可能判定を変更し、マップ ID を格納する変数
+21 番の値が 0 のときには選択できないようにします。</p>
+<pre>
+class Game_BattlerBase
+  alias xxx001_usable_item_conditions_met? usable_item_conditions_met?
+  def usable_item_conditions_met?(item)
+    if item.note.include?(&quot;&lt;ESCAPE&gt;&quot;) && $game_variables[21] == 0
+      false
+    else
+      xxx001_usable_item_conditions_met?(item)
+    end
+  end
+end
+</pre>
+<p>アイテムやスキルの使用可能判定は、主に Game_BattlerBase
+クラスが受け持っています。ここでは usable_item_conditions_met?
+というメソッドを再定義します。コメントにも書かれている通り、これは
+スキルとアイテムの共通使用可能条件をチェックするメソッドです。true
+を返せば使用可能、false を返せば使用不可能ということです。</p>
+<p>使用可能判定の全体像を把握したい場合は、usable?
+メソッドから辿って解読を試みると良いでしょう。</p>
+
+
+<h6></h6>
+
+</body>
+</html>

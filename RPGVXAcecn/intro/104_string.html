@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>文字列</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>文字列</h1>
+<ul>
+<li><a href="#print">print</a></li>
+<li><a href="#subst">変数への代入</a></li>
+<li><a href="#backslash">バックスラッシュ記法</a></li>
+<li><a href="#unfold">式展開</a></li>
+</ul>
+
+<p>一般に、文字が連なったデータのことを<strong>文字列</strong>と呼びます。</p>
+
+
+<h2><a name="print">print</a></h2>
+<p>ダブルクォート &quot; &quot; またはシングルクォート ' ' で囲まれた
+部分は、そのまま文字列のデータとして扱われます。</p>
+<pre>
+p &quot;ツクール&quot;                    # =&gt; &quot;ツクール&quot;
+p 'ツクール'                    # =&gt; &quot;ツクール&quot;
+</pre>
+<p>p だとダブルクォートまで一緒に出力されてしまうので、代わりに
+print という命令を使ってみましょう。</p>
+<pre>
+print &quot;ツクール&quot;                # =&gt; ツクール
+</pre>
+<p>今度はダブルクォートがつかなくなりました。p は値の内容を人間にわかり
+やすい形で表示する命令なので、文字列だということが一目でわかるように
+ダブルクォートつきで表示されていたのです。print は p と似ていますが、
+こちらは文字列そのものを表示することができます。</p>
+
+
+<h2><a name="subst">変数への代入</a></h2>
+<p>文字列も数値とまったく同じように、変数に代入することができます。</p>
+<pre>
+a = &quot;ツクール&quot;
+print a                         # =&gt; ツクール
+</pre>
+<p>文字列に文字列を足すと、連結された文字列が答となります。</p>
+<pre>
+a = &quot;RPG&quot;
+b = &quot;ツクール&quot;
+print a + b                     # =&gt; RPGツクール
+</pre>
+<p>文字列に整数を掛けると、その回数だけ繰り返された文字列が答となります。</p>
+<pre>
+a = &quot;ツクール&quot;
+print a * 2                     # =&gt; ツクールツクール
+</pre>
+
+
+<h2><a name="backslash">バックスラッシュ記法</a></h2>
+<p>文字列中の円記号 &yen; は、それに続く文字によって改行などの特殊な
+文字として扱われます。たとえば &yen;n というのは改行を表します。</p>
+<p>バックスラッシュ記法には &yen;t (タブ) や &yen;s (スペース) など
+いろいろなものがありますが、今は &yen;n が改行を表すこと
+と、&yen;&yen; と円記号をふたつ重ねたときに &yen; 文字そのものを表
+すこと、このふたつを覚えておいてください。</p>
+<pre>
+a = &quot;RPGツクールVX Ace&quot;
+b = &quot;\\13,440&quot;
+print a + &quot;\n&quot; + b              # =&gt; RPGツクールVX Ace
+                                #    \13,440
+</pre>
+<p>シングルクォート '' で囲まれた文字列では、&yen;&yen; (円記号その
+もの) と &yen;' (シングルクォート) を除いてバックスラッシュ記法は
+使えません。このため、文字そのものを表現したい場合はこちらを使った
+ほうが便利なことがあります。</p>
+<pre>
+print 'ツクール\n'              # =&gt; ツクール\n
+</pre>
+<p>ところで、なぜ円記号なのに「バックスラッシュ記法」と呼ぶのでしょう
+か。それは、日本語フォントで円記号 &yen; が割り当てられている場所が、
+本来バックスラッシュ <span class="western">\</span> の文字コードで
+あるためです。文字の見た目は違いますが、コンピュータの内部情報的には
+同じものなのです。</p>
+
+
+<h2><a name="unfold">式展開</a></h2>
+<p>文字列の中には、#{式} という形式で式の内容を埋め込むことができます。</p>
+<pre>
+game = &quot;RPG&quot;
+print &quot;#{game}ツクール&quot;         # =&gt; RPGツクール
+</pre>
+<p>上記の例では、1 行目で game という名前の変数に &quot;RPG&quot; という
+文字列を代入しています。2 行目では、文字列の #{game} という部分に変数 game
+に代入されている文字列 &quot;RPG&quot; を埋め込み、あとに
+続く &quot;ツクール&quot; と組み合わせて、ひとつの文字列として出力して
+います。VX Ace のイベントコマンド [文章の表示] では、文章内に &yen;V[n] や
+&yen;N[n] などの制御文字を使うことで変数の値やアクターの名前をメッセージに
+埋め込むことができますが、それと似たような機能だと考えてください。</p>
+<p>これはもちろん、</p>
+<pre>
+game = &quot;RPG&quot;
+print game + &quot;ツクール&quot;         # =&gt; RPGツクール
+</pre>
+<p>このように書いても同じことですが、式展開の記法を使うことでプログラムを
+より読みやすくできる場合があるため、この機能が用意されています。</p>
+<p>なお、バックスラッシュ記法と同様、シングルクォート '' で囲まれた
+文字列では式展開も有効になりません。</p>
+
+
+<h6></h6>
+
+</body>
+</html>

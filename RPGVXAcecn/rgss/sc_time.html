@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Time</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Time</h1>
+<p>時刻のクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>インクルードしているモジュール</h2>
+<ul>
+<li><a href="sm_comparable.html">Comparable</a></li>
+</ul>
+
+<h2>クラスメソッド</h2>
+<dl>
+<dt>Time.now</dt>
+<dd>
+<p>現在時刻の Time オブジェクトを返します。</p></dd>
+</dl>
+
+<h2>メソッド</h2>
+<dl>
+<dt><var>self</var> + <var>other</var></dt>
+<dd>
+<p>self より <var>other</var> 秒だけ後の時刻を返します</p></dd>
+<dt><var>self</var> - <var>other</var></dt>
+<dd>
+<p><var>other</var> が Time オブジェクトである時、ふたつの時刻の差を 
+<a href="sc_float.html">Float</a> で返します。<var>other</var> が数値である時には <var>self</var> 
+より <var>other</var> だけ前の時刻を返します。</p></dd>
+<dt><var>self</var> &lt;=&gt; <var>other</var></dt>
+<dd>
+<p>時刻の比較。<var>other</var> は Time オブジェクトか数値でなければ
+なりません。数値の場合は起算時からの経過秒数とみなして比較します。</p></dd>
+<dt>strftime(<var>format</var>)</dt>
+<dd>
+<p>時刻を <var>format</var> 文字列に従って文字列に変換した結果を返します。
+<var>format</var> 文字列として指定できるものは 以下の通りです。</p>
+<ul>
+<li><p>%A</p>
+<p>曜日の名称 (Sunday, Monday ... )</p></li>
+<li><p>%a</p>
+<p>曜日の省略名 (Sun, Mon ... )</p></li>
+<li><p>%B</p>
+<p>月の名称 (January, February ... )</p></li>
+<li><p>%b</p>
+<p>月の省略名 (Jan, Feb ... )</p></li>
+<li><p>%c</p>
+<p>日付と時刻</p></li>
+<li><p>%d</p>
+<p>日 (01-31)</p></li>
+<li><p>%H</p>
+<p>24 時間制の時 (00-23)</p></li>
+<li><p>%I</p>
+<p>12 時間制の時 (01-12)</p></li>
+<li><p>%j</p>
+<p>年中の通算日 (001-366)</p></li>
+<li><p>%M</p>
+<p>分 (00-59)</p></li>
+<li><p>%m</p>
+<p>月を表す数字 (01-12)</p></li>
+<li><p>%p</p>
+<p>午前または午後 (AM,PM)</p></li>
+<li><p>%S</p>
+<p>秒 (00-60) (60 はうるう秒)</p></li>
+<li><p>%U</p>
+<p>週を表す数。最初の日曜日が第 1 週の始まり (00-53)</p></li>
+<li><p>%W</p>
+<p>週を表す数。最初の月曜日が第 1 週の始まり (00-53)</p></li>
+<li><p>%w</p>
+<p>曜日を表す数。日曜日が 0(0-6)</p></li>
+<li><p>%X</p>
+<p>時刻</p></li>
+<li><p>%x</p>
+<p>日付</p></li>
+<li><p>%Y</p>
+<p>西暦を表す数</p></li>
+<li><p>%y</p>
+<p>西暦の下 2 桁 (00-99)</p></li>
+<li><p>%Z</p>
+<p>タイムゾーン</p>
+<li><p>%%</p>
+<p>% 自身</p></li>
+</ul></dd>
+<dt>sec</dt>
+<dd><p>秒を返します。</p></dd>
+<dt>min</dt>
+<dd><p>分を返します。</p></dd>
+<dt>hour</dt>
+<dd><p>時を返します。</p></dd>
+<dt>mday</dt>
+<dd><p>日を返します。</p></dd>
+<dt>mon</dt>
+<dd><p>月を返します。</p></dd>
+<dt>year</dt>
+<dd><p>年を返します。</p></dd>
+<dt>wday</dt>
+<dd><p>曜日を表す数を返します。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

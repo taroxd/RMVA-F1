@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Graphics</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Graphics</h1>
+<p>グラフィック全体にかかわる処理を行うモジュール。</p>
+
+<h2>モジュールメソッド</h2>
+<dl>
+
+<dt>Graphics.update</dt>
+<dd>
+<p>ゲーム画面を更新し、時間を 1 フレーム進めます。
+このメソッドは必ず定期的に呼び出す必要があります。</p>
+<pre>
+loop do
+  Graphics.update
+  Input.update
+  do_something
+end
+</pre>
+</dd>
+
+<dt>Graphics.wait(<var>duration</var>)</dt>
+
+<dd>
+<p>指定されたフレーム数だけウェイトをかけます。以下と等価です。</p>
+<pre>
+duration.times do
+  Graphics.update
+end
+</pre>
+</dd>
+
+<dt><a name="fadeout">Graphics.fadeout(<var>duration</var>)</a></dt>
+
+<dd>
+<p>画面のフェードアウトを行います。</p>
+<p><var>duration</var> はフェードアウトにかけるフレーム数です。</p>
+</dd>
+
+<dt><a name="fadein">Graphics.fadein(<var>duration</var>)</a></dt>
+
+<dd>
+<p>画面のフェードインを行います。</p>
+<p><var>duration</var> はフェードインにかけるフレーム数です。</p>
+</dd>
+
+<dt>Graphics.freeze</dt>
+<dd>
+<p>トランジションの準備として、現在の画面を固定します。</p>
+<p>これ以後 transition メソッドを呼び出すまでは、一切の画面の書き換えが
+禁止されます。</p></dd>
+
+<dt><a name="transition">Graphics.transition([<var>duration</var>[, <var>filename</var>[, <var>vague</var>]]])</a></dt>
+<dd>
+<p>freeze メソッドで固定した画面から現在の画面へのトランジションを行います。</p>
+<p><var>duration</var> はトランジションにかけるフレーム数です。
+省略時は 10 になります。 </p>
+<p><var>filename</var> はトランジション グラフィックのファイル名を指定します
+(指定しない場合は通常のフェードになります) 。<a
+href="rgss.html#rgss_rtp">RGSS-RTP</a>、<a href=
+"rgss.html#encryption_archive">暗号化アーカイブ</a>に含まれるファイルも自動的に
+探します。拡張子は省略可能です。</p>
+<p><var>vague</var> は転送元と転送先の境界のあいまいさで、値が大きいほど
+あいまいになります。省略時は 40 になります。</p></dd>
+
+<dt><a name="snap_to_bitmap">Graphics.snap_to_bitmap</a></dt>
+
+<dd>
+<p>現在のゲーム画面のイメージをビットマップ オブジェクトとして取得します。</p>
+<p>freeze メソッドによる固定とは関係なく、その時点で本来表示されているべき
+グラフィックが反映されます。</p>
+<p>作成したビットマップは、不要になりしだい解放する必要があります。</p></dd>
+
+<dt>Graphics.frame_reset</dt>
+<dd>
+<p>画面の更新タイミングをリセットします。時間のかかる処理の後に
+このメソッドを呼ぶことで、極端なフレームスキップが発生しないようにする
+ことができます。</p></dd>
+
+<dt><a name="width">Graphics.width</a></dt>
+<dt><a name="height">Graphics.height</a></dt><dd>
+<p>ゲーム画面の幅および高さを取得します。</p>
+<p>通常はそれぞれ 544、416 を返します。</p></dd>
+
+<dt>Graphics.resize_screen(<var>width</var>, <var>height</var>)</dt>
+
+<dd>
+<p>ゲーム画面のサイズを変更します。</p>
+<p>width と height に幅および高さを 640&times;480 までの範囲で指定
+します。</p></dd>
+
+<dt><a name="play_movie">Graphics.play_movie(<var>filename</var>)</a>
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>filename で指定されたムービーの再生を行います。</p>
+<p>再生終了を待ってから処理を返します。</p>
+</dd>
+
+</dl>
+
+<h2>モジュールプロパティ</h2>
+<dl>
+
+<dt><a name="frame_rate">Graphics.frame_rate</a></dt>
+<dd>
+<p>1 秒間に画面を更新する回数です。値が大きいほど多くの CPU パワーが必要に
+なります。通常は 60 です。 </p>
+<p>このプロパティを変更することは推奨されませんが、変更する場合
+は 10 ～ 120 の範囲で指定します。範囲外の値は自動で修正されます。</p></dd>
+
+<dt>Graphics.frame_count</dt>
+<dd>
+<p>画面の更新回数のカウントです。ゲーム開始時にこのプロパティを 0 に設定して
+おくと、frame_rate プロパティの値で割ることで、ゲームのプレイ時間 (秒数) が
+算出できます。</p></dd>
+
+<dt>Graphics.brightness</dt>
+
+<dd>
+<p>画面の明るさです。0 ～ 255 の範囲の値を取ります。
+fadeout、fadein、transition メソッドは、内部で必要に応じてこの値を
+変更しています。</p></dd>
+
+</dl>
+
+<h6></h6>
+</body>
+</html>

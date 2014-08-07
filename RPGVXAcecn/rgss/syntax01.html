@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>字句構造</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>字句構造と式</h1>
+<ul>
+<li><a href="#L000213">識別子</a></li>
+<li><a href="#L000214">コメント</a></li>
+<li><a href="#L000216">予約語</a></li>
+<li><a href="#L000219">式</a></li>
+</ul>
+<p>Ruby ではアルファベットの大文字と小文字は区別されます。識別子と一部の
+リテラルの途中を除いては任意の場所に空白文字やコメントを置くことができます。
+改行は行が明らかに次の行に継続するときだけ空白文字として、それ以外では文の
+区切りとして解釈されます。</p>
+
+<h2><a name="L000213">識別子</a></h2>
+<p>例:</p>
+<pre>
+foobar
+ruby_is_simple
+</pre>
+<p>Ruby の識別子は、英文字または '_' から始まり、英数字または '_' からなります。
+長さの制限はありません。</p>
+
+<h2><a name="L000214">コメント</a></h2>
+<p>例:</p>
+<pre>
+# this is a comment line
+</pre>
+<p>文字列中以外の # から行末までをコメントとみなします。</p>
+
+<h2><a name="L000216">予約語</a></h2>
+<p>予約語は以下のものです。</p>
+<pre>
+BEGIN    class    ensure   nil      self     when
+END      def      false    not      super    while
+alias    defined? for      or       then     yield
+and      do       if       redo     true
+begin    else     in       rescue   undef
+break    elsif    module   retry    unless
+case     end      next     return   until
+</pre>
+<p>予約語はクラス名、変数名などに用いることはできません。ただし
+接頭辞 $、@ が先頭についたものは予約語とはみなされません。
+また、def の後やメソッド呼び出しのピリオドの後など、メソッド名で
+あるとはっきり分かる場所ではメソッド名として用いることができます。</p>
+
+<h2><a name="L000219">式</a></h2>
+<p>例:</p>
+<pre>
+true
+(1+2)*3
+foo()
+if test then ok else ng end
+</pre>
+<p>変数やリテラル、演算子式や制御構造などをすべて含めて「式」と呼びます。</p>
+<p>これらの式を並べたものが Ruby のプログラムとなります。式と式の間はセミ
+コロン (;) または改行で区切ります。ただし、バックスラッシュに続く改行は文の
+区切りにならず、次の行へ継続します。</p>
+<p>式は括弧によってグルーピングすることができます。</p>
+
+<h6></h6>
+</body>
+</html>

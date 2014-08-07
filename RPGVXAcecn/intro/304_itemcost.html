@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>アイテム消費スキルの作成</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>アイテム消費スキルの作成</h1>
+<ul>
+<li><a href="#data">スキルとアイテムの作成</a></li>
+<li><a href="#regexp">正規表現</a></li>
+<li><a href="#item_id">アイテム ID の取得</a></li>
+<li><a href="#payable">コストの支払い可能判定</a></li>
+<li><a href="#pay">コストの支払い</a></li>
+</ul>
+
+<p>スキルに対して、MP および TP
+以外の消費コストを設定する方法を解説します。</p>
+<p>例として、アイテムを消費するスキルを作成します。</p>
+
+
+<h2><a name="data">スキルとアイテムの作成</a></h2>
+<p>データベースを開き、テスト用のデータを作成します。</p>
+<p>データの内容は何でも構いませんが、たとえば「『毒矢』というアイテムを
+消費することで『ポイズンショット』というスキルが使える」などと設定すると
+わかりやすいかもしれません。ただしこれはサンプルなので、スキルの種類は
+本当に戦闘用にしなくてもかまいません。
+たとえば［使用可能時］を［常時］、［効果範囲］を［なし］にしておけば
+動作確認がしやすくなります。</p>
+<p>消費するアイテムの設定としては、スキル側のメモに
+&lt;ITEM_COST <var>n</var>&gt;
+と入力してください。<var>n</var> にはアイテム ID
+を指定します。たとえば「毒矢」のアイテム ID が 25
+番であれば、「ポイズンショット」のメモに &lt;ITEM_COST 25&gt;
+と入力するということです。</p>
+<p>作成したスキルは、任意のアクターに覚えさせましょう。
+スキルを覚えさせるには、アクターの職業を見て、対応する職業に
+追加してください。また、必要になるアイテムを入手するイベントを
+忘れずに作成してください。</p>
+
+
+<h2><a name="regexp">正規表現</a></h2>
+<p>前章では、メモの文字列に対して include?
+メソッドを使って判定を行いましたが、アイテム ID
+などのパラメータを指定したい場合、それでは不都合です。</p>
+<p>このような場合、<strong>正規表現</strong>という機能を
+使用します。正規表現とは、一つの文字列で複数の文字列を表現する
+記法のことです。Ruby だけではなく、他の言語やツール、テキスト
+エディタの検索機能などに広く採用されています。</p>
+<p>Ruby の場合は、/ という記号で囲った部分が正規表現と
+みなされ、<a href="../rgss/sc_regexp.html">Regexp</a>
+クラスのインスタンスになります。今回のメモ表記に対応する
+正規表現は次のようになります。</p>
+<pre>
+/&lt;ITEM_COST\s*(\d+)&gt;/
+</pre>
+\s は空白文字、\d は数字、* は 0 回以上の繰り返し、+
+は 1 回以上の繰り返し、()
+は後で参照するためのグループ化を示しています。</p>
+<p>正規表現の記法について詳しくは、RGSS リファレンスの<a 
+href="../rgss/appendix01.html">正規表現</a
+>のページを参照してください。</p>
+
+
+<h2><a name="item_id">アイテム ID の取得</a></h2>
+<p>では、実際に正規表現を使って、消費アイテムの ID
+を取得するメソッドを作成します。</p>
+<pre>
+class RPG::Skill
+  def item_cost
+    /&lt;ITEM_COST\s*(\d+)&gt;/ =~ note ? $1.to_i : 0
+  end
+end
+</pre>
+<p>今回は
+<a href="../rgss/gc_rpg_skill.html">RPG::Skill</a>
+クラスにメソッドを追加することにしました。このように RGSS
+内部で定義されているクラスであっても、これまでと同じ方法で
+定義を変更することが可能です。なお item_cost メソッドは再定義
+ではなく純粋な追加なので、エイリアスは不要です。</p>
+<p>内容の解説に移ります。</p>
+<pre>
+    /&lt;ITEM_COST\s*(\d+)&gt;/ =~ note ? $1.to_i : 0
+</pre>
+<p>=~ という演算子は、文字列 (の一部) が正規表現にマッチするか
+否かを判定するものです。</p>
+<p>note は前章でも使った、メモに対応する文字列です。自分自身の
+メソッドなのでレシーバは省略しています。</p>
+<p>$1 というのは<a href="../rgss/s_variables.html">組み込み変数</a
+>の一種で、正規表現の括弧内の部分が格納されるものです。たとえば
+&lt;ITEM_COST 25&gt; という指定であれば $1 の内容は
+&quot;25&quot; になるわけです。これは文字列なので、to_i
+メソッドを用いて整数に変換しています。</p>
+<p>まとめると、消費アイテムの ID が指定されていればその ID
+を、指定されていなければ 0 を返すというメソッドになります。</p>
+
+
+<h2><a name="payable">コストの支払い可能判定</a></h2>
+<p>Game_BattlerBase クラスの skill_cost_payable?
+メソッドが、スキルの消費コストが支払い可能か否かを判定する役割を
+担っており、ここで false を返せば、そのスキルは使用できないと判定
+されるようになっています。</p>
+<p>ただし今回は「アイテム消費」であって敵キャラには関係が
+ないので、サブクラスの Game_Actor にてこれを再定義します。</p>
+<pre>
+class Game_Actor
+  alias xxx001_skill_cost_payable? skill_cost_payable?
+  def skill_cost_payable?(skill)
+    item = $data_items[skill.item_cost]
+    xxx001_skill_cost_payable?(skill) &&
+    (!item || $game_party.has_item?(item))
+  end
+end
+</pre>
+<p><a href="201_database.html">データベース</a>の解説で触れた
+ように、$data_items はアイテムの配列であり、最初 (0 番目) の
+要素は nil になっています。先ほど作成した item_cost
+メソッドは消費アイテムが指定されていないとき 0 を返しますから、</p>
+<pre>
+    item = $data_items[skill.item_cost]
+</pre>
+<p>ここの item には、消費アイテムが指定されていれば
+そのオブジェクトが、指定されていなければ nil
+が代入されることになります。</p>
+<pre>
+    xxx001_skill_cost_payable?(skill) &&
+    (!item || $game_party.has_item?(item))
+</pre>
+<p>!item というのは、item が偽であるかを判定するイディオム
+です (nil なら偽とみなされます) 。$game_party.has_item?
+は、パーティがそのアイテムを 1
+個以上所持しているかを判定するメソッドです。</p>
+<p>すなわちこの式は、本来の使用可能条件 (MP
+など) を満たし、かつ、「消費アイテムが指定されていないか、または
+指定された消費アイテムをパーティが所持している」という条件を
+判定しています。</p>
+
+
+<h2><a name="pay">コストの支払い</a></h2>
+<p>スキルを実際に使用したとき、コストの支払い処理を行うのは
+pay_skill_cost メソッドです。同様に Game_Actor
+クラスで再定義します。</p>
+<pre>
+class Game_Actor
+  alias xxx001_pay_skill_cost pay_skill_cost
+  def pay_skill_cost(skill)
+    xxx001_pay_skill_cost(skill)
+    item = $data_items[skill.item_cost]
+    $game_party.lose_item(item, 1) if item
+  end
+end
+</pre>
+<p>$game_party.lose_item は、パーティが所持しているアイテムを
+指定個数だけ減らすメソッドです。</p>
+<pre>
+    $game_party.lose_item(item, 1) if item
+</pre>
+<p>これは、item が nil 以外であれば lose_item
+メソッドを呼び出し、そのアイテムを 1 個減らすという意味です。</p>
+<p>今回解説した消費コストの改造は、色々と応用が効きます。HP
+の消費やお金の消費、あるいは使用者の状態変化など、興味があれば
+ぜひ挑戦してみてください。</p>
+
+
+<h6></h6>
+
+</body>
+</html>

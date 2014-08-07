@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Method</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Method</h1>
+<p><a href="sc_object.html#method">Object#method</a>
+によりオブジェクト化されたメソッドオブジェクトのクラスです。
+メソッドの実体 (名前でなく)
+とレシーバの組を封入します。<a href="sc_proc.html">Proc</a>
+オブジェクトと違ってコンテキストを保持しません。</p>
+<p><a href="sc_proc.html">Proc</a> との差…
+Method は取り出しの対象であるメソッドが
+なければ作れませんが、Proc は準備なしに作れます。その点から
+Proc は使い捨てに向き、Method は何度も繰り返し生成する
+場合に向くと言えます。また内包するコードの大きさという点では
+Proc は小規模、Method は大規模コードに向くと言えます。</p>
+<pre>
+class Foo
+  def foo(arg)
+    "foo called with arg #{arg}"
+  end
+end
+ 
+m = Foo.new.method(:foo)
+ 
+p m             # =&gt; #&lt;Method: Foo#foo&gt;
+p m.call(1)     # =&gt; "foo called with arg 1"
+</pre>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>メソッド</h2>
+<dl> 
+<dt><a name="call"></a>call(<var>arg</var> ... )</dt>
+<dt><a name="call_2"></a>call(<var>arg</var> ... ) { ... }</dt>
+<dd> 
+<p>メソッドオブジェクトに封入されているメソッドを起動します。
+引数やブロックはそのままメソッドに渡されます。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

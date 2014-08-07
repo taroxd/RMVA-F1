@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Fixnum</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Fixnum</h1>
+<p>マシンのポインタのサイズに収まる長さの固定長整数。ほとんどのマシンでは 
+31 ビット幅です。演算の結果が Fixnum の範囲を越えたときには自動的
+に <a href="sc_bignum.html">Bignum</a> に拡張されます。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_integer.html">Integer</a></li>
+</ul>
+
+<h2>メソッド</h2>
+<dl>
+<dt>id2name</dt>
+<dd>
+<p><a href="sc_symbol.html">Symbol</a> オブジェクトの整数値 (<a href="c_symbol.html#L001482">Symbol#to_i</a> 
+で得られます) に対応する文字列を返します。整数に対応するシンボルが
+存在しないときには nil を返します。</p></dd>
+<dt><a name="L001220">to_sym</a></dt>
+<dd>
+<p>オブジェクトの整数値 self に対応する <a href="sc_symbol.html">Symbol</a>
+オブジェクトを返します。整数に対応するシンボルが存在しないときには nil
+を返します。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>タイトル画面の改造</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>タイトル画面の改造</h1>
+<ul>
+<li><a href="#opacity">ウィンドウの透明化</a></li>
+<li><a href="#command">コマンドの変更</a></li>
+<li><a href="#font">フォントの変更</a></li>
+<li><a href="#align">アライメントの変更</a></li>
+<li><a href="#afterword">最後に</a></li>
+</ul>
+
+<p>最後に、ウィンドウの挙動の簡単なカスタマイズを行って、学習を
+終わることにしましょう。</p>
+<p>例として、タイトル画面で［ニューゲーム］などを表示する
+コマンドウィンドウの改造を行います。自作の画像を使ってタイトル
+画面をデザインする場合、コマンドウィンドウの表示も変更することで、
+よりオリジナリティを出すことができます。</p>
+
+
+<h2><a name="opacity">ウィンドウの透明化</a></h2>
+<p>Window_TitleCommand クラスの改造をしていきましょう。まずは
+initialize の再定義を行います。</p>
+<pre>
+class Window_TitleCommand
+  alias xxx001_initialize initialize
+  def initialize
+    xxx001_initialize
+    self.opacity = 0
+  end
+end
+</pre>
+<p>テストプレイを行うと、すぐに変化に気づくことと思います。opacity
+は RGSS 組み込みの <a href="../rgss/gc_window.html">Window</a>
+で定義されている、不透明度を表すプロパティです。この値を 0
+にすることで、ウィンドウを見えなくしているのです。</p>
+<p>なお、ウィンドウの内容 (カーソルや［ニューゲーム］などの
+文字列) は、opacity の影響を受けません。</p>
+
+
+<h2><a name="command">コマンドの変更</a></h2>
+<p>デザイン性の高い欧文フォントを使用するため、コマンド名を英語に
+変更します。make_command_list を次のように再定義します。</p>
+<pre>
+class Window_TitleCommand
+  def make_command_list
+    add_command(&quot;New Game&quot;, :new_game)
+    add_command(&quot;Continue&quot;, :continue, continue_enabled)
+    add_command(&quot;Shutdown&quot;, :shutdown)
+  end
+end
+</pre>
+<p>今回は、古い make_command_list を呼び出さずに、メソッドの内容を
+完全に上書きしています。デフォルトの動作を引き継ぎたくない場合に
+有効な方法ですが、他の素材との競合の可能性も高くなりますので、この
+ような再定義方法を用いる際は十分に注意してください。</p>
+<p>add_command の 3 番目の引数は、そのコマンドが有効状態で表示され
+るか否かを指定するものです。省略した場合は true とみなされます。</p>
+<pre>
+    add_command(&quot;Continue&quot;, :continue, continue_enabled)
+</pre>
+<p>ここで continue_enabled は［コンティニュー］が有効なら true
+を、無効なら false を返すメソッドです。実装としては、ゲームのセーブ
+データが存在するときに true を返すようになっています。</p>
+
+
+<h2><a name="font">フォントの変更</a></h2>
+<p>フォントを変更するために、create_contents
+メソッドを再定義します。create_contents
+は、ウィンドウ内容として表示するビットマップ contents
+を実際に作成、設定するためのメソッドです。</p>
+<pre>
+class Window_TitleCommand
+  alias xxx001_create_contents create_contents
+  def create_contents
+    xxx001_create_contents
+    contents.font.name = &quot;Times New Roman&quot;
+    contents.font.bold = true
+    contents.font.size = 28
+  end
+end
+</pre>
+<p>元の create_contents の呼び出しが終わった後、contents
+は Bitmap オブジェクトを指しているので、<a href="301_timer.html"
+>タイマーの改造</a>のときと同じ要領で各プロパティを変更すれば
+OK です。ここでは、フォント &quot;Times New Roman&quot;
+を太字、サイズ 28 で使用することを指定しました。詳しくは <a
+href="../rgss/gc_window.html">Window</a>、<a
+href="../rgss/gc_bitmap.html">Bitmap</a>、<a
+href="../rgss/gc_font.html">Font</a> を参照してください。</p>
+
+
+<h2><a name="align">アライメントの変更</a></h2>
+<p>文字列を描画する際、左、中央、右のうちどこを基準に揃える
+かのことをアライメントと呼びます。これは <a
+href="../rgss/gc_bitmap.html">Bitmap</a> の draw_text
+メソッドの、最後の引数に対応します。Window_Command
+クラスでは通常左揃えで描画していますが、alignment
+というメソッドを再定義することで簡単に変更ができます。</p>
+<pre>
+class Window_TitleCommand
+  def alignment
+    return 1
+  end
+end
+</pre>
+<p>このように、1 を返せば中央揃えで描画されます。0
+ならデフォルトと同じ左揃え、2 なら右揃えとなります。</p>
+
+
+<h2><a name="afterword">最後に</a></h2>
+<p>お疲れ様でした。「スクリプト入門」はこれで終了です。</p>
+<p>実践編では比較的簡単な改造を通して、スクリプト素材の作成を
+どのような流れで行っていくのかを解説しました。基礎編と解読編で学習した
+知識を併せれば、ここで解説できなかった部分も解読、改造していくことが
+できるはずです。<a href="../rgss/index.html">RGSS リファレンス</a
+>を有効に活用してください。もし、メソッドやクラスの説明が見つけられない
+場合は、ヘルプの「検索」を使用してみると良いでしょう。</p>
+<p>RGSS を使いこなせば大抵のことは実現できますが、いきなり
+「戦闘システムの自作」というような高い目標を立ててしまうと挫折しやすく
+なってしまいます。自分にできそうなことから始めて技術を磨いていくことを
+お勧めします。インターネットで公開されているスクリプト素材の解読を
+試みることも、大いに助けになるでしょう。</p>
+
+
+<h6></h6>
+
+</body>
+</html>

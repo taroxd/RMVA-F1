@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::UsableItem::Damage</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::UsableItem::Damage</h1>
+<p>ダメージのデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>参照元</h2>
+<ul>
+<li><a href="gc_rpg_usableitem.html">RPG::UsableItem</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>type</dt>
+<dd><p>ダメージタイプ。</p>
+<ul>
+    <li>0 : なし</li>
+    <li>1 : HP ダメージ</li>
+    <li>2 : MP ダメージ</li>
+    <li>3 : HP 回復</li>
+    <li>4 : MP 回復</li>
+    <li>5 : HP 吸収</li>
+    <li>6 : MP 吸収</li>
+</ul></dd>
+<dt>element_id</dt>
+<dd><p>属性 ID。</p></dd>
+<dt>formula</dt>
+<dd><p>計算式。</p></dd>
+<dt>variance</dt>
+<dd><p>分散度。</p></dd>
+<dt>critical</dt>
+<dd><p>会心 (true / false) 。</p></dd>
+</dl>
+
+
+<h2>メソッド</h2>
+<dl>
+
+<dt>none?</dt>
+<dd>
+<p>ダメージタイプが［なし］か否かを判定します。type の値が
+0 のときに真を返します。</p>
+</dd>
+
+<dt>to_hp?</dt>
+<dd>
+<p>HP に影響を与えるか否かを判定します。type の値が
+1、3、5 のときに真を返します。</p>
+</dd>
+
+<dt>to_mp?</dt>
+<dd>
+<p>MP に影響を与えるか否かを判定します。type の値が
+2、4、6 のときに真を返します。</p>
+</dd>
+
+<dt>recover?</dt>
+<dd>
+<p>回復か否かを判定します。type の値が
+3、4 のときに真を返します。</p>
+</dd>
+
+<dt>drain?</dt>
+<dd>
+<p>吸収か否かを判定します。type の値が
+5、6 のときに真を返します。</p>
+</dd>
+
+<dt>sign</dt>
+<dd>
+<p>ダメージの符号です。回復なら -1、それ以外なら 1 を返します。</p>
+</dd>
+
+<dt>eval(<var>a</var>, <var>b</var>, <var>v</var>)</dt>
+<dd>
+<p>計算式の評価を行います。<var>a</var>
+に行動側バトラー、<var>b</var> に対象側バトラー、v
+にゲーム内変数の配列 ($game_variables) を指定します。</p>
+<p>回復の場合は負の値を返します。</p>
+</dd>
+</dl>
+
+
+
+<h2>定義</h2>
+<pre>
+class RPG::UsableItem::Damage
+  def initialize
+    @type = 0
+    @element_id = 0
+    @formula = '0'
+    @variance = 20
+    @critical = false
+  end
+  def none?
+    @type == 0
+  end
+  def to_hp?
+    [1,3,5].include?(@type)
+  end
+  def to_mp?
+    [2,4,6].include?(@type)
+  end
+  def recover?
+    [3,4].include?(@type)
+  end
+  def drain?
+    [5,6].include?(@type)
+  end
+  def sign
+    recover? ? -1 : 1
+  end
+  def eval(a, b, v)
+    [Kernel.eval(@formula), 0].max * sign rescue 0
+  end
+  attr_accessor :type
+  attr_accessor :element_id
+  attr_accessor :formula
+  attr_accessor :variance
+  attr_accessor :critical
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

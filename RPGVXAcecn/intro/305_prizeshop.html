@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>景品交換所の作成</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>景品交換所の作成</h1>
+<ul>
+<li><a href="#constant">定数の定義</a></li>
+<li><a href="#command">コマンドの変更</a></li>
+<li><a href="#money">所持金表示の変更</a></li>
+<li><a href="#buy">購入処理の変更</a></li>
+<li><a href="#terminate">終了処理の追加</a></li>
+</ul>
+
+<p>ショップ画面の改造方法を解説します。</p>
+<p>例として、変数の値を所持金とみなしてアイテムと交換できる
+「景品交換所」を作成します。</p>
+
+
+<h2><a name="constant">定数の定義</a></h2>
+<p>これまでの例では、たとえば変数 7 番を参照する際に
+$game_variables[7] などと直接数字を指定してきました。
+これはサンプルコードのわかりやすさを重視したためですが、
+実際には、後から変更する可能性のある値は<strong>定数</strong
+>として定義するのが、より良い方法です。</p>
+<p>定数については <a href="202_vocab.html">Vocab モジュール</a
+>の章で解説したように、大文字で始まる識別子を定義するだけです。
+慣習的に、全て大文字の名前がよく使われています。</p>
+<p>今回は、スイッチ 20 番が ON
+のときに呼び出されたショップを「景品交換所」とみなし、変数
+20 番の値を所持金とする仕様とします。</p>
+<pre>
+PRIZE_SHOP_SID = 20
+PRIZE_SHOP_VID = 20
+</pre>
+<p>スイッチ ID を SID、変数 ID を VID と省略して命名しました。
+これはクラス定義の外側に直に書いておけば OK
+です。特に複数の個所で同じ数値を使用する場合、このように
+定数として定義しておけば、後で変更したくなったときに
+変更漏れなどのミスが生じる危険がなくなります。</p>
+<p>実装に入る前に、テストプレイのため、変数 20 番に適当な値を
+入れ、スイッチ 20 番を ON にした状態でショップを呼び出すイベントを
+作成しておいてください。</p>
+
+
+<h2><a name="command">コマンドの変更</a></h2>
+<p>まずは、ショップ画面の［購入する］コマンドの名前を［交換する］に
+変更し、さらに［売却する］コマンドを消去します。</p>
+<p>［購入する］などのコマンドを選択するウィンドウに対応する
+クラスは、Window_ShopCommand です。</p>
+<pre>
+class Window_ShopCommand
+  alias xxx001_make_command_list make_command_list
+  def make_command_list
+    if $game_switches[PRIZE_SHOP_SID]
+      add_command(&quot;交換する&quot;, :buy)
+      add_command(&quot;やめる&quot;,   :cancel)
+    else
+      xxx001_make_command_list
+    end
+  end
+end
+</pre>
+<p>先ほど定義した定数を参照し、特定のスイッチが ON
+の場合に［交換する］と［やめる］を表示するようにしました。</p>
+<p>add_command メソッドについては<a
+href="302_story.html">あらすじ画面の作成</a>で
+解説しましたから、内容は理解しやすいかと思います。
+通常ショップの購入処理をそのまま使いたいので、シンボルは
+:buy のままとしています。</p>
+
+
+<h2><a name="money">所持金表示の変更</a></h2>
+<p>所持金を表示するウィンドウで、お金の代わりに変数の値を
+表示するようにします。これは Window_Gold クラスの value
+メソッドを再定義すれば可能です。</p>
+<pre>
+class Window_Gold
+  alias xxx001_value value
+  def value
+    if $game_switches[PRIZE_SHOP_SID]
+      $game_variables[PRIZE_SHOP_VID]
+    else
+      xxx001_value
+    end
+  end
+end
+</pre>
+<p>同様に通貨単位を変更するため、currency_unit メソッドを
+再定義します。ここではカジノのコインのようなものを想定して
+&quot;枚&quot; と表示させています。</p>
+<pre>
+class Window_Gold
+  alias xxx001_currency_unit currency_unit
+  def currency_unit
+    if $game_switches[PRIZE_SHOP_SID]
+      &quot;枚&quot;
+    else
+      xxx001_currency_unit
+    end
+  end
+end
+</pre>
+<p>このウィンドウに表示されている値と通貨単位は、商品の選択や
+個数入力のときにも自動的に使用されます。</p>
+
+
+<h2><a name="buy">購入処理の変更</a></h2>
+<p>実際に商品の購入を決定したときには、Scene_Shop クラスの
+do_buy メソッドが呼び出されます。これを再定義して、お金の代わりに
+変数の値を減らすようにします。</p>
+<pre>
+class Scene_Shop
+  alias xxx001_do_buy do_buy
+  def do_buy(number)
+    if $game_switches[PRIZE_SHOP_SID]
+      $game_variables[PRIZE_SHOP_VID] -= number * buying_price
+      $game_party.gain_item(@item, number)
+    else
+      xxx001_do_buy(number)
+    end
+  end
+end
+</pre>
+<p>引数 number は購入個数、@item は購入するアイテム、buying_price
+はそのアイテムの値段です。</p>
+<p>ここで呼び出している gain_item は Game_Party クラスのメソッド
+で、購入したアイテムを指定した数だけ増やす処理を行っています。</p>
+
+
+<h2><a name="terminate">終了処理の追加</a></h2>
+<p>解読編の<a href="208_scene.html">シーンの管理</a>にて解説したように、
+シーンクラスには開始処理や終了処理を行うメソッドが用意されています。</p>
+<p>今回は、終了処理を行う terminate メソッドを以下のように再定義します。</p>
+<pre>
+class Scene_Shop
+  alias xxx001_terminate terminate
+  def terminate
+    xxx001_terminate
+    $game_switches[PRIZE_SHOP_SID] = false
+  end
+end
+</pre>
+<p>これで、ショップ画面を閉じたとき、「景品交換所」識別用の
+スイッチを自動的に OFF にすることができます。</p>
+
+
+
+<h6></h6>
+
+</body>
+</html>

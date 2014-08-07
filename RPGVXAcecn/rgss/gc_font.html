@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Font</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Font</h1>
+<p>フォントのクラス。フォントは <a href="gc_bitmap.html">Bitmap</a> クラスの
+プロパティです。</p>
+<p>ゲームフォルダ直下に &quot;Fonts&quot;
+フォルダがある場合、その中のフォントファイルは
+システムにインストールされていなくても使用することができます。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>クラスメソッド</h2>
+<dl>
+
+<dt>Font.new([<var>name</var>[, <var>size</var>]])</dt>
+<dd>
+<p>Font オブジェクトを生成します。</p></dd>
+
+<dt>Font.exist?(<var>name</var>)</dt>
+<dd>
+<p>指定された名前のフォントがシステムに存在するとき真を返します。</p></dd>
+
+</dl>
+
+<h2>プロパティ</h2>
+<dl>
+
+<dt>name</dt>
+<dd>
+<p>フォント名です。初期値は &quot;VL Gothic&quot;
+<span class="rgss3">(RGSS3)</span> です。</p>
+<p>文字列の配列を設定すると、希望順に複数指定することができます。</p>
+<pre>
+font.name = [&quot;HGP行書体&quot;, &quot;ＭＳ ゴシック&quot;]
+</pre>
+<p>上の例の場合、第一希望の &quot;HGP行書体&quot; がシステムに存在
+しなければ、第二希望の &quot;ＭＳ ゴシック&quot; が使用されること
+になります。</p>
+</dd>
+
+<dt>size</dt>
+<dd>
+<p>フォントのサイズです。初期値は 24
+<span class="rgss3">(RGSS3)</span> です。 </p></dd>
+
+<dt>bold</dt>
+<dd>
+<p>ボールドフラグです。初期値は false です。</p></dd>
+
+<dt>italic</dt>
+<dd>
+<p>イタリックフラグです。初期値は false です。</p></dd>
+
+<dt>outline <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>縁取り文字のフラグです。初期値は true です。</p></dd>
+
+<dt>shadow</dt>
+<dd>
+<p>影付き文字のフラグです。初期値は false
+<span class="rgss3">(RGSS3)</span> です。
+有効な場合、文字の右下に黒色で影を描画します。</p></dd>
+
+<dt>color</dt>
+<dd>
+<p>フォントの色 (<a href="gc_color.html">Color</a>) です。
+アルファ値も有効です。初期値は (255,255,255,255) です。</p>
+<p>アルファ値は、縁取り <span class="rgss3">(RGSS3)</span>
+や影の描画にも反映されます。</p></dd>
+
+<dt>out_color <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>縁取りの色 (<a href="gc_color.html">Color</a>) です。
+初期値は (0,0,0,128) です。</p></dd>
+
+</dl>
+
+<h2>クラスプロパティ</h2>
+<dl>
+
+<dt>default_name</dt>
+<dt>default_size</dt>
+<dt>default_bold</dt>
+<dt>default_italic</dt>
+<dt>default_shadow</dt>
+<dt>default_outline <span class="rgss3">(RGSS3)</span></dt>
+<dt>default_color</dt>
+<dt>default_out_color <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>Font オブジェクトが新しく作成されたときに各要素に設定される
+デフォルト値を変更できます。</p>
+<pre>
+Font.default_name = &quot;ＭＳ 明朝&quot;
+Font.default_size = 22
+Font.default_bold = true
+</pre>
+</dd>
+
+</dl>
+
+<h6></h6>
+</body>
+</html>

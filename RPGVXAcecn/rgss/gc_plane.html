@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Plane</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Plane</h1>
+<p>プレーンのクラス。プレーンは、ビットマップのパターンを画面全体に並べて
+表示する特殊なスプライトで、遠景などを表示するために使います。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>クラスメソッド</h2>
+<dl>
+
+<dt>Plane.new([<var>viewport</var>])</dt>
+<dd>
+<p>Plane オブジェクトを生成します。必要に応じてビューポート
+(<a href="gc_viewport.html">Viewport</a>) を指定します。</p></dd>
+
+</dl>
+
+<h2>メソッド</h2>
+<dl>
+
+<dt>dispose</dt>
+<dd>
+<p>プレーンを解放します。すでに解放されている場合は何も行いません。</p></dd>
+
+<dt>disposed?</dt>
+<dd>
+<p>プレーンがすでに解放されている場合に真を返します。</p></dd>
+
+</dl>
+
+<h2>プロパティ</h2>
+<dl>
+
+<dt>bitmap</dt>
+<dd>
+<p>プレーンとして使用するビットマップ (<a href="gc_bitmap.html">Bitmap</a>) への
+参照です。</p></dd>
+
+<dt>viewport</dt>
+<dd>
+<p>プレーンが関連付けられているビューポート
+ (<a href="gc_viewport.html">Viewport</a>) への参照です。</p></dd>
+
+<dt>visible</dt>
+<dd>
+<p>プレーンの可視状態です。真のとき可視になります。初期値は
+true です。</p></dd>
+
+<dt>z</dt>
+<dd>
+<p>スプライトの Z 座標です。この値が大きいものほど手前に表示されます。</p>
+<p>Z 座標が同一の場合は後に生成されたオブジェクトほど手前に表示されます。</p></dd>
+
+<dt>ox</dt>
+<dd>
+<p>プレーンの転送元原点の X 座標です。この値を変化させることによって
+スクロールを行います。</p></dd>
+
+<dt>oy</dt>
+<dd>
+<p>プレーンの転送元原点の Y 座標です。この値を変化させることによって
+スクロールを行います。</p></dd>
+
+<dt>zoom_x</dt>
+<dd>
+<p>プレーンの X 方向拡大率です。1.0 で等倍になります。</p></dd>
+
+<dt>zoom_y</dt>
+<dd>
+<p>プレーンの Y 方向拡大率です。1.0 で等倍になります。</p></dd>
+
+<dt>opacity</dt>
+<dd>
+<p>プレーンの不透明度です。0 ～ 255 の範囲で指定します。
+範囲外の値は自動で修正されます。</p></dd>
+
+<dt>blend_type</dt>
+<dd>
+<p>プレーンの合成方法 (0:通常、1:加算、2:減算) です。</p></dd>
+
+<dt>color</dt>
+<dd>
+<p>プレーンにブレンドする色 (<a href="gc_color.html">Color</a>) です。
+ブレンドの割合にはアルファ値が使用されます。</p></dd>
+
+<dt>tone</dt>
+<dd>
+<p>プレーンの色調 (<a href="gc_tone.html">Tone</a>) です。</p></dd>
+
+</dl>
+
+<h6></h6>
+</body>
+</html>

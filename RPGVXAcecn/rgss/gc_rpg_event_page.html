@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Event::Page</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Event::Page</h1>
+<p>イベントページのデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>参照元</h2>
+<ul>
+<li><a href="gc_rpg_event.html">RPG::Event</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>condition</dt>
+<dd><p>条件
+(<a href="gc_rpg_event_page_condition.html"
+>RPG::Event::Page::Condition</a>) 。</p></dd>
+<dt>graphic</dt>
+<dd><p>グラフィック
+(<a href="gc_rpg_event_page_graphic.html"
+>RPG::Event::Page::Graphic</a>) 。</p></dd>
+<dt>move_type</dt>
+<dd><p>移動タイプ (0:固定、1:ランダム、2:近づく、3:カスタム) 。</p></dd>
+<dt>move_speed</dt>
+<dd><p>移動速度 (1:1/8倍速、2:1/4倍速、3:1/2倍速、4:標準速、5:2倍速、6:4倍速) 。</p></dd>
+<dt>move_frequency</dt>
+<dd><p>移動頻度 (1:最低、2:低、3:通常、4:高、5:最高) 。</p></dd>
+<dt>move_route</dt>
+<dd><p>移動ルート
+(<a href="gc_rpg_moveroute.html">RPG::MoveRoute</a>) 。
+移動タイプがカスタムの場合のみ参照されます。</p></dd>
+<dt>walk_anime</dt>
+<dd><p>オプション [歩行アニメ] の真偽値。</p></dd>
+<dt>step_anime</dt>
+<dd><p>オプション [足踏みアニメ] の真偽値。</p></dd>
+<dt>direction_fix</dt>
+<dd><p>オプション [向き固定] の真偽値。</p></dd>
+<dt>through</dt>
+<dd><p>オプション [すり抜け] の真偽値。</p></dd>
+<dt>priority_type</dt>
+<dd><p>プライオリティタイプ (0:通常キャラの下、1:通常キャラと
+同じ、2:通常キャラの上) 。</p></dd>
+<dt>trigger</dt>
+<dd><p>トリガー (0:決定ボタン、1:プレイヤーから接触、2:イベント
+から接触、3:自動実行、4:並列処理) 。</p></dd>
+<dt>list</dt>
+<dd><p>実行内容。<a
+href="gc_rpg_eventcommand.html">RPG::EventCommand</a>
+の配列です。</p></dd>
+</dl>
+
+<h2>内部クラス</h2>
+<ul>
+<li><a href="gc_rpg_event_page_condition.html">RPG::Event::Page::Condition</a></li>
+<li><a href="gc_rpg_event_page_graphic.html">RPG::Event::Page::Graphic</a></li>
+</ul>
+
+<h2>定義</h2>
+<pre>
+class RPG::Event::Page
+  def initialize
+    @condition = RPG::Event::Page::Condition.new
+    @graphic = RPG::Event::Page::Graphic.new
+    @move_type = 0
+    @move_speed = 3
+    @move_frequency = 3
+    @move_route = RPG::MoveRoute.new
+    @walk_anime = true
+    @step_anime = false
+    @direction_fix = false
+    @through = false
+    @priority_type = 0
+    @trigger = 0
+    @list = [RPG::EventCommand.new]
+  end
+  attr_accessor :condition
+  attr_accessor :graphic
+  attr_accessor :move_type
+  attr_accessor :move_speed
+  attr_accessor :move_frequency
+  attr_accessor :move_route
+  attr_accessor :walk_anime
+  attr_accessor :step_anime
+  attr_accessor :direction_fix
+  attr_accessor :through
+  attr_accessor :priority_type
+  attr_accessor :trigger
+  attr_accessor :list
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

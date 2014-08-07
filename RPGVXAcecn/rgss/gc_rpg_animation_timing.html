@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Animation::Timing</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Animation::Timing</h1>
+<p>アニメーションの [SE とフラッシュのタイミング] のデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>参照元</h2>
+<ul>
+<li><a href="gc_rpg_animation.html">RPG::Animation</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>frame</dt>
+<dd><p>フレーム番号。ツクールで表示される番号から 1 を引いた数字です。</p></dd>
+<dt>se</dt>
+<dd><p>SE (<a href="gc_rpg_se.html">RPG::SE</a>) 。</p></dd>
+<dt>flash_scope</dt>
+<dd><p>フラッシュの範囲 (0:なし、1:対象、2:画面、3:対象消去) 。</p></dd>
+<dt>flash_color</dt>
+<dd><p>フラッシュの色 (<a href="gc_color.html">Color</a>) 。</p></dd>
+<dt>flash_duration</dt>
+<dd><p>フラッシュの持続時間。</p></dd>
+</dl>
+
+<h2>定義</h2>
+<pre>
+class RPG::Animation::Timing
+  def initialize
+    @frame = 0
+    @se = RPG::SE.new('', 80)
+    @flash_scope = 0
+    @flash_color = Color.new(255,255,255,255)
+    @flash_duration = 5
+  end
+  attr_accessor :frame
+  attr_accessor :se
+  attr_accessor :flash_scope
+  attr_accessor :flash_color
+  attr_accessor :flash_duration
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

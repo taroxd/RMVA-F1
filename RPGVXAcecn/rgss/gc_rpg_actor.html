@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Actor</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Actor</h1>
+<p>アクターのデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="gc_rpg_baseitem.html">RPG::BaseItem</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>nickname</dt>
+<dd><p>二つ名。</p></dd>
+<dt>class_id</dt>
+<dd><p>職業 ID。</p></dd>
+<dt>initial_level</dt>
+<dd><p>初期レベル。</p></dd>
+<dt>max_level</dt>
+<dd><p>最高レベル。</p></dd>
+<dt>character_name</dt>
+<dd><p>歩行グラフィックのファイル名。</p></dd>
+<dt>character_index</dt>
+<dd><p>歩行グラフィックのインデックス (0..7) 。</p></dd>
+<dt>face_name</dt>
+<dd><p>顔グラフィックのファイル名。</p></dd>
+<dt>face_index</dt>
+<dd><p>顔グラフィックのインデックス (0..7) 。</p></dd>
+<dt>equips</dt>
+<dd><p>初期装備。以下を添字とする、武器 ID または防具 ID の配列です。</p>
+<ul>
+<li>0 : 武器</li>
+<li>1 : 盾</li>
+<li>2 : 頭</li>
+<li>3 : 身体</li>
+<li>4 : 装飾品</li>
+</ul></dd>
+</dl>
+
+
+<h2>定義</h2>
+<pre>
+class RPG::Actor &lt; RPG::BaseItem
+  def initialize
+    super
+    @nickname = ''
+    @class_id = 1
+    @initial_level = 1
+    @max_level = 99
+    @character_name = ''
+    @character_index = 0
+    @face_name = ''
+    @face_index = 0
+    @equips = [0,0,0,0,0]
+  end
+  attr_accessor :nickname
+  attr_accessor :class_id
+  attr_accessor :initial_level
+  attr_accessor :max_level
+  attr_accessor :character_name
+  attr_accessor :character_index
+  attr_accessor :face_name
+  attr_accessor :face_index
+  attr_accessor :equips
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

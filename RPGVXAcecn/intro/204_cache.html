@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Cache モジュール</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Cache モジュール</h1>
+<ul>
+<li><a href="#what">キャッシュとは何か</a></li>
+<li><a href="#use">キャッシュの使い方</a></li>
+<li><a href="#detail">実装の詳細</a></li>
+<li><a href="#nil_guard">nil ガード</a></li>
+<li><a href="#methods">各メソッドの呼び出し</a></li>
+<li><a href="#bitmap">ビットマップの作成</a></li>
+</ul>
+
+<p>Cache は、画像ファイルの読み込みを高速化するためのモジュールです。</p>
+
+
+<h2><a name="what">キャッシュとは何か</a></h2>
+<p>基礎編で<a href="109_graphics.html">画像の表示</a>を行うとき
+に、<a href="../rgss/gc_bitmap.html">Bitmap</a> というクラスを次のように
+使用しました。</p>
+<pre>
+skeleton.bitmap = Bitmap.new(&quot;Graphics/Battlers/Skeleton&quot;)
+</pre>
+<p>このように、Bitmap クラスのインスタンスを作成するとき、引数として
+画像のファイル名を指定することで、そのファイルを読み込むことができま
+す。</p>
+<p>しかしながら、画像が必要になるたびに毎回ファイルを読み込んでいたの
+では実行効率が悪くなってしまいます。そこで、一度作成した Bitmap オブ
+ジェクトを保持しておくための仕組みを提供しているのが、この Cache モ
+ジュールなのです。</p>
+<p>Cache (キャッシュ) とはもともと「貯蔵庫」という意味の英単語ですが、
+コンピュータの世界では、「頻繁に用いられるデータを蓄えておくための
+場所」という意味が定着しています。このモジュールの命名もそれに倣って
+います。</p>
+
+
+<h2><a name="use">キャッシュの使い方</a></h2>
+<p>Cache モジュールの内部がどのような定義になっているかということより、
+どのように使うのかということのほうが重要です。</p>
+<p>実際には次のような使用方法になります (注意: Cache モジュールの定義が
+完了していない TEST セクションでは使用できません) 。</p>
+<pre>
+skeleton.bitmap = Cache.battler(&quot;Skeleton&quot;, 0)
+</pre>
+<p>このスクリプトは、キャッシュから
+戦闘グラフィック &quot;Skeleton&quot; のビットマップを取得すると
+いう内容です。取得した Bitmap オブジェクトが戻り値と
+なります。Bitmap.new を直接呼び出す場合のよう
+に、&quot;Graphics/Battlers/&quot; というフォルダ名を指定しなくて良い
+ようになっています。</p>
+<p>2 番目の引数の「0」は、色相変化値を表しています。
+値の範囲は 0 ～ 360 で、アニメーション グラフィックと戦闘グラフィックの
+場合のみ指定します。</p>
+<p>各種素材フォルダに対応するメソッドは以下の通りです。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>メソッド名</th>
+ <th>引数</th>
+ <th>フォルダ</th>
+</tr><tr>
+ <td>Cache.animation</td>
+ <td>ファイル名、色相</td>
+ <td>Graphics/Animations/</td>
+</tr><tr>
+ <td>Cache.battleback1</td>
+ <td>ファイル名</td>
+ <td>Graphics/Battlebacks1/</td>
+</tr><tr>
+ <td>Cache.battleback2</td>
+ <td>ファイル名</td>
+ <td>Graphics/Battlebacks2/</td>
+</tr><tr>
+ <td>Cache.battler</td>
+ <td>ファイル名、色相</td>
+ <td>Graphics/Battlers/</td>
+</tr><tr>
+ <td>Cache.character</td>
+ <td>ファイル名</td>
+ <td>Graphics/Characters/</td>
+</tr><tr>
+ <td>Cache.face</td>
+ <td>ファイル名</td>
+ <td>Graphics/Faces/</td>
+</tr><tr>
+ <td>Cache.parallax</td>
+ <td>ファイル名</td>
+ <td>Graphics/Parallaxes/</td>
+</tr><tr>
+ <td>Cache.picture</td>
+ <td>ファイル名</td>
+ <td>Graphics/Pictures/</td>
+</tr><tr>
+ <td>Cache.system</td>
+ <td>ファイル名</td>
+ <td>Graphics/System/</td>
+</tr><tr>
+ <td>Cache.tileset</td>
+ <td>ファイル名</td>
+ <td>Graphics/Tilesets/</td>
+</tr><tr>
+ <td>Cache.title1</td>
+ <td>ファイル名</td>
+ <td>Graphics/Titles1/</td>
+</tr><tr>
+ <td>Cache.title2</td>
+ <td>ファイル名</td>
+ <td>Graphics/Titles2/</td>
+</tr></table>
+<p>なお、Sound モジュールと同様、空のファイル名を指定してもエラーには
+ならないように設計されています。その場合は、32&times;32 の大きさの
+空のビットマップを作成して返します。1&times;1 でないのは、使い方に
+よっては実行効率が悪くなるという、RGSS 内部の実装上の都合によりま
+す。</p>
+
+
+<h2><a name="detail">実装の詳細</a></h2>
+<p>キャッシュについての理解をより深めるために、実装がどのようになって
+いるのかを見ていきましょう。まずは Cache.battler メソッドからです。</p>
+<pre>
+  def self.battler(filename, hue)
+    load_bitmap(&quot;Graphics/Battlers/&quot;, filename, hue)
+  end
+</pre>
+<p>シンプルですね。引数として戦闘グラフィックのフォルダ名を追加
+し、load_bitmap という別のメソッドを呼び出しているだけです。
+では、呼び出し先の load_bitmap メソッドを見てみます。</p>
+<pre>
+  def self.load_bitmap(folder_name, filename, hue = 0)
+    @cache ||= {}
+    if filename.empty?
+      empty_bitmap
+    elsif hue == 0
+      normal_bitmap(folder_name + filename)
+    else
+      hue_changed_bitmap(folder_name + filename, hue)
+    end
+  end
+</pre>
+<p>これは解読が大変そうです。細切れにして読んでいきましょう。</p>
+<pre>
+  def self.load_bitmap(folder_name, filename, hue = 0)
+</pre>
+<p>最上行はモジュールメソッドの定義ですね。フォルダ名、ファイル名、
+色相を引数として取るように定義されています。色相 (hue) に指定されて
+いる「0」は<strong>デフォルト引数</strong>です。
+これは<a href="107_function.html">関数</a>の場合とまったく同じ
+です。</p>
+
+
+<h2><a name="nil_guard">nil ガード</a></h2>
+<p>2 行目の解読は厄介です。</p>
+<pre>
+    @cache ||= {}
+</pre>
+<p>これは <strong>nil ガード</strong>と呼ばれる、Ruby
+特有のイディオムです。||= というのは OR 演算子と自己代入を組み合わせた
+もので、省略せずに書くと以下のようになります。</p>
+<pre>
+    @cache = @cache || {}
+</pre>
+<p>これでもまだ意味不明でしょう。|| 演算子は、主に<a href=
+"105_branch.html">条件分岐</a>で「または」ということを表すために
+使うものですが、これはそれを応用した書き方なのです。</p>
+<p>Ruby では、nil と false 以外の値は全て true として扱われます。
+そして || 演算子は、左の値が true であればその値を、false であれば
+右の値を返すという動作を行います。したがって、次のコードと同じと
+いうことになります。</p>
+<pre>
+    if @cache != nil
+      @cache = @cache
+    else
+      @cache = {}
+    end
+</pre>
+<p>{} という記号は何だったか覚えていますか？　これは、
+空の<a href="111_hash.html">ハッシュ</a>を作成する方法でした。
+まとめると、@cache というインスタンス変数の値が nil のとき、
+空のハッシュオブジェクトを作成して代入するという意味になり
+ます。インスタンス変数は、クラスで定義される通常のメソッドで
+使用するのが一般的ですが、ここはモジュールメソッドの中です。
+この場合、インスタンス変数は Cache モジュールそのものに属する
+変数と解釈されます。</p>
+<p>これは比較的上級な書き方なのですが、より短く簡潔に書くために
+プリセットのスクリプトでも使用しています。</p>
+
+
+<h2><a name="methods">各メソッドの呼び出し</a></h2>
+<p>続いて見ていきましょう。</p>
+<pre>
+    if filename.empty?
+      empty_bitmap
+    elsif hue == 0
+      normal_bitmap(folder_name + filename)
+    else
+      hue_changed_bitmap(folder_name + filename, hue)
+    end
+</pre>
+<p>長い条件分岐ですが、内容はさほど複雑ではありません。</p>
+<p>まず filename が空文字列であるかを調べ、そうであるならば
+empty_bitmap というメソッドを呼び出してその値を返します。filename
+が空でなく、hue の値 (色相) が 0 であるなら、normal_bitmap を、
+0 以外であるなら hue_changed_bitmap をそれぞれ呼び出します。</p>
+<p>つまり load_bitmap メソッドは、その内部でさらに別のメソッドを
+呼び出しているということです。このように、VX Ace のスクリプトは
+比較的、処理をメソッド単位で細切れにして書かれている傾向があります。
+このため初心者の方は解読に戸惑うかもしれませんが、メソッドの
+再利用性や可読性を高めるための処置ですので、最終的にはこのほうが
+良いと思うようになるでしょう。</p>
+<p>念のため解説しておくと、</p>
+<pre>
+  folder_name + filename
+</pre>
+<p>これは単純な<a href="104_string.html">文字列</a>の足し算
+です。たとえば folder_name が
+&quot;Graphics/Battlers/&quot;、filename が
+&quot;Skeleton&quot; であるときは、それを連結した
+&quot;Graphics/Battlers/Skeleton&quot; になるということです。</p>
+
+
+<h2><a name="bitmap">ビットマップの作成</a></h2>
+<p>続いて、normal_bitmap の実装を確認しておきます。</p>
+<pre>
+  def self.normal_bitmap(path)
+    @cache[path] = Bitmap.new(path) unless include?(path)
+    @cache[path]
+  end
+</pre>
+<p>unless が右側についているのは、修飾子形式の<a
+href="105_branch.html">条件分岐</a>です。ここでは、path
+に対応するビットマップがキャッシュに含まれていなければ
+新規に画像ファイルを読み込み、含まれていればそれをそのまま返す
+という処理を行っています。</p>
+<p>include? メソッドは次のような実装です。</p>
+<pre>
+  def self.include?(key)
+    @cache[key] && !@cache[key].disposed?
+  end
+</pre>
+<p>これは、@cache が指しているハッシュオブジェクトに key
+が含まれており、かつ、そのビットマップが解放されていない場合
+という条件を判定しています。disposed? メソッドについては
+<a href="../rgss/gc_bitmap.html">Bitmap</a>
+のリファレンスを参照してください。</p>
+<p>Cache モジュールにはこのほか色相変化の処理などが含まれて
+いますが、特に見るべき個所はありませんので、解説は省略します。</p>
+
+
+<h6></h6>
+
+</body>
+</html>

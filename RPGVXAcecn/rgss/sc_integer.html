@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Integer</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Integer</h1>
+<p>整数の抽象クラス。サブクラスとして <a href="sc_fixnum.html">Fixnum</a>
+と <a href="sc_bignum.html">Bignum</a> があります。この 2 種類の整数は
+値の大きさに応じてお互いに自動的に変換されます。ビット操作において整数は
+無限の長さのビットストリングとみなすことができます。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_numeric.html">Numeric</a></li>
+</ul>
+
+<h2>メソッド</h2>
+<dl>
+<dt>self[nth]</dt>
+<dd>
+<p><var>nth</var> 番目のビット (最下位ビット (LSB) が 0 番目) が立っている
+とき 1 を、そうでなければ 0 を返します。</p>
+<p>self[nth]=bit が Integer にないのは、Numeric 関連クラスが 
+immutable であるためです。</p></dd>
+<dt><var>self</var> + <var>other</var></dt>
+<dt><var>self</var> - <var>other</var></dt>
+<dt><var>self</var> * <var>other</var></dt>
+<dt><var>self</var> / <var>other</var></dt>
+<dt><var>self</var> % <var>other</var></dt>
+<dt><var>self</var> ** <var>other</var></dt>
+<dd>
+<p>算術演算子。それぞれ和、差、積、商、剰余、冪を計算します。</p></dd>
+<dt><var>self</var> &lt;=&gt; <var>other</var></dt>
+<dd>
+<p>self と other を比較して、self が
+大きいときに正、等しいときに 0、小さいときに負の整数を返します。</p></dd>
+<dt><var>self</var> == <var>other</var></dt>
+<dt><var>self</var> &lt; <var>other</var></dt>
+<dt><var>self</var> &lt;= <var>other</var></dt>
+<dt><var>self</var> &gt; <var>other</var></dt>
+<dt><var>self</var> &gt;= <var>other</var></dt>
+<dd>
+<p>比較演算子。</p></dd>
+<dt>~ <var>self</var></dt>
+<dt><var>self</var> | <var>other</var></dt>
+<dt><var>self</var> &amp; <var>other</var></dt>
+<dt><var>self</var> ^ <var>other</var></dt>
+<dd>
+<p>ビット演算子。それぞれ否定、論理和、論理積、排他的論理和を計算しま
+す。</p></dd>
+<dt><var>self</var> &lt;&lt; <var>bits</var></dt>
+<dt><var>self</var> &gt;&gt; <var>bits</var></dt>
+<dd>
+<p>シフト演算子。bits だけビットを右 (左) にシフトします。</p>
+<p>右シフトは、符号ビット (最上位ビット (MSB)) が保持されます。</p>
+</dd>
+<dt>chr</dt>
+<dd>
+<p>文字コードに対応する 1 バイトの文字列を返します。たとえば 
+65.chr は &quot;A&quot; を返します。</p>
+<p>整数は 0 から 255 の範囲内でなければなりません。範囲外の整数に対す
+る呼び出しは例外 <a href="s_exceptions.html#RangeError">RangeError</a> を発生させます。</p></dd>
+<dt><a name="L001200">downto(<var>min</var>) {|<var>n</var>| ... }</a></dt>
+<dd>
+<p>self から <var>min</var> まで 1 ずつ減らしながら繰り返します。
+self &lt; min であれば何もしません。</p>
+<p><a href="#L001211">upto</a>, <a href="#L001203">step</a>,
+<a href="#L001204">times</a> も参照してください。</p></dd>
+<dt>next</dt>
+<dt>succ</dt>
+<dd>
+<p><em>次</em>の整数を返します。</p></dd>
+<dt><a name="L001203">step(<var>limit</var>, <var>step</var>) {|<var>n</var>| ... }</a></dt>
+<dd>
+<p>self からはじめ <var>step</var> を足しながら <var>limit</var> を越える
+前までブロックを繰り返します。<var>step</var> は負の数も指定できます。</p>
+<p><var>step</var> に 0 を指定した場合は例外
+<a href="s_exceptions.html#ArgumentError">ArgumentError</a> が発生します。</p>
+<p>self を返します。</p>
+<p><a href="#L001211">upto</a>, <a href="#L001200">downto</a>,
+<a href="#L001204">times</a> も参照してください。</p></dd>
+<dt><a name="L001204">times {|<var>n</var>| ... }</a></dt>
+<dd>
+<p>self 回だけ (0 から self-1 まで) 繰り返します。
+self が負であれば何もしません。</p>
+<p>self を返します。</p>
+<p><a href="#L001211">upto</a>, <a href="#L001200">downto</a>,
+<a href="#L001203">step</a> も参照してください。</p></dd>
+<dt>to_f</dt>
+<dd>
+<p>値を浮動小数点数 (<a href="sc_float.html">Float</a>) に変換します。</p></dd>
+<dt>to_s([<var>base</var>])</dt>
+<dd>
+<p>整数を 10 進文字列表現に変換します。</p>
+<p>引数を指定すれば、それを基数とした文字列表現に変換します。
+基数として 2 ～ 36 以外を指定した場合は例外 
+<a href="s_exceptions.html#ArgumentError">ArgumentError</a> が発生します。</p>
+<pre>
+p 10.to_s(2)    # =&gt; &quot;1010&quot;
+p 10.to_s(8)    # =&gt; &quot;12&quot;
+p 10.to_s(16)   # =&gt; &quot;a&quot;
+p 35.to_s(36)   # =&gt; &quot;z&quot;
+</pre></dd>
+<dt><a name="L001211">upto(<var>max</var>) {|<var>n</var>| ... }</a></dt>
+<dd>
+<p>self から <var>max</var> まで 1 ずつ増やしながら繰り返します。
+self &gt; max であれば何もしません。</p>
+<p>self を返します。</p>
+<p><a href="#L001200">downto</a>, <a href="#L001203">step</a>,
+<a href="#L001204">times</a> も参照してください。</p></dd>
+</dl>
+
+<h6></h6>
+</body>
+</html>

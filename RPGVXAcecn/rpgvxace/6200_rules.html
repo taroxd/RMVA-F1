@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>能力値と計算式</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>能力値と計算式</h1>
+
+<ul>
+<li><a href="#param">通常能力値</a></li>
+<li><a href="#xparam">追加能力値</a></li>
+<li><a href="#sparam">特殊能力値</a></li>
+<li><a href="#preemptive">先制攻撃と不意打ち</a></li>
+<li><a href="#escape">逃走成功率</a></li>
+</ul>
+
+<p>VX Ace では、多くの機能が能力値として設定されています。
+ダメージ計算式はスキルやアイテムごとに設定されるため、決まった式は
+ありません。</p>
+
+<h2><a name="param">通常能力値</a></h2>
+<p>通常能力値は、職業の［能力値成長曲線］で（敵キャラの場合は
+数値で直接）設定された値を基本値とし、特徴リストの設定によって
+乗算された値です。</p>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+ <th>通常能力値</th><th>略称</th><th>説明</th>
+</tr><tr>
+ <td>最大HP</td><td>MHP</td>
+ <td>HP の最大値です。</td>
+</tr><tr>
+ <td>最大MP</td><td>MMP</td>
+ <td>MP の最大値です。</td>
+</tr><tr>
+ <td>攻撃力</td><td>ATK</td>
+ <td>主に物理攻撃の与ダメージ量に影響します。</td>
+</tr><tr>
+ <td>防御力</td><td>DEF</td>
+ <td>主に物理攻撃の被ダメージ量に影響します。</td>
+</tr><tr>
+ <td>魔法力</td><td>MAT</td>
+ <td>主に魔法攻撃の与ダメージ量に影響します。</td>
+</tr><tr>
+ <td>魔法防御</td><td>MDF</td>
+ <td>主に魔法攻撃の被ダメージ量に影響します。</td>
+</tr><tr>
+ <td>敏捷性</td><td>AGI</td>
+ <td>ターン内の行動順序を決定する値です。</td>
+</tr><tr>
+ <td>運</td><td>LUK</td>
+ <td>ステート付加、能力弱体の確率に影響します。</td>
+</tr></table>
+<p>攻撃力、防御力、魔法力、魔法防御の 4 種類は、スキルやアイテムに
+設定されたダメージ計算式で参照される以外に、特別な効果はありません。</p>
+<dl>
+<p>運による、ステートおよび弱体有効度の変化率は次の通りです。ただし
+0 を下限とします。</p>
+<dd>変化率 (%) = 100 + (使用者の運 - 対象者の運) ÷ 10</dd>
+</dl>
+
+
+<h2><a name="xparam">追加能力値</a></h2>
+<p>追加能力値は初期値を 0% とし、特徴リストの設定によって
+加算された値です。</p>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+ <th>追加能力値</th><th>略称</th><th>説明</th>
+</tr><tr>
+ <td>命中率</td><td>HIT</td>
+ <td>物理攻撃が対象に命中する確率です。</td>
+</tr><tr>
+ <td>回避率</td><td>EVA</td>
+ <td>物理攻撃を回避できる確率です。</td>
+</tr><tr>
+ <td>会心率</td><td>CRI</td>
+ <td>会心の一撃が発生する確率です。</td>
+</tr><tr>
+ <td>会心回避率</td><td>CEV</td>
+ <td>会心の一撃を防止する確率です。</td>
+</tr><tr>
+ <td>魔法回避率</td><td>MEV</td>
+ <td>魔法攻撃を打ち消す確率です。</td>
+</tr><tr>
+ <td>魔法反射率</td><td>MRF</td>
+ <td>魔法攻撃を跳ね返す確率です。</td>
+</tr><tr>
+ <td>反撃率</td><td>CNT</td>
+ <td>物理攻撃に対して反撃を行う確率です。</td>
+</tr><tr>
+ <td>HP再生率</td><td>HRG</td>
+ <td>毎ターン終了時に回復する HP の割合です。</td>
+</tr><tr>
+ <td>MP再生率</td><td>MRG</td>
+ <td>毎ターン終了時に回復する MP の割合です。</td>
+</tr><tr>
+ <td>TP再生率</td><td>TRG</td>
+ <td>毎ターン終了時に増加する TP の割合です。</td>
+</tr></table>
+<p>物理攻撃に関する命中判定と回避判定は独立して行われます。
+たとえば攻撃側の命中率が 90%、対象側の回避率が 10% のとき、
+回避率は 90% の中の 10% ですから、全体としての命中率は 81%
+相当という計算になります。</p>
+<p>反撃率は敵からの物理攻撃に対してのみ有効です。</p>
+
+
+<h2><a name="sparam">特殊能力値</a></h2>
+<p>追加能力値は初期値を 100% とし、特徴リストの設定によって
+乗算された値です。</p>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+ <th>特殊能力値</th><th>略称</th><th>説明</th>
+</tr><tr>
+ <td>狙われ率</td><td>TGR</td>
+ <td>敵キャラからの攻撃対象になる比率です。</td>
+</tr><tr>
+ <td>防御効果率</td><td>GRD</td>
+ <td>防御コマンドのダメージ軽減効果の強さです。</td>
+</tr><tr>
+ <td>回復効果率</td><td>REC</td>
+ <td>HP、MP の回復効果を受ける割合です。</td>
+</tr><tr>
+ <td>薬の知識</td><td>PHA</td>
+ <td>アイテムによる HP、MP の回復を強化する割合です。</td>
+</tr><tr>
+ <td>MP消費率</td><td>MCR</td>
+ <td>スキルの消費 MP を変動させる割合です。</td>
+</tr><tr>
+ <td>TPチャージ率</td><td>TCR</td>
+ <td>スキル、アイテムの得 TP を変動させる割合です。</td>
+</tr><tr>
+ <td>物理ダメージ率</td><td>PDR</td>
+ <td>物理ダメージを受ける割合です。</td>
+</tr><tr>
+ <td>魔法ダメージ率</td><td>MDR</td>
+ <td>魔法ダメージを受ける割合です。</td>
+</tr><tr>
+ <td>床ダメージ率</td><td>FDR</td>
+ <td>マップ上の地形によるダメージを受ける割合です。</td>
+</tr><tr>
+ <td>経験獲得率</td><td>EXR</td>
+ <td>獲得する経験値の量を変動する割合です。</td>
+</tr></table>
+<dl>
+<p>防御効果率によるダメージ軽減割合は次の通りです。</p>
+<dd>防御時ダメージ = 通常ダメージ ÷ (2 × 防御効果率)</dd>
+</dl>
+
+
+<h2><a name="preemptive">先制攻撃と不意打ち</a></h2>
+<dl>
+<dt>アクターの敏捷性平均値 &gt;= 敵キャラの敏捷性平均値 のとき</dt>
+  <dd>先制攻撃率 (%) = 5</dd>
+  <dd>不意打ち率 (%) = 3</dd>
+<dt>アクターの敏捷性平均値 &lt; 敵キャラの敏捷性平均値 のとき</dt>
+  <dd>先制攻撃率 (%) = 3</dd>
+  <dd>不意打ち率 (%) = 5</dd>
+</dl>
+
+<ul class="square">
+<li>先制攻撃の場合は 1 ターン目に敵キャラ側が行動できなくなります。</li>
+<li>不意打ちの場合は 1 ターン目にアクター側が行動できなくなります。</li>
+<li>イベント戦闘では、先制攻撃や不意打ちは発生しません。</li>
+<li>パーティ能力［先制攻撃率アップ］が有効の場合、確率は通常の 4 倍となります。</li>
+<li>パーティ能力［不意打ち無効］が有効の場合、不意打ちは発生しません。</li>
+</ul>
+
+<h2><a name="escape">逃走成功率</a></h2>
+逃走成功率 (%) = 150 - 100 &times; 敵キャラの敏捷性平均値 &divide; アクターの敏捷性平均値
+
+<ul class="square">
+<li>逃走失敗 1 回ごとに 10% を加算します。</li>
+<li>先制攻撃中は無条件で逃げられるものとします。</li>
+</ul>
+
+
+
+<h6></h6>
+</body>
+</html>

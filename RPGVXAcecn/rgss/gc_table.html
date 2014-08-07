@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Table</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Table</h1>
+<p>多次元配列のクラス。各要素は符号付き 2 バイト型、すなわち -32,768 から
+32,767 の範囲の整数となります。</p>
+<p>大量のデータを扱う場合、Ruby の <a href="sc_array.html">Array</a> クラスで
+は実行効率が悪くなるため、このクラスが用意されています。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>クラスメソッド</h2>
+<dl>
+
+<dt>Table.new(<var>xsize</var>[, <var>ysize</var>[, <var>zsize</var>]])</dt>
+<dd>
+<p>Table オブジェクトを生成します。多次元配列の各次元のサイズを指定します。
+生成できる配列は 1 ～ 3 次元です。要素数が 0 の配列を生成することも可能で
+す。</p></dd>
+
+</dl>
+
+<h2>メソッド</h2>
+<dl>
+
+<dt>resize(<var>xsize</var>[, <var>ysize</var>[, <var>zsize</var>]])</dt>
+<dd>
+<p>配列のサイズを変更します。変更前のデータは保持されます。</p></dd>
+
+<dt>xsize</dt>
+<dt>ysize</dt>
+<dt>zsize</dt>
+<dd>
+<p>配列の各次元のサイズを取得します。</p></dd>
+
+</dl>
+
+<h2>プロパティ</h2>
+<dl>
+
+<dt>self[<var>x</var>]</dt>
+<dt>self[<var>x</var>, <var>y</var>]</dt>
+<dt>self[<var>x</var>, <var>y</var>, <var>z</var>]</dt>
+<dd>
+<p>配列の要素にアクセスします。生成した配列の次元数と同じ数の引数をとります。
+指定された要素が存在しないときには nil を返します。</p></dd>
+
+</dl>
+
+<h6></h6>
+</body>
+</html>

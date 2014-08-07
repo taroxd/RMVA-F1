@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::AudioFile</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::AudioFile</h1>
+<p>BGM、BGS、ME、SE のスーパークラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>name</dt>
+<dd><p>ファイル名。</p></dd>
+<dt>volume</dt>
+<dd><p>ボリューム (0..100) 。BGM、ME では 100 が、BGS、SE では
+80 が標準値です。</p></dd>
+<dt>pitch</dt>
+<dd><p>ピッチ (50..150) 。100 が標準値です。</p></dd>
+</dl>
+
+<h2>定義</h2>
+<pre>
+class RPG::AudioFile
+  def initialize(name = '', volume = 100, pitch = 100)
+    @name = name
+    @volume = volume
+    @pitch = pitch
+  end
+  attr_accessor :name
+  attr_accessor :volume
+  attr_accessor :pitch
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

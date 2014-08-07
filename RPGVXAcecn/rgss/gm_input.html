@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Input</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Input</h1>
+<p>ゲームパッドやキーボードからの入力情報を扱うモジュール。</p>
+<p>RGSS3 では、ボタンを番号ではなくシンボルで管理するようになりました。
+<span class="rgss3">(RGSS3)</span></p>
+
+<h2>モジュールメソッド</h2>
+<dl>
+
+<dt>Input.update</dt>
+<dd>
+<p>入力情報を更新します。原則として 1 フレームに 1 回呼び出します。</p></dd>
+
+<dt>Input.press?(<var>sym</var>)
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>シンボル <var>sym</var> に対応するボタンが、現在押されているかどうかを判定します。</p>
+<p>押されていれば true、押されていなければ false を返します。</p>
+<pre>
+if Input.press?(:C)
+  do_something
+end
+</pre>
+</dd>
+
+<dt>Input.trigger?(<var>sym</var>)
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>シンボル <var>sym</var> に対応するボタンが、新たに押されたかどうかを判定します。</p>
+<p>押されていない状態から押された状態に変わった瞬間のみ「新たに押された」とみなされます。</p>
+<p>押されていれば true、押されていなければ false を返します。</p></dd>
+
+<dt>Input.repeat?(<var>sym</var>)
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>シンボル <var>sym</var> に対応するボタンが、新たに押されたかどうかを判定します。</p>
+<p>trigger? と異なり、ボタンを押し続けた場合のリピートを考慮します。</p>
+<p>押されていれば true、押されていなければ false を返します。</p></dd>
+
+<dt>Input.dir4</dt>
+<dd>
+<p>方向ボタンの状態を判定し、4 方向入力に特化した形で、テンキーの数字に対応する
+整数 (2, 4, 6, 8) を返します。</p>
+<p>方向ボタンが押されていない場合 (またはそれと同等とみなされる
+場合) は 0 を返します。</p></dd>
+
+<dt>Input.dir8</dt>
+<dd>
+<p>方向ボタンの状態を判定し、8 方向入力に特化した形で、テンキーの数字に対応する
+整数 (1, 2, 3, 4, 6, 7, 8, 9) を返します。</p>
+<p>方向ボタンが押されていない場合 (またはそれと同等とみなされる
+場合) は 0 を返します。</p></dd>
+
+</dl>
+
+<h2>定数</h2>
+<dl>
+
+<p>これらの定数名はそのままシンボルの名前になっています。
+たとえば方向ボタンの右であれば :RIGHT という表記で指定できます。
+<span class="rgss3">(RGSS3)</span></p>
+
+<dt>DOWN LEFT RIGHT UP</dt>
+<dd>
+<p>方向ボタンの下、左、右、上に対応するシンボルです。</p></dd>
+
+<dt>A B C X Y Z L R</dt>
+<dd>
+<p>各々のボタンに対応するシンボルです。</p></dd>
+
+<dt>SHIFT CTRL ALT</dt>
+<dd>
+<p>キーボードの SHIFT、CTRL、ALT キーに直接対応するシンボルです。</p></dd>
+
+<dt>F5 F6 F7 F8 F9</dt>
+<dd>
+<p>キーボードの各ファンクションキーに対応するシンボルです。これ以外のキーは
+システムに予約されているため、取得することはできません。</p></dd>
+
+</dl>
+
+<h6></h6>
+</body>
+</html>

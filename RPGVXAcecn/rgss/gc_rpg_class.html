@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Class</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RPG::Class</h1>
+<p>職業のデータクラス。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="gc_rpg_baseitem.html">RPG::BaseItem</a></li>
+</ul>
+
+<h2>属性</h2>
+<dl>
+<dt>exp_params</dt>
+<dd><p>経験値曲線を決定する数値の配列。添字は以下の通りです。</p>
+<ul>
+<li>0 : 基本値</li>
+<li>1 : 補正値</li>
+<li>2 : 増加度 A</li>
+<li>3 : 増加度 B</li>
+</ul></dd>
+<dt>params</dt>
+<dd><p>能力値成長曲線。各レベルに対応する通常能力値を格納した二次元配列
+(<a href="gc_table.html">Table</a>) です。</p>
+<p>params[<var>param_id</var>, <var>level</var>]
+という形をとり、<var>param_id</var> は以下の割り当てになります。</p>
+<ul>
+<li>0 : 最大HP</li>
+<li>1 : 最大MP</li>
+<li>2 : 攻撃力</li>
+<li>3 : 防御力</li>
+<li>4 : 魔法力</li>
+<li>5 : 魔法防御</li>
+<li>6 : 敏捷性</li>
+<li>7 : 運</li>
+</ul></dd>
+<dt>learnings</dt>
+<dd><p>習得するスキル。<a
+href="gc_rpg_class_learning.html">RPG::Class::Learning</a>
+の配列です。</p></dd>
+</dl>
+
+<h2>メソッド</h2>
+<dl>
+<dt>exp_for_level(<var>level</var>)</dt>
+<dd>
+<p><var>level</var> に上がるのに必要な累計経験値を計算して返します。</p>
+</dd>
+</dl>
+
+<h2>内部クラス</h2>
+<ul>
+<li><a href="gc_rpg_class_learning.html">RPG::Class::Learning</a></li>
+</ul>
+
+<h2>定義</h2>
+<pre>
+class RPG::Class &lt; RPG::BaseItem
+  def initialize
+    super
+    @exp_params = [30,20,30,30]
+    @params = Table.new(8,100)
+    (1..99).each do |i|
+      @params[0,i] = 400+i*50
+      @params[1,i] = 80+i*10
+      (2..5).each {|j| @params[j,i] = 15+i*5/4 }
+      (6..7).each {|j| @params[j,i] = 30+i*5/2 }
+    end
+    @learnings = []
+    @features.push(RPG::BaseItem::Feature.new(23, 0, 1))
+    @features.push(RPG::BaseItem::Feature.new(22, 0, 0.95))
+    @features.push(RPG::BaseItem::Feature.new(22, 1, 0.05))
+    @features.push(RPG::BaseItem::Feature.new(22, 2, 0.04))
+    @features.push(RPG::BaseItem::Feature.new(41, 1))
+    @features.push(RPG::BaseItem::Feature.new(51, 1))
+    @features.push(RPG::BaseItem::Feature.new(52, 1))
+  end
+  def exp_for_level(level)
+    lv = level.to_f
+    basis = @exp_params[0].to_f
+    extra = @exp_params[1].to_f
+    acc_a = @exp_params[2].to_f
+    acc_b = @exp_params[3].to_f
+    return (basis*((lv-1)**(0.9+acc_a/250))*lv*(lv+1)/
+      (6+lv**2/50/acc_b)+(lv-1)*extra).round.to_i
+  end
+  attr_accessor :exp_params
+  attr_accessor :params
+  attr_accessor :learnings
+end
+</pre>
+
+<h6></h6>
+</body>
+</html>

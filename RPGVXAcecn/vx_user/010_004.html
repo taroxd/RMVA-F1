@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>VX ユーザーへの TIPS</TITLE>
+<LINK rel="stylesheet" href="style.css" type="text/css">
+</HEAD>
+<BODY>
+<H1>ＶＸユーザーへのＴＩＰＳ</H1>
+<UL>
+  <LI><A href="#01">通常攻撃の命中率について</A>
+  <LI><A href="#02">ステート「通常攻撃」について</A>
+  <LI><A href="#03">敵の行う「毒攻撃」や「暗闇攻撃」などについて</A>
+  <LI><A href="#04">VX のグラフィック素材を VX Ace で使う</A>
+</UL>
+<P>ここでは、VX ユーザーが戸惑うであろうポイントについて解説します。</P>
+<H2><A name="01"></A>通常攻撃の命中率について</H2>
+<P>通常攻撃の命中率は、VX では装備している武器の命中率（素手の時は 95%）がそのまま適用されていましたが、VX Ace では、［アクター］、［職業］、［武器］、［防具］、［ステート］の特徴として設定された命中率を足した数値が適用されます。したがって、VX
+の時と同じ感覚で武器の命中率を設定すると、［武器］以外に設定された命中率と足された結果、最終的な命中率が 100% を超えてしまう可能性があります。</P>
+<P>VX Ace では、［アクター］と［職業］の特徴として設定された命中率を足した数値が素手の時の命中率になりますので、そのキャラクターの基本的な命中率は［アクター］や［職業］で設定し、［武器］、［防具］、［ステート］の
+3 つには、その基本的な命中率を補正する数値を設定すると良いでしょう。</P>
+<H2><A name="02"></A>ステート「通常攻撃」について</H2>
+<P><IMG src="img/010/010_004_01.png" width="302" height="72" border="0" class="float_r">［スキル］や［アイテム］の［使用効果］には［ステート付加］を設定出来ますが、そこで選択出来るステートの中に、［ステート］タブでは設定が出来ない「通常攻撃」というものがあります。これは、装備中の武器に設定されている［攻撃時ステート］を引き継ぐステートです。</P>
+<P>例えば、通常攻撃よりも大きなダメージを与える「パワースラッシュ」というスキルを作成し、ステート「通常攻撃」を付加するよう設定したとします。そして、この「パワースラッシュ」を使用すると、普通の武器を装備している時は大きなダメージを与えるだけですが、通常攻撃時に「毒」を付加する武器を装備していれば「パワースラッシュ」にも「毒」を付加する効果が追加されますし、「睡眠」を付加する武器を装備していれば「パワースラッシュ」には「睡眠」を付加する効果が追加されるようになります。</P>
+<H2><A name="03"></A>敵の行う「毒攻撃」や「暗闇攻撃」などについて</H2>
+<P>VX では、「毒攻撃」や「暗闇攻撃」といった追加効果を伴う通常攻撃がスキルに用意されていましたが、VX Ace ではなくなっています。そういった攻撃をする敵を作成したい場合は、スキルとして新たに用意するのではなく、以下の方法で設定してください。</P>
+<P class="red">［敵キャラ］特徴－攻撃－攻撃時ステート</P>
+<P><IMG src="img/010/010_004_02.png" width="331" height="308" border="0" class="float_n"></P>
+<UL>
+  <LI>行動パターンには［攻撃］を設定するだけで、指定した確率で敵の通常攻撃に追加効果が発生するようになります。
+</UL>
+<H2><A name="04"></A>ＶＸのグラフィック素材をＶＸ Ａｃｅで使う</H2>
+<P>VX Ace では、VX のグラフィック素材をほぼそのまま使用することが出来ますが、一部変更されたものがありますので、グラフィック素材の流用を考えている場合は以下の表を参考にしてください。</P>
+<TABLE border="1" cellpadding="2" cellspacing="1" class="sys">
+  <TBODY>
+    <TR>
+      <TD class="list_title">素材名</TD>
+      <TD class="list_title">収納フォルダ</TD>
+      <TD class="list_title">備考</TD>
+    </TR>
+    <TR>
+      <TD class="list_line1">キャラクター</TD>
+      <TD class="list_line1">Graphics/Characters</TD>
+      <TD class="list_line1"><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD class="list_line2">顔グラフィック</TD>
+      <TD class="list_line2">Graphics/Faces</TD>
+      <TD class="list_line2"><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD class="list_line1">敵キャラ</TD>
+      <TD class="list_line1">Graphics/Battlers</TD>
+      <TD class="list_line1"><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD class="list_line2">アニメーション</TD>
+      <TD class="list_line2">Graphics/Animations</TD>
+      <TD class="list_line2"><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD class="list_line1">タイルセット</TD>
+      <TD class="list_line1">Graphics/Tilesets</TD>
+      <TD class="list_line1">●フォルダの位置が変更になっています<BR>
+      ●設定時にモードを［VX 互換タイプ］にしてください</TD>
+    </TR>
+    <TR>
+      <TD class="list_line2">遠景</TD>
+      <TD class="list_line2">Graphics/Parallaxes</TD>
+      <TD class="list_line2"><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD class="list_line1">フキダシアイコン</TD>
+      <TD class="list_line1">Graphics/System</TD>
+      <TD class="list_line1"><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD class="list_line2">メッセージ背景</TD>
+      <TD class="list_line2">----------</TD>
+      <TD class="list_line2">●使用出来ません（※）</TD>
+    </TR>
+    <TR>
+      <TD class="list_line1">アイコン</TD>
+      <TD class="list_line1">Graphics/System</TD>
+      <TD class="list_line1"><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD class="list_line2">戦闘開始時効果</TD>
+      <TD class="list_line2">Graphics/System</TD>
+      <TD class="list_line2"><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD class="list_line1">戦闘画面床</TD>
+      <TD class="list_line1">----------</TD>
+      <TD class="list_line1">●VX Ace では廃止されたため使用出来ません</TD>
+    </TR>
+    <TR>
+      <TD class="list_line2">飛行船の影</TD>
+      <TD class="list_line2">Graphics/System</TD>
+      <TD class="list_line2"><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD class="list_line1">タイトル</TD>
+      <TD class="list_line1">Graphics/Titles1</TD>
+      <TD class="list_line1">●フォルダの位置が変更になっています</TD>
+    </TR>
+    <TR>
+      <TD class="list_line2">ゲームオーバー</TD>
+      <TD class="list_line2">Graphics/System</TD>
+      <TD class="list_line2"><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD class="list_line1">ウィンドウスキン</TD>
+      <TD class="list_line1">Graphics/System</TD>
+      <TD class="list_line1"><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD class="list_line2">ピクチャ</TD>
+      <TD class="list_line2">Graphics/Pictures</TD>
+      <TD class="list_line2"><BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<UL>
+  <LI>「メッセージ背景」は、グラフィック素材によってではなく、スクリプトの Window_Message#create_back_bitmap にて描画するよう変更されています。
+</UL>
+<HR>
+</BODY>
+</HTML>

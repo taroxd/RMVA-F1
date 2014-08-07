@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Bitmap</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Bitmap</h1>
+<p>ビットマップのクラス。ビットマップは、いわゆる画像そのものを表し
+ます。</p>
+<p>画面にビットマップを表示するためにはスプライト
+(<a href="gc_sprite.html">Sprite</a>) などを使う必要があります。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li>
+</ul>
+
+<h2>クラスメソッド</h2>
+<dl>
+
+<dt><a name="new">Bitmap.new(<var>filename</var>)</a></dt>
+<dd>
+<p><var>filename</var> で指定した画像ファイルを読み込み、Bitmap オブジェクトを
+生成します。</p>
+<p><a href="rgss.html#rgss_rtp">RGSS-RTP</a>、<a href=
+"rgss.html#encryption_archive">暗号化アーカイブ</a>に含まれるファイルも自動的に
+探します。拡張子は省略可能です。</p></dd>
+
+<dt>Bitmap.new(<var>width</var>, <var>height</var>)</dt>
+<dd>
+<p>指定したサイズの Bitmap オブジェクトを生成します。</p></dd>
+
+</dl>
+
+<h2>メソッド</h2>
+<dl>
+
+<dt><a name="dispose">dispose</a></dt>
+<dd>
+<p>ビットマップを解放します。すでに解放されている場合は何も行いません。</p></dd>
+
+<dt>disposed?</dt>
+<dd>
+<p>ビットマップがすでに解放されている場合に真を返します。</p></dd>
+
+<dt>width</dt>
+<dd>
+<p>ビットマップの幅を取得します。</p></dd>
+
+<dt>height</dt>
+<dd>
+<p>ビットマップの高さを取得します。</p></dd>
+
+<dt>rect</dt>
+<dd>
+<p>ビットマップの矩形 (<a href="gc_rect.html">Rect</a>) を取得します。</p></dd>
+
+<dt>blt(<var>x</var>, <var>y</var>, <var>src_bitmap</var>, <var>src_rect</var>[, <var>opacity</var>])</dt>
+<dd>
+<p><var>src_bitmap</var> の矩形 <var>src_rect</var>
+(<a href="gc_rect.html">Rect</a>) から、このビットマップの座標 (<var>x</var>,
+<var>y</var>) にブロック転送を行います。</p>
+<p><var>opacity</var> には不透明度を 0 ～ 255 の範囲で指定できます。</p></dd>
+
+<dt>stretch_blt(<var>dest_rect</var>, <var>src_bitmap</var>, <var>src_rect</var>[, <var>opacity</var>])</dt>
+<dd>
+<p><var>src_bitmap</var> の矩形 <var>src_rect</var>
+(<a href="gc_rect.html">Rect</a>) から、このビットマップの矩形
+<var>dest_rect</var> (<a href="gc_rect.html">Rect</a>) にブロック転送を行います。</p>
+<p><var>opacity</var> には不透明度を 0 ～ 255 の範囲で指定できます。</p></dd>
+
+<dt>fill_rect(<var>x</var>, <var>y</var>, <var>width</var>, <var>height</var>, <var>color</var>)</dt>
+<dt>fill_rect(<var>rect</var>, <var>color</var>)</dt>
+<dd>
+<p>このビットマップの矩形 (<var>x</var>, <var>y</var>, <var>width</var>,
+<var>height</var>) または <var>rect</var> (<a href="gc_rect.html">Rect</a>)
+を <var>color</var> (<a href="gc_color.html">Color</a>) で塗り潰します。</p></dd>
+
+<dt>gradient_fill_rect(<var>x</var>, <var>y</var>,
+<var>width</var>, <var>height</var>, <var>color1</var>,
+<var>color2</var>[, <var>vertical</var>])</dt>
+<dt>gradient_fill_rect(<var>rect</var>, <var>color1</var>,
+<var>color2</var>[, <var>vertical</var>])</dt>
+<dd>
+<p>このビットマップの矩形 (<var>x</var>, <var>y</var>, <var>width</var>,
+<var>height</var>) または <var>rect</var> (<a href="gc_rect.html">Rect</a>)
+を、<var>color1</var> (<a href="gc_color.html">Color</a>) から
+<var>color2</var> (<a href="gc_color.html">Color</a>) のグラデーションで
+塗り潰します。</p></dd>
+<p><var>vertical</var> に true を指定すると縦方向のグラデーションに
+なります。デフォルトは横方向です。</p></dd>
+
+<dt>clear</dt>
+<dd>
+<p>ビットマップ全体をクリアします。</p></dd>
+
+<dt>clear_rect(<var>x</var>, <var>y</var>, <var>width</var>,
+<var>height</var>)</dt>
+<dt>clear_rect(<var>rect</var>)</dt>
+<dd>
+<p>このビットマップの矩形 (<var>x</var>, <var>y</var>, <var>width</var>,
+<var>height</var>) または <var>rect</var> (<a href="gc_rect.html">Rect</a>)
+をクリアします。</p></dd>
+
+<dt>get_pixel(<var>x</var>, <var>y</var>)</dt>
+<dd>
+<p>点 (<var>x</var>, <var>y</var>) の色 (<a href="gc_color.html">Color</a>)
+を取得します。</p></dd>
+
+<dt>set_pixel(<var>x</var>, <var>y</var>, <var>color</var>)</dt>
+<dd>
+<p>点 (<var>x</var>, <var>y</var>) の色を <var>color</var>
+(<a href="gc_color.html">Color</a>) に設定します。</p></dd>
+
+<dt>hue_change(<var>hue</var>)</dt>
+<dd>
+<p>色相を変換します。<var>hue</var> は色相 (360 度系) の変位を指定します。</p>
+<p>この処理には時間がかかります。また、変換誤差のため、何度も変換を繰り返すと
+色が失われます。</p></dd>
+
+<dt>blur</dt><dd>
+<p>ビットマップにぼかし効果を適用します。この処理には時間がかかります。</p></dd>
+
+<dt>radial_blur(<var>angle</var>, <var>division</var>)</dt><dd>
+<p>ビットマップに放射状のぼかし効果を適用します。
+<var>angle</var> は角度 (0 ～ 360) で、大きいほど丸くなります。</p>
+<p><var>division</var> は分割数 (2 ～ 100) で、大きいほど滑らかになります。
+この処理には非常に時間がかかります。</p></dd>
+
+<dt>draw_text(<var>x</var>, <var>y</var>, <var>width</var>, <var>height</var>, <var>str</var>[, <var>align</var>])</dt>
+<dt>draw_text(<var>rect</var>, <var>str</var>[, <var>align</var>])</dt>
+<dd>
+<p>このビットマップの矩形 (<var>x</var>, <var>y</var>, <var>width</var>,
+<var>height</var>) または <var>rect</var> (<a href="gc_rect.html">Rect</a>) に
+文字列 <var>str</var> を描画します。</p>
+<p><var>str</var> が文字列のオブジェクトでない場合には、to_s メソッドにより
+文字列に変換してから処理を行います。</p>
+<p>テキストの長さが矩形の幅を超える場合は、幅を 60% まで自動的に縮小して
+描画します。</p>
+<p>水平方向はデフォルトで左揃えですが、<var>align</var> に 1 を指定すると
+中央揃え、2 を指定すると右揃えになります。垂直方向は常に中央揃えです。</p>
+<p>この処理には時間がかかるため、1 フレームごとに文字列を再描画するような
+使い方は推奨されません。</p></dd>
+
+<dt>text_size(<var>str</var>)</dt>
+<dd>
+<p>draw_text メソッドで文字列 <var>str</var> を描画したときの矩形
+(<a href="gc_rect.html">Rect</a>) を取得します。ただし、縁取りの分
+<span class="rgss3">(RGSS3)</span> およびイタリックの傾き分は含みません。</p>
+<p><var>str</var> が文字列のオブジェクトでない場合には、to_s メソッドにより
+文字列に変換してから処理を行います。</p></dd>
+
+</dl>
+
+<h2>プロパティ</h2>
+<dl>
+
+<dt>font</dt>
+<dd>
+<p>draw_text メソッドで文字列の描画に使用するフォント
+(<a href="gc_font.html">Font</a>) です。</p></dd>
+
+</dl>
+
+<h6></h6>
+</body>
+</html>

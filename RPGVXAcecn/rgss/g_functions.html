@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RGSS 組み込み関数</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>RGSS 組み込み関数</h1>
+<p>RGSS には以下の組み込み関数が定義されています。</p>
+<dl>
+<dt><a name="rgss_main">rgss_main { ... }</a>
+<span class="rgss3">(RGSS3)</span></p></dt>
+<dd>
+<p>与えられたブロックを一度だけ評価します。</p>
+<p>ブロックの中では F12 キーによるリセットを捕捉し、
+リセットされた場合は先頭に戻ります。</p>
+<pre>
+rgss_main { SceneManager.run }
+</pre>
+</dd>
+
+<dt><a name="rgss_stop">rgss_stop</a>
+<span class="rgss3">(RGSS3)</span></p></dt>
+<dd>
+<p>スクリプトの実行を停止し、画面の更新だけを繰り返します。<a
+href="../intro/index.html">スクリプト入門</a>で使用するために定義されています。</p>
+<p>以下と等価です。</p>
+<pre>
+loop { Graphics.update }
+</pre>
+</dd>
+
+<dt><a name="load_data">load_data(<var>filename</var>)</a></dt>
+<dd>
+<p><var>filename</var> で指定されるデータファイルを読み込み、
+オブジェクトを復元します。</p>
+<pre>
+$data_actors = load_data("Data/Actors.rvdata2")
+</pre>
+この関数は基本的に
+<pre>
+File.open(filename, "rb") { |f|
+  obj = Marshal.load(f)
+}
+</pre>
+<p>と同じですが、<a href="rgss.html#encryption_archive">暗号化アーカイブ</a>の
+内部にあるファイルを読み込むことができる点が異なります。</p></dd>
+<dt><a name="save_data">save_data(<var>obj</var>, <var>filename</var>)</a></dt>
+<dd>
+<p>オブジェクト <var>obj</var> を <var>filename</var> で指定される
+データファイルに書き込みます。</p>
+<pre>
+save_data($data_actors, "Data/Actors.rvdata2")
+</pre>
+この関数は
+<pre>
+File.open(filename, "wb") { |f|
+  Marshal.dump(obj, f)
+}
+</pre>
+<p>と同じです。</p></dd>
+
+<dt><a name="msgbox">msgbox(<var>arg</var>[, ...])</a>
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>引数をメッセージボックスに出力します。
+文字列以外のオブジェクトが引数として与えられた場合には、
+当該オブジェクトを to_s メソッドにより文字列に変換
+してから出力します。</p>
+<p>nil を返します。</p></dd>
+
+<dt><a name="msgbox_p">msgbox_p(<var>obj</var>, [<var>obj2</var>, ...])</a>
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p><var>obj</var> を人間に読みやすい形でメッセージボックスに出力します。
+以下のコードと同じです
+(<a href="sc_object.html#L000572">Object#inspect</a> 参照) 。</p>
+<pre>
+msgbox obj.inspect, &quot;\n&quot;, obj2.inspect, &quot;\n&quot;, ...
+</pre>
+<p>nil を返します。</p></dd>
+
+</dl>
+
+<h6></h6>
+</body>
+</html>

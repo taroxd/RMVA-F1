@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Bignum</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Bignum</h1>
+<p>多倍長整数のクラス。Bignum が扱うことのできる大きさはメモリサイ
+ズだけによって制限されます。演算の結果が <a href="sc_fixnum.html">Fixnum</a> の範囲内である場
+合には Fixnum に変換され、逆に Fixnum の範囲を越えるときには 
+Bignum に拡張されます。ビット演算については 2 の補数表現の無限長
+のビットストリングとみなすことができます。特に負の数は左側に無限に 1 
+のビットが立っているように操作できます。<a href="sc_float.html">Float</a> との混合に関しては、
+変換時に桁落ちが生じる可能性があります。</p>
+
+<h2>スーパークラス</h2>
+<ul>
+<li><a href="sc_integer.html">Integer</a></li>
+</ul>
+
+<h6></h6>
+</body>
+</html>

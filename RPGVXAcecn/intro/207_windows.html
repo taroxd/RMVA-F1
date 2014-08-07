@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>ウィンドウの管理</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>ウィンドウの管理</h1>
+<ul>
+<li><a href="#basic">ウィンドウの基本</a></li>
+<li><a href="#handler">ハンドラ</a></li>
+<li><a href="#command_window">コマンドウィンドウ</a></li>
+<li><a href="#class_list">ウィンドウクラス一覧</a></li>
+</ul>
+
+<p>メッセージウィンドウやステータスウィンドウをはじめとして、RPG では
+非常に多くのウィンドウを扱わなければなりません。これらのウィンドウが
+どのように管理されているのかを解説します。</p>
+
+
+<h2><a name="basic">ウィンドウの基本</a></h2>
+<p>Window_Xxxx という名前が付けられたセクションが大量にありますね。
+例によってこれらはそのままクラス名に対応しています。その中でも特に
+重要なのは、最初のふたつのクラスです。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>クラス</th>
+ <th>内容</th>
+ <th>スーパークラス</th>
+</tr><tr>
+ <td>Window_Base</td>
+ <td>基本ウィンドウ</td>
+ <td><a href="../rgss/gc_window.html">Window</a></td>
+</tr><tr>
+ <td>Window_Selectable</td>
+ <td>項目の選択ができるウィンドウ</td>
+ <td>Window_Base</td>
+</tr></table>
+<p>RGSS には <a href="../rgss/gc_window.html">Window</a> という
+クラスがあらかじめ組み込まれています。このクラスは、ウィンドウの枠や
+背景の描画、内容のスクロールといった基本的な処理を受け持っています。</p>
+<p>Window_Base クラスはこの <a href="../rgss/gc_window.html">Window</a>
+クラスを継承し、RPG のウィンドウに必要な基本機能を追加しています。
+このクラスのもっとも重要な機能は、現在ウィンドウスキンとして設定されて
+いる画像ファイルを自動的に読み込む機能です。また、各種文字色もこの
+クラスで定義されています。VX Ace では、&yen;C[n] など基本的な制御文字の
+処理もこのクラスで行うようになりました。</p>
+<p>Window_Selectable クラスは、Window_Base クラスを継承し、方向ボタン
+などの入力を検知してカーソルを移動させる処理や、あらかじめウィンドウに
+関連付けたメソッドを呼び出す処理などを追加したものです。たとえば
+アイテムの選択など、ゲームには何かを選択するウィンドウが頻繁に必要に
+なります。そのようなウィンドウに共通の機能を、このクラスで定義している
+のです。実際のカーソル移動処理は、update という名前のメソッドが呼び出さ
+れた時点で行われています。</p>
+<p>ウィンドウの update メソッドを呼び出しているのは、後の章で解説
+する<strong>シーンクラス</strong>です。</p>
+
+
+<h2><a name="handler">ハンドラ</a></h2>
+<p>Window_Selectable クラスは「あらかじめウィンドウに関連付けたメソッド
+を呼び出す処理」を持つと説明しましたが、これを<strong>ハンドラ</strong
+>と呼びます。この概念は VX Ace にて新しく導入されました。</p>
+<p>考え方としては、たとえば「決定ボタンを押したとき」や「キャンセル
+ボタンを押したとき」などに呼び出すメソッドをあらかじめ登録しておき、
+実際にメソッドを呼び出す処理はウィンドウクラス側で行うということです。</p>
+<p>まず、Window_Selectable の中ほどにある set_handler というメソッドを
+探してください。</p>
+<pre>
+  def set_handler(symbol, method)
+    @handler[symbol] = method
+  end
+</pre>
+<p>これがハンドラをウィンドウに設定するためのメソッドです。内部で
+使用しているインスタンス変数 @handler は、<a
+href="111_hash.html">ハッシュ</a>オブジェクトです。</p>
+<p>実際にハンドラを設定するときには、次のように呼び出されます。</p>
+<pre>
+  @window.set_handler(:cancel, method(:on_cancel))
+</pre>
+<p>これは on_cancel という名前のメソッドを、cancel という名前の
+ハンドラとして設定するという指定です。こうしておくと、キャンセル
+ボタンが押されたときに自動的に on_cancel メソッドが呼び出される
+ようになるわけです。method というのは
+<a href="../rgss/sc_object.html">Object</a>
+クラスのメソッドで、引数として与えられた名前のメソッドを
+<a href="../rgss/sc_method.html">Method</a>
+オブジェクトに変換する機能を持っています。</p>
+<p>説明が前後しますが、メソッドやハンドラの名前を指定するときには
+シンボルを使用します。<a href="109_graphics.html">画像の表示</a>の
+最後の項でも簡単に触れましたが、シンボルは任意の文字列と一対一に対応
+するオブジェクトで、コロン (&quot;:&quot;) に任意の文字を続けて
+書くことで指定します。文字列に似ていますが、内部処理の効率性など
+から、文字列としての操作が必要ない場合はこちらを用います。
+シンボルは <a href="../rgss/sc_symbol.html">Symbol</a>
+クラスのインスタンスです。</p>
+<p>Window_Selectable クラスは、ウィンドウがアクティブ状態
+(カーソルが点滅している状態) のとき、次の 4 種類のハンドラを
+必要に応じて呼び出します。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>シンボル</th>
+ <th>内容</th>
+</tr><tr>
+ <td>:ok</td>
+ <td>決定</td>
+</tr><tr>
+ <td>:cancel</td>
+ <td>キャンセル</td>
+</tr><tr>
+ <td>:pageup</td>
+ <td>前ページ (L)</td>
+</tr><tr>
+ <td>:pagedown</td>
+ <td>次ページ (R)</td>
+</tr></table>
+<p>なお、ハンドラが設定されていない場合は何も行いません。</p>
+
+
+<h2><a name="command_window">コマンドウィンドウ</a></h2>
+<p>Window_Selectable クラスから、さらに Window_Command
+クラスが派生します。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>クラス</th>
+ <th>内容</th>
+ <th>スーパークラス</th>
+</tr><tr>
+ <td>Window_Command</td>
+ <td>コマンドウィンドウ (汎用)</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_HorzCommand</td>
+ <td>コマンドウィンドウ (横選択)</td>
+ <td>Window_Command</td>
+</tr></table>
+<p>これらのクラスは、いわゆるコマンドウィンドウの基本処理を
+受け持っています。メニュー画面やバトル画面などに表示される各種の
+コマンドウィンドウはそれぞれ別個のクラスとして定義されていますが、
+どれも Window_Command クラスをスーパークラスとしています。</p>
+<p>Window_Command クラスは、前項で解説したハンドラの仕組みを応用し、
+個々のコマンドにシンボルを関連付けるようになっています。
+たとえば「アイテム」という名前のコマンドを :item というシンボルに
+関連付けるには、add_command というメソッドを使って次のようにします。</p>
+<pre>
+  add_command("アイテム", :item)
+</pre>
+<p>add_command の 1 番目の引数にはコマンドの名前として表示する文字列、2
+番目の引数には、そのコマンドに対応するシンボルを指定します。</p>
+<p>この例の場合は、「アイテム」というコマンドを選択して決定が押された
+とき、:item に対応するハンドラが (set_handler メソッドによって) 設定
+されていればそのメソッドを呼び出すように指定するということです。</p>
+<p>ハンドラの実装を理解するのは少々大変ですが、まずは大まかな概念を
+覚えておけば十分です。実践編にて、具体的な例を説明します。</p>
+
+
+<h2><a name="class_list">ウィンドウクラス一覧</a></h2>
+<p>残りのウィンドウ系のクラスを一気に紹介します。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>クラス</th>
+ <th>使用画面</th>
+ <th>内容</th>
+ <th>スーパークラス</th>
+</tr><tr>
+ <td>Window_Help</td>
+ <td>各種</td>
+ <td>ヘルプウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_Gold</td>
+ <td>メニュー、ショップ</td>
+ <td>所持金表示ウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_MenuCommand</td>
+ <td>メニュー</td>
+ <td>コマンドウィンドウ</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_MenuStatus</td>
+ <td>メニュー</td>
+ <td>ステータスウィンドウ</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_MenuActor</td>
+ <td>アイテム、スキル</td>
+ <td>対象選択ウィンドウ</td>
+ <td>Window_MenuStatus</td>
+</tr><tr>
+ <td>Window_ItemCategory</td>
+ <td>アイテム、ショップ</td>
+ <td>分類選択ウィンドウ</td>
+ <td>Window_HorzCommand</td>
+</tr><tr>
+ <td>Window_ItemList</td>
+ <td>アイテム</td>
+ <td>アイテム選択ウィンドウ</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_SkillCommand</td>
+ <td>スキル</td>
+ <td>コマンドウィンドウ</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_SkillStatus</td>
+ <td>スキル</td>
+ <td>ステータスウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_SkillList</td>
+ <td>スキル</td>
+ <td>スキル選択ウィンドウ</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_SkillStatus</td>
+ <td>スキル</td>
+ <td>ステータスウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_EquipStatus</td>
+ <td>装備</td>
+ <td>ステータスウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_EquipCommand</td>
+ <td>装備</td>
+ <td>コマンドウィンドウ</td>
+ <td>Window_HorzCommand</td>
+</tr><tr>
+ <td>Window_EquipSlot</td>
+ <td>装備</td>
+ <td>装備部位ウィンドウ</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_EquipItem</td>
+ <td>装備</td>
+ <td>アイテムウィンドウ</td>
+ <td>Window_ItemList</td>
+</tr><tr>
+ <td>Window_Status</td>
+ <td>ステータス</td>
+ <td>ステータスウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_SaveFile</td>
+ <td>セーブ、ロード</td>
+ <td>ファイルウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_ShopCommand</td>
+ <td>ショップ</td>
+ <td>コマンドウィンドウ</td>
+ <td>Window_HorzCommand</td>
+</tr><tr>
+ <td>Window_ShopBuy</td>
+ <td>ショップ</td>
+ <td>購入ウィンドウ</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_ShopSell</td>
+ <td>ショップ</td>
+ <td>売却ウィンドウ</td>
+ <td>Window_Item</td>
+</tr><tr>
+ <td>Window_ShopNumber</td>
+ <td>ショップ</td>
+ <td>個数入力ウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_ShopStatus</td>
+ <td>ショップ</td>
+ <td>ステータスウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_NameEdit</td>
+ <td>名前入力</td>
+ <td>名前ウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_NameInput</td>
+ <td>名前入力</td>
+ <td>文字選択ウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_ChoiceList</td>
+ <td>マップ</td>
+ <td>選択肢ウィンドウ</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_NumberInput</td>
+ <td>マップ</td>
+ <td>数値入力ウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_KeyItem</td>
+ <td>マップ</td>
+ <td>アイテム選択ウィンドウ</td>
+ <td>Window_ItemList</td>
+</tr><tr>
+ <td>Window_Message</td>
+ <td>マップ</td>
+ <td>メッセージウィンドウ</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_ScrollText</td>
+ <td>マップ</td>
+ <td>文章のスクロール表示ウィンドウ</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_BattleLog</td>
+ <td>バトル</td>
+ <td>ログウィンドウ</td>
+ <td>Window_Message</td>
+</tr><tr>
+ <td>Window_PartyCommand</td>
+ <td>バトル</td>
+ <td>パーティコマンドウィンドウ</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_ActorCommand</td>
+ <td>バトル</td>
+ <td>アクターコマンドウィンドウ</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_BattleStatus</td>
+ <td>バトル</td>
+ <td>ステータスウィンドウ</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_BattleActor</td>
+ <td>バトル</td>
+ <td>アクター選択ウィンドウ</td>
+ <td>Window_BattleStatus</td>
+</tr><tr>
+ <td>Window_BattleEnemy</td>
+ <td>バトル</td>
+ <td>敵キャラ選択ウィンドウ</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_BattleSkill</td>
+ <td>バトル</td>
+ <td>スキル選択ウィンドウ</td>
+ <td>Window_SkillList</td>
+</tr><tr>
+ <td>Window_BattleItem</td>
+ <td>バトル</td>
+ <td>アイテム選択ウィンドウ</td>
+ <td>Window_ItemList</td>
+</tr><tr>
+ <td>Window_TitleCommand</td>
+ <td>タイトル</td>
+ <td>コマンドウィンドウ</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_GameEnd</td>
+ <td>ゲーム終了</td>
+ <td>コマンドウィンドウ</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_DebugLeft</td>
+ <td>デバッグ</td>
+ <td>左のウィンドウ</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_DebugRight</td>
+ <td>デバッグ</td>
+ <td>右のウィンドウ</td>
+ <td>Window_Selectable</td>
+</tr></table>
+
+
+<h6></h6>
+
+</body>
+</html>
