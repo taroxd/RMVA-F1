@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>能力值与计算公式</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>能力值与计算公式</h1>
+
+<ul>
+<li><a href="#param">普通能力值</a></li>
+<li><a href="#xparam">添加能力值</a></li>
+<li><a href="#sparam">特殊能力值</a></li>
+<li><a href="#preemptive">偷袭与先发制人</a></li>
+<li><a href="#escape">逃跑成功率</a></li>
+</ul>
+
+<p>RMVA中有大量可以设置的能力值。同时，不同的技能/物品拥有不同的伤害公式，因此没有一个固定的公式可以参考。</p>
+
+<h2><a name="param">普通能力值</a></h2>
+<p>普通能力值的计算公式为每个职业的[能力值计算曲线]（对于敌人来说则是数据库中设置的某个数值）中的对应数值乘以特性列表中设置的能力强化值。</p>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+ <th>普通能力值</th><th>简称</th><th>说明</th>
+</tr><tr>
+ <td>体力上限</td><td>MHP</td>
+ <td>HP 的最大值。</td>
+</tr><tr>
+ <td>魔力上限</td><td>MMP</td>
+ <td>MP 的最大值。</td>
+</tr><tr>
+ <td>物理攻击</td><td>ATK</td>
+ <td>主要影响物理攻击时的伤害值。</td>
+</tr><tr>
+ <td>物理防御</td><td>DEF</td>
+ <td>主要影响受到物理攻击时的伤害值。</td>
+</tr><tr>
+ <td>魔法攻击</td><td>MAT</td>
+ <td>主要影响魔法攻击时的伤害值。</td>
+</tr><tr>
+ <td>魔法防御</td><td>MDF</td>
+ <td>主要影响受到魔法攻击时的伤害值。</td>
+</tr><tr>
+ <td>敏捷值</td><td>AGI</td>
+ <td>决定每回合行动顺序的数值。</td>
+</tr><tr>
+ <td>幸运值</td><td>LUK</td>
+ <td>影响附加状态以及能力弱化几率的数值。</td>
+</tr></table>
+<p>物理攻击、物理防御、魔法攻击、魔法防御仅当其出现在技能/物品的伤害公式中时才起作用。</p>
+<dl>
+<p>状态以及能力弱化的几率公式如下，但不会低于 0。</p>
+<dd>几率 (%) = 100 + (使用者的幸运值 - 目标的幸运值) ÷ 10</dd>
+</dl>
+
+
+<h2><a name="xparam">添加能力值</a></h2>
+<p>默认情况下添加能力值都为 0%，但是可以在特性列表中进行增加。</p>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+ <th>添加能力值</th><th>简称</th><th>说明</th>
+</tr><tr>
+ <td>命中率</td><td>HIT</td>
+ <td>物理攻击命中的几率。</td>
+</tr><tr>
+ <td>回避率</td><td>EVA</td>
+ <td>回避物理攻击的几率。</td>
+</tr><tr>
+ <td>必杀机率</td><td>CRI</td>
+ <td>会心一击发生的几率。</td>
+</tr><tr>
+ <td>必杀闪避几率</td><td>CEV</td>
+ <td>防止会心一击的几率。</td>
+</tr><tr>
+ <td>魔法闪避几率</td><td>MEV</td>
+ <td>抵消魔法攻击的几率。</td>
+</tr><tr>
+ <td>魔法反射几率</td><td>MRF</td>
+ <td>反射魔法攻击的几率。</td>
+</tr><tr>
+ <td>物理反击几率</td><td>CNT</td>
+ <td>受到物理攻击时进行反击的几率。</td>
+</tr><tr>
+ <td>体力值再生速度</td><td>HRG</td>
+ <td>每回合结束时 HP 回复的比率。</td>
+</tr><tr>
+ <td>魔力值再生速度</td><td>MRG</td>
+ <td>每回合结束时 MP 回复的比率。</td>
+</tr><tr>
+ <td>特技值再生速度</td><td>TRG</td>
+ <td>每回合结束时 TP 增加的比率。</td>
+</tr></table>
+<p>物理攻击中的物理命中几率和物理闪避几率是分开计算的。举例来说，某个技能的命中几率是 90%，目标的闪避几率是 10%，则目标有 10% 的概率闪避命中 90% 的概率，因此技能的最终命中率为 81%。</p>
+<p>物理反击几率仅对物理攻击生效。</p>
+
+
+<h2><a name="sparam">特殊能力值</a></h2>
+<p>特殊能力值默认都是 100% ，但是可以在特性列表中进行相乘。</p>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+ <th>特殊能力值</th><th>简称</th><th>说明</th>
+</tr><tr>
+ <td>受到攻击几率</td><td>TGR</td>
+ <td>敌人攻击指定角色的几率。</td>
+</tr><tr>
+ <td>防御效果比率</td><td>GRD</td>
+ <td>选择防御以后受到的伤害减轻的比率。</td>
+</tr><tr>
+ <td>恢复效果比率</td><td>REC</td>
+ <td>HP、MP 的回复效果的比率。</td>
+</tr><tr>
+ <td>药理知识</td><td>PHA</td>
+ <td>使用物品时 HP、MP 的回复效果的比率。</td>
+</tr><tr>
+ <td>魔力值消耗率</td><td>MCR</td>
+ <td>使用技能时 MP 消耗量改变的比率。</td>
+</tr><tr>
+ <td>特技值补充率</td><td>TCR</td>
+ <td>使用技能/物品时获得的 TP 量改变的比率。</td>
+</tr><tr>
+ <td>物理伤害加成</td><td>PDR</td>
+ <td>受到物理伤害的比率。</td>
+</tr><tr>
+ <td>魔法伤害加成</td><td>MDR</td>
+ <td>受到魔法伤害的比率。</td>
+</tr><tr>
+ <td>地形伤害加成</td><td>FDR</td>
+ <td>地图上地形造成伤害的比率。</td>
+</tr><tr>
+ <td>经验获取加成</td><td>EXR</td>
+ <td>获得的经验值数量改变的比率。</td>
+</tr></table>
+<dl>
+<p>防御效果比率带来的伤害削弱的计算公式如下：</p>
+<dd>防御时伤害 = 平时伤害 ÷ (2 × 防御效果比率)</dd>
+</dl>
+
+
+<h2><a name="preemptive">偷袭与先发制人</a></h2>
+<dl>
+<dt>主角队伍敏捷平均值 &gt;= 敌人队伍敏捷平均值 时</dt>
+  <dd>先发制人机率 (%) = 5</dd>
+  <dd>遭到偷袭机率 (%) = 3</dd>
+<dt>主角队伍敏捷平均值 &lt; 敌人队伍敏捷平均值 时</dt>
+  <dd>先发制人机率 (%) = 3</dd>
+  <dd>遭到偷袭机率 (%) = 5 </dd>
+</dl>
+
+<ul class="square">
+<li>先发制人时，敌人角色无法在第一回合行动。</li>
+<li>偷袭攻击时，我方角色无法在第一回合行动。</li>
+<li>先手/偷袭攻击不会出现在事件中的战斗指令触发的战斗里。 </li>
+<li>队伍能力[先制攻击几率上升]可以使先制攻击的几率变成原本的4倍。</li>
+<li>队伍能力[敌人偷袭无效]可以使偷袭不会发生。</li>
+</ul>
+
+<h2><a name="escape">逃跑成功率</a></h2>
+逃跑率(%) = 150 - 100 &times; 角色队伍敏捷平均值 &divide; 敌人队伍敏捷平均值
+
+<ul class="square">
+<li>每次逃跑失败，逃跑率自动增加 10%。 </li>
+<li>先发制人时，我方角色逃跑必定成功。</li>
+</ul>
+
+
+
+<h6></h6>
+</body>
+</html>
