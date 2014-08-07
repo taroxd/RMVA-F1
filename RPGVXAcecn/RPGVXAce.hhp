@@ -1,5 +1,13 @@
 [OPTIONS]
-Contents file=D:\Documents\workspace\RMVA-F1\RPGVXAcecn\RPGVXAce.hhc
-Index file=D:\Documents\workspace\RMVA-F1\RPGVXAcecn\RPGVXAce.hhk
+Compatibility=1.1 or later
+Compiled file=RPGVXAce.chm
+Contents file=RPGVXAce.hhc
+Default Font=微软雅黑,8,0
+Default topic=rpgvxace\index.html
+Display compile progress=No
+Index file=RPGVXAce.hhk
+Language=0x804 中文(简体，中国)
 
-[FILES]
+
+[INFOTYPES]
+
