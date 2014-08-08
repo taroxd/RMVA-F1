@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Exception</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
@@ -10,24 +10,24 @@ type=text/css href="../style.css">
 <P>关于所有的子类信息，请参看 <A href="s_exceptions.html">内建异常类</A> 。</P>
 <H2>超类</H2>
 <UL>
-  <LI><A href="sc_object.html">Object</A> 
+  <LI><A href="sc_object.html">Object</A>
   </LI></UL>
 <H2>类方法</H2>
 <DL>
-  <DT>Exception.new([<VAR>error_message</VAR>]) 
+  <DT>Exception.new([<VAR>error_message</VAR>])
   <DD>
-  <P>生成并返回一个新的异常对象。可以提供一个作为错误信息的字符串作为参数。该信息就是 <A 
-  href="#L000732">message</A> 
+  <P>生成并返回一个新的异常对象。可以提供一个作为错误信息的字符串作为参数。该信息就是 <A
+  href="#L000732">message</A>
   属性（参看下方）的值，并由默认的异常处理器显示出来。</P></DD></DL>
 <H2>方法</H2>
 <DL>
-  <DT>exception([<VAR>error_message</VAR>]) 
+  <DT>exception([<VAR>error_message</VAR>])
   <DD>
-  <P>未指定参数时返回&nbsp;<VAR>self</VAR> 
-  。否则就会生成及返回一个自身的副本，并使用参数中指定的错误信息作为 <A href="#L000732">message</A> attribute as 
-  <VAR>error_message</VAR> and returns it.</P>
+  <P>未指定参数时返回&nbsp;<VAR>self</VAR>
+  。否则就会生成及返回一个自身的副本，并使用参数中指定的错误信息作为 <A href="#L000732">message</A>
+  <VAR>error_message</VAR>。</P>
   <P><A href="s_functions.html#L000388">raise</A> 方法实际上调用的就是exception对象。</P>
-  <DT>backtrace 
+  <DT>backtrace
   <DD>
   <P>返回关于错误追踪结果的信息。</P>
   <UL>
@@ -39,8 +39,8 @@ type=text/css href="../style.css">
     <P>(最上一层代码内)</P>
     <LI>
     <P>备注：sourcefile为源文件，sourceline为源行，method则是方法</P></LI></UL>
-  <P>返回值的形式为一个&nbsp;<A href="sc_string.html">String（字符串）</A>&nbsp;数组。</P>
-  <DT><A name=L000732>message</A> 
+  <P>返回值的形式为一个&nbsp;<A href="sc_string.html">String</A>&nbsp;数组。</P>
+  <DT><A name=L000732>message</A>
   <DD>
   <P>返回错误讯息字符串。</P></DD></DL>
 <H6></H6></BODY></HTML>
