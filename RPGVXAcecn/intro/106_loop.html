@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=zh><HEAD><TITLE>循环</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<META http-equiv=Content-Style-Type content=text/css><LINK href="../style.css"
+type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2900.3199" name=GENERATOR></HEAD>
+<BODY>
+<H1>循环</H1>
+<UL>
+  <LI><A href="#while">while ～ end</A>
+  <LI><A href="#range">变化范围</A>
+  <LI><A href="#for">for ～ in ～ end</A>
+  <LI><A href="#loop">loop do ～ end</A>
+  <LI><A href="#break">break</A>
+  <LI><A href="#next">next</A> </LI>
+  <li><a href="#nested">嵌套循环</a></li>
+</UL>
+<P>重复进行特定的处理就要使用<STRONG>循环</STRONG>。</P>
+<H2><A name=while>while ～ end</A></H2>
+<P>在满足特定条件期间进行循环的情况下使用 while 语句。</P><PRE>a = 0               # 为变量 a 赋值代入 0。
+i = 1               # 为变量 i 赋值代入 1。
+while i &lt;= 5        # 当变量 i 为 5 以下时循环开始（重复以下处理），
+  a += i            #   变量 a 加上 i 的值。
+  i += 1            #   变量 i 的值增加 1。
+end                 # 循环结束。
+p a                 # 显示计算结果。
+</PRE>
+<P>这个示例是求从 1 到 5 这五个数字总和的程序。在这里，变量 i 是用来产生从 1 到 5 这五个数字用的。当然变量名也可以不用
+i，一般情况下循环处理用的变量会使用 i、j、k 为名称。</P>
+<P>那么，这个程序最重要的是 i += 1 这行。如果没有这行 i 的值永远为 1，而 i &lt;= 5
+的条件也会一直满足，就会成为无限循环。因此，这里每次都向 i 加上 1 使得 i 的值依次变为 2、3、4、5、6 从而使得循环结束。</P>
+<P>变量 a 和 i 的数值变化，如下表所示。</P>
+<TABLE cellSpacing=0 cellPadding=2 border=1>
+  <TBODY>
+  <TR>
+    <TH>循环</TH>
+    <TH>a 的值</TH>
+    <TH>i 的值</TH></TR>
+  <TR>
+    <TD>初始状态</TD>
+    <TD>0</TD>
+    <TD>1</TD></TR>
+  <TR>
+    <TD>1 次后</TD>
+    <TD>1</TD>
+    <TD>2</TD></TR>
+  <TR>
+    <TD>2 次后</TD>
+    <TD>3</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD>3 次后</TD>
+    <TD>6</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD>4 次后</TD>
+    <TD>10</TD>
+    <TD>5</TD></TR>
+  <TR>
+    <TD>5 次后</TD>
+    <TD><STRONG>15</STRONG></TD>
+    <TD>6</TD></TR></TR></TBODY></TABLE>
+<P>循环 5 次后，在 a 的数值里面实际上进行了 1+2+3+4+5 的计算，i 的值也超过了 5 而执行 end 使得循环结束。</P>
+<P>然后以 p 命令显示最终 a 的值，就会显示出答案 15。</P>
+<H2><A name=range>变化范围</A></H2>
+<P>数值的范围，例如类似于「从 1 到 5」这样的概念就称为<STRONG>变化范围</STRONG>。</P><PRE>1..5
+</PRE>
+<P>上述示例表示「从 1 到 5」的意思。使用 .. 运算符，就能作成一个变化范围。</P>
+<P>而且，使用 ... 运算符也可以。</P><PRE>1...5
+</PRE>
+<P>和 .. 不同的是「不含最后一个数」。所以，这种情况实际上表示的是「从 1 到 4」的意思。</P>
+<H2><A name=for>for ～ in ～ end</A></H2>
+<P>想在变化范围表示的范围内循环的情况下使用 for 语句。</P><PRE>a = 0               # 为变量 a 赋值代入 0。
+for i in 1..5       # 变量 i 的值按从 1 到 5 的范围变化，
+  a += i            #   变量 a 加上 i 的值。
+end                 # 循环结束。
+p a                 # 显示计算结果。
+</PRE>
+<P>这个示例和使用 while 语句的示例完全相同，也是求从 1 到 5 这五个数字总和的程序，但比使用 while 的情况更加简洁。在 while 中变量
+i 加上 1 表示的是从 1 到 5 的范围，然而在 for 中是用变量 i 按「从 1 到 5
+的范围」的顺序代入来表示。表面看起来不同，但实际上进行的是意思完全相同的处理。</P>
+<P>Ruby
+中有许多语法，循环中也存在各种各样不同的方法。在不同语法使用中，请按照这个示例提示的「让编写更简便」的方式来思考。实际上，如果理解了条件分歧和循环的话，就能进行大部分逻辑运算了。</P>
+<H2><A name=loop>loop do ～ end</A></H2>
+<P>未指定循环次数和条件的情况下，也就是想进行无限循环时使用 loop 语句。这个与 while 和 for 语句的性质稍微有所不同，但一般情况下没有必要注意。
+</P><PRE>i = 0               # 为变量 i 赋值代入 0。
+loop do             # 循环开始。
+  i += 1            #   变量 i 的值增加 1。
+  p i               #   显示变量 i 的值。
+end                 # 循环结束。
+</PRE>
+<P>这个示例是「一边把 i 的值加上 1，一边显示 i 的值」的程序，没有结束条件。一旦运行的话就会连续显示
+1、2、3……。</P>
+<H2><A name=break>break</A></H2>
+<P>想中途中断循环就要使用 break 命令。</P><PRE>i = 0               # 为变量 i 赋值代入 0。
+loop do             # 循环开始。
+  i += 1            #   变量 i 的值增加 1。
+  if i == 5         #   如果变量 i 的值为 5 的话，
+    break           #     中断循环。
+  end               #   条件分歧结束。
+  p i               #   显示变量 i 的值。
+end                 # 循环结束。
+</PRE>
+<P>上述示例在程序中加上了「i 等于 5 的就中断循环」的条件。运行该程序，显示 1、2、3、4 就结束了。</P>
+<P>break 即使在 while 和 for 等其它方法作成的循环中也能使用。</P>
+<H2><A name=next>next</A></H2>
+<P>在不中断循环的情况下，跳过本次循环而进入下一次循环时使用 next 命令。</P><PRE>for i in 1..5       # 变量 i 的值按从 1 到 5 的范围变化，
+  if i == 3         #   如果变量 i 的值为 3 的话，
+    next            #     进入下一次循环。
+  end               #   条件分歧结束。
+  p i               #   显示变量 i 的值。
+end                 # 循环结束。
+</PRE>
+<P>运行这个示例，会显示 1、2、4、5。</P>
+<h2><a name="nested">嵌套循环</a></h2>
+<p>分支条件和循环等控制结构可以嵌套使用。比如要用 i，j 两种变量进行双重循环，可以按照下面的方法。</p>
+<pre>
+for i in 1..3               # 变量 i 在 1 至 3 之间变化。
+  for j in 1..4             #   变量 j 在 1 至 3 之间变化。
+    print &quot;(#{i},#{j}) &quot;    #     输出 (i,j)
+  end                       #   内层循环结束。
+  print "\n"                #   换行。
+end                         # 外层循环结束。
+</pre>
+<p>此外，虽然空格不影响程序执行的内容，但为了结构更加清晰可读，一般会有两个空格的缩进。</p>
+<H6></H6></BODY></HTML>

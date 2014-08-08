@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>变量</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>变量</h1>
+<ul>
+<li><a href="#name">变量的命名</a></li>
+<li><a href="#subst">赋值和引用</a></li>
+<li><a href="#self">自运算</a></li>
+<li><a href="#global">全局变量</a></li>
+<li><a href="#nil">nil</a></li>
+</ul>
+<p>所谓<strong>变量</strong>，就是某些数值附上名称。是相对于常量的数据类型。</p>
+<h2><a name="name">变量的命名</a></h2>
+<p>变量命名的管理。我们可以为变量取比如 x 和 y 或者更长的
+像 level 或 gold 这样的名称。名称的长度没有限制。</p>
+<p>变量有几个类型，首先我们来学习最基本的<strong>局部变量</strong>。
+局部变量的命名规则有以下几点。其中的第 1 条应该特别注意。</p>
+<ol>
+<li>第一个字符必须以小写英文字母或 _（下划线）开头。</li>
+<li>第二个字符开始可以使用英文字母、数字或 _（下划线）。</li>
+<li>不能使用<strong>保留字</strong>作变量的名称。</li>
+</ol>
+<p>保留字是作为 Ruby 中具有特殊意义的词而被系统所「保留」，
+所以变量名称不能使用。以下就是系统的保留字。</p>
+<pre>
+alias    def      false    nil      return   unless
+and      do       for      not      self     until
+begin    else     if       or       super    when
+break    elsif    in       redo     then     while
+case     end      module   rescue   true     yield
+class    ensure   next     retry    undef
+</pre>
+<p>除上面列出的保留字以外，其它的词都可以作变量的名称。</p>
+<h2><a name="subst">赋值和引用</a></h2>
+<p>在实际中使用变量看看吧。</p>
+<pre>
+x = 3
+y = 4
+p x + y     # => 7
+</pre>
+<p>第一行和第二行是进行变量的<strong>赋值</strong>。
+其中 = 号是<strong>赋值运算符</strong>。和数学上使用等号
+表示「左边等于右边」的意思不同，这里表示「左边的变量代入
+右边的数值」。在上述示例中，第一行 x 变量和第二行 y 变量
+分别代入数值 3 和 4。</p>
+<p>第三行是<strong>引用</strong>变量 x 和 y。所谓引用就是
+取得那个变量的数值。变量的计算和数字的计算方法完全一样。
+这里的 x + y 可以解释为 3 + 4，计算结果就为 7。</p>
+<p>另外，引用从未进行赋值的局部变量，就会使程序出现错误。</p>
+<pre>
+p zzz       # ERROR!!
+</pre>
+<p>请记住，变量一定要进行赋值后才能使用。</p>
+<pre>
+zzz = 5
+p zzz       # => 5
+</pre>
+<p>这个示例中，第一行变量 zzz 为其赋值代入 5 后，第二行引用。</p>
+<h2><a name="self">自运算</a></h2>
+<p>变量引用自己的数值，并再次代入计算结果称为<strong>自运算</strong>。</p>
+<pre>
+x = 1
+x += 7
+x -= 3
+x *= 2
+p x         # => 10
+</pre>
+<p>第二行的 x += 7 相当于 x = x + 7，总之就是向变量 x 里加上 7。
+同样 -=、*=、/=、%= 等也是如此使用。这些运算符就是<strong>自运算运算符</strong>。</p>
+<p>RPGXP 的变量进行自运算计算处理时思考方法都相似。
+这个示例中第一行是赋值直接代入 1，第二行加上 7，这时 x 的值其实是 8，
+第三行减去 3，第四行再乘以 2，最后的计算结果就是 10。</p>
+<h2><a name="global">全局变量</a></h2>
+<p>局部变量是暂时使用的变量，只能在函数和类等定义（在后面讲述）内部使用，
+之外变量就无效。与之相对，在程序任何地方都能引用的就是<strong>全局变量</strong>。
+全局变量可以在程序中任何地方使用，名称相同，就必然是同一个变量。</p>
+<p>如下面的示例，以 $ 号开头的变量就作为全局变量使用。赋值方法和局部变量完全相同。</p>
+<pre>
+$global
+</pre>
+<p>虽然在任何地方都能引用，但使用全局变量不一定比局部变量好。
+全局变量十分强大，胡乱使用恐怕会使程序变得很难懂。请在使用时注意。</p>
+<h2><a name="nil">nil</a></h2>
+<p>使用全局变量时，与局部变量不同，使用没有赋值过的变量并不会跳出错误。</p>
+<pre>
+p $global   # =&gt; nil
+</pre>
+<p><strong>nil</strong> 表示「什么都没有」。这是在其他地方使用的重要的值，请务必记住。</p>
+<h6></h6>
+</body>
+</html>

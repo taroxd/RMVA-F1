@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>显示图片</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>显示图片</h1>
+<ul>
+<li><a href="#graphics">Graphics 模块</a></li>
+<li><a href="#sprite">精灵和位图</a></li>
+<li><a href="#property">属性</a></li>
+<li><a href="#input">Input 模块</a></li>
+</ul>
+<p>在学习完对像后让我们稍稍轻松一下，来使用 RGSS 的游戏程序显示图片吧。</p>
+<h2><a name="graphics">Graphics 模块</a></h2>
+<p>在 RGSS 游戏程序中最重要的应当是 <a href="../rgss/gm_graphics.html">Graphics</a> 模块。
+它是用来处理游戏中所有图片的方法集合，在游戏的画面中显示图片，
+就要使用到该模块的功能。</p>
+<p>所谓<strong>模块</strong>，可以考虑成收集了相同范围方法的如容器那样的东西。
+和模拟较相似，然而却不能生成模块的实例，也没有那个必要。</p>
+<p>那么首先，请按下面那样输入。</p>
+<pre>
+loop do
+  Graphics.update
+end
+</pre>
+<p>这个是用 loop do ～ end 语句作成的无限循环。
+这个处理是无限反复运行 Graphics.update 操作的意思。中间的那行，
+是调用 Graphics 模块的 update 方法。因为这个是和调用对像方法相同的形式，
+所以会比较容易理解吧。</p>
+<p>Graphics.update 完成的是更新游戏画面，然后前进 1 帧这样的任务。 这个时候，会向画面中重新同时显示出图片。这个形式是 RGSS 游戏运行的基础。
+  而运行 RPG 大规模游戏的复杂的脚本，也不过是在这个基本形式上添加各种各样的处理而已。</p>
+<p>还有，运行上面的示例后什么也没有显示。这只是个反复显示乌黑画面的处理而已。
+下面我们就来学习实际显示图片的方法吧。</p>
+<h2><a name="sprite">精灵和位图</a></h2>
+<p>向刚才的脚本中加入 2 行，如下所示。如果画面左上角显示出骷髅兵的图片就表示成功了。</p>
+<pre>
+Skeleton = Sprite.new
+Skeleton.bitmap = Bitmap.new("Graphics/Battlers/Skeleton")
+loop do
+  Graphics.update
+end
+</pre>
+<p>这里出现了 <a href="../rgss/gc_sprite.html">Sprite</a>
+和 <a href="../rgss/gc_bitmap.html">Bitmap</a> 两个新类。Sprite 是在
+游戏画面上显示某些图片的基本概念即<strong>精灵</strong>的类，Bitmap 是
+精灵传输元<strong>位图</strong>本身内容的类。</p>
+<p>第一行，是新生成一个 Sprite 类的实例，并把那个实例代入变量 Skeleton。
+生成整数和字符串的实例比如 3 或 "Ruby" 等可以直接写入，
+然而生成精灵这样的实例时就必需以 Sprite.new 这样的方式生成。</p>
+<p>第二行，是读取 RGSS-RTP 中所含的图片文件 ("Graphics/Battlers/Skeleton") 并
+作为 Bitmap 类的一个新实例。而且，对 Skeleton 对象的 bitmap 属性（后述）进行设定。
+也就是设定这个位图为精灵传输元的意思。</p>
+<p>指定 Bitmap.new 参数的路径名，分隔符是使用 / 而不是 \ 这点要特别注意。
+我们在字符串「句柄」这项中学习了 \ 在字符串中具有特殊的意义，
+而在这里使用 / 才是正确的。</p>
+<h2><a name="property">属性</a></h2>
+<p><a href="../rgss/gc_sprite.html">Sprite</a> 类中像 bitmap 那样的特性称为<strong>属性</strong>。
+实际上这并不是 Ruby 语言的概念，而是 RGSS 的独特用语。
+在游戏程序中使用赋值运算符在多个方面对其内容特性进行设定，
+这些就称为属性。例如，更改表示精灵坐标的 x、y 属性数值就是这样。</p>
+<pre>
+Skeleton = Sprite.new
+Skeleton.bitmap = Bitmap.new("Graphics/Battlers/Skeleton")
+Skeleton.x = 272
+Skeleton.y = 208
+loop do
+  Graphics.update
+end
+</pre>
+<p>上面第三行，是把指定精灵 X 坐标的属性 x 设定为值 272。
+同样的第四行，是把指定精灵 Y 坐标的属性 y 设定为值 208。
+这样运行的话，精灵就会显示在画面中央位置附近。</p>
+<p>让我们进一步加工一下。</p>
+<pre>
+Skeleton = Sprite.new
+Skeleton.bitmap = Bitmap.new("Graphics/Battlers/Skeleton")
+Skeleton.ox = Skeleton.bitmap.width / 2
+Skeleton.oy = Skeleton.bitmap.height / 2
+Skeleton.x = 272
+Skeleton.y = 208
+loop do
+  Graphics.update
+end
+</pre>
+<p>这样就变成完全显示在画面正中央了。这个 ox、oy 属性的设定，
+更改了精灵的<strong>原点</strong>。这和 RPGXP 的事件指
+令「显示图片」中选择「左上」、「中心」是一样的概念。
+默认状态下，原点在图片的左上。赋值运算符的右侧调用的 width、height 是
+<a href="../rgss/gc_bitmap.html">Bitmap</a> 类的方法，作用是分别取得图片的宽和高。
+这里使用了其值的 1/2，也就是把图片的中心点设定为原点。</p>
+<p>现在，可以去看一看 <a href="../rgss/gc_sprite.html">Sprite</a> 类和
+<a href="../rgss/gc_bitmap.html">Bitmap</a> 类的说明了，是不是觉得写得很复杂不知如何理解？
+使用这些有趣的属性和方法，自己动手试一试吧。这才是学习 RGSS 的快捷方式。</p>
+<h2><a name="input">Input 模块</a></h2>
+<p>简单地说一说输入的事情吧。RGSS中为了获得玩家输入按键的信息，准备了
+<a href="../rgss/gm_input.html">Input</a> 模块。</p>
+<p>将 loop do ... end 改成下面这样。</p>
+<pre>
+loop do
+  Graphics.update
+  Input.update
+  if Input.press?(:RIGHT)
+    skeleton.x += 1
+  end
+  if Input.press?(:LEFT)
+    skeleton.x -= 1
+  end
+end
+</pre>
+<p>这是根据左右方向键的输入移动精灵的脚本。运行一下试试看吧。</p>
+<p>Input.update 是更新输入信息的方法。调用方法的那一刻会判定 RGSS 管理的所有按键是否被按下，并更新模块内部的信息。</p>
+<p>Input.press? 方法在参数对应的按键被按下时返回
+true、没有被按下时返回 false 。指定按钮名称使用<strong>符号</strong>。请记住，这里用冒号 (&quot;:&quot;) 后跟着按钮名称表示符号。右方向键可以用 :RIGHT 指定。其他的按钮名请参考
+<a href="../rgss/gm_input.html">Input</a>
+模块。</p>
+<p>如果学有余力，你可以做各种各样的尝试，比如使用这里没有解说的方法和属性，接受上下键的输入等等。自主思考，亲身实践，这是学会 RGSS 的捷径。</p>
+<h6></h6>
+</body>
+</html>
