@@ -1,232 +1,357 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>僎乕儉僆僽僕僃僋僩</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+
+  <title>游戏对像</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+
 </head>
+
+
 <body>
 
-<h1>僎乕儉僆僽僕僃僋僩</h1>
+
+<h1>游戏对象</h1>
+
 <ul>
-<li><a href="#game_xxxx">$game_xxxx</a></li>
-<li><a href="#contents">僎乕儉僆僽僕僃僋僩偺撪梕</a></li>
-<li><a href="#other">偦偺懠偺娭楢僋儔僗</a></li>
+
+  <li><a href="#game_xxxx">$game_xxxx</a></li>
+
+  <li><a href="#contents">游戏对象的内容</a></li>
+
+  <li><a href="#other">其他关联类</a></li>
+
 </ul>
 
-<p>僨乕僞儀乕僗偼丄尨懃偲偟偰僎乕儉拞偵彂偒姺傢傞偙偲偑側偄
-晄曄偺僨乕僞偱偡丅偦傟偵懳偟偰丄偨偲偊偽儅僢僾夋柺忋傪摦偒夞傞
-僉儍儔僋僞乕側偳丄偦偺忬懺偑崗乆偲曄傢偭偰偄偔傛偆側僨乕僞傪
-埖偆偺偑<strong>僎乕儉僆僽僕僃僋僩</strong>偱偡丅</p>
+
+<p>数据库，原则上其中的数据在游戏中是不变的，不会进行数据的重新写入。
+与之相对，比如地图画面上人物的移动等，
+这种情况下发生数据改变的是<strong>游戏对象</strong>。</p>
+
 
 
 <h2><a name="game_xxxx">$game_xxxx</a></h2>
-<p>DataManager 僙僋僔儑儞偺拞傎偳偵丄create_game_objects 偲偄偆儊僜僢僪偑
-偁傝傑偡丅偙傟傕丄僨乕僞儀乕僗偺嶌惉偲摨偠僞僀儈儞僌偱屇傃弌偝傟傞
-儊僜僢僪偱偡丅</p>
 
-<pre>
-  def self.create_game_objects
-    $game_temp          = Game_Temp.new
-    $game_system        = Game_System.new
-    $game_timer         = Game_Timer.new
-    $game_message       = Game_Message.new
-    $game_switches      = Game_Switches.new
-    $game_variables     = Game_Variables.new
-    $game_self_switches = Game_SelfSwitches.new
-    $game_actors        = Game_Actors.new
-    $game_party         = Game_Party.new
-    $game_troop         = Game_Troop.new
-    $game_map           = Game_Map.new
-    $game_player        = Game_Player.new
-  end
-</pre>
-
-<p>僨乕僞儀乕僗偺 $data_xxxx 宯偲摨偠傛偆偵丄偙傟傜傕
-傑偨<strong>僌儘乕僶儖曄悢</strong>偱偡丅Game_Xxxx 偲偄偆柤慜偺
-僋儔僗偺僀儞僗僞儞僗傪嶌惉偟丄偙傟傜偺曄悢偱嶲徠偱偒傞傛偆偵偟偰
-偄傑偡丅偙偺 Game_Xxxx 偲偄偆柤慜偵偼尒妎偊偑偁傝傑偡偹丅僗僋儕僾僩
-僄僨傿僞偱丄忋偺傎偆偺僙僋僔儑儞偵偙偺傛偆側柤慜偑偮偄偰偄傑偡丅
-偮傑傝丄偙傟傜偺僙僋僔儑儞偱掕媊偝傟偨僋儔僗傪丄偙偙偱幚懱壔偟偰
-偄傞偲偄偆傢偗偱偡丅</p>
-<p>僋儔僗偺柤慜偵 .new 傪偮偗傞偲乽偦偺僋儔僗偺僀儞僗僞儞僗傪惗惉偡傞乿
-偲偄偆堄枴偵側傝傑偡丅僀儞僗僞儞僗偲偼壗偐傪朰傟偰偟傑偭偨曽偼丄<a href=
-"108_object.html">僆僽僕僃僋僩</a>偺暅廗傪偟偰偔偩偝偄丅</p>
+<p>在 Scene_Title 组中，create_game_objects  方法下有如下的部分。
+这个是在创建游戏角色时运行的脚本。</p>
 
 
-<h2><a name="contents">僎乕儉僆僽僕僃僋僩偺撪梕</a></h2>
-<p>奺僆僽僕僃僋僩偼師偺昞偺傛偆偵側偭偰偄傑偡丅僨乕僞儀乕僗偺応崌偲
-堎側傝丄偙傟傜偺僆僽僕僃僋僩偑強懏偡傞僋儔僗偼 RGSS 偵偁傜偐偠傔慻傒
-崬傑傟偰偄傞傢偗偱偼側偔丄僗僋儕僾僩僄僨傿僞偺拞偱掕媊偝傟偰偄傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>曄悢柤</th>
- <th>撪梕</th>
- <th>僋儔僗</th>
-</tr><tr>
+<pre>    # 生成各种游戏对象<br>    $game_temp          = Game_Temp.new<br>    $game_message       = Game_Message.new<br>    $game_system        = Game_System.new<br>    $game_switches      = Game_Switches.new<br>    $game_variables     = Game_Variables.new<br>    $game_self_switches = Game_SelfSwitches.new<br>    $game_actors        = Game_Actors.new<br>    $game_party         = Game_Party.new<br>    $game_troop         = Game_Troop.new<br>    $game_map           = Game_Map.new<br>    $game_player        = Game_Player.new<br></pre>
+
+
+<p>和数据库的 $data_xxxx 相同，这些也是<strong>全局变量</strong>。
+后面是生成 Game_Xxxx 名称类的实例，并代入到变量为其赋值。
+这些 Game_Xxxx 名称应该认识吧。在脚本编辑器组列表里，最上面的一些组就是这样的名称。
+也就是说，这些组定义的类在这里被实例化了。</p>
+
+
+
+<h2><a name="contents">游戏对象的内容</a></h2>
+
+<p>各个对象的具体情况如下所示。和数据库的情况不同，
+这些对象所属的类不是 RGSS 预先设定的类，而是在脚本中定义的。</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+
+ <th>变量名称</th>
+
+ <th>内容</th>
+
+ <th>所属类</th>
+
+    </tr>
+    <tr>
+
  <td>$game_temp</td>
- <td>堦帪僨乕僞</td>
+
+ <td>临时数据</td>
+
  <td>Game_Temp</td>
-</tr><tr>
- <td>$game_system</td>
- <td>僔僗僥儉僨乕僞</td>
- <td>Game_System</td>
-</tr><tr>
- <td>$game_timer</td>
- <td>僞僀儅乕</td>
- <td>Game_Timer</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>$game_message</td>
- <td>儊僢僙乕僕</td>
+
+ <td>文章</td>
+
  <td>Game_Message</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
+ <td>$game_system</td>
+
+ <td>系统数据</td>
+
+ <td>Game_System</td>
+
+    </tr>
+    <tr>
+
  <td>$game_switches</td>
- <td>僗僀僢僠</td>
+
+ <td>开关</td>
+
  <td>Game_Switches</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>$game_variables</td>
- <td>曄悢</td>
+
+ <td>变量</td>
+
  <td>Game_Variables</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>$game_self_switches</td>
- <td>僙儖僼僗僀僢僠</td>
+
+ <td>独立开关</td>
+
  <td>Game_SelfSwitches</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>$game_actors</td>
- <td>傾僋僞乕儕僗僩</td>
+
+ <td>角色排列</td>
+
  <td>Game_Actors</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>$game_party</td>
- <td>僷乕僥傿</td>
+
+ <td>同伴</td>
+
  <td>Game_Party</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>$game_troop</td>
- <td>揋僌儖乕僾</td>
+
+ <td>敌人队伍</td>
+
  <td>Game_Troop</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>$game_map</td>
- <td>儅僢僾</td>
+
+ <td>地图</td>
+
  <td>Game_Map</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>$game_player</td>
- <td>僾儗僀儎乕</td>
+
+ <td>主角</td>
+
  <td>Game_Player</td>
-</tr></table>
-<p>偙傟傜偺僋儔僗偼尨懃偲偟偰僨乕僞峔憿傪採嫙偡傞偩偗偱丄僌儔僼傿僢僋傪
-昞帵偟偨傝儃僞儞擖椡傪庴偗晅偗偨傝偡傞婡擻偼帩偭偰偄傑偣傫丅
-偨偩偟 Game_Player 僋儔僗偩偗偼曋媂忋丄曽岦儃僞儞偵傛傞堏摦傗寛掕儃僞儞
-偵傛傞僀儀儞僩婲摦側偳偺張棟傪娷傫偱偄傑偡丅</p>
+
+    </tr>
+  </tbody>
+</table>
+
+<p>这些类原则上只用于提供数据构造，并不具备显示图标或处理键盘输入的功能。
+但是 Game_Player 类为了方便，含有箭头键的移动和决定键开始事件等处理。</p>
 
 
-<h2><a name="other">偦偺懠偺娭楢僋儔僗</a></h2>
-<p>僌儘乕僶儖曄悢偐傜捈愙傾僋僙僗偱偒傞僎乕儉僆僽僕僃僋僩偼慜弎偺傕偺
-偩偗偱偡偑丄偙傟傜偺僆僽僕僃僋僩偺撪晹偵偼丄偝傜偵暿偺僎乕儉僆僽僕僃僋
-僩偑娷傑傟偰偄傑偡丅偦傟傜傪埲壓偺昞偵帵偟傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>僋儔僗</th>
- <th>撪梕</th>
- <th>愢柧</th>
-</tr><tr>
+
+<h2><a name="other">其他关联类</a></h2>
+
+<p>上述是从全局变量中直接使用的游戏对象，其实这些对象内部，
+还进一步包含一些其他类的对象。如下所示。</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+
+ <th>类</th>
+
+ <th>内容</th>
+
+ <th>说明</th>
+
+    </tr>
+    <tr>
+
  <td>Game_Screen</td>
- <td>夋柺岠壥</td>
- <td>Game_Map丄Game_Troop 偺撪晹偱巊梡</td>
-</tr><tr>
+
+ <td>画面效果</td>
+
+ <td>Game_Map ，Game_Troop的内部使用</td>
+
+    </tr>
+    <tr>
+
  <td>Game_Picture</td>
- <td>僺僋僠儍</td>
- <td>Game_Pictures 偺撪晹偱巊梡</td>
-</tr><tr>
- <td>Game_Pictures</td>
- <td>僺僋僠儍儕僗僩</td>
- <td>Game_Screen 偺撪晹偱巊梡</td>
-</tr><tr>
- <td>Game_BaseItem</td>
- <td>傾僀僥儉側偳</td>
- <td>Game_Action丄Game_Actor丄Game_Party 偺撪晹偱巊梡</td>
-</tr><tr>
- <td>Game_Action</td>
- <td>愴摤峴摦</td>
- <td>Game_Battler丄Game_Actor 偺撪晹偱巊梡</td>
-</tr><tr>
- <td>Game_ActionResult</td>
- <td>愴摤峴摦偺寢壥</td>
- <td>Game_Battler 偺撪晹偱巊梡</td>
-</tr><tr>
+
+ <td>图片</td>
+
+ <td>Game_Screen 的内部使用</td>
+
+    </tr>
+    <tr>
+
  <td>Game_Actor</td>
- <td>傾僋僞乕</td>
- <td>Game_Actors 偺撪晹偱巊梡</td>
-</tr><tr>
+
+ <td>角色</td>
+
+ <td>Game_Actors 的内部使用</td>
+
+    </tr>
+    <tr>
+
  <td>Game_Enemy</td>
- <td>揋僉儍儔</td>
- <td>Game_Troop 偺撪晹偱巊梡</td>
-</tr><tr>
+
+ <td>敌人</td>
+
+ <td>Game_Troop 的内部使用</td>
+
+    </tr>
+    <tr>
+
  <td>Game_CommonEvent</td>
- <td>僐儌儞僀儀儞僩</td>
- <td>Game_Map 偺撪晹偱巊梡</td>
-</tr><tr>
- <td>Game_Follower</td>
- <td>僼僅儘儚乕 (戉楍曕峴)</td>
- <td>Game_Followers 偺撪晹偱巊梡</td>
-</tr><tr>
- <td>Game_Followers</td>
- <td>僼僅儘儚乕儕僗僩</td>
- <td>Game_Player 偺撪晹偱巊梡</td>
-</tr><tr>
- <td>Game_Vehicle</td>
- <td>忔傝暔</td>
- <td>Game_Map 偺撪晹偱巊梡</td>
-</tr><tr>
+
+ <td>全局事件</td>
+
+ <td>Game_Map 的内部使用</td>
+
+    </tr>
+    <tr>
+
  <td>Game_Event</td>
- <td>儅僢僾僀儀儞僩</td>
- <td>Game_Map 偺撪晹偱巊梡</td>
-</tr><tr>
+
+ <td>地图事件</td>
+
+ <td>Game_Map 的内部使用</td>
+
+    </tr>
+    <tr>
+
+ <td>Game_Vehicle</td>
+
+ <td>交通工具</td>
+
+ <td>Game_Map 的内部使用</td>
+
+    </tr>
+    <tr>
+
  <td>Game_Interpreter</td>
- <td>僀儞僞僾儕僞</td>
- <td>Game_Map丄Game_Troop丄Game_Event 偺撪晹偱巊梡</td>
-</tr></table>
-<p>偝傜偵丄廳梫側僋儔僗偲偟偰埲壓偺傕偺偑偁傝傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>僋儔僗</th>
- <th>撪梕</th>
- <th>愢柧</th>
-</tr><tr>
- <td>Game_BattlerBase</td>
- <td>僶僩儔乕 (婎杮)</td>
- <td>Game_Battler 偺僗乕僷乕僋儔僗</td>
-</tr><tr>
+
+ <td>事件代码</td>
+
+ <td>Game_Map，Game_Troop，Game_Event 的内部使用</td>
+
+    </tr>
+  </tbody>
+</table>
+
+<p>另外，还有下面这三个重要的类。</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+
+ <th>类</th>
+
+ <th>内容</th>
+
+ <th>说明</th>
+
+    </tr>
+    <tr>
+
  <td>Game_Battler</td>
- <td>僶僩儔乕</td>
- <td>Game_Actor丄Game_Enemy 偺僗乕僷乕僋儔僗</td>
-</tr><tr>
+
+ <td>战斗者</td>
+
+ <td>Game_Actor、Game_Enemy 的超类</td>
+
+    </tr>
+    <tr>
+
  <td>Game_Unit</td>
- <td>儐僯僢僩</td>
- <td>Game_Party丄Game_Troop 偺僗乕僷乕僋儔僗</td>
-</tr><tr>
- <td>Game_CharacterBase</td>
- <td>僉儍儔僋僞乕 (婎杮)</td>
- <td>Game_Character 偺僗乕僷乕僋儔僗</td>
-</tr><tr>
+
+ <td>单位</td>
+
+ <td>Game_Party、Game_Troop 的超类</td>
+
+    </tr>
+    <tr>
+
  <td>Game_Character</td>
- <td>僉儍儔僋僞乕</td>
- <td>Game_Player丄Game_Event 偺僗乕僷乕僋儔僗</td>
-</tr></table>
-<p>僗乕僷乕僋儔僗偲偄偆偺偼丄僋儔僗傪<strong>宲彸</strong>偝傟傞
-懁偺偙偲偱偟偨丅傾僋僞乕偲揋僉儍儔丄僷乕僥傿偲揋僌儖乕僾丄
-僾儗僀儎乕偲僀儀儞僩偵偼偦傟偧傟嫟捠偺惈幙偑偁傝傑偡偐傜丄偦偺
-嫟捠晹暘傪傂偲偮偺僋儔僗偵傑偲傔偰偄傞偲偄偆傢偗偱偡丅</p>
-<p>偙偺乽僗僋儕僾僩擖栧乿偼僾儕僙僢僩偺僗僋儕僾僩偺戝傑偐側慡懱憸傪
-攃埇偡傞偙偲偑栚揑側偺偱丄偙偺復偱庢傝忋偘偨僋儔僗偺撪梕傪屄乆偵夝愢偡傞
-偙偲傑偱偼偱偒傑偣傫丅偟偐偟丄幚嵺偵僗僋儕僾僩偺夵憿偵挧愴偡傞嵺偵偼丄
-偙傟傜偑偳偺傛偆側掕媊偵側偭偰偄傞偐偲偄偆偙偲偼偲偰傕廳梫偵側偭偰
-偒傑偡丅</p>
-<p>夝撉偺婎杮揑側峫偊曽偼丄Vocab丄Sound丄Cache 儌僕儏乕儖偱夝愢偟偨偺偲
-摨條偱偡丅嵟弶偺偆偪偼傛偔傢偐傜側偔偰傕丄嫽枴偺偁傞偲偙傠傪挱傔偰傒傞
-偙偲傪偍姪傔偟傑偡丅</p>
+
+ <td>人物</td>
+
+ <td>Game_Player、Game_Event 的超类</td>
+
+    </tr>
+  </tbody>
+</table>
+
+<p>所谓超类，有<strong>继承</strong>的意思。
+因为在角色和敌人，队伍和敌人队伍，主角和事件中各自有共同的性质，
+所以把这些共同的部分作为一个类。</p>
+
+<p>最后 Game_Xxxx 系列类只剩下一个了。</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+
+ <th>类</th>
+
+ <th>内容</th>
+
+ <th>说明</th>
+
+    </tr>
+    <tr>
+
+ <td>Game_BattleAction</td>
+
+ <td>行动</td>
+
+ <td>Game_Battler 的内部使用</td>
+
+    </tr>
+  </tbody>
+</table>
+
+<p>这个是管理战斗中行动的类，在战斗者内部使用。</p>
+
+<p>这个「脚本入门」是以大致掌握预置脚本全体概貌为目的，
+所以本章所提及类的具体内容没有各自说明。但是在实际挑战脚本对脚本进行改造时，
+这些内容定义的是什么将会十分重要。基本思路与Vocab，Sound，Cache模块相同。 在预置脚本中都有一些注释说明，
+一开始可能不太明白，但推荐有兴趣的人仔细看看。</p>
+
 
 
 <h6></h6>
+
 
 </body>
 </html>

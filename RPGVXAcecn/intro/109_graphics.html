@@ -1,140 +1,118 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>夋憸偺昞帵</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+<title>显示图片</title>
+<link href="style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h1>夋憸偺昞帵</h1>
+<h1>显示图片</h1>
 <ul>
-<li><a href="#graphics">Graphics 儌僕儏乕儖</a></li>
-<li><a href="#sprite">僗僾儔僀僩偲價僢僩儅僢僾</a></li>
-<li><a href="#property">僾儘僷僥傿</a></li>
-<li><a href="#input">Input 儌僕儏乕儖</a></li>
+<li><a href="#graphics">Graphics 模块</a></li>
+<li><a href="#sprite">精灵和位图</a></li>
+<li><a href="#property">属性</a></li>
+<li><a href="#input">Input モジュール</a></li>
 </ul>
 
-<p>僆僽僕僃僋僩傪棟夝偟偨偲偙傠偱彮偟婥暘傪曄偊偰丄RGSS 偺僎乕儉
-儔僀僽儔儕傪巊偭偰夋憸傪昞帵偟偰傒傑偟傚偆丅</p>
+<p>在学习完对像后让我们稍稍轻松一下，来使用 RGSS 的游戏程序显示图片吧。</p>
 
 
-<h2><a name="graphics">Graphics 儌僕儏乕儖</a></h2>
-<p>RGSS 偺僎乕儉儔僀僽儔儕偺拞偱傕偭偲傕廳梫側偺偼
-<a href="../rgss/gm_graphics.html">Graphics</a> 儌僕儏乕儖偱偡丅
-偙傟偼丄暥帤捠傝僎乕儉撪偺僌儔僼傿僢僋慡斒傪張棟偡傞偨傔偺儊僜僢僪偺
-廤傑傝偱丄僎乕儉夋柺偵昞帵偝傟傞偡傋偰偺僌儔僼傿僢僋偼丄偙偺儌僕儏乕儖偺
-婡擻傪巊偭偰張棟偝傟偰偄傑偡丅</p>
-<p><strong>儌僕儏乕儖</strong>偲偄偆偺偼丄摨偠暘栰偺儊僜僢僪傪
-廤傔偨擖傟暔偺傛偆側傕偺偩偲峫偊偰偔偩偝偄丅僋儔僗偵帡偰偄傑偡偑丄
-儌僕儏乕儖偺僀儞僗僞儞僗傪惗惉偡傞偙偲偼偱偒傑偣傫偟丄偦偺昁梫傕
-偁傝傑偣傫丅</p>
-<p>偦傟偱偼傑偢丄師偺傛偆偵擖椡偟偰偔偩偝偄丅</p>
+<h2><a name="graphics">Graphics 模块</a></h2>
+<p>在 RGSS 游戏程序中最重要的应当是 <a href="../rgss/gm_graphics.html">Graphics</a> 模块。
+它是用来处理游戏中所有图片的方法集合，在游戏的画面中显示图片，
+就要使用到该模块的功能。</p>
+<p>所谓<strong>模块</strong>，可以考虑成收集了相同范围方法的如容器那样的东西。
+和模拟较相似，然而却不能生成模块的实例，也没有那个必要。</p>
+<p>那么首先，请按下面那样输入。</p>
 <pre>
 loop do
   Graphics.update
 end
 </pre>
-<p>loop do 乣 end 偲偄偆偺偼柍尷儖乕僾傪嶌惉偡傞曽朄偱偟偨偹丅埻傑傟偨
-偲偙傠偺張棟丄偙偙偱偼 Graphics.update 偲偄偆峴偺幚峴傪壗搙傕孞傝曉偡偲
-偄偆堄枴偵側傝傑偡丅偙偺恀傫拞偺峴偱偼丄Graphics 儌僕儏乕儖偺 update 儊
-僜僢僪傪屇傃弌偟偰偄傑偡丅偙傟偼僆僽僕僃僋僩偺儊僜僢僪屇傃弌偟偲摨偠宍
-幃偱偡偐傜斾妑揑傢偐傝傗偡偄偱偟傚偆丅</p>
-<p>Graphics.update 偼丄僎乕儉夋柺傪峏怴偟偰丄帪娫傪 1 僼儗乕儉恑傔傞偲
-偄偆栶妱傪壥偨偟傑偡丅偙偺僞僀儈儞僌偱丄夋柺偵昞帵偝傟偰偄傞僌儔僼傿僢僋
-偑堦惸偵彂偒姺傢傞偲偄偆偙偲偱偡丅偙偺宍偑 RGSS 偱偺僎乕儉幚峴偺婎杮偲
-側傝傑偡丅RPG 偲偄偆戝婯柾側僎乕儉傪幚峴偡傞暋嶨側僗僋儕僾僩傕丄偙偺
-婎杮宍偵偄傠偄傠側張棟傪晅偗懌偟偰嶌傜傟偰偄傞偺偱偡丅</p>
-<p>側偍丄偙偙偱嫇偘偨椺偩偗偱偼壗傕昞帵偝傟傑偣傫丅恀偭崟側夋柺傪壗搙傕
-彂偒捈偡偲偄偆張棟傪孞傝曉偟偰偄傞偩偗偱偡丅埲崀偱丄幚嵺偵夋憸傪昞帵偡傞
-曽朄傪妛傫偱偄偒傑偟傚偆丅</p>
+<p>这个是用 loop do ～ end 语句作成的无限循环。
+这个处理是无限反复运行 Graphics.update 操作的意思。中间的那行，
+是调用 Graphics 模块的 update 方法。因为这个是和调用对像方法相同的形式，
+所以会比较容易理解吧。</p>
+<p>Graphics.update 完成的是更新游戏画面，然后前进 1 帧这样的任务。 这个时候，会向画面中重新同时显示出图片。这个形式是 RGSS 游戏运行的基础。 
+  而运行 RPG 大规模游戏的复杂的脚本，也不过是在这个基本形式上添加各种各样的处理而已。</p>
+<p>还有，运行上面的示例后什么也没有显示。这只是个反复显示乌黑画面的处理而已。
+下面我们就来学习实际显示图片的方法吧。</p>
 
 
-<h2><a name="sprite">僗僾儔僀僩偲價僢僩儅僢僾</a></h2>
-<p>愭傎偳偺僗僋儕僾僩偵 2 峴捛壛偟偰丄師偺傛偆偵偟偰傒傑偟傚偆丅
-夋柺嵍忋偵僈僀僐僣偺夋憸偑昞帵偝傟傟偽惉岟偱偡丅</p>
+<h2><a name="sprite">精灵和位图</a></h2>
+<p>向刚才的脚本中加入 2 行，如下所示。如果画面左上角显示出骷髅兵的图片就表示成功了。</p>
 <pre>
-skeleton = Sprite.new
-skeleton.bitmap = Bitmap.new(&quot;Graphics/Battlers/Skeleton&quot;)
+Skeleton = Sprite.new
+Skeleton.bitmap = Bitmap.new("Graphics/Battlers/Skeleton")
 
 loop do
   Graphics.update
 end
 </pre>
-<p><a href="../rgss/gc_sprite.html">Sprite</a> 偲
-<a href="../rgss/gc_bitmap.html">Bitmap</a> 偲偄偆怴偟偄僋儔僗偑
-弌偰偒傑偟偨丅Sprite 偼僎乕儉夋柺忋偵壗傜偐偺夋憸傪昞帵偡傞偨傔偺
-婎杮奣擮偲側傞<strong>僗僾儔僀僩</strong>傪丄Bitmap 偼僗僾儔僀僩
-側偳偺揮憲尦偲側傞<strong>價僢僩儅僢僾</strong>偺撪梕偦偺傕偺傪
-昞偡僋儔僗偱偡丅</p>
-<p>1 峴栚偱偼丄Sprite 僋儔僗偺僀儞僗僞儞僗傪怴偟偔嶌惉偟丄偦傟傪
-skeleton 偲偄偆曄悢偵戙擖偟偰偄傑偡丅偙偺 Sprite.new 偲偄偆偺偼丄
-慜復偱妛廗偟偨丄僀儞僗僞儞僗傪惗惉偡傞戞擇偺曽朄偱偡丅</p>
-<p>2 峴栚偱偼丄RTP 偵娷傑傟偰偄傞夋憸僼傽僀儖
-(&quot;Skeleton&quot;) 傪撉傒崬傫偱 Bitmap 僋儔僗偺僀儞僗僞儞僗傪
-怴偟偔嶌惉偟偰偄傑偡丅偦偺偆偊偱丄skeleton 僆僽僕僃僋僩偺 bitmap 偲偄偆
-僾儘僷僥傿 (屻弎) 偵懳偟偰偦傟傪愝掕偟偰偄傑偡丅偙偆偡傞偙偲偱丄偙偺
-價僢僩儅僢僾傪僗僾儔僀僩偺揮憲尦偲偟偰妱傝摉偰傞偲偄偆堄枴偵側傞偺
-偱偡丅</p>
-<p>Bitmap.new 偺堷悢偲偟偰巜掕偡傞僷僗柤偼丄嬫愗傝暥帤偵 &yen; 偱偼
-側偔 / 傪巊梡偟偰偄傞偙偲偵拲堄偟偰偔偩偝偄丅暥帤楍偺乽僶僢僋僗儔僢
-僔儏婰朄乿偺崁偱偡偱偵妛廗偟偨傛偆偵 &yen; 偼暥帤楍拞偱摿暿側堄枴傪
-帩偮偨傔丄/ 傪巊梡偟偨傎偆偑娫堘偄偑側偄偨傔偱偡丅</p>
+<p>这里出现了 <a href="../rgss/gc_sprite.html">Sprite</a> 
+和 <a href="../rgss/gc_bitmap.html">Bitmap</a> 两个新类。Sprite 是在
+游戏画面上显示某些图片的基本概念即<strong>精灵</strong>的类，Bitmap 是
+精灵传输元<strong>位图</strong>本身内容的类。</p>
+<p>第一行，是新生成一个 Sprite 类的实例，并把那个实例代入变量 Skeleton。
+生成整数和字符串的实例比如 3 或 "Ruby" 等可以直接写入，
+然而生成精灵这样的实例时就必需以 Sprite.new 这样的方式生成。</p>
+<p>第二行，是读取 RGSS-RTP 中所含的图片文件 ("Graphics/Battlers/Skeleton") 并
+作为 Bitmap 类的一个新实例。而且，对 Skeleton 对象的 bitmap 属性（后述）进行设定。
+也就是设定这个位图为精灵传输元的意思。</p>
+<p>指定 Bitmap.new 参数的路径名，分隔符是使用 / 而不是 \ 这点要特别注意。
+我们在字符串「句柄」这项中学习了 \ 在字符串中具有特殊的意义，
+而在这里使用 / 才是正确的。</p>
 
 
-<h2><a name="property">僾儘僷僥傿</a></h2>
-<p><a href="../rgss/gc_sprite.html">Sprite</a> 僋儔僗偺 bitmap 偺
-傛偆側傕偺傪<strong>僾儘僷僥傿</strong>偲屇傃傑偡丅
-幚偼偙傟偼 Ruby 尵岅巇條偵偁傞奣擮偱偼側偔丄RGSS 撈帺偺梡岅偱偡丅
-僎乕儉儔僀僽儔儕偵偼戙擖墘嶼巕傪巊偭偰撪梕偺愝掕偑偱偒傞傛偆偵掕媊
-偝傟偰偄傞儊僜僢僪偑懡偄偨傔丄偦偺傛偆側傕偺傪曋媂揑偵僾儘僷僥傿偲
-屇傫偱偄傑偡丅偨偲偊偽丄僗僾儔僀僩偺嵗昗傪昞偡 x丄y 偲偄偆
-僾儘僷僥傿偺抣傪曄峏偡傞偲丄偙偺傛偆偵側傝傑偡丅</p>
+<h2><a name="property">属性</a></h2>
+<p><a href="../rgss/gc_sprite.html">Sprite</a> 类中像 bitmap 那样的特性称为<strong>属性</strong>。
+实际上这并不是 Ruby 语言的概念，而是 RGSS 的独特用语。
+在游戏程序中使用赋值运算符在多个方面对其内容特性进行设定，
+这些就称为属性。例如，更改表示精灵坐标的 x、y 属性数值就是这样。</p>
 <pre>
-skeleton = Sprite.new
-skeleton.bitmap = Bitmap.new(&quot;Graphics/Battlers/Skeleton&quot;)
-skeleton.x = 272
-skeleton.y = 208
+Skeleton = Sprite.new
+Skeleton.bitmap = Bitmap.new("Graphics/Battlers/Skeleton")
+Skeleton.x = 272
+Skeleton.y = 208
 
 loop do
   Graphics.update
 end
 </pre>
-<p>3 峴栚偱偼丄僗僾儔僀僩偺 X 嵗昗傪巜掕偡傞僾儘僷僥傿 x 偵 272 偲偄偆抣傪
-愝掕偟偰偄傑偡丅摨偠偔 4 峴栚偱偼丄僗僾儔僀僩偺 Y 嵗昗傪巜掕偡傞僾儘僷僥傿
-y 偵 208 偲偄偆抣傪愝掕偟偰偄傑偡丅偙傟傪幚峴偡傞偲丄僗僾儔僀僩偺昞帵埵抲偑
-夋柺拞墰晅嬤偵側偭偰偄傞偼偢偱偡丅</p>
-<p>偝傜偵庤傪壛偊偰傒傑偟傚偆丅</p>
+<p>上面第三行，是把指定精灵 X 坐标的属性 x 设定为值 272。
+同样的第四行，是把指定精灵 Y 坐标的属性 y 设定为值 208。
+这样运行的话，精灵就会显示在画面中央位置附近。</p>
+<p>让我们进一步加工一下。</p>
 <pre>
-skeleton = Sprite.new
-skeleton.bitmap = Bitmap.new(&quot;Graphics/Battlers/Skeleton&quot;)
-skeleton.ox = skeleton.bitmap.width / 2
-skeleton.oy = skeleton.bitmap.height / 2
-skeleton.x = 272
-skeleton.y = 208
+Skeleton = Sprite.new
+Skeleton.bitmap = Bitmap.new("Graphics/Battlers/Skeleton")
+Skeleton.ox = Skeleton.bitmap.width / 2
+Skeleton.oy = Skeleton.bitmap.height / 2
+Skeleton.x = 272
+Skeleton.y = 208
 
 loop do
   Graphics.update
 end
 </pre>
-<p>姰慡偵拞墰偵昞帵偝傟傞傛偆偵側傝傑偟偨偹丅偙傟偼 ox丄oy 偲偄偆
-僾儘僷僥傿傪愝掕偡傞偙偲偱丄僗僾儔僀僩偺<strong>尨揰</strong>傪曄峏
-偟偨偨傔偱偡丅VX Ace 偺僀儀儞僩僐儅儞僪 [僺僋僠儍偺昞帵] 偱偼尨揰傪
-[嵍忋]丄[拞怱] 偐傜慖戰偡傞偙偲偑偱偒傑偡偑丄偦傟偲摨偠奣擮偱偡丅
-僨僼僅儖僩偺忬懺偱偼丄尨揰偼夋憸偺嵍忋偵側偭偰偄傑偡丅戙擖墘嶼巕偺
-塃懁偱屇傃弌偝傟偰偄傞 width丄height 偲偄偆偺偼
-<a href="../rgss/gc_bitmap.html">Bitmap</a> 僋儔僗偺儊僜僢僪偱丄
-偦傟偧傟夋憸偺暆偲崅偝傪庢摼偡傞傕偺偱偡丅偦傟傜傪 2 偱妱偭偨抣丄
-偮傑傝夋憸偺拞怱傪尨揰偲偟偰愝掕偟偨偲偄偆傢偗偱偡丅</p>
+<p>这样就变成完全显示在画面正中央了。这个 ox、oy 属性的设定，
+更改了精灵的<strong>原点</strong>。这和 RPGXP 的事件指
+令「显示图片」中选择「左上」、「中心」是一样的概念。
+默认状态下，原点在图片的左上。赋值运算符的右侧调用的 width、height 是
+<a href="../rgss/gc_bitmap.html">Bitmap</a> 类的方法，作用是分别取得图片的宽和高。
+这里使用了其值的 1/2，也就是把图片的中心点设定为原点。</p>
+<p>现在，可以去看一看 <a href="../rgss/gc_sprite.html">Sprite</a> 类和
+<a href="../rgss/gc_bitmap.html">Bitmap</a> 类的说明了，是不是觉得写得很复杂不知如何理解？
+使用这些有趣的属性和方法，自己动手试一试吧。这才是学习 RGSS 的快捷方式。</p>
 
-
-<h2><a name="input">Input 儌僕儏乕儖</a></h2>
-<p>擖椡偵偮偄偰傕娙扨偵夝愢偟偰偍偒傑偟傚偆丅RGSS
-偵偼丄僾儗僀儎乕偺儃僞儞擖椡忣曬傪庢摼偡傞偨傔偺
-<a href="../rgss/gm_input.html">Input</a> 儌僕儏乕儖偑
-梡堄偝傟偰偄傑偡丅</p>
-<p>loop do 乣 end 偺拞傪師偺傛偆偵曄峏偟偰偔偩偝偄丅</p>
+<h2><a name="input">Input モジュール</a></h2>
+<p>入力についても簡単に解説しておきましょう。RGSS
+には、プレイヤーのボタン入力情報を取得するための
+<a href="../rgss/gm_input.html">Input</a> モジュールが
+用意されています。</p>
+<p>loop do ... end の中を次のように変更してください。</p>
 <pre>
 loop do
   Graphics.update
@@ -147,26 +125,24 @@ loop do
   end
 end
 </pre>
-<p>偙傟偼丄曽岦儃僞儞偺嵍塃擖椡偵墳偠偰僗僾儔僀僩傪堏摦偡傞偲偄偆
-僗僋儕僾僩偱偡丅幚峴偟偰傒傑偟傚偆丅</p>
-<p>Input.update 偼丄擖椡忣曬傪峏怴偡傞儊僜僢僪偱偡丅儊僜僢僪偑
-屇傃弌偝傟偨弖娫偵丄RGSS 偱埖偆慡偰偺儃僞儞偑墴偝傟偰偄傞偐斲偐傪
-敾掕偟丄儌僕儏乕儖撪晹偺忣曬傪峏怴偟傑偡丅</p>
-<p>Input.press? 偼丄堷悢偲偟偰巜掕偟偨儃僞儞偑墴偝傟偰偄傟偽
-true丄墴偝傟偰偄側偗傟偽 false 傪曉偡儊僜僢僪偱偡丅儃僞儞偺柤慜傪
-巜掕偡傞偲偒偵偼<strong>僔儞儃儖</strong>傪巊梡偟傑偡丅偙偙偱偼丄
-僐儘儞 (&quot;:&quot;) 偵儃僞儞柤傪懕偗偰彂偔偲妎偊偰偍偄偰
-偔偩偝偄丅偨偲偊偽曽岦儃僞儞偺塃偱偁傟偽 :RIGHT 偲偄偆昞婰偱巜掕
-偱偒傑偡丅偦偺傎偐偺儃僞儞柤偵偮偄偰偼
+<p>これは、方向ボタンの左右入力に応じてスプライトを移動するという
+スクリプトです。実行してみましょう。</p>
+<p>Input.update は、入力情報を更新するメソッドです。メソッドが
+呼び出された瞬間に、RGSS で扱う全てのボタンが押されているか否かを
+判定し、モジュール内部の情報を更新します。</p>
+<p>Input.press? は、引数として指定したボタンが押されていれば
+true、押されていなければ false を返すメソッドです。ボタンの名前を
+指定するときには<strong>シンボル</strong>を使用します。ここでは、
+コロン (&quot;:&quot;) にボタン名を続けて書くと覚えておいて
+ください。たとえば方向ボタンの右であれば :RIGHT という表記で指定
+できます。そのほかのボタン名については
 <a href="../rgss/gm_input.html">Input</a>
-儌僕儏乕儖偺儕僼傽儗儞僗傪嶲徠偟偰偔偩偝偄丅</p>
-<p>梋桾偑偁傟偽丄偙偙偱夝愢偟側偐偭偨儊僜僢僪傗僾儘僷僥傿傪巊梡
-偟偨傝丄忋壓偺擖椡傕庴偗晅偗傞傛偆偵偡傞側偳丄偄傠偄傠偲幚尡偟偰
-傒傞偲椙偄偱偟傚偆丅帺暘偱峫偊偰僗僋儕僾僩傪彂偄偰傒傞偙偲偑
-RGSS 廗摼傊偺憗摴偲側傝傑偡丅</p>
-
+モジュールのリファレンスを参照してください。</p>
+<p>余裕があれば、ここで解説しなかったメソッドやプロパティを使用
+したり、上下の入力も受け付けるようにするなど、いろいろと実験して
+みると良いでしょう。自分で考えてスクリプトを書いてみることが
+RGSS 習得への早道となります。</p>
 
 <h6></h6>
-
 </body>
 </html>

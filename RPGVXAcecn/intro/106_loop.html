@@ -1,180 +1,139 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>儖乕僾</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
-</head>
-<body>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=en><HEAD><TITLE>循环</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=GB2312">
+<META http-equiv=Content-Style-Type content=text/css><LINK href="style.css" 
+type=text/css rel=stylesheet>
 
-<h1>儖乕僾</h1>
-<ul>
-<li><a href="#while">while 乣 end</a></li>
-<li><a href="#range">斖埻僆僽僕僃僋僩</a></li>
-<li><a href="#for">for 乣 in 乣 end</a></li>
-<li><a href="#loop">loop do 乣 end</a></li>
-<li><a href="#break">break</a></li>
-<li><a href="#next">next</a></li>
-<li><a href="#nested">擇廳儖乕僾</a></li>
-</ul>
+<META content="MSHTML 6.00.2900.3199" name=GENERATOR></HEAD>
+<BODY>
+<H1>循环</H1>
+<UL>
+  <LI><A href="#while">while ～ end</A> 
+  <LI><A href="#range">变化范围</A> 
+  <LI><A href="#for">for ～ in ～ end</A> 
+  <LI><A href="#loop">loop do ～ end</A> 
+  <LI><A href="#break">break</A> 
+  <LI><A href="#next">next</A> </LI>
+  <li><a href="#nested">二重ループ</a></li>
+</UL>
+<P>重复进行特定的处理就要使用<STRONG>循环</STRONG>。</P>
+<H2><A name=while>while ～ end</A></H2>
+<P>在满足特定条件期间进行循环的情况下使用 while 语句。</P><PRE>a = 0               # 为变量 a 赋值代入 0。
+i = 1               # 为变量 i 赋值代入 1。
 
-<p>摿掕偺張棟傪孞傝曉偟峴偄偨偄偲偒偵巊偆偺
-偑<strong>儖乕僾</strong>偱偡丅</p>
+while i &lt;= 5        # 当变量 i 为 5 以下时循环开始（重复以下处理），
+  a += i            #   变量 a 加上 i 的值。
+  i += 1            #   变量 i 的值增加 1。
+end                 # 循环结束。
 
+p a                 # 显示计算结果。
+</PRE>
+<P>这个示例是求从 1 到 5 这五个数字总和的程序。在这里，变量 i 是用来产生从 1 到 5 这五个数字用的。当然变量名也可以不用 
+i，一般情况下循环处理用的变量会使用 i、j、k 为名称。</P>
+<P>那么，这个程序最重要的是 i += 1 这行。如果没有这行 i 的值永远为 1，而 i &lt;= 5 
+的条件也会一直满足，就会成为无限循环。因此，这里每次都向 i 加上 1 使得 i 的值依次变为 2、3、4、5、6 从而使得循环结束。</P>
+<P>变量 a 和 i 的数值变化，如下表所示。</P>
+<TABLE cellSpacing=0 cellPadding=2 border=1>
+  <TBODY>
+  <TR>
+    <TH>循环</TH>
+    <TH>a 的值</TH>
+    <TH>i 的值</TH></TR>
+  <TR>
+    <TD>初始状态</TD>
+    <TD>0</TD>
+    <TD>1</TD></TR>
+  <TR>
+    <TD>1 次后</TD>
+    <TD>1</TD>
+    <TD>2</TD></TR>
+  <TR>
+    <TD>2 次后</TD>
+    <TD>3</TD>
+    <TD>3</TD></TR>
+  <TR>
+    <TD>3 次后</TD>
+    <TD>6</TD>
+    <TD>4</TD></TR>
+  <TR>
+    <TD>4 次后</TD>
+    <TD>10</TD>
+    <TD>5</TD></TR>
+  <TR>
+    <TD>5 次后</TD>
+    <TD><STRONG>15</STRONG></TD>
+    <TD>6</TD></TR></TR></TBODY></TABLE>
+<P>循环 5 次后，在 a 的数值里面实际上进行了 1+2+3+4+5 的计算，i 的值也超过了 5 而执行 end 使得循环结束。</P>
+<P>然后以 p 命令显示最终 a 的值，就会显示出答案 15。</P>
+<H2><A name=range>变化范围</A></H2>
+<P>数值的范围，例如类似于「从 1 到 5」这样的概念就称为<STRONG>变化范围</STRONG>。</P><PRE>1..5
+</PRE>
+<P>上述示例表示「从 1 到 5」的意思。使用 .. 运算符，就能作成一个变化范围。</P>
+<P>而且，使用 ... 运算符也可以。</P><PRE>1...5
+</PRE>
+<P>和 .. 不同的是「不含最后一个数」。所以，这种情况实际上表示的是「从 1 到 4」的意思。</P>
+<H2><A name=for>for ～ in ～ end</A></H2>
+<P>想在变化范围表示的范围内循环的情况下使用 for 语句。</P><PRE>a = 0               # 为变量 a 赋值代入 0。
 
-<h2><a name="while">while 乣 end</a></h2>
-<p>摿掕偺忦審偑枮偨偝傟偰偄傞娫儖乕僾偝偣偨偄応崌丄while 傪巊偄傑偡丅</p>
+for i in 1..5       # 变量 i 的值按从 1 到 5 的范围变化，
+  a += i            #   变量 a 加上 i 的值。
+end                 # 循环结束。
+
+p a                 # 显示计算结果。
+</PRE>
+<P>这个示例和使用 while 语句的示例完全相同，也是求从 1 到 5 这五个数字总和的程序，但比使用 while 的情况更加简洁。在 while 中变量 
+i 加上 1 表示的是从 1 到 5 的范围，然而在 for 中是用变量 i 按「从 1 到 5 
+的范围」的顺序代入来表示。表面看起来不同，但实际上进行的是意思完全相同的处理。</P>
+<P>Ruby 
+中有许多语法，循环中也存在各种各样不同的方法。在不同语法使用中，请按照这个示例提示的「让编写更简便」的方式来思考。实际上，如果理解了条件分歧和循环的话，就能进行大部分逻辑运算了。</P>
+<H2><A name=loop>loop do ～ end</A></H2>
+<P>未指定循环次数和条件的情况下，也就是想进行无限循环时使用 loop 语句。这个与 while 和 for 语句的性质稍微有所不同，一般情况下没有必要注意。 
+<SPAN class=caution><FONT color=#ff0000>(运行之前请先读下面的说明)</FONT></SPAN></P><PRE>i = 0               # 为变量 i 赋值代入 0。
+
+loop do             # 循环开始。
+  i += 1            #   变量 i 的值增加 1。
+  p i               #   显示变量 i 的值。
+end                 # 循环结束。
+</PRE>
+<P>这个示例是「一边把 i 的值加上 1，一边显示 i 的值」的程序，没有结束条件。一旦运行的话就会连续显示 
+1、2、3……。如果这种对话框不断显示的话，就算要结束程序也是不可能的，只能按着 F12 键不放强行关闭对话框，并点击右上方的结束按钮关闭程序。全屏的场合可以按 
+Alt+F4 结束程序。</P>
+<H2><A name=break>break</A></H2>
+<P>想中途中断循环就要使用 break 命令。</P><PRE>i = 0               # 为变量 i 赋值代入 0。
+
+loop do             # 循环开始。
+  i += 1            #   变量 i 的值增加 1。
+  if i == 5         #   如果变量 i 的值为 5 的话，
+    break           #     中断循环。
+  end               #   条件分歧结束。
+  p i               #   显示变量 i 的值。
+end                 # 循环结束。
+</PRE>
+<P>上述示例在程序中加上了「i 等于 5 的就中断循环」的条件。运行该程序，显示 1、2、3、4 就结束了。</P>
+<P>break 即使在 while 和 for 等其它方法作成的循环中也能使用。</P>
+<H2><A name=next>next</A></H2>
+<P>在不中断循环的情况下，跳过本次循环而进入下一次循环时使用 next 命令。</P><PRE>for i in 1..5       # 变量 i 的值按从 1 到 5 的范围变化，
+  if i == 3         #   如果变量 i 的值为 3 的话，
+    next            #     进入下一次循环。
+  end               #   条件分歧结束。
+  p i               #   显示变量 i 的值。
+end                 # 循环结束。
+</PRE>
+<P>运行这个示例，会显示 1、2、4、5。</P>
+
+<h2><a name="nested">二重ループ</a></h2>
+<p>条件分岐やループのような制御構造は、入れ子にして使うことが
+可能です。たとえば i、j という 2 種類の変数を使って二重ループを
+作るには、次のように記述できます。</p>
 <pre>
-a = 0               # 曄悢 a 偵 0 傪戙擖偡傞丅
-i = 1               # 曄悢 i 偵 1 傪戙擖偡傞丅
-
-while i &lt;= 5        # 曄悢 i 偑 5 埲壓偺娫儖乕僾偝偣丄
-  a += i            #   曄悢 a 偵偦傟偧傟偺 i 偺抣傪壛嶼偡傞丅
-  i += 1            #   曄悢 i 偺抣傪 1 憹傗偡丅
-end                 # 儖乕僾廔椆丅
-
-p a                 # 寁嶼寢壥傪昞帵偡傞丅
+for i in 1..3               # 変数 i を 1 から 3 までの範囲で変化させる。
+  for j in 1..4             #   変数 j を 1 から 4 までの範囲で変化させる。
+    print &quot;(#{i},#{j}) &quot;    #     (i,j) を表示する。
+  end                       #   内側のループ終了。
+  print "\n"                #   改行。
+end                         # 外側のループ終了。
 </pre>
-<p>偙傟偼 1 偐傜 5 傑偱偺悢偺崌寁傪媮傔傞僾儘僌儔儉偱偡丅
-偙偙偱丄曄悢 i 偼 1 偐傜 5 傑偱偺悢抣傪嶌傝弌偡偨傔偵梡偄傜傟偰偄傑偡丅
-傕偪傠傫曄悢柤偼 i 偱側偔偰傕峔偄傑偣傫偑丄堦斒偵儖乕僾偺張棟梡曄悢偲偟偰偼
-i丄j丄k 偲偄偭偨柤慜偑傛偔巊傢傟傑偡丅</p>
-<p>偝偰丄偙偺僾儘僌儔儉偱堄枴偑攃埇偟偯傜偄偺偼 i += 1 偲偄偆峴偱偟傚偆丅
-偙偺峴偑側偗傟偽 i 偑偄偮傑偱傕 1 偺傑傑側偺偱 i &lt;= 5 偲偄偆忦審偑偢偭偲
-枮偨偝傟懕偗傞偙偲偵側傝丄柍尷儖乕僾偲側偭偰偟傑偄傑偡丅偦偺偨傔丄偙偙偱偼
-枅夞 i 偵 1 傪懌偟偰偄偔偙偲偱 1丄2丄3 乧偲悢抣傪曄壔偝偣偰偄傞偺偱偡丅</p>
-<p>曄悢 a 偍傛傃 i 偺抣偺曄壔傪昞偵偡傞偲丄埲壓偺傛偆偵側傝傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>儖乕僾</th><th>a 偺抣</th><th>i 偺抣</th>
-</tr><tr>
- <td>弶婜忬懺</td><td>0</td><td>1</td>
-</tr><tr>
- <td>1 廃屻</td><td>1</td><td>2</td>
-</tr><tr>
- <td>2 廃屻</td><td>3</td><td>3</td>
-</tr><tr>
- <td>3 廃屻</td><td>6</td><td>4</td>
-</tr><tr>
- <td>4 廃屻</td><td>10</td><td>5</td>
-</tr><tr>
- <td>5 廃屻</td><td><strong>15</strong></td><td>6</td>
-</tr>
-</tr></table>
-<p>儖乕僾傪 5 廃偟偨帪揰偱丄a 偺拞偱偼 1+2+3+4+5 偲偄偆寁嶼偑側偝傟偨
-偙偲偵側傝丄i 偺抣偑 5 傪挻偊傞偨傔偵 end 偱孞傝曉偟偑廔椆偟傑偡丅</p>
-<p>偦偟偰丄p 偱嵟廔揑側 a 偺抣傪昞帵偡傞偙偲偵側傝丄摎偺 15 偲偄偆悢抣偑昞帵
-偝傟傞偲偄偆傢偗偱偡丅</p>
+<p>なお、空白文字は処理の内容に影響を与えませんが、構造がわかりやすく
+なるように 2 文字分の字下げを使用するのが一般的です。</p>
 
-
-<h2><a name="range">斖埻僆僽僕僃僋僩</a></h2>
-<p>悢抣偺斖埻丄偨偲偊偽乽1 偐傜 5 傑偱乿偲偄偆傛偆側奣擮傪昞偡傕偺
-傪<strong>斖埻僆僽僕僃僋僩</strong>偲屇傃傑偡丅</p>
-<pre>
-1..5
-</pre>
-<p>忋偺幃偼乽1 偐傜 5 傑偱乿傪昞偟偰偄傑偡丅偙偺傛偆偵 .. 偲偄偆
-墘嶼巕傪巊梡偡傞偙偲偱丄斖埻僆僽僕僃僋僩傪嶌惉偡傞偙偲偑偱偒傑偡丅</p>
-<p>傑偨丄... 偲偄偆墘嶼巕傪巊梡偡傞偙偲傕偱偒傑偡丅</p>
-<pre>
-1...5
-</pre>
-<p>.. 偲偺堘偄偼乽廔抂傪娷傑側偄乿偲偄偆偙偲偱偡丅偱偡偐傜丄
-偙偺応崌偼幚嵺偵偼乽1 偐傜 4 傑偱乿傪昞偡偙偲偵側傝傑偡丅</p>
-
-
-<h2><a name="for">for 乣 in 乣 end</a></h2>
-<p>斖埻僆僽僕僃僋僩偱昞偝傟偨斖埻撪偱儖乕僾偝偣偨偄応崌偼 for 傪
-巊偄傑偡丅</p>
-<pre>
-a = 0               # 曄悢 a 偵 0 傪戙擖偡傞丅
-
-for i in 1..5       # 曄悢 i 傪 1 偐傜 5 傑偱偺斖埻偱曄壔偝偣丄
-  a += i            #   曄悢 a 偵偦傟偧傟偺 i 偺抣傪壛嶼偡傞丅
-end                 # 儖乕僾廔椆丅
-
-p a                 # 寁嶼寢壥傪昞帵偡傞丅
-</pre>
-<p>偙傟偼 while 傪巊偭偨僾儘僌儔儉偲慡偔摨偠 1 偐傜 5 傑偱偺悢偺崌寁傪
-媮傔傞僾儘僌儔儉偱偡偑丄while 傪巊偭偨応崌傛傝僗儅乕僩偵側偭偰偄傞偺偑
-傢偐傞偱偟傚偆偐丅while 偱偼曄悢 i 偵 1 傪壛嶼偟偰偄偔偙偲偱 1 偐傜 5
-傑偱偺斖埻傪昞尰偟偰偄傑偟偨偑丄for 偱偼曄悢 i 偵懳偟偰乽1 偐傜 5 傑偱偺
-斖埻乿偺悢傪弴偵戙擖偟偰偄偔偙偲偱昞偟偰偄傑偡丅尒偨栚偺堘偄偼偁傝傑偡
-偑丄幚嵺偵偼丄慡偔摨偠張棟偑峴側傢傟偰偄傞偺偱偡丅</p>
-<p>Ruby 偵偼偄傠偄傠側暥朄偑偁傝丄儖乕僾傂偲偮偲偭偰傕偝傑偞傑側曽朄偑
-懚嵼偟傑偡丅偦偆偄偭偨暥朄偺傎偲傫偳偼丄偙偺椺偺傛偆偵乽傛傝娙扨偵彂偔
-偨傔乿偵偁傞偲峫偊偰偔偩偝偄丅幚嵺丄忦審暘婒偲儖乕僾偝偊棟夝偟偰偄傟偽丄
-傎偲傫偳偺儘僕僢僋偼昞尰偱偒偰偟傑偆偺偱偡丅</p>
-
-
-<h2><a name="loop">loop do 乣 end</a></h2>
-<p>孞傝曉偡夞悢傗忦審傪巜掕偟側偄偱儖乕僾偝偣偨偄応崌丄偡側傢偪柍尷儖乕僾傪
-嶌傝偨偄応崌偼 loop 傪巊梡偟傑偡丅偙傟偼 while 傗 for 偲偼彮偟惈幙偑堎側傝
-傑偡偑丄捠忢丄偦偺堘偄傪摿偵堄幆偡傞昁梫偼偁傝傑偣傫丅</p>
-<pre>
-i = 0               # 曄悢 i 偵 0 傪戙擖偡傞丅
-
-loop do             # 儖乕僾奐巒丅
-  i += 1            #   曄悢 i 偺抣傪 1 憹傗偡丅
-  p i               #   曄悢 i 偺抣傪昞帵偡傞丅
-end                 # 儖乕僾廔椆丅
-</pre>
-<p>偙傟偼乽i 偺抣傪 1 偢偮憹傗偟側偑傜丄偦偺抣傪昞帵偡傞乿偲偄偆僾儘
-僌儔儉偱偡偑丄廔椆忦審偑偁傝傑偣傫丅偙傟傪幚峴偡傞偲丄1丄2丄3 乧偲
-壥偰偟側偔昞帵偑懕偒傑偡丅</p>
-
-
-<h2><a name="break">break</a></h2>
-<p>儖乕僾傪搑拞偱拞抐偟偨偄応崌偵偼 break 偲偄偆柦椷傪巊梡偟傑偡丅</p>
-<pre>
-i = 0               # 曄悢 i 偵 0 傪戙擖偡傞丅
-
-loop do             # 儖乕僾奐巒丅
-  i += 1            #   曄悢 i 偺抣傪 1 憹傗偡丅
-  if i == 5         #   傕偟曄悢 i 偺抣偑 5 側傜丄
-    break           #     儖乕僾傪拞抐偡傞丅
-  end               #   忦審暘婒廔椆丅
-  p i               #   曄悢 i 偺抣傪昞帵偡傞丅
-end                 # 儖乕僾廔椆丅
-</pre>
-<p>愭傎偳偺僾儘僌儔儉偵乽i 偑 5 偵側偭偨傜拞抐偟側偝偄乿偲偄偆忦審傪壛偊
-傑偟偨丅偙傟傪幚峴偡傞偲丄1丄2丄3丄4 偲昞帵偝傟偰偦偙偱廔椆偲側傝傑偡丅</p>
-<p>break 偼丄while 傗 for 側偳丄懠偺曽朄偱嶌惉偟偨儖乕僾偱傕巊偆偙偲偑
-偱偒傑偡丅</p>
-
-
-<h2><a name="next">next</a></h2>
-<p>儖乕僾傪拞抐偣偢偵丄師偺孞傝曉偟偵張棟傪堏偡偲偒偵偼 next 偲偄偆柦椷傪
-巊梡偟傑偡丅</p>
-<pre>
-for i in 1..5       # 曄悢 i 傪 1 偐傜 5 傑偱偺斖埻偱曄壔偝偣丄
-  if i == 3         #   傕偟曄悢 i 偺抣偑 3 側傜丄
-    next            #     師偺孞傝曉偟傊丅
-  end               #   忦審暘婒廔椆丅
-  p i               #   曄悢 i 偺抣傪昞帵偡傞丅
-end                 # 儖乕僾廔椆丅
-</pre>
-<p>偙傟傪幚峴偡傞偲丄1丄2丄4丄5 偲昞帵偝傟傑偡丅</p>
-
-
-<h2><a name="nested">擇廳儖乕僾</a></h2>
-<p>忦審暘婒傗儖乕僾偺傛偆側惂屼峔憿偼丄擖傟巕偵偟偰巊偆偙偲偑
-壜擻偱偡丅偨偲偊偽 i丄j 偲偄偆 2 庬椶偺曄悢傪巊偭偰擇廳儖乕僾傪
-嶌傞偵偼丄師偺傛偆偵婰弎偱偒傑偡丅</p>
-<pre>
-for i in 1..3               # 曄悢 i 傪 1 偐傜 3 傑偱偺斖埻偱曄壔偝偣傞丅
-  for j in 1..4             #   曄悢 j 傪 1 偐傜 4 傑偱偺斖埻偱曄壔偝偣傞丅
-    print &quot;(#{i},#{j}) &quot;    #     (i,j) 傪昞帵偡傞丅
-  end                       #   撪懁偺儖乕僾廔椆丅
-  print "\n"                #   夵峴丅
-end                         # 奜懁偺儖乕僾廔椆丅
-</pre>
-<p>側偍丄嬻敀暥帤偼張棟偺撪梕偵塭嬁傪梌偊傑偣傫偑丄峔憿偑傢偐傝傗偡偔
-側傞傛偆偵 2 暥帤暘偺帤壓偘傪巊梡偡傞偺偑堦斒揑偱偡丅</p>
-
-
-<h6></h6>
-
-</body>
-</html>
+<H6></H6></BODY></HTML>

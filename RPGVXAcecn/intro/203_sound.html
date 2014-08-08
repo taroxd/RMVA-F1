@@ -1,182 +1,145 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>Sound 儌僕儏乕儖</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+  <title>Vocab module</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+  <link href="style.css" type="text/css" rel="stylesheet">
+
+  <meta content="MSHTML 6.00.2900.3268" name="GENERATOR">
+
 </head>
+
 <body>
 
-<h1>Sound 儌僕儏乕儖</h1>
+<h1>声音模块</h1>
+
 <ul>
-<li><a href="#se_object">岠壥壒僆僽僕僃僋僩</a></li>
-<li><a href="#data_def">慻傒崬傒僋儔僗偺掕媊</a></li>
-<li><a href="#audio">Audio 儌僕儏乕儖</a></li>
-<li><a href="#check_empty">嬻暥帤楍偺敾掕</a></li>
-<li><a href="#nest">僱僗僩偟偨掕媊</a></li>
+
+  <li><a href="#se_object">效果音效对像</a> </li>
+
+  <li><a href="#data_def">类的定义</a> </li>
+
+  <li><a href="#audio">Audio 音乐模块</a> </li>
+
+  <li><a href="#check_empty">空文字列的判定</a> </li>
+
+  <li><a href="#nest">嵌套定义</a> </li>
+
 </ul>
 
-<p>Sound 偼丄僨乕僞儀乕僗偺 [僔僗僥儉] 偱愝掕偝傟偰偄傞岠壥壒傪娙扨偵
-墘憈偡傞偨傔偺儌僕儏乕儖偱偡丅</p>
+<p>Sound是为了演奏数据库系统设定的效果音效的模块。<font color="#ffffff">柳佳
+淇</font></p>
 
+<h2><a name="se_object">效果音效对像</a></h2>
 
-<h2><a name="se_object">岠壥壒僆僽僕僃僋僩</a></h2>
-<p>嵍偺儕僗僩偐傜 Sound 僙僋僔儑儞傪慖戰偟偰偔偩偝偄丅</p>
-<pre>
-module Sound
-</pre>
-<p>偙偺峴偼丄慜復偱妛廗偟偨 Vocab 偲傑偭偨偔摨偠丄儌僕儏乕儖偺掕媊偱偡丅</p>
-<pre>
-  def self.play_system_sound(n)
-    $data_system.sounds[n].play
-  end
-</pre>
-<p>play_system_sound 偲偄偆儌僕儏乕儖儊僜僢僪傪掕媊偟偰偄傑偡丅</p>
-<p>$data_system 偼偍側偠傒丄<a href="../rgss/gc_rpg_system.html"
->RPG::System</a> 僋儔僗偺僀儞僗僞儞僗傪巜偡僌儘乕僶儖曄悢偱偡丅</p>
-<p>sounds 偼儕僼傽儗儞僗偵傕彂偐傟偰偄傞偲偍傝丄<a
-href="../rgss/gc_rpg_se.html">RPG::SE</a> 僋儔僗偺僀儞僗僞儞僗傪
-奿擺偟偨攝楍偲側偭偰偄傑偡丅偙傟偼偄傢偽乽岠壥壒僆僽僕僃僋僩乿偱偡丅
-奺乆偺岠壥壒偵偼柤慜偑偮偗傜傟偰偍傜偢丄僨乕僞儀乕僗忋偱偺昞帵弴偵丄
-攝楍偺揧帤偑懳墳偟偰偄傑偡丅偡側傢偪 0 偑 [僇乕僜儖堏摦] 丄1 偑
-[寛掕] 偲偄偭偨嬶崌偱偡丅</p>
-<p>岠壥壒僆僽僕僃僋僩偵偼丄僣僋乕儖偱愝掕偝傟偨 SE 偺僼傽僀儖柤丄
-儃儕儏乕儉丄僺僢僠偺僨乕僞偑婰壇偝傟偰偍傝丄偝傜偵丄帺暘帺恎傪墘憈
-偡傞 play 儊僜僢僪偑梡堄偝傟偰偄傑偡丅偱偡偐傜丄偨偲偊偽偙偺儊僜僢僪
-偵堷悢 0 傪巜掕偟偰屇傃弌偣偽丄[僇乕僜儖堏摦] 偲偟偰愝掕偝傟偨 SE
-傪墘憈偡傞偲偄偆偙偲偵側傞偺偱偡丅play_cursor
-偲偄偆儊僜僢僪偑丄偪傚偆偳偦偺摦嶌傪峴偭偰偄傑偡丅</p>
+<p>请选择左边的Sound 脚本。<font color="#ffffff">柳佳淇</font></p>
+
+<pre>module Sound<br></pre>
+
+<p>这行，由于前面刚刚学完所以应该没有问题。与Vocab一样，是模块定义。</p>
+
 <pre>
   def self.play_cursor
-    play_system_sound(0)
+    $data_system.sounds[0].play
   end
 </pre>
-<p>幚嵺偵岠壥壒傪墘憈偟偨偄偲偒偵偼丄師偺傛偆偵儌僕儏乕儖儊僜僢僪傪
-屇傃弌偟傑偡丅</p>
-<pre>
-Sound.play_cursor
-</pre>
-<p>岠壥壒傪墘憈偡傞応柺偱偙偺傛偆偵彂偔偙偲偑偱偒傟偽丄偄偪偄偪
-$data_system.sounds[0].play 側偳偲彂偔傛傝傕撉傒傗偡偔側傝傑偡丅
-偦傟偑丄偙偺 Sound 儌僕儏乕儖偺栚揑偱偡丅[慡僙僋僔儑儞偐傜専嶕] 傪
-巊偭偰挷傋偰傒傞偲丄幚嵺偵偙偺屇傃弌偟傪峴偭偰偄傞売強傪偨偔偝傫
-尒偮偗傞偙偲偑偱偒傞偱偟傚偆丅</p>
-<p>埲屻丄偙偺僙僋僔儑儞偱偼摨偠傛偆側儊僜僢僪偺掕媊偑岠壥壒偺悢偩偗
-懕偄偰偄傞偩偗偱偡偐傜丄僙僋僔儑儞帺懱偵尒傞傋偒偲偙傠偼偁傝傑偣傫丅
-戙傢傝偵丄RPG::SE 僋儔僗偵偮偄偰怺偔挷傋偰傒傞偙偲偵偟傑偟傚偆丅</p>
 
+<p>模块方法的定义也应该没有问题。新的东西是方法的内容。</p>
 
-<h2><a name="data_def">僨乕僞僋儔僗偺掕媊</a></h2>
-<p>岠壥壒僆僽僕僃僋僩偑 play 偲偄偆儊僜僢僪傪帩偭偰偄偰丄偦傟傪
-屇傃弌偣偽岠壥壒傪墘憈偡傞偙偲偑偱偒傞偲偄偆偙偲偼傢偐傝傑偟偨丅
-偟偐偟丄岠壥壒偲偄偆偺偼偁偔傑偱傕僨乕僞偱偡偐傜丄撪晹揑側摦嶌偑
-傢偐傜側偄傑傑偩偲搒崌偑埆偄偙偲傕偁傞偱偟傚偆丅</p>
-<p>傑偢偼 <a href="../rgss/gc_rpg_se.html">RPG::SE</a> 僋儔僗
-偺撪梕傪儕僼傽儗儞僗偱妋擣偟偰傒傑偡丅<strong>掕媊</strong>偲
-偄偆棑偵丄師偺傛偆側僗僋儕僾僩偑彂偐傟偰偄傑偡偹丅</p>
-<pre>
-class RPG::SE &lt; RPG::AudioFile
-  def play
-    unless @name.empty?
-      Audio.se_play('Audio/SE/' + @name, @volume, @pitch)
-    end
-  end
-  def self.stop
-    Audio.se_stop
-  end
-end
-</pre>
-<p>偙偺僗僋儕僾僩偼丄僗僋儕僾僩僄僨傿僞忋偵偼偁傝傑偣傫丅RGSS 偺
-撪晹偱丄RPG::SE 偲偄偆僋儔僗偑偙偺傛偆偵掕媊偝傟偰偄傞偲偄偆偙偲傪
-柧婰偟偰偄傞偺偱偡丅<a href="../rgss/gc_rpg_system.html"
->RPG::System</a> 傪偼偠傔丄僨乕僞儀乕僗偺撪梕傪埖偆僋儔僗偺
-儕僼傽儗儞僗偵偼昁偢偙偺掕媊偑偮偄偰偄傑偡偐傜丄撪晹偑婥偵側偭偨
-応崌偼撉傫偱傒傞偲椙偄偱偟傚偆丅</p>
+<pre>  $data_system.sounds[0].play<br></pre>
 
+<p>$data_system 是表示<a href="../rgss/gc_rpg_system.html">RPG::System</a>
+类的实变量的全局变量。</p>
 
-<h2><a name="audio">Audio 儌僕儏乕儖</a></h2>
-<p>RPG::SE 僋儔僗偺掕媊偵偼偄偔偮偐偺億僀儞僩偑偁傝傑偡偑丄傑偢偼
-偙偺峴偵拲栚偟偰傒傑偟傚偆丅</p>
-<pre>
-      Audio.se_play('Audio/SE/' + @name, @volume, @pitch)
-</pre>
-<p>偙偙偱偼 <a href="../rgss/gm_audio.html">Audio</a> 儌僕儏乕儖偺
-se_play 偲偄偆儊僜僢僪傪屇傃弌偟偰偄傑偡丅幚嵺偵岠壥壒偺墘憈傪峴偆
-偺偼 Audio 儌僕儏乕儖側偺偱偡丅Audio 儌僕儏乕儖偺儊僜僢僪傪捈愙
-屇傃弌偡偙偲偼偁傑傝偁傝傑偣傫偑丄婎慴曇偱巊梡偟偨 <a 
-href="../rgss/gm_graphics.html">Graphics</a> 偲暲傇廳梫側傕偺偱偡
-偐傜丄偙偆偄偆儌僕儏乕儖偑偁傞偲偄偆偙偲偼妎偊偰偍偄偰偔偩偝偄丅</p>
-<p>偝偰丄@ 偲偄偆暥帤偱巒傑傞柤慜偺曄悢偼<strong>僀儞僗僞儞僗
-曄悢</strong>偱偟偨丅朰傟偰偟傑偭偨曽偼丄婎慴曇偺<a href=
-"112_class.html">僋儔僗掕媊</a>傪暅廗偟偰偔偩偝偄丅偙偙偱偼
-@name丄@volume丄@pitch 偲偄偆嶰偮偺僀儞僗僞儞僗曄悢偑巊梡偝傟偰
-偄傑偡丅柤慜偐傜尒摉偑偮偔傛偆偵丄偦傟偧傟 SE 偺僼傽僀儖柤丄儃儕儏乕儉丄
-僺僢僠傪巜偟偰偄傑偡丅@name 偑巜偡僼傽僀儖柤偼僼僅儖僟傪娷傒傑偣傫偺偱丄
-&quot;Audio/SE/&quot; 偲偄偆暥帤楍偲楢寢偡傞偙偲偱僷僗柤傪嶌惉偟偰
-偄傑偡丅</p>
+<p>sounds 是用来存放<a href="../rgss/gc_rpg_se.html">RPG::SE</a>
+类的实变量的数组。0是[光标移动] ，1是[决定] 等等。</p>
 
+<p>效果音乐记录着TKOOL设定好的 SE 的文件名，音量，节拍。还有，为了演奏自己还准备 play 的方法。</p>
 
-<h2><a name="check_empty">嬻暥帤楍偺敾掕</a></h2>
-<p>RPG::SE 僋儔僗偺 play 儊僜僢僪偺撪梕偼丄幚嵺偵偼師偺 3 峴偱偡丅</p>
-<pre>
-    unless @name.empty?
-      Audio.se_play('Audio/SE/' + @name, @volume, @pitch)
-    end
-</pre>
-<p>unless 偲偄偆僉乕儚乕僪偼丄婎慴曇偺<a href="105_branch.html"
->忦審暘婒</a>偱偡偱偵妛廗偟傑偟偨丅if 偺媡偱丄忦審傪枮偨偟偰偄側偄
-偲偒偵壗偐偺張棟傪幚峴偡傞丄偲偄偆惂屼峔憿偱偡丅</p>
-<p>empty? 偲偄偆儊僜僢僪偼崱傑偱偵弌偰偒偰偄傑偣傫丅柤慜偐傜婡擻傪
-壗偲側偔椶悇偱偒偦偆偱偼偁傝傑偡偑丄嬶懱揑偵偼偳偙偱挷傋偨傜椙偄偺
-偱偟傚偆偐丅偙偆偄偆応崌偼丄儊僜僢僪偺<strong>儗僔乕僶</strong>偑
-壗偺僆僽僕僃僋僩偱偁傞偺偐傪峫偊傑偡丅@name 偼僼傽僀儖柤偱偡偐傜丄
-暥帤楍僆僽僕僃僋僩偩偲悇應偱偒傑偡偹丅暥帤楍偲尵偊偽 <a href=
-"../rgss/sc_string.html">String</a> 僋儔僗偱偡丅儕僼傽儗儞僗傪
-奐偄偰丄empty? 偲偄偆柤慜偺儊僜僢僪傪扵偟傑偟傚偆丅</p>
-<p>儕僼傽儗儞僗偵偁傞偲偍傝丄暥帤楍僆僽僕僃僋僩偺 empty? 儊僜僢僪
-偼丄偦偺暥帤楍偑嬻偱偁傞偲偒偵 true 傪曉偟傑偡丅偙偙偱偼 unless 偱
-敾掕偟偰偄傑偡偐傜丄偮傑傝乽僼傽僀儖柤偑嬻偱偼側偄乿偲偄偆忦審偱
-暘婒偟偰偄傞偲偄偆偙偲偵側傝傑偡丅
-僣僋乕儖懁偱 SE 傪 [側偟] 偵愝掕偟偨応崌丄@name 偼嬻暥帤楍偵
-側偭偰偄傑偡丅偙偙偱妋擣傪偟側偄偲丄&quot;Audio/SE/&quot; 偲偄偆
-柤慜偺 SE 傪墘憈偟傠偲偄偆柦椷偑 Audio 儌僕儏乕儖偵撏偄偰偟傑偄丄
-摉慠偦偺傛偆側僼傽僀儖偼偁傝傑偣傫偐傜僄儔乕偵側偭偰偟傑偄傑偡丅
-偦傟傪夞旔偡傞偨傔偵丄偙偺忦審暘婒偑擖偭偰偄傞傢偗偱偡丅</p>
+<p>实际上想要演奏效果音乐的时候，使用下面的方法。</p>
 
+<pre>Sound.play_cursor<br></pre>
 
-<h2><a name="nest">僱僗僩偟偨掕媊</a></h2>
-<p>師偼丄僋儔僗掕媊偺奜榞偵拲栚偟傑偡丅</p>
-<pre>
-class RPG::SE &lt; RPG::AudioFile
-end
-</pre>
-<p>RPG::SE 偲偄偆柤慜偺僋儔僗傪掕媊偟偰偄傞傛偆偵傕尒偊傑偡偑丄
-偙傟偼 RPG 儌僕儏乕儖偺拞偺 SE 偲偄偆僋儔僗傪掕媊偡傞偲偄偆堄枴偱偡丅
-嬶懱揑偵偼丄埲壓偲摨偠偱偡丅</p>
+<p>比起$data_system.sounds[0].play，
+这个方法比较简单，也是这个Sound模块存在的意义。使用[全局检索] 的时候，发现很多地方都用到这个。</p>
+
+<h2><a name="data_def">类的定义</a></h2>
+
+<p>我们已经学会了使用play来演奏效果音乐，说起来效果音乐，也不过是数据，如果不知道是如何执行的，用的时候就会比较囧。<font color="#ffffff">柳佳淇</font></p>
+
+<p>首先确认 <a href="../rgss/gc_rpg_se.html">RPG::SE</a>
+的内容，在<strong>定义</strong>里面有这样一段脚本。<font color="#ffffff">柳
+佳淇</font></p>
+
 <pre>
 module RPG
-  class SE &lt; AudioFile
+  class SE < AudioFile
+    def play
+      unless @name.empty?
+        Audio.se_play("Audio/SE/" + @name, @volume, @pitch)
+      end
+    end
+    def self.stop
+      Audio.se_stop
+    end
   end
 end
 </pre>
-<p>Ruby 偱偼丄偙偺傛偆偵儌僕儏乕儖傗僋儔僗偺拞偱丄偝傜偵暿偺
-儌僕儏乕儖傗僋儔僗傪掕媊偡傞偙偲偑偱偒傑偡丅嶲徠曽朄偼慜復偱
-妛廗偟偨<strong>掕悢</strong>偲摨偠偱偡偐傜丄偙偺僋儔僗偼 RPG::SE
-偲側傞傢偗偱偡丅偨偩偟丄慜幰偺婰朄偱偼丄RPG 偲偄偆柤慜偺儌僕儏乕儖
-傑偨偼僋儔僗偑偁傜偐偠傔掕媊偝傟偰偄側偄応崌偼僄儔乕偵側傝傑偡丅</p>
-<p>摨偠儌僕儏乕儖撪偱嶲徠偡傞応崌偼丄'RPG::' 偺傛偆側巜掕傪徣棯偡傞
-偙偲傕壜擻偱偡丅偙偙偱僗乕僷乕僋儔僗偲偟偰巜掕偝傟偰偄傞 AudioFile
-偼丄幚嵺偵偼 <a href="../rgss/gc_rpg_audiofile.html">RPG::AudioFile</a>
-僋儔僗偱偡偑丄摨偠 RPG 儌僕儏乕儖撪偵偁傞偨傔丄屻幰偺婰朄偱偼
-儌僕儏乕儖柤傪徣棯偟偨宍偵側偭偰偄傑偡丅</p>
-<p>RPG::SE 僋儔僗偺扵専偼偙傟偔傜偄偵偟偰偍偒傑偟傚偆丅
-僗乕僷乕僋儔僗偲僒僽僋儔僗偺娭學偵偮偄偰朰傟偰偟傑偭偨
-曽偼丄<a href="108_object.html">僆僽僕僃僋僩</a>傗<a
-href="112_class.html">僋儔僗掕媊</a>偺暅廗傪
-偟偰偍偄偰偔偩偝偄丅</p>
+
+<p>这个脚本不在脚本编辑器里面。在RGSS 的内部RPG::SE 类里面定义的。以<a href="../rgss/gc_rpg_system.html">RPG::System</a>
+为例子，数据库很多内容肯定有定义的。想要了解的话就去读一读吧</p>
+
+<h2><a name="audio">Audio 音乐模块</a></h2>
+
+<p>RPG::SE 类的定义里面有几个重要的地方，首先来看这行。</p>
+
+<pre> Audio.se_play("Audio/SE/" + @name, @volume, @pitch)<br></pre>
+
+<p>这里调用<a href="../rgss/gm_audio.html">Audio</a>模
+块的se_play方法。实际上演奏效果音乐的还是音乐模块，配备好的脚本里面，虽然没有直接调用音乐模块，在基础篇用的<a href="../rgss/gm_graphics.html">Graphics</a>是同等的重要，请记住这
+个模块。 </p>
+
+<p>带@是 <strong>实变量</strong>。忘了的人请复习基础篇的<a href="112_class.html">类定义</a>。<font color="#ffffff">柳
+佳淇</font></p>
+
+<h2><a name="check_empty">空文字列的判定</a></h2>
+
+<p>RPG::SE 类的 play 方法的内容实际上是下面的 3 行。<font color="#ffffff">柳
+佳淇</font></p>
+
+<pre>  unless @name.empty?
+    Audio.se_play("Audio/SE/" + @name, @volume, @pitch)
+  end</pre>
+
+<p>unless 这个我们在基础篇的<a href="105_branch.html">条件分歧</a>中
+学习过。<font color="#ffffff">柳佳淇</font></p>
+
+<p>empty? 还没有学过，从名字就可以大致的推断有什么功能。是用来调查内容是否为空。</p>
+
+<p>如果为空就会返回true。如果没有这个文件的话，可以不调用，这样就不会弹出错误提示，这也正是这个条件分歧人性化的地方。<font color="#ffffff">柳佳淇</font></p>
+
+<h2><a name="nest">嵌套定义</a></h2>
+
+<p>下面，我们来关注一下类的定义的外框。<font color="#ffffff">柳佳淇</font></p>
+
+<pre>module RPG
+  class SE < AudioFile
+  end
+end</pre>
+
+<p>看了之后我们发现在模块定义里面有类的定义。在Ruby里面在模块或者类的定义里面还可以定义其他的模块和定义。可以参考前面学习的<strong>常
+量</strong>，这个类可以写成 RPG::SE 。</p>
+
+<p>在同一个模块里面'RPG::' 可以省略。AudioFile 实际上是 RPG::AudioFile 类，因为在相同的
+RPG 模块里面，所以省略了模块名。</p>
+
+<p>关于RPG::SE 类的探索我们就到这里了。超类和子类的关系忘了的，请复习<a href="108_object.html">对像</a>和<a href="112_class.html">类定义</a>。</p>
 
 <h6></h6>
-
 </body>
 </html>

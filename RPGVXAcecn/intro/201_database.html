@@ -1,205 +1,202 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>僨乕僞儀乕僗</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+  <title>数据库</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <link href="style.css" type="text/css" rel="stylesheet">
+
+
+  <meta content="MSHTML 6.00.2900.3268" name="GENERATOR">
 </head>
+
 <body>
 
-<h1>僨乕僞儀乕僗</h1>
+<h1>数据库</h1>
+
 <ul>
-<li><a href="#data_xxxx">$data_xxxx</a></li>
-<li><a href="#contents">僨乕僞儀乕僗偺撪梕</a></li>
-<li><a href="#access">僨乕僞儀乕僗傊偺傾僋僙僗</a></li>
+
+  <li><a href="#data_xxxx">$data_xxxx</a> 
+  </li>
+  <li><a href="#contents">数据库的内容</a> 
+  </li>
+  <li><a href="#access">数据库的读取</a> </li>
 </ul>
 
-<p>夝撉曇偱偼丄僾儕僙僢僩偺僗僋儕僾僩偑壗傪偟偰偄傞偺偐撉傒夝偔
-偨傔偺僸儞僩傪採嫙偟偰偄偒傑偡丅</p>
-<p>偙偙偱偼丄VX Ace 偺<strong>僨乕僞儀乕僗</strong>偑僗僋儕僾僩撪偱
-偳偺傛偆偵埖傢傟偰偄傞偐傪夝愢偟傑偡丅</p>
+<p>在解读篇，我们会就预置脚本是做什么的作详细的说明。</p>
 
+<p>本章将介绍 RPGVX 的<strong>数据库</strong>在脚本内是如何使用的。</p>
 
 <h2><a name="data_xxxx">$data_xxxx</a></h2>
-<p>僗僋儕僾僩僄僨傿僞嵍懁偺儕僗僩偐傜丄DataManager 偲偄偆柤慜偺
-僙僋僔儑儞傪扵偟偰偔偩偝偄丅偙偺僙僋僔儑儞偺巒傔偺傎偆偵丄師偺傛偆側
-晹暘傪尒偮偗傞偙偲偑偱偒傞偱偟傚偆丅偙偺 load_normal_database 偼丄
-僎乕儉婲摦捈屻丄僞僀僩儖夋柺偑昞帵偝傟傞慜偵屇傃弌偝傟傞儊僜僢僪偱偡丅</p>
 
-<pre>
-  def self.load_normal_database
-    $data_actors        = load_data(&quot;Data/Actors.rvdata2&quot;)
-    $data_classes       = load_data(&quot;Data/Classes.rvdata2&quot;)
-    $data_skills        = load_data(&quot;Data/Skills.rvdata2&quot;)
-    $data_items         = load_data(&quot;Data/Items.rvdata2&quot;)
-    $data_weapons       = load_data(&quot;Data/Weapons.rvdata2&quot;)
-    $data_armors        = load_data(&quot;Data/Armors.rvdata2&quot;)
-    $data_enemies       = load_data(&quot;Data/Enemies.rvdata2&quot;)
-    $data_troops        = load_data(&quot;Data/Troops.rvdata2&quot;)
-    $data_states        = load_data(&quot;Data/States.rvdata2&quot;)
-    $data_animations    = load_data(&quot;Data/Animations.rvdata2&quot;)
-    $data_tilesets      = load_data(&quot;Data/Tilesets.rvdata2&quot;)
-    $data_common_events = load_data(&quot;Data/CommonEvents.rvdata2&quot;)
-    $data_system        = load_data(&quot;Data/System.rvdata2&quot;)
-    $data_mapinfos      = load_data(&quot;Data/MapInfos.rvdata2&quot;)
-  end
-</pre>
+<p>请从脚本编辑器左侧目录，查找名称为 Scene_Title 的组。在这个组的右侧窗口中，会发现如下的部分。这个是在显示游戏标题画面之前运行的脚本。</p>
+<pre>    # 加载数据库<br>    $data_actors        = load_data("Data/Actors.rvdata")<br>    $data_classes       = load_data("Data/Classes.rvdata")<br>    $data_skills        = load_data("Data/Skills.rvdata")<br>    $data_items         = load_data("Data/Items.rvdata")<br>    $data_weapons       = load_data("Data/Weapons.rvdata")<br>    $data_armors        = load_data("Data/Armors.rvdata")<br>    $data_enemies       = load_data("Data/Enemies.rvdata")<br>    $data_troops        = load_data("Data/Troops.rvdata")<br>    $data_states        = load_data("Data/States.rvdata")<br>    $data_animations    = load_data("Data/Animations.rvdata")<br>    $data_common_events = load_data("Data/CommonEvents.rvdata")<br>    $data_system        = load_data("Data/System.rvdata")<br>    $data_areas         = load_data("Data/Areas.rvdata")<br><br></pre>
 
-<p>偙偙偱偼僣僋乕儖偵傛偭偰曐懚偝傟偨
-僼傽僀儖偐傜僨乕僞儀乕僗偺忣曬傪撉傒崬傒丄奺庬僨乕僞傪僗僋儕僾僩
-偐傜嶲徠偱偒傞傛偆偵偟偰偄傑偡丅$ 偲偄偆暥帤偱巒傑傞曄悢
-偼<strong>僌儘乕僶儖曄悢</strong>偱偡偐傜丄偙傟傜偺僨乕僞偼崱屻丄
-僗僋儕僾僩偺偳偙偐傜偱傕嶲徠偱偒傞偲偄偆偙偲偑傢偐傝傑偡丅</p>
-<p>load_data 偲偄偆偺偼 <a href="../rgss/g_functions.html">RGSS
-慻傒崬傒娭悢</a>偺傂偲偮偱丄巜掕偝傟偨僼傽僀儖偐傜僨乕僞傪撉傒
-崬傓娭悢偱偡丅偨偲偊偽嵟弶偺峴偼丄Data 僼僅儖僟撪偺 Actors.rvdata2
-偲偄偆僼傽僀儖偐傜撉傒崬傫偩僨乕僞傪 $data_actors 偲偄偆曄悢偵
-戙擖偡傞偲偄偆堄枴偵側傝傑偡丅</p>
-<p>側偍丄儊僜僢僪掕媊偺嵟弶偵 self. 偲彂偐傟偰偄傞偺偼
-<strong>儌僕儏乕儖儊僜僢僪</strong>偺掕媊偱偁傞偨傔偱偡丅
-偙傟偵娭偟偰偼師復偱夝愢偟傑偡偺偱丄崱偼儊僜僢僪偺撪梕偩偗偵
-拲栚偟偰偔偩偝偄丅</p>
+<p>作一下说明，这段的意思是从 RPGVX 保存的文件中读取数据库信息，并在脚本中代入到各种数据变量为其赋值。这些以 $ 
+符号开头的变量是<strong>全局变量</strong>，因此这些数据在后面其它的脚本中也能引用。</p>
 
+<p>其中的 load_data 是 <a href="../rgss/g_functions.html">RGSS 内建函数</a> 
+之一，是一个从指定文件中读取数据的函数。比如第一行，就是表示从 Date 活页夹中的 Actors.rvdata 文件中读取数据，并代入全局变量 
+$data_actors 中为其赋值。</p>
 
-<h2><a name="contents">僨乕僞儀乕僗偺撪梕</a></h2>
-<p>奺僆僽僕僃僋僩偼師偺昞偺傛偆偵側偭偰偄傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>曄悢柤</th>
- <th>撪梕</th>
- <th>僋儔僗</th>
-</tr><tr>
- <td>$data_actors</td>
- <td>傾僋僞乕</td>
- <td><a href="../rgss/gc_rpg_actor.html">RPG::Actor</a>
-     偺攝楍</td>
-</tr><tr>
- <td>$data_classes</td>
- <td>怑嬈</td>
- <td><a href="../rgss/gc_rpg_class.html">RPG::Class</a>
-     偺攝楍</td>
-</tr><tr>
- <td>$data_skills</td>
- <td>僗僉儖</td>
- <td><a href="../rgss/gc_rpg_skill.html">RPG::Skill</a>
-     偺攝楍</td>
-</tr><tr>
- <td>$data_items</td>
- <td>傾僀僥儉</td>
- <td><a href="../rgss/gc_rpg_item.html">RPG::Item</a>
-     偺攝楍</td>
-</tr><tr>
- <td>$data_weapons</td>
- <td>晲婍</td>
- <td><a href="../rgss/gc_rpg_weapon.html">RPG::Weapon</a>
-      偺攝楍</td>
-</tr><tr>
- <td>$data_armors</td>
- <td>杊嬶</td>
- <td><a href="../rgss/gc_rpg_armor.html">RPG::Armor</a>
-     偺攝楍</td>
-</tr><tr>
- <td>$data_enemies</td>
- <td>揋僉儍儔</td>
- <td><a href="../rgss/gc_rpg_enemy.html">RPG::Enemy</a>
-     偺攝楍</td>
-</tr><tr>
- <td>$data_troops</td>
- <td>揋僌儖乕僾</td>
- <td><a href="../rgss/gc_rpg_troop.html">RPG::Troop</a>
-     偺攝楍</td>
-</tr><tr>
- <td>$data_states</td>
- <td>僗僥乕僩</td>
- <td><a href="../rgss/gc_rpg_state.html">RPG::State</a>
-     偺攝楍</td>
-</tr><tr>
- <td>$data_animations</td>
- <td>傾僯儊乕僔儑儞</td>
- <td><a href="../rgss/gc_rpg_animation.html">RPG::Animation</a>
-     偺攝楍</td>
-</tr><tr>
- <td>$data_tilesets</td>
- <td>僞僀儖僙僢僩</td>
- <td><a href="../rgss/gc_rpg_tileset.html">RPG::Tileset</a>
-     偺攝楍</td>
-</tr><tr>
- <td>$data_common_events</td>
- <td>僐儌儞僀儀儞僩</td>
- <td><a href="../rgss/gc_rpg_commonevent.html">RPG::CommonEvent</a>
-     偺攝楍</td>
-</tr><tr>
- <td>$data_system</td>
- <td>僔僗僥儉 (梡岅傪娷傓)</td>
- <td><a href="../rgss/gc_rpg_system.html">RPG::System</a>
-     </td>
-</tr><tr>
- <td>$data_mapinfos</td>
- <td>儅僢僾忣曬</td>
- <td><a href="../rgss/gc_rpg_mapinfo.html">RPG::MapInfo</a>
-     偺僴僢僔儏</td>
-</tr></table>
-<p>傾僋僞乕偐傜僐儌儞僀儀儞僩傑偱偺 11 庬偺僨乕僞偼丄僨乕僞儀乕僗偱
-昞帵偝傟傞斣崋偵懳墳偟偨攝楍偵側偭偰偄傑偡丅
-偨偩偟 VX Ace 偱偼僨乕僞 ID 偑 1 斣偐傜巒傑傝傑偡偺偱丄僨乕僞 ID 偲
-攝楍偺揧帤傪懙偊傞偨傔偵丄攝楍偺嵟弶 (0 斣栚) 偺梫慺偼 nil 偵側偭偰
-偄傑偡丅</p>
+<h2><a name="contents">数据库的内容</a></h2>
 
+<p>各个对象的具体情况如下所示。</p>
 
-<h2><a name="access">僨乕僞儀乕僗傊偺傾僋僙僗</a></h2>
-<p>偝偰丄婎慴曇偲摨偠傛偆偵 TEST 僙僋僔儑儞偱僨乕僞儀乕僗偵
-傾僋僙僗偡傞幚尡傪偟偰傒偨偄偲偙傠偱偡偑丄傂偲偮栤戣偑
-偁傝傑偡丅DataManager 儌僕儏乕儖偼堦斣忋偺僙僋僔儑儞傪幚峴偡傞帪揰偱偼
-傑偩掕媊偝傟偰偄側偄偲偄偆偙偲偱偡丅</p>
-<p>偦偙偱丄師偺傛偆偵丄load_normal_database 儊僜僢僪偺撪梕偲摨偠張棟傪
-彂偄偰偟傑偄傑偟傚偆丅</p>
-<pre>
-$data_actors        = load_data(&quot;Data/Actors.rvdata2&quot;)
-$data_classes       = load_data(&quot;Data/Classes.rvdata2&quot;)
-$data_skills        = load_data(&quot;Data/Skills.rvdata2&quot;)
-$data_items         = load_data(&quot;Data/Items.rvdata2&quot;)
-$data_weapons       = load_data(&quot;Data/Weapons.rvdata2&quot;)
-$data_armors        = load_data(&quot;Data/Armors.rvdata2&quot;)
-$data_enemies       = load_data(&quot;Data/Enemies.rvdata2&quot;)
-$data_troops        = load_data(&quot;Data/Troops.rvdata2&quot;)
-$data_states        = load_data(&quot;Data/States.rvdata2&quot;)
-$data_animations    = load_data(&quot;Data/Animations.rvdata2&quot;)
-$data_tilesets      = load_data(&quot;Data/Tilesets.rvdata2&quot;)
-$data_common_events = load_data(&quot;Data/CommonEvents.rvdata2&quot;)
-$data_system        = load_data(&quot;Data/System.rvdata2&quot;)
-$data_mapinfos      = load_data(&quot;Data/MapInfos.rvdata2&quot;)
-</pre>
-<p>偙偆偡傟偽 $data_actors 摍偺曄悢傪嶲徠偡傞偙偲偑偱偒傑偡
-偹丅<a href="110_array.html">攝楍</a>偺巊梡曽朄偼妎偊偰偄傑偡偐丠</p>
-<p>偨偲偊偽丄師偺僗僋儕僾僩偼傾僋僞乕 1 斣偺擇偮柤傪昞帵偟傑偡丅
-偙傟偼 <a href="../rgss/gc_rpg_actor.html">RPG::Actor</a> 偺儁乕僕傪
-尒傞偲偡偖偵尒偮偐傞偼偢偱偡丅</p>
-<pre>
-p $data_actors[1].nickname
-</pre>
-<p>師偺僗僋儕僾僩偼揋僉儍儔 2 斣偺柤慜傪昞帵偟傑偡丅
-name 偼丄<td><a href="../rgss/gc_rpg_enemy.html">RPG::Enemy</a>
-偱偼側偔偦偺僗乕僷乕僋儔僗偺
-<a href="../rgss/gc_rpg_baseitem.html">RPG::BaseItem</a>
-偱掕媊偝傟偰偄傑偡丅</p>
-<pre>
-p $data_enemies[2].name
-</pre>
-<p>師偺僗僋儕僾僩偼傾僀僥儉 3 斣偵巜掕偝傟偰偄傞傾僀僐儞偺
-斣崋傪昞帵偟傑偡丅</p>
-<pre>
-p $data_items[3].icon_index
-</pre>
-<p>師偺僗僋儕僾僩偼僗僀僢僠 4 斣偺柤慜傪昞帵偟傑偡丅</p>
-<pre>
-p $data_system.switches[4]
-</pre>
-<p>僨乕僞儀乕僗偵傾僋僙僗偟偨偄応崌偼丄偙偺梫椞偱丄嶲徠偟偨偄僨乕僞偺
-懏惈 (曄悢) 柤傪儕僼傽儗儞僗偱挷傋傟偽椙偄偺偱偡丅</p>
-<p>偄偔偮偐幚尡偟偰傒偰丄僨乕僞傪惓忢偵庢摼偱偒偰偄傞偙偲偑妋擣偱偒
-偨傜師偵恑傒傑偟傚偆丅</p>
+<table border="1" cellpadding="2" cellspacing="0">
 
+  <tbody>
+
+  <tr>
+
+    <th>变量名称</th>
+
+    <th>内容</th>
+
+    <th>所属类</th>
+    </tr>
+
+  <tr>
+
+    <td>$data_actors</td>
+
+    <td>主角</td>
+
+    <td><a href="../rgss/gc_rpg_actor.html">RPG::Actor</a> 数组</td>
+    </tr>
+
+  <tr>
+
+    <td>$data_classes</td>
+
+    <td>职业</td>
+
+    <td><a href="../rgss/gc_rpg_class.html">RPG::Class</a> 数组</td>
+    </tr>
+
+  <tr>
+
+    <td>$data_skills</td>
+
+    <td>技能</td>
+
+    <td><a href="../rgss/gc_rpg_skill.html">RPG::Skill</a> 数组</td>
+    </tr>
+
+  <tr>
+
+    <td>$data_items</td>
+
+    <td>物品</td>
+
+    <td><a href="../rgss/gc_rpg_item.html">RPG::Item</a> 数组</td>
+    </tr>
+
+  <tr>
+
+    <td>$data_weapons</td>
+
+    <td>武器</td>
+
+    <td><a href="../rgss/gc_rpg_weapon.html">RPG::Weapon</a> 数组</td>
+    </tr>
+
+  <tr>
+
+    <td>$data_armors</td>
+
+    <td>防具</td>
+
+    <td><a href="../rgss/gc_rpg_armor.html">RPG::Armor</a> 数组</td>
+    </tr>
+
+  <tr>
+
+    <td>$data_enemies</td>
+
+    <td>敌人</td>
+
+    <td><a href="../rgss/gc_rpg_enemy.html">RPG::Enemy</a> 数组</td>
+    </tr>
+
+  <tr>
+
+    <td>$data_troops</td>
+
+    <td>敌人队伍</td>
+
+    <td><a href="../rgss/gc_rpg_troop.html">RPG::Troop</a> 数组</td>
+    </tr>
+
+  <tr>
+
+    <td>$data_states</td>
+
+    <td>状态</td>
+
+    <td><a href="../rgss/gc_rpg_state.html">RPG::State</a> 数组</td>
+    </tr>
+
+  <tr>
+
+    <td>$data_animations</td>
+
+    <td>动画</td>
+
+    <td><a href="../rgss/gc_rpg_animation.html">RPG::Animation</a> 数组</td>
+    </tr>
+
+  <tr>
+
+    <td>$data_common_events</td>
+
+    <td>全局事件</td>
+
+    <td><a href="../rgss/gc_rpg_commonevent.html">RPG::CommonEvent</a> 
+数组</td>
+    </tr>
+
+  <tr>
+
+    <td>$data_system</td>
+
+    <td>总参数（包括[用语]）</td>
+
+    <td><a href="../rgss/gc_rpg_system.html">RPG::System</a></td>
+    </tr>
+
+  <tr>
+
+    <td>$data_areas</td>
+
+    <td>遇敌区域</td>
+
+    <td><a href="../rgss/gc_rpg_area.html">RPG::Area</a> 
+数组</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>从主角到全局事件的这 11 种数据，是和数据库中标记的号码相对应的数组。但是 RPGVX 的数据 ID 是从 1 号开始的，为了使数据 ID 
+和数组的附加码一致，所以数组的第一个（0 号）单元为 nil。</p>
+
+<h2><a name="access">数据库的使用</a></h2>
+
+<p>比如下一个脚本是表示主角中 1 号人物的名称。</p>
+<pre>$data_actors[1].name<br></pre>
+
+<p>下一个脚本是表示敌人中 2 号敌人的 MaxHP。</p>
+<pre>$data_enemies[2].maxhp<br></pre>
+
+<p>下一个脚本是表示物品中 3 号物品指定图标的代号。</p>
+<pre>$data_items[3].iconi_index<br></pre>
+
+<p>下一个脚本是表示系统中 4 号开关的名称。</p>
+<pre>$data_system.switches[4]<br></pre>
+
+<p>这些要点，请在参考中参照数据的属性（变量）名称来查看。想以 p 函数显示这些数据的话，可以使用事件指令的「插入RGSS脚本语句」命令来执行，这样会很方便。</p>
 
 <h6></h6>
 

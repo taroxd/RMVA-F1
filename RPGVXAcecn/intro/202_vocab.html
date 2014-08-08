@@ -1,210 +1,158 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>Vocab 儌僕儏乕儖</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+  <title>用语模块</title>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+  <link href="style.css" type="text/css" rel="stylesheet">
+
+  <meta content="MSHTML 6.00.2900.3268" name="GENERATOR">
+
 </head>
+
 <body>
 
-<h1>Vocab 儌僕儏乕儖</h1>
+<h1>用语模块</h1>
+
 <ul>
-<li><a href="#define_module">儌僕儏乕儖偺掕媊</a></li>
-<li><a href="#constant">掕悢</a></li>
-<li><a href="#sprintf">sprintf</a></li>
-<li><a href="#module_method">儌僕儏乕儖儊僜僢僪</a></li>
-<li><a href="#read_terms">梡岅僨乕僞偺庢摼</a></li>
+
+  <li><a href="#define_module">模块定义</a> </li>
+
+  <li><a href="#constant">常数</a> </li>
+
+  <li><a href="#sprintf">格式化字符串</a> </li>
+
+  <li><a href="#module_method">模块方法</a> </li>
+
+  <li><a href="#read_terms">游戏用语数据的取得</a> </li>
+
 </ul>
 
-<p>忋偺僙僋僔儑儞偐傜弴偵尒偰偄偔偙偲偵偟傑偟傚偆丅Vocab 偼丄
-梡岅偲儊僢僙乕僕傪埖偆儌僕儏乕儖偱偡丅</p>
+<p>让我们从上往下的顺序来看吧。Vocab 是处理游戏用语和消息的模块</p>
 
+<h2><a name="define_module">模块定义</a></h2>
 
-<h2><a name="define_module">儌僕儏乕儖偺掕媊</a></h2>
-<p>傑偢偼丄嵍偺儕僗僩偐傜 Vocab 僙僋僔儑儞傪慖戰偟偰偔偩偝偄丅</p>
-<p>1 乣 6 峴栚偼僐儊儞僩偱偡偐傜栤戣偁傝傑偣傫偹丅8 峴栚傪尒偰偔偩偝偄丅</p>
-<pre>
-module Vocab
-</pre>
-<p>偙偙偱偼丄Vocab 偲偄偆柤慜偺怴偟偄儌僕儏乕儖傪掕媊偟偰偄傑偡丅
-婎慴曇偱<a href="109_graphics.html">夋憸偺昞帵</a>傪峴偆偲偒偵偼
-Graphics 偲偄偆慻傒崬傒儌僕儏乕儖傪巊梡偟傑偟偨丅僋儔僗偲摨條丄
-儌僕儏乕儖傪帺暘偱掕媊偡傞偙偲傕壜擻偱偡丅嬶懱揑偵偼丄
-<pre>
-module 儌僕儏乕儖柤
-end
-</pre>
-<p>偲偄偆暥朄傪巊梡偟傑偡丅偙傟偼<a href="112_class.html">僋儔僗掕媊</a>偺
-曽朄偲傎偲傫偳摨偠偱偡丅儌僕儏乕儖偼丄僀儞僗僞儞僗傪嶌傞偙偲偑偱偒側偄
-偲偄偆偙偲埲奜丄傎傏僋儔僗偲摨偠傕偺偩偲峫偊偰偍偄偰傕椙偄偱偟傚偆丅</p>
-<p>幚嵺偵偼丄儌僕儏乕儖偵偼傕偆傂偲偮偺廳梫側婡擻偑偁傝傑偡丅
-婎慴曇偺<a href="110_array.html">攝楍</a>偺復偱
-嵟屻偵夝愢偟偨 <a href="../rgss/sm_enumerable.html">Enumerable</a>
-儌僕儏乕儖偺傛偆偵丄暿偺僋儔僗偵懳偟偰帺暘偺儊僜僢僪傪捛壛偡傞偲偄偆
-婡擻偱偡丅偙傟傪 <strong>Mix-in</strong> 偲屇傃傑偡丅偨偩偟偙傟偼乽RGSS
-儕僼傽儗儞僗偵偰亀僀儞僋儖乕僪偟偰偄傞儌僕儏乕儖亁偵彂偐傟偰偄傞
-儊僜僢僪傕巊梡偱偒傞乿偲偄偆棟夝偑偁傟偽廫暘偱丄僾儕僙僢僩偺僗僋儕僾僩
-偱傕 Mix-in 偼巊梡偟偰偄傑偣傫偺偱丄偝傎偳婥偵偟側偔偰傕峔偄傑偣傫丅</p>
-<p>側偍丄Vocab 偲偄偆柤慜偼 vocabulary (岅渂) 偲偄偆塸扨岅傪徣棯偟偨
-傕偺偱偡丅</p>
+<p>首先请从左边列表里选择 Vocab 组</p>
 
+<p>第1到第6行是解释说明，这里不会有什么问题的。请看第8行。</p>
 
-<h2><a name="constant">掕悢</a></h2>
-<p>傾儖僼傽儀僢僩偺戝暥帤偱巒傑傞幆暿巕偼丄<strong>掕悢</strong>偲偟偰
-埖傢傟傑偡丅掕悢偲偼丄偄偭偨傫掕媊偝傟偨傜彂偒姺傢傞偙偲偑側偄傛偆側
-僨乕僞偺偙偲偱偡丅掕悢偲偄偆柤慜偱偡偑丄昁偢偟傕乽悢乿偱偁傞昁梫偼
-偁傝傑偣傫丅暥帤楍傗偦偺懠偺僆僽僕僃僋僩傕掕悢偲偟偰巊梡偱偒傑偡丅</p>
-<pre>
-  ShopBuy         = &quot;峸擖偡傞&quot;
-  ShopSell        = &quot;攧媝偡傞&quot;
-  ShopCancel      = &quot;傗傔傞&quot;
-  Possession      = &quot;帩偭偰偄傞悢&quot;
-</pre>
-<p>Vocab 僙僋僔儑儞偺 11 乣 14 峴栚偱偼丄偙偺傛偆偵掕悢傪掕媊偟偰偄傑偡丅
-偙偺暥帤楍偺撪梕傪彂偒姺偊傟偽丄僔儑僢僾夋柺偺僐儅儞僪柤側偳傪曄峏偡傞
-偙偲偑偱偒傑偡丅偙偺傛偆偵丄偁偲偐傜彂偒姺偊傞壜擻惈偑偁傞傕偺傪堦偐強偵
-傑偲傔偰偍偔偲偄偆偺偑丄掕悢偺堦斒揑側棙梡曽朄偺傂偲偮偱偡丅</p>
-<img src="img/search.png" alt="慡僙僋僔儑儞偐傜専嶕" class="float_r">
-<p>偝偰丄偙偺掕悢偑幚嵺偵僗僋儕僾僩偺偳偙偐傜嶲徠偝傟偰偄傞偺偐傪扵偟偰
-傒傑偟傚偆丅偙偺傛偆側応崌偵偼 [慡僙僋僔儑儞偐傜専嶕] 婡擻傪巊偄傑偡丅</p>
-<p>Ctrl+Shift+F 傪墴偟偰 [慡僙僋僔儑儞偐傜専嶕] 僟僀傾儘僌儃僢僋僗傪
-奐偒丄ShopBuy 偲偄偆暥帤楍傪専嶕偟偰傒偰偔偩偝偄丅偙偺偲偒丄捠忢偺専嶕
-僂傿儞僪僂 (Ctrl+F) 偲娫堘傢側偄傛偆偵拲堄偑昁梫偱偡丅崱夞偼 [扨岅扨埵]
-僆僾僔儑儞偵僠僃僢僋傪擖傟偰専嶕偟偰偔偩偝偄丅</p>
-<p>専嶕偵惉岟偡傟偽丄2 審偺専嶕寢壥偑昞帵偝傟傞偼偢偱偡丅偙偺偆偪傂偲偮偼
-尰嵼奐偄偰偄傞 Vocab 儌僕儏乕儖撪偱偺掕媊偱偡偐傜丄傕偆傂偲偮偺専嶕寢壥傪
-僟僽儖僋儕僢僋偟偰偔偩偝偄丅</p>
-<pre>
-    add_command(Vocab::ShopBuy,    :buy)
-    add_command(Vocab::ShopSell,   :sell,   !@purchase_only)
-    add_command(Vocab::ShopCancel, :cancel)
-</pre>
-<p>Window_ShopCommand 偲偄偆僙僋僔儑儞偑奐偒丄忋偺傛偆側売強偵僇乕僜儖偑
-堏摦偟傑偟偨偹丅偡側傢偪偙傟偑丄儌僕儏乕儖撪偺掕悢偺嶲徠偺巇曽偱偡丅</p>
-<pre>
-儌僕儏乕儖柤::掕悢柤
-</pre>
-<p>'::' 偲偄偆墘嶼巕偼丄慜復偱僨乕僞儀乕僗偺撪梕傪夝愢偡傞偲偒丄RPG::Actor
-偲偄偭偨宍偱傕弌偰偒傑偟偨丅僋儔僗傗儌僕儏乕儖偺柤慜傕掕悢偲摨偠傛偆偵
-埖傢傟傑偡偐傜丄偙傟偼偮傑傝 RPG 偲偄偆儌僕儏乕儖偺拞偱 Actor 偲偄偆
-僋儔僗偑掕媊偝傟偰偄傞丄偲偄偆堄枴偩偭偨偺偱偡丅</p>
-<p>Window_ShopCommand 僙僋僔儑儞偺偦偺懠偺晹暘偼崱偼娭學偁傝傑偣傫偺
-偱丄Vocab 儌僕儏乕儖偵栠偭偰偔偩偝偄丅</p>
+<pre>module Vocab<br></pre>
 
+<p>在这里，定义了一个叫做Vocab的新的模块。在基础篇里进行<a href="109_graphics.html">显
+示图片</a>的时候，曾经使用过Graphics这个模块。和类一样，模块也可以自定义。具体见下面。 </p>
 
-<h2><a name="sprintf">sprintf</a></h2>
-<p>Vocab 儌僕儏乕儖偺掕媊傪忋偐傜弴偵尒偰偄偔偲丄'%s' 偲偄偆
-婰崋偑娷傑傟偨暥帤楍偑尒偮偐傝傑偡丅</p>
-<pre>
-  Emerge          = "%s偑弌尰両"
-  Preemptive      = "%s偼愭庤傪庢偭偨両"
-  Surprise        = "%s偼晄堄傪偮偐傟偨両"
-  EscapeStart     = "%s偼摝偘弌偟偨両"
-</pre>
-<p>斾妑揑傢偐傝傗偡偦偆側傕偺傪敳偒弌偟偰傒傑偟偨丅
-偙傟傪尒傞偲丄'%s' 偲偄偆晹暘偑丄僉儍儔僋僞乕傗傾僀僥儉偺
-柤慜側偳偵抲偒姺傢傞偺偩偲偄偆偙偲偑憐憸偱偒傞偲巚偄傑偡丅</p>
-<p>偙傟偼丄<a href="../rgss/s_functions.html#L000402">sprintf</a> 偲偄偆
-慻傒崬傒娭悢偺<strong>彂幃暥帤楍</strong>偱偡丅sprintf 偲偄偆偺偼
-C 尵岅側偳偱揱摑揑偵巊梡偝傟傞娭悢偱偡丅s 偼 string (暥帤楍) 偺
-摢暥帤丄print 偼弌椡偺堄枴偱丄f 偼 format (彂幃) 偺摢暥帤偱偡丅</a>
-<p>Ruby 偱偼丄偨偲偊偽師偺傛偆偵巊梡偟傑偡丅TEST 僙僋僔儑儞偱
-幚尡偟偰傒偰偔偩偝偄丅</p>
-<pre>
-p sprintf(&quot;%s偵 %s 偺僟儊乕僕傪梌偊偨両&quot;, &quot;僪儔僑儞&quot;, 999)
-</pre>
-<p>彂幃暥帤楍傪嵟弶偺堷悢偲偟丄2 斣栚埲崀偵丄杽傔崬傓暥帤楍傗悢抣側偳弴斣偵
-巜掕偡傞偲妎偊偰偔偩偝偄丅's' 偼暥帤楍傪杽傔崬傓<strong>巜帵巕</strong>偱偡
-偑丄999 側偳偺悢抣傪巜掕偟偰傕丄Ruby 偱偼帺摦揑偵暥帤楍偵曄姺偝傟傑偡偐傜
-怱攝偁傝傑偣傫丅偙偺椺偱偼暥帤楍傗悢抣傪捈愙堷悢偵偟偰偄傑偡偑丄傕偪傠傫
-幚嵺偵偼曄悢傪巊梡偡傞偙偲偺傎偆偑懡偄偱偟傚偆丅</p>
-<p>彂幃偑揔梡偝傟偨怴偟偄暥帤楍偑 sprintf 偺栠傝抣偲側傝傑偡偺偱丄偦傟傪
-暿偺曄悢偵戙擖偟偨傝丄椺偺傛偆偵 p 娭悢側偳傪巊偭偰昞帵偟偨傝偡傞偙偲偑
-偱偒傑偡丅</p>
-<p>sprintf 傪巊偆偲丄暥帤楍傪杽傔崬傓偩偗偱側偔丄悢抣傪巜掕偟偨寘悢偩偗弌椡
-偟偨傝側偳丄偄傠偄傠側嵶偐偄惂屼偑壜擻偱偡丅尰帪揰偱偼 '%s' 偺栶妱偑傢偐傟偽
-栤戣偁傝傑偣傫偑丄彨棃昁梫偵側偭偨偲偒偵偼 <a href="../rgss/appendix02.html">
-sprintf 僼僅乕儅僢僩</a>傪嶲徠偟偰偔偩偝偄丅</p>
+<pre>module 模块名<br>end<br></pre>
 
+<p>这与<a href="112_class.html">类定义</a>的方法几乎是一样的。
+模块除了不能生成对像实例外，基本上和类是一样的。实际上还有不能使用 include 进行 Mix-in
+这一个区别，不过由于没有在预置脚本里使用，无视也可以。</p>
 
-<h2><a name="module_method">儌僕儏乕儖儊僜僢僪</a></h2>
-<p>偝傜偵弴偵尒偰偄偔偲丄師偺傛偆側屄強偑偁傝傑偡丅</p>
-<pre>
-  def self.basic(basic_id)
-    $data_system.terms.basic[basic_id]
-  end
-</pre>
-<p>儊僜僢僪偺掕媊偺傛偆偵尒偊傑偡偑丄'self.' 偲偄偆暥帤偑偮偄偰偄傑偡偹丅
-偙傟偼<strong>儌僕儏乕儖儊僜僢僪</strong>偺掕媊偱偡丅</p>
-<p>偪側傒偵丄摨偠掕媊傪僋儔僗掕媊偺拞偱峴偭偨応崌偼<strong>僋儔僗
-儊僜僢僪</strong>偲屇傃丄偙傟傜傪崌傢偣偰丄傛傝堦斒揑偵偼<strong>摿堎
-儊僜僢僪</strong>偲傕屇傃傑偡丅偙偺奣擮偼 Ruby 撈摿偺傕偺側偺偱丄傎偐偺
-尵岅偺宱尡幰偺曽偱偁偭偰傕彮偟屗榝偭偰偟傑偆偐傕偟傟傑偣傫丅</p>
-<p>擄偟偄榖偼偝偰偍偒丄儌僕儏乕儖撪偱儊僜僢僪傪掕媊偡傞偲偒偵偼 'self.'
-傪儊僜僢僪柤偺慜偵偮偗傞偲妎偊偰偍偗偽丄幚梡忋偼廫暘偱偡丅</p>
-<p>忋偺傛偆偵掕媊偟偰偍偔偙偲偱丄</p>
-<pre>
-Vocab.basic(0)
-</pre>
-傑偨偼
-<pre>
-Vocab::basic(0)
-</pre>
-<p>偙偺傛偆側屇傃弌偟曽偑偱偒傞傛偆偵側傝傑偡丅幚嵺偺僗僋儕僾僩偱偼丄
-掕悢偺嶲徠曽朄偲尒偨栚傪摑堦偡傞偨傔偵屻幰偺婰朄傪巊梡偟偰偄傑偡丅</p>
-<p>傕偟丄偙偺儊僜僢僪偺掕媊傪丄</p>
-<pre>
-  def basic(basic_id)
-    $data_system.terms.basic[basic_id]
-  end
-</pre>
-<p>偙偺傛偆偵乽晛捠偺儊僜僢僪乿偲偟偰彂偄偰偟傑偆偲丄Vocab.basic(0)
-偺傛偆側嶲徠曽朄偱偼乽儊僜僢僪偑尒偮偐傜側偄乿偲偄偆僄儔乕偵側偭偰
-偟傑偄傑偡偺偱拲堄偟偰偔偩偝偄丅</p>
-<p>側偍丄<a href="107_function.html">娭悢</a>偺掕媊曽朄傪妛廗偟偨嵺丄
-搑拞偱拞抐偡傞応崌埲奜偼 return 傪徣棯偡傞偙偲偑壜擻偲愢柧偟傑偟偨丅
-偙偙偱偼 return 傪徣棯偟偨彂偒曽偵側偭偰偄傑偡偑丄徣棯偣偢偵彂偔偲
-師偺傛偆偵側傝傑偡丅</p>
-<pre>
-  def self.basic(basic_id)
-    return $data_system.terms.basic[basic_id]
-  end
-</pre>
+<p>还有，Vocab这个名称来源于 vocabulary (语汇)这个英语单词，Vocab是它的省略形式。 </p>
 
+<h2><a name="constant">常量</a></h2>
 
-<h2><a name="read_terms">梡岅僨乕僞偺庢摼</a></h2>
-<p>儊僜僢僪偺撪梕傪妋擣偟偰偍偒傑偟傚偆丅</p>
-<pre>
-    $data_system.terms.basic[basic_id]
-</pre>
-<p>慜復偱<a href="201_database.html">僨乕僞儀乕僗</a>偺傾僋僙僗曽朄傪
-偒偪傫偲妋擣偟偨曽側傜丄偙傟偼擄偟偔偼側偄偱偟傚偆丅</p>
-<p>$data_system 偼 <a href="../rgss/gc_rpg_system.html">RPG::System</a>
-僋儔僗偺僀儞僗僞儞僗傪巜偡曄悢偱丄偦偺拞偺 terms 偲偄偆懏惈偼
-<a href="../rgss/gc_rpg_system_terms.html">RPG::System::Terms</a>
-僋儔僗偺僀儞僗僞儞僗傪巜偟偰偄傑偡丅basic 偼婎杮僗僥乕僞僗偺暥帤楍偑
-奿擺偝傟偨攝楍傪巜偟偰偍傝丄偨偲偊偽 basic_id 偑 0 側傜 [儗儀儖] 偵
-懳墳偡傞梡岅傪庢摼偡傞偙偲偵側傝傑偡丅
-僣僋乕儖偺僨乕僞儀乕僗偱偼 [僔僗僥儉] 偲 [梡岅] 偺僞僽偑暘偐傟偰偄傑偡偑丄
-僨乕僞忋偱偼 [梡岅] 偼 [僔僗僥儉] 偺堦崁栚偲偄偆埖偄偵側偭偰偄傑偡丅</p>
-<p>偝傜偵懕偗偰尒偰偄偔偲丄師偺傛偆側峴偑偁傝傑偡丅</p>
-<pre>
-  def self.level;       basic(0);     end   # 儗儀儖
-</pre>
-<p>摨偠傛偆側掕媊偑戝検偵偁傞偨傔丄僙儈僐儘儞傪巊梡偡傞偙偲偱儊僜僢僪偺
-掕媊傪堦峴偱嵪傑偣偰偄傑偡丅晛捠偺彂偒曽傪偡傞偲師偺傛偆偵側傝傑偡丅</p>
-<pre>
-  # 儗儀儖
-  def self.level
-    basic(0)
-  end
-</pre>
-<p>偙傟偼丄Vocab::basic(0) 偺戙傢傝偵丄傢偐傝傗偡偔 Vocab::level
-偲彂偗傞傛偆偵偡傞偨傔偺儊僜僢僪偱偡丅巆傝偺峴偺栶妱傕摨條偱偡丅</p>
+<p>以大写字母开头的标识符就是<strong>常量</strong>。常量的定义（和初始化）就是进行代入赋
+值，但是在方法里是不能定义的。常量除了数值还可以是字符串和其他对象。<font color="#ffffff">柳佳淇</font></p>
 
+<pre> ShopBuy = "购买"<br> ShopSell = "贩卖"<br> ShopCancel = "取消"<br> Possession = "持有数量"<br></pre>
+
+<p>就像是Vocab 组里的第 11 到 第 14
+行这样就定义了常量。如果更改这里的字符串的内容的话，商店画面的相关名称也会改变。就像这样，以后对于可能要更改的东西预先放在一个地方，就是常量的用
+法之一。</p>
+
+<img style="float: right; margin-bottom: 1em; margin-left: 1.5em;" alt="全局检索" src="img/image3.png">
+<p>还有，让我们来找一找这个常量在脚本里什么地方被使用吧。这时候就需要使用[全局检索]功能。 </p>
+
+<p>按下Ctrl+Shift+F 就会打开 [全局检索]对话框，请检索ShopBuy
+这个字符串。这是需要注意的是，不要和通常的检索 (Ctrl+F)混淆了。</p>
+
+<p>如果在检索上成功，2个检索结果应该被表示。这个其中一个正是现在打开的 Vocab
+语言模块里的，双击的话就会出现另一个检索结果。<font color="#ffffff">柳佳淇</font></p>
+
+<pre> s1 = Vocab::ShopBuy<br> s2 = Vocab::ShopSell<br> s3 = Vocab::ShopCancel<br></pre>
+
+<p>打开Scene_Shop 这个组，光标会移动上面这个部分。这个就是模块里面查看常量的方法。</p>
+
+<pre>模块名::常量名<br></pre>
+
+<p>'::' 这个运算符在前面讲解数据库的时候，出现过RPG::Actor
+这个形式。由于类和模块的名字也可以和常量一样被使用，也就是说，叫做RPG的这个模块中Actor类已经被定义的意思。</p>
+
+<p>Scene_Shop 组的其他部分和现在要讲的没有关系，请返回Vocab 模块。 <font color="#ffffff">柳佳淇</font></p>
+
+<h2><a name="sprintf">格式化字符串</a></h2>
+
+<p>Vocab 在Vocab模块定义的下面，可以找到包含'%s' 这个符号的字符串。</p>
+
+<pre> DoAttack = "%s 出手攻击!"<br> DoGuard = "%s 护住身上弱点。"<br> DoEscape = "%s 逃跑了。"<br> DoWait = "%s 正在等待时机。"<br> UseItem = "%s使用了%s!"<br></pre>
+
+<p>我们来看下容易懂的地方。我们通过分析可以想到'%s'这个部分用来代替角色，物品的名字等。 </p>
+
+<p>它就是叫做<a><href ="../rgss/s_functions.html#L000402">sprintf=""&gt;</href></a>函数的<strong>格式化字符串</strong>。
+之所以叫sprintf 这么奇怪的名字，是因为s 是 string (字符串的)大写字母，print 是输出的意义，f 是format
+(格式的)大写字母。是C 语言等习惯上使用的函数名称。</p>
+
+<p>在Ruby 里面，请使用下面的脚本。请用TEST组来实验一下。<font color="#ffffff">柳
+佳淇</font></p>
+
+<pre>p sprintf("%s受到%s点伤害！", "恶龙", 999) &nbsp;# =&gt; 恶龙受到999点伤害！</pre>
+
+<p>格式化字符串会代入最开始的参数，第2个以后，会自动替换指定的字符串或是数值。's'是填入字符串的<strong>指示
+符</strong>，虽然是999 的数值，因为Ruby
+可以自动转换成字符串，所以不用担心。这个例子直接让字符串和数值作为参数，当然实际上使用变量的情况比较多。</p>
+
+<p>因为新的字符串会成为sprintf的返回值，所以在那里带入别的变量，如同例子那样带入的话也是可以的。 <font color="#ffffff">柳</font></p>
+<p>另外在Vocab模块定义的下面，可以找到包含'%1$s' 或 '%2$s' 这样符号的字符串。</p>
+<pre>  ActorLoss       = "%1$s失去了%3$s点的%2$s！"<br></pre>
+
+<p>这代表格式化字符串会自动将代入的参数，按照1, 2, 3的顺序替换。所以</p>
+<pre>p sprintf("%1$s失去了%3$s点的%2$s！", "主角", "HP", 999) &nbsp;# =&gt; 主角失去了999点的HP！</pre>
+<p>使用sprintf
+，不仅仅可以填入字符串，还可以输出指定位数的数值等。现在'%s'的作用明白的话，虽然没有什么问题，将来有必要的时候请参考<a href="../rgss/appendix02.html"> sprintf 格式</a>这一部分。 </p>
+
+<h2><a name="module_method">模块方法</a></h2>
+
+<p>继续向下看就会到下面这个地方。<font color="#ffffff">柳佳淇</font></p>
+
+<pre> def self.level<br> return $data_system.terms.level<br> end<br></pre>
+
+<p>看上去好像是方法定义，但是出现了'self.'这个东东。 这个就是<strong>模块定义。</strong></p>
+
+<p>另外还要说明的是，同一个定义在类定义中执行的时候，称做<strong>类方法</strong>。他们合
+称为<strong>特殊方法</strong>。这个概念是Ruby所特有的，学习过其他程序语言的人也许会感到困惑。</p>
+
+<p>困难的东西暂且不谈，在模块内定义方法的时候，使用'self.'这个方法还是十分实用的。</p>
+
+<p>按照上面那样定义。<font color="#ffffff">柳佳淇</font></p>
+
+<pre>Vocab.level<br></pre>
+
+或者
+<pre>Vocab::level<br></pre>
+
+<p>就可以这样使用方法的。实际写脚本的过程中，为了和常量形式统一。通常使用后面的写法。</p>
+
+<p>如果像下面这样的定义方法</p>
+
+<pre> def level<br> return $data_system.terms.level<br> end<br></pre>
+
+<p>和普通的方法定义是相同的，这样书写方法会造成错误，需要注意。</p>
+
+<h2><a name="read_terms">游戏用语数据的调用</a></h2>
+
+<p>一直解说模块的方法，还没有涉及到方法的内容。下面这行什么意思呢 </p>
+
+<pre> return $data_system.terms.level<br></pre>
+
+<p>如果您仔细地看了前面说的数据库的部分，这个一点也不难。这个是取得数据库设定好的等级用语。其他剩余的由于都比较类似，就不再详细叙
+述了。对于使用方法没有自信的，请复习函数的使用</p>
 
 <h6></h6>
+
 
 </body>
 </html>

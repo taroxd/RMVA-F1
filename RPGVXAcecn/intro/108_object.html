@@ -1,170 +1,152 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>僆僽僕僃僋僩</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+
+  <title>对像</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+
 </head>
+
+
 <body>
 
-<h1>僆僽僕僃僋僩</h1>
+
+<h1>对像</h1>
+
 <ul>
-<li><a href="#object">僆僽僕僃僋僩偲僋儔僗</a></li>
-<li><a href="#method">儊僜僢僪</a></li>
-<li><a href="#superclass">僗乕僷乕僋儔僗</a></li>
-<li><a href="#instance">僀儞僗僞儞僗偺惗惉</a></li>
+
+  <li><a href="#object">对像和类</a></li>
+
+  <li><a href="#method">方法</a></li>
+
+  <li><a href="#superclass">超类</a></li>
+
+  <li><a href="#instance">インスタンスの生成</a></li>
+
 </ul>
 
-<p>Ruby 偼僆僽僕僃僋僩巜岦尵岅偱偡丅
-偙偙偱偼丄<strong>僆僽僕僃僋僩</strong>偲偼偳偆偄偆傕偺偐傪
-夝愢偟傑偡丅</p>
+
+<p>Ruby 是面向对象的语言。这里，所谓<strong>对象</strong>可以解释为任何东西。</p>
 
 
-<h2><a name="object">僆僽僕僃僋僩偲僋儔僗</a></h2>
-<p>Ruby 偱埖傢傟傞偁傜備傞僨乕僞偼<strong>僆僽僕僃僋僩</strong>偲
-屇偽傟偰偄傑偡丅</p>
-<pre>
-3               # 惍悢僆僽僕僃僋僩
-1.5             # 晜摦彫悢揰悢僆僽僕僃僋僩
-&quot;Ruby&quot;          # 暥帤楍僆僽僕僃僋僩
-1..10           # 斖埻僆僽僕僃僋僩
-</pre>
 
-<p>僆僽僕僃僋僩偺庬椶偺偙偲傪<strong>僋儔僗</strong>偲屇傃傑偡丅
-偨偲偊偽暥帤楍僆僽僕僃僋僩偼 String丄斖埻僆僽僕僃僋僩偼 Range 偲
-偄偆僋儔僗偵懏偟偰偄傑偡丅Ruby 偵慻傒崬傑傟偰偄傞僋儔僗偺堦棗
-偼丄<a href="../rgss/index.html">RGSS 儕僼傽儗儞僗</a> 偺拞偵偁傞
-<a href="../rgss/s_classes.html">慻傒崬傒僋儔僗</a> 偺儁乕僕偱
-妋擣偡傞偙偲偑偱偒傑偡丅</p>
-<p>摿掕偺僋儔僗偵懏偡傞僆僽僕僃僋僩偱偁傞偙偲傪嫮挷偡傞偨傔
-偵丄<strong>僀儞僗僞儞僗</strong>偲偄偆尵梩傪巊偆偙偲傕偁傝傑偡丅
-僋儔僗偲偼丄尵傢偽偦傟偵懏偡傞僆僽僕僃僋僩偵偍偗傞悧宍偲側傞傕偺偱偡丅
-戝傑偐側愝寁恾偑僋儔僗偵旛傢偭偰偄偰丄僆僽僕僃僋僩偺怳傞晳偄傪寛傔偰偄傞
-偙偲偵側傝傑偡丅僆僽僕僃僋僩偼昁偢偄偢傟偐偺僋儔僗偵懏偟偰偄傑偡丅
-傛偭偰丄乽偙偺僋儔僗偵懏偟偰偄傞僆僽僕僃僋僩乿偲偄偆昞尰傪乽偙偺僋儔僗偺
-僀儞僗僞儞僗乿偲尵偄姺偊傞偙偲偑偱偒傞偲偄偆偙偲側偺偱偡丅</p>
+<h2><a name="object">对象和类</a></h2>
+
+<p>Ruby 所使用的一切数据就称为<strong>对象</strong>。</p>
+
+<pre>3               # 整数对象<br>1.5             # 浮点数对象<br>"Ruby"          # 字符串对象<br>1..10           # 范围对象<br></pre>
 
 
-<h2><a name="method">儊僜僢僪</a></h2>
-<p>帋偟偵 <a href="../rgss/sc_string.html">String</a> 僋儔僗偺
-儁乕僕偑偳偆側偭偰偄傞偐尒偰傒傑偟傚偆丅崱偺抜奒偱偼堄枴偑傛偔傢偐傜側偄
-偐傕偟傟傑偣傫偑丄偦傟偼婥偵偟側偔偰峔偄傑偣傫丅幚嵺偵帺暘偱僗僋儕僾僩傪
-慻傓偲偒偵偼偙偺儕僼傽儗儞僗傪昿斏偵嶲徠偡傞偙偲偵側傝傑偡偐傜丄側傞傋偔
-憗偄偆偪偵姷傟偰偍偔昁梫偑偁傞偺偱偡丅</p>
-<p><strong>儊僜僢僪</strong>偲偄偆傕偺偑梾楍偝傟偰偄傞偺偑妋擣偱偒偨
-偱偟傚偆偐丅偙傟偼丄偦偺僋儔僗偵懏偡傞僆僽僕僃僋僩愱梡偺娭悢偺傛偆側
-傕偺偱偡丅</p>
-<p>儊僜僢僪堦棗偺拞傎偳偵 size 偲偄偆崁栚偑偁傝傑偡偹丅偙傟傪
-巊偭偰傒傑偟傚偆丅</p>
-<pre>
-a = &quot;Ruby&quot;
+<p>而对象的种类就称为<strong>类</strong>。比如字符串对象是属于 String 类，
+范围对象是属于 Range 类。关于 Ruby 中所有类的详细介绍，
+见 <a href="../rgss/index.html">RGSS 参考</a> 中
+的 <a href="../rgss/s_classes.html">内部类</a> 部分。</p>
 
-p a.size        # =&gt; 4
-</pre>
-<p>String 僋儔僗偺 size 儊僜僢僪偼丄暥帤悢傪曉偡儊僜僢僪
-偱偡丅&quot;Ruby&quot; 偲偄偆暥帤楍偼 4 暥帤偱偡偐傜
-4 偲偄偆悢帤偑曉偭偰偔傞傢偗偱偡 (Ruby 1.9 偐傜偼慡妏暥帤傕
-1 暥帤偲偟偰悢偊傜傟傞傛偆偵側偭偰偄傑偡) 丅</p>
-<p>傕偆傂偲偮帋偟偰傒傑偟傚偆丅暥帤楍傪戝暥帤偵曄姺偡傞 upcase
-儊僜僢僪偱偡丅</p>
-<pre>
-a = &quot;Ruby&quot;
-
-p a.upcase      # =&gt; &quot;RUBY&quot;
-</pre>
-<p>偙偺傛偆偵丄僆僽僕僃僋僩偺儊僜僢僪傪屇傃弌偡偲偒偼曄悢柤偺屻偵
-&quot;.&quot; 偲偄偆婰崋傪彂偒丄偦偺屻偵屇傃弌偡儊僜僢僪傪婰弎偟傑偡丅
-憖嶌偺懳徾偲側傞僆僽僕僃僋僩偺偙偲傪<strong>儗僔乕僶</strong>偲
-屇傃傑偡丅偙偙偱偼 a.upcase 偺 a 偑儗僔乕僶偱偡丅</p>
-<p>偲偙傠偱丄暥帤楍埲奜偺僆僽僕僃僋僩偵懳偟偰丄偨偲偊偽 upcase
-儊僜僢僪傪屇傃弌偟偨傝偟偨傜偳偆側傞偺偱偟傚偆偐丅</p>
-<pre>
-a = 3
-
-p a.upcase      # ERROR!!
-</pre>
-<p>偙傟偼僄儔乕偵側傝傑偡丅側偤側傜 3 偼惍悢偱偁傞偨傔丄upcase 偲偄偆
-儊僜僢僪偼掕媊偝傟偰偄側偄偐傜偱偡丅</p>
-<p>偙偺傛偆側儊僜僢僪偺柤慜傪埫婰偟傛偆偲偡傞昁梫偼偁傝傑偣傫丅
-暥帤楍偵懳偟偰壗偐偺憖嶌傪峴偄偨偄応崌偼 String 僋儔僗偺儊僜僢僪傪巊偆
-偲偄偆偙偲偩偗妎偊偰偍偗偽丄儕僼傽儗儞僗傪奐偄偰峴偄偨偄張棟傪扵偡偩偗
-偱椙偄偐傜偱偡丅昿斏偵巊梡偡傞儊僜僢僪偼丄帺慠偲妎偊偰偟傑偆偙偲偵側傞
-偱偟傚偆丅</p>
-<p>側偍丄Ruby 偱偼丄偨偲偊偽乽String 僋儔僗偺 size 儊僜僢僪乿傪帵偡
-偲偒偵 String#size 偲偄偆傆偆偵彂偔廗姷偑偁傝傑偡丅偙傟偼丄Ruby
-偵偙偆偄偆暥朄偑偁傞偲偄偆偙偲偱偼側偔丄愢柧忋偺曋媂揑側婰朄偱偡丅
-儕僼傽儗儞僗偱傕偙偺婰朄偑巊傢傟偰偄傞偺偱丄妎偊偰偍偄偰偔偩偝偄丅</p>
+<p>要强调特定类所属的对象，有时使用<strong>实例</strong>这种说法。
+所谓类可以说是其所属对象的描述。大的设计方案都有很多类，决定对象的动作。 对象必定是属于哪个类的。因此，「属于这个类的对象」也可以说成是「这个类的实例」。</p>
 
 
-<h2><a name="superclass">僗乕僷乕僋儔僗</a></h2>
-<p>3 傗 65 側偳偺惍悢偼丄<a href="../rgss/sc_fixnum.html">Fixnum</a>
-僋儔僗偺僀儞僗僞儞僗偱偡丅</p>
-<p>Fixnum 偺儊僜僢僪堦棗傪尒偰丄儊僜僢僪偺悢偑彮側偄偺傪晄巚媍偵巚偭偨
-曽偼偄傑偣傫偐丅傕偪傠傫丄惍悢偵懳偟偰巊梡偱偒傞儊僜僢僪偑偙傟偩偗偟偐
-側偄傢偗偱偼偁傝傑偣傫丅偦偺僇僊偼<strong>僗乕僷乕僋儔僗</strong>偲
-偄偆棑偵偁傝傑偡丅<a href="../rgss/sc_integer.html">Integer</a> 偲
-彂偐傟偰偄傑偡偹丅</p>
-<p>Integer 僋儔僗偵偼 chr 偲偄偆儊僜僢僪偑偁傝傑偡丅偙傟偼丄偦偺悢帤傪
-暥帤僐乕僪偲偡傞暥帤傪曉偡偲偄偆傕偺偱偡丅帋偟偰傒傑偟傚偆丅</p>
-<pre>
-a = 65
 
-p a.chr         # =&gt; &quot;A&quot;
-</pre>
-<p>偒偪傫偲屇傃弌偡偙偲偑偱偒傑偟偨丅65 偲偄偆偺偼 Fixnum 僋儔僗偺
-僀儞僗僞儞僗偩偭偨偼偢側偺偵丄側偤 Integer 僋儔僗偺儊僜僢僪偱偁傞 chr
-傪屇傃弌偟偰傕僄儔乕偵側傜側偄偺偱偟傚偆偐丅偦傟偼丄Fixnum 僋儔僗偼
-Integer 僋儔僗偐傜<strong>宲彸</strong>偝傟偰偄傞偐傜偱偡丅</p>
-<p>宲彸偲偄偆偺偼丄偁傞僋儔僗傪奼挘偟偰怴偨側僋儔僗傪嶌傞偙偲偱偡丅
-婎杮揑側怳傞晳偄偲側傞尦偺僋儔僗偑偁傝丄偦偙偐傜攈惗偟偨怴偟偄僋儔僗
-偑偁傞忬懺丅偙偺偲偒丄尦偲側偭偨僋儔僗傪<strong>僗乕僷乕僋儔僗</strong>丄
-怴偨側僋儔僗傪<strong>僒僽僋儔僗</strong>偲屇傃傑偡丅</p>
-<p>偮傑傝丄Fixnum 僋儔僗偲偄偆偺偼 Integer 僋儔僗傪奼挘偟偰嶌傜傟偨
-怴偟偄僋儔僗偩偲偄偆偙偲偱偡丅尵偄姺偊傞偲丄Integer 僋儔僗偼 Fixnum
-僋儔僗偺僗乕僷乕僋儔僗偩偲偄偆偙偲偵側傝傑偡丅Integer 僋儔僗偺惈幙偼
-宲彸偵傛偭偰偡傋偰 Fixnum 僋儔僗偵庴偗宲偑傟偰偄傞偨傔丄儊僜僢僪側偳傕
-偦偺傑傑巊偆偙偲偑偱偒傞偺偱偡丅傕偪傠傫丄Integer 僋儔僗偺僗乕僷乕
-僋儔僗偱偁傞 <a href="../rgss/sc_numeric.html">Numeric</a> 僋儔僗傗丄
-偦偺傑偨僗乕僷乕僋儔僗偺 <a href="../rgss/sc_object.html">Object</a>
-僋儔僗偱掕媊偝傟偰偄傞儊僜僢僪傕丄Fixnum 僋儔僗偺僀儞僗僞儞僗偐傜
-屇傃弌偡偙偲偑壜擻偱偡丅</p>
-<p>偙偙傑偱偺愢柧傪撉傫偱丄側偤傢偞傢偞暋悢偺僋儔僗偵暘妱偝傟偰偄傞
-偺偐媈栤偵巚偭偨曽傕偄傞偱偟傚偆丅彮偟擄偟偄榖偵側傝傑偡偑丄宲彸偺
-堄媊偼丄暿乆偺僋儔僗偵嫟捠偺怳傞晳偄傪帩偨偣傜傟傞偙偲偵偁傝傑偡丅
-偨偲偊偽丄晜摦彫悢揰悢偼 <a href="../rgss/sc_float.html">Float</a>
-僋儔僗偺僀儞僗僞儞僗偱丄偙傟偼 Numeric 僋儔僗偐傜宲彸偝傟偰偄傑偡丅
-惍悢偲晜摦彫悢揰悢偼堎側傞傕偺偱偡偑丄偳偪傜傕乽悢乿傪昞偡偲偄偆
-揰偱偼嫟捠偟偰偄傞偨傔丄偦偺嫟捠晹暘傪 Numeric 僋儔僗偱掕媊偡傞偙偲
-偱廳暋傪側偔偟偰偄傞偲偄偆傢偗偱偡丅</p>
-<p>僣僋乕儖偺奣擮偱尵偆偲丄偨偲偊偽乽憰旛昳乿偲偄偆僗乕僷乕僋儔僗
-偵懳偟偰乽晲婍乿乽杊嬶乿偲偄偆僒僽僋儔僗偑偁傝傑偡丅乽憰旛昳乿嫟捠偺
-摿挜傪僗乕僷乕僋儔僗偱婰弎偟丄偦傟偧傟偺僒僽僋儔僗偱乽晲婍乿偲乽杊嬶乿偺
-堘偄傪婰弎偟偰偄傞偲偄偆偙偲偱偡丅</p>
+<h2><a name="method">方法</a></h2>
+
+<p>尝试着看看 <a href="../rgss/sc_string.html">String</a> 类的部分吧。
+现在或许不太了解其中的意思，但不用太介意。
+实际中自已编写脚本时将会经常参照这个参考，有必要提早有所了解。</p>
+
+<p>看到<strong>方法</strong>栏下方列出的项目了吧。
+这些就是该类所属对象专用的函数即方法。</p>
+
+<p>方法列表中有个名称为 size 的项目。使用这个看看吧。</p>
+
+<pre>a = "Ruby"<br><br>p a.size        # =&gt; 4<br></pre>
+
+<p>String 类的 size 方法，是返回字符串字节数的方法。
+这里所说的「字节」指的是容量的意思。比如半角英文字母 1 个字符
+就是 1 个字节。"Ruby" 这个字符串是由 4 个字母组成所以返回的字
+节数就是 4（顺便说一下，全角的 1 个字符等于 3 个字节。在中国使用的是 gb2312 文字编
+码其 1 个全角字符等于 2 个字节，而 RGSS 使用的是 UTF-8 文字编码）。</p>
+
+<p>再来试试这个吧。把字符串转换为大写字母的 upcase 方法。</p>
+
+<pre>a = "Ruby"<br><br>p a.upcase      # =&gt; "RUBY"<br></pre>
+
+<p>上面示例中，调用对象的方法时于变量名称后面会加上符号「.」，
+在其后面记述要调用的方法。而操作的对象称为<strong>作用实例</strong>。
+这里 a.upcase 中的 a 就是作用实例。</p>
+
+<p>但是，对字符串以外的对象调用 String 类的方法比如 upcase 方法的话会怎样呢？</p>
+
+<pre>a = 3<br><br>p a.upcase      # ERROR!!<br></pre>
+
+<p>这样会出现错误。因为 3 是一个整数对象属于 Fixnum 类，
+而 upcase 在 Fixnum 类的方法中没有定义。</p>
+
+<p>还有，没有必要完全记住这些方法的名称。
+在对字符串进行某些操作时要使用 String 类的方法，
+直接打开 RGSS 参考文件进行查找会十分方便。使用方法的次数多了，
+自然就会记住它们。</p>
 
 
-<h2><a name="instance">僀儞僗僞儞僗偺惗惉</a></h2>
-<p>僋儔僗偐傜僀儞僗僞儞僗 (僆僽僕僃僋僩) 傪嶌惉偡傞曽朄偵偼丄戝偒偔
-暘偗偰 2 庬椶偑偁傝傑偡丅</p>
-<p>戞堦偺曽朄偼丄<strong>儕僥儔儖</strong>傪巊偆曽朄偱偡丅
-儕僥儔儖偲偼僜乕僗僐乕僪拞偵捈愙婰弎偝傟偨抣偺偙偲偱偡丅崱傑偱
-65 偲偐 &quot;Ruby&quot; 偲偄偆傛偆偵摉偨傝慜偺傛偆偵抣傪彂偄偰巊偭偰
-偒傑偟偨偑丄偙傟偼尩枾偵尵偆偲乽儕僥儔儖傪婰弎偡傞偙偲偱惍悢傗暥帤楍偺
-僀儞僗僞儞僗傪惗惉偟偨乿偲偄偆偙偲側偺偱偡丅</p>
-<p>戞擇偺曽朄偼丄僋儔僗傪儗僔乕僶偲偟偰 new
-偲偄偆儊僜僢僪傪巊偆曽朄偱偡丅偨偲偊偽斖埻僆僽僕僃僋僩偺応崌偼
-<a href="../rgss/sc_range.html">Range</a> 僋儔僗偺僀儞僗僞儞僗
-側偺偱丄Range.new 偲偄偆傛偆偵屇傃弌偟傑偡丅屻弎偟傑偡偑丄
-帺暘偱掕媊偟偨僋儔僗偺僀儞僗僞儞僗傪惗惉偡傞偲偒偵偼忢偵偙偪傜偺
-曽朄傪巊梡偡傞偙偲偵側傝傑偡丅</p>
-<p>師偺僐乕僪偼丄偳偪傜傕斖埻僆僽僕僃僋僩傪嶌惉偟偰昞帵偟傑偡丅
-慜幰偑戞堦偺曽朄丄屻幰偑戞擇偺曽朄傪巊梡偟偰偄傑偡丅</p>
+
+<h2><a name="superclass">超类</a></h2>
+
+<p>3 和 65 等整数，是 <a href="../rgss/sc_fixnum.html">Fixnum</a> 类的实例。</p>
+
+<p>看到 Fixnum 类的方法列表了吧，它的方法数量是如此的少会不会觉得不可思议。
+当然整数能使用的方法不只这几个。关键在<strong>超类</strong>这栏里。
+到 <a href="../rgss/sc_integer.html">Integer</a> 里面去看看吧。</p>
+
+<p>在 Integer 类中有个名称为 chr 的方法。
+这是个将数字转换为该数字编码的文字并返回的方法。试试看吧。</p>
+
+<pre>a = 65<br><br>p a.chr         # =&gt; "A"<br></pre>
+
+<p>上例正确的返回了一个结果。但是 65 是 Fixnum 类的一个实例，
+为何调用 Integer 类的方法 chr 也不出现错误呢？这是因为 Integer 类
+是 Fixnum 类的超类，而 Fixnum 类<strong>继承</strong>了超类的方法。</p>
+
+<p>所谓继承，就是在一个原有类中扩充定义一个新类，其新定义的类可以使
+用原有类的方法和属性。这样原来的类就称为<strong>超类</strong>，
+而新定义的类则称为<strong>子类</strong>。</p>
+
+<p>总之，Fixnum 类是 Integer 类中扩充定义的一个新类。也可以这样
+说，Integer 类是 Fixnum 类的超类。Fixnum 类继承了 Integer 类的性质，
+也同样继承了超类的方法。当然，继承的还包括 Integer 类的父
+类 <a href="../rgss/sc_numeric.html">Numeric</a> 类，以及 Numeric 类的父
+类 <a href="../rgss/sc_object.html">Object</a> 类中定义的方法，Fixnum 类的实例都可以使用。</p>
+
+<p>看到这里也许有人会问，为何要特意把这些类给分开呢？回答会有一点困难，
+继承的意思，是保持被继承者的性质但却同时拥有自己独有的特性。
+比如，浮点数是 <a href="../rgss/sc_float.html">Float</a> 类的实例，
+这个类是从 Numeric 类中继承而来的。整数和浮点数的性质是不相同的，
+然而无论哪个都是表示「数字」这个概念却是共同的，
+所以在 Numeric 类中定义共同的部分而不用在各个子类中重复定义。</p>
+
+<h2><a name="instance">インスタンスの生成</a></h2>
+<p>クラスからインスタンス (オブジェクト) を作成する方法には、大きく
+分けて 2 種類があります。</p>
+<p>第一の方法は、<strong>リテラル</strong>を使う方法です。
+リテラルとはソースコード中に直接記述された値のことです。今まで
+65 とか &quot;Ruby&quot; というように当たり前のように値を書いて使って
+きましたが、これは厳密に言うと「リテラルを記述することで整数や文字列の
+インスタンスを生成した」ということなのです。</p>
+<p>第二の方法は、クラスをレシーバとして new
+というメソッドを使う方法です。たとえば範囲オブジェクトの場合は
+<a href="../rgss/sc_range.html">Range</a> クラスのインスタンス
+なので、Range.new というように呼び出します。後述しますが、
+自分で定義したクラスのインスタンスを生成するときには常にこちらの
+方法を使用することになります。</p>
+<p>次のコードは、どちらも範囲オブジェクトを作成して表示します。
+前者が第一の方法、後者が第二の方法を使用しています。</p>
 <pre>
 p 1..10               # =&gt; 1..10
 p Range.new(1, 10)    # =&gt; 1..10
 </pre>
-
-
 
 <h6></h6>
 

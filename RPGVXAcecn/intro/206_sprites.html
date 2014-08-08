@@ -1,179 +1,291 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>僗僾儔僀僩偺娗棟</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+
+  <title>活动块的管理</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+
 </head>
+
+
 <body>
 
-<h1>僗僾儔僀僩偺娗棟</h1>
+
+<h1>精灵的管理</h1>
+
 <ul>
-<li><a href="#sprite">僗僾儔僀僩</a></li>
-<li><a href="#spriteset">僗僾儔僀僩僙僢僩</a></li>
-<li><a href="#z">Z 嵗昗偲價儏乕億乕僩</a></li>
-<li><a href="#map">Spriteset_Map</a></li>
-<li><a href="#battle">Spriteset_Battle</a></li>
+
+  <li><a href="#sprite">精灵</a></li>
+
+  <li><a href="#spriteset">精灵组</a></li>
+
+  <li><a href="#map">Spriteset_Map 地图精灵组</a></li>
+
+  <li><a href="#battle">Spriteset_Battle 战斗精灵组</a></li>
+
 </ul>
 
-<p>僎乕儉僆僽僕僃僋僩偦偺傕偺偼丄夋柺偵昞帵偡傞偨傔偺儊僜僢僪側偳
-偼壗傂偲偮帩偭偰偄傑偣傫丅僎乕儉僆僽僕僃僋僩偺撪梕傪斀塮偟丄夋柺偵
-僌儔僼傿僢僋偲偟偰昞帵偡傞偨傔偺僋儔僗偑昁梫偱偡丅</p>
+
+<p>游戏对像本身，没有任何在画面中显示自身的方法。
+所以建立反映游戏对像内容，在画面中显示图片的类就很必要。</p>
 
 
-<h2><a name="sprite">僗僾儔僀僩</a></h2>
-<p>僗僋儕僾僩僄僨傿僞嵍懁偺儕僗僩偵偁傞僙僋僔儑儞偺拞偱丄Game_Xxxx
-偺栶妱偼偡偱偵夝愢偟傑偟偨丅師偵栚偵晅偔偺偼 Sprite_Xxxx 偲偄偆柤慜
-偺僙僋僔儑儞偱偟傚偆丅偙傟傜偼偦偺傑傑僋儔僗柤偵側偭偰偄傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>僋儔僗</th>
- <th>撪梕</th>
- <th>僗乕僷乕僋儔僗</th>
-</tr><tr>
+
+<h2><a name="sprite">精灵</a></h2>
+
+<p>在脚本编辑器左侧的组列表中，Game_Xxxx 的部分已经介绍过了。
+现在让我们来看看 Sprite_Xxxx 名称的组吧。
+这些组的名称与其定义的类的名称相对应，如下所示。</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+
+ <th>类</th>
+
+ <th>内容</th>
+
+ <th>超类</th>
+
+    </tr>
+    <tr>
+
  <td>Sprite_Base</td>
- <td>傾僯儊乕僔儑儞岠壥偑巊梡偱偒傞僗僾儔僀僩</td>
- <td><a href="../rgss/gc_sprite.html">Sprite</a></td>
-</tr><tr>
+
+ <td>动画效果显示用</td>
+
+ <td><a href="../rgss/gc_rpg_sprite.html">Sprite</a></td>
+
+    </tr>
+    <tr>
+
  <td>Sprite_Character</td>
- <td>僉儍儔僋僞乕昞帵梡</td>
+
+ <td>角色显示用</td>
+
  <td>Sprite_Base</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Sprite_Battler</td>
- <td>僶僩儔乕昞帵梡</td>
+
+ <td>战斗显示用</td>
+
  <td>Sprite_Base</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Sprite_Picture</td>
- <td>僺僋僠儍昞帵梡</td>
+
+ <td>显示图片用</td>
+
  <td><a href="../rgss/gc_sprite.html">Sprite</a></td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Sprite_Timer</td>
- <td>僞僀儅乕昞帵梡</td>
+
+ <td>显示定时器用</td>
+
  <td><a href="../rgss/gc_sprite.html">Sprite</a></td>
-</tr></table>
-<p>偙傟傜偺僋儔僗偼丄婎慴曇偱妛廗偟偨
-<a href="../rgss/gc_sprite.html">Sprite</a> 僋儔僗傪宲彸偟丄奺夋憸偺
-僗僾儔僀僩傪幚嵺偵昞帵偝偣傞婡擻傪帩偭偰偄傑偡丅</p>
-<p>奺僗僾儔僀僩僋儔僗偺僀儞僗僞儞僗偼丄懳墳偡傞僎乕儉僆僽僕僃僋僩傪
-忢帪娔帇偟偰偍傝丄偦偺忬懺偑曄壔偟偨偲偒丄偦傟傪帺摦揑偵夋柺偵斀塮
-偝偣傞傛偆偵側偭偰偄傑偡丅偨偲偊偽 Sprite_Character 偼僉儍儔僋僞乕
-昞帵梡偺僗僾儔僀僩偱偡偐傜丄Game_Character 偐傜宲彸偝傟偨僋儔僗偺
-僀儞僗僞儞僗傪娔帇偟偰偄傑偡丅僉儍儔僋僞乕偑儅僢僾忋偱彮偟偱傕摦偗偽丄
-偦偺摦偒傪懄嵗偵僗僾儔僀僩偵斀塮偱偒傞傢偗偱偡丅幚嵺偵偼丄偙偺乽斀塮乿
-偺張棟偼 update 偲偄偆柤慜偺儊僜僢僪偑屇傃弌偝傟偨帪揰偱峴傢傟偰偄傑偡丅
-偙偺儊僜僢僪傪屇傃弌偟偰偄傞偺偼丄師偵夝愢偡傞<strong>僗僾儔僀僩
-僙僢僩</strong>偱偡丅</p>
+
+    </tr>
+  </tbody>
+</table>
+
+<p>这些类，是继承于基础篇中学习过的 <a href="../rgss/gc_sprite.html">Sprite</a> 类，
+或其高功能版 <a href="../rgss/gc_rpg_sprite.html">RPG::Sprite</a> 类，
+具有在实际中显示各图片精灵的功能。</p>
+
+<p>名精灵类的实例实时监视对应的游戏对象，其状态发生变化的话，
+会自动的在画面中反映。比如 Sprite_Character 是角色显示用的精灵，
+会监视 Game_Character 的被继承类的实例。
+人物在地图上稍微移动一下，这个动作会立即在精灵中反映。
+实际上这个「反映」的处理是调用 update 名称的方法时进行的。
+调用该方法在下面的<strong>精灵组</strong>中也有介绍。</p>
 
 
-<h2><a name="spriteset">僗僾儔僀僩僙僢僩</a></h2>
-<p>僗僾儔僀僩僙僢僩偵偼師偺嶰偮偺僋儔僗偑偁傝傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>僋儔僗</th>
- <th>撪梕</th>
-</tr><tr>
- <td>Spriteset_Weather</td>
- <td>揤岓僄僼僃僋僩</td>
-</tr><tr>
+
+<h2><a name="spriteset">精灵组</a></h2>
+
+<p>在精灵组中有下面两个类。</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+
+ <th>类</th>
+
+ <th>内容</th>
+
+    </tr>
+    <tr>
+
+      <td>Spriteset_Weather</td>
+
+ <td>天气效果</td>
+
+    </tr>
+    <tr>
+
  <td>Spriteset_Map</td>
- <td>儅僢僾夋柺昞帵梡</td>
-</tr><tr>
+
+ <td>地图画面显示用</td>
+
+    </tr>
+    <tr>
+
  <td>Spriteset_Battle</td>
- <td>僶僩儖夋柺昞帵梡</td>
-</tr></table>
-<p>偙偺偆偪丄Spriteset_Weather 僋儔僗偼 Spriteset_Map 偺撪晹偱偺傒
-巊梡偝傟傑偡丅</p>
-<p>Spriteset_Map 僋儔僗偲 Spriteset_Battle 僋儔僗偼丄
-偦傟偧傟偺夋柺傪峔惉偡傞傎偲傫偳偡傋偰偺夋憸 (僂傿儞僪僂埲奜) 傪
-堦尦揑偵娗棟偟偰偄傑偡丅慜崁偱夝愢偟偨僗僾儔僀僩僋儔僗偼傕偪傠傫丄
-儅僢僾偦偺傕偺傗墦宨側偳丄偁傜備傞僌儔僼傿僢僋僆僽僕僃僋僩偑廤傔傜
-傟丄update 偲偄偆柤慜偺儊僜僢僪傪屇傃弌偡偩偗偱丄偡傋偰偺僌儔僼傿僢僋
-偑僎乕儉偺忬嫷偵偁傢偣偰峏怴偝傟傞傛偆偵側偭偰偄傑偡丅</p>
-<p>僗僾儔僀僩僙僢僩偺 update 儊僜僢僪傪屇傃弌偟偰偄傞偺偼丄
-屻偺復偱夝愢偡傞<strong>僔乕儞僋儔僗</strong>偱偡丅</p>
+
+ <td>战斗画面显示用</td>
+
+    </tr>
+  </tbody>
+</table>
+
+<p>在这些类里面，Spriteset_Weather类仅仅在Spriteset_Map的内部使用。</p>
+
+Spriteset_Map类和Spriteset_Battle类各自统一管理构成各个画面的几乎全部图片（窗口和光标除外）。
+当然包括前面介绍的精灵类，地图本身和天气效果等，以及一切能收集到的图片对象，
+调用 update 名称的方法，就会在游戏环境中更新全部的图片。
+<p></p>
+
+<p>调用精灵组的 update 方法，将在本篇后面一章<strong>场景类</strong>中说明。</p>
+
+<p>这些类中，<strong>显示端口</strong>和精灵 <strong>Z 坐标</strong>的概念
+承担了重要的任务。这些关系到显示各图片的优先级。
+请同时参照 <a href="../rgss/gc_viewport.html">显示端口</a> 类的说明。</p>
 
 
-<h2><a name="z">Z 嵗昗偲價儏乕億乕僩</a></h2>
-<p>奺僗僾儔僀僩偼丄夋柺偺偳偺埵抲偵昞帵偡傞偐傪昞偡 X 嵗昗偲
-Y 嵗昗埲奜偵丄僗僾儔僀僩摨巑偑偳偺傛偆側弴彉偱廳側傝崌偆偐傪昞偡
-Z 嵗昗偲偄偆抣傪帩偭偰偄傑偡丅尨懃偲偟偰丄Z 嵗昗偺抣偑戝偒偄傕偺
-傎偳庤慜偵昞帵偝傟傞傛偆偵側偭偰偄傑偡丅Z 嵗昗偑摨堦偺応崌偼 Y
-嵗昗偑戝偒偄傕偺傎偳丄Y 嵗昗傕摨堦偺応崌偼屻偵惗惉偝傟偨僆僽僕僃僋僩
-傎偳庤慜偵昞帵偝傟傑偡丅</p>
-<p>傑偨丄僗僾儔僀僩僙僢僩偺拞偱偼<strong>價儏乕億乕僩</strong
->偲偄偆奣擮偑巊梡偝傟偰偄傑偡丅價儏乕億乕僩偼
-<a href="../rgss/gc_viewport.html">Viewport</a>
-僋儔僗偵懏偡傞僆僽僕僃僋僩偱丄僗僾儔僀僩偺乽擖傟暔乿偲偟偰婡擻偟傑偡丅</p>
-<p>僗僾儔僀僩偑價儏乕億乕僩偵娭楢晅偗傜傟偰偄傞偲偒丄偦偺 Z 嵗昗偼
-價儏乕億乕僩撪偱偺桪愭弴埵傪昞偡傕偺偲側傝傑偡丅偙傟偼姰慡偵恊巕娭學
-偵側偭偰偄傞偨傔丄僗僾儔僀僩偺 Z 嵗昗傪戝偒偔偟偰傕丄忋埵偺價儏乕億乕僩
-偵娷傑傟傞僗僾儔僀僩傛傝庤慜偵昞帵偝傟傞偙偲偼偁傝傑偣傫丅</p>
 
+<h2><a name="map">Spriteset_Map 地图精灵组</a></h2>
 
-<h2><a name="map">Spriteset_Map</a></h2>
-<p>儅僢僾夋柺偺僌儔僼傿僢僋傪傑偲傔傞 Spriteset_Map 僋儔僗偺
-僆僽僕僃僋僩偵偼丄師偺傛偆側價儏乕億乕僩偍傛傃僗僾儔僀僩偑
-娷傑傟偰偄傑偡丅妵屖撪偺悢帤偼 Z 嵗昗偱偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <td>@viewport3 (100)</td>
- <td colspan="2">夋柺偺柧傞偝挷惍梡</td>
-</tr><tr>
+<p>地图画面精灵组的构成如下所示（数字是 Z 坐标）。</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+
  <td rowspan="3">@viewport2 (50)</td>
+
  <td>@timer_sprite (200)</td>
- <td>僞僀儅乕</td>
-</tr><tr>
- <td>@picture_sprites (1..100)</td>
- <td>僺僋僠儍</td>
-</tr><tr>
+
+ <td>定时器</td>
+
+    </tr>
+    <tr>
+
+ <td>@picture_sprites (101..120)</td>
+
+ <td>图片</td>
+
+    </tr>
+    <tr>
+
  <td>@weather (0)</td>
- <td>揤岓</td>
-</tr><tr>
+
+ <td>天气</td>
+
+    </tr>
+    <tr>
+
  <td rowspan="4">@viewport1 (0)</td>
+
  <td>@shadow_sprite (180)</td>
- <td>旘峴慏偺塭</td>
-</tr><tr>
+
+ <td>飞行器的影子</td>
+
+    </tr>
+    <tr>
+
  <td>@character_sprites (0..200)</td>
- <td>僉儍儔僋僞乕</td>
-</tr><tr>
+
+ <td>角色</td>
+
+    </tr>
+    <tr>
+
  <td>@tilemap (0..200)</td>
- <td>儅僢僾</td>
-</tr><tr>
+
+ <td>地图</td>
+
+    </tr>
+    <tr>
+
  <td>@parallax (-100)</td>
- <td>墦宨</td>
-</tr></table>
+
+ <td>远景</td>
+
+    </tr>
+  </tbody>
+</table>
 
 
-<h2><a name="battle">Spriteset_Battle</a></h2>
-<p>僶僩儖夋柺偺僌儔僼傿僢僋傪傑偲傔傞 Spriteset_Battle 僋儔僗偺
-僆僽僕僃僋僩偵偼丄師偺傛偆側價儏乕億乕僩偍傛傃僗僾儔僀僩偑
-娷傑傟偰偄傑偡丅妵屖撪偺悢帤偼 Z 嵗昗偱偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <td>@viewport3 (100)</td>
- <td colspan="2">夋柺偺柧傞偝挷惍梡</td>
-</tr><tr>
+
+<h2><a name="battle">Spriteset_Battle 战斗精灵组</a></h2>
+
+<p>战斗画面精灵组的构成如下所示（数字是 Z 坐标）。</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+
  <td rowspan="2">@viewport2 (50)</td>
+
  <td>@timer_sprite (200)</td>
- <td>僞僀儅乕</td>
-</tr><tr>
- <td>@picture_sprites (1..100)</td>
- <td>僺僋僠儍</td>
-</tr><tr>
+
+ <td>定时器</td>
+
+    </tr>
+    <tr>
+
+ <td>@picture_sprites (101..120)</td>
+
+ <td>图片</td>
+
+    </tr>
+    <tr>
+
  <td rowspan="3">@viewport1 (0)</td>
+
  <td>@enemy_sprites (100)</td>
- <td>揋僉儍儔</td>
-</tr><tr>
- <td>@back2_sprite (1)</td>
- <td>愴摤攚宨 (暻)</td>
-</tr><tr>
- <td>@back1_sprite (0)</td>
- <td>愴摤攚宨 (彴)</td>
-</tr></table>
+
+ <td>敌人</td>
+
+    </tr>
+    <tr>
+
+ <td>@battlefloor_sprite (1)</td>
+
+ <td>战斗地面</td>
+
+    </tr>
+    <tr>
+
+ <td>@battleback_sprite (0)</td>
+
+ <td>战斗背景</td>
+
+    </tr>
+  </tbody>
+</table>
+
 
 
 <h6></h6>
+
 
 </body>
 </html>

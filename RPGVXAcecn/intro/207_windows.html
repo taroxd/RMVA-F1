@@ -1,378 +1,362 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>僂傿儞僪僂偺娗棟</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+
+  <title>窗口的管理</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+
 </head>
+
+
 <body>
 
-<h1>僂傿儞僪僂偺娗棟</h1>
+
+<h1>窗口的管理</h1>
+
 <ul>
-<li><a href="#basic">僂傿儞僪僂偺婎杮</a></li>
-<li><a href="#handler">僴儞僪儔</a></li>
-<li><a href="#command_window">僐儅儞僪僂傿儞僪僂</a></li>
-<li><a href="#class_list">僂傿儞僪僂僋儔僗堦棗</a></li>
+
+  <li><a href="#basic">窗口的基本</a></li>
+
+  <li><a href="#application">窗口的应用</a></li>
+
 </ul>
 
-<p>儊僢僙乕僕僂傿儞僪僂傗僗僥乕僞僗僂傿儞僪僂傪偼偠傔偲偟偰丄RPG 偱偼
-旕忢偵懡偔偺僂傿儞僪僂傪埖傢側偗傟偽側傝傑偣傫丅偙傟傜偺僂傿儞僪僂偑
-偳偺傛偆偵娗棟偝傟偰偄傞偺偐傪夝愢偟傑偡丅</p>
+
+<p>从信息窗口和状态窗口开始，RPG 中必须要使用大量的窗口。
+现在我们来介绍这些窗口是如何管理的。</p>
 
 
-<h2><a name="basic">僂傿儞僪僂偺婎杮</a></h2>
-<p>Window_Xxxx 偲偄偆柤慜偑晅偗傜傟偨僙僋僔儑儞偑戝検偵偁傝傑偡偹丅
-椺偵傛偭偰偙傟傜偼偦偺傑傑僋儔僗柤偵懳墳偟偰偄傑偡丅偦偺拞偱傕摿偵
-廳梫側偺偼丄嵟弶偺傆偨偮偺僋儔僗偱偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>僋儔僗</th>
- <th>撪梕</th>
- <th>僗乕僷乕僋儔僗</th>
-</tr><tr>
+
+<h2><a name="basic">窗口的基本</a></h2>
+
+<p>脚本中以 Window_Xxxx 命名的组有很多吧。
+根据惯例它们的名称与其定义的类名是相对应的。
+其中有两个尤其重要，就是最上面的那两个类。</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+
+ <th>类</th>
+
+ <th>内容</th>
+
+ <th>超类</th>
+
+    </tr>
+    <tr>
+
  <td>Window_Base</td>
- <td>婎杮僂傿儞僪僂</td>
+
+ <td>窗口的基本</td>
+
  <td><a href="../rgss/gc_window.html">Window</a></td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_Selectable</td>
- <td>崁栚偺慖戰偑偱偒傞僂傿儞僪僂</td>
+
+ <td>项目选择窗口</td>
+
  <td>Window_Base</td>
-</tr></table>
-<p>RGSS 偵偼 <a href="../rgss/gc_window.html">Window</a> 偲偄偆
-僋儔僗偑偁傜偐偠傔慻傒崬傑傟偰偄傑偡丅偙偺僋儔僗偼丄僂傿儞僪僂偺榞傗
-攚宨偺昤夋丄撪梕偺僗僋儘乕儖偲偄偭偨婎杮揑側張棟傪庴偗帩偭偰偄傑偡丅</p>
-<p>Window_Base 僋儔僗偼偙偺 <a href="../rgss/gc_window.html">Window</a>
-僋儔僗傪宲彸偟丄RPG 偺僂傿儞僪僂偵昁梫側婎杮婡擻傪捛壛偟偰偄傑偡丅
-偙偺僋儔僗偺傕偭偲傕廳梫側婡擻偼丄尰嵼僂傿儞僪僂僗僉儞偲偟偰愝掕偝傟偰
-偄傞夋憸僼傽僀儖傪帺摦揑偵撉傒崬傓婡擻偱偡丅傑偨丄奺庬暥帤怓傕偙偺
-僋儔僗偱掕媊偝傟偰偄傑偡丅VX Ace 偱偼丄&yen;C[n] 側偳婎杮揑側惂屼暥帤偺
-張棟傕偙偺僋儔僗偱峴偆傛偆偵側傝傑偟偨丅</p>
-<p>Window_Selectable 僋儔僗偼丄Window_Base 僋儔僗傪宲彸偟丄曽岦儃僞儞
-側偳偺擖椡傪専抦偟偰僇乕僜儖傪堏摦偝偣傞張棟傗丄偁傜偐偠傔僂傿儞僪僂偵
-娭楢晅偗偨儊僜僢僪傪屇傃弌偡張棟側偳傪捛壛偟偨傕偺偱偡丅偨偲偊偽
-傾僀僥儉偺慖戰側偳丄僎乕儉偵偼壗偐傪慖戰偡傞僂傿儞僪僂偑昿斏偵昁梫偵
-側傝傑偡丅偦偺傛偆側僂傿儞僪僂偵嫟捠偺婡擻傪丄偙偺僋儔僗偱掕媊偟偰偄傞
-偺偱偡丅幚嵺偺僇乕僜儖堏摦張棟偼丄update 偲偄偆柤慜偺儊僜僢僪偑屇傃弌偝
-傟偨帪揰偱峴傢傟偰偄傑偡丅</p>
-<p>僂傿儞僪僂偺 update 儊僜僢僪傪屇傃弌偟偰偄傞偺偼丄屻偺復偱夝愢
-偡傞<strong>僔乕儞僋儔僗</strong>偱偡丅</p>
+
+    </tr>
+  </tbody>
+</table>
+
+<p>首先，必须要知道在 RGSS 中 <a href="../rgss/gc_window.html">Window</a> 类是已预先设定好的。
+这个类在基础篇中没有提及，负责窗口的边框，
+背景的描绘以及内容的滚动等这些比较低级的处理，是一个非常底层的类。</p>
+
+<p>Window_Base 类是这个 <a href="../rgss/gc_window.html">Window</a> 类的子类，
+负责在 RPG 的窗口中添加必要的基本功能。这个类最重要的功能，
+是自动读取为当前窗口设定的皮肤图片文件。而且，各种文字颜色也是由这个类定义的。</p>
+
+<p>Window_Selectable 类是 Window_Base 的子类，
+添加了检测键盘按钮的输入及移动光标的处理。
+比如说物品的选择，游戏中物品选择窗口会频繁的使用。
+这个类定义了这些窗口的一些共同功能。实际的光标移动处理，
+是调用 update 名称的方法时进行的。</p>
+
+<p>调用窗口的 update 方法，将在本篇后面一章<strong>场景类</strong>中说明。</p>
 
 
-<h2><a name="handler">僴儞僪儔</a></h2>
-<p>Window_Selectable 僋儔僗偼乽偁傜偐偠傔僂傿儞僪僂偵娭楢晅偗偨儊僜僢僪
-傪屇傃弌偡張棟乿傪帩偮偲愢柧偟傑偟偨偑丄偙傟傪<strong>僴儞僪儔</strong
->偲屇傃傑偡丅偙偺奣擮偼 VX Ace 偵偰怴偟偔摫擖偝傟傑偟偨丅</p>
-<p>峫偊曽偲偟偰偼丄偨偲偊偽乽寛掕儃僞儞傪墴偟偨偲偒乿傗乽僉儍儞僙儖
-儃僞儞傪墴偟偨偲偒乿側偳偵屇傃弌偡儊僜僢僪傪偁傜偐偠傔搊榐偟偰偍偒丄
-幚嵺偵儊僜僢僪傪屇傃弌偡張棟偼僂傿儞僪僂僋儔僗懁偱峴偆偲偄偆偙偲偱偡丅</p>
-<p>傑偢丄Window_Selectable 偺拞傎偳偵偁傞 set_handler 偲偄偆儊僜僢僪傪
-扵偟偰偔偩偝偄丅</p>
-<pre>
-  def set_handler(symbol, method)
-    @handler[symbol] = method
-  end
-</pre>
-<p>偙傟偑僴儞僪儔傪僂傿儞僪僂偵愝掕偡傞偨傔偺儊僜僢僪偱偡丅撪晹偱
-巊梡偟偰偄傞僀儞僗僞儞僗曄悢 @handler 偼丄<a
-href="111_hash.html">僴僢僔儏</a>僆僽僕僃僋僩偱偡丅</p>
-<p>幚嵺偵僴儞僪儔傪愝掕偡傞偲偒偵偼丄師偺傛偆偵屇傃弌偝傟傑偡丅</p>
-<pre>
-  @window.set_handler(:cancel, method(:on_cancel))
-</pre>
-<p>偙傟偼 on_cancel 偲偄偆柤慜偺儊僜僢僪傪丄cancel 偲偄偆柤慜偺
-僴儞僪儔偲偟偰愝掕偡傞偲偄偆巜掕偱偡丅偙偆偟偰偍偔偲丄僉儍儞僙儖
-儃僞儞偑墴偝傟偨偲偒偵帺摦揑偵 on_cancel 儊僜僢僪偑屇傃弌偝傟傞
-傛偆偵側傞傢偗偱偡丅method 偲偄偆偺偼
-<a href="../rgss/sc_object.html">Object</a>
-僋儔僗偺儊僜僢僪偱丄堷悢偲偟偰梌偊傜傟偨柤慜偺儊僜僢僪傪
-<a href="../rgss/sc_method.html">Method</a>
-僆僽僕僃僋僩偵曄姺偡傞婡擻傪帩偭偰偄傑偡丅</p>
-<p>愢柧偑慜屻偟傑偡偑丄儊僜僢僪傗僴儞僪儔偺柤慜傪巜掕偡傞偲偒偵偼
-僔儞儃儖傪巊梡偟傑偡丅<a href="109_graphics.html">夋憸偺昞帵</a>偺
-嵟屻偺崁偱傕娙扨偵怗傟傑偟偨偑丄僔儞儃儖偼擟堄偺暥帤楍偲堦懳堦偵懳墳
-偡傞僆僽僕僃僋僩偱丄僐儘儞 (&quot;:&quot;) 偵擟堄偺暥帤傪懕偗偰
-彂偔偙偲偱巜掕偟傑偡丅暥帤楍偵帡偰偄傑偡偑丄撪晹張棟偺岠棪惈側偳
-偐傜丄暥帤楍偲偟偰偺憖嶌偑昁梫側偄応崌偼偙偪傜傪梡偄傑偡丅
-僔儞儃儖偼 <a href="../rgss/sc_symbol.html">Symbol</a>
-僋儔僗偺僀儞僗僞儞僗偱偡丅</p>
-<p>Window_Selectable 僋儔僗偼丄僂傿儞僪僂偑傾僋僥傿僽忬懺
-(僇乕僜儖偑揰柵偟偰偄傞忬懺) 偺偲偒丄師偺 4 庬椶偺僴儞僪儔傪
-昁梫偵墳偠偰屇傃弌偟傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>僔儞儃儖</th>
- <th>撪梕</th>
-</tr><tr>
- <td>:ok</td>
- <td>寛掕</td>
-</tr><tr>
- <td>:cancel</td>
- <td>僉儍儞僙儖</td>
-</tr><tr>
- <td>:pageup</td>
- <td>慜儁乕僕 (L)</td>
-</tr><tr>
- <td>:pagedown</td>
- <td>師儁乕僕 (R)</td>
-</tr></table>
-<p>側偍丄僴儞僪儔偑愝掕偝傟偰偄側偄応崌偼壗傕峴偄傑偣傫丅</p>
 
+<h2><a name="application">窗口的应用</a></h2>
 
-<h2><a name="command_window">僐儅儞僪僂傿儞僪僂</a></h2>
-<p>Window_Selectable 僋儔僗偐傜丄偝傜偵 Window_Command
-僋儔僗偑攈惗偟傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>僋儔僗</th>
- <th>撪梕</th>
- <th>僗乕僷乕僋儔僗</th>
-</tr><tr>
+<p>现在我们来一起介绍窗口系列剩下的其它类。
+这些类，全都是从 Window_Base 类或 Window_Selectable 类继承而来的。</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+
+ <th>类</th>
+
+ <th>内容</th>
+
+ <th>超类</th>
+
+    </tr>
+    <tr>
+
  <td>Window_Command</td>
- <td>僐儅儞僪僂傿儞僪僂 (斈梡)</td>
+
+ <td>指令窗口（泛用）</td>
+
  <td>Window_Selectable</td>
-</tr><tr>
- <td>Window_HorzCommand</td>
- <td>僐儅儞僪僂傿儞僪僂 (墶慖戰)</td>
- <td>Window_Command</td>
-</tr></table>
-<p>偙傟傜偺僋儔僗偼丄偄傢備傞僐儅儞僪僂傿儞僪僂偺婎杮張棟傪
-庴偗帩偭偰偄傑偡丅儊僯儏乕夋柺傗僶僩儖夋柺側偳偵昞帵偝傟傞奺庬偺
-僐儅儞僪僂傿儞僪僂偼偦傟偧傟暿屄偺僋儔僗偲偟偰掕媊偝傟偰偄傑偡偑丄
-偳傟傕 Window_Command 僋儔僗傪僗乕僷乕僋儔僗偲偟偰偄傑偡丅</p>
-<p>Window_Command 僋儔僗偼丄慜崁偱夝愢偟偨僴儞僪儔偺巇慻傒傪墳梡偟丄
-屄乆偺僐儅儞僪偵僔儞儃儖傪娭楢晅偗傞傛偆偵側偭偰偄傑偡丅
-偨偲偊偽乽傾僀僥儉乿偲偄偆柤慜偺僐儅儞僪傪 :item 偲偄偆僔儞儃儖偵
-娭楢晅偗傞偵偼丄add_command 偲偄偆儊僜僢僪傪巊偭偰師偺傛偆偵偟傑偡丅</p>
-<pre>
-  add_command("傾僀僥儉", :item)
-</pre>
-<p>add_command 偺 1 斣栚偺堷悢偵偼僐儅儞僪偺柤慜偲偟偰昞帵偡傞暥帤楍丄2
-斣栚偺堷悢偵偼丄偦偺僐儅儞僪偵懳墳偡傞僔儞儃儖傪巜掕偟傑偡丅</p>
-<p>偙偺椺偺応崌偼丄乽傾僀僥儉乿偲偄偆僐儅儞僪傪慖戰偟偰寛掕偑墴偝傟偨
-偲偒丄:item 偵懳墳偡傞僴儞僪儔偑 (set_handler 儊僜僢僪偵傛偭偰) 愝掕
-偝傟偰偄傟偽偦偺儊僜僢僪傪屇傃弌偡傛偆偵巜掕偡傞偲偄偆偙偲偱偡丅</p>
-<p>僴儞僪儔偺幚憰傪棟夝偡傞偺偼彮乆戝曄偱偡偑丄傑偢偼戝傑偐側奣擮傪
-妎偊偰偍偗偽廫暘偱偡丅幚慔曇偵偰丄嬶懱揑側椺傪愢柧偟傑偡丅</p>
 
+    </tr>
+    <tr>
 
-<h2><a name="class_list">僂傿儞僪僂僋儔僗堦棗</a></h2>
-<p>巆傝偺僂傿儞僪僂宯偺僋儔僗傪堦婥偵徯夘偟傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>僋儔僗</th>
- <th>巊梡夋柺</th>
- <th>撪梕</th>
- <th>僗乕僷乕僋儔僗</th>
-</tr><tr>
  <td>Window_Help</td>
- <td>奺庬</td>
- <td>僿儖僾僂傿儞僪僂</td>
+
+ <td>帮助窗口</td>
+
  <td>Window_Base</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_Gold</td>
- <td>儊僯儏乕丄僔儑僢僾</td>
- <td>強帩嬥昞帵僂傿儞僪僂</td>
+
+ <td>所持金钱窗口</td>
+
  <td>Window_Base</td>
-</tr><tr>
- <td>Window_MenuCommand</td>
- <td>儊僯儏乕</td>
- <td>僐儅儞僪僂傿儞僪僂</td>
- <td>Window_Command</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_MenuStatus</td>
- <td>儊僯儏乕</td>
- <td>僗僥乕僞僗僂傿儞僪僂</td>
+
+ <td>菜单画面用 状态窗口</td>
+
  <td>Window_Selectable</td>
-</tr><tr>
- <td>Window_MenuActor</td>
- <td>傾僀僥儉丄僗僉儖</td>
- <td>懳徾慖戰僂傿儞僪僂</td>
- <td>Window_MenuStatus</td>
-</tr><tr>
- <td>Window_ItemCategory</td>
- <td>傾僀僥儉丄僔儑僢僾</td>
- <td>暘椶慖戰僂傿儞僪僂</td>
- <td>Window_HorzCommand</td>
-</tr><tr>
- <td>Window_ItemList</td>
- <td>傾僀僥儉</td>
- <td>傾僀僥儉慖戰僂傿儞僪僂</td>
- <td>Window_Selectable</td>
-</tr><tr>
- <td>Window_SkillCommand</td>
- <td>僗僉儖</td>
- <td>僐儅儞僪僂傿儞僪僂</td>
- <td>Window_Command</td>
-</tr><tr>
- <td>Window_SkillStatus</td>
- <td>僗僉儖</td>
- <td>僗僥乕僞僗僂傿儞僪僂</td>
- <td>Window_Base</td>
-</tr><tr>
- <td>Window_SkillList</td>
- <td>僗僉儖</td>
- <td>僗僉儖慖戰僂傿儞僪僂</td>
- <td>Window_Selectable</td>
-</tr><tr>
- <td>Window_SkillStatus</td>
- <td>僗僉儖</td>
- <td>僗僥乕僞僗僂傿儞僪僂</td>
- <td>Window_Base</td>
-</tr><tr>
- <td>Window_EquipStatus</td>
- <td>憰旛</td>
- <td>僗僥乕僞僗僂傿儞僪僂</td>
- <td>Window_Base</td>
-</tr><tr>
- <td>Window_EquipCommand</td>
- <td>憰旛</td>
- <td>僐儅儞僪僂傿儞僪僂</td>
- <td>Window_HorzCommand</td>
-</tr><tr>
- <td>Window_EquipSlot</td>
- <td>憰旛</td>
- <td>憰旛晹埵僂傿儞僪僂</td>
- <td>Window_Selectable</td>
-</tr><tr>
- <td>Window_EquipItem</td>
- <td>憰旛</td>
- <td>傾僀僥儉僂傿儞僪僂</td>
- <td>Window_ItemList</td>
-</tr><tr>
- <td>Window_Status</td>
- <td>僗僥乕僞僗</td>
- <td>僗僥乕僞僗僂傿儞僪僂</td>
- <td>Window_Base</td>
-</tr><tr>
- <td>Window_SaveFile</td>
- <td>僙乕僽丄儘乕僪</td>
- <td>僼傽僀儖僂傿儞僪僂</td>
- <td>Window_Base</td>
-</tr><tr>
- <td>Window_ShopCommand</td>
- <td>僔儑僢僾</td>
- <td>僐儅儞僪僂傿儞僪僂</td>
- <td>Window_HorzCommand</td>
-</tr><tr>
- <td>Window_ShopBuy</td>
- <td>僔儑僢僾</td>
- <td>峸擖僂傿儞僪僂</td>
- <td>Window_Selectable</td>
-</tr><tr>
- <td>Window_ShopSell</td>
- <td>僔儑僢僾</td>
- <td>攧媝僂傿儞僪僂</td>
+
+    </tr>
+    <tr>
+
  <td>Window_Item</td>
-</tr><tr>
+
+ <td>物品选择窗口</td>
+
+ <td>Window_Selectable</td>
+
+    </tr>
+    <tr>
+
+ <td>Window_Skill</td>
+
+ <td>特技选择窗口</td>
+
+ <td>Window_Selectable</td>
+
+    </tr>
+    <tr>
+
+ <td>Window_SkillStatus</td>
+
+ <td>特技画面用 状态窗口</td>
+
+ <td>Window_Base</td>
+
+    </tr>
+    <tr>
+
+ <td>Window_Equip</td>
+
+ <td>装备画面用 装备部位窗口</td>
+
+ <td>Window_Base</td>
+
+    </tr>
+    <tr>
+
+ <td>Window_EquipItem</td>
+
+ <td>装备画面用 物品窗口</td>
+
+ <td>Window_Item</td>
+
+    </tr>
+    <tr>
+
+ <td>Window_EquipStatus</td>
+
+ <td>装备画面用 状态窗口</td>
+
+ <td>Window_Selectable</td>
+
+    </tr>
+    <tr>
+
+ <td>Window_Status</td>
+
+ <td>状态画面用 状态窗口</td>
+
+ <td>Window_Base</td>
+
+    </tr>
+    <tr>
+
+ <td>Window_SaveFile</td>
+
+ <td>存盘、读档画面用 文件窗口</td>
+
+ <td>Window_Base</td>
+
+    </tr>
+    <tr>
+
+ <td>Window_ShopBuy</td>
+
+ <td>商店画面用 购买窗口</td>
+
+ <td>Window_Selectable</td>
+
+    </tr>
+    <tr>
+
+ <td>Window_ShopSell</td>
+
+ <td>商店画面用 出售窗口</td>
+
+ <td>Window_Item</td>
+
+    </tr>
+    <tr>
+
  <td>Window_ShopNumber</td>
- <td>僔儑僢僾</td>
- <td>屄悢擖椡僂傿儞僪僂</td>
+
+ <td>商店画面用 数量输入窗口</td>
+
  <td>Window_Base</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_ShopStatus</td>
- <td>僔儑僢僾</td>
- <td>僗僥乕僞僗僂傿儞僪僂</td>
+
+ <td>商店画面用 状态窗口</td>
+
  <td>Window_Base</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_NameEdit</td>
- <td>柤慜擖椡</td>
- <td>柤慜僂傿儞僪僂</td>
+
+ <td>名称输入画面用 名称窗口</td>
+
  <td>Window_Base</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_NameInput</td>
- <td>柤慜擖椡</td>
- <td>暥帤慖戰僂傿儞僪僂</td>
+
+ <td>名称输入画面用 文字选择窗口</td>
+
  <td>Window_Base</td>
-</tr><tr>
- <td>Window_ChoiceList</td>
- <td>儅僢僾</td>
- <td>慖戰巿僂傿儞僪僂</td>
- <td>Window_Command</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_NumberInput</td>
- <td>儅僢僾</td>
- <td>悢抣擖椡僂傿儞僪僂</td>
+
+ <td>数值输入窗口</td>
+
  <td>Window_Base</td>
-</tr><tr>
- <td>Window_KeyItem</td>
- <td>儅僢僾</td>
- <td>傾僀僥儉慖戰僂傿儞僪僂</td>
- <td>Window_ItemList</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_Message</td>
- <td>儅僢僾</td>
- <td>儊僢僙乕僕僂傿儞僪僂</td>
+
+ <td>消息窗口</td>
+
  <td>Window_Selectable</td>
-</tr><tr>
- <td>Window_ScrollText</td>
- <td>儅僢僾</td>
- <td>暥復偺僗僋儘乕儖昞帵僂傿儞僪僂</td>
- <td>Window_Base</td>
-</tr><tr>
- <td>Window_BattleLog</td>
- <td>僶僩儖</td>
- <td>儘僌僂傿儞僪僂</td>
+
+    </tr>
+    <tr>
+
+ <td>Window_BattleMessage</td>
+
+ <td>战斗画面用 消息窗口</td>
+
  <td>Window_Message</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_PartyCommand</td>
- <td>僶僩儖</td>
- <td>僷乕僥傿僐儅儞僪僂傿儞僪僂</td>
+
+ <td>战斗画面用 选择战斗窗口</td>
+
  <td>Window_Command</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_ActorCommand</td>
- <td>僶僩儖</td>
- <td>傾僋僞乕僐儅儞僪僂傿儞僪僂</td>
+
+ <td>战斗画面用 战斗选项窗口</td>
+
  <td>Window_Command</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
+      <td>Window_TargetEnemy</td>
+
+ <td>战斗画面用 敌人选择窗口</td>
+
+ <td>Window_Command</td>
+
+    </tr>
+    <tr>
+
  <td>Window_BattleStatus</td>
- <td>僶僩儖</td>
- <td>僗僥乕僞僗僂傿儞僪僂</td>
+
+ <td>战斗画面用 状态窗口</td>
+
  <td>Window_Selectable</td>
-</tr><tr>
- <td>Window_BattleActor</td>
- <td>僶僩儖</td>
- <td>傾僋僞乕慖戰僂傿儞僪僂</td>
- <td>Window_BattleStatus</td>
-</tr><tr>
- <td>Window_BattleEnemy</td>
- <td>僶僩儖</td>
- <td>揋僉儍儔慖戰僂傿儞僪僂</td>
- <td>Window_Command</td>
-</tr><tr>
- <td>Window_BattleSkill</td>
- <td>僶僩儖</td>
- <td>僗僉儖慖戰僂傿儞僪僂</td>
- <td>Window_SkillList</td>
-</tr><tr>
- <td>Window_BattleItem</td>
- <td>僶僩儖</td>
- <td>傾僀僥儉慖戰僂傿儞僪僂</td>
- <td>Window_ItemList</td>
-</tr><tr>
- <td>Window_TitleCommand</td>
- <td>僞僀僩儖</td>
- <td>僐儅儞僪僂傿儞僪僂</td>
- <td>Window_Command</td>
-</tr><tr>
- <td>Window_GameEnd</td>
- <td>僎乕儉廔椆</td>
- <td>僐儅儞僪僂傿儞僪僂</td>
- <td>Window_Command</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_DebugLeft</td>
- <td>僨僶僢僌</td>
- <td>嵍偺僂傿儞僪僂</td>
+
+ <td>调试画面用 左侧窗口</td>
+
  <td>Window_Selectable</td>
-</tr><tr>
+
+    </tr>
+    <tr>
+
  <td>Window_DebugRight</td>
- <td>僨僶僢僌</td>
- <td>塃偺僂傿儞僪僂</td>
+
+ <td>调试画面用 右侧窗口</td>
+
  <td>Window_Selectable</td>
-</tr></table>
+
+    </tr>
+  </tbody>
+</table>
+
+ 
 
 
 <h6></h6>
+
 
 </body>
 </html>

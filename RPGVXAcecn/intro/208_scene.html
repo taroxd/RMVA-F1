@@ -1,279 +1,255 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>僔乕儞偺娗棟</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+
+  <title>场景类</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+
 </head>
+
+
 <body>
 
-<h1>僔乕儞偺娗棟</h1>
+
+<h1>场景类</h1>
+
 <ul>
-<li><a href="#main">Main 僙僋僔儑儞</a></li>
-<li><a href="#manager">SceneManager 儌僕儏乕儖</a></li>
-<li><a href="#scene">僔乕儞僋儔僗</a></li>
-<li><a href="#base">僔乕儞偺婎杮張棟</a></li>
-<li><a href="#kind">僔乕儞僋儔僗偺庬椶</a></li>
-<li><a href="#trans">僔乕儞慗堏</a></li>
+
+  <li><a href="#kind">场景类的种类</a></li>
+
+  <li><a href="#mechanism">场景类的结构</a></li>
+
+  <li><a href="#main">Main 组</a></li>
+
+  <li><a href="#ps">写在最后</a></li>
+
 </ul>
 
-<p>儅僢僾夋柺傗儊僯儏乕夋柺側偳丄僎乕儉撪偱捠忢乽夋柺乿偲屇傇奣擮傪丄
-僾儘僌儔儉偱偼<strong>僔乕儞</strong>偲屇傃傑偡丅
-奺僔乕儞偺慗堏偼丄SceneManager 儌僕儏乕儖偵傛偭偰娗棟偝傟傑偡丅</p>
+
+<p>负责地图画面、菜单画面等各种画面处理的就是<strong>场景类</strong>。</p>
 
 
-<h2><a name="main">Main 僙僋僔儑儞</a></h2>
-<p>偼偠傔偵丄堦斣壓偵偁傞 Main 僙僋僔儑儞偺撪梕傪妋擣偟傑偟傚偆丅
-僐儊儞僩傪彍偔偲丄Main 僙僋僔儑儞偺撪梕偼 1 峴偩偗偱偡丅</p>
-<pre>
-rgss_main { SceneManager.run }
-</pre>
-<p>幚偼丄僾儕僙僢僩偺僗僋儕僾僩偺拞偱丄儌僕儏乕儖掕媊傗僋儔僗掕媊偺
-奜偵偁傞偺偼偙傟偩偗偱偡丅偁傞堄枴偱丄僗僋儕僾僩偺杮摉偺幚峴奐巒抧揰偼
-偙偙偩偲峫偊傞偙偲傕偱偒傞偱偟傚偆丅</p>
-<p><a href="../rgss/g_functions.html#rgss_main">rgss_main</a>
-偲偄偆偺偼 RGSS3 偱怴偨偵壛傢偭偨慻傒崬傒娭悢偱偡丅偙偺娭悢偼丄
-婎杮揑偵偼 { }偱埻偭偨晹暘傪堦搙偩偗幚峴偟傑偡偑丄偦偺搑拞偱 F12
-僉乕偵傛偭偰僎乕儉偺儕僙僢僩偑峴傢傟偨偲偒偼嵟弶偵栠傞偲偄偆張棟傪
-峴偄傑偡丅儕僙僢僩張棟傪柍帇偡傞偲丄偙偺峴偱偼 SceneManager
-儌僕儏乕儖偺 run 儊僜僢僪傪屇傃弌偟偰偄傞偩偗偲偄偆偙偲偱偡丅</p>
+
+<h2><a name="kind">场景类的种类</a></h2>
+
+<p>各场景类对应的画面如下所示。</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+    <tr>
+
+ <th>类</th>
+
+ <th>内容</th>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Base</td>
+
+ <td>场景的基本处理</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Title</td>
+
+ <td>标题画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Map</td>
+
+ <td>地图画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Menu</td>
+
+ <td>菜单画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Item</td>
+
+ <td>物品画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Skill</td>
+
+ <td>特技画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Equip</td>
+
+ <td>装备画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Status</td>
+
+ <td>状态画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_File</td>
+
+ <td>存/读档画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_End</td>
+
+ <td>游戏结束画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Shop</td>
+
+ <td>商店画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Name</td>
+
+ <td>名称输入画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Debug</td>
+
+ <td>调试画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Battle</td>
+
+ <td>战斗画面</td>
+
+    </tr>
+    <tr>
+
+ <td>Scene_Gameover</td>
+
+ <td>游戏结束画面</td>
+
+    </tr>
+  </tbody>
+</table>
 
 
-<h2><a name="manager">SceneManager 儌僕儏乕儖</a></h2>
-<p>SceneManager 儌僕儏乕儖偼丄儕僗僩偺忋偺曽偵偁偭偨偵傕娭傢傜偢丄
-崱傑偱傑偭偨偔撪梕偵怗傟偰偄傑偣傫偱偟偨丅SceneManager
-偼僔乕儞偺慗堏傪娗棟偡傞儌僕儏乕儖偱偡丅</p>
-<p>傑偢丄愭傎偳嵟弶偵屇傃弌偝傟傞偙偲傪妋擣偟偨丄run
-儊僜僢僪偵拲栚偟偰偔偩偝偄丅</p>
-<pre>
-  def self.run
-    DataManager.init
-    Audio.setup_midi if use_midi?
-    @scene = first_scene_class.new
-    @scene.main while @scene
-  end
-</pre>
-<p>撪梕偼 4 峴偱偡偑丄1 峴偢偮尒偰偄偒傑偟傚偆丅</p>
-<pre>
-    DataManager.init
-</pre>
-<p>DataManager 儌僕儏乕儖偺 init 儊僜僢僪傪屇傃弌偟傑偡丅<a
-href="201_database.html">僨乕僞儀乕僗</a>偺儘乕僪傗<a
-href="205_gameobjects.html">僎乕儉僆僽僕僃僋僩</a>偺弶婜壔偑
-偙偺拞偱峴傢傟偰偄傑偡丅</p>
-<pre>
-    Audio.setup_midi if use_midi?
-</pre>
-<p>僨乕僞儀乕僗偺 [僔僗僥儉] 僞僽偱 [婲摦帪偵 MIDI 傪弶婜壔]
-偺僆僾僔儑儞偑僠僃僢僋偝傟偰偄傞応崌丄MIDI 偺弶婜壔傪峴偄傑偡丅</p>
-<pre>
-    @scene = first_scene_class.new
-</pre>
-<p>摨偠 SceneManager 儌僕儏乕儖偺 first_scene_class 儊僜僢僪傪屇傃弌偟丄
-栠傝抣偲偟偰曉偝傟偨僋儔僗偺僀儞僗僞儞僗傪嶌惉丄僀儞僗僞儞僗曄悢 @scene
-偵偦傟傪戙擖偟傑偡丅偙傟偵偮偄偰偼師愡偱徻偟偔夝愢偟傑偡丅</p>
-<pre>
-    @scene.main while @scene
-</pre>
-<p>偙偙偱巊傢傟偰偄傞 while 偼<strong>廋忺巕</strong>宍幃偱偡丅if
-傗 unless 偲摨條丄while 傕偙偺傛偆側巊偄曽偑偱偒傞偺偱偡丅
-婎慴曇偱妛廗偟偨婎杮揑側<a
-href="106_loop.html">儖乕僾</a
->偺暥朄偱彂偒捈偡偲丄師偺傛偆偵側傝傑偡丅</p>
-<pre>
-    while @scene
-      @scene.main
-    end
-</pre>
-<p>撪梕偲偟偰偼丄僀儞僗僞儞僗曄悢 @scene 偑 nil 偱側偄娫丄@scene 偺 main
-儊僜僢僪傪屇傃弌偟懕偗偰偄傑偡丅堦尒偡傞偲柍尷儖乕僾偺傛偆偵尒偊傞偐傕
-偟傟傑偣傫偑丄main 儊僜僢僪偺拞偱 SceneManager 偵傾僋僙僗偟丄@scene
-偺巜偡僆僽僕僃僋僩傪奜偐傜曄峏偡傞偲偄偆峔憿偵側偭偰偄傞偨傔丄
-栤戣偼偁傝傑偣傫丅</p>
 
+<h2><a name="mechanism">场景类的结构</a></h2>
 
-<h2><a name="scene">僔乕儞僋儔僗</a></h2>
-<p>嵞傃 3 峴栚偵栠傝傑偡丅</p>
-<pre>
-    @scene = first_scene_class.new
-</pre>
-<p>偙偙偱屇傃弌偝傟偰偄傞 first_scene_class 儊僜僢僪偺掕媊傪尒偰傒傑偟傚偆丅</p>
-<pre>
-  def self.first_scene_class
-    $BTEST ? Scene_Battle : Scene_Title
-  end
-</pre>
-? 偍傛傃 : 偲偄偆婰崋偼墘嶼巕宍幃偺<a
-href="105_branch.html">忦審暘婒</a>偱偡丅$BTEST 偲偄偆曄悢偺抣偑恀側傜
-Scene_Battle 傪丄婾側傜 Scene_Title 傪曉偡偙偲偵側傝傑偡丅Scene_Battle
-傗 Scene_Title 偲偄偆偺偼僋儔僗柤偱偡偑丄Ruby 偱偼偙偺傛偆偵丄僋儔僗傪
-儊僜僢僪偺栠傝抣偲偡傞偙偲傕偱偒傞偺偱偡丅</p>
-<p>僌儘乕僶儖曄悢 $BTEST 偼 RGSS 偵傛偭偰帺摦揑偵愝掕偝傟傞曄悢偱丄
-愴摤僥僗僩偲偟偰婲摦偝傟偨偐斲偐傪昞偟偰偄傑偡丅偡側傢偪丄愴摤僥僗僩偱
-偁傟偽僶僩儖夋柺丄偦偆偱側偗傟偽僞僀僩儖夋柺偑弶婜夋柺偵側傝傑偡丅</p>
+<p>场景类的实例是保存在 $scene 名称的全局变量中。
+这个变量只要值不是 nil 就能调用 main 名称的方法，是继续游戏运行的结构。
+典型的场景类的构架如下所示。</p>
 
-
-<h2><a name="base">僔乕儞偺婎杮張棟</a></h2>
-<p>SceneManager 偐傜屇傃弌偝傟傞 main 儊僜僢僪偼丄僔乕儞偺嵟忋埵
-僋儔僗偱偁傞 Scene_Base 僋儔僗偱掕媊偝傟偰偄傑偡丅
-妋擣偟偰偍偒傑偟傚偆丅</p>
 <pre>
   def main
-    start
-    post_start
-    update until scene_changing?
-    pre_terminate
-    terminate
+    start                         # 开始处理
+    perform_transition            # 开始转换
+    post_start                    # 开始后处理
+    Input.update                  # 更新输入信息
+    loop do
+      Graphics.update             # 更新游戏画面
+      Input.update                # 更新输入信息
+      update                      # 更新画面
+      break if $scene != self     # 画面切换循环中断
+    end
+    Graphics.update
+    pre_terminate                 # 结束前处理
+    Graphics.freeze               # 准备转换
+    terminate                     # 结束处理
   end
 </pre>
-<p>偙偙偱偼丄師偺屲偮偺儊僜僢僪傪弴斣偵屇傃弌偟偰偄傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>儊僜僢僪</th>
- <th>撪梕</th>
-</tr><tr>
- <td>start</td>
- <td>奐巒張棟</td>
-</tr><tr>
- <td>post_start</td>
- <td>奐巒屻張棟</td>
-</tr><tr>
- <td>update</td>
- <td>僼儗乕儉峏怴</td>
-</tr><tr>
- <td>pre_terminate</td>
- <td>廔椆慜張棟</td>
-</tr><tr>
- <td>terminate</td>
- <td>廔椆張棟</td>
-</tr></table>
-<p>奐巒張棟偲奐巒屻張棟丄廔椆張棟偲廔椆慜張棟偺堘偄偼丄庡偵
-偦偺夋柺偺僌儔僼傿僢僋偑幚嵺偵昞帵偝傟偰偄傞偐斲偐偱偡丅
-僒僽僋儔僗偱偺嵞掕媊偱張棟傪捛壛偡傞嵺偵偦偺僞僀儈儞僌傪惂屼
-偟傗偡偄傛偆偵偡傞偨傔丄偙偺傛偆偵嵶暘壔偝傟偰偄傑偡丅</p>
+
+<p>start、update、terminate等，是场景类定义的方法。Scene_Base 类里面虽然几乎没有什么内容，在Scene_Title，Scene_Map等子类中进行再定义就构成了各自画面里执行开始处理，结束处理等命令的场景
+</p>
+
+<p>if $scene != self 是「如果全局变量 $scene 指定的对象不是自己的话」的意思，
+即「切换到其它画面的情况」（self 是表示自身对象的伪变量）。
+另外，Input.update 是更新游戏手柄和键盘输入信息的方法。
+输入关联的处理请参照 <a href="../rgss/gm_input.html">Input</a> 模块的说明。</p>
+
+<p>还有，基础篇中曾介绍过的下面这个形式是 RGSS 游戏运行的基本结构。
+Scene_Base 类的 main 方法那样复杂的处理，都是在这个形式上发展而来的。</p>
+
+<pre>loop do<br>  Graphics.update<br>end<br></pre>
+
+
+
+<h2><a name="main">Main 组</a></h2>
+
+<p>终于到最后的组了。到现在为止上面的组全都是关于类的定义，
+实际上，可以认为真正脚本的运行是从这里开始的。Main 组除去注释只剩下下面的这 10 行。</p>
+
 <pre>
-    update until scene_changing?
+
+Font.default_name = ["SimHei", "黑体", "DFKai-SB", "標楷體", "Verdana", "Arial Unicode MS"]
+begin
+  Graphics.freeze
+  $scene = Scene_Title.new
+  $scene.main while $scene != nil
+  Graphics.transition(30)
+rescue Errno::ENOENT
+  filename = $!.message.sub("没有这样的文件或目录——", "")
+  print("无法找到文件：#{filename}.")
+end
+
 </pre>
-<p>恀傫拞偵偁傞偙偺婰弎偼丄僔乕儞慗堏 (夋柺愗傝懼偊) 偑巜帵偝傟傞
-傑偱偺娫丄update 儊僜僢僪傪屇傃弌偟懕偗傞偲偄偆偙偲傪帵偟偰偄傑偡丅
-奺僔乕儞偱僼儗乕儉偛偲偺張棟偑昁梫側応崌偼丄偙偺 update 儊僜僢僪傪
-嵞掕媊偡傞偙偲偵側傝傑偡丅</p>
+
+<p>首先，用Font.default_name定义游戏字体，从等号后面罗列的字体中选择第一个可用的字体作为游戏默认显示的字体。</p>
+<p>需要说明的是，适用于Windows操作系统的每一款字体都有其国际通用的英文名称（如上例，SimHei是简体中文Windows中的黑体的英文名，使用该英文名能够在繁体中文Windows中运行游戏时正常显示黑体；同样，DFKai-SB是繁体中文Windows中的標楷體的英文名，使用该英文名能够在简体中文Windows中运行游戏时正常显示標楷體。），所以建议用英文名称定义字体以方便自己做的游戏跨语言平台正常显示。</p>
+<p>另外，ARIAL国际标准编码字体(Arial Unicode MS)和采用微软ClearType(TM)技术显示的字体[如简体Windows的微软雅黑(Microsoft YaHei)和繁体Windows的微软正黑体(Microsoft JhengHei)等]在游戏中显示的时候会显得字号偏小，使用时需要注意。</p>
+<p>此外，由于ARIAL国际标准编码字体(Arial Unicode MS)可以显示所有UNICODE编码的字符，所以放在最后一棒以备用。</p>
+<p>-----------------------------------------------------</p>
+
+<p>begin ～ rescue ～ end 是异常处理的句法。这里，
+是脚本的运行中如果发生「找不到文件」的异常情况时指定转移执行 rescue 以下的处理。
+即显示「找不到文件 XXX」的错误信息后结束程序。
+异常处理在预置脚本中也可以不使用，所以没有记住其使用方法也不要紧。</p>
+<p>-----------------------------------------------------</p>
+<p>Graphics.freeze 和 Graphics.transition 在先前就已介绍过了。
+其中最先是进行「准备渐变」，准备从黑幕的状态逐渐显示到标题画面。
+最后的 Graphics.transition 是相反的过程又渐变到黑幕状态结束。</p>
+<p>-----------------------------------------------------</p>
+<p>还剩下 2 行。先是生成负责标题画面处理的 Scene_Title 类的实例，
+设定全局变量 $scene。然后和前面讲过的那样 $scene 变量只要值
+不是 nil 就调用 main 名称的方法。</p>
 
 
-<h2><a name="kind">僔乕儞僋儔僗偺庬椶</a></h2>
-<p>奺僔乕儞僋儔僗偵懳墳偡傞夋柺傪師偺昞偵帵偟傑偡丅僋儔僗柤偲僙僋僔儑儞柤
-偼姰慡偵堦懳堦偱懳墳偟偰偄傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>僋儔僗</th>
- <th>撪梕</th>
- <th>僗乕僷乕僋儔僗</th>
-</tr><tr>
- <td>Scene_Title</td>
- <td>僞僀僩儖夋柺</td>
- <td>Scene_Base</td>
-</tr><tr>
- <td>Scene_Map</td>
- <td>儅僢僾夋柺</td>
- <td>Scene_Base</td>
-</tr><tr>
- <td>Scene_MenuBase</td>
- <td>儊僯儏乕夋柺宯偺婎杮張棟</td>
- <td>Scene_Base</td>
-</tr><tr>
- <td>Scene_Menu</td>
- <td>儊僯儏乕夋柺</td>
- <td>Scene_MenuBase</td>
-</tr><tr>
- <td>Scene_ItemBase</td>
- <td>傾僀僥儉夋柺偲僗僉儖夋柺偺嫟捠張棟</td>
- <td>Scene_MenuBase</td>
-</tr><tr>
- <td>Scene_Item</td>
- <td>傾僀僥儉夋柺</td>
- <td>Scene_ItemBase</td>
-</tr><tr>
- <td>Scene_Skill</td>
- <td>僗僉儖夋柺</td>
- <td>Scene_ItemBase</td>
-</tr><tr>
- <td>Scene_Equip</td>
- <td>憰旛夋柺</td>
- <td>Scene_MenuBase</td>
-</tr><tr>
- <td>Scene_Status</td>
- <td>僗僥乕僞僗夋柺</td>
- <td>Scene_MenuBase</td>
-</tr><tr>
- <td>Scene_File</td>
- <td>僙乕僽夋柺偲儘乕僪夋柺偺嫟捠張棟</td>
- <td>Scene_MenuBase</td>
-</tr><tr>
- <td>Scene_Save</td>
- <td>僙乕僽夋柺</td>
- <td>Scene_File</td>
-</tr><tr>
- <td>Scene_Load</td>
- <td>儘乕僪夋柺</td>
- <td>Scene_File</td>
-</tr><tr>
- <td>Scene_End</td>
- <td>僎乕儉廔椆夋柺</td>
- <td>Scene_MenuBase</td>
-</tr><tr>
- <td>Scene_Shop</td>
- <td>僔儑僢僾夋柺</td>
- <td>Scene_MenuBase</td>
-</tr><tr>
- <td>Scene_Name</td>
- <td>柤慜擖椡夋柺</td>
- <td>Scene_MenuBase</td>
-</tr><tr>
- <td>Scene_Debug</td>
- <td>僨僶僢僌夋柺</td>
- <td>Scene_MenuBase</td>
-</tr><tr>
- <td>Scene_Battle</td>
- <td>僶僩儖夋柺</td>
- <td>Scene_Base</td>
-</tr><tr>
- <td>Scene_Gameover</td>
- <td>僎乕儉僆乕僶乕夋柺</td>
- <td>Scene_Base</td>
-</tr></table>
-<p>儊僯儏乕夋柺宯偺婎杮偲側傞 Scene_MenuBase 僋儔僗偼丄旕忢偵懡偔偺
-僋儔僗偱宲彸偝傟偰偄傑偡丅偙偺僋儔僗偵偼丄儅僢僾夋柺傪傏偐偟偨夋憸傪
-攚宨偲偟偰昞帵偡傞側偳偺張棟偑娷傑傟偰偄傑偡丅</p>
 
+<h2><a name="ps">写在最后</a></h2>
 
-<h2><a name="trans">僔乕儞慗堏</a></h2>
-<p>僎乕儉拞偵僔乕儞傪愗傝懼偊傞儊僜僢僪偼丄goto丄call丄return
-偺 3 庬椶偑偁傝傑偡丅</p>
-<p>堦斣扨弮側偺偼 goto 偱丄偨偲偊偽僎乕儉僆乕僶乕夋柺偺傛偆偵
-堦曽捠峴偺慗堏傪峴偆嵺偵巊梡偟傑偡丅</p>
-<pre>
-SceneManager.goto(Scene_Gameover)
-</pre>
-<p>call 偼丄儊僯儏乕夋柺偺傛偆偵丄屇傃弌偟尦偺僔乕儞偵栠傞偙偲偑
-偁傞応崌偵巊梡偟傑偡丅</p>
-<pre>
-SceneManager.call(Scene_Menu)
-</pre>
-<p>return 偼丄call 偱屇傃弌偝傟偨僔乕儞偐傜尦偺僔乕儞偵栠偡嵺偵
-巊梡偟傑偡丅</p>
-<pre>
-SceneManager.return
-</pre>
-<p>僔乕儞慗堏偑幚嵺偵偳偺傛偆偵巊傢傟傞偐偼丄懕偔幚慔曇偱傕
-夝愢偟傑偡丅</p>
-<p>側偍丄慜嶌傑偱偼 $scene 偲偄偆僌儘乕僶儖曄悢偵僔乕儞僆僽僕僃僋僩
-傪戙擖偡傞宍偱僔乕儞慗堏傪峴偭偰偄傑偟偨偑丄傛傝杮奿揑側 SceneManager
-儌僕儏乕儖偺摫擖偵敽偄丄偦偺曽幃偼攑巭偝傟傑偟偨丅埲慜偐傜偺儐乕僓乕偺
-曽偼偛拲堄偔偩偝偄丅</p>
+<p>非常感谢大家的关注。本帮助说明文档的第二部分「脚本入门」到这里就结束了。</p>
 
+<p>在迄今为止学习到的知识的基础上，参照本帮助说明文档的第三部分：<a href="../rgss/index.html">「RGSS参考文件」</a>，
+应该就能明了地解读预置脚本了。没有必要绝对理解 RGSS 的全部。
+有兴趣的话可以到脚本中看看，是不是很自然的产生了要自己写脚本的想法呢？</p><p>几乎是一切皆有可能。使用 RGSS 做什么，一切就看您的了。</p>
 
 <h6></h6>
+
 
 </body>
 </html>

@@ -1,168 +1,149 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>娭悢</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+
+  <title>函数</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+
 </head>
+
+
 <body>
 
-<h1>娭悢</h1>
+
+<h1>函数</h1>
+
 <ul>
-<li><a href="#call">娭悢偺屇傃弌偟</a></li>
-<li><a href="#define">娭悢偺掕媊</a></li>
-<li><a href="#param">堷悢</a></li>
-<li><a href="#default">僨僼僅儖僩堷悢</a></li>
-<li><a href="#redefine">娭悢偺嵞掕媊</a></li>
+
+  <li><a href="#call">函数的使用</a></li>
+
+  <li><a href="#define">函数的定义</a></li>
+
+  <li><a href="#param">参数</a></li>
+
+  <li><a href="#default">默认参数</a></li>
+
+  <li><a href="#redefine">函数的重定义</a></li>
+
 </ul>
 
-<p>悢抣偺寁嶼傗暥帤楍偺昞帵側偳丄堦楢偺張棟偵柤慜傪晅偗偰傂偲偮偵
-傑偲傔偨傕偺傪<strong>娭悢</strong>偲屇傃傑偡丅</p>
+
+<p>数字的计算和字符串的显示等，能够进行某种处理的被命名的功能称为<strong>函数</strong>。</p>
 
 
-<h2><a name="call">娭悢偺屇傃弌偟</a></h2>
-<p>娭悢偲偄偆梡岅偼悢妛偵傕弌偰偒傑偡偑丄僾儘僌儔儈儞僌偱巊偆娭悢偼
-偳偪傜偐偲偄偆偲乽柦椷乿偵嬤偄僀儊乕僕偱懆偊偨傎偆偑椙偄偱偟傚偆丅
-崱傑偱偵巊偭偰偒偨 p丄print 傪乽柦椷乿偲昞尰偟偰偒傑偟偨偑丄幚偼
-偙傟傜傕娭悢偺堦庬偱偡丅</p>
-<p>娭悢傪帺暘偱掕媊偡傞曽朄傪妛傇慜偵丄傕偭偲娭悢傜偟偄娭悢傪巊偭偰
-傒傑偟傚偆丅棎悢傪惗惉偡傞 <strong>rand</strong> 偲偄偆娭悢偑傢偐傝
-傗偡偄偱偟傚偆丅</p>
-<pre>
-p rand(100)
-</pre>
-<p>偙傟偼丄幚峴偡傞偨傃偵堘偆悢帤 (0乣99) 傪昞帵偡傞僾儘僌儔儉偱偡丅
-rand 娭悢偼丄0 埲忋偐偮巜掕偝傟偨惍悢傛傝彮側偄斖埻偺拞偐傜儔儞僟儉偵
-悢帤傪慖傫偱曉偡娭悢偱偡丅
-偙偺乽巜掕偡傞抣乿偺偙偲傪<strong>堷悢</strong> (傂偒偡偆) 偲屇傃傑偡丅
-堷悢偼捠忢丄娭悢柤偺屻偺僇僢僐 () 撪偱巜掕偟傑偡 (崱傑偱偵弌偰偒偨 print
-側偳偺屇傃弌偟偺傛偆偵丄堄枴偑暣傜傢偟偔側偗傟偽僇僢僐傪徣棯偡傞偙偲傕
-壜擻偱偡) 丅忋偺椺偱偼 100 偲偄偆偺偑 rand 娭悢偺堷悢偱偡丅
-堷悢偵偼丄悢抣側偳傪捈愙巜掕偡傞偩偗偱偼側偔丄
-師偺椺偺傛偆偵擟堄偺幃傪巊梡偡傞偙偲偑偱偒傑偡丅</p>
-<pre>
-x = 10
-y = 20
-p rand(x + y)       # p rand(30) 偲摨偠
-</pre>
-<p>堷悢偲偼媡偵丄娭悢偑偦偺張棟寢壥偲偟偰屇傃弌偟尦偵曉偟偰偔傞抣偺偙偲
-傪<strong>栠傝抣</strong>偲屇傃傑偡丅偡側傢偪丄rand 娭悢偺栠傝抣偼摿掕偺
-斖埻偺儔儞僟儉側悢抣偱偁傞偲偄偆偙偲偱偡丅娭悢偺栠傝抣偼丄晛捠偺抣傗曄悢
-偲摨偠傛偆偵埖偆偙偲偑偱偒傑偡丅</p>
-<pre>
-p rand(6) + 1
-</pre>
-<p>偙傟偼 rand 娭悢偺栠傝抣偵 1 傪壛嶼偟丄偦偺寢壥傪昞帵偡傞偲偄偆堄枴
-偱偡丅rand 娭悢偵 6 傪堷悢偲偟偰搉偟偨応崌偺栠傝抣偼 0 偐傜 5 偺斖埻偺
-棎悢偵側傝傑偡偐傜丄偦傟偵 1 傪懌偡偲偄偆偙偲偼丄僒僀僐儘偺傛偆偵 1 偐傜
-6 傑偱偺斖埻偺抣傪儔儞僟儉偵昞帵偡傞偲偄偆偙偲偵側傞傢偗偱偡丅</p>
-<p>print 傗 rand 偺傛偆側娭悢偼偁傜偐偠傔僔僗僥儉偵慻傒崬傑傟偰偄傞
-偺偱丄<strong>慻傒崬傒娭悢</strong>偲屇偽傟偰偄傑偡丅</p>
+
+<h2><a name="call">函数的使用</a></h2>
+
+<p>我们一直在使用的 exit、p、print 命令其实也是函数的一种。</p>
+
+<p>学习自定义函数的方法前，让我们像函数那样来使用函数吧。
+先介绍生成随机数的 <strong>rand</strong> 函数。</p>
+
+<pre>p rand(100)<br></pre>
+
+<p>这个示例是每次运行都会显示出（0～99）中的任意一个随机数字的程
+序。rand 函数是从 0 到指定整数这个不大的范围中随机选取一个数字并返回的函数。
+这个「指定的值」就称为<strong>参数</strong>。
+参数通常在函数名称后面的括号 () 内指定。上面示例里 100 就是 rand 函数的参数。
+参数如不直接指定数值的话，还可以像下面的示例那样使用任意的运算。</p>
+
+<pre>x = 10<br>y = 20<br>p rand(x + y)       # 等同于 p rand(30)<br></pre>
+
+<p>与参数相反，函数将原始数值进行处理后返回的结果数值称为<strong>返回值</strong>。
+也就是说，rand 函数的返回值是在特定范围内的随机数值。
+函数的返回值可以像普通数字和变量那样被使用。</p>
+
+<pre>p rand(6) + 1<br></pre>
+
+<p>上面示例的意思是 rand 函数的返回值加上 1，并显示其计算结果。rand 函数
+在给予的参数为 6 的情况下返回值为 0 到 5 范围内的任意一个数，
+所以再加上 1，就像丢骰子一样随机显示一个 1 到 6 范围内的数值。</p>
+
+<p>像 exit 和 rand 那样的函数已预先被系统定义，所以称为<strong>系统函数</strong>。</p>
 
 
-<h2><a name="define">娭悢偺掕媊</a></h2>
-<p>娭悢偺掕媊偼 <strong>def</strong> 偱巒傑傝 <strong>end</strong> 偱
-廔傢傝傑偡丅嬶懱揑偵偼埲壓偺傛偆側暥朄偱偡丅</p>
-<pre>
-def 娭悢偺柤慜
-  娭悢偺撪梕
-end
-</pre>
-<p>娭悢偺柤慜偺晅偗曽偼丄婎杮揑偵儘乕僇儖曄悢偲摨偠偲峫偊偰偔偩偝偄丅
-愭摢偵戝暥帤傪巊梡偡傞偙偲傕偱偒傑偡偑丄娭悢偵偦偆偄偭偨柤慜傪晅偗傞偙偲偼
-偍姪傔偱偒傑偣傫丅側偍丄娭悢柤偺椺奜偲偟偰丄嵟屻偺暥帤偵偼 ? 傑偨偼 ! 偲
-偄偆婰崋傪巊梡偡傞偙偲偑偱偒傑偡丅</p>
-<p>偨偲偊偽丄愭傎偳偺 rand(6) + 1 偲偄偆張棟傪 dice 偲偄偆柤慜偺娭悢偲偟偰
-掕媊偡傞応崌丄師偺傛偆偵側傝傑偡丅偙偺傛偆偵掕媊偟偰偍偗偽丄偙傟埲崀 dice 偲
-彂偄偨偩偗偱 1 偐傜 6 傑偱偺棎悢傪摼傞偙偲偑偱偒傞傛偆偵側傞傢偗偱偡丅</p>
-<pre>
-def dice
-  return rand(6) + 1
-end
 
-p dice              # p rand(6) + 1 偲摨偠
-</pre>
-<p>偙偙偱 return 偲偄偆偺偼丄娭悢偺張棟傪廔椆偡傞偨傔偺柦椷偱偡丅娭悢偑
-VX Ace 偺僐儌儞僀儀儞僩偩偲偡傞偲丄return 偼 [僀儀儞僩張棟偺拞抐] 偵憡摉偡傞
-偲峫偊偰偔偩偝偄丅return 偺塃懁偵彂偐傟偨幃偑丄偦偺娭悢偺栠傝抣偲側傝傑偡丅
-側偍丄娭悢傪搑拞偱拞抐偡傞応崌埲奜偼 return 傪徣棯偡傞偙偲傕壜擻偱偡丅</p>
+<h2><a name="define">函数的定义</a></h2>
+
+<p>函数的定义是从 <strong>def</strong> 开始到 <strong>end</strong> 结束。
+具体的语法如下所示。</p>
+
+<pre>def 函数的名称<br>  函数的内容<br>end<br></pre>
+
+<p>函数名称的命名方法，基本上和局部变量有相同的限制。
+也能在开头使用大写字母，但不推荐函数命名时使用。
+另外，作为函数命名的例外，在名称的最后还可以添加 ? 或 ! 符号。</p>
+
+<p>比如，先前的 rand(6) + 1 处理可以定义为 dice 名称的函数，
+我们下面就来进行。这样定义了该函数，
+从此以后只要写 dice 就会得到一个 1 到 6 的随机数字。</p>
+
+<pre>def dice<br>  return rand(6) + 1<br>end<br><br>p dice              # 等同于 p rand(6) + 1<br></pre>
+
+<p>这里的 return 就是结束函数处理的命令。函数可以考虑为 RPGXP 的全局事件，
+而 return 就是相当于「中断事件处理」的意思。return 右侧所写的运算，
+就是该函数的返回值。在中途中断函数的情况以外还可以省略 return，
+这大概会更方便吧。预置脚本中也是这样，大多数情况下都省略了 return 没写。</p>
 
 
-<h2><a name="param">堷悢</a></h2>
-<p>堷悢傪庢傞娭悢偼丄埲壓偺傛偆偵掕媊偟傑偡丅</p>
-<pre>
-def abs(x)
-  if x &lt; 0          # 傕偟 x 偑 0 枹枮偱偁傟偽丄
-    return -x       #   娭悢傪廔椆偟丄-x 傪栠傝抣偲偡傞丅
-  else              # 偦傟埲奜偱偁傟偽丄
-    return x        #   娭悢傪廔椆偟丄x 傪栠傝抣偲偡傞丅
-  end               # 暘婒廔椆丅
-end
 
-p abs(-3)           # =&gt; 3
-</pre>
-<p>偙傟偼堷悢偲偟偰梌偊傜傟偨抣偺愨懳抣傪曉偡娭悢偱偡丅偙偺乽堷悢偲偟偰
-梌偊傜傟偨抣乿傪壖偵 x 偲偟偰掕媊偟偰偄傑偡丅
-偙偺 x 偺偙偲傪<strong>壖堷悢</strong>偲屇傃傑偡丅娭悢撪晹偱偼忦審暘婒傪
-巊梡偟丄x 偑 0 傛傝彮側偄 (儅僀僫僗偺) 偲偒偵偼 -x 傪丄偦傟埲奜偺偲偒
-(0 埲忋偺偲偒) 偵偼 x 傪栠傝抣偲偟傑偡丅嵟屻偺峴偱偼丄-3 偲偄偆堷悢傪巜掕
-偟偰幚嵺偵 abs 娭悢傪屇傃弌偟丄偦偺寢壥傪 p 娭悢偱弌椡偟偰偄傑偡丅x 偑壖堷
-悢偱偁傞偺偵懳偟偰丄偙偺 -3 偺偙偲傪<strong>幚堷悢</strong>偲屇傃傑偡丅</p>
-<p>偪側傒偵丄愨懳抣偲偄偆偺偼悢妛偵弌偰偔傞奣擮偱丄尨揰 (偙偺応崌偼 0 偲
-峫偊傑偡) 偐傜偺嫍棧傪昞偡悢抣偺偙偲偱偡丅-3 傕 +3 傕丄0 傪尨揰偲偟偨応崌
-偵偼丄偦傟偧傟 0 偺埵抲偐傜 3 棧傟偨嫍棧偵偁傞悢帤偲偄偆偙偲偵側傝傑偡丅</p>
-<p>暋悢偺堷悢傪庢傞娭悢傕掕媊偡傞偙偲偑偱偒傑偡丅暋悢偺堷悢偼丄僇儞儅 ','
-偱嬫愗偭偰巜掕偟傑偡丅</p>
-<pre>
-def sum(x, y)
-  return x + y      # 娭悢傪廔椆偟丄x + y 傪栠傝抣偲偡傞丅
-end
+<h2><a name="param">参数</a></h2>
 
-p sum(2, 3)         # =&gt; 5
-</pre>
-<p>偙傟偼堷悢偲偟偰梌偊傜傟偨傆偨偮偺悢抣偺榓傪曉偡娭悢偱偡丅傕偪傠傫
-幚嵺偵偼 2 + 3 偲彂偄偨傎偆偑憗偔偰傢偐傝傗偡偄偱偡偐傜丄捠忢偙偺傛偆側
-扨弮側娭悢傪掕媊偡傞偙偲偼偁傝傑偣傫丅偁偔傑偱傕丄暥朄傪愢柧偡傞偨傔偺
-椺戣偲峫偊偰偔偩偝偄丅</p>
+<p>含有参数的函数，如下面示例那样定义。</p>
+
+<pre>def abs(x)<br>  if x &lt; 0          # 如果 x 小于 0 的话，<br>    return -x       #   结束函数，返回值 -x。<br>  else              # 除此之外，<br>    return x        #   结束函数，返回值 x。<br>  end               # 分歧结束。<br>end<br><br>p abs(-3)           # =&gt; 3<br></pre>
+
+<p>这个是返回指定参数数值绝对值的函数。这里「指定参数数值」暂时定义为 x。
+这个 x 称为<strong>临时参数</strong>。在函数内部使用有条件分歧，x 小
+于 0 时（为负数）返回值 -x，除此之外（为 0 以上的整数）返回值 x。
+最后一行是指定参数为 -3 的实际情况下使用函数，其结果用 p 函数输出。
+与 x 为临时参数相比，这儿的 -3 称为<strong>实参数</strong>。</p>
+
+<p>顺便讲一下，所谓绝对值是数学上提出的概念，是表示到原点（上述情况
+可以认为是 0）距离的数值。-3 也好 +3 也好，原点为 0 的情况下，
+每个到 0 的距离值都为 3。</p>
+
+<p>含有多个参数的函数也能定义。多个参数要用逗号「,」分开来指定。</p>
+
+<pre>def sum(x, y)<br>  return x + y      # 结束函数，返回值 x + y。<br>end<br><br>p sum(2, 3)         # =&gt; 5<br></pre>
+
+<p>这个是返回指定参数两个数值之和的函数。当然实际中写成 2 + 3 更快更容易，
+一般不会定义这样简单的函数。这只是说明语法的示例。</p>
+
+<p>实际中参数省略括号 () 也能使用。</p>
 
 
-<h2><a name="default">僨僼僅儖僩堷悢</a></h2>
-<p>屇傃弌偟帪偵徣棯壜擻側堷悢偺偙偲傪<strong>僨僼僅儖僩堷悢</strong>偲
-屇傃傑偡丅僨僼僅儖僩堷悢偼丄壖堷悢偵戙擖婰崋 = 傪晅偗傞偙偲偱巜掕偱偒
-傑偡丅僨僼僅儖僩堷悢傪愝掕偟偰偍偔偲丄僇僢僐 () 撪偺幚堷悢偺売強偵抣偑
-巜掕偝傟偰偄側偄応崌丄壖堷悢偵偼帺摦揑偵僨僼僅儖僩堷悢偑戙擖偝傟傞偙偲
-偵側傝傑偡丅</p>
-<pre>
-def dice(n = 6)
-  return rand(n) + 1
-end
 
-p dice              # p dice(6) 偲摨偠
-</pre>
-<p>忋偺椺偱偼丄堷悢側偟偱屇傃弌偟偨偲偒偵偼 1乣6 偺棎悢傪曉偟傑偡偑丄
-堷悢傪巜掕偡傞偲丄棎悢偺嵟戝抣傪曄峏偡傞偙偲偑偱偒傞傛偆偵側偭偰偄傑偡丅
-偨偲偊偽丄dice(8) 偲偟偰屇傃弌偣偽 1乣8 偺棎悢傪曉偡傢偗偱偡丅</p>
-<p>懡偔偺慻傒崬傒娭悢傕丄偙偺傛偆偵堷悢偑徣棯壜擻偵側偭偰偄傑偡丅</p>
+<h2><a name="default">默认参数</a></h2>
+
+<p>定义函数时就已指定且使用时可以省略的参数称为<strong>默认参数</strong>。
+默认参数是在临时参数后面加上符号 = 来指定的。事先设定好了默认参数，
+在使用函数时未指定括号 () 内实参数数值的情况下，临时参数就会自动代入默认参数数值。</p>
+
+<pre>def dice(n = 6)<br>  return rand(n) + 1<br>end<br><br>p dice              # 等同于 p dice(6)<br></pre>
+
+<p>上述示例中未指定参数，使用函数时会返回一个 1～6 的随机数字，
+然而指定参数的话，就能更改随机数字的最大值。比如，
+使用 dice(8) 就会返回一个 1～8 的随机数字。</p>
+
+<p>多参数函数同样能够指定各个默认参数，这样使用时就可以省略。</p>
 
 
-<h2><a name="redefine">娭悢偺嵞掕媊</a></h2>
-<p>師偺僾儘僌儔儉偱偼丄hello 偲偄偆柤慜偺娭悢傪 2 夞掕媊偟偰偄傑
-偡丅</p>
-<pre>
-def hello
-  return &quot;偙傫偵偪偼&quot;
-end
 
-def hello
-  return &quot;偙傫偽傫偼&quot;
-end
+<h2><a name="redefine">函数的重定义</a></h2>
 
-p hello         # =&gt; &quot;偙傫偽傫偼&quot;
-</pre>
-<p>Ruby 偱偼丄娭悢偺柤慜偑廳暋偟偨応崌偱傕僄儔乕偵偼側傝傑偣傫丅
-偙偺傛偆側応崌偼屻偐傜掕媊偝傟偨傎偆偑桪愭偝傟丄屆偄掕媊偼徚柵偡傞
-偙偲偵側傝傑偡丅</p>
+<p>下面的示例中，hello 名称的函数被重复定义了 2 回。</p>
+
+<pre>def hello<br>  return "您好"<br>end<br><br>def hello<br>  return "晚安"<br>end<br><br>p hello         # =&gt; "晚安"<br></pre>
+
+<p>在 Ruby 中，函数名称重复的话不会出现错误。
+这种情况下系统会认定后面定义的函数有效，而先前的定义就无效了。</p>
+
 
 
 <h6></h6>

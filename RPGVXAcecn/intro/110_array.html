@@ -1,186 +1,127 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>攝楍</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+
+  <title>数组</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+
 </head>
+
+
 <body>
 
-<h1>攝楍</h1>
+
+<h1>数组</h1>
+
 <ul>
-<li><a href="#generate">攝楍偺惗惉</a></li>
-<li><a href="#subst">攝楍偺梫慺傊偺戙擖</a></li>
-<li><a href="#manage">攝楍偺憖嶌</a></li>
-<li><a href="#loop">攝楍偵傛傞儖乕僾</a></li>
-<li><a href="#enumerable">Enumerable 儌僕儏乕儖</a></li>
+
+  <li><a href="#generate">数组的生成</a></li>
+
+  <li><a href="#subst">数组单元的重赋值</a></li>
+
+  <li><a href="#manage">数组的操作</a></li>
+
+  <li><a href="#loop">数组的循环</a></li>
+
 </ul>
 
-<p>暋悢偺僆僽僕僃僋僩傪堦妵偟偰庢傝埖偄偨偄偲偒巊偆偺
-偑<strong>攝楍</strong>偱偡丅</p>
+
+<p>想一起处理多个对象就要使用<strong>数组</strong>。</p>
 
 
-<h2><a name="generate">攝楍偺惗惉</a></h2>
-<p>攝楍偼 [] 偲偄偆婰崋偺拞偵梫慺傪暲傋傞偙偲偱惗惉偱偒傑偡丅</p>
-<pre>
-a = [&quot;傾儗僢僋僗&quot;, &quot;僽儔僀傾儞&quot;, &quot;僉儍儘儖&quot;]
-</pre>
-<p>偙偺僾儘僌儔儉偱偼丄&quot傾儗僢僋僗&quot丄&quot僽儔僀
-傾儞&quot丄&quot僉儍儘儖&quot 偲偄偆 3 偮偺暥帤楍傪奿擺偟偨攝楍傪
-嶌惉偟丄偦傟傪 a 偲偄偆曄悢偵戙擖偟偰偄傑偡丅</p>
-<p>攝楍偺拞偺僆僽僕僃僋僩傪庢傝弌偡嵺偵偼丄偙偺傛偆偵偟傑偡丅</p>
-<pre>
-a = [&quot;傾儗僢僋僗&quot;, &quot;僽儔僀傾儞&quot;, &quot;僉儍儘儖&quot;]
 
-p a[0]          # =&gt; &quot;傾儗僢僋僗&quot;
-p a[1]          # =&gt; &quot;僽儔僀傾儞&quot;
-p a[2]          # =&gt; &quot;僉儍儘儖&quot;
-</pre>
-<p>偙偺傛偆偵丄a[0] 傗 a[1] 側偳丄偦傟偧傟偺梫慺傪暿屄偺曄悢偺傛偆偵埖偆
-偙偲偑偱偒傑偡丅偙偙偱 0丄1丄2 偺傛偆側悢帤傪丄攝楍偺<strong>揧帤</strong>
-(偦偊偠) 偲屇傃傑偡丅揧帤偼 1 偐傜偱偼側偔 0 偐傜巒傑偭偰偄傞偙偲偵拲堄
-偟偰偔偩偝偄丅0 偐傜巒傑傝丄嵍偵偁傞梫慺偐傜弴偵 0丄1丄2 乧偲妱傝怳傜傟偰
-偄偒傑偡丅</p>
-<p>攝楍偵偼暥帤楍偩偗偱側偔丄擟堄偺僆僽僕僃僋僩傪奿擺偡傞偙偲偑偱偒傑偡丅
-傑偨丄揧帤傪巜掕偣偢偵攝楍僆僽僕僃僋僩偦偺傕偺傪 p 偱昞帵偡傞偙偲傕壜擻
-偱偡丅</p>
-<pre>
-a = [2000, &quot;傾儗僢僋僗&quot;, true, 1..50]
+<h2><a name="generate">数组的生成</a></h2>
 
-p a             # =&gt; [2000, &quot;傾儗僢僋僗&quot;, true, 1..50]
-</pre>
+<p>在 [] 符号中间排列多个单元就生成了一个数组。如下例所示。</p>
+
+<pre>a = ["阿莱库斯","布莱恩","卡罗鲁"]<br></pre>
+
+<p>上述程序建立了一个包含 "阿莱库斯"、"布莱恩"、"卡罗鲁" 这三个字符串单元的数组，
+并把这个数组代入变量 a 为其赋值。</p>
+
+<p>要取出数组中对象，如下例所示。</p>
+
+<pre>a = ["阿莱库斯","布莱恩","卡罗鲁"]<br><br>p a[0]          # =&gt; "阿莱库斯"<br>p a[1]          # =&gt; "布莱恩"<br>p a[2]          # =&gt; "卡罗鲁"<br></pre>
+
+<p>上述中，a[0] 和 a[1] 等各个单元，能和其它变量那样单独使用。
+这里 0、1、2 那样的数字被称为数组的<strong>附加码</strong>。
+附加码不是从 1 开始而是从 0 开始的，这点一定要注意。
+从 0 开始，单元从左至右依次为 0、1、2 &hellip;&hellip;。</p>
+
+<p>数组中除了字符串外还可以包含其它任意的对象。而且，
+使用 p 命令也可以不指定附加码，那样就会显示数组的全部单元。</p>
+
+<pre>a = [2000,"阿莱库斯",true,1..50]<br><br>p a             # =&gt; [2000,"阿莱库斯",true,1..50]<br></pre>
 
 
-<h2><a name="subst">攝楍偺梫慺傊偺戙擖</a></h2>
-<p>攝楍偺奺梫慺偼晛捠偺曄悢偲摨條偵埖偊傑偡偐傜丄戙擖偱抣傪曄峏偡傞偙偲傕
-偱偒傑偡丅</p>
-<pre>
-a = [10, 20, 30]
-a[0] = 100
 
-p a             # =&gt; [100, 20, 30]
-</pre>
-<p>偙偺椺偱偼丄傑偢 10丄20丄30 偲偄偆 3 偮偺悢抣傪奿擺偟偨攝楍傪嶌惉偟丄
-嵟弶偺梫慺偵屻偐傜 100 傪戙擖偟偰偄傑偡丅偙偺偲偒 a[0] 偵偼 10 偲偄偆
-悢抣偑奿擺偝傟偰偄傑偡偑丄戙擖偵傛偭偰 100 偵擖傟懼偊傜傟傞偨傔丄弌椡
-寢壥偺傛偆偵側傞傢偗偱偡丅偙偺怳傞晳偄偼晛捠偺曄悢偲摨偠偱偡偹丅</p>
-<p>嵟弶偵嶌惉偟偨攝楍偺斖埻奜偺揧帤傪巜掕偟偰戙擖偡傞偲丄帺摦揑偵攝楍偑
-奼挘偝傟傑偡丅</p>
-<pre>
-a = [10, 20, 30]
-a[3] = 40
+<h2><a name="subst">数组单元的重赋值</a></h2>
 
-p a             # =&gt; [10, 20, 30, 40]
-</pre>
-<p>攝楍偑嶌惉偝傟偨帪揰偱偼梫慺偼 3 偮偱偟偨偑丄a[3] 偲偄偆斖埻奜偺梫慺
-偵懳偟偰戙擖偑峴傢傟偨偨傔丄帺摦揑偵梫慺 4 偮偺攝楍偵側傝傑偟偨丅C 尵岅
-側偳偱偼偙偺傛偆側戙擖偼嫋偝傟偰偄傑偣傫偑丄Ruby 偼廮擃側尵岅側偺偱埨怱
-偱偡丅</p>
-<p>斖埻傪旘偽偟偰傒偨傜偳偆側傞偺偱偟傚偆偐丠</p>
-<pre>
-a = [10, 20, 30]
-a[5] = 60
+<p>数组的各单元的使用和普通的变量一样，也能进行变量的重赋值。</p>
 
-p a             # =&gt; [10, 20, 30, nil, nil, 60]
-</pre>
-<p><strong>nil</strong> 偲偄偆抣偑尰傟傑偟偨丅<a href=
-"103_variable.html">曄悢</a>偺復偺嵟屻偱寉偔怗傟傑偟偨偑丄nil
-偲偼乽壗傕側偄乿偲偄偆偙偲偱偡丅偙傟偼 true 傗 false
-側偳偲摨偠<strong>媅帡曄悢</strong>偺堦庬偱偡丅true
-偑乽恀乿丄false 偑乽婾乿傪昞偡偺偲摨偠傛偆偵丄nil
-偼乽柍乿傪昞偡偺偱偡丅</p>
+<pre>a = [10, 20, 30]<br>a[0] = 100<br><br>p a             # =&gt; [100, 20, 30]<br></pre>
+
+<p>该示例中，首先是建立了一个由 10、20、30 这三个数字单元组成的数组，
+然后向第一个单元里重赋值代入 100。这时 a[0] 原先的数值 10 就被代入的 100 所代替，
+显示的结果就更改了。这个处理和普通变量的重赋值是一样的。</p>
+
+<p>指定超过最初数组附加码范围的单元并为之赋值，会自动扩大数组添加新的单元。</p>
+
+<pre>a = [10, 20, 30]<br>a[3] = 40<br><br>p a             # =&gt; [10, 20, 30, 40]<br></pre>
+
+<p>建立数组时只有 3 个单元，现在为在其范围外的 a[3] 赋值，
+就会自动添加第 4 个单元扩大数组。C 语言等其它语言是不充许这样赋值的，
+而 Ruby 这种灵活的语言就可以放心添加。</p>
+
+<p>如果跳过范围的话会如何呢？</p>
+
+<pre>a = [10, 20, 30]<br>a[5] = 60<br><br>p a             # =&gt; [10, 20, 30, nil, nil, 60]<br></pre>
+
+<p>中间就会出现 <strong>nil</strong> 值。
+这个与 true 和 false 等一样是<strong>常量</strong>的一种，
+意思是「什么都没有」。和 true 表示「真」，false 表示「伪」一样，nil 表示「无」。</p>
 
 
-<h2><a name="manage">攝楍偺憖嶌</a></h2>
-<p>攝楍偼 <a href="../rgss/sc_array.html">Array</a> 僋儔僗偺
-僀儞僗僞儞僗偱偡丅偙偺僋儔僗偱掕媊偝傟偰偄傞儊僜僢僪傪屇傃弌偡
-偙偲偵傛偭偰僨乕僞偺憖嶌傪峴偆偙偲偑偱偒傑偡丅</p>
-<p>偨偲偊偽丄攝楍偺梫慺悢傪抦傝偨偄応崌偼 size 偲偄偆儊僜僢僪傪
-巊梡偟傑偡丅String 僋儔僗偺 size 儊僜僢僪偼暥帤楍偺僶僀僩悢傪曉偡
-傕偺偱偟偨偑丄Array 僋儔僗偺 size 儊僜僢僪偼攝楍偺梫慺悢傪曉偟傑偡丅
-攝楍偑嬻偺偲偒偼 0 傪曉偟傑偡丅</p>
-<pre>
-a = [&quot;傾儗僢僋僗&quot;, &quot;僽儔僀傾儞&quot;, &quot;僉儍儘儖&quot;]
 
-p a.size        # =&gt; 3
-</pre>
-<p>攝楍偺拞偵摿掕偺抣偑娷傑傟偰偄傞偐偳偆偐抦傝偨偄応崌偼丄include?
-偲偄偆儊僜僢僪傪巊梡偟傑偡丅</p>
-<pre>
-a = [&quot;傾儗僢僋僗&quot;, &quot;僽儔僀傾儞&quot;, &quot;僉儍儘儖&quot;]
+<h2><a name="manage">数组的操作</a></h2>
 
-p a.include?(&quot;僽儔僀傾儞&quot;)      # =&gt; true
-p a.include?(&quot;僨僀僕乕&quot;)        # =&gt; false
-</pre>
-<p>3 峴栚偱偼 include? 儊僜僢僪傪巊偭偰丄攝楍偵
-&quot;僽儔僀傾儞&quot; 偲偄偆抣偑娷傑傟偰偄傞偐偳偆偐傪妋擣偟偰
-偄傑偡丅偙偺応崌丄1 峴栚偺攝楍偺惗惉偱 &quot;僽儔僀傾儞&quot; 偲
-偄偆抣偑愝掕偝傟偰偄傑偡偺偱丄true (恀) 偲弌椡偝傟傑偡丅
-摨偠偔 4 峴栚偱偼 &quot;僨僀僕乕&quot; 偲偄偆抣偑娷傑傟偰偄傞偐
-偳偆偐傪妋擣偟偰偄傑偡丅偦偺傛偆側抣偼懚嵼偟傑偣傫偺偱丄false (婾)
-偲弌椡偝傟傑偡丅</p>
+<p>数组是 <a href="../rgss/sc_array.html">Array</a> 类的实例。
+可以调用这个类定义的方法对数据进行操作。</p>
+
+<p>比如，想知道数组的单元数量的话就可以使用 size 方法。
+和 String 类的 size 方法返回字符串字节数相似，Array 类的 size 方法
+是返回数组的单元数。数组为空时就返回 0。</p>
+
+<pre>a = ["阿莱库斯","布莱恩","卡罗鲁"]<br><br>p a.size        # =&gt; 3<br></pre>
+
+<p>想知道数组中是否含有特定的值的话，就要使用到 include? 方法。</p>
+
+<pre>a = ["阿莱库斯","布莱恩","卡罗鲁"]<br><br>p a.include?("布莱恩")            # =&gt; true<br>p a.include?("迪吉")        # =&gt; false<br></pre>
+
+<p>第三行中使用 include? 方法，是确认数组中是否含有字符串 "布莱恩"。
+上例在第一行生成数组时设定有字符串 "布莱恩"，所以输出结果为 true（真）。
+同样第四行是确认数组中是否含有字符串 "迪吉"。
+然而这个字符串在数组中是不存在的，所以输出结果就为 false（伪）。</p>
 
 
-<h2><a name="loop">攝楍偵傛傞儖乕僾</a></h2>
-<p>攝楍偺撪梕傪巊偭偰儖乕僾張棟傪峴偆偵偼丄<strong>僀僥儗乕僞</strong>偲
-屇偽傟傞峔暥傪巊梡偟傑偡丅</p>
-<pre>
-a = [&quot;傾儗僢僋僗&quot;, &quot;僽儔僀傾儞&quot;, &quot;僉儍儘儖&quot;]
 
-a.each do |s|
-  p s
-end
-</pre>
-<p>偙偙偱偼曄悢 s 傪梡偄偰丄攝楍 a 偵奿擺偝傟偰偄傞梫慺傪儖乕僾偝偣側偑傜
-弌椡偝偣偰偄傑偡丅儖乕僾偝偣傞斖埻偑 a 偵奿擺偝傟偰偄傞梫慺偱偡偺
-偱丄&quot;傾儗僢僋僗&quot;丄&quot;僽儔僀傾儞&quot;丄&quot;僉儍儘儖&quot;
-偲偄偆弴偵昞帵偝傟丄偦偙偱儖乕僾廔椆偲側傝傑偡丅</p>
-<p>偮傑傝丄each 偲偄偆儊僜僢僪傪巊梡偡傞偙偲偱丄do 偲 end
-偱埻傑傟偨僽儘僢僋偑丄攝楍 a 偺奺梫慺偵懳偟偰孞傝曉偝傟傞偺偱偡丅</p>
-<p>傑偨丄do...end 偺戙傢傝偵 {...} 傪巊偆偙偲傕偱偒傑偡丅</p>
-<pre>
-a.each {|s| p s }
-</pre>
-<p>偙偺峔暥偼丄儖乕僾傪 1 峴偱婰弎偡傞偲偒偵曋棙偱偡丅</p>
-<p>側偍丄偙偙偱偺 do...end 傗 {...}
-側偳偺晹暘偼<strong>僽儘僢僋</strong>偲屇傃傑偡丅</p>
-<h3>for</h3>
-<p>師偺傛偆偵丄for 傪巊偭偨儖乕僾傕壜擻偱偡丅</p>
-<pre>
-for s in a
-  p s
-end
-</pre>
-<p>偙偺宍幃偼 RGSS2 埲慜偺僗僋儕僾僩偱巊梡偝傟偰偄傑偟偨偑丄RGSS3
-偱偼僀僥儗乕僞傪巊偭偨宍幃傪悇彠偟偰偄傑偡丅</p>
+<h2><a name="loop">数组的循环</a></h2>
 
+<p>使用 for 循环，即使没有设定对象的附加码也能指定数组单元。</p>
 
-<h2><a name="enumerable">Enumerable 儌僕儏乕儖</a></h2>
-<p><a href="../rgss/sc_array.html">Array</a> 僋儔僗偺
-儕僼傽儗儞僗偵偼乽僀儞僋儖乕僪偟偰偄傞儌僕儏乕儖乿偲偄偆崁栚偑
-偁傝丄<a href="../rgss/sm_enumerable.html">Enumerable</a>
-偲偄偆儌僕儏乕儖傊偺儕儞僋偑挘傜傟偰偄傑偡丅</p>
-<p><a href="108_object.html">僆僽僕僃僋僩</a>偺復偱偼丄僗乕僷乕
-僋儔僗偺儊僜僢僪傪丄偦偺僋儔僗偺儊僜僢僪偲摨偠傛偆偵屇傃弌偡偙偲偑
-偱偒傞偲愢柧偟傑偟偨丅偦傟偵壛偊偰丄乽僀儞僋儖乕僪偟偰偄傞
-儌僕儏乕儖乿偱掕媊偝傟偰偄傞儊僜僢僪傕屇傃弌偡偙偲偑壜擻偱偡丅</p>
-<p>攝楍拞偺嵟戝抣傪曉偡 max 儊僜僢僪丄嵟彫抣傪曉偡 min 儊僜僢僪
-偼丄摿偵昿斏偵巊梡偝傟傑偡丅巊偄曽偼師偺傛偆偵側傝傑偡丅</p>
-<pre>
-a = [30, 75, 12, 9, 58]
+<pre>a = ["阿莱库斯","布莱恩","卡罗鲁"]<br><br>for s in a<br>  p s<br>end<br></pre>
 
-p a.max         # =&gt; 75
-p a.min         # =&gt; 9
-</pre>
-<p>偙偺 <a href="../rgss/sm_enumerable.html">Enumerable</a>
-儌僕儏乕儖偱掕媊偝傟偰偄傞儊僜僢僪偼慡偰丄慜崁偱夝愢偟偨 each
-儊僜僢僪傪梡偄偰掕媊偝傟偰偄傑偡丅each 偲摨偠傛偆偵僽儘僢僋偺
-巜掕傪昁梫偲偡傞儊僜僢僪偑懡偄偨傔丄傗傗擄夝偱偼偁傝傑偡偑丄
-昁梫偵墳偠偰備偭偔傝妎偊偰偄偗偽椙偄偱偟傚偆丅</p>
+<p>这里使用变量 s，循环代入数组 a 中所包含的单元。
+循环的范围是数组 a 包含的所有单元，
+按 "阿莱库斯"、"布莱恩"、"卡罗鲁" 的顺序在对话框中显示，最后循环结束。</p>
+
 
 
 <h6></h6>
-
 </body>
 </html>

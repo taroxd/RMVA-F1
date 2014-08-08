@@ -1,122 +1,134 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>僋儔僗掕媊</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+
+  <title>定义类</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+
+
 </head>
+
+
 <body>
 
-<h1>僋儔僗掕媊</h1>
+
+<h1>定义类</h1>
+
 <ul>
-<li><a href="#define">僋儔僗偺掕媊</a></li>
-<li><a href="#method">儊僜僢僪偺掕媊</a></li>
-<li><a href="#instance">僀儞僗僞儞僗曄悢</a></li>
-<li><a href="#accessor">傾僋僙僒偺掕媊</a></li>
-<li><a href="#initialize">僆僽僕僃僋僩弶婜壔</a></li>
-<li><a href="#override">儊僜僢僪偺僆乕僶乕儔僀僪</a></li>
+
+  <li><a href="#define">类的定义</a></li>
+
+  <li><a href="#method">方法的定义</a></li>
+
+  <li><a href="#instance">实变量</a></li>
+
+  <li><a href="#accessor">アクセサの定義</a></li>
+
+  <li><a href="#initialize">对像初始化</a></li>
+
+  <li><a href="#override">方法的重载</a></li>
+
 </ul>
 
-<p>婎慴曇偺嵟屻偵丄怴偟偄僋儔僗傪掕媊偡傞曽朄偵偮偄偰夝愢偟傑偡丅</p>
+
+<p>基础篇的最后，让我们来学习定义新类的方法。</p>
 
 
-<h2><a name="define">僋儔僗偺掕媊</a></h2>
-<p>偙傟傑偱 <a href="../rgss/sc_string.html">String</a> 僋儔僗傗
-<a href="../rgss/sc_array.html">Array</a> 僋儔僗丄偁傞偄偼
-<a href="../rgss/gc_sprite.html">Sprite</a> 僋儔僗側偳丄偁傜偐偠傔
-僔僗僥儉偵慻傒崬傑傟偨僋儔僗傪棙梡偡傞曽朄偵偮偄偰妛廗偟偰偒傑偟偨丅
-幚偼僋儔僗偼巊偆偩偗偱側偔丄撈帺偵掕媊偡傞偙偲傕偱偒傑偡丅
-偲偄偆傛傝丄乽僋儔僗傪嶌傞偙偲乿偑乽僾儘僌儔儈儞僌乿偲傎偲傫偳摨媊
-偩偲尵偭偰傕夁尵偱偼偁傝傑偣傫丅僾儕僙僢僩偺僗僋儕僾僩傕丄偦偺戝晹暘偑
-僋儔僗掕媊側偺偱偡丅</p>
-<p>偨偲偊偽 Person 偲偄偆僋儔僗傪掕媊偡傞偵偼師偺傛偆偵偟傑偡丅</p>
-<pre>
-class Person
-end
-</pre>
-<p>僋儔僗掕媊偺奜榞偼偨偭偨偙傟偩偗偱偡丅
-偙傟偼乽壗傕偟側偄僋儔僗乿偱偡偑丄偡偱偵偙偺抜奒偱丄</p>
-<pre>
-alex = Person.new
-</pre>
-<p>偲偄偆傛偆偵丄Person 僋儔僗偺僀儞僗僞儞僗傪嶌傞偙偲偑偱偒傑
-偡丅new 偲偄偆偺偼丄<a href= "108_object.html">僆僽僕僃僋僩</a
->偺復偱僀儞僗僞儞僗傪惗惉偡傞戞擇偺曽朄偲偟偰夝愢偟偨儊僜僢僪偱偡丅</p>
-<p>宲彸偺巜掕傕娙扨偱偡丅偨偲偊偽丄Person 僋儔僗傪宲彸偟偰
-Man 偲偄偆僋儔僗傪掕媊偡傞偲偒偵偼師偺傛偆偵偟傑偡丅</p>
-<pre>
-class Man &lt; Person
-end
-</pre>
+
+<h2><a name="define">类的定义</a></h2>
+
+<p>直到今天，我们都是一直在使用 <a href="../rgss/sc_string.html">String</a> 
+类、<a href="../rgss/sc_array.html">Array</a> 类或者
+<a href="../rgss/gc_sprite.html">Sprite</a> 类等这些系统内部类的方法来进行学习。
+实际上如果想使用类，也可以自己定义。所谓「建立类」几乎和「程序设计」是一个意思。
+其实预置脚本中，除外最后一个 Main 组其余的全部都是类定义。</p>
+
+<p>比如新定义一个 Person 类，可以如下操作。</p>
+
+<pre>class Person<br>end<br></pre>
+
+<p>定义类的话这样就行了。
+但现在只是个「什么都没有的类」，让我们再来进行以下操作。</p>
+
+<pre>alex = Person.new<br></pre>
+
+<p>这样就作成一个 Person 类的实例。</p>
+
+<p>想要指定超类也很简单。
+比如，定义继承于超类 Monkey 类的  Person 类可以如下操作。</p>
+
+<pre>class Person &lt; Monkey<br>end<br></pre>
 
 
-<h2><a name="method">儊僜僢僪偺掕媊</a></h2>
-<p>儊僜僢僪偺掕媊曽朄偼丄晛捠偺娭悢偺応崌偲摨偠偱偡丅僋儔僗掕媊偺拞偵
-def 乣 end 傪彂偗偽丄偦傟偑帺摦揑偵偦偺僋儔僗偺儊僜僢僪偵側傝傑偡丅</p>
-<pre>
-class Person
-  def hello
-    print &quot;偙傫偵偪偼&quot;
-  end
-end
-</pre>
-<p>偙偙偱偼丄尒偰偺捠傝 &quot;偙傫偵偪偼&quot; 偲偄偆暥帤楍傪昞帵偡傞偩偗偺
-hello 儊僜僢僪傪掕媊偟偰偄傑偡丅偙偺掕媊偺屻丄<p>
-<pre>
-alex = Person.new
-alex.hello                  # =&gt; 偙傫偵偪偼
-</pre>
-<p>偙偺傛偆偵 hello 儊僜僢僪傪屇傃弌偡偙偲偑偱偒傞傢偗偱偡丅</p>
-<p>側偍丄偙偙偱偼徻偟偔偼夝愢偟傑偣傫偑丄Ruby 偱娭悢偲屇傫偱偄傞傕偺
-偼乽偳偙偐傜偱傕屇傃弌偣傞宍偺儊僜僢僪乿偵憡堘偁傝傑偣傫丅</p>
 
+<h2><a name="method">方法的定义</a></h2>
 
-<h2><a name="instance">僀儞僗僞儞僗曄悢</a></h2>
-<p>屄乆偺僆僽僕僃僋僩偵懏偡傞曄悢偺偙偲傪<strong>僀儞僗僞儞僗
-曄悢</strong>偲屇傃傑偡丅@ 偲偄偆暥帤偱巒傑傞柤慜偺曄悢傪
-巊梡偡傞偲丄帺摦揑偵僀儞僗僞儞僗曄悢偲偟偰埖傢傟傑偡丅
-儘乕僇儖曄悢偼 def 乣 end 側偳偺僽儘僢僋撪偱偟偐桳岠偵側傝傑偣傫偑丄
-僀儞僗僞儞僗曄悢傪巊偊偽丄偦偺僆僽僕僃僋僩偑懚嵼偡傞尷傝丄抣偑曐懚
-偝傟傞偺偱偡丅</p>
-<pre>
-class Person
-  def name
-    return @name
-  end
+<p>方法的定义，和定义普通函数的情况相同。
+如果在类定义当中加上 def ～ end 的话，就会自动成为该类的方法。</p>
 
-  def name=(name)
-    @name = name
-  end
+<pre>class Person<br>  def hello<br>    print "您好"<br>  end<br>end<br></pre>
 
-  def hello
-    print &quot;壌偼&quot; + @name + &quot;偩&quot;
-  end
-end
+<p>这样，就定义了调用后会显示「您好」字符串的 hello 方法。再进行如下操作。</p>
+<p>
+</p>
+<pre>alex = Person.new<br>alex.hello                  # =&gt; 您好<br></pre>
 
-alex = Person.new
-alex.name = &quot;傾儗僢僋僗&quot;
-alex.hello                  # =&gt; 壌偼傾儗僢僋僗偩
-</pre>
-<p>偙偺椺偱偼 @name 偲偄偆僀儞僗僞儞僗曄悢傪梡堄偟丄name丄name= 偲偄偆
-儊僜僢僪傪巊偭偰僆僽僕僃僋僩偺奜偐傜傾僋僙僗偱偒傞傛偆偵偟偰偄傑偡丅
-側偍丄枛旜偵 = 婰崋偺偮偄偨儊僜僢僪偼丄foo.name = bar
-偺宍幃偱屇傃弌偝傟傑偡丅</p>
-<p>側偍丄僀儞僗僞儞僗曄悢偼僌儘乕僶儖曄悢偲摨條丄堦搙傕戙擖偝傟偰偄側偄
-曄悢傪嶲徠偟偨応崌偼僄儔乕偵側傜偢偵 nil 偑曉偝傟傑偡丅</p>
+<p>这样就能调用 hello 方法了。</p>
 
+<p>なお、ここでは詳しくは解説しませんが、Ruby で関数と呼んでいるもの
+は「どこからでも呼び出せる形のメソッド」に相違ありません。</p>
 
-<h2><a name="accessor">傾僋僙僒偺掕媊</a></h2>
-<p>name丄name= 偺傛偆偵丄僆僽僕僃僋僩撪晹偺僨乕僞傪撉傒彂偒偡傞偨傔偺
-儊僜僢僪傪<strong>傾僋僙僒</strong>偲屇傃傑偡丅</p>
-<p>傾僋僙僒偼丄傕偭偲娙扨偵師偺傛偆偵彂偔偙偲傕偱偒傑偡丅</p>
+<h2><a name="instance">实变量</a></h2>
+
+<p>属于个体对象的变量称为<strong>实变量</strong>。
+名称以 @ 开头的变量，自动作为实变量使用。
+局部变量只有在 def ～ end 等结构内部使用时才有效，
+然而使用实变量的话，只要其对像存在，变量的值就会被保存。
+实变量一般作为对象的属性来使用。</p>
+
+<pre>class Person<br>  def name<br>    return @name<br>  end<br>  def name=(name)<br>    @name = name<br>  end<br>  def hello<br>    print "我是" + @name<br>  end<br>end<br><br>alex = Person.new<br>alex.name = "阿莱库斯"<br>alex.hello                  # =&gt; 我是阿莱库斯<br></pre>
+
+<p>上面的示例是先准备 @name 实变量，
+使用 name、name= 方法把对像附加上 @name 实变量作为属性。
+像这样的方法称为<strong>附加属性</strong>。
+附加属性也能更简单的像下面那样编写。</p>
+
+<pre>  attr_accessor :name<br></pre>
+
+<p>这样编写是，自动定义与 : 符号右侧名称相同的实变量对应属性的取得和批注方法。
+上例中是生成 @name 实变量并附加成为属性。总之，</p>
+
+<pre>  def name<br>    return @name<br>  end<br>  def name=(name)<br>    @name = name<br>  end<br></pre>
+
+<p>是与上面相同的意思。</p>
+
+<p>在预置脚本中 attr_accessor 应用得很多。
+但在只定义属性的取得方法的情况下，
+一般使用 attr_reader 代替 attr_accessor。</p>
+<p>この例では @name というインスタンス変数を用意し、name、name= という
+メソッドを使ってオブジェクトの外からアクセスできるようにしています。
+なお、末尾に = 記号のついたメソッドは、foo.name = bar
+の形式で呼び出されます。</p>
+<p>なお、インスタンス変数はグローバル変数と同様、一度も代入されていない
+変数を参照した場合はエラーにならずに nil が返されます。</p>
+
+<p><font size="7"><b>上面一段看情况删减排版</b></font></p>
+<h2><a name="accessor">アクセサの定義</a></h2>
+<p>name、name= のように、オブジェクト内部のデータを読み書きするための
+メソッドを<strong>アクセサ</strong>と呼びます。</p>
+<p>アクセサは、もっと簡単に次のように書くこともできます。</p>
 <pre>
   attr_accessor :name
 </pre>
-<p>偙偺傛偆偵彂偔偙偲偱丄: 偺塃懁偵彂偄偨柤慜偲摨柤偺僀儞僗僞儞僗曄悢
-偵懳偟偰撉傒崬傒偍傛傃彂偒崬傒偑偱偒傞儊僜僢僪偑帺摦揑偵掕媊偝傟傑偡丅
-偙偙偱偼 @name 偲偄偆僀儞僗僞儞僗曄悢偵傾僋僙僗偱偒傞儊僜僢僪偲偄偆
-偙偲偵側傝傑偡丅偮傑傝丄</p>
+<p>このように書くことで、: の右側に書いた名前と同名のインスタンス変数
+に対して読み込みおよび書き込みができるメソッドが自動的に定義されます。
+ここでは @name というインスタンス変数にアクセスできるメソッドという
+ことになります。つまり、</p>
 <pre>
   def name
     return @name
@@ -126,72 +138,48 @@ alex.hello                  # =&gt; 壌偼傾儗僢僋僗偩
     @name = name
   end
 </pre>
-<p>偲摨偠堄枴偵側傝傑偡丅</p>
-<p>僾儕僙僢僩偺僗僋儕僾僩偱偼偙偺 attr_accessor 偑懡梡偝傟偰偄傑偡丅
-庢摼 (撉傒崬傒) 偺儊僜僢僪偺傒傪掕媊偡傞応崌偼丄attr_accessor 偺
-戙傢傝偵 attr_reader 傪巊梡偟傑偡丅</p>
+<p>と同じ意味になります。</p>
+<p>プリセットのスクリプトではこの attr_accessor が多用されています。
+取得 (読み込み) のメソッドのみを定義する場合は、attr_accessor の
+代わりに attr_reader を使用します。</p>
 
 
-<h2><a name="initialize">僆僽僕僃僋僩弶婜壔</a></h2>
-<p>僆僽僕僃僋僩偑嶌惉偝傟偨偲偒偵丄僀儞僗僞儞僗曄悢側偳傪摿掕偺抣偵
-弶婜壔偟偨偄偙偲偑偁傝傑偡丅initialize 偲偄偆柤慜偺儊僜僢僪傪掕媊偟偰
-偍偔偲丄new 偱惗惉偝傟偨偲偒偵帺摦揑偵屇傃弌偝傟傑偡丅</p>
-<pre>
-class Person
-  def initialize
-    @name = &quot;柤柍偟偝傫&quot;
-  end
-end
-</pre>
-<p>2 峴栚偐傜巒傑傞 initialize 儊僜僢僪偺掕媊偱偼丄僀儞僗僞儞僗曄悢
-@name 偺弶婜抣偲偟偰 &quot;柤柍偟偝傫&quot; 偲偄偆暥帤楍偑戙擖偝傟偰
-偄傑偡丅偙偺傛偆偵偡傞偙偲偱丄怴偟偄 Person 僆僽僕僃僋僩偑惗惉偝傟偨
-嵺丄僀儞僗僞儞僗曄悢傪帺摦揑偵弶婜壔偱偒傞傢偗偱偡丅</p>
-<p>initialize 儊僜僢僪偵壖堷悢傪愝掕偟偨応崌丄new 偑偦偺堷悢傪庢傞
-傛偆偵側傝傑偡丅</p>
-<pre>
-class Person
-  def initialize(name)
-    @name = name
-  end
-end
+<h2><a name="initialize">对像初始化</a></h2>
 
-alex = Person.new(&quot;傾儗僢僋僗&quot;)
-</pre>
-<p>忋偺椺偱偼 initialize 儊僜僢僪偵 name 偲偄偆壖堷悢偑愝掕偝傟偰偍傝丄
-偦傟傪僀儞僗僞儞僗曄悢 @name 偺弶婜抣偲偟偰巊梡偡傞傛偆偵側偭偰偄傑偡丅
-堷悢 name 偼幚嵺偵偼 Person 僋儔僗偺 new 偵搉偡偙偲偵側傝傑偡丅嵟屻偺峴偱
-Person 僆僽僕僃僋僩傪惗惉偡傞嵺偵 &quot;傾儗僢僋僗&quot; 偲偄偆堷悢偑巜掕
-偝傟偰偄傑偡偺偱丄@name 偺抣傕 &quot;傾儗僢僋僗&quot; 偵愝掕偝傟傑偡丅</p>
+<p>生成对像时，把实变量初始化为某个特定的值。
+先定义一个名称为 initialize 的方法，
+在使用 new 生成新实例时会自动调用该方法。</p>
+
+<pre>class Person<br>  def initialize<br>    @name = "游客"<br>  end<br>end<br></pre>
+
+<p>从第二行开始的 initialize 方法的定义，
+表示实变量 @name 的初始值被赋值为字符串 "游客"。
+这样，生成新的 Person 对象的时候，会自动以 "游客" 初始化实变量。</p>
+
+<p>initialize 方法中设定有临时参数的情况下，new 会取该参数为初始值。</p>
+
+<pre>class Person<br>  def initialize(name)<br>    @name = name<br>  end<br>end<br><br>alex = Person.new("阿莱库斯")<br></pre>
+
+<p>上述示例中，initialize 方法里设定有临时参数 name，
+那么实变量 @name 的初始值就会使用该参数。
+参数 name 实际在 Person 类 new 时给予。
+最后一行，生成 Person 类对像时指定参数为 "阿莱库斯"，
+那么 @name 的初始值也就设定为 "阿莱库斯"。</p>
 
 
-<h2><a name="override">儊僜僢僪偺僆乕僶乕儔僀僪</a></h2>
-<p>僗乕僷乕僋儔僗偱掕媊偝傟偰偄傞偺偲摨柤偺儊僜僢僪傪僒僽僋儔僗偱
-嵞掕媊偡傞偙偲傪<strong>僆乕僶乕儔僀僪</strong>偲屇傃傑偡丅
-僒僽僋儔僗偺儊僜僢僪偐傜丄僗乕僷乕僋儔僗偺摨偠儊僜僢僪傪屇傃弌偡
-応崌偼 <strong>super</strong> 偲偄偆僉乕儚乕僪傪巊梡偟傑偡丅</p>
-<pre>
-class Hahaha
-  def laugh(x)
-    return "偼" * x
-  end
-end
 
-class Wahaha &lt; Hahaha
-  def laugh(x)
-    return "傢" + super
-  end
-end
+<h2><a name="override">方法的重载</a></h2>
 
-man = Wahaha.new
-p man.laugh(4)      # =&gt; &quot;傢偼偼偼偼&quot;
-</pre>
-<p>偙偺椺偱偼丄Wahaha 僋儔僗偺 laugh 儊僜僢僪偑傑偢屇傃弌偝傟丄偦偺
-拞偐傜 super 偵傛偭偰 Hahaha 僋儔僗偺 laugh 儊僜僢僪偑屇傃弌偝傟傑偡丅
-偦偺寢壥丄嵟屻偺峴偺 laugh 儊僜僢僪屇傃弌偟偼 "傢" + "偼" * 4 偲夝庍
-偝傟丄&quot;傢偼偼偼偼&quot; 偑弌椡偝傟傑偡丅</p>
-<p>埲忋丄嬱偗懌偱偟偨偑丄僗僋儕僾僩傪埖偆忋偱昁梫側婎慴抦幆傪夝愢偟傑偟偨丅
-師偐傜偼丄偄傛偄傛僾儕僙僢僩僗僋儕僾僩偺夝撉偵挧愴偟偰偄偒傑偡丅</p>
+<p>超类中已定义的方法在子类中再次被定义称为<strong>重载</strong>。
+在子类方法中调用超类相同方法的情况下，要使用关键词 <strong>super</strong>。</p>
+
+<pre>class Hahaha<br>  def laugh(x)<br>    return "哈" * x<br>  end<br>end<br><br>class Wahaha &lt; Hahaha<br>  def laugh(x)<br>    return "哇" + super<br>  end<br>end<br><br>man = Wahaha.new<br>p man.laugh(4)      # =&gt; "哇哈哈哈哈"<br></pre>
+
+<p>上述示例是，对新建实例调用 Wahaha 类的 laugh 方法，
+其中 super 能调用其超类 Hahaha 类的 laugh 方法。
+那么，最后一行调用 laugh 方法可以理解为 "哇" + "哈" * 4，
+于是输出结果就为 "哇哈哈哈哈"。</p>
+
 
 
 <h6></h6>

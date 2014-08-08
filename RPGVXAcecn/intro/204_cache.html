@@ -1,258 +1,284 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>Cache 儌僕儏乕儖</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+
+
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+
+  
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+
+
+  
+  
+  <title>Cache 模块</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
 </head>
+
+
 <body>
 
-<h1>Cache 儌僕儏乕儖</h1>
+
+
+<h1>Cache 模块</h1>
+
+
 <ul>
-<li><a href="#what">僉儍僢僔儏偲偼壗偐</a></li>
-<li><a href="#use">僉儍僢僔儏偺巊偄曽</a></li>
-<li><a href="#detail">幚憰偺徻嵶</a></li>
-<li><a href="#nil_guard">nil 僈乕僪</a></li>
-<li><a href="#methods">奺儊僜僢僪偺屇傃弌偟</a></li>
-<li><a href="#bitmap">價僢僩儅僢僾偺嶌惉</a></li>
+
+
+  <li><a href="#what">什么是Cache</a></li>
+
+
+  <li><a href="#use">Cache的使用方法</a></li>
+
+
+  <li><a href="#detail">细节</a></li>
+
+
+  <li><a href="#@cache">@cache</a></li>
+
+
+  <li><a href="#bitmap">bitmap生成</a></li>
+
+
 </ul>
 
-<p>Cache 偼丄夋憸僼傽僀儖偺撉傒崬傒傪崅懍壔偡傞偨傔偺儌僕儏乕儖偱偡丅</p>
 
 
-<h2><a name="what">僉儍僢僔儏偲偼壗偐</a></h2>
-<p>婎慴曇偱<a href="109_graphics.html">夋憸偺昞帵</a>傪峴偆偲偒
-偵丄<a href="../rgss/gc_bitmap.html">Bitmap</a> 偲偄偆僋儔僗傪師偺傛偆偵
-巊梡偟傑偟偨丅</p>
-<pre>
-skeleton.bitmap = Bitmap.new(&quot;Graphics/Battlers/Skeleton&quot;)
-</pre>
-<p>偙偺傛偆偵丄Bitmap 僋儔僗偺僀儞僗僞儞僗傪嶌惉偡傞偲偒丄堷悢偲偟偰
-夋憸偺僼傽僀儖柤傪巜掕偡傞偙偲偱丄偦偺僼傽僀儖傪撉傒崬傓偙偲偑偱偒傑
-偡丅</p>
-<p>偟偐偟側偑傜丄夋憸偑昁梫偵側傞偨傃偵枅夞僼傽僀儖傪撉傒崬傫偱偄偨偺
-偱偼幚峴岠棪偑埆偔側偭偰偟傑偄傑偡丅偦偙偱丄堦搙嶌惉偟偨 Bitmap 僆僽
-僕僃僋僩傪曐帩偟偰偍偔偨傔偺巇慻傒傪採嫙偟偰偄傞偺偑丄偙偺 Cache 儌
-僕儏乕儖側偺偱偡丅</p>
-<p>Cache (僉儍僢僔儏) 偲偼傕偲傕偲乽挋憼屔乿偲偄偆堄枴偺塸扨岅偱偡偑丄
-僐儞僺儏乕僞偺悽奅偱偼丄乽昿斏偵梡偄傜傟傞僨乕僞傪拁偊偰偍偔偨傔偺
-応強乿偲偄偆堄枴偑掕拝偟偰偄傑偡丅偙偺儌僕儏乕儖偺柦柤傕偦傟偵曧偭偰
-偄傑偡丅</p>
+<p>Cache 是高速读取图像文件的模块。</p>
 
 
-<h2><a name="use">僉儍僢僔儏偺巊偄曽</a></h2>
-<p>Cache 儌僕儏乕儖偺撪晹偑偳偺傛偆側掕媊偵側偭偰偄傞偐偲偄偆偙偲傛傝丄
-偳偺傛偆偵巊偆偺偐偲偄偆偙偲偺傎偆偑廳梫偱偡丅</p>
-<p>幚嵺偵偼師偺傛偆側巊梡曽朄偵側傝傑偡 (拲堄: Cache 儌僕儏乕儖偺掕媊偑
-姰椆偟偰偄側偄 TEST 僙僋僔儑儞偱偼巊梡偱偒傑偣傫) 丅</p>
-<pre>
-skeleton.bitmap = Cache.battler(&quot;Skeleton&quot;, 0)
-</pre>
-<p>偙偺僗僋儕僾僩偼丄僉儍僢僔儏偐傜
-愴摤僌儔僼傿僢僋 &quot;Skeleton&quot; 偺價僢僩儅僢僾傪庢摼偡傞偲
-偄偆撪梕偱偡丅庢摼偟偨 Bitmap 僆僽僕僃僋僩偑栠傝抣偲
-側傝傑偡丅Bitmap.new 傪捈愙屇傃弌偡応崌偺傛偆
-偵丄&quot;Graphics/Battlers/&quot; 偲偄偆僼僅儖僟柤傪巜掕偟側偔偰椙偄
-傛偆偵側偭偰偄傑偡丅</p>
-<p>2 斣栚偺堷悢偺乽0乿偼丄怓憡曄壔抣傪昞偟偰偄傑偡丅
-抣偺斖埻偼 0 乣 360 偱丄傾僯儊乕僔儑儞 僌儔僼傿僢僋偲愴摤僌儔僼傿僢僋偺
-応崌偺傒巜掕偟傑偡丅</p>
-<p>奺庬慺嵽僼僅儖僟偵懳墳偡傞儊僜僢僪偼埲壓偺捠傝偱偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
-<tr>
- <th>儊僜僢僪柤</th>
- <th>堷悢</th>
- <th>僼僅儖僟</th>
-</tr><tr>
+
+
+<h2><a name="what">什么是Cache</a></h2>
+
+
+<p>在基础篇里<a href="109_graphics.html">显示图像</a>的时候，使用了<a href="../rgss/gc_bitmap.html">Bitmap</a>这个类 </p>
+
+
+<pre>skeleton.bitmap = Bitmap.new("Graphics/Battlers/Skeleton")<br></pre>
+
+
+<p>就像这样Bitmap 类的实变量生成的时候，作为参数可以读取指定图像文件。</p>
+
+
+<p>可是每次读取图像的效率很低。能够保存 Bitmap 对像这一功能正是 Cache 模块的作用。</p>
+
+
+<p>Cache 是「缓存」的，这是这个模块命名的由来。</p>
+
+
+
+
+<h2><a name="use">Cache的使用方法</a></h2>
+
+
+<p>比起说Cache 模块件内部是如何定义的，还是说怎么使用比较重要。</p>
+
+
+<p>使用方法如下 (注意: Cache 模块的定义没完成的 TEST 项里不能使用)。</p>
+
+
+<pre>skeleton.bitmap = Cache.battler("Skeleton", 0)<br></pre>
+
+
+<p>这个脚本是从战斗图文件里取得 "Skeleton"这个位图内容的。不指定Graphics/Battlers/"文件夹名也没有问题。</p>
+
+
+<p>第2个参数的「0」，表示色相变化值。值的范围从 0～360 ，仅仅使用在动画图像和战斗图像里。</p>
+
+
+<p>与各种素材文件夹对应的方法参考下面</p>
+
+
+<table border="1" cellpadding="2" cellspacing="0">
+
+
+  <tbody>
+
+    <tr>
+
+
+ <th>方法名</th>
+
+
+ <th>参数</th>
+
+
+ <th>文件夹</th>
+
+
+    </tr>
+
+    <tr>
+
+
  <td>Cache.animation</td>
- <td>僼傽僀儖柤丄怓憡</td>
+
+
+ <td>文件名，色相</td>
+
+
  <td>Graphics/Animations/</td>
-</tr><tr>
- <td>Cache.battleback1</td>
- <td>僼傽僀儖柤</td>
- <td>Graphics/Battlebacks1/</td>
-</tr><tr>
- <td>Cache.battleback2</td>
- <td>僼傽僀儖柤</td>
- <td>Graphics/Battlebacks2/</td>
-</tr><tr>
+
+
+    </tr>
+
+    <tr>
+
+
  <td>Cache.battler</td>
- <td>僼傽僀儖柤丄怓憡</td>
+
+
+ <td>文件名，色相</td>
+
+
  <td>Graphics/Battlers/</td>
-</tr><tr>
+
+
+    </tr>
+
+    <tr>
+
+
  <td>Cache.character</td>
- <td>僼傽僀儖柤</td>
+
+
+ <td>文件名</td>
+
+
  <td>Graphics/Characters/</td>
-</tr><tr>
+
+
+    </tr>
+
+    <tr>
+
+
  <td>Cache.face</td>
- <td>僼傽僀儖柤</td>
+
+
+ <td>文件名</td>
+
+
  <td>Graphics/Faces/</td>
-</tr><tr>
+
+
+    </tr>
+
+    <tr>
+
+
  <td>Cache.parallax</td>
- <td>僼傽僀儖柤</td>
+
+
+ <td>文件名</td>
+
+
  <td>Graphics/Parallaxes/</td>
-</tr><tr>
+
+
+    </tr>
+
+    <tr>
+
+
  <td>Cache.picture</td>
- <td>僼傽僀儖柤</td>
+
+
+ <td>文件名</td>
+
+
  <td>Graphics/Pictures/</td>
-</tr><tr>
+
+
+    </tr>
+
+    <tr>
+
+
  <td>Cache.system</td>
- <td>僼傽僀儖柤</td>
+
+
+ <td>文件名</td>
+
+
  <td>Graphics/System/</td>
-</tr><tr>
- <td>Cache.tileset</td>
- <td>僼傽僀儖柤</td>
- <td>Graphics/Tilesets/</td>
-</tr><tr>
- <td>Cache.title1</td>
- <td>僼傽僀儖柤</td>
- <td>Graphics/Titles1/</td>
-</tr><tr>
- <td>Cache.title2</td>
- <td>僼傽僀儖柤</td>
- <td>Graphics/Titles2/</td>
-</tr></table>
-<p>側偍丄Sound 儌僕儏乕儖偲摨條丄嬻偺僼傽僀儖柤傪巜掕偟偰傕僄儔乕偵偼
-側傜側偄傛偆偵愝寁偝傟偰偄傑偡丅偦偺応崌偼丄32&times;32 偺戝偒偝偺
-嬻偺價僢僩儅僢僾傪嶌惉偟偰曉偟傑偡丅1&times;1 偱側偄偺偼丄巊偄曽偵
-傛偭偰偼幚峴岠棪偑埆偔側傞偲偄偆丄RGSS 撪晹偺幚憰忋偺搒崌偵傛傝傑
-偡丅</p>
 
 
-<h2><a name="detail">幚憰偺徻嵶</a></h2>
-<p>僉儍僢僔儏偵偮偄偰偺棟夝傪傛傝怺傔傞偨傔偵丄幚憰偑偳偺傛偆偵側偭偰
-偄傞偺偐傪尒偰偄偒傑偟傚偆丅傑偢偼 Cache.battler 儊僜僢僪偐傜偱偡丅</p>
-<pre>
-  def self.battler(filename, hue)
-    load_bitmap(&quot;Graphics/Battlers/&quot;, filename, hue)
-  end
-</pre>
-<p>僔儞僾儖偱偡偹丅堷悢偲偟偰愴摤僌儔僼傿僢僋偺僼僅儖僟柤傪捛壛
-偟丄load_bitmap 偲偄偆暿偺儊僜僢僪傪屇傃弌偟偰偄傞偩偗偱偡丅
-偱偼丄屇傃弌偟愭偺 load_bitmap 儊僜僢僪傪尒偰傒傑偡丅</p>
-<pre>
-  def self.load_bitmap(folder_name, filename, hue = 0)
-    @cache ||= {}
-    if filename.empty?
-      empty_bitmap
-    elsif hue == 0
-      normal_bitmap(folder_name + filename)
-    else
-      hue_changed_bitmap(folder_name + filename, hue)
-    end
-  end
-</pre>
-<p>偙傟偼夝撉偑戝曄偦偆偱偡丅嵶愗傟偵偟偰撉傫偱偄偒傑偟傚偆丅</p>
-<pre>
-  def self.load_bitmap(folder_name, filename, hue = 0)
-</pre>
-<p>嵟忋峴偼儌僕儏乕儖儊僜僢僪偺掕媊偱偡偹丅僼僅儖僟柤丄僼傽僀儖柤丄
-怓憡傪堷悢偲偟偰庢傞傛偆偵掕媊偝傟偰偄傑偡丅怓憡 (hue) 偵巜掕偝傟偰
-偄傞乽0乿偼<strong>僨僼僅儖僩堷悢</strong>偱偡丅
-偙傟偼<a href="107_function.html">娭悢</a>偺応崌偲傑偭偨偔摨偠
-偱偡丅</p>
+    </tr>
+
+  
+  </tbody>
+</table>
 
 
-<h2><a name="nil_guard">nil 僈乕僪</a></h2>
-<p>2 峴栚偺夝撉偼栵夘偱偡丅</p>
-<pre>
-    @cache ||= {}
-</pre>
-<p>偙傟偼 <strong>nil 僈乕僪</strong>偲屇偽傟傞丄Ruby
-摿桳偺僀僨傿僆儉偱偡丅||= 偲偄偆偺偼 OR 墘嶼巕偲帺屓戙擖傪慻傒崌傢偣偨
-傕偺偱丄徣棯偣偢偵彂偔偲埲壓偺傛偆偵側傝傑偡丅</p>
-<pre>
-    @cache = @cache || {}
-</pre>
-<p>偙傟偱傕傑偩堄枴晄柧偱偟傚偆丅|| 墘嶼巕偼丄庡偵<a href=
-"105_branch.html">忦審暘婒</a>偱乽傑偨偼乿偲偄偆偙偲傪昞偡偨傔偵
-巊偆傕偺偱偡偑丄偙傟偼偦傟傪墳梡偟偨彂偒曽側偺偱偡丅</p>
-<p>Ruby 偱偼丄nil 偲 false 埲奜偺抣偼慡偰 true 偲偟偰埖傢傟傑偡丅
-偦偟偰 || 墘嶼巕偼丄嵍偺抣偑 true 偱偁傟偽偦偺抣傪丄false 偱偁傟偽
-塃偺抣傪曉偡偲偄偆摦嶌傪峴偄傑偡丅偟偨偑偭偰丄師偺僐乕僪偲摨偠偲
-偄偆偙偲偵側傝傑偡丅</p>
-<pre>
-    if @cache != nil
-      @cache = @cache
-    else
-      @cache = {}
-    end
-</pre>
-<p>{} 偲偄偆婰崋偼壗偩偭偨偐妎偊偰偄傑偡偐丠丂偙傟偼丄
-嬻偺<a href="111_hash.html">僴僢僔儏</a>傪嶌惉偡傞曽朄偱偟偨丅
-傑偲傔傞偲丄@cache 偲偄偆僀儞僗僞儞僗曄悢偺抣偑 nil 偺偲偒丄
-嬻偺僴僢僔儏僆僽僕僃僋僩傪嶌惉偟偰戙擖偡傞偲偄偆堄枴偵側傝
-傑偡丅僀儞僗僞儞僗曄悢偼丄僋儔僗偱掕媊偝傟傞捠忢偺儊僜僢僪偱
-巊梡偡傞偺偑堦斒揑偱偡偑丄偙偙偼儌僕儏乕儖儊僜僢僪偺拞偱偡丅
-偙偺応崌丄僀儞僗僞儞僗曄悢偼 Cache 儌僕儏乕儖偦偺傕偺偵懏偡傞
-曄悢偲夝庍偝傟傑偡丅</p>
-<p>偙傟偼斾妑揑忋媺側彂偒曽側偺偱偡偑丄傛傝抁偔娙寜偵彂偔偨傔偵
-僾儕僙僢僩偺僗僋儕僾僩偱傕巊梡偟偰偄傑偡丅</p>
+<p>与Sound 模块一样，即使是不存在的文件名也不会产生错误。只是返回32&times;32 大小的空位图而已。之所以不是1&times;1 ，是因为要和RGSS 内部兼容。
+
+</p>
+
+<h2><a name="detail">细节</a></h2>
+<p>为了能对Cache有更加深刻的了解，我们来看看实际上是如何运作的。<br>
+<br>
+首先从 Cache.battler 这个方法定义。</p>
+
+<pre> def self.battler(filename, hue)<br> load_bitmap("Graphics/Battlers/", filename, hue)<br> end<br></pre>
+
+<p>很简单把。只是将参战者战斗图作为一般参数进行追加，再将名为load_bitmap的另一方法呼叫出来。那么，让我们来看看需要呼叫的load_bitmap方法在哪里。</p>
+
+<pre> def self.load_bitmap(folder_name, filename, hue = 0)<br> @cache = {} if @cache == nil<br> path = folder_name + filename<br> if not @cache.include?(path) or @cache[path].disposed?<br> if filename.empty?<br> @cache[path] = Bitmap.new( ,  )<br> else<br> @cache[path] = Bitmap.new(path)<br> end<br> end<br> if hue == 0<br> return @cache[path]<br> else<br> key = [path, hue]<br> if not @cache.include?(key) or @cache[key].disposed?<br> @cache[key] = @cache[path].clone<br> @cache[key].hue_change(hue)<br> end<br> return @cache[key]<br> end<br> end<br></pre>
+
+<p>需要解读出这个是非常困难的。让我们来细细解读每一个小段落。</p>
+
+<pre> def self.load_bitmap(folder_name, filename, hue = 0)<br></pre>
+
+<p>最上面的一行是就是方法模块的定义。是将色相和图档名作为一般参数从而来取得定义的。被色相 (hue)所指定的“0”是默认参数。这和<a href="107_function.html">函数</a>的情况是完全一样的。</p>
 
 
-<h2><a name="methods">奺儊僜僢僪偺屇傃弌偟</a></h2>
-<p>懕偄偰尒偰偄偒傑偟傚偆丅</p>
-<pre>
-    if filename.empty?
-      empty_bitmap
-    elsif hue == 0
-      normal_bitmap(folder_name + filename)
-    else
-      hue_changed_bitmap(folder_name + filename, hue)
-    end
-</pre>
-<p>挿偄忦審暘婒偱偡偑丄撪梕偼偝傎偳暋嶨偱偼偁傝傑偣傫丅</p>
-<p>傑偢 filename 偑嬻暥帤楍偱偁傞偐傪挷傋丄偦偆偱偁傞側傜偽
-empty_bitmap 偲偄偆儊僜僢僪傪屇傃弌偟偰偦偺抣傪曉偟傑偡丅filename
-偑嬻偱側偔丄hue 偺抣 (怓憡) 偑 0 偱偁傞側傜丄normal_bitmap 傪丄
-0 埲奜偱偁傞側傜 hue_changed_bitmap 傪偦傟偧傟屇傃弌偟傑偡丅</p>
-<p>偮傑傝 load_bitmap 儊僜僢僪偼丄偦偺撪晹偱偝傜偵暿偺儊僜僢僪傪
-屇傃弌偟偰偄傞偲偄偆偙偲偱偡丅偙偺傛偆偵丄VX Ace 偺僗僋儕僾僩偼
-斾妑揑丄張棟傪儊僜僢僪扨埵偱嵶愗傟偵偟偰彂偐傟偰偄傞孹岦偑偁傝傑偡丅
-偙偺偨傔弶怱幰偺曽偼夝撉偵屗榝偆偐傕偟傟傑偣傫偑丄儊僜僢僪偺
-嵞棙梡惈傗壜撉惈傪崅傔傞偨傔偺張抲偱偡偺偱丄嵟廔揑偵偼偙偺傎偆偑
-椙偄偲巚偆傛偆偵側傞偱偟傚偆丅</p>
-<p>擮偺偨傔夝愢偟偰偍偔偲丄</p>
-<pre>
-  folder_name + filename
-</pre>
-<p>偙傟偼扨弮側<a href="104_string.html">暥帤楍</a>偺懌偟嶼
-偱偡丅偨偲偊偽 folder_name 偑
-&quot;Graphics/Battlers/&quot;丄filename 偑
-&quot;Skeleton&quot; 偱偁傞偲偒偼丄偦傟傪楢寢偟偨
-&quot;Graphics/Battlers/Skeleton&quot; 偵側傞偲偄偆偙偲偱偡丅</p>
+<h2><a name="@cache">@cache</a></h2>
 
+<p>第二行开始就比较麻烦了。</p>
 
-<h2><a name="bitmap">價僢僩儅僢僾偺嶌惉</a></h2>
-<p>懕偄偰丄normal_bitmap 偺幚憰傪妋擣偟偰偍偒傑偡丅</p>
-<pre>
-  def self.normal_bitmap(path)
-    @cache[path] = Bitmap.new(path) unless include?(path)
-    @cache[path]
-  end
-</pre>
-<p>unless 偑塃懁偵偮偄偰偄傞偺偼丄廋忺巕宍幃偺<a
-href="105_branch.html">忦審暘婒</a>偱偡丅偙偙偱偼丄path
-偵懳墳偡傞價僢僩儅僢僾偑僉儍僢僔儏偵娷傑傟偰偄側偗傟偽
-怴婯偵夋憸僼傽僀儖傪撉傒崬傒丄娷傑傟偰偄傟偽偦傟傪偦偺傑傑曉偡
-偲偄偆張棟傪峴偭偰偄傑偡丅</p>
-<p>include? 儊僜僢僪偼師偺傛偆側幚憰偱偡丅</p>
-<pre>
-  def self.include?(key)
-    @cache[key] && !@cache[key].disposed?
-  end
-</pre>
-<p>偙傟偼丄@cache 偑巜偟偰偄傞僴僢僔儏僆僽僕僃僋僩偵 key
-偑娷傑傟偰偍傝丄偐偮丄偦偺價僢僩儅僢僾偑夝曻偝傟偰偄側偄応崌
-偲偄偆忦審傪敾掕偟偰偄傑偡丅disposed? 儊僜僢僪偵偮偄偰偼
-<a href="../rgss/gc_bitmap.html">Bitmap</a>
-偺儕僼傽儗儞僗傪嶲徠偟偰偔偩偝偄丅</p>
-<p>Cache 儌僕儏乕儖偵偼偙偺傎偐怓憡曄壔偺張棟側偳偑娷傑傟偰
-偄傑偡偑丄摿偵尒傞傋偒屄強偼偁傝傑偣傫偺偱丄夝愢偼徣棯偟傑偡丅</p>
+<pre> @cache = {} if @cache == nil<br></pre>
+
+<p>首先是关于语法，这个在基础篇（<a href="105_branch.html">条件分岐</a>）的最后部分解释过，是“修饰子”形式的条件分歧。其意思与下文相同。</p>
+
+<pre> if @cache == nil<br> @cache = {}<br> end<br></pre>
+
+<p>这个是普通的编写方式，为了能够简洁了然地编程而使用了if修饰子。</p>
+
+<p>{} 这个记号是什么还记得吗？　这个就是空<a href="111_hash.html">HASH</a>的做成方法。总结起来的意思就是@cache这个变量的值为 nil 的时候，将空的HASH对象生成并代入其中。实例变量，通常来说是被类定义为通常的方法来使用的，但这里是在方法模块之中。在这种情况下，实例变量就可以被解释成属于 Cache 模块的变量。</p>
+
+<p>还有一点，在基础编的开头解说<a href="103_variable.html">变量</a>的时候，曾经说明过不可以引用一个没有被代入过一次的变量。</p>
+
+<pre>p zzz # ERROR!!<br></pre>
+事实上，这是只在局部变量的情况下适用的规则。在实例变量和总体变量的情况下，即使引用一个没有被代入过一次的变量也不会有报错提示，而是会得到 nil 这一提示。利用这一点，我们就可以判断 @cache 变量是否被初始化了。
+<h2><a name="bitmap">bitmap生成</a><a name="bitmap"></a></h2>
+
+<p>接下来是第三行。</p>
+
+<pre> path = folder_name + filename<br></pre>
+
+<p>这个很简单。就是对<a href="104_string.html">字符串</a>进行相加。比方说目录名folder_name为"Graphics/Battlers/"，文件名filename为"Skeleton"的时候，将它们连接在一起的"Graphics/Battlers/Skeleton"这一文字列就会被代入局部变量path中。</p>
+
+<p>让我们开看第四行。</p>
+
+<pre> if not @cache.include?(path) or @cache[path].disposed?<br></pre>
+
+<p>这是一个十分复杂的条件分歧。在这里所判断的条件为，在 @cache 所指的HASH对象中，path这一字符串内部并不含有key，并且是在这个Bitmap没有被释放的情况下。对于include?与disposed?这些方法来说，请参考<a href="../rgss/sc_hash.html">Hash</a>和<a href="../rgss/gc_bitmap.html">Bitmap</a>。</p>
+
+<p>以下是第五行。</p>
+
+<pre> if filename.empty?<br> @cache[path] = Bitmap.new( ,  )<br> else<br> @cache[path] = Bitmap.new(path)<br> end<br></pre>
+
+<p>正如RGSS参考中所写的那样，<a href="../rgss/gc_bitmap.html#new">Bitmap.new</a>有两种被调出的方式。将一段字符串以一般参数的定义提交时，会将其认知为图片文件的路径名来进行读取。将两个整数以一般参数的方式提交时，会将其认成Bitmap的尺寸规格，做成一个空的Bitmap。在这里，如果被指定的内容不是空的，则采用前者的调用方式，是空的的话就会按照后者的方式被调用。</p>
+
+<p>到这里为止，保证了在@cache[path]之中收纳了位图。接下来会进行对色相变化的对应处理，但个人认为这只是非常繁杂的过程并没有可学之处，所以就略过不提。</p>
 
 
 <h6></h6>
-
 </body>
-</html>
+<html>

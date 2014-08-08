@@ -1,113 +1,120 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>暥帤楍</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+
+
+  <title>字符串</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+
 </head>
+
+
 <body>
 
-<h1>暥帤楍</h1>
+
+<h1>字符串</h1>
+
 <ul>
-<li><a href="#print">print</a></li>
-<li><a href="#subst">曄悢傊偺戙擖</a></li>
-<li><a href="#backslash">僶僢僋僗儔僢僔儏婰朄</a></li>
-<li><a href="#unfold">幃揥奐</a></li>
+
+  <li><a href="#print">print</a></li>
+
+  <li><a href="#subst">为变量赋值</a></li>
+
+  <li><a href="#backslash">句柄</a></li>
+
+  <li><a href="#unfold">内嵌表达式</a></li>
+
 </ul>
 
-<p>堦斒偵丄暥帤偑楢側偭偨僨乕僞偺偙偲傪<strong>暥帤楍</strong>偲屇傃傑偡丅</p>
+
+<p>一般来说，由文字连接起来的数据就称为<strong>字符串</strong>。</p>
+
 
 
 <h2><a name="print">print</a></h2>
-<p>僟僽儖僋僅乕僩 &quot; &quot; 傑偨偼僔儞僌儖僋僅乕僩 ' ' 偱埻傑傟偨
-晹暘偼丄偦偺傑傑暥帤楍偺僨乕僞偲偟偰埖傢傟傑偡丅</p>
-<pre>
-p &quot;僣僋乕儖&quot;                    # =&gt; &quot;僣僋乕儖&quot;
-p '僣僋乕儖'                    # =&gt; &quot;僣僋乕儖&quot;
-</pre>
-<p>p 偩偲僟僽儖僋僅乕僩傑偱堦弿偵弌椡偝傟偰偟傑偆偺偱丄戙傢傝偵
-print 偲偄偆柦椷傪巊偭偰傒傑偟傚偆丅</p>
-<pre>
-print &quot;僣僋乕儖&quot;                # =&gt; 僣僋乕儖
-</pre>
-<p>崱搙偼僟僽儖僋僅乕僩偑偮偐側偔側傝傑偟偨丅p 偼抣偺撪梕傪恖娫偵傢偐傝
-傗偡偄宍偱昞帵偡傞柦椷側偺偱丄暥帤楍偩偲偄偆偙偲偑堦栚偱傢偐傞傛偆偵
-僟僽儖僋僅乕僩偮偒偱昞帵偝傟偰偄偨偺偱偡丅print 偼 p 偲帡偰偄傑偡偑丄
-偙偪傜偼暥帤楍偦偺傕偺傪昞帵偡傞偙偲偑偱偒傑偡丅</p>
+
+<p>双引号 "" 或单引号 '' 中间的部分，就作为字符串数据使用。</p>
+
+<pre>p "TKOOL"                    # =&gt; "TKOOL"<br>p 'TKOOL'                    # =&gt; "TKOOL"<br></pre>
+
+<p>p 命令会导致双引号和字符串一起输出，所以使用 print 命令代替。</p>
+
+<pre>print "TKOOL"                # =&gt; TKOOL<br></pre>
+
+<p>这次双引号就没有了。p 是按照人们容易理解的形式来显示的命令，
+所以它会加上双引号来强调字符串。print 和 p 相似，但它只显示字符串本身。</p>
 
 
-<h2><a name="subst">曄悢傊偺戙擖</a></h2>
-<p>暥帤楍傕悢抣偲傑偭偨偔摨偠傛偆偵丄曄悢偵戙擖偡傞偙偲偑偱偒傑偡丅</p>
-<pre>
-a = &quot;僣僋乕儖&quot;
-print a                         # =&gt; 僣僋乕儖
-</pre>
-<p>暥帤楍偵暥帤楍傪懌偡偲丄楢寢偝傟偨暥帤楍偑摎偲側傝傑偡丅</p>
-<pre>
-a = &quot;RPG&quot;
-b = &quot;僣僋乕儖&quot;
-print a + b                     # =&gt; RPG僣僋乕儖
-</pre>
-<p>暥帤楍偵惍悢傪妡偗傞偲丄偦偺夞悢偩偗孞傝曉偝傟偨暥帤楍偑摎偲側傝傑偡丅</p>
-<pre>
-a = &quot;僣僋乕儖&quot;
-print a * 2                     # =&gt; 僣僋乕儖僣僋乕儖
-</pre>
+
+<h2><a name="subst">为变量赋值</a></h2>
+
+<p>和数字一样，字符串也能代入变量为该变量赋值。</p>
+
+<pre>a = "TKOOL"<br>print a                         # =&gt; TKOOL<br></pre>
+
+<p>字符串也能作加法，字符串加上字符串，就会得到一个连接起来的字符串为答案。</p>
+
+<pre>a = "我的 "<br>b = "TKOOL"<br>print a + b                     # =&gt; 我的 TKOOL<br></pre>
+
+<p>还可以作乘法，字符串乘以一个整数，就会得到该整数次重复的字符串为答案。</p>
+
+<pre>a = "TKOOL"<br>print a * 2                     # =&gt; TKOOLTKOOL<br></pre>
 
 
-<h2><a name="backslash">僶僢僋僗儔僢僔儏婰朄</a></h2>
-<p>暥帤楍拞偺墌婰崋 &yen; 偼丄偦傟偵懕偔暥帤偵傛偭偰夵峴側偳偺摿庩側
-暥帤偲偟偰埖傢傟傑偡丅偨偲偊偽 &yen;n 偲偄偆偺偼夵峴傪昞偟傑偡丅</p>
-<p>僶僢僋僗儔僢僔儏婰朄偵偼 &yen;t (僞僽) 傗 &yen;s (僗儁乕僗) 側偳
-偄傠偄傠側傕偺偑偁傝傑偡偑丄崱偼 &yen;n 偑夵峴傪昞偡偙偲
-偲丄&yen;&yen; 偲墌婰崋傪傆偨偮廳偹偨偲偒偵 &yen; 暥帤偦偺傕偺傪昞
-偡偙偲丄偙偺傆偨偮傪妎偊偰偍偄偰偔偩偝偄丅</p>
-<pre>
-a = &quot;RPG僣僋乕儖VX Ace&quot;
-b = &quot;\\13,440&quot;
-print a + &quot;\n&quot; + b              # =&gt; RPG僣僋乕儖VX Ace
-                                #    \13,440
-</pre>
-<p>僔儞僌儖僋僅乕僩 '' 偱埻傑傟偨暥帤楍偱偼丄&yen;&yen; (墌婰崋偦偺
-傕偺) 偲 &yen;' (僔儞僌儖僋僅乕僩) 傪彍偄偰僶僢僋僗儔僢僔儏婰朄偼
-巊偊傑偣傫丅偙偺偨傔丄暥帤偦偺傕偺傪昞尰偟偨偄応崌偼偙偪傜傪巊偭偨
-傎偆偑曋棙側偙偲偑偁傝傑偡丅</p>
-<pre>
-print '僣僋乕儖\n'              # =&gt; 僣僋乕儖\n
-</pre>
-<p>偲偙傠偱丄側偤墌婰崋側偺偵乽僶僢僋僗儔僢僔儏婰朄乿偲屇傇偺偱偟傚偆
-偐丅偦傟偼丄擔杮岅僼僅儞僩偱墌婰崋 &yen; 偑妱傝摉偰傜傟偰偄傞応強偑丄
-杮棃僶僢僋僗儔僢僔儏 <span class="western">\</span> 偺暥帤僐乕僪偱
-偁傞偨傔偱偡丅暥帤偺尒偨栚偼堘偄傑偡偑丄僐儞僺儏乕僞偺撪晹忣曬揑偵偼
-摨偠傕偺側偺偱偡丅</p>
+
+<h2><a name="backslash">句柄</a></h2>
+
+<p>字符串中的 \ 符号，是作为一段连续文字中换行等操作使用的特殊文字。
+比如 \n 是表示换行。</p>
+
+<p>句柄有 \t（Tab）和 \s（空格）等多种代码，
+另外 \n 表示换行，重叠起来的 \\ 表示 \ 文字本身，这两个一定要记住。</p>
+
+<pre>a = "TKOOL"<br>b = "\\10,290"<br>print a + "\n" + b              # =&gt; TKOOL<br>                                #    \10,290<br></pre>
+
+<p>单引号 '' 中间的字符串，除 \\（\ 符号本身）和 \'（单引号）外不能使用
+任何的句柄。这在打算原样显示文字本身的情况下使用会十分方便。</p>
+
+<pre>print 'TKOOL\n'              # =&gt; TKOOL\n<br></pre>
+
+<p>\ 符号本身即为计算器内部的句柄。以后实际字符串操作中应注意正确使用。</p>
 
 
-<h2><a name="unfold">幃揥奐</a></h2>
-<p>暥帤楍偺拞偵偼丄#{幃} 偲偄偆宍幃偱幃偺撪梕傪杽傔崬傓偙偲偑偱偒傑偡丅</p>
-<pre>
-game = &quot;RPG&quot;
-print &quot;#{game}僣僋乕儖&quot;         # =&gt; RPG僣僋乕儖
-</pre>
-<p>忋婰偺椺偱偼丄1 峴栚偱 game 偲偄偆柤慜偺曄悢偵 &quot;RPG&quot; 偲偄偆
-暥帤楍傪戙擖偟偰偄傑偡丅2 峴栚偱偼丄暥帤楍偺 #{game} 偲偄偆晹暘偵曄悢 game
-偵戙擖偝傟偰偄傞暥帤楍 &quot;RPG&quot; 傪杽傔崬傒丄偁偲偵
-懕偔 &quot;僣僋乕儖&quot; 偲慻傒崌傢偣偰丄傂偲偮偺暥帤楍偲偟偰弌椡偟偰
-偄傑偡丅VX Ace 偺僀儀儞僩僐儅儞僪 [暥復偺昞帵] 偱偼丄暥復撪偵 &yen;V[n] 傗
-&yen;N[n] 側偳偺惂屼暥帤傪巊偆偙偲偱曄悢偺抣傗傾僋僞乕偺柤慜傪儊僢僙乕僕偵
-杽傔崬傓偙偲偑偱偒傑偡偑丄偦傟偲帡偨傛偆側婡擻偩偲峫偊偰偔偩偝偄丅</p>
-<p>偙傟偼傕偪傠傫丄</p>
-<pre>
-game = &quot;RPG&quot;
-print game + &quot;僣僋乕儖&quot;         # =&gt; RPG僣僋乕儖
-</pre>
-<p>偙偺傛偆偵彂偄偰傕摨偠偙偲偱偡偑丄幃揥奐偺婰朄傪巊偆偙偲偱僾儘僌儔儉傪
-傛傝撉傒傗偡偔偱偒傞応崌偑偁傞偨傔丄偙偺婡擻偑梡堄偝傟偰偄傑偡丅</p>
-<p>側偍丄僶僢僋僗儔僢僔儏婰朄偲摨條丄僔儞僌儖僋僅乕僩 '' 偱埻傑傟偨
-暥帤楍偱偼幃揥奐傕桳岠偵側傝傑偣傫丅</p>
+
+<h2><a name="unfold">内嵌表达式</a></h2>
+
+<p>在字符串里面，可以用 #{变量名} 的形式把变量的内容嵌入在字符串当中。</p>
+
+<pre>game = "RPG"<br>print "#{game} TKOOL"         # =&gt; RPGTKOOL<br></pre>
+
+<p>上述示例里，第一行是为 game 变量赋值代入字符串「RPG」。第二行里面，
+其中 #{game} 是表示直接嵌入变量 game 的值字符串「RPG」，
+和后面的「 TKOOL」组合在一起，从而输出一个新的字符串。
+RPGVX 的事件指令「显示文章」里，在文章中使用 \V[n] 和 \N[n] 句柄可以
+把变量的值和角色的名称作为信息嵌入文字中，这个功能好像和那个十分相似。</p>
+
+<p>这个功能，让我们举例来说明在预置脚本中应如何使用。</p>
+
+<pre>print("文件 #{filename} 没找到。")<br></pre>
+
+<p>print 的显示内容应附加上括号 ()，如果其优先级不易混淆的话可
+以省略（本章 print 的使用示例介绍中全部省略了括号）。预置脚本中
+基本上都统一使用有括号，所以在这儿也加上一个。</p>
+
+<p>这个是当然，</p>
+
+<pre>print("文件 " + filename + " 没找到。")<br></pre>
+
+<p>像这样写也可以，使用内嵌表达式的方法会使读取程序变得很容易。</p>
+
+<p>另外内嵌表达式和句柄一样，在单引号 '' 中间的字符串里使用也会无效。</p>
+
 
 
 <h6></h6>
-
 </body>
 </html>

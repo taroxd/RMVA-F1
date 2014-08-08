@@ -1,233 +1,204 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="ja">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<title>忦審暘婒</title>
-<link href="../style.css" type="text/css" rel="stylesheet">
+  <title>条件分歧</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <link href="style.css" type="text/css" rel="stylesheet">
+  <meta content="MSHTML 6.00.2900.3199" name="GENERATOR">
 </head>
+
 <body>
 
-<h1>忦審暘婒</h1>
+<h1>条件分歧</h1>
+
 <ul>
-<li><a href="#compare">斾妑墘嶼巕</a></li>
-<li><a href="#boolean">恀婾抣</a></li>
-<li><a href="#logical">榑棟墘嶼巕</a></li>
-<li><a href="#if">if 乣 elsif 乣 else 乣 end</a></li>
-<li><a href="#unless">unless 乣 end</a></li>
-<li><a href="#case">case 乣 end</a></li>
-<li><a href="#if2">忦審墘嶼巕</a></li>
-<li><a href="#modifier">廋忺巕</a></li>
+
+  <li><a href="#compare">比较运算符</a> 
+  </li>
+  <li><a href="#boolean">真伪值</a> 
+  </li>
+  <li><a href="#logical">逻辑运算符</a> 
+  </li>
+  <li><a href="#if">if ～ elsif ～ else ～ end</a> 
+  </li>
+  <li><a href="#unless">unless ～ end</a> 
+  </li>
+  <li><a href="#case">case ～ end</a> 
+  </li>
+  <li><a href="#if2">条件运算符</a>
+  </li>
+  <li><a href="#modifier">New 修饰子</a> </li>
 </ul>
 
-<p>摿掕偺忦審傪枮偨偟偰偄傞偐斲偐偵傛偭偰丄偦偺屻偺摦嶌偑曄傢傞傛偆偵偡傞偺
-偑<strong>忦審暘婒</strong>偱偡丅</p>
+<p>满足特定的条件与否，之后的动作会根据其不同而改变就叫作<strong>条件分歧</strong>。</p>
 
+<h2><a name="compare">比较运算符</a></h2>
 
-<h2><a name="compare">斾妑墘嶼巕</a></h2>
-<p>嬶懱揑偵張棟傪暘婒偝偣傞曽朄傪妛傇慜偵丄偦偺忦審偲側傞幃偱巊傢傟傞墘嶼巕
-傪妎偊偰偍偒傑偟傚偆丅</p>
-<p>師偺 6 偮偺墘嶼巕傪<strong>斾妑墘嶼巕</strong>偲屇傃傑偡丅偙傟傜偺墘嶼巕偼丄
-梌偊傜傟偨幃 (悢抣傗暥帤楍側偳) 傪斾傋偰丄偦偺寢壥傪曉偟傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
+<p>在具体地学习处理条件分歧的方法之前，要先记住条件构成中使用的运算符。</p>
+
+<p>下面 6 个运算符称为<strong>比较运算符</strong>。使用这些运算符，和给予的条件（数字和字符串）相比较，然后返回结果。</p>
+
+<p>
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+
   <tr>
-    <td width=40>==</td>
-    <td>摍偟偄</td>
+
+    <td width="40">==</td>
+
+    <td>相等于</td>
+    </tr>
+
+  <tr>
+
+    <td width="40">!=</td>
+
+    <td>不相等于</td>
+    </tr>
+
+  <tr>
+
+    <td width="40">&lt;</td>
+
+    <td>小于</td>
+    </tr>
+
+  <tr>
+
+    <td width="40">&gt;</td>
+
+    <td>大于</td>
+    </tr>
+
+  <tr>
+
+    <td width="40">&lt;=</td>
+
+    <td>小于等于</td>
+
   </tr>
-  <tr>
-    <td width=40>!=</td>
-    <td>摍偟偔側偄</td>
-  </tr>
-  <tr>
-    <td width=40>&lt;</td>
-    <td>彫偝偄</td>
-  </tr>
-  <tr>
-    <td width=40>&gt;</td>
-    <td>戝偒偄</td>
-  </tr>
-  <tr>
-    <td width=40>&lt;=</td>
-    <td>彫偝偄偐摍偟偄</td>
-  <tr>
-    <td width=40>&gt;=</td>
-    <td>戝偒偄偐摍偟偄</td>
-  </tr>
+    <tr>
+
+    <td width="40">&gt;=</td>
+
+    <td>大于等于</td>
+    </tr>
+  </tbody>
 </table>
-<p>偙偙偱廳梫側偺偼丄摍偟偄偙偲傪敾掕偡傞墘嶼巕偼 = 偱偼側偔 == 偱
-偁傞偲偄偆偙偲偱偡丅偡偱偵妛廗偟偨傛偆偵丄= 偲偄偆婰崋偼斾妑偱偼側偔
-戙擖傪昞偟傑偡丅崿摨偟側偄傛偆偵拲堄偟偰偔偩偝偄丅</p>
+</p>
 
+<p>这里一定要注意的是，判断相等的运算符不是 = 而是 ==。像已学习过的那样，所谓 = 符号表示的不是比较而是代入。请注意不要弄混淆了。</p>
 
-<h2><a name="boolean">恀婾抣</a></h2>
+<h2><a name="boolean">真伪值</a></h2>
 
-<p>斾妑墘嶼巕偺墘嶼寢壥偼<strong>恀婾抣</strong>偲屇偽傟傑偡丅
-恀 (崌偭偰偄傞) 偐丄婾 (娫堘偭偰偄傞) 偐偺傆偨偮偺忬懺傪帵偡偐傜
-偱偡丅</p>
-<p>幃偑崌偭偰偄傟偽 <strong>true</strong>丄娫堘偭偰偄傟偽
-<strong>false</strong> 偲偄偆抣偵側傝傑偡丅妋擣偟偰傒傑偟傚偆丅</p>
-<pre>
-p (&quot;偍偼傛偆&quot; == &quot;偍偼傛偆&quot;)        # =&gt; true
-p (&quot;偍偼傛偆&quot; == &quot;偙傫偽傫偼&quot;)      # =&gt; false
-p (3 + 1 == 3 + 5)                  # =&gt; false
-p (3 + 1 == 2 + 2)                  # =&gt; true
-</pre>
+<p>比较运算的运算结果就称为<strong>真伪值</strong>。有真（正确）、伪（错误）两种情况。</p>
 
+<p>比较后是正确的话为 <strong>true</strong> 值，是错误的话就为 <strong>false</strong> 值。请试试看吧。</p>
+<pre>p ("早安" == "早安")                # =&gt; true<br>p ("早安" == "你好")                # =&gt; false<br>p (3 + 1 == 3 + 5)                  # =&gt; false<br>p (3 + 1 == 2 + 2)                  # =&gt; true<br></pre>
 
-<h2><a name="logical">榑棟墘嶼巕</a></h2>
-<p>師偺 6 偮偺墘嶼巕傪<strong>榑棟墘嶼巕</strong>偲屇傃傑偡丅</p>
-<table border="1" cellspacing="0" cellpadding="2">
+<h2><a name="logical">逻辑运算符</a></h2>
+
+<p>下面 6 个运算符称为<strong>逻辑运算符</strong>。</p>
+
+<p>
+<table border="1" cellpadding="2" cellspacing="0">
+
+  <tbody>
+
   <tr>
-    <td width=40>and<br>&amp;&amp;</td>
-    <td>乽乣丄偐偮丄乣乿偲偄偆堄枴</td>
-  </tr>
+
+    <td width="40">and<br>
+&amp;&amp;</td>
+
+    <td>「～，与，～」的意思</td>
+    </tr>
+
   <tr>
-    <td width=40>or<br>||</td>
-    <td>乽乣丄傑偨偼丄乣乿偲偄偆堄枴</td>
-  </tr>
+
+    <td width="40">or<br>
+||</td>
+
+    <td>「～，或，～」的意思</td>
+    </tr>
+
   <tr>
-    <td width=40>not<br>!</td>
-    <td>乽乣偱側偄乿偲偄偆堄枴</td>
-  </tr>
+
+    <td width="40">not<br>
+!</td>
+
+    <td>「非～」的意思</td>
+    </tr>
+  </tbody>
 </table>
-<p>塸扨岅偺墘嶼巕偲婰崋偺墘嶼巕偼丄偳偪傜傕婎杮揑偵偼摨偠堄枴偱偡丅
-僾儕僙僢僩偺僗僋儕僾僩偱偼丄庡偵婰崋偺傎偆傪巊梡偟偰偄傑偡丅偙傟傜
-偺榑棟墘嶼巕傪巊偆偙偲偱丄傛傝暋嶨側忦審傪巜掕偡傞偙偲偑偱偒傑偡丅</p>
-<pre>
-p (100 > 77 and 1 + 1 == 2)         # =&gt; true
-p (100 > 77 &amp;&amp; 1 + 1 == 2)          # =&gt; true
-</pre>
-<p>1 峴栚偺幃偲 2 峴栚偺幃偼丄偄偢傟傕摨偠乽100 偼 77傛傝戝偒偔 偐偮
-1 + 1 偼 2 偱偁傞乿偲偄偆撪梕傪昞偟偰偄傑偡丅
-傕偪傠傫丄100 偼 77 傛傝傕戝偒偄悢偱偡偟丄1 + 1 偺摎偼 2 偲側傝傑偡
-偺偱丄椉曽偺幃偑惉棫偡傞偲偄偆偙偲偵側傝傑偡丅
-偟偨偑偭偰 true (恀丄崌偭偰偄傞) 偑弌椡偝傟傑偡丅</p>
-<p>偱偼丄師偺幃偼偳偆偱偟傚偆偐丅</p>
-<pre>
-p (1 + 1 == 3 or 2 + 2 == 3)        # =&gt; false
-p (1 + 1 == 3 || 2 + 2 == 3)        # =&gt; false
-</pre>
-<p>1 峴栚偺幃偲 2 峴栚偺幃偼丄偄偢傟傕乽1 + 1 偼 3 偱偁傞 傑偨偼
-2 + 2 偼 3 偱偁傞乿偲偄偆撪梕傪昞偟偰偄傑偡丅偟偐偟側偑傜丄1 + 1 偼
-3 偱偼偁傝傑偣傫偟丄2 + 2 傕 3 偱偼側偄偺偱丄偙偺応崌丄椉曽偺幃偑
-惉棫偟側偄偲偄偆偙偲偵側傝傑偡丅斾妑墘嶼巕 or (||) 偱偼丄偳偪傜偐堦曽偺
-幃偑惉棫偟偰偄傟偽 true (恀丄崌偭偰偄傞) 偵側傝傑偡偑丄偙偙偱偼椉曽偺幃
-偑惉棫偟偰偄側偄偨傔丄false (婾丄娫堘偭偰偄傞) 偲弌椡偝傟傑偡丅
-<p>傑偨丄not (!) 偼丄忋偵嫇偘偨椺偲偼彮偟堘偄丄not (!) 偺偆偟傠偵偁傞
-忦審 (幃) 偑惉棫偟偰偄側偄丄偲偄偆撪梕傪昞偟傑偡丅true 偲 false 傪媡偵
-偡傞墘嶼巕偲峫偊偰偔偩偝偄丅</p>
-<pre>
-p (not true)                        # =&gt; false
-p (! true)                          # =&gt; false
-</pre>
-<p>偙偺応崌偼乽true 偱側偄乿偲偄偆撪梕偵側傞偺偱丄false 偑弌椡偝傟
-傑偡丅</p>
+</p>
 
-<p>側偍丄+ 傗 - 側偳偺寁嶼偵巊偆墘嶼巕偩偗偱側偔丄斾妑墘嶼巕傗榑棟墘嶼巕
-偵傕桪愭弴埵偑懚嵼偟傑偡丅偙偙偱偼丄== 側偳偺斾妑墘嶼巕偼 &amp;&amp;
-側偳偺榑棟墘嶼巕傛傝傕桪愭弴埵偑崅偄偲偄偆偙偲傪妎偊偰偍偗偽廫暘偱偡丅
-徻偟偔偼丄RGSS 儕僼傽儗儞僗偺<a
-href="../rgss/syntax04.html">墘嶼巕幃</a>傪嶲徠偟偰偔偩偝偄丅</p>
+<p>英文单词运算符和符号运算符，无论用哪个都是一样的。在预置脚本中运用的主要是英文单词。使用这些逻辑运算符就能指定更加复杂的条件。</p>
+<pre>p (100 &gt; 77 and 1 + 1 == 2)         # =&gt; true<br>p (100 &gt; 77 &amp;&amp; 1 + 1 == 2)          # =&gt; true<br></pre>
 
+<p>上述示例中，第一行和第二行表示的都是一个内容「100 大于 77 同时 1 + 1 等于 2」。不用说 100 是比 77 大的整数，1 + 1 答案也为 
+2，两个运算都成立。所以输出结果就为 true（真，正确）。</p>
 
-<h2><a name="if">if 乣 elsif 乣 else 乣 end</a></h2>
-<p>if 乣 end 偲偄偆偺偼忦審暘婒偺峔暥偱偡丅偙傟偼塸岅偺 if (傕偟乣偱偁傞側傜) 偲
-摨偠偱丄乽傕偟丄if 偺偁偲偵懕偔忦審偵摉偰偼傑傞偺側傜偽丄埲壓偺張棟傪幚峴偡傞乿偲
-偄偭偨堄枴偵側傝傑偡丅師偺椺偱偼 3乣5 峴栚偑忦審暘婒偵側偭偰偄傑偡丅</p>
-<pre>
-a = 20              # 曄悢 a 偵 20 傪戙擖偡傞丅
+<p>那么，看下一个算式吧。</p>
+<pre>p (1 + 1 == 3 or 2 + 2 == 3)        # =&gt; false<br>p (1 + 1 == 3 || 2 + 2 == 3)        # =&gt; false<br></pre>
 
-if a &gt;= 10          # 傕偟 a 偑 10 埲忋偱偁傟偽丄
-  print &quot;big&quot;       #   big 偲昞帵偡傞丅
-end                 # 暘婒廔椆丅
-</pre>
-<p>忦審偑枮偨偝傟側偄応崌偵傕張棟傪峴偄偨偄応崌偼 else 傪丄
-忦審偑枮偨偝傟側偄応崌偵偝傜偵忦審傪巜掕偡傞応崌偼 elsif 傪巊偄傑偡丅</p>
-<pre>
-a = 7               # 曄悢 a 偵 7 傪戙擖偡傞丅
+<p>上述示例中，第一行和第二行表示的也都是一个内容「1 + 1 等于 3 或 2 + 2 等于 3」。很显然，1 + 1 不等于 3，2 + 2 也不等于 
+3，这样两个运算都不成立。比较运算符 or（||）是只要有一个运算成立就为 ture（真，正确），而这里两个运算全都不成立，所以输出结果就为 
+false（伪，错误）。</p>
 
-if a &gt;= 10          # 傕偟 a 偑 10 埲忋偱偁傟偽丄
-  print &quot;big&quot;       #   big 偲昞帵偡傞丅
-elsif a &gt;= 5        # 偦傟埲奜偱 a 偑 5 埲忋偱偁傟偽丄
-  print &quot;medium&quot;    #   medium 偲昞帵偡傞丅
-else                # 偦傟埲奜偱偁傟偽丄
-  print &quot;small&quot;     #   small 偲昞帵偡傞丅
-end                 # 暘婒廔椆丅
-</pre>
+<p>另外，not（!）和上面的例子稍微有些不同， not（!）表示的内容为后面的条件不成立。可以理解为颠倒 true 或 false 的运算符。</p>
+<pre>p (not true)                        # =&gt; false<br>p (! true)                          # =&gt; false<br></pre>
 
+<p>上述示例中的内容是「非 true」的意思，所以输出结果为 false。</p>
 
-<h2><a name="unless">unless 乣 end</a></h2>
-<p>if 偲偼媡偵丄偁傞忦審偑枮偨偝傟偰<strong>偄側偄</strong>偲偒偵
-壗傜偐偺張棟傪峴偄偨偄応崌丄unless 傪巊偄傑偡丅</p>
-<pre>
-a = 7               # 曄悢 a 偵 7 傪戙擖偡傞丅
+<h2><a name="if">if ～ elsif ～ else ～ end</a></h2>
 
-unless a &gt;= 10      # 傕偟 a 偑 10 埲忋偱側偄側傜偽丄
-  print &quot;small&quot;     #   small 偲昞帵偡傞丅
-end                 # 暘婒廔椆丅
-</pre>
-<p>忋偺椺偼偁傑傝椙偄椺偱偼偁傝傑偣傫偑丄暥柆偵傛傝丄unless 傪巊偭偨
-傎偆偑傢偐傝傗偡偔側傞応崌偑偁傝傑偡丅</p>
+<p>if ～ end 语句是条件分歧的句法。这个和英文的 if（如果～就）意思相同，表示「如果 if 
+后面的条件成立的话，就运行下面的处理」的意思。下面示例中的 3～5行就是条件分歧。</p>
+<pre>a = 20              # 为变量 a 赋值代入 20。<br><br>if a &gt;= 10          # 如果 a 为 10 以上的话，<br>  print "big"       #   显示 big。<br>end                 # 分歧结束。<br></pre>
 
+<p>在条件不满足时也要进行处理的情况下就使用 else，条件不满足但指定另一个条件的情况下就使用 elsif。</p>
+<pre>a = 7               # 为变量 a 赋值代入 7。<br><br>if a &gt;= 10          # 如果 a 为 10 以上的话，<br>  print "big"       #   显示 big。<br>elsif a &gt;= 5        # 除此之外，如果 a 为 5 以上的话，<br>  print "medium"    #   显示 medium。<br>else                # 其他，<br>  print "small"     #   显示 small。<br>end                 # 分歧结束。<br></pre>
 
-<h2><a name="case">case 乣 end</a></h2>
-<p>摿掕偺曄悢偺抣偵傛偭偰暘婒偝偣偨偄応崌偼丄case 傪巊偆偲曋棙偱偡丅</p>
-<pre>
-a = 0               # 曄悢 a 偵 0 傪戙擖偡傞丅
+<h2><a name="unless">unless ～ end</a></h2>
 
-case a              # 暘婒奐巒丅
-when 0              #  a 偑 0 偺偲偒丄
-  print &quot;僌乕&quot;      #   僌乕 偲昞帵偡傞丅
-when 1              #  a 偑 1 偺偲偒丄
-  print &quot;僠儑僉&quot;    #   僠儑僉 偲昞帵偡傞丅
-when 2              #  a 偑 2 偺偲偒丄
-  print &quot;僷乕&quot;      #   僷乕 偲昞帵偡傞丅
-end                 # 暘婒廔椆丅
-</pre>
-<p>1 峴栚偺 a = 偺偁偲偺 0 偲偄偆抣傪 1 傗 2 偵曄峏偟偰丄偒偪傫偲暘婒偱偒偰
-偄傞偙偲傪妋擣偟偰傒傑偟傚偆丅a 偵 1 傪戙擖偡傞偲 &quot;僠儑僉&quot; 偲偄偆
-暥帤楍偑昞帵偝傟丄2 傪戙擖偡傞偲 &quot;僷乕&quot; 偲昞帵偝傟傑偡丅</@>
+<p>与 if 相反，在条件<strong>不</strong>满足时才进行某些处理的情况下使用 unless 语句。</p>
+<pre>a = 7               # 为变量 a 赋值代入 7。<br><br>unless a &gt;= 10      # 如果 a 不为 10 以上的话，<br>  print "small"     #   显示 small。<br>end                 # 分歧结束。<br></pre>
 
+<p>&nbsp;</p>
 
-<h2><a name="if2">忦審墘嶼巕</a></h2>
-<p>? 偍傛傃 : 偲偄偆婰崋傪巊偆丄墘嶼巕宍幃偺忦審暘婒傕偁傝傑偡丅</p>
-<pre>
-a = 3
+<p>虽然上边的例子不是很好，但是用unless的时候也是会有的。</p>
 
-p (a &gt;= 10 ? &quot;big&quot; : &quot;small&quot;)   # =&gt; &quot;small&quot;
-</pre>
-<p>偙偺椺偱偼丄曄悢 a 偺抣偑 10 埲忋偱偁傞偲偒偵 &quot;big&quot;丄9 埲壓偱偁傞
-偲偒偵 &quot;small&quot; 偲昞帵偟傑偡丅忦審墘嶼巕偺暥朄偼乽忦審幃 ? 恀偺偲偒偺
-抣 : 婾偺偲偒偺抣乿偲側傝傑偡丅忦審幃偑 a &gt;= 10丄恀偺偲偒偺抣偑
-&quot;big&quot;丄婾偺偲偒偺抣偑 &quot;small&quot; 偵奩摉偟丄偦傟偧傟 ? 偲 : 傪
-巊偭偰帵偝傟偰偄傞偲偄偆偙偲偱偡丅</p>
-<p>傕偪傠傫 if 傪巊偭偰傕傑偭偨偔摨偠偙偲偑壜擻偱偡丅</p>
-<pre>
-a = 3
+<h2><a name="case">case ～ end</a></h2>
 
-if a >= 10
-  p "big"
-else
-  p "small"
-end
-</pre>
-<p>if 傪巊偭偨暥朄偱偼偨偲偊偽偙偺傛偆偵彂偔偙偲偵側傝傑偡偑丄忦審墘嶼巕傪
-巊偭偨曽偑丄傛傝娙寜偵彂偗傞偲偄偆儊儕僢僩偑偁傝傑偡丅偙偺婰朄偼僾儕僙僢僩偺
-僗僋儕僾僩偱傕懡梡偝傟偰偄傑偡偺偱丄妎偊偰偍偔偲椙偄偱偟傚偆丅</p>
+<p>在条件为特定的变量值进行分歧的情况下使用 case 语句会更方便。</p>
+<pre>a = 0               # 为变量 a 赋值代入 0。<br><br>case a              # 分歧开始。<br>when 0              #  当 a 为 0 时，<br>  print "石头"        #   显示 石头。<br>when 1              #  当 a 为 1 时，<br>  print "剪子"        #   显示 剪子。<br>when 2              #  当 a 为 2 时，<br>  print "布"        #   显示 布。<br>end                 # 分歧结束。<br></pre>
 
+<p>把第一行 a = 后面的 0 改为 1 和 2，然后再来看看分歧的结果吧。当 a 代入 1 时会显示「剪子」，代入 2 时会显示「布」。</p>
 
-<h2><a name="modifier">廋忺巕</a></h2>
-<p>師偺傛偆偵丄峴偄偨偄張棟偺屻偵 if 傗 unless 傪彂偔偙偲偑偱偒傑偡丅</p>
-<pre>
-print &quot;big&quot; if a &gt;= 10      # a 偑 10 埲忋側傜 big 偲昞帵
-</pre>
-<p>偄傠偄傠側暥朄偑偁偭偰妎偊傞偺偑戝曄偱偡偑丄傗偭偰偄傞撪梕偼摨偠偱偡丅
-偦偺偲偒偦偺偲偒偱丄傢偐傝傗偡偔彂偗傞暥朄傪慖戰偡傟偽椙偄偺偱偡丅</p>
-<p></p>
+<h2><a name="if2">条件运算符</a></h2>
 
+<p>使用符号 ? 和 : 也是运算符形式的条件分歧语句。</p>
+<pre>a = 3<br><br>p (a &gt;= 10 ? "big" : "small")   # =&gt; "small"<br></pre>
 
+<p>这个示例的意思是，变量 a 的值在 10 以上的话就显示 "big"， 9 以下的话就显示 "small"。条件运算符的语法是「条件 ? 真时的值 : 
+伪时的值」。上述的条件是 a &gt;= 10，真时的值为 "big"，伪时的值为 "small"，会根据条件是否满足来决定使用 ? 或 : 的值。</p>
+
+<p>当然使用 if 语句也能完成同样的事情。</p>
+<pre>a = 3<br><br>if a &gt;= 10<br>  p "big"<br>else<br>  p "small"<br>end<br></pre>
+
+<p>使用 if 语句的语法会像上面写的那样，但是使用条件运算符语句会更加简洁。该语句在当前的脚本中也使用得很多，所以最好事先记住。</p>
+
+<h2><a name="modifier">修饰子</a></h2>
+
+<p>如同下面所示，想要执行的命令后面可以写if和unless等。</p>
+<pre>print "big" if a &gt;= 10      # a 要是大于等于 10 的话 就显示big <br></pre>
+
+<p>背很多语法的确是件不容易的事情，做相同的事情如果使用简单的语法就是不错的选择。</p>
 
 <h6></h6>
-
 </body>
 </html>
