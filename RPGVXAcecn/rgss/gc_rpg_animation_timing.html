@@ -1,36 +1,36 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>RPG::Animation::Timing</TITLE>
-<META content="text/html; charset=GBK" http-equiv=Content-Type>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
 <META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>RPG::Animation::Timing</H1>
-<P>音效和闪烁效果时间的数据类。</P>
-<H2>超类</H2>
+<P>&#38899;&#25928;&#21644;&#38378;&#28865;&#25928;&#26524;&#26102;&#38388;&#30340;&#25968;&#25454;&#31867;&#12290;</P>
+<H2>&#36229;&#31867;</H2>
 <UL>
   <LI><A href="sc_object.html">Object</A> </LI></UL>
-<H2>调用者</H2>
+<H2>&#35843;&#29992;&#32773;</H2>
 <UL>
   <LI><A href="gc_rpg_animation.html">RPG::Animation</A> </LI></UL>
-<H2>属性</H2>
+<H2>&#23646;&#24615;</H2>
 <DL>
   <DT>frame 
   <DD>
-  <P>帧编号，实际上为显示的数据减 1。</P>
+  <P>&#24103;&#32534;&#21495;&#65292;&#23454;&#38469;&#19978;&#20026;&#26174;&#31034;&#30340;&#25968;&#25454;&#20943; 1&#12290;</P>
   <DT>se 
   <DD>
-  <P>声效（<A href="gc_rpg_se.html">RPG::SE</A>）。</P>
+  <P>&#22768;&#25928;&#65288;<A href="gc_rpg_se.html">RPG::SE</A>&#65289;&#12290;</P>
   <DT>flash_scope 
   <DD>
-  <P>闪烁范围（0：无、 1：闪烁目标、2：闪烁屏幕、3：隐藏目标）。</P>
+  <P>&#38378;&#28865;&#33539;&#22260;&#65288;0&#65306;&#26080;&#12289; 1&#65306;&#38378;&#28865;&#30446;&#26631;&#12289;2&#65306;&#38378;&#28865;&#23631;&#24149;&#12289;3&#65306;&#38544;&#34255;&#30446;&#26631;&#65289;&#12290;</P>
   <DT>flash_color 
   <DD>
-  <P>闪烁颜色（<A href="gc_color.html">Color</A>&nbsp;）。</P>
+  <P>&#38378;&#28865;&#39068;&#33394;&#65288;<A href="gc_color.html">Color</A>&nbsp;&#65289;&#12290;</P>
   <DT>flash_duration 
   <DD>
-  <P>闪烁持续时间。</P></DD></DL>
-<H2>定义</H2><PRE>class RPG::Animation::Timing
+  <P>&#38378;&#28865;&#25345;&#32493;&#26102;&#38388;&#12290;</P></DD></DL>
+<H2>&#23450;&#20041;</H2><PRE>class RPG::Animation::Timing
   def initialize
     @frame = 0
     @se = RPG::SE.new('', 80)

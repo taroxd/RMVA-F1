@@ -1,45 +1,45 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Float</TITLE>
-<META content="text/html; charset=GBK" http-equiv=Content-Type>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
 <META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
-<H1></H1>
-<P><FONT face=微软雅黑>The floating-point number class. The implementation of Float 
+<H1><FONT face=&#24494;&#36719;&#38597;&#40657;>Float</FONT></H1>
+<P><FONT face=&#24494;&#36719;&#38597;&#40657;>The floating-point number class. The implementation of Float 
 is double in C.</FONT></P>
-<H2></H2>
+<H2><FONT face=&#24494;&#36719;&#38597;&#40657;>&#36229;&#31867;</FONT></H2>
 <UL>
-  <LI><A href="sc_numeric.html"></A><FONT 
-  face=微软雅黑> </FONT></LI></UL>
-<H2></H2>
+  <LI><A href="sc_numeric.html"><FONT face=&#24494;&#36719;&#38597;&#40657;>Numeric</FONT></A><FONT 
+  face=&#24494;&#36719;&#38597;&#40657;> </FONT></LI></UL>
+<H2><FONT face=&#24494;&#36719;&#38597;&#40657;>&#26041;&#27861;</FONT></H2>
 <DL>
-  <DT>
-  <DT>
-  <DT>
-  <DT>
-  <DT>
-  <DT>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> + <VAR>other</VAR> </FONT>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> - <VAR>other</VAR> </FONT>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> * <VAR>other</VAR> </FONT>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> / <VAR>other</VAR> </FONT>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> % <VAR>other</VAR> </FONT>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> ** <VAR>other</VAR> </FONT>
   <DD>
-  <P></P>
-  <DT>
+  <P><FONT face=&#24494;&#36719;&#38597;&#40657;>&#25968;&#23398;&#36816;&#31639;&#31526;&#12290;&#20998;&#21035;&#35745;&#31639;&#65306;&#21644;&#65288;&#21152;&#65289;&#12289;&#24046;&#65288;&#20943;&#65289;&#12289;&#31215;&#65288;&#20056;&#65289;&#12289;&#21830;&#65288;&#38500;&#65289;&#12289;&#20313;&#65288;&#27169;&#25968;&#35745;&#31639;&#65289;&#12289;&#24130;&#65288;&#25351;&#25968;&#35745;&#31639;&#65289;&#12290;</FONT></P>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> &lt;=&gt; <VAR>other</VAR> </FONT>
   <DD>
-  <P><FONT face=微软雅黑>比较 other 与 self；若是 self 大于 other 则返回正整数、若是 self 等于 other 
-  则返回 0、若是 self 小于 other 则返回负整数。</FONT></P>
-  <DT>
-  <DT>
-  <DT>
-  <DT>
-  <DT>
+  <P><FONT face=&#24494;&#36719;&#38597;&#40657;>&#27604;&#36739; other &#19982; self&#65307;&#33509;&#26159; self &#22823;&#20110; other &#21017;&#36820;&#22238;&#27491;&#25972;&#25968;&#12289;&#33509;&#26159; self &#31561;&#20110; other 
+  &#21017;&#36820;&#22238; 0&#12289;&#33509;&#26159; self &#23567;&#20110; other &#21017;&#36820;&#22238;&#36127;&#25972;&#25968;&#12290;</FONT></P>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> == <VAR>other</VAR> </FONT>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> &lt; <VAR>other</VAR> </FONT>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> &lt;= <VAR>other</VAR> </FONT>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> &gt; <VAR>other</VAR> </FONT>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;><VAR>self</VAR> &gt;= <VAR>other</VAR> </FONT>
   <DD>
-  <P></P>
-  <DT>
+  <P><FONT face=&#24494;&#36719;&#38597;&#40657;>&#27604;&#36739;&#36816;&#31639;&#31526;&#12290;</FONT></P>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;>finite? </FONT>
   <DD>
-  <P></P>
-  <DT>
+  <P><FONT face=&#24494;&#36719;&#38597;&#40657;>&#33509;&#25968;&#20540;&#26377;&#31351;&#21017;&#36820;&#22238; true&#65292;&#38500;&#38750;&#26159; NaN&#12290;</FONT></P>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;>infinite? </FONT>
   <DD>
-  <P><FONT face=微软雅黑>当数值为正无穷则返回 1；当数值为负无穷则返回 -1。否则返回 nil。浮点数除 0 
-必得无穷数。</FONT></P><PRE><FONT face=微软雅黑>inf = 1.0/0
+  <P><FONT face=&#24494;&#36719;&#38597;&#40657;>&#24403;&#25968;&#20540;&#20026;&#27491;&#26080;&#31351;&#21017;&#36820;&#22238; 1&#65307;&#24403;&#25968;&#20540;&#20026;&#36127;&#26080;&#31351;&#21017;&#36820;&#22238; -1&#12290;&#21542;&#21017;&#36820;&#22238; nil&#12290;&#28014;&#28857;&#25968;&#38500; 0 
+&#24517;&#24471;&#26080;&#31351;&#25968;&#12290;</FONT></P><PRE><FONT face=&#24494;&#36719;&#38597;&#40657;>inf = 1.0/0
 p inf
 p inf.infinite?
 
@@ -53,13 +53,13 @@ p inf.infinite?
 =&gt; -Infinity
    -1
 </FONT></PRE>
-  <DT>
+  <DT><FONT face=&#24494;&#36719;&#38597;&#40657;>nan? </FONT>
   <DD>
-  <P></P><PRE><FONT face=微软雅黑>nan = 0.0/0.0
+  <P><FONT face=&#24494;&#36719;&#38597;&#40657;>&#33509;&#25968;&#20540;&#38750;&#25968;&#23383;&#65288; NaN&#65289;&#21017;&#36820;&#22238; true&#12290;&#28014;&#28857;&#25968;&#30340; 0 &#38500;&#20197; 0 &#24517;&#24471; NaN&#12290;</FONT></P><PRE><FONT face=&#24494;&#36719;&#38597;&#40657;>nan = 0.0/0.0
 p nan
 p nan.nan?
 
 =&gt; NaN
    true
 </FONT></PRE></DD></DL>
-<H6></H6></BODY></HTML>
+<H6><FONT face=&#24494;&#36719;&#38597;&#40657;></FONT></H6></BODY></HTML>

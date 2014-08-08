@@ -1,51 +1,51 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>RPG::Actor</TITLE>
-<META content="text/html; charset=GBK" http-equiv=Content-Type>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
 <META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>RPG::Actor</H1>
-<P>角色的数据类。</P>
-<H2>超类</H2>
+<P>&#35282;&#33394;&#30340;&#25968;&#25454;&#31867;&#12290;</P>
+<H2>&#36229;&#31867;</H2>
 <UL>
   <LI><A href="gc_rpg_baseitem.html">RPG::BaseItem</A> </LI></UL>
-<H2>属性</H2>
+<H2>&#23646;&#24615;</H2>
 <DL>
   <DT>nickname 
   <DD>
-  <P>角色称号。</P>
+  <P>&#35282;&#33394;&#31216;&#21495;&#12290;</P>
   <DT>class_id 
   <DD>
-  <P>角色职业编号。</P>
+  <P>&#35282;&#33394;&#32844;&#19994;&#32534;&#21495;&#12290;</P>
   <DT>initial_level 
   <DD>
-  <P>角色初始等级。</P>
+  <P>&#35282;&#33394;&#21021;&#22987;&#31561;&#32423;&#12290;</P>
   <DT>max_level 
   <DD>
-  <P>角色最终等级。</P>
+  <P>&#35282;&#33394;&#26368;&#32456;&#31561;&#32423;&#12290;</P>
   <DT>character_name 
   <DD>
-  <P>角色行走图的文件名。</P>
+  <P>&#35282;&#33394;&#34892;&#36208;&#22270;&#30340;&#25991;&#20214;&#21517;&#12290;</P>
   <DT>character_index 
   <DD>
-  <P>角色行走图的序号（0-7）。</P>
+  <P>&#35282;&#33394;&#34892;&#36208;&#22270;&#30340;&#24207;&#21495;&#65288;0-7&#65289;&#12290;</P>
   <DT>face_name 
   <DD>
-  <P>角色头像的文件名。</P>
+  <P>&#35282;&#33394;&#22836;&#20687;&#30340;&#25991;&#20214;&#21517;&#12290;</P>
   <DT>face_index 
   <DD>
-  <P>角色头像的序号（0-7）。</P>
+  <P>&#35282;&#33394;&#22836;&#20687;&#30340;&#24207;&#21495;&#65288;0-7&#65289;&#12290;</P>
   <DT>equips 
   <DD>
-  <P>角色的初始装备。存储数组的格式如下所述：</P>
+  <P>&#35282;&#33394;&#30340;&#21021;&#22987;&#35013;&#22791;&#12290;&#23384;&#20648;&#25968;&#32452;&#30340;&#26684;&#24335;&#22914;&#19979;&#25152;&#36848;&#65306;</P>
   <UL>
-    <LI>0:&nbsp;武器 
-    <LI>1:&nbsp;盾牌 
-    <LI>2:&nbsp;头盔 
-    <LI>3:&nbsp;铠甲 
-    <LI>4:&nbsp;饰品 </LI></UL></DD></DL>
-<H2>定义</H2><PRE>class RPG::Actor &lt; RPG::BaseItem
+    <LI>0:&nbsp;&#27494;&#22120; 
+    <LI>1:&nbsp;&#30462;&#29260; 
+    <LI>2:&nbsp;&#22836;&#30420; 
+    <LI>3:&nbsp;&#38112;&#30002; 
+    <LI>4:&nbsp;&#39280;&#21697; </LI></UL></DD></DL>
+<H2>&#23450;&#20041;</H2><PRE>class RPG::Actor &lt; RPG::BaseItem
   def initialize
     super
     @nickname = ''
