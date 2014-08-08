@@ -1,53 +1,53 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>RPG::Enemy</TITLE>
-<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META content="text/html; charset=GBK" http-equiv=Content-Type>
 <META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>RPG::Enemy</H1>
-<P>&#25932;&#20154;&#30340;&#25968;&#25454;&#31867;&#12290;</P>
-<H2>&#36229;&#31867;</H2>
+<P>µÐÈËµÄÊý¾ÝÀà¡£</P>
+<H2>³¬Àà</H2>
 <UL>
   <LI><A href="gc_rpg_baseitem.html">RPG::BaseItem</A> </LI></UL>
-<H2>&#23646;&#24615;</H2>
+<H2>ÊôÐÔ</H2>
 <DL>
   <DT>battler_name 
   <DD>
-  <P>&#25112;&#26007;&#22270;&#30340;&#25991;&#20214;&#21517;&#12290;</P>
+  <P>Õ½¶·Í¼µÄÎÄ¼þÃû¡£</P>
   <DT>battler_hue 
   <DD>
-  <P>&#25112;&#26007;&#22270;&#30340;&#33394;&#35843;&#35843;&#25972;&nbsp;&#65288;0..360&#65289;&#12290;</P>
+  <P>Õ½¶·Í¼µÄÉ«µ÷µ÷Õû&nbsp;£¨0..360£©¡£</P>
   <DT>params 
   <DD>
-  <P>&#33258;&#36523;&#33021;&#21147;&#20540;&#65292;&#20195;&#34920;&#20854;&#25152;&#26377;&#33021;&#21147;&#20540;&#25968;&#32452;&#65292;&#20250;&#29992;&#20197;&#19979;&#25968;&#23383;&#20195;&#34920;&#33021;&#21147;&#20540;&#31867;&#22411;:</P>
+  <P>×ÔÉíÄÜÁ¦Öµ£¬´ú±íÆäËùÓÐÄÜÁ¦ÖµÊý×é£¬»áÓÃÒÔÏÂÊý×Ö´ú±íÄÜÁ¦ÖµÀàÐÍ:</P>
   <UL>
-    <LI>0: &#20307;&#21147;&#19978;&#38480; 
-    <LI>1:&nbsp;&#39764;&#21147;&#19978;&#38480; 
-    <LI>2:&nbsp;&#29289;&#29702;&#25915;&#20987; 
-    <LI>3:&nbsp;&#29289;&#29702;&#38450;&#24481; 
-    <LI>4:&nbsp;&#39764;&#27861;&#25915;&#20987; 
-    <LI>5:&nbsp;&#39764;&#27861;&#38450;&#24481; 
-    <LI>6:&nbsp;&#25935;&#25463;&#20540; 
-    <LI>7:&nbsp;&#24184;&#36816;&#20540; </LI></UL>
+    <LI>0: ÌåÁ¦ÉÏÏÞ 
+    <LI>1:&nbsp;Ä§Á¦ÉÏÏÞ 
+    <LI>2:&nbsp;ÎïÀí¹¥»÷ 
+    <LI>3:&nbsp;ÎïÀí·ÀÓù 
+    <LI>4:&nbsp;Ä§·¨¹¥»÷ 
+    <LI>5:&nbsp;Ä§·¨·ÀÓù 
+    <LI>6:&nbsp;Ãô½ÝÖµ 
+    <LI>7:&nbsp;ÐÒÔËÖµ </LI></UL>
   <DT>exp 
   <DD>
-  <P>&#32463;&#39564;&#12290;</P>
+  <P>¾­Ñé¡£</P>
   <DT>gold 
   <DD>
-  <P>&#37329;&#38065;&#12290;</P>
+  <P>½ðÇ®¡£</P>
   <DT>drop_items 
   <DD>
-  <P>&#25481;&#33853;&#29289;&#21697;&#65288;<A href="gc_rpg_enemy_drop_item.html">RPG::Enemy::DropItem</A>&#65289;&#12290;</P>
+  <P>µôÂäÎïÆ·£¨<A href="gc_rpg_enemy_drop_item.html">RPG::Enemy::DropItem</A>£©¡£</P>
   <DT>actions 
   <DD>
-  <P>&#34892;&#20026;&#27169;&#24335;&#65288;<A 
-href="gc_rpg_enemy_action.html">RPG::Enemy::Action</A>&#65289;&#12290;</P></DD></DL>
-<H2>&#20869;&#37096;&#31867;</H2>
+  <P>ÐÐÎªÄ£Ê½£¨<A 
+href="gc_rpg_enemy_action.html">RPG::Enemy::Action</A>£©¡£</P></DD></DL>
+<H2>ÄÚ²¿Àà</H2>
 <UL>
   <LI><A href="gc_rpg_enemy_drop_item.html">RPG::Enemy::DropItem</A> 
   <LI><A href="gc_rpg_enemy_action.html">RPG::Enemy::Action</A> </LI></UL>
-<H2>&#23450;&#20041;</H2><PRE>class RPG::Enemy &lt; RPG::BaseItem
+<H2>¶¨Òå</H2><PRE>class RPG::Enemy &lt; RPG::BaseItem
   def initialize
     super
     @battler_name = ''

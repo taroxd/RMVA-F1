@@ -1,43 +1,43 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>RPG::Enemy::Action</TITLE>
-<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META content="text/html; charset=GBK" http-equiv=Content-Type>
 <META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>RPG::Enemy::Action</H1>
-<P>&#25932;&#26041;&#34892;&#21160;&#30340;&#25968;&#25454;&#31867;&#12290;</P>
-<H2>&#36229;&#31867;</H2>
+<P>µÐ·½ÐÐ¶¯µÄÊý¾ÝÀà¡£</P>
+<H2>³¬Àà</H2>
 <UL>
   <LI><A href="sc_object.html">Object</A> </LI></UL>
-<H2>&#35843;&#29992;&#32773;</H2>
+<H2>µ÷ÓÃÕß</H2>
 <UL>
   <LI><A href="gc_rpg_enemy.html">RPG::Enemy</A> </LI></UL>
-<H2>&#23646;&#24615;</H2>
+<H2>ÊôÐÔ</H2>
 <DL>
   <DT>skill_id 
   <DD>
-  <P>&#25216;&#33021;&#32534;&#21495;&#12290;</P>
+  <P>¼¼ÄÜ±àºÅ¡£</P>
   <DT>condition_type 
   <DD>
-  <P>&#34892;&#21160;&#26465;&#20214;&#12290;</P>
+  <P>ÐÐ¶¯Ìõ¼þ¡£</P>
   <UL>
-    <LI>0:&nbsp;&#24179;&#26102; 
-    <LI>1:&nbsp;&#22238;&#21512;&#25968; 
-    <LI>2:&nbsp;&#20307;&#21147;&#20540; 
-    <LI>3:&nbsp;&#39764;&#21147;&#20540; 
-    <LI>4:&nbsp;&#29366;&#24577; 
-    <LI>5: &#38431;&#20237;&#31561;&#32423;
-    <LI>6:&nbsp;&#24320;&#20851; </LI></UL>
+    <LI>0:&nbsp;Æ½Ê± 
+    <LI>1:&nbsp;»ØºÏÊý 
+    <LI>2:&nbsp;ÌåÁ¦Öµ 
+    <LI>3:&nbsp;Ä§Á¦Öµ 
+    <LI>4:&nbsp;×´Ì¬ 
+    <LI>5: ¶ÓÎéµÈ¼¶
+    <LI>6:&nbsp;¿ª¹Ø </LI></UL>
   <DT>condition_param1 
   <DT>condition_param2 
   <DD>
-  <P>&#26465;&#20214;&#30340;&#21442;&#25968;&#65292;&#25152;&#26377;&#30340;&#31867;&#22411;&#20849;&#20139;&#12290;</P>
-  <P>&#20030;&#20363;&#26469;&#35828;&#65292;&#24403;&#26465;&#20214;&#20026;&#12300;&#20307;&#21147;&#20540;&#12301;&#26102;&#65292;condition_param1 &#23601;&#26159;&#26368;&#20302;&#20540;&#32780; condition_param2 &#23601;&#26159;&#26368;&#39640;&#20540;&#12290;</P>
+  <P>Ìõ¼þµÄ²ÎÊý£¬ËùÓÐµÄÀàÐÍ¹²Ïí¡£</P>
+  <P>¾ÙÀýÀ´Ëµ£¬µ±Ìõ¼þÎª¡¸ÌåÁ¦Öµ¡¹Ê±£¬condition_param1 ¾ÍÊÇ×îµÍÖµ¶ø condition_param2 ¾ÍÊÇ×î¸ßÖµ¡£</P>
   <DT>rating 
   <DD>
-  <P>&#34892;&#21160;&#20248;&#20808;&#32423;&#65288;1..10&#65289;&#12290;</P></DD></DL>
-<H2>&#23450;&#20041;</H2><PRE>class RPG::Enemy::Action
+  <P>ÐÐ¶¯ÓÅÏÈ¼¶£¨1..10£©¡£</P></DD></DL>
+<H2>¶¨Òå</H2><PRE>class RPG::Enemy::Action
   def initialize
     @skill_id = 1
     @condition_type = 0
