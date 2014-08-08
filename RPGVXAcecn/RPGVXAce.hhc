@@ -76,11 +76,11 @@
 				<param name="Local" value="rpgvxace/3230_db_skill.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="道具设定">
+				<param name="Name" value="物品设定">
 				<param name="Local" value="rpgvxace/3240_db_item.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="武器·防具设定">
+				<param name="Name" value="武器/护甲设定">
 				<param name="Local" value="rpgvxace/3250_db_arms.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
