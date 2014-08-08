@@ -5,29 +5,29 @@
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.17744"></HEAD>
 <BODY>
-<H1><FONT face=Verdana>方法调用</FONT></H1>
+<H1>方法调用</H1>
 <UL>
   <LI><A href="#L000322">super</A> 
   <LI><A href="#L000323">迭代器</A> 
   <LI><A href="#L000324">yield</A> </LI></UL>
-<P>实例：</P><PRE><FONT face=Verdana>foo.bar()
+<P>实例：</P><PRE>foo.bar()
 foo.bar
 bar()
 print "hello world\n"
-print</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>[表达式 '.'] 标识符 ['(' 表达式 ... ['*' [表达式]] ')']</FONT></PRE>
+print</PRE>
+<P>语法：</P><PRE>[表达式 '.'] 标识符 ['(' 表达式 ... ['*' [表达式]] ')']</PRE>
 <P>方法调用表示调用目标（点「.」左边的表达式之值）的方法。若是没有指定目标，则表示调用自身的方法。</P>
 <P>方法的名称可以为一般的标识符，也可以以「?」或「!」结尾。依照惯例，「?」用在布尔（或称布尔）型的方法名称，也就是返回 true &nbsp;或 
 false 值的方法。而「!」是用在比同名（无「!」）方法更具破坏性的方法名称上（例如：tr 与 tr!）。</P>
-<P>若是最后的参数以 * 开头，则先展开该参数的值，然后再传递：</P><PRE><FONT face=Verdana>foo(*[1,2,3])   # 相当于 foo(1,2,3)</FONT></PRE>
+<P>若是最后的参数以 * 开头，则先展开该参数的值，然后再传递：</P><PRE>foo(*[1,2,3])   # 相当于 foo(1,2,3)</PRE>
 <H2><A name=L000322>super</A></H2>
-<P>实例：</P><PRE><FONT face=Verdana>super
-super(1,2,3)</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>super
-super(表达式 , ... )</FONT></PRE><CODE>
-<P><FONT face=Verdana>super 
+<P>实例：</P><PRE>super
+super(1,2,3)</PRE>
+<P>语法：</P><PRE>super
+super(表达式 , ... )</PRE><CODE>
+<P>super 
 呼叫超类中正由当前方法所覆盖的函数。若是省略了括号和参数，当前方法的参数则原封不动的传递给超类中的同名方法。若是调用超类方法而不想使用当前参数时，用空的括号如： 
-super( )。</FONT></CODE></P><PRE><FONT face=Verdana>class Foo
+super( )。</CODE></P><PRE>class Foo
   def foo(arg=nil)
     p arg
   end
@@ -40,17 +40,17 @@ class Bar &lt; Foo
     super           # 以 5 作为参数进行调用；super(arg)的简写<BR>    arg = 1
     super           # 以 1 作为参数进行调用；super(arg)的简写<BR>    super( )        # 无参数调用<BR>  end
 end
-Bar.new.foo 5</FONT></PRE>
+Bar.new.foo 5</PRE>
 <H2>迭代器</H2>
-<P>实例：</P><PRE><FONT face=Verdana>[1,2,3].each do |i| print i*2, "\n" end
-[1,2,3].each {|i| print i*2, "\n" }</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>方法（参数1, 参数2, ...）  do ['|' 表达式 ... '|'] 表达式 ... end
-方法（参数1, 参数2, ...） '{' ['|' 表达式 ... '|'] 表达式 ... '}'</FONT></PRE>
+<P>实例：</P><PRE>[1,2,3].each do |i| print i*2, "\n" end
+[1,2,3].each {|i| print i*2, "\n" }</PRE>
+<P>语法：</P><PRE>方法（参数1, 参数2, ...）  do ['|' 表达式 ... '|'] 表达式 ... end
+方法（参数1, 参数2, ...） '{' ['|' 表达式 ... '|'] 表达式 ... '}'</PRE>
 <P>迭代器是用来精简控制结构（尤其是循环）。若是调用了接着 do ... end 或 { ... } 
 （称为区块）的方法，则该方法就是在该区块中所计算。迭代器所调用的区块就是使用 <A href="#L000324">yield</A>&nbsp;表达式，传递给 
 yield 值会被两条杠「||」之间的变量赋值。</P><CODE>
-<P><FONT face=Verdana>{ ... }区块的约束力比 do ... end 区块强。</FONT></CODE></P><PRE><FONT face=Verdana>foobar a, b do .. end                           #foobar 为迭代器方法<BR>foobar a, b { .. }                                   # b 为迭代器方法</FONT></PRE>
-<P>在区块当中第一次赋值（声明）的区域变量仅在该区块中有效。</P><PRE><FONT face=Verdana>foobar {
+<P>{ ... }区块的约束力比 do ... end 区块强。</CODE></P><PRE>foobar a, b do .. end                           #foobar 为迭代器方法<BR>foobar a, b { .. }                                   # b 为迭代器方法</PRE>
+<P>在区块当中第一次赋值（声明）的区域变量仅在该区块中有效。</P><PRE>foobar {
   i = 20                #    声明区域变量 「i」
    ...
 }
@@ -58,23 +58,23 @@ yield 值会被两条杠「||」之间的变量赋值。</P><CODE>
 foobar a, b do
   i = 11                #    声明一个完全不同的「i」
    ...
-end</FONT></PRE>
+end</PRE>
 <P>与大多数的方法相同，若是迭代器在区块中由 <A href="syntax05.html#L000308">break</A> 所中断则返回 nil 。当 
 break 带参数时则迭代器返回该参数之值。</P>
 <H2><A name=L000324>yield</A></H2>
-<P>实例：</P><PRE><FONT face=Verdana>yield data</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>yield '(' [ 表达式 [',' 表达式 ... ]] ')'
-yield [ 表达式 [',' 表达式 ... ]]</FONT></PRE>
+<P>实例：</P><PRE>yield data</PRE>
+<P>语法：</P><PRE>yield '(' [ 表达式 [',' 表达式 ... ]] ')'
+yield [ 表达式 [',' 表达式 ... ]]</PRE>
 <P>将参数传递给区块作为参数，然后对区块进行计算。yield 是在 <A 
 href="syntax07.html#L000330">方法定义</A>&nbsp;定义 <A 
-href="#L000323">迭代器</A>&nbsp;时使用的语句。</P><PRE><FONT face=Verdana>def foo
+href="#L000323">迭代器</A>&nbsp;时使用的语句。</P><PRE>def foo
   yield(1,2)
 end
 
-foo {|a,b| p [a,b]}</FONT></PRE>
+foo {|a,b| p [a,b]}</PRE>
 <P>区块参数的赋值操作遵从 <A href="syntax04.html#L000288">多重赋值</A>&nbsp;的规律，若是没有提供区块给执行 
 yield 的方法（也就是说该方法非迭代器）则会抛出 <A 
 href="s_exceptions.html#LocalJumpError">LocalJumpError（异常：原地跳转）</A> 异常。</P>
-<P><FONT face=Verdana><CODE>yield 返回该区块最后计算的表达式结果。若是区块的执行由</CODE> </FONT><A 
+<P><CODE>yield 返回该区块最后计算的表达式结果。若是区块的执行由</CODE> <A 
 href="syntax05.html#L000309">next</A>&nbsp;中断则返回 nil 。当 next 包含参数时，则返回该参数之值。</P>
 <H6></H6></BODY></HTML>

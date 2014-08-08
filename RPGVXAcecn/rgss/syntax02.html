@@ -5,7 +5,7 @@
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.17744"></HEAD>
 <BODY>
-<H1 align=left><FONT face=Verdana>变量与常量</FONT></H1>
+<H1 align=left>变量与常量</H1>
 <UL>
   <LI>
   <DIV align=left><A href="#L000225">区域变量</A> </DIV>
@@ -25,23 +25,23 @@ href="s_variables.html">内建变量</A>&nbsp;）</P>
 <P align=left>变量或常量会指向特定对象，将对象代入变量/常量只是变更了指定的对象，并不会复制该对象的实例。</P>
 <H2 align=left>区域变量</H2>
 <P align=left>实例：</P>
-<DIV align=left><PRE><FONT face=Verdana>foobar</FONT></PRE></DIV>
+<DIV align=left><PRE>foobar</PRE></DIV>
 <P>以小写字母或是下划线开头的标识符就是区域变量或是方法调用。</P>
 <P>在区域变量作用区（类、模块、方法定义）内，初次对这类的标识符赋值则视为（该区内的）变量声明。引用未声明的标识符则视为调用无参数的方法。</P>
 <H2 align=left><A name=L000226>实例变量</A></H2>
 <P align=left>实例：</P>
-<DIV align=left><PRE><FONT face=Verdana>@foobar</FONT></PRE></DIV>
+<DIV align=left><PRE>@foobar</PRE></DIV>
 <P>以「<FONT 
 face=Verdana><CODE>@」</CODE>开头的变量就是实例变量，属于特定对象。实例变量可以在任何本类或子类方法内引用。引用时，未初始化的实例变量其值为 
 nil。</FONT></P>
 <H2 align=left><A name=L000227>类变量</A></H2>
 <P align=left>实例：</P>
-<DIV align=left><PRE><FONT face=Verdana>class Foo
+<DIV align=left><PRE>class Foo
   @@foo = 1
   def bar
     puts @@foo
   end
-end</FONT></PRE></DIV>
+end</PRE></DIV>
 <P>以「<FONT 
 face=Verdana><CODE>@@</CODE>」开头的变量就是类变量。类变量在类定义中声明，可以由特殊类方法或实例方法等所引用/赋值。</FONT></P>
 <P align=left>类变量与 <A href="#L000236">常量</A> 的差异如下：</P>
@@ -50,7 +50,7 @@ face=Verdana><CODE>@@</CODE>」开头的变量就是类变量。类变量在类定义中声明，可以由
   <LI>无法在本类以外直接引用，但可以在子类中引用/赋值。 </LI></UL>
 <H2 align=left><A name=L000228>全局变量</A></H2>
 <P align=left>实例：</P>
-<DIV align=left><PRE><FONT face=Verdana>$foobar</FONT></PRE></DIV>
+<DIV align=left><PRE>$foobar</PRE></DIV>
 <P>以「$」开头的变量就是全局变量，可以在程序中任何一处引用（因此使用时要特别注意）。全局变量不需要声明，引用时若未初始化其值为 nil。</P>
 <H2 align=left><A name=L000229>伪变量</A></H2>
 <P>除了一般变量外，还有一种叫做伪变量的特殊变量。</P>
@@ -75,11 +75,11 @@ face=Verdana><CODE>@@</CODE>」开头的变量就是类变量。类变量在类定义中声明，可以由
 <P>伪变量的值无法修改，对伪变量赋值会出现语法错误。</P>
 <H2 align=left><A name=L000236>常量</A></H2>
 <P align=left>实例：</P>
-<DIV align=left><PRE><FONT face=Verdana>FOOBAR</FONT></PRE></DIV>
+<DIV align=left><PRE>FOOBAR</PRE></DIV>
 <P align=left>以大写英文字母开头的标识符为常量。对常量赋值就是定义（与初始化）；常量不可在方法中声明。存取未定义常量会产生 <A 
 href="s_exceptions.html#NameError">NameError</A> 异常。</P>
 <P>常量可以在类或模块中定义，可以由子类、包含该模块的类、和该模块所引用。在类/模块外引用常量需要使用运算符「::」。</P>
-<DIV align=left><PRE><FONT face=Verdana>class Foo
+<DIV align=left><PRE>class Foo
   FOO = 'FOO'
 end
 
@@ -87,6 +87,6 @@ class Bar &lt; Foo
   p FOO             # =&gt; "FOO"
 end
 
-p Foo::FOO          # =&gt; "FOO"</FONT></PRE></DIV>
+p Foo::FOO          # =&gt; "FOO"</PRE></DIV>
 <P>类和模块的名称视为常数处理。</P>
 <H6 align=left></H6></BODY></HTML>

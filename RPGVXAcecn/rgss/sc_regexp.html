@@ -1,32 +1,32 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Regexp</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>Regexp</H1>
-<P><A href="appendix01.html">正则表达式</A>&nbsp;的类，详细请参考 <A 
+<P><A href="appendix01.html">正则表达式</A>&nbsp;的类，详细请参考 <A
 href="syntax03.html#L000274">正则表达式</A>&nbsp;。</P>
 <H2>超类</H2>
 <UL>
   <LI><A href="sc_object.html">Object</A> </LI></UL>
 <H2>类方法</H2>
 <DL>
-  <DT><A name=L001314>Regexp.last_match</A> 
+  <DT><A name=L001314>Regexp.last_match</A>
   <DD>
-  <P>返回在当前作用域中上次匹配成功正则表达式 <A href="sc_matchdata.html">MatchData</A>&nbsp;物件，与调用 <A href="s_variables.html#L000428">$~</A> 相当。</P><PRE>/(.)(.)/ =~ "ab"
+  <P>返回在当前作用域中上次匹配成功正则表达式 <A href="sc_matchdata.html">MatchData</A>&nbsp;对象，与调用 <A href="s_variables.html#L000428">$~</A> 相当。</P><PRE>/(.)(.)/ =~ "ab"
 p Regexp.last_match      # =&gt; #&lt;MatchData:0x4599e58&gt;
 p Regexp.last_match[0]   # =&gt; "ab"
 p Regexp.last_match[1]   # =&gt; "a"
 p Regexp.last_match[2]   # =&gt; "b"
 p Regexp.last_match[3]   # =&gt; nil
 </PRE>
-  <DT>Regexp.last_match([<VAR>nth</VAR>]) 
+  <DT>Regexp.last_match([<VAR>nth</VAR>])
   <DD>
-  <P>若整数 <VAR>nth</VAR> 为 0，返回匹配字符串（<A 
-  href="s_variables.html#L000427">$&amp;</A>）。否则返回匹配第 <VAR>nth</VAR> 组括号的子字符串（<A 
-  href="s_variables.html#L000432">$1</A>, <A 
+  <P>若整数 <VAR>nth</VAR> 为 0，返回匹配字符串（<A
+  href="s_variables.html#L000427">$&amp;</A>）。否则返回匹配第 <VAR>nth</VAR> 组括号的子字符串（<A
+  href="s_variables.html#L000432">$1</A>, <A
   href="s_variables.html#L000433">$2</A>, ）。若没有对应的括号或该组括号没有匹配成功，则返回 nil。</P><PRE>/(.)(.)/ =~ "ab"
 p Regexp.last_match      # =&gt; #&lt;MatchData:0x4599e58&gt;
 p Regexp.last_match(0)   # =&gt; "ab"
@@ -34,28 +34,28 @@ p Regexp.last_match(1)   # =&gt; "a"
 p Regexp.last_match(2)   # =&gt; "b"
 p Regexp.last_match(3)   # =&gt; nil
 </PRE>
-  <P>不带参数的 Regexp.last_match，当整个正则表达式匹配失败时会返回 nil，因此 last_match[1] 的格式会抛出 <A 
-  href="s_exceptions.html#NameError">NameError（异常：名称错误）</A> 异常，相反的 last_match(1) 
+  <P>不带参数的 Regexp.last_match，当整个正则表达式匹配失败时会返回 nil，因此 last_match[1] 的格式会抛出 <A
+  href="s_exceptions.html#NameError">NameError（异常：名称错误）</A> 异常，相反的 last_match(1)
   会返回 nil。</P></DD></DL>
 <H2>方法</H2>
 <DL>
-  <DT><VAR>self</VAR> =~ <VAR>string</VAR> 
-  <DT><VAR>self</VAR> === <VAR>string</VAR> 
+  <DT><VAR>self</VAR> =~ <VAR>string</VAR>
+  <DT><VAR>self</VAR> === <VAR>string</VAR>
   <DD>
   <P>将 string 字符串与正则表达式进行匹配。若参数非字符串或匹配失败，则返回 false；若匹配成功，返回 true。</P>
   <P>匹配的信息储存于内建变量 <A href="s_variables.html#L000428">$~</A>&nbsp;中。</P>
-  <P>若 <VAR>string</VAR> 非 nil 也非 <A href="sc_string.html">String</A> 对象，抛出 
-  <A href="s_exceptions.html#TypeError">TypeError型错误）</A> 异常。</P>
-  <DT><A name=L001322>match(<VAR>str</VAR>)</A> 
+  <P>若 <VAR>string</VAR> 非 nil 也非 <A href="sc_string.html">String</A> 对象，抛出
+  <A href="s_exceptions.html#TypeError">TypeError</A> ）异常。</P>
+  <DT><A name=L001322>match(<VAR>str</VAR>)</A>
   <DD>
-  <P>相当于 self=~str，只是不会返回 <A href="sc_matchdata.html">MatchData）</A> 
-  物件。若匹配失败则返回 nil。</P>
+  <P>相当于 self=~str，只是不会返回 <A href="sc_matchdata.html">MatchData）</A>
+  对象。若匹配失败则返回 nil。</P>
   <P>若是只需要用正则表达式匹配子字符串时，可以这样使用 match(str) ：</P><PRE>bar = /foo(.*)baz/.match("foobarbaz").to_a[1]
 
 _, foo, bar, baz = */(foo)(bar)(baz)/.match("foobarbaz")
 </PRE>
   <P>to_a 则可以允许出现匹配失败的情况。</P>
-  <DT>to_s 
+  <DT>to_s
   <DD>
   <P>生成并返回正则表达式的字符串表达式。既使将返回的字符串嵌入在另一个正则表达式中，依然保留其意义。</P><PRE>re = /foo|bar|baz/i
 p re.to_s       # =&gt; "(?i-mx:foo|bar|baz)"

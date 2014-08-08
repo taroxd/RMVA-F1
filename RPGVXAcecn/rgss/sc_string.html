@@ -7,7 +7,7 @@ type=text/css href="../style.css">
 <BODY>
 <H1>String</H1>
 <P>字符串的类。可以处理任意长度的字节串。详细参看 <A href="syntax03.html#L000254">Sprintf
-格式化字符串</A>&nbsp;。</P>
+格式</A>&nbsp;。</P>
 <H2>超类</H2>
 <UL>
   <LI><A href="sc_object.html">Object</A> </LI></UL>
@@ -114,7 +114,7 @@ p "foo".to_sym.to_s == "foo"        # =&gt; true
   <DT><A name=L001412>scan(<VAR>re</VAR>)</A>
   <DT>scan(<VAR>re</VAR>) {|<VAR>s</VAR>| ... }
   <DD>
-  <P>重复将 self 匹配与争归表达式 <VAR>re</VAR> 进行匹配，并返回匹配成功的子字符串的数组。 </P><PRE>p "foobarbazfoobarbaz".scan(/ba./)
+  <P>重复将 self 匹配与正则表达式 <VAR>re</VAR> 进行匹配，并返回匹配成功的子字符串的数组。 </P><PRE>p "foobarbazfoobarbaz".scan(/ba./)
 # =&gt; ["bar", "baz", "bar", "baz"]
 
 p "abcde".scan(/./)
@@ -148,7 +148,7 @@ p "abcde".scan(/./)
   <DT>to_i([<VAR>base</VAR>])
   <DD>
   <P>将字符串视为数值表达式并转换成整数。</P>
-  <P>预设为 10进制。若指定了 <VAR>base</VAR>，可以进行 2～36 进制的转换。</P></DD>
+  <P>预设为10进制。若指定了 <VAR>base</VAR>，可以进行 2～36 进制的转换。</P></DD>
   <DT><A name=L001450>upcase</A>
   <DT>upcase!
   <DD>

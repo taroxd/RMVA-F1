@@ -5,7 +5,7 @@
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.17744"></HEAD>
 <BODY>
-<H1><FONT face=Verdana>字面值</FONT></H1>
+<H1>字面值</H1>
 <UL>
   <LI><A href="#L000240">数字字面值</A>
   <LI><A href="#L000254">字符串字面值</A>
@@ -44,16 +44,16 @@ type=text/css href="../style.css">
   <DT>0o377
   <DD>
   <P>整数（八进制）</P></DD></DL>
-<P>数字字面值可以包含下划线，但Ruby的解释器会自动忽视，不会另做特别处理。因此在处理数值很大的整数时，可以作为千位分界符使用。然而在字面值之前后放置下划线，或是连续放置数个下划线，则会导致错误。</P><PRE><FONT face=Verdana>1_000_000_000   # =&gt; 1000000000
-0xffff_ffff            # =&gt; 0xffffffff</FONT></PRE>
+<P>数字字面值可以包含下划线，但Ruby的解释器会自动忽视，不会另做特别处理。因此在处理数值很大的整数时，可以作为千位分界符使用。然而在字面值之前后放置下划线，或是连续放置数个下划线，则会导致错误。</P><PRE>1_000_000_000   # =&gt; 1000000000
+0xffff_ffff            # =&gt; 0xffffffff</PRE>
 <H2>字符串字面值</H2>
-<P>实例：</P><PRE><FONT face=Verdana>"这是字符串表达式\n"
-'这是字符串表达式'</FONT></PRE>
+<P>实例：</P><PRE>"这是字符串表达式\n"
+'这是字符串表达式'</PRE>
 <P><A href="sc_string.html">字符串</A> 表达式以单引号（'）或双引号（"）开头并结尾。</P>
 <P>使用双引号时，可以使用 <A href="#L000255">控制符</A>&nbsp;与 <A href="#L000271">内嵌表达式</A>
 。单引号则不行（除了 \' 和 \\ 以外）。</P>
-<P>以空白符间隔的多个字符串表达式视为同一个字符串。</P><PRE><FONT face=Verdana>p "foo" "bar"   # =&gt; "foobar"</FONT></PRE>
-<H3><A name=L000255><FONT face=Verdana>控制符</FONT></A></H3>
+<P>以空白符间隔的多个字符串表达式视为同一个字符串。</P><PRE>p "foo" "bar"   # =&gt; "foobar"</PRE>
+<H3><A name=L000255>控制符</A></H3>
 <P>注：在日文字体中，"\"和"&#165;"拥有相同的效力。</P>
 <DL>
   <DT>\t
@@ -86,16 +86,16 @@ type=text/css href="../style.css">
   <DT>\xnn
   <DD>
   <P>十六进制代码&nbsp;nn (n = 0-9, a-f)</P></DD></DL>
-<H3><A name=L000271><FONT face=Verdana>内嵌表达式</FONT></A></H3>
+<H3><A name=L000271>内嵌表达式</A></H3>
 <P>在由双引号包围的字符串以及正则表达式中可以使用「#{表达式}」" ，可以将表达式的内容以字符串的形式嵌入其中。若该表达式是带有 $ 或 @
 记号的变量名称，则可以省去大括号 { }，也就是「#变量名称」的格式。井号(#)的后面若不是
-{、$、@，则是表示井号本身。若是不使用内嵌表达式，在井号的前面加上反斜杠(\)。</P><PRE><FONT face=Verdana>$ruby = "RUBY"
+{、$、@，则是表示井号本身。若是不使用内嵌表达式，在井号的前面加上反斜杠(\)。</P><PRE>$ruby = "RUBY"
 p "my name is #{$ruby}"     # =&gt; "my name is RUBY"
-p 'my name is #{$ruby}'     # =&gt; "my name is #{$ruby}"</FONT></PRE>
+p 'my name is #{$ruby}'     # =&gt; "my name is #{$ruby}"</PRE>
 <H2><A name=L000274>正则表达式字面值</A></H2>
-<P>实例：</P><PRE><FONT face=Verdana>/^Ruby the OOPL/
+<P>实例：</P><PRE>/^Ruby the OOPL/
 /Ruby/i
-/my name is #{myname}/</FONT></PRE>
+/my name is #{myname}/</PRE>
 <P>在两条斜线 (/) 之中的字符串称为正则表达式字面值，是 <A href="sc_regexp.html">Regexp</A> 类的实例。</P>
 <P>在表达式中使用的转变符，请参看 <A href="appendix01.html">正则表达式</A> 。</P>
 <P>在最后的斜线后面加上以下字母可以设定该正则表达式字面值的选项：</P>
@@ -112,35 +112,35 @@ p 'my name is #{$ruby}'     # =&gt; "my name is #{$ruby}"</FONT></PRE>
 <P>若正则表达式中不包含 <A href="#L000271">内嵌表达式</A>&nbsp;的话 ，每次计算之后都会返回同一个正则表达式对象。若包含 <A
 href="#L000271">内嵌表达式</A> ，则每次计算都会（依照所含有的内嵌表达式）返回一个新生成的正则表达式对象。</P>
 <H2><A name=L000279>数组表达式</A></H2>
-<P>实例：</P><PRE><FONT face=Verdana>[1, 2, 3]</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>'[' 表达式 ',' ... ']'</FONT></PRE>
+<P>实例：</P><PRE>[1, 2, 3]</PRE>
+<P>语法：</P><PRE>'[' 表达式 ',' ... ']'</PRE>
 <P>计算每一个表达式，并返回包含所得值的数组，数组是 <A href="sc_array.html">Array</A>&nbsp;类的实例。</P>
 <P>数组表达式每次计算都会返回新的数组对象。</P>
 <H2><A name=L000280>哈希表表达式</A></H2>
-<P>实例：</P><PRE><FONT face=Verdana>{1=&gt;2, 2=&gt;4, 3=&gt;6}</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>'{' 表达式 '=&gt;' 表达式 ',' ... '}'
-'{' 表达式 ',' 表达式 ',' ... '}'</FONT></PRE>
+<P>实例：</P><PRE>{1=&gt;2, 2=&gt;4, 3=&gt;6}</PRE>
+<P>语法：</P><PRE>'{' 表达式 '=&gt;' 表达式 ',' ... '}'
+'{' 表达式 ',' 表达式 ',' ... '}'</PRE>
 <P>返回将每个最终值对应其主键的哈希表对象。哈希表是 <A href="sc_hash.html">Hash</A>&nbsp;类的实例。</P>
 <P>哈希表，又称为关联数组，可以将任一类型的对象与另（任）一类型对象进行关连。</P>
 <P>哈希表表达式每次计算后返回一个新的哈希表对象。</P>
 <H2><A name=L000281>范围表达式</A></H2>
-<P>实例：</P><PRE><FONT face=Verdana>1 .. 20</FONT></PRE>
-<P>Syntax:</P><PRE><FONT face=Verdana>表达式1 '..' 表达式2
-表达式1 '...' 表达式2</FONT></PRE>
+<P>实例：</P><PRE>1 .. 20</PRE>
+<P>Syntax:</P><PRE>表达式1 '..' 表达式2
+表达式1 '...' 表达式2</PRE>
 <P>在非条件表达式的情况下，则返回由表达式1至表达式2的范围对象。范围对象是 <A
 href="sc_range.html">Range</A>&nbsp;类的实例。</P>
 <P>使用 .. 运算符生成的范围对象则包含最后的表达式，而使用 ... 的则不包括。</P>
 <P>若是表达式的两端皆是数字字面值，则每次计算都返回同一个范围对象；否则每次计算都返回一个新的范围对象。</P>
 <H2><A name=L000282>符号</A></H2>
-<P>实例：</P><PRE><FONT face=Verdana>:class
+<P>实例：</P><PRE>:class
 :lvar
 :method
 :$gvar
 :@ivar
-:+</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>':' 标识符
+:+</PRE>
+<P>语法：</P><PRE>':' 标识符
 ':' 变量名
-':' 运算符</FONT></PRE>
+':' 运算符</PRE>
 <P>返回与任何字符串有一对一对应关系的符号。符号是 <A href="sc_symbol.html">Symbol</A> 类的实例。</P>
 <P>符号每次计算时总是返回同一个符号对象。</P>
 <H6></H6></BODY></HTML>

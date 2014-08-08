@@ -143,8 +143,8 @@ p sprintf("%p", [1, 2, 3])      # =&gt; "[1, 2, 3]"
   <P>&nbsp;</P>
   <DT>u 
   <DD>
-  <P><FONT face=Verdana>将参数值视为无符号整数，并以 10 
-  进制整数输出。</FONT></P><PRE>p sprintf("%u", -1) # =&gt; "4294967295"
+  <P>将参数值视为无符号整数，并以 10 
+  进制整数输出。</P><PRE>p sprintf("%u", -1) # =&gt; "4294967295"
 </PRE>
   <P>会输出 p 0xffff_ffff.to_s.</P>
   <P>「%u」将定长整数视为参数，而</P><PRE>printf("%u", n)
@@ -196,20 +196,20 @@ p sprintf("%g", 10.1) # =&gt; "10.1"
 p sprintf("%g", 10 ** 6)  # =&gt; "1e+006"
 p sprintf("%g", 10 ** -5) # =&gt; "1e-005"
 </PRE>
-  <P><FONT face=Verdana>预设的精度值为 6。</FONT></P></DD></DL>
+  <P>预设的精度值为 6。</P></DD></DL>
 <H2>指定参数</H2>
-<P><FONT face=Verdana>并不常使用，因此最后解释。</FONT></P>
+<P>并不常使用，因此最后解释。</P>
 <DL>
   <DT>nth$ 
   <DD>
-  <P><FONT face=Verdana>指定第 nth 个执行的参数。</FONT></P><PRE>p sprintf("%1$d, %1$x, %1$o", 10)
+  <P>指定第 nth 个执行的参数。</P><PRE>p sprintf("%1$d, %1$x, %1$o", 10)
 =&gt; "10, a, 12"
 
 p sprintf("%3$d, %2$x, %1$o", 1, 2, 3)
 =&gt; "3, 2, 1"
 </PRE>
-  <P><FONT face=Verdana>当想要依照场合改变格式，又不想要变更参数的顺序时可以使用。 
-  </FONT></P><PRE>case ENV['LC_TIME']
+  <P>当想要依照场合改变格式，又不想要变更参数的顺序时可以使用。 
+  </P><PRE>case ENV['LC_TIME']
 when /^ja_JP/
    fmt = "%1$d年%2$d月%3$d日"
 else

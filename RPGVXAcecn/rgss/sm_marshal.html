@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Marshal</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
@@ -9,19 +9,19 @@ type=text/css href="../style.css">
 <P>提供将 Ruby 对象写入或读出文件（或字符串）的能力。</P>
 <H2>模块方法</H2>
 <DL>
-  <DT>Marshal.dump(<VAR>obj</VAR>[, <VAR>port</VAR>][, <VAR>limit</VAR>]) 
+  <DT>Marshal.dump(<VAR>obj</VAR>[, <VAR>port</VAR>][, <VAR>limit</VAR>])
   <DD>
   <P>将 <VAR>obj</VAR> 对象递归写入文件。</P>
-  <P>有些对象，如 <A href="sc_file.html">File</A>&nbsp;或 <A 
-  href="c_matchdata.html">MatchData</A>&nbsp;，或定义了特殊方法的对象，无法写入文件中。若尝试将这类对象写入文件会抛出 <A 
-  href="s_exceptions.html#TypeError">TypeError型错误）</A> 异常。</P>
-  <P><VAR>port</VAR> 指定 IO）的实例。此时会返回 <VAR>port</VAR>。省略时，dump 
+  <P>有些对象，如 <A href="sc_file.html">File</A>&nbsp;或 <A
+  href="c_matchdata.html">MatchData</A>&nbsp;，或定义了特殊方法的对象，无法写入文件中。若尝试将这类对象写入文件会抛出 <A
+  href="s_exceptions.html#TypeError">TypeError</A> 异常。</P>
+  <P><VAR>port</VAR> 指定 IO）的实例。此时会返回 <VAR>port</VAR>。省略时，dump
   会将对象递归以字符串形式返回。</P>
-  <P>若指定了&nbsp;<VAR>limit</VAR> ，则不会将递归深于 <VAR>limit</VAR> （预设100）层的链接对象。若 
+  <P>若指定了&nbsp;<VAR>limit</VAR> ，则不会将递归深于 <VAR>limit</VAR> （预设100）层的链接对象。若
   <VAR>limit</VAR> 为负数，则不会进行层数检查。</P>
-  <DT>Marshal.load(<VAR>port</VAR>) 
+  <DT>Marshal.load(<VAR>port</VAR>)
   <DD>
-  <P>从 <VAR>port</VAR> 
-  中读取递归数据（Marshal.dump所输出的字符串）并生成与原对象同样状态的对象。<VAR>port</VAR> 指定 
+  <P>从 <VAR>port</VAR>
+  中读取递归数据（Marshal.dump所输出的字符串）并生成与原对象同样状态的对象。<VAR>port</VAR> 指定
   IO）的实例。</P></DD></DL>
 <H6></H6></BODY></HTML>

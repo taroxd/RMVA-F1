@@ -5,7 +5,7 @@
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.17744"></HEAD>
 <BODY>
-<H1><FONT face=Verdana>语法与表达式</FONT></H1>
+<H1>语法与表达式</H1>
 <UL>
   <LI><A href="#L000213">标识符</A>
   <LI><A href="#L000214">注释</A>
@@ -14,27 +14,27 @@ type=text/css href="../style.css">
 <P>Ruby 是会区分大小写字母的编程语言。除了标识符和部分的字面值以外，可以在任何需要之处使用空格符（包括空格、space、tab、垂直
 tab、backspace、归位、换页）或注释。换行字符只有在明显表示语句尚未结束时（例如以","结尾），才会被当作空格符，否则视为断句符号。</P>
 <H2>标示符</H2>
-<P>例如：</P><PRE><FONT face=Verdana>foobar
-ruby_is_simple</FONT></PRE>
+<P>例如：</P><PRE>foobar
+ruby_is_simple</PRE>
 <P>Ruby 的标识符以字母或是下划线（ _ ）开头，并以字母、数字或下划线组成，长度不限。</P>
 <H2>注释</H2>
-<P>例如：</P><PRE><FONT face=Verdana># 这是一行注释<BR></FONT></PRE>
+<P>例如：</P><PRE># 这是一行注释<BR></PRE>
 <P>除了内嵌表达式，在井号（#）后面的文字一概视为注释。</P>
 <H2><A name=L000216>保留字</A></H2>
-<P>具体的保留字如下：</P><PRE><FONT face=Verdana>BEGIN    class      ensure   nil         self         when
+<P>具体的保留字如下：</P><PRE>BEGIN    class      ensure   nil         self         when
 END       def        false      not        super     while
 alias       defined  for         or         then       yield
 and        do          if           redo     true
 begin     else        in           rescue  undef
 break     elsif       module   retry     unless
-case      end        next       return   until</FONT></PRE>
+case      end        next       return   until</PRE>
 <P>保留字无法用来当作类、变量之类的名称，然而若以 $ 或 @
 开头则不视为保留字。此外，这些字可以被写在"def"后面作为函数名，或是在"."后面作为被调用的方法，或是任何表明该字是作为方法使用的情况下，也可以作为方法的名称。</P>
 <H2><A name=L000219>表达式</A></H2>
-<P>例如：</P><PRE><FONT face=Verdana>true
+<P>例如：</P><PRE>true
 (1+2)*3
 foo()
-if test then ok else ng end</FONT></PRE>
+if test then ok else ng end</PRE>
 <P>变量、字面值、运算符和控制结构等统称为"表达式"。<BR><BR>表达式集合起来就可以成为 Ruby
 的程序。使用分号（;）或换行符来分隔表达式，不过包含反斜杠（\）的换行符则会被视为是空格符，也就是说，表达式用其他方法换行后不会中断。</P>
 <P>表达式可以用括号（）分群。</P>

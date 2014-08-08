@@ -1,65 +1,65 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Object</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.17744"></HEAD>
 <BODY>
-<H1><FONT face=Verdana>Object</FONT></H1>
+<H1>Object</H1>
 <P>所有类的超类，定义了一般对象的行为。</P>
 <H2>包含的模块</H2>
 <UL>
   <LI><A href="sm_kernel.html">Kernel</A> </LI></UL>
 <H2>方法</H2>
 <DL>
-  <DT><A name=L000555><VAR>self</VAR> == <VAR>other</VAR></A> 
+  <DT><A name=L000555><VAR>self</VAR> == <VAR>other</VAR></A>
   <DD>
-  <P>检查 <VAR>self</VAR> 和 <VAR>other</VAR> 是否相等，预设情况下与 
+  <P>检查 <VAR>self</VAR> 和 <VAR>other</VAR> 是否相等，预设情况下与
   <VAR>equal?</VAR>有相同的效果。</P>
   <P>此方法应需要依照各类的性质来重新定义。</P>
-  <DT><VAR>self</VAR> === <VAR>other</VAR> 
+  <DT><VAR>self</VAR> === <VAR>other</VAR>
   <DD>
-  <P>此方法多是是用于 <A href="syntax05.html#L000301">case</A> 判断句中。预设情况下与 <A 
+  <P>此方法多是是用于 <A href="syntax05.html#L000301">case</A> 判断句中。预设情况下与 <A
   href="#L000555">Object#==</A> 相同。在子类中进行归属检查时，可以根据情况重新定义。</P>
-  <DT>class 
+  <DT>class
   <DD>
   <P>返回调用者所属的类。</P>
-  <DT>clone 
-  <DT>dup 
+  <DT>clone
+  <DT>dup
   <DD>
-  <P>生成物件的副本。clone 返回对象的完整副本，包括冻结状态和特殊方法。而 dup 只有复制对象内容而已。</P>
+  <P>生成对象的副本。clone 返回对象的完整副本，包括冻结状态和特殊方法。而 dup 只有复制对象内容而已。</P>
   <P>注意，clone 和 dup 执行的是简单复制。所复制的是对象本身，而不是对象所指的对象（例如数组元素）。</P>
-  <P>复制的对象</P><PRE><FONT face=Verdana>obj.equal?(obj.clone)
-</FONT></PRE>
-  <P>通常不成立，但是</P><PRE><FONT face=Verdana>obj == obj.clone
-</FONT></PRE>
+  <P>复制的对象</P><PRE>obj.equal?(obj.clone)
+</PRE>
+  <P>通常不成立，但是</P><PRE>obj == obj.clone
+</PRE>
   <P>则通常都会成立。</P>
-  <P>若是尝试复制&nbsp;true、false、nil、<A href="sc_numeric.html">Numeric 数字</A>、 <A 
-  href="sc_symbol.html">Symbol 符号</A>&nbsp;之类的对象则会抛出 <A 
+  <P>若是尝试复制&nbsp;true、false、nil、<A href="sc_numeric.html">Numeric 数字</A>、 <A
+  href="sc_symbol.html">Symbol 符号</A>&nbsp;之类的对象则会抛出 <A
   href="s_exceptions.html#TypeError">TypeError型错误）</A>&nbsp;。</P>
-  <DT>equal?(<VAR>other</VAR>) 
+  <DT>equal?(<VAR>other</VAR>)
   <DD>
   <P>当&nbsp;<VAR>other</VAR> 是 <VAR>self</VAR> 时，返回 true。此方法不可以被重新定义。</P>
-  <DT>freeze 
+  <DT>freeze
   <DD>
-  <P>冻结对象，即禁止改动对象的内容，若是修改冻结对象会抛出 <A 
+  <P>冻结对象，即禁止改动对象的内容，若是修改冻结对象会抛出 <A
   href="s_exceptions.html#TypeError">TypeError型错误）</A>&nbsp;。</P>
-  <DT>frozen? 
+  <DT>frozen?
   <DD>
-  <P>若是物件被冻结则返回 true。</P>
-  <DT><A name=L000572>inspect</A> 
+  <P>若是对象被冻结则返回 true。</P>
+  <DT><A name=L000572>inspect</A>
   <DD>
   <P>将对象以人类可读的字符串形式返回。</P>
-  <DT>instance_of?(<VAR>klass</VAR>) 
+  <DT>instance_of?(<VAR>klass</VAR>)
   <DD>
-  <P>若 <VAR>self</VAR> 是 klass 
+  <P>若 <VAR>self</VAR> 是 klass
   类的直属实例，则返回 true。当 obj.instance_of?(c) 成立时，obj.kind_of?(c) 也一定会成立。</P>
-  <DT><A name=instance_variable_get>instance_variable_get(<VAR>var</VAR>)</A> 
+  <DT><A name=instance_variable_get>instance_variable_get(<VAR>var</VAR>)</A>
   <DD>
   <P>获取并返回该对象的实例变量。</P>
-  <P>其中的参数 var 必须是字符串或者&nbsp;<A 
+  <P>其中的参数 var 必须是字符串或者&nbsp;<A
   href="ata/Local/Temp/RPGVXAce/rgss/sc_symbol.html">Symbol 符号</A>&nbsp;的形式。</P>
-  <P>如果目标变量没有被定义，则会返回nil。</P><PRE><FONT face=Verdana>class Foo
+  <P>如果目标变量没有被定义，则会返回nil。</P><PRE>class Foo
   def initialize
     @foo = 1
   end
@@ -69,31 +69,31 @@ obj = Foo.new
 p obj.instance_variable_get("@foo")     # =&gt; 1
 p obj.instance_variable_get(:@foo)      # =&gt; 1
 p obj.instance_variable_get(:@bar)      # =&gt; nil
-</FONT></PRE>
-  <DT><A name=instance_variable_set>instance_variable_set(<VAR>var</VAR>, 
-  <VAR>val</VAR>)</A> 
+</PRE>
+  <DT><A name=instance_variable_set>instance_variable_set(<VAR>var</VAR>,
+  <VAR>val</VAR>)</A>
   <DD>
   <P>设置对象中的变量的变量名 var 和变量值 val 。</P>
-  <P>其中的参数 var 必须是字符串或者&nbsp;<A 
+  <P>其中的参数 var 必须是字符串或者&nbsp;<A
   href="ata/Local/Temp/RPGVXAce/rgss/sc_symbol.html">Symbol 符号</A>&nbsp;的形式。</P>
-  <P>如果所输入的变量在之前并没有被定义，那么它会被函数自动定义。</P><PRE><FONT face=Verdana>obj = Object.new
+  <P>如果所输入的变量在之前并没有被定义，那么它会被函数自动定义。</P><PRE>obj = Object.new
 p obj.instance_variable_set("@foo", 1)  # =&gt; 1
 p obj.instance_variable_set(:@foo, 2)   # =&gt; 2
 p obj.instance_variable_get(:@foo)      # =&gt; 2
-</FONT></PRE>
-  <DT><A name=instance_variables>instance_variables</A> 
+</PRE>
+  <DT><A name=instance_variables>instance_variables</A>
   <DD>
-  <P>以字符串数组的形式返回对象中所有变量的名字。</P><PRE><FONT face=Verdana>obj = Object.new
+  <P>以符号数组的形式返回对象中所有变量的名字。</P><PRE>obj = Object.new
 obj.instance_eval { @foo, @bar = nil }
 p obj.instance_variables
 
-# =&gt; ["@foo", "@bar"]
-</FONT></PRE>
-  <DT>is_a?(<VAR>mod</VAR>) 
-  <DT><A name=L000580>kind_of?(<VAR>mod</VAR>)</A> 
+# =&gt; [:@foo, :@bar]
+</PRE>
+  <DT>is_a?(<VAR>mod</VAR>)
+  <DT><A name=L000580>kind_of?(<VAR>mod</VAR>)</A>
   <DD>
-  <P>当&nbsp;<VAR>self</VAR> 是 <VAR>mod</VAR> 类（或其子类）或是包含了 <VAR>mod</VAR> 
-  模块的类（或其子类）的实例时，返回 true。</P><PRE><FONT face=Verdana>module M
+  <P>当&nbsp;<VAR>self</VAR> 是 <VAR>mod</VAR> 类（或其子类）或是包含了 <VAR>mod</VAR>
+  模块的类（或其子类）的实例时，返回 true。</P><PRE>module M
 end
 class C &lt; Object
   include M
@@ -107,51 +107,51 @@ p obj.is_a? M       # true
 p obj.is_a? C       # true
 p obj.is_a? Object  # true
 p obj.is_a? Hash    # false
-</FONT></PRE>
-  <DT><A name=method>method(<VAR>name</VAR>)</A> 
+</PRE>
+  <DT><A name=method>method(<VAR>name</VAR>)</A>
   <DD>
-  <P>返回对象中名为 name&nbsp;的 <A href="sc_method.html">Method</A>&nbsp;对象。 
+  <P>返回对象中名为 name&nbsp;的 <A href="sc_method.html">Method</A>&nbsp;对象。
   <VAR>name</VAR>&nbsp;可以是 <A href="sc_symbol.html">符号</A>&nbsp;或者字符串。</P>
-  <DT>nil? 
+  <DT>nil?
   <DD>
   <P>检查调用者是否为 nil。</P>
-  <DT>respond_to?(<VAR>name</VAR>[, <VAR>priv</VAR>=<VAR>false</VAR>]) 
+  <DT>respond_to?(<VAR>name</VAR>[, <VAR>priv</VAR>=<VAR>false</VAR>])
   <DD>
   <P>如果该对象有公共方法 name 的话，返回&nbsp;true 。</P>
-  <P><VAR>name</VAR>&nbsp;可以是 <A href="sc_symbol.html">符号</A>&nbsp;或者字符串。 如果参数 
+  <P><VAR>name</VAR>&nbsp;可以是 <A href="sc_symbol.html">符号</A>&nbsp;或者字符串。 如果参数
   priv 的默认值为true ，那么即使 name 是私有方法，函数也依旧返回 true&nbsp;。</P>
-  <DT>send(<VAR>name</VAR>[, <VAR>args</VAR> ... ]) 
-  <DT>send(<VAR>name</VAR>[, <VAR>args</VAR> ... ]) { .... }</CODE> 
+  <DT>send(<VAR>name</VAR>[, <VAR>args</VAR> ... ])
+  <DT>send(<VAR>name</VAR>[, <VAR>args</VAR> ... ]) { .... }</CODE>
   <DD>
   <P>将&nbsp;<VAR>args</VAR>&nbsp;作为参数，调用 name 方法，并返回方法的返回值。</P>
-  <P>当然，包含着块的数据也是可以传递的。方法名 <VAR>name</VAR>&nbsp;可以是字符串或者 <A 
+  <P>当然，包含着块的数据也是可以传递的。方法名 <VAR>name</VAR>&nbsp;可以是字符串或者 <A
   href="sc_symbol.html">符号</A>&nbsp;。</P>
-  <DT><A name=L000571>object_id</A> 
+  <DT><A name=L000571>object_id</A>
   <DD>
-  <P>返回与每个对象对应的独特整数。该整数是随意指定给该对象的。（按我的理解是类似于MD5校验码之类的？）</P>
-  <DT>to_ary 
+  <P>返回与每个对象对应的独特整数。一个对象得到怎样的ID是不确定的。</P>
+  <DT>to_ary
   <DD>
-  <P>需要将对象暗中转为数组时，在内部自动调用。</P>
-  <DT>to_hash 
+  <P>需要将对象隐式转为数组时，在内部自动调用。</P>
+  <DT>to_hash
   <DD>
-  <P>需要将对象暗中转为哈希表时，在内部自动调用。</P>
-  <DT>to_int 
+  <P>需要将对象隐式转为哈希表时，在内部自动调用。</P>
+  <DT>to_int
   <DD>
-  <P>需要将对象暗中转为整数时，在内部自动调用。</P>
-  <DT>to_s 
+  <P>需要将对象隐式转为整数时，在内部自动调用。</P>
+  <DT>to_s
   <DD>
-  <P>返回对象的字符串代表，由 print 和 sprintf 在内部调用。 </P>
-  <P>传递非字符串对象给 <A href="s_functions.html#print">print</A>&nbsp;和 <A 
+  <P>返回对象的字符串形式，由 print 和 sprintf 在内部调用。 </P>
+  <P>传递非字符串对象给 <A href="s_functions.html#print">print</A>&nbsp;和 <A
   href="s_functions.html#sprintf">sprintf</A>&nbsp;，做参数时，调用此方法将对象转成字符串。</P>
-  <DT>to_str 
+  <DT>to_str
   <DD>
   <P>需要将对象暗中转为字符串时，在内部自动调用。</P></DD></DL>
 <H2>私有方法</H2>
 <DL>
-  <DT><A name=L000609>initialize</A> 
+  <DT><A name=L000609>initialize</A>
   <DD>
-  <P>用户定义的类所使用的初始化方法。此方法是由 <A href="sc_class.html#L001138">Class#new</A> 
-  调用来初始化新生成的物件。预设情况下，没有任何动作；假定此方法会在子类中依照需求重新定义。若是向 &nbsp;<A 
-  href="sc_class.html#L001138">Class#new</A> 传递了任何参数，则会原封不动的传递给 
+  <P>用户定义的类所使用的初始化方法。此方法是由 <A href="sc_class.html#L001138">Class#new</A>
+  调用来初始化新生成的对象。预设情况下，没有任何动作；假定此方法会在子类中依照需求重新定义。若是向 &nbsp;<A
+  href="sc_class.html#L001138">Class#new</A> 传递了任何参数，则会原封不动的传递给
   <VAR>initialize</VAR>。</P></DD></DL>
 <H6></H6></BODY></HTML>

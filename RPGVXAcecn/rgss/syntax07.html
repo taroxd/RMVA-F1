@@ -5,7 +5,7 @@
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.17744"></HEAD>
 <BODY>
-<H1><FONT face=Verdana>类定义与方法定义</FONT></H1>
+<H1>类定义与方法定义</H1>
 <UL>
   <LI><A href="#L000327">类的定义</A> 
   <LI><A href="#L000329">模块的定义</A> 
@@ -18,19 +18,19 @@ type=text/css href="../style.css">
   <UL>
     <LI><A href="#L000337">alias</A> </LI></UL></LI></UL>
 <H2>类的定义</H2>
-<P>实例：</P><PRE><FONT face=Verdana>class Foo &lt; Super
+<P>实例：</P><PRE>class Foo &lt; Super
   def test
      :
   end
      :
-end</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>class 标识符 ['&lt;' 超类 ]
+end</PRE>
+<P>语法：</P><PRE>class 标识符 ['&lt;' 超类 ]
   表达式 ..
-end</FONT></PRE>
+end</PRE>
 <P>以上语法可以定义一个类的内容。类的名称是大写字母开头的标识符。</P>
 <P>类的定义将类的内容赋值给一个由类名称标识符所指定的常量（在Ruby也是一个对象，是 <A 
 href="sc_class.html">Class</A> 类的一个实例。）</P>
-<P>在一个类已定义时，重写一个类定义会将新的内容附加到原本已存在的类定义中。</P><PRE><FONT face=Verdana>class Foo &lt; Array
+<P>在一个类已定义时，重写一个类定义会将新的内容附加到原本已存在的类定义中。</P><PRE>class Foo &lt; Array
   def foo
   end
 end
@@ -38,50 +38,50 @@ end
 class Foo
   def bar
   end
-end</FONT></PRE>
+end</PRE>
 <P>在类定义之中，self 就是指该类本身，否则与顶层定义相同。类定义中可以包含任何表达式，定义类时会执行这些表达式。</P>
 <P>类定义可以嵌套运行。在下面的范例当中，内部的类 (Bar) 与外部的类 (Foo) 完全没有函数上的关联（如继承），唯一的关联是常数 Bar 属于 Foo 
-的内部常数 Foo::Bar只有代表内部的类与外部的类（或模块）语意上相关，可以表达包含的关系。</P><PRE><FONT face=Verdana>class Foo
+的内部常数 Foo::Bar只有代表内部的类与外部的类（或模块）语意上相关，可以表达包含的关系。</P><PRE>class Foo
   class Bar
   end
-end</FONT></PRE>
+end</PRE>
 <P>类定义表达式返回最后计算的表达式计算值。若该表达式无返回值，则返回 nil。</P>
 <H2>模块的定义</H2>
-<P>实例：</P><PRE><FONT face=Verdana>module Foo
+<P>实例：</P><PRE>module Foo
   def test
      :
   end
      :
-end</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>module 标识符
+end</PRE>
+<P>语法：</P><PRE>module 标识符
   表达式 ..
-end</FONT></PRE>
+end</PRE>
 <P>以上语法可以定义一个模块的内容。模块的名称是大写字母开头的标识符。</P>
 <P>模块的定义将类的内容赋值给一个由模块名称标识符所指定的常量（在Ruby也是一个对象，是 <A 
 href="sc_module.html">Module</A> 类的一个实例。）</P>
 <P>在一个模块已定义时，重写一个模块定义会将新的内容附加到原本已存在的模块定义中。</P>
 <P>模块定义表达式返回最后计算的表达式计算值。若该表达式无返回值，则返回 nil。</P>
 <H2>方法的定义</H2>
-<P>实例：</P><PRE><FONT face=Verdana>def fact(n)
+<P>实例：</P><PRE>def fact(n)
   if n == 1 then
      1
   else
     n * fact(n-1)
   end
-end</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>def 方法名称 ['(' [参数 ['=' 参数默认值]] ... [',' '*' 参数] ')']
+end</PRE>
+<P>语法：</P><PRE>def 方法名称 ['(' [参数 ['=' 参数默认值]] ... [',' '*' 参数] ')']
   表达式 ..
 [rescue [异常类型,..] [then]
   表达式 ..]..
 [ensure
   表达式 ..]
-end</FONT></PRE>
+end</PRE>
 <P>以上语法可以定义一个方法。换句话说，（在类定义或模块定义中）定义一个类或模块所拥有的方法。在顶层定义的话，则定义的方法可以在任何地方调用。这类的方法可以与其他脚本语言的「函数」一样调用。</P>
 <P>方法的名称可以是一般的标识符或是可重新定义的运算符（==、 +、 - 等，参看 <A 
 href="syntax04.html">运算符表达式</A>&nbsp;）。</P>
 <P>若是提供参数默认值，当调用此方法而没有提供参数时，参数默认值就会取代真正的参数。参数默认值的表达式在调用方法时计算其值。</P>
 <P>当最后一个参数名称前面带有 * 号时，后面其余的所有参数全部以数组型态传递给带 * 的参数中。</P>
-<P>实例：</P><PRE><FONT face=Verdana># 无参数方法，以下方法中的end省略<BR>def foo
+<P>实例：</P><PRE># 无参数方法，以下方法中的end省略<BR>def foo
 end
 
 # 带参数方法<BR>def foo(arg, arg2)
@@ -92,13 +92,13 @@ end
 
 # 运算符格式<BR>def ==(other)
 def +(other)
-def *(other)</FONT></PRE>
+def *(other)</PRE>
 <P>定义方法时，各种参数必须以下面的顺序指定，亦可省略不用：</P>
 <UL>
   <LI>不带默认值的参数表达式（可以指定多个） 
   <LI>带默认值的参数表达式（可以指定多个） 
   <LI>带&nbsp;* 的参数（最多指定一个） </LI></UL>
-<P>下面是几个特殊的参数定义格式：</P><PRE><FONT face=Verdana># 一元加/减<BR>def +@
+<P>下面是几个特殊的参数定义格式：</P><PRE># 一元加/减<BR>def +@
 def -@
 
 # 赋值参数<BR>def foo=(value)             # obj.foo = value
@@ -106,11 +106,11 @@ def -@
 # [] 和 []=
 def [](key)                 # obj[key]
 def []=(key, value)         # obj[key] = value
-def []=(key, key2, value)   # obj[key, key2] = value</FONT></PRE>
+def []=(key, key2, value)   # obj[key, key2] = value</PRE>
 <P>此外，也可以指定如 <A href="syntax05.html#L000314">begin</A> 表达式中的 rescue 和/或 ensure 
 子句来捕捉执行方法时所抛出的异常。</P>
 <P>方法定义表达式返回 nil。</P>
-<H3><FONT face=Verdana>方法求值</FONT></H3>
+<H3>方法求值</H3>
 <P>调用方法时，方法的表达式以下列的顺序进行计算：</P>
 <UL>
   <LI>参数默认值的表达式（若有指定的话） 
@@ -120,17 +120,17 @@ def []=(key, key2, value)   # obj[key, key2] = value</FONT></PRE>
 <P>以上都是在方法中依照情况而进行计算，包括参数默认值的表达式。</P>
 <P>方法的返回值就是传递给 <A href="syntax05.html#L000317">return</A>&nbsp;的数值。若是没有调用 
 return，则返回方法中（在ensure之前）最后计算的表达式。</P>
-<P>方法不能在定义之前调用，比如说：</P><PRE><FONT face=Verdana>foo
+<P>方法不能在定义之前调用，比如说：</P><PRE>foo
 def foo
   print "foo\n"
-end</FONT></PRE>
+end</PRE>
 <P>调用未定义方法会抛出 <A href="s_exceptions.html#NameError">NameError（异常：名称错误）</A> 
 异常。</P>
 <H2>特殊方法的定义</H2>
-<P>实例：</P><PRE><FONT face=Verdana>def foo.test
+<P>实例：</P><PRE>def foo.test
   print "this is foo\n"
-end</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>def 表达式 '.' 标识符 ['(' [ 参数 ['=' 参数默认值]] ... [',' '*' 参数 ]')']
+end</PRE>
+<P>语法：</P><PRE>def 表达式 '.' 标识符 ['(' [ 参数 ['=' 参数默认值]] ... [',' '*' 参数 ]')']
   表达式 ..
 [rescue [异常类型,..] [then]
   表达式 ..]..
@@ -138,13 +138,13 @@ end</FONT></PRE>
   表达式 ..]
 [ensure
   表达式 ..]
-end</FONT></PRE>
+end</PRE>
 <P>特殊方法是专属于一个对象而不是一个类。特殊方法不能够嵌套。 </P>
 <P>特殊方法可以由子类所继承，也就是说，特殊方法的作用就好比其他面向对象语言中的类方法。</P>
 <P>特殊方法定义表达式返回 nil。</P>
 <H2>类方法的定义</H2>
 <P>在 Ruby方法就是指定给一个类的方法。类也是对象，所以也可以像一般对象一样指定方法。</P>
-<P>因此，在类对象当中定义一个方法时，该方法就会成为类方法。具体的定义方法如下（模块中亦同）：</P><PRE><FONT face=Verdana># 特殊方法定义<BR>class Hoge
+<P>因此，在类对象当中定义一个方法时，该方法就会成为类方法。具体的定义方法如下（模块中亦同）：</P><PRE># 特殊方法定义<BR>class Hoge
   def Hoge.foo
   end
 end
@@ -155,16 +155,16 @@ end
 # 这样定义的话，既使类名称改变也不用修改方法<BR>class Hoge
   def self.baz
   end
-end</FONT></PRE>
+end</PRE>
 <H2>定义操作</H2>
-<H3><A name=L000337><FONT face=Verdana>alias</FONT></A></H3>
-<P>实例：</P><PRE><FONT face=Verdana>alias foo bar
-alias :foo :bar</FONT></PRE>
-<P>语法：</P><PRE><FONT face=Verdana>alias 新方法名称 旧方法名称<BR></FONT></PRE>
+<H3><A name=L000337>alias</A></H3>
+<P>实例：</P><PRE>alias foo bar
+alias :foo :bar</PRE>
+<P>语法：</P><PRE>alias 新方法名称 旧方法名称<BR></PRE>
 <P>以上语法可以给一个方法或全局变量指定其别名。指定的方法名称可以是标识符或 <A 
 href="sc_symbol.html">符号</A>&nbsp;（不可使用如 obj.method 
 这样的表达式）。调用方法时不会计算别名的参数表达式。</P>
-<P>使用方法别名时，既使重新定义该方法，该方法的原有定义依然会被保留。当想要改变方法的行为，又要在新定义的方法内使用旧定义方法的结果时可以使用。</P><PRE><FONT face=Verdana># 定义方法 foo<BR>def foo
+<P>使用方法别名时，既使重新定义该方法，该方法的原有定义依然会被保留。当想要改变方法的行为，又要在新定义的方法内使用旧定义方法的结果时可以使用。</P><PRE># 定义方法 foo<BR>def foo
   "foo"
 end
 
@@ -174,6 +174,6 @@ end
   _orig_foo * 2
 end
 
-p foo  # =&gt; "foofoo"</FONT></PRE>
-<P><CODE><FONT face=Verdana>alias 表达式返回 nil。</FONT></CODE></P>
+p foo  # =&gt; "foofoo"</PRE>
+<P><CODE>alias 表达式返回 nil。</CODE></P>
 <H6></H6></BODY></HTML>

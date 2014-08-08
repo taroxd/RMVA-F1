@@ -9,7 +9,7 @@ type=text/css href="../style.css">
 <P>用于提供一个非独占的轻量型纤程（即Fiber），也就是其他编程语言中的协程/半协程。</P>
 <P>一个纤程的环境通常不会改变，除非做出了明确的说明。纤程也是要进行承接的，比如Fiber#resume（即程序出现错误后继续运行下一行的语句）是母纤程，而Fiber则是子纤程（不过这个母子并没有从属关系）。不遵循由母纤程到子纤程的规则的过程是不被允许的（比如由子纤程到母纤程的过渡），这会导致出现一个FibberError（纤程错误）的异常。以下两条是可以被允许的：</P>
 <UL>
-  <LI>Fiber#resume 将环境切换到它的子纤程。 
+  <LI>Fiber#resume 将环境切换到它的子纤程。
   <LI>Fiber.yield 将环境切换到它的母纤程。 </LI></UL>
 <P>当然，这里的母子关系是动态的，并且在环境切换回母纤程的同时，这种关系即告解除。</P>
 <P>当一个纤程结束，环境将会自动切换回母纤程。</P>
@@ -37,7 +37,7 @@ end
 </PRE>
 <H2>特殊方法</H2>
 <DL>
-  <DT>new {|<VAR>obj</VAR>| ... } 
+  <DT>new {|<VAR>obj</VAR>| ... }
   <DD>
   <P>创建并返回一个包含着区块的纤程。区块中使用到的参数则需要在开头加以指定.</P>
   <P>当区块执行结束时，运行环境会跳转至母纤程。而区块的运算结果也在同时被返回。</P><PRE>a = nil
@@ -50,24 +50,12 @@ b = f.resume(:foo)
 p a  #=&gt; :foo
 p b  #=&gt; :hoge
 </PRE>
-  <DT>yield(<VAR>*arg = nil</VAR>) 
+  <DT>yield(<VAR>*arg = nil</VAR>)
   <DD>
   <P>将运行环境切换至当前纤程的母纤程。</P>
   <P>当运行环境切换完毕之后，yield 方法会将给定的参数返回到 Fiber#resume 。</P>
-  <P>对于参数&nbsp;<VAR>arg</VAR> ，指定的对象会传递到当前纤程的母纤程之中。</P>
-  <DD>
-  <P>（这一段表示没看的太明白，可能翻译也有点偏差，如果有人看到这一段的话希望可以修正一下吧贩贩贩）</P>
-  <DD>
-  <P>原文如下：</P>
-  <DD>
-  <P>Switches the context to the parent of the current
-  fiber.</P>
-  <DD>
-  <P>The yield method returns the provided arguments to
-  Fiber#resume when switching the context.</P>
-  <DD>
-  <P>For arg, specify the object to pass to the parent of the
-  current fiber.</P><PRE>a = nil
+  <P>对于参数&nbsp;<VAR>arg</VAR> ，指定一个对象传递到当前纤程的母纤程中。</P>
+<PRE>a = nil
 f = Fiber.new do
   a = Fiber.yield()
 end
@@ -79,11 +67,11 @@ p a  #=&gt; :foo
 </PRE></DD></DL>
 <H2>实例方法</H2>
 <DL>
-  <DT>resume(<VAR>*arg = nil</VAR>) 
+  <DT>resume(<VAR>*arg = nil</VAR>)
   <DD>
   <P>将运行环境切换至调用者的子纤程。 </P>
   <P>当运行环境被切换的时候，resume 方法会将参数返回给 Fiber.yield 。&nbsp;</P>
-  <P>对于参数 <VAR>arg</VAR>, 其指定的对象将会传递到调用者所代表的纤程中。</P><PRE>f = Fiber.new do
+  <P>对于参数 <VAR>arg</VAR>, 指定一个对象传递到调用者所代表的纤程中。</P><PRE>f = Fiber.new do
   Fiber.yield(:hoge)
 end
 

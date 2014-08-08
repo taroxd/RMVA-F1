@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>IO</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
@@ -15,54 +15,54 @@ type=text/css href="../style.css">
   <LI><A href="sm_enumerable.html">Enumerable</A> </LI></UL>
 <H2>方法</H2>
 <DL>
-  <DT>binmode 
+  <DT>binmode
   <DD>
   <P>将串流转换成二进制模式。恢复成一般模式的唯一方法是重新打开串流。</P>
   <P>返回&nbsp;self。</P>
-  <DT>close 
+  <DT>close
   <DD>
-  <P>关闭输入输出端口。关闭失败会抛出 <A 
+  <P>关闭输入输出端口。关闭失败会抛出 <A
   href="s_exceptions.html#Errno">Errno::EXXX</A> 异常。</P>
   <P>返回&nbsp;nil。</P>
-  <DT>each_line {|<VAR>line</VAR>| ... } 
+  <DT>each_line {|<VAR>line</VAR>| ... }
   <DD>
   <P>经过输入输出端口，逐行读取。</P>
   <DD>
   <P>返回&nbsp;self。</P>
-  <DT>each_byte {|<VAR>ch</VAR>| ... } 
+  <DT>each_byte {|<VAR>ch</VAR>| ... }
   <DD>
   <P>经过输入输出端口，逐字节读取。</P>
   <P>返回&nbsp;self。</P>
-  <DT>eof? 
+  <DT>eof?
   <DD>
   <P>当输入输出流到达文件末端时，返回 true。</P>
-  <DT>pos 
+  <DT>pos
   <DD>
   <P>返回文件指针的当前位置。</P>
-  <DT>pos=<VAR>n</VAR> 
+  <DT>pos=<VAR>n</VAR>
   <DD>
   <P>将文件指针移至指定位置。</P>
-  <DT>read([<VAR>length</VAR>]) 
+  <DT>read([<VAR>length</VAR>])
   <DD>
-  <P>读取并返回 <VAR>length</VAR> 长度的字节的字符串。若省略 <VAR>length</VAR> 
+  <P>读取并返回 <VAR>length</VAR> 长度的字节的字符串。若省略 <VAR>length</VAR>
   则会读取直至文件末端的所有数据。</P>
   <DD>
   <P>若是 IO 已经到达文件末端，就返回 nil 。</P>
   <DD>
-  <P>读取数据失败会抛出 <A href="s_exceptions.html#Errno">Errno::EXXX</A> 异常， <VAR>length</VAR> 
-  为负值则会抛出&nbsp;<A href="s_exceptions.html#ArgumentError">ArgumentError（异常：参数错误）</A>&nbsp;异常。</P>
-  <DT>readlines([<VAR>rs</VAR>]) 
+  <P>读取数据失败会抛出 <A href="s_exceptions.html#Errno">Errno::EXXX</A> 异常， <VAR>length</VAR>
+  为负值则会抛出&nbsp;<A href="s_exceptions.html#ArgumentError">ArgumentError</A>&nbsp;异常。</P>
+  <DT>readlines([<VAR>rs</VAR>])
   <DD>
-  <P>读取所有数据，并返回一个由 一行 内容组成的数组。若是 IO 已经到达文件末段，则返回空数组 
+  <P>读取所有数据，并返回一个由 一行 内容组成的数组。若是 IO 已经到达文件末段，则返回空数组
   []。</P>
-  <P>「行」是由参数 rs 
+  <P>「行」是由参数 rs
   所指定的字符串做断句，rs 的默认值为 "\n"。</P>
-  <P>若指定 nil 为 <VAR>rs</VAR> 参数，则不会进行分行。若指定空字符串 "" 
+  <P>若指定 nil 为 <VAR>rs</VAR> 参数，则不会进行分行。若指定空字符串 ""
   ，则会把连续的分行符当作断句（段落模式）。</P>
-  <DT>write(<VAR>str</VAR>) 
+  <DT>write(<VAR>str</VAR>)
   <DD>
-  <P>将 <VAR>str</VAR> 输出至输入输出端口。若 str 不识字符串，则会尝试使用 to_s 
+  <P>将 <VAR>str</VAR> 输出至输入输出端口。若 str 不识字符串，则会尝试使用 to_s
   将其转换为字符串。</P>
-  <P>返回实际输出的字节数。输出失败会抛出 <A 
+  <P>返回实际输出的字节数。输出失败会抛出 <A
   href="s_exceptions.html#Errno">Errno::EXXX</A> 异常。</P></DD></DL>
 <H6></H6></BODY></HTML>

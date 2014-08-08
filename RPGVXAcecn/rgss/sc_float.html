@@ -1,43 +1,42 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Float</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>Float</H1>
-<P>The floating-point number class. The implementation of Float 
-is double in C.</P>
+<P>浮点数的类。浮点数的C实现为双精度浮点数。</P>
 <H2>超类</H2>
 <UL>
   <LI><A href="sc_numeric.html">Numeric</A> </LI></UL>
 <H2>方法</H2>
 <DL>
-  <DT><VAR>self</VAR> + <VAR>other</VAR> 
-  <DT><VAR>self</VAR> - <VAR>other</VAR> 
-  <DT><VAR>self</VAR> * <VAR>other</VAR> 
-  <DT><VAR>self</VAR> / <VAR>other</VAR> 
-  <DT><VAR>self</VAR> % <VAR>other</VAR> 
-  <DT><VAR>self</VAR> ** <VAR>other</VAR> 
+  <DT><VAR>self</VAR> + <VAR>other</VAR>
+  <DT><VAR>self</VAR> - <VAR>other</VAR>
+  <DT><VAR>self</VAR> * <VAR>other</VAR>
+  <DT><VAR>self</VAR> / <VAR>other</VAR>
+  <DT><VAR>self</VAR> % <VAR>other</VAR>
+  <DT><VAR>self</VAR> ** <VAR>other</VAR>
   <DD>
   <P>数学运算符。分别计算：和（加）、差（减）、积（乘）、商（除）、余（模数计算）、幂（指数计算）。</P>
-  <DT><VAR>self</VAR> &lt;=&gt; <VAR>other</VAR> 
+  <DT><VAR>self</VAR> &lt;=&gt; <VAR>other</VAR>
   <DD>
-  <P>比较 other 与 self；若是 self 大于 other 则返回正整数、若是 self 等于 other 
+  <P>比较 other 与 self；若是 self 大于 other 则返回正整数、若是 self 等于 other
   则返回 0、若是 self 小于 other 则返回负整数。</P>
-  <DT><VAR>self</VAR> == <VAR>other</VAR> 
-  <DT><VAR>self</VAR> &lt; <VAR>other</VAR> 
-  <DT><VAR>self</VAR> &lt;= <VAR>other</VAR> 
-  <DT><VAR>self</VAR> &gt; <VAR>other</VAR> 
-  <DT><VAR>self</VAR> &gt;= <VAR>other</VAR> 
+  <DT><VAR>self</VAR> == <VAR>other</VAR>
+  <DT><VAR>self</VAR> &lt; <VAR>other</VAR>
+  <DT><VAR>self</VAR> &lt;= <VAR>other</VAR>
+  <DT><VAR>self</VAR> &gt; <VAR>other</VAR>
+  <DT><VAR>self</VAR> &gt;= <VAR>other</VAR>
   <DD>
   <P>比较运算符。</P>
-  <DT>finite? 
+  <DT>finite?
   <DD>
   <P>若数值有穷则返回 true，除非是 NaN。</P>
-  <DT>infinite? 
+  <DT>infinite?
   <DD>
-  <P>当数值为正无穷则返回 1；当数值为负无穷则返回 -1。否则返回 nil。浮点数除 0 
+  <P>当数值为正无穷则返回 1；当数值为负无穷则返回 -1。否则返回 nil。浮点数除 0
 必得无穷数。</P><PRE>inf = 1.0/0
 p inf
 p inf.infinite?
@@ -52,7 +51,7 @@ p inf.infinite?
 =&gt; -Infinity
    -1
 </PRE>
-  <DT>nan? 
+  <DT>nan?
   <DD>
   <P>若数值非数字（ NaN）则返回 true。浮点数的 0 除以 0 必得 NaN。</P><PRE>nan = 0.0/0.0
 p nan
