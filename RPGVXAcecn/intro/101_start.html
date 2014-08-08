@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh">
 <head>
   <title>开始</title>
@@ -10,39 +10,32 @@
 <body>
 <h1>开始</h1>
 <ul>
-  <li><a href="#project">建立项目</a>
-  </li>
-  <li><a href="#section">建立脚本</a>
-  </li>
-  <li><a href="#terminate">结束程序</a>
-  </li>
-  <li><a href="#comment">注释</a>
-  </li>
-  <li><a href="#comment_out">临时注释</a>
-  </li>
-  <li><a href="#syntax">语法和库</a> </li>
+  <li><a href="#project">建立项目</a></li>
+  <li><a href="#section">建立脚本</a></li>
+  <li><a href="#stop">结束程序</a></li>
+  <li><a href="#comment">注释</a></li>
+  <li><a href="#comment_out">临时注释</a></li>
+  <li><a href="#syntax">语法和库</a></li>
 </ul>
 <p>在基础篇，将一边完成单个短程序一边解说 RGSS 的基础知识。</p>
 <p>首先，来进行开始学习的准备吧。</p>
 <h2><a name="project">建立项目</a></h2>
 <p>首先建立一个项目，把它作为学习脚本入门用的新项目。</p>
 <p>脚本是有关游戏实际运行的数据，照原样改动制作完成的项目，一个小小的错误也将引起游戏不能正常运行。因此，推荐使用新建的项目进行学习。</p>
-<p>另外，RPGVX 脚本数据是保存在 Data 活页夹内的 Scripts.rvdata
+<p>另外，VA 脚本数据是保存在 Data 文件夹内的 Scripts.rvdata2
 文件中，如果对此文件（或游戏全部数据）已经备份的话，也可以使用既存的项目。</p>
 <h2><a name="section">建立脚本</a></h2>
-<img style="float: right; margin-bottom: 1em; margin-left: 1.5em;" alt="建立脚本" src="img/image1.png">
+<img src="img/image1.png" alt="セクションの作成" class="float_r">
 <p>建立项目后，在主选单&rarr;「工具」中选择「脚本编辑器」。</p>
 <p>显示脚本编辑器对话框后，在最上面新建一个脚本页。点击右键，在弹出菜单中选择「插入空白脚本页」，就建立了一个新的空白脚本页。</p>
 <p>脚本页的名称是什么无所谓，可以取个容易理解的，我们这里暂命名为「TEST」。脚本页名称的输入在窗口左下方的「脚本页名称」里进行。</p>
-<h2><a name="terminate">结束程序</a></h2>
-<img style="float: right; margin-bottom: 1em; margin-left: 1.5em;" alt="结束程序" src="img/image2.png">
+<h2><a name="stop">结束程序</a></h2>
 <p>首先，请输入下面的代码。</p>
-<pre>exit<br></pre>
-<p>注意，在 Ruby 中是区分字母大小写的，所以不能输入 EXIT 或
-Exit。当然全角文字也不行。请全部以半角的小写字母输入。输入完毕按「确定」键关闭脚本编辑器，运行（游戏测试）看看吧。</p>
-<p>运行游戏测试，窗口应该显示一瞬间后立即关闭。总之，在这里写的 <strong>exit</strong> 是结束程序的命令。</p>
-<p>在最上面的 TEST 组中写入 exit，因此程序就此结束。而在后面众多组中编写的脚本都没有执行。以后示例程序都会省略
-exit，在实际测试时请在最后一行加入 exit。如果没有加入 exit 而运行测试，就会显示出游戏的标题画面。</p>
+<pre>rgss_stop<br></pre>
+<img src="img/image2.png" alt="プログラムの停止" class="float_r">
+<p>注意，在 Ruby 中是区分字母大小写的。请全部以半角的小写字母输入。输入完毕按「确定」键关闭脚本编辑器，运行（游戏测试）看看吧。</p>
+<p>运行游戏测试，窗口应该不显示标题画面，停止在全黑的画面上。总之，在这里写的 <strong>rgss_stop</strong> 是停止程序的命令。（顾名思义，这是 RGSS 专用的命令）</p>
+<p>在最上面的 TEST 组中写入 rgss_stop，因此程序就此停止。而在后面众多组中编写的脚本都没有执行。以后示例程序都会省略这一行，在实际测试时请在最后一行加入 rgss_stop。如果没有加入 rgss_stop 而运行测试，就会显示出游戏的标题画面。</p>
 <h2><a name="comment">注释</a></h2>
 <p>在 Ruby 中，# 符号后面的一整行文字会认定为<strong>注释</strong>。</p>
 <p># 后的注释代码不会执行，不会影响到程序的运作，只作为编写者标记的备忘记录来使用。</p>
