@@ -210,7 +210,7 @@
 		<param name="Local" value="rpgvxace/3250_db_arms.html#key_arms">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="武器种类">
+		<param name="Name" value="武器类型">
 		<param name="Local" value="rpgvxace/3340_db_terms.html#key_tarms_armstype">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
@@ -226,11 +226,11 @@
 		<param name="Local" value="rpgvxace/4120_ev_mapevent_outline.html#key_mapevent_outline_variable">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="防具">
+		<param name="Name" value="护甲">
 		<param name="Local" value="rpgvxace/3250_db_arms.html#key_wear">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
-		<param name="Name" value="防具种类">
+		<param name="Name" value="护甲类型">
 		<param name="Local" value="rpgvxace/3340_db_terms.html#key_tarms_weartype">
 		</OBJECT>
 	<LI> <OBJECT type="text/sitemap">
@@ -639,7 +639,7 @@
 			<param name="Local" value="rpgvxace/5120_ev_ref_progress.html#progress02">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="增减防具">
+			<param name="Name" value="增减护甲">
 			<param name="Local" value="rpgvxace/5140_ev_ref_party.html#party04">
 			</OBJECT>
 		<LI> <OBJECT type="text/sitemap">
