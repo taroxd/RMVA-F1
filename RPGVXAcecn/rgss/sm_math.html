@@ -13,7 +13,7 @@ type=text/css href="../style.css">
   <DT>Math.asin(<VAR>x</VAR>) 
   <DT>Math.atan(<VAR>x</VAR>) 
   <DD>
-  <P>以弧度返回 <SPAN style="FONT-STYLE: italic">x</SPAN> 的反三角函数计算值。</P>
+  <P>以弧度返回 x 的反三角函数计算值。</P>
   <P>返回值的范围分别是 [0, +&#960;]、[-&#960;/2, +&#960;/2] 和 (-&#960;/2, +&#960;/2)。</P>
   <P>在 acos(x) 和 asin(x) 中，<VAR>x</VAR> 之值必须是 -1.0 &lt;= <VAR>x</VAR> &lt;= 1 
   的范围（通常返回 NaN）。</P>
@@ -26,7 +26,7 @@ type=text/css href="../style.css">
   <DT>Math.asinh(<VAR>x</VAR>) 
   <DT>Math.atanh(<VAR>x</VAR>) 
   <DD>
-  <P>返回 <SPAN style="FONT-STYLE: italic">x</SPAN> 的反双曲线函数计算值。</P><PRE>asinh(x) = log(x + sqrt(x * x + 1))
+  <P>返回 x 的反双曲线函数计算值。</P><PRE>asinh(x) = log(x + sqrt(x * x + 1))
 acosh(x) = log(x + sqrt(x * x - 1)) [x &gt;= 1]
 atanh(x) = log((1+x)/(1-x)) / 2     [-1 &lt; x &lt; 1]
 </PRE>
@@ -43,14 +43,14 @@ atanh(x) = log((1+x)/(1-x)) / 2     [-1 &lt; x &lt; 1]
   <DT>Math.sinh(<VAR>x</VAR>) 
   <DT>Math.tanh(<VAR>x</VAR>) 
   <DD>
-  <P>返回 <SPAN style="FONT-STYLE: italic">x</SPAN> 的双曲线函数计算值。</P><PRE>cosh(x) = (exp(x) + exp(-x)) / 2
+  <P>返回 x 的双曲线函数计算值。</P><PRE>cosh(x) = (exp(x) + exp(-x)) / 2
 sinh(x) = (exp(x) - exp(-x)) / 2
 tanh(x) = sinh(x) / cosh(x)
 </PRE>
   <DT>Math.erf(<VAR>x</VAR>) 
   <DT>Math.erfc(<VAR>x</VAR>) 
   <DD>
-  <P>返回 <SPAN style="FONT-STYLE: italic">x</SPAN> 
+  <P>返回 x 
   的误差函数（erf）、补余误差函数（erfc）的计算值。</P>
   <DT>Math.exp(<VAR>x</VAR>) 
   <DD>
@@ -64,19 +64,16 @@ tanh(x) = sinh(x) / cosh(x)
   <P>返回&nbsp;sqrt(x*x + y*y)。（sqrt为求平方根函数，也即是求x、y在直角三角形中的斜边）</P>
   <DT>Math.ldexp(<VAR>x</VAR>, <VAR>exp</VAR>) 
   <DD>
-  <P>返回实数 <SPAN style="FONT-STYLE: italic">x</SPAN> 乘以 2 的 <SPAN 
-  style="FONT-STYLE: italic">exp</SPAN> 幂数的最终结果。（x * 2<SUP>exp</SUP>）&nbsp;</P>
+  <P>返回实数 x 乘以 2 的 exp 幂数的最终结果。（x * 2<SUP>exp</SUP>）&nbsp;</P>
   <DT>Math.log(<VAR>x</VAR>) 
   <DD>
-  <P>返回 <SPAN style="FONT-STYLE: italic">x</SPAN> 的自然对数<SPAN 
-  style="FONT-STYLE: italic">。</SPAN><VAR></VAR></P>
+  <P>返回 x 的自然对数。<VAR></VAR></P>
   <P><VAR>x</VAR> 必须是正值（通常负值会返回 NaN，0 会返回负无穷）。</P>
   <P>超出范围的参数，负数会抛出 <A href="s_exceptions.html#Errno">Errno::EDOM</A> 异常，而 0 会抛出 
   <A href="s_exceptions.html#Errno">Errno::ERANGE</A> 异常。</P>
   <DT>Math.log10(<VAR>x</VAR>) 
   <DD>
-  <P>返回 <SPAN style="FONT-STYLE: italic">x</SPAN> 的常用对数<SPAN 
-  style="FONT-STYLE: italic">。</SPAN><VAR></VAR></P>
+  <P>返回 x 的常用对数。<VAR></VAR></P>
   <P><VAR>x</VAR> 必须是正值（通常负值会返回 NaN，0 会返回负无穷）。</P>
   <P>超出范围的参数，负数会抛出 <A 
   href="ata/Local/Temp/RPGVXAce/rgss/s_exceptions.html#Errno">Errno::EDOM</A> 

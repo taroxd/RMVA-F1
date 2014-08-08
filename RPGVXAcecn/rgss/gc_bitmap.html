@@ -65,8 +65,7 @@ type=text/css href="../style.css">
   <VAR>color2</VAR>[, <VAR>vertical</VAR>]) 
   <DD>
   <P>将位图区域 (<VAR>x</VAR>, <VAR>y</VAR>, <VAR>width</VAR>,
-  <VAR>height</VAR>) 或矩形（<A href="gc_rect.html">Rect</A>&nbsp;) 填满从颜色 <VAR>color</VAR><SPAN
-  style="FONT-STYLE: italic">1</SPAN>（<A href="gc_color.html">Color</A>&nbsp;) 至<VAR>
+  <VAR>height</VAR>) 或矩形（<A href="gc_rect.html">Rect</A>&nbsp;) 填满从颜色 <VAR>color</VAR>1（<A href="gc_color.html">Color</A>&nbsp;) 至<VAR>
   color2</VAR>（<A href="rgss/gc_color.html">Color</A>&nbsp;）的渐层色彩。</P>
   <P>将 <VAR>vertical</VAR> 设为 true 生成纵向的渐层色彩，预设为横向渐层。</P>
   <DT>clear 
@@ -123,8 +122,7 @@ type=text/css href="../style.css">
   <P>此处理需要花费时间，因此不建议每画格重绘一次文字。</P>
   <DT>text_size(<VAR>str</VAR>) 
   <DD>
-  <P>获取使用 draw_text 方法描绘 <SPAN
-  style="FONT-STYLE: italic">str</SPAN> 字符串时所需要的区域（<A
+  <P>获取使用 draw_text 方法描绘 str 字符串时所需要的区域（<A
   href="rgss/gc_rect.html">Rect</A> )
   。该区域不包含轮廓部分 <SPAN class=rgss3>(RGSS3)</SPAN> 和斜体的突出部分。</P>
   <P>若 <VAR>str</VAR> 不是字符串对象，则会在执行之前，先调用 to_s

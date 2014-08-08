@@ -31,7 +31,7 @@ type=text/css href="../style.css">
   <P>判断字符串是否相等。</P>
   <DT>self[<VAR>nth</VAR>, <VAR>len</VAR>]
   <DD>
-  <P>返回从第 <SPAN style="FONT-STYLE: italic">nth</SPAN> 位开始计算 <VAR>len</VAR>
+  <P>返回从第 nth 位开始计算 <VAR>len</VAR>
   位组长度的子字符串。当 <VAR>nth</VAR> 是负值时，从字符串尾部开始算起。</P>
   <P>若 <VAR>nth</VAR> 超出范围，返回 nil。</P>
   <DT>self[regexp]
@@ -42,7 +42,7 @@ type=text/css href="../style.css">
 </PRE>
   <DT><A name=L001349>self[<VAR>nth</VAR>, <VAR>len</VAR>]=<VAR>val</VAR></A>
   <DD>
-  <P>将从第 <SPAN style="FONT-STYLE: italic">nth</SPAN> 位开始计算 <VAR>len</VAR>
+  <P>将从第 nth 位开始计算 <VAR>len</VAR>
   位组长度的子字符串替换为 <VAR>val</VAR> 字符串。当 <VAR>nth</VAR> 是负值时，从字符串尾部开始算起。</P>
   <P>返回 <VAR>val</VAR> 。</P>
   <DT>self[regexp]=val
@@ -98,7 +98,7 @@ p 'abbbcd'.gsub(/a(b+)/) { $1 }         # =&gt; "bbbcd"
   <P>若指定了 <VAR>pos</VAR> ，则从该位置开始寻找，省略时默认值为 0。</P></DD>
   <DT>insert(<VAR>nth</VAR>, <VAR>other</VAR>)
   <DD>
-  <P>In将字符串 <VAR>other</VAR> 插入在第 <SPAN style="FONT-STYLE: italic">nth</SPAN>
+  <P>In将字符串 <VAR>other</VAR> 插入在第 nth
   位的字符的前面。返回 self。</P><PRE>p "foobaz".insert(3, "bar")         # =&gt; "foobarbaz"
 </PRE>
   <DT><A name=L001398>to_sym</A>
