@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=en><HEAD><TITLE>RPG::Map::Encounter</TITLE>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+type=text/css href="../style.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
+<BODY>
+<H1>RPG::Map::Encounter</H1>
+<P>&#23384;&#20648;&#36935;&#25932;&#35774;&#32622;&#30340;&#25968;&#25454;&#31867;&#12290;</P>
+<H2>&#36229;&#31867;</H2>
+<UL>
+  <LI><A href="sc_object.html">Object &#29289;&#20214;&#31867;</A> </LI></UL>
+<H2>&#35843;&#29992;&#32773;</H2>
+<UL>
+  <LI><A href="gc_rpg_troop.html">RPG::Map</A> </LI></UL>
+<H2>&#23646;&#24615;</H2>
+<DL>
+  <DT>troop_id 
+  <DD>
+  <P>&#36935;&#25932;&#38431;&#20237;&#32534;&#21495;&#12290;</P>
+  <DT>weight 
+  <DD>
+  <P>&#26435;&#37325;&#12290;</P>
+  <DT>region_set 
+  <DD>
+  <P>&#23545;&#24212;&#36935;&#25932;&#30340;&#21306;&#22495;ID&#12290;</P></DD></DL>
+<H2>&#23450;&#20041;</H2><PRE>class RPG::Map::Encounter
+  def initialize
+    @troop_id = 1
+    @weight = 10
+    @region_set = []
+  end
+  attr_accessor :troop_id
+  attr_accessor :weight
+  attr_accessor :region_set
+end
+</PRE>
+<H6></H6></BODY></HTML>

@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=en><HEAD><TITLE>RPG::System</TITLE>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+type=text/css href="../style.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
+<BODY>
+<H1>RPG::System</H1>
+<P>&#31995;&#32479;&#30340;&#25968;&#25454;&#31867;&#12290;</P>
+<H2>&#36229;&#31867;</H2>
+<UL>
+  <LI><A href="sc_object.html">Object &#29289;&#20214;&#31867;</A> </LI></UL>
+<H2>&#23646;&#24615;</H2>
+<DL>
+  <DT>game_title 
+  <DD>
+  <P>&#26631;&#39064;&#25991;&#23383;&#12290;</P>
+  <DT>version_id 
+  <DD>
+  <P>&#26816;&#26597;&#26356;&#26032;&#29992;&#30340;&#38543;&#26426;&#25968;&#65292;RPG Maker VX&#27599;&#27425;&#23384;&#26723;&#37117;&#20250;&#21464;&#26356;&#27492;&#25968;&#20540;&#12290;</P>
+  <DT>japanese 
+  <DD>
+  <P>&#22312;&#26085;&#25991;&#29256;&#26412;&#20013;&#22987;&#32456;&#24320;&#21551;&#30340;&#24320;&#20851;&#12290;</P>
+  <DT>party_members 
+  <DD>
+  <P>&#21021;&#22987;&#38431;&#20237;&#12290;&#35282;&#33394; ID &#32534;&#21495;&#30340;&#25968;&#32452;&#12290;</P>
+  <DT>currency_unit 
+  <DD>
+  <P>&#36135;&#24065;&#21333;&#20301;&#12290;</P>
+  <DT>window_tone 
+  <DD>
+  <P>&#31383;&#21475;&#39068;&#33394;&#65288;<A href="gc_tone.html">Tone &#33394;&#35843;&#31867;</A>&nbsp;&#65289;&#12290;</P>
+  <DT>elements 
+  <DD>
+  <P>&#23646;&#24615;&#21015;&#34920;&#12290;&#20197;&#23646;&#24615; ID &#32534;&#21495;&#20026;&#32034;&#24341;&#30340;&#23383;&#31526;&#20018;&#25968;&#32452;&#65292;0 &#21495;&#20803;&#32032;&#20026; nil&#12290;</P>
+  <DT>skill_types 
+  <DD>
+  <P>&#25216;&#33021;&#31867;&#22411;&#21015;&#34920;&#12290;&#20197;&#25216;&#33021;&#31867;&#22411; ID &#32534;&#21495;&#20026;&#32034;&#24341;&#30340;&#23383;&#31526;&#20018;&#25968;&#32452;&#65292;0 &#21495;&#20803;&#32032;&#20026; nil&#12290;</P>
+  <DT>weapon_types 
+  <DD>
+  <P>&#27494;&#22120;&#31867;&#22411;&#21015;&#34920;&#12290;&#20197;&#27494;&#22120;&#31867;&#22411; ID &#32534;&#21495;&#20026;&#32034;&#24341;&#30340;&#23383;&#31526;&#20018;&#25968;&#32452;&#65292;0 &#21495;&#20803;&#32032;&#20026; nil&#12290;</P>
+  <DT>armor_types 
+  <DD>
+  <P>&#38450;&#20855;&#31867;&#22411;&#21015;&#34920;&#12290;&#20197;&#38450;&#20855;&#31867;&#22411; ID &#32534;&#21495;&#20026;&#32034;&#24341;&#30340;&#23383;&#31526;&#20018;&#25968;&#32452;&#65292;0 &#21495;&#20803;&#32032;&#20026; nil&#12290;</P>
+  <DT>switches 
+  <DD>
+  <P>&#24320;&#20851;&#21015;&#34920;&#12290;&#20197;&#24320;&#20851; ID &#32534;&#21495;&#20026;&#32034;&#24341;&#30340;&#23383;&#31526;&#20018;&#25968;&#32452;&#65292;0 &#21495;&#20803;&#32032;&#20026; nil&#12290;</P>
+  <DT>variables 
+  <DD>
+  <P>&#21464;&#37327;&#21015;&#34920;&#12290;&#20197;&#21464;&#37327; ID &#32534;&#21495;&#20026;&#32034;&#24341;&#30340;&#23383;&#31526;&#20018;&#25968;&#32452;&#65292;0 &#21495;&#20803;&#32032;&#20026; nil&#12290;</P>
+  <DT>boat 
+  <DD>
+  <P>&#23567;&#33337;&#35774;&#23450;&#65288;<A 
+  href="gc_rpg_system_vehicle.html">RPG::System::Vehicle</A>&nbsp;&#65289;&#12290;</P>
+  <DT>ship 
+  <DD>
+  <P>&#22823;&#33337;&#35774;&#23450;&#65288;<A 
+  href="gc_rpg_system_vehicle.html">RPG::System::Vehicle</A>&nbsp;&#65289;&#12290;</P>
+  <DT>airship 
+  <DD>
+  <P>&#39134;&#33351;&#65288;<A 
+href="gc_rpg_system_vehicle.html">RPG::System::Vehicle</A>&nbsp;&#65289;&#12290;</P>
+  <DT>title1_name 
+  <DD>
+  <P>&#26631;&#39064;&#32972;&#26223;&#30011;&#38754;&#30340;&#25991;&#20214;&#21517;&#12290;</P>
+  <DT>title2_name 
+  <DD>
+  <P>&#26631;&#39064;&#21069;&#31471;&#30011;&#38754;&#30340;&#25991;&#20214;&#21517;&#12290;</P>
+  <DT>opt_draw_title 
+  <DD>
+  <P>&#32472;&#21046;&#26631;&#39064;&#25991;&#23383;&#30340;&#24320;&#20851;&#12290;</P>
+  <DT>opt_use_midi 
+  <DD>
+  <P>&#21551;&#21160;&#26102;&#21021;&#22987;&#21270; MIDI &#30340;&#24320;&#20851;&#12290;</P>
+  <DT>opt_transparent 
+  <DD>
+  <P>&#21021;&#22987;&#26102;&#29609;&#23478;&#34892;&#36208;&#22270;&#36879;&#26126;&#30340;&#24320;&#20851;&#12290;</P>
+  <DT>opt_followers 
+  <DD>
+  <P>&#38431;&#21015;&#34892;&#36827;&#65288;&#24320;&#28779;&#36710;&#65289;&#30340;&#24320;&#20851;&#12290;</P>
+  <DT>opt_slip_death 
+  <DD>
+  <P>&#24930;&#24615;&#20260;&#23475;&#21487;&#23548;&#33268;&#26080;&#27861;&#25112;&#26007;&#30340;&#24320;&#20851;&#12290;</P>
+  <DT>opt_floor_death 
+  <DD>
+  <P>&#22320;&#24418;&#20260;&#23475;&#21487;&#23548;&#33268;&#26080;&#27861;&#25112;&#26007;&#30340;&#24320;&#20851;&#12290;</P>
+  <DT>opt_display_tp 
+  <DD>
+  <P>&#22312;&#25112;&#26007;&#30011;&#38754;&#26174;&#31034;&#29305;&#25216;&#20540;&#30340;&#24320;&#20851;&#12290;</P>
+  <DT>opt_extra_exp 
+  <DD>
+  <P>&#26367;&#34917;&#38431;&#21592;&#21487;&#33719;&#24471;&#32463;&#39564;&#20540;&#30340;&#24320;&#20851;&#12290;</P>
+  <DT>title_bgm 
+  <DD>
+  <P>&#26631;&#39064;&#30011;&#38754;&#32972;&#26223;&#38899;&#20048;&#65288;<A href="gc_rpg_bgm.html">RPG::BGM</A>&nbsp;&#65289;&#12290;</P>
+  <DT>battle_bgm 
+  <DD>
+  <P>&#25112;&#26007;&#30011;&#38754;&#32972;&#26223;&#38899;&#20048;&#65288;<A href="gc_rpg_bgm.html">RPG::BGM</A>&nbsp;&#65289;&#12290;</P>
+  <DT>battle_end_me 
+  <DD>
+  <P>&#25112;&#26007;&#32467;&#26463;&#38899;&#25928;&#65288;<A href="gc_rpg_me.html">RPG::ME</A>&nbsp;&#65289;</P>
+  <DT>gameover_me 
+  <DD>
+  <P>&#28216;&#25103;&#32467;&#26463;&#38899;&#25928;&#65288;<A href="gc_rpg_me.html">RPG::ME</A>&nbsp;&#65289;&#12290;</P>
+  <DT>sounds 
+  <DD>
+  <P>&#22768;&#25928;&#35774;&#23450;&#65288;<A href="gc_rpg_se.html">RPG::SE</A> &#25968;&#32452;&#65289;&#12290;</P>
+  <DT>start_map_id 
+  <DD>
+  <P>&#29609;&#23478;&#21021;&#22987;&#20301;&#32622;&#30340;&#22320;&#22270;&#32534;&#21495;&#12290;</P>
+  <DT>start_x 
+  <DD>
+  <P>&#29609;&#23478;&#21021;&#22987;&#20301;&#32622;&#30340; X &#22352;&#26631;&#12290;</P>
+  <DT>start_y 
+  <DD>
+  <P>&#29609;&#23478;&#21021;&#22987;&#20301;&#32622;&#30340;&nbsp;Y &#22352;&#26631;&#12290;</P>
+  <DT>terms 
+  <DD>
+  <P>&#29992;&#35821;&#65288;<A href="gc_rpg_system_terms.html">RPG::System::Terms</A>&#65289;&#12290;</P>
+  <DT>test_battlers 
+  <DD>
+  <P>&#25112;&#26007;&#27979;&#35797;&#35774;&#32622;&#65288;<A 
+  href="gc_rpg_system_testbattler.html">RPG::System::TestBattler</A>&#65289;&#12290;</P>
+  <DT>test_troop_id 
+  <DD>
+  <P>&#25112;&#26007;&#27979;&#35797;&#20013;&#30340;&#25932;&#32676;&#32534;&#21495;&#12290;</P>
+  <DT>battleback1_name 
+  <DD>
+  <P>&#25112;&#26007;&#27979;&#35797;&#32972;&#26223;&#19979;&#21322;&#37096;&#25991;&#20214;&#21517;&#12290;</P>
+  <DT>battleback2_name 
+  <DD>
+  <P>&#25112;&#26007;&#27979;&#35797;&#32972;&#26223;&#19978;&#21322;&#37096;&#25991;&#20214;&#21517;&#12290;</P>
+  <DT>battler_name 
+  <DD>
+  <P>&#32534;&#36753;&#22120;&#20869;&#37096;&#20351;&#29992;&#65292;&#25112;&#26007;&#22270;&#25991;&#20214;&#21517;&#12290;</P>
+  <DT>battler_hue 
+  <DD>
+  <P>&#32534;&#36753;&#22120;&#20869;&#37096;&#20351;&#29992;&#65292;&#25112;&#26007;&#22270;&#26723;&#33394;&#35843;&#35843;&#25972;&#20540;&#65288;0&#65374;360&#65289;&#12290;</P>
+  <DT>edit_map_id 
+  <DD>
+  <P>&#32534;&#36753;&#22120;&#20869;&#37096;&#20351;&#29992;&#65292;&#30446;&#21069;&#27491;&#22312;&#32534;&#36753;&#30340;&#22320;&#22270; ID &#32534;&#21495;&#12290;</P></DD></DL>
+<H2>&#20869;&#37096;&#31867;</H2>
+<UL>
+  <LI><A href="gc_rpg_system_vehicle.html">RPG::System::Vehicle</A> 
+  <LI><A href="gc_rpg_system_terms.html">RPG::System::Terms</A> 
+  <LI><A href="gc_rpg_system_testbattler.html">RPG::System::TestBattler</A> 
+</LI></UL>
+<H2>&#23450;&#20041;</H2><PRE>class RPG::System
+  def initialize
+    @game_title = ''
+    @version_id = 0
+    @japanese = true
+    @party_members = [1]
+    @currency_unit = ''
+    @elements = [nil, '']
+    @skill_types = [nil, '']
+    @weapon_types = [nil, '']
+    @armor_types = [nil, '']
+    @switches = [nil, '']
+    @variables = [nil, '']
+    @boat = RPG::System::Vehicle.new
+    @ship = RPG::System::Vehicle.new
+    @airship = RPG::System::Vehicle.new
+    @title1_name = ''
+    @title2_name = ''
+    @opt_draw_title = true
+    @opt_use_midi = false
+    @opt_transparent = false
+    @opt_followers = true
+    @opt_slip_death = false
+    @opt_floor_death = false
+    @opt_display_tp = true
+    @opt_extra_exp = false
+    @window_tone = Tone.new(0,0,0)
+    @title_bgm = RPG::BGM.new
+    @battle_bgm = RPG::BGM.new
+    @battle_end_me = RPG::ME.new
+    @gameover_me = RPG::ME.new
+    @sounds = Array.new(24) { RPG::SE.new }
+    @test_battlers = []
+    @test_troop_id = 1
+    @start_map_id = 1
+    @start_x = 0
+    @start_y = 0
+    @terms = RPG::System::Terms.new
+    @battleback1_name = ''
+    @battleback2_name = ''
+    @battler_name = ''
+    @battler_hue = 0
+    @edit_map_id = 1
+  end
+  attr_accessor :game_title
+  attr_accessor :version_id
+  attr_accessor :japanese
+  attr_accessor :party_members
+  attr_accessor :currency_unit
+  attr_accessor :skill_types
+  attr_accessor :weapon_types
+  attr_accessor :armor_types
+  attr_accessor :elements
+  attr_accessor :switches
+  attr_accessor :variables
+  attr_accessor :boat
+  attr_accessor :ship
+  attr_accessor :airship
+  attr_accessor :title1_name
+  attr_accessor :title2_name
+  attr_accessor :opt_draw_title
+  attr_accessor :opt_use_midi
+  attr_accessor :opt_transparent
+  attr_accessor :opt_followers
+  attr_accessor :opt_slip_death
+  attr_accessor :opt_floor_death
+  attr_accessor :opt_display_tp
+  attr_accessor :opt_extra_exp
+  attr_accessor :window_tone
+  attr_accessor :title_bgm
+  attr_accessor :battle_bgm
+  attr_accessor :battle_end_me
+  attr_accessor :gameover_me
+  attr_accessor :sounds
+  attr_accessor :test_battlers
+  attr_accessor :test_troop_id
+  attr_accessor :start_map_id
+  attr_accessor :start_x
+  attr_accessor :start_y
+  attr_accessor :terms
+  attr_accessor :battleback1_name
+  attr_accessor :battleback2_name
+  attr_accessor :battler_name
+  attr_accessor :battler_hue
+  attr_accessor :edit_map_id
+end
+</PRE>
+<H6></H6></BODY></HTML>

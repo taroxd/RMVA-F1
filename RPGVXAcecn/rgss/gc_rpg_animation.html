@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=en><HEAD><TITLE>RPG::Animation</TITLE>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+type=text/css href="../style.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
+<BODY>
+<H1>RPG::Animation</H1>
+<P>&#21160;&#30011;&#30340;&#25968;&#25454;&#31867;&#12290;</P>
+<H2>&#36229;&#31867;</H2>
+<UL>
+  <LI><A href="sc_object.html">Object &#29289;&#20214;&#31867;</A> </LI></UL>
+<H2>&#23646;&#24615;</H2>
+<DL>
+  <DT>id 
+  <DD>
+  <P>&#21160;&#30011; ID &#26631;&#21495;&#12290;</P>
+  <DT>name 
+  <DD>
+  <P>&#21160;&#30011;&#21517;&#31216;&#12290;</P>
+  <DT>animation1_name 
+  <DD>
+  <P>&#33014;&#29255;&#32032;&#26448;1 &#25991;&#20214;&#21517;&#12290;</P>
+  <DT>animation1_hue 
+  <DD>
+  <P>&#33014;&#29255;&#32032;&#26448;1 &#33394;&#35843;&#35843;&#25972;&#20540;&#65288;0&#65374;360&#65289;&#12290;</P>
+  <DT>animation2_name 
+  <DD>
+  <P>&#33014;&#29255;&#32032;&#26448;2 &#22270;&#25991;&#20214;&#21517;&#12290;</P>
+  <DT>animation2_hue 
+  <DD>
+  <P>&#33014;&#29255;&#32032;&#26448;2 &#33394;&#35843;&#35843;&#25972;&#20540;&#65288;0&#65374;360&#65289;&#12290;</P>
+  <DT>position 
+  <DD>
+  <P>&#21160;&#30011;&#26174;&#31034;&#22522;&#20934;&#20301;&#32622;&#65288;0&#65306;&#22836;&#19978;&#12289;1&#65306;&#20013;&#24515;&#12289;2&#65306;&#33050;&#19979;&#12289;3&#65306;&#30011;&#38754;&#65289;&#12290;</P>
+  <DT>frame_max 
+  <DD>
+  <P>&#21487;&#29992;&#24103;&#25968;&#12290;</P>
+  <DT>frames 
+  <DD>
+  <P>&#22270;&#35937;&#20803;&#20869;&#23481;&#12290;&#26159;&#30001; <A href="gc_rpg_animation_frame.html">RPG::Animation::Frame</A> 
+  &#23545;&#35937;&#25152;&#32452;&#25104;&#30340;&#25968;&#32452;&#12290;</P>
+  <DT>timings 
+  <DD>
+  <P>&#38899;&#25928;&#21644;&#38378;&#28865;&#25928;&#26524;&#26102;&#38388;&#20869;&#23481;&#12290;&#26159;&#30001; <A 
+  href="gc_rpg_animation_timing.html">RPG::Animation::Timing</A> 
+  &#23545;&#35937;&#25152;&#32452;&#25104;&#30340;&#25968;&#32452;&#12290;</P></DD></DL>
+<H2>&#26041;&#27861;</H2>
+<DL>
+  <DT>to_screen? 
+  <DD>
+  <P>&#21028;&#26029;&#35813;&#21160;&#30011;&#26159;&#21542;&#20840;&#23631;&#26174;&#31034;&#65292;&#24403; position &#30340;&#20540;&#20026;3&#30340;&#26102;&#20505;&#36820;&#22238;true&#12290;</P>
+  <H2>&#20869;&#37096;&#31867;</H2>
+  <UL>
+    <LI><A href="gc_rpg_animation_frame.html">RPG::Animation::Frame</A> 
+    <LI><A href="gc_rpg_animation_timing.html">RPG::Animation::Timing</A> 
+  </LI></UL>
+  <H2>&#23450;&#20041;</H2><PRE>class RPG::Animation
+  def initialize
+    @id = 0
+    @name = ''
+    @animation1_name = ''
+    @animation1_hue = 0
+    @animation2_name = ''
+    @animation2_hue = 0
+    @position = 1
+    @frame_max = 1
+    @frames = [RPG::Animation::Frame.new]
+    @timings = []
+  end
+  def to_screen?
+    @position == 3
+  end
+  attr_accessor :id
+  attr_accessor :name
+  attr_accessor :animation1_name
+  attr_accessor :animation1_hue
+  attr_accessor :animation2_name
+  attr_accessor :animation2_hue
+  attr_accessor :position
+  attr_accessor :frame_max
+  attr_accessor :frames
+  attr_accessor :timings
+end
+</PRE>
+  <H6></H6></DD></DL></BODY></HTML>

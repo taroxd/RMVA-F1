@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=en><HEAD><TITLE>RPG::Item</TITLE>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+type=text/css href="../style.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
+<BODY>
+<H1>RPG::Item</H1>
+<P>&#29289;&#21697;&#30340;&#25968;&#25454;&#31867;&#12290;</P>
+<H2>&#36229;&#31867;</H2>
+<UL>
+  <LI><A href="gc_rpg_usableitem.html">RPG::UsableItem</A> </LI></UL>
+<H2>&#23646;&#24615;</H2>
+<DL>
+  <DT>itype_id 
+  <DD>
+  <P>&#29289;&#21697;&#31867;&#22411;&#32534;&#21495;&#12290;</P>
+  <UL>
+    <LI>1: &#26222;&#36890;&#29289;&#21697;
+    <LI>2: &#36149;&#37325;&#29289;&#21697;</LI></UL>
+  <DT>price 
+  <DD>
+  <P>&#20215;&#26684;&#12290;</P>
+  <DT>consumable 
+  <DD>
+  <P>&#28040;&#32791;&#21697;&#24320;&#20851;&#12290;</P></DD></DL>
+<H2>&#26041;&#27861;</H2>
+<DL>
+  <DT>key_item? 
+  <DD>
+  <P>&#21028;&#26029;&#29289;&#21697;&#26159;&#21542;&#20026;&#36149;&#37325;&#29289;&#21697;&#65292;&#24403;&#29289;&#21697;&#31867;&#22411;&#32534;&#21495;&#20026;2&#26102;&#36820;&#22238;true&#12290;</P></DD></DL>
+<H2>&#23450;&#20041;</H2><PRE>class RPG::Item &lt; RPG::UsableItem
+  def initialize
+    super
+    @scope = 7
+    @itype_id = 1
+    @price = 0
+    @consumable = true
+  end
+  def key_item?
+    @itype_id == 2
+  end
+  attr_accessor :itype_id
+  attr_accessor :price
+  attr_accessor :consumable
+end
+</PRE>
+<H6></H6></BODY></HTML>

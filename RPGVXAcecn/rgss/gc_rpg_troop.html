@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=en><HEAD><TITLE>RPG::Troop</TITLE>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+type=text/css href="../style.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
+<BODY>
+<H1>RPG::Troop</H1>
+<P>&#25932;&#20154;&#38431;&#20237;&#30340;&#25968;&#25454;&#31867;&#12290;</P>
+<H2>&#36229;&#31867;</H2>
+<UL>
+  <LI><A href="sc_object.html">Object &#29289;&#20214;&#31867;</A> </LI></UL>
+<H2>&#23646;&#24615;</H2>
+<DL>
+  <DT>id 
+  <DD>
+  <P>&#25932;&#20154;&#38431;&#20237; ID &#32534;&#21495;&#12290;</P>
+  <DT>name 
+  <DD>
+  <P>&#25932;&#20154;&#38431;&#20237;&#21517;&#31216;&#12290;</P>
+  <DT>members 
+  <DD>
+  <P>&#25932;&#26041;&#38431;&#21592;&#65288;<A href="gc_rpg_troop_member.html">RPG::Troop::Member</A>&#65289;&#12290;</P>
+  <DT>pages 
+  <DD>
+  <P>&#25112;&#26007;&#20107;&#20214;&#65288;<A href="gc_rpg_troop_page.html">RPG::Troop::Page</A>&#65289;&#12290;</P></DD></DL>
+<H2>&#20869;&#37096;&#31867;</H2>
+<UL>
+  <LI><A href="gc_rpg_troop_member.html">RPG::Troop::Member</A> 
+  <LI><A href="gc_rpg_troop_page.html">RPG::Troop::Page</A> </LI></UL>
+<H2>&#23450;&#20041;</H2><PRE>class RPG::Troop
+  def initialize
+    @id = 0
+    @name = ''
+    @members = []
+    @pages = [RPG::Troop::Page.new]
+  end
+  attr_accessor :id
+  attr_accessor :name
+  attr_accessor :members
+  attr_accessor :pages
+end
+</PRE>
+<H6></H6></BODY></HTML>

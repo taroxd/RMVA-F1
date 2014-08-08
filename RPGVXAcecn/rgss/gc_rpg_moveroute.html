@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=en><HEAD><TITLE>RPG::MoveRoute</TITLE>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+type=text/css href="../style.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
+<BODY>
+<H1>RPG::MoveRoute</H1>
+<P>&#31227;&#21160;&#36712;&#36857;&#30340;&#25968;&#25454;&#31867;&#12290;</P>
+<H2>&#36229;&#31867;</H2>
+<UL>
+  <LI><A href="sc_object.html">Object &#29289;&#20214;&#31867;</A> </LI></UL>
+<H2>&#35843;&#29992;&#32773;</H2>
+<UL>
+  <LI><A href="gc_rpg_eventpage.html">RPG::EventPage</A> </LI></UL>
+<H2>&#23646;&#24615;</H2>
+<DL>
+  <DT>repeat 
+  <DD>
+  <P>&#26159;&#21542;&#21246;&#36873;&#12300;&#24490;&#29615;&#25191;&#34892;&#12301;&#36873;&#39033;&#30340;&#22797;&#36873;&#26694;&#12290;</P>
+  <DT>skippable 
+  <DD>
+  <P>&#26159;&#21542;&#21246;&#36873;&#12300;&#26080;&#35270;&#36335;&#38556;&#12301;&#36873;&#39033;&#30340;&#22797;&#36873;&#26694;&#12290;</P>
+  <DT>wait 
+  <DD>
+  <P>&#26159;&#21542;&#21246;&#36873;&#12300;&#31561;&#24453;&#31227;&#21160;&#32467;&#26463;&#12301;&#36873;&#39033;&#30340;&#22797;&#36873;&#26694;&#12290;</P>
+  <DT>list 
+  <DD>
+  <P>&#31227;&#21160;&#36712;&#36857;&#20869;&#23481;&#65292;<A 
+  href="rgss/gc_rpg_movecommand.html">RPG::MoveCommand</A> 
+  &#23545;&#35937;&#30340;&#25968;&#32452;&#12290;</P></DD></DL>
+<H2>&#23450;&#20041;</H2><PRE>class RPG::MoveRoute
+  def initialize
+    @repeat = true
+    @skippable = false
+    @wait = false
+    @list = [RPG::MoveCommand.new]
+  end
+  attr_accessor :repeat
+  attr_accessor :skippable
+  attr_accessor :wait
+  attr_accessor :list
+end
+</PRE>
+<H6></H6></BODY></HTML>

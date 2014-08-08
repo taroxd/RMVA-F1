@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=en><HEAD><TITLE>RPG::Troop::Page::Condition</TITLE>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+type=text/css href="../style.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
+<BODY>
+<H1>RPG::Troop::Page::Condition</H1>
+<P>&#25112;&#26007;&#20107;&#20214;&#30340;&#12300;&#26465;&#20214;&#12301;&#25968;&#25454;&#31867;&#12290;</P>
+<H2>&#36229;&#31867;</H2>
+<UL>
+  <LI><A href="sc_object.html">Object &#29289;&#20214;&#31867;</A> </LI></UL>
+<H2>&#35843;&#29992;&#32773;</H2>
+<UL>
+  <LI><A href="gc_rpg_troop_page.html">RPG::Troop::Page</A> </LI></UL>
+<H2>&#23646;&#24615;</H2>
+<DL>
+  <DT>turn_ending 
+  <DD>
+  <P>&#12300;&#22238;&#21512;&#32467;&#26463;&#26102;&#12301;&#26465;&#20214;&#26159;&#21542;&#26377;&#25928;&#30340;&#22797;&#36873;&#26694;&#12290;</P>
+  <DT>turn_valid 
+  <DD>
+  <P>&#12300;&#22238;&#21512;&#25968;&#12301;&#26465;&#20214;&#26159;&#21542;&#26377;&#25928;&#30340;&#22797;&#36873;&#26694;&#12290;</P>
+  <DT>enemy_valid 
+  <DD>
+  <P>&#12300;&#25932;&#20154;&#12301;&#26465;&#20214;&#26159;&#21542;&#26377;&#25928;&#30340;&#22797;&#36873;&#26694;&#12290;</P>
+  <DT>actor_valid 
+  <DD>
+  <P>&#12300;&#35282;&#33394;&#12301;&#26465;&#20214;&#26159;&#21542;&#26377;&#25928;&#30340;&#22797;&#36873;&#26694;&#12290;</P>
+  <DT>switch_valid 
+  <DD>
+  <P>&#12300;&#24320;&#20851;&#12301;&#26465;&#20214;&#26159;&#21542;&#26377;&#25928;&#30340;&#22797;&#36873;&#26694;&#12290;</P>
+  <DT>turn_a 
+  <DT>turn_b 
+  <DD>
+  <P>&#25351;&#23450;&#12300;&#22238;&#21512;&#25968;&#12301;&#26465;&#20214;&#30340; a b &#20540;&#65292;&#36755;&#20837;&#20026; a + bx &#30340;&#24418;&#24335;&#12290;</P>
+  <DT>enemy_index 
+  <DD>
+  <P>&#12300;&#25932;&#20154;&#12301;&#26465;&#20214;&#30340;&#25932;&#20154;&#38431;&#21592;&#32034;&#24341;&#65288;0&#65374;7&#65289;&#12290;</P>
+  <DT>enemy_hp 
+  <DD>
+  <P>&#25351;&#23450;&#12300;&#25932;&#20154;&#12301;&#26465;&#20214;&#30340;&#25932;&#20154;HP&#20540;&#30334;&#20998;&#27604;&#12290;</P>
+  <DT>actor_id 
+  <DD>
+  <P>&#12300;&#35282;&#33394;&#12301;&#26465;&#20214;&#30340;&#35282;&#33394; ID &#32534;&#21495;&#12290;</P>
+  <DT>actor_hp 
+  <DD>
+  <P>&#25351;&#23450;&#12300;&#35282;&#33394;&#12301;&#26465;&#20214;&#30340;&#35282;&#33394;HP&#20540;&#30334;&#20998;&#27604;&#12290;</P>
+  <DT>switch_id 
+  <DD>
+  <P>&#25351;&#23450;&#12300;&#24320;&#20851;&#12301;&#26465;&#20214;&#30340;&#24320;&#20851; ID &#32534;&#21495;&#12290;</P></DD></DL>
+<H2>&#23450;&#20041;</H2><PRE>class RPG::Troop::Page::Condition
+  def initialize
+    @turn_ending = false
+    @turn_valid = false
+    @enemy_valid = false
+    @actor_valid = false
+    @switch_valid = false
+    @turn_a = 0
+    @turn_b = 0
+    @enemy_index = 0
+    @enemy_hp = 50
+    @actor_id = 1
+    @actor_hp = 50
+    @switch_id = 1
+  end
+  attr_accessor :turn_ending
+  attr_accessor :turn_valid
+  attr_accessor :enemy_valid
+  attr_accessor :actor_valid
+  attr_accessor :switch_valid
+  attr_accessor :turn_a
+  attr_accessor :turn_b
+  attr_accessor :enemy_index
+  attr_accessor :enemy_hp
+  attr_accessor :actor_id
+  attr_accessor :actor_hp
+  attr_accessor :switch_id
+end
+</PRE>
+<H6></H6></BODY></HTML>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML lang=en><HEAD><TITLE>RPG::Weapon</TITLE>
+<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+type=text/css href="../style.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
+<BODY>
+<H1>RPG::Weapon</H1>
+<P>&#27494;&#22120;&#30340;&#25968;&#25454;&#31867;&#12290;</P>
+<H2>&#36229;&#31867;</H2>
+<UL>
+  <LI><A href="gc_rpg_equipitem.html">RPG::EquipItem</A> </LI></UL>
+<H2>&#23646;&#24615;</H2>
+<DL>
+  <DT>wtype_id 
+  <DD>
+  <P>&#27494;&#22120;&#31867;&#22411;&#32534;&#21495;&#12290;</P>
+  <DT>animation_id 
+  <DD>
+  <P>&#26222;&#36890;&#25915;&#20987;&#21160;&#30011;&#32534;&#21495;&#12290;</P></DD></DL>
+<H2>&#26041;&#27861;</H2>
+<DL>
+  <DT>performance 
+  <DD>
+  <P>&#27494;&#22120;&#35780;&#20215;&#65292;&#36890;&#36807;&#35013;&#22791;&#26356;&#25442;&#30028;&#38754;&#35843;&#29992;&#12290;</P>
+  <DD>
+  <P>&#36820;&#22238;&#29289;&#29702;&#25915;&#20987;&#12289;&#39764;&#27861;&#25915;&#20987;&#20197;&#21450;&#29305;&#24615;&#21152;&#25104;&#25928;&#26524;&#20043;&#21644;&#12290;</P></DD></DL>
+<H2>&#23450;&#20041;</H2><PRE>class RPG::Weapon &lt; RPG::EquipItem
+  def initialize
+    super
+    @wtype_id = 0
+    @animation_id = 0
+    @features.push(RPG::BaseItem::Feature.new(31, 1, 0))
+    @features.push(RPG::BaseItem::Feature.new(22, 0, 0))
+  end
+  def performance
+    params[2] + params[4] + params.inject(0) {|r, v| r += v }
+  end
+  attr_accessor :wtype_id
+  attr_accessor :animation_id
+end
+</PRE>
+<H6></H6></BODY></HTML>
