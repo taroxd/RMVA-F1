@@ -1,117 +1,117 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Window</TITLE>
 <META content=text/html;charset=GBK http-equiv=Content-Type>
 <META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
-<H1>Window 窗口类</H1>
-<P>游戏窗口的类。在内部由多重的精灵所组成。</P>
-<H2>超类</H2>
+<H1>Window ������</H1>
+<P>��Ϸ���ڵ��ࡣ���ڲ��ɶ��صľ�������ɡ�</P>
+<H2>����</H2>
 <UL>
   <LI><A href="sc_object.html">Object</A> </LI></UL>
-<H2>类方法</H2>
+<H2>�෽��</H2>
 <DL>
   <DT>Window.new([<VAR>x</VAR>, <VAR>y</VAR>, <VAR>width</VAR>,
   <VAR>height</VAR>]) <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
-  <P>创建一个窗口，并可以用参数来指定位置与大小。</P></DD></DL>
-<H2>方法</H2>
+  <P>����һ�����ڣ��������ò�����ָ��λ�����С��</P></DD></DL>
+<H2>����</H2>
 <DL>
   <DT>dispose
   <DD>
-  <P>释放窗口。若窗口已释放则什么都不做。</P>
+  <P>�ͷŴ��ڡ����������ͷ���ʲô��������</P>
   <DT>disposed?
   <DD>
-  <P>当窗口已释放则返回 true。</P>
+  <P>���������ͷ��򷵻� true��</P>
   <DT>update
   <DD>
-  <P>刷新光标的闪烁和暂停标记的动画。原则上每一帧都会调用一次。</P>
+  <P>ˢ�¹�����˸����ͣ��ǵĶ�����ԭ����ÿһ֡�������һ�Ρ�</P>
   <DT>move(<VAR>x</VAR>, <VAR>y</VAR>, <VAR>width</VAR>, <VAR>height</VAR>)
   <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
-  <P>重新设定窗口的位置与大小。</P>
+  <P>�����趨���ڵ�λ�����С��</P>
   <DT>open? <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
-  <P>如果窗口被成功打开（不透明度为255），则返回 true 。</P>
+  <P>������ڱ��ɹ��򿪣���͸����Ϊ255�����򷵻� true ��</P>
   <DT>close? <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
-  <P>如果窗口被成功关闭（不透明度为0），则返回 true 。</P></DD></DL>
-<H2>属性</H2>
+  <P>������ڱ��ɹ��رգ���͸����Ϊ0�����򷵻� true ��</P></DD></DL>
+<H2>����</H2>
 <DL>
   <DT>windowskin
   <DD>
-  <P>引用一个位图&nbsp;(<A href="gc_bitmap.html">Bitmap</A>)&nbsp;作为窗口的外观。</P>
-  <P>外观规格和 RMVX 基本相同，具体规格请参见 <A
-  href="../rpgvx/resource.html#windowskin">窗口外观的具体规格</A>。</P>
+  <P>����һ��λͼ&nbsp;(<A href="gc_bitmap.html">Bitmap</A>)&nbsp;��Ϊ���ڵ���ۡ�</P>
+  <P>��۹��� RMVX ������ͬ����������μ� <A
+  href="../rpgvx/resource.html#windowskin">������۵ľ�����</A>��</P>
   <DT>contents
   <DD>
-  <P>引用作为窗口内容的位图（<A href="gc_bitmap.html">Bitmap</A>&nbsp;）。</P>
+  <P>������Ϊ�������ݵ�λͼ��<A href="gc_bitmap.html">Bitmap</A>&nbsp;����</P>
   <DT>cursor_rect
   <DD>
-  <P>光标存放区域（<A href="gc_rect.html">Rect</A>&nbsp;）。</P>
-  <P>根据窗口内容，创建一个含有坐标的矩形对象。 <SPAN class=rgss3>(RGSS3)</SPAN></P>
+  <P>���������<A href="gc_rect.html">Rect</A>&nbsp;����</P>
+  <P>���ݴ������ݣ�����һ����������ľ��ζ��� <SPAN class=rgss3>(RGSS3)</SPAN></P>
   <DT>viewport
   <DD>
-  <P>引用与窗口关联的显示端口（<A href="gc_viewport.html">Viewport</A>&nbsp;）。</P>
+  <P>�����봰�ڹ�������ʾ�˿ڣ�<A href="gc_viewport.html">Viewport</A>&nbsp;����</P>
   <DT>active
   <DD>
-  <P>光标闪烁的状态。true 表示闪烁。默认值为True。</P>
+  <P>�����˸��״̬��true ��ʾ��˸��Ĭ��ֵΪTrue��</P>
   <DT>visible
   <DD>
-  <P>窗口可见的状态。true 表示可见。默认值为True。</P>
+  <P>���ڿɼ���״̬��true ��ʾ�ɼ���Ĭ��ֵΪTrue��</P>
   <DT>arrows_visible <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
-  <P>光标可见的状态，true表示可见。默认值为True。</P>
+  <P>���ɼ���״̬��true��ʾ�ɼ���Ĭ��ֵΪTrue��</P>
   <DT>pause
   <DD>
-  <P>暂停标记可见的状态。true 表示可见。默认值为False。</P>
+  <P>��ͣ��ǿɼ���״̬��true ��ʾ�ɼ���Ĭ��ֵΪFalse��</P>
   <DT>x
   <DD>
-  <P>窗口的 X 坐标。</P>
+  <P>���ڵ� X ���ꡣ</P>
   <DT>y
   <DD>
-  <P>窗口的 Y 坐标。</P>
+  <P>���ڵ� Y ���ꡣ</P>
   <DT>width
   <DD>
-  <P>窗口的宽度。</P>
+  <P>���ڵĿ��ȡ�</P>
   <DT>height
   <DD>
-  <P>窗口的高度。</P>
+  <P>���ڵĸ߶ȡ�</P>
   <DT>z
   <DD>
-  <P>窗口的 Z 坐标。数值愈大的平面愈靠近玩家。Z 坐标相同的，最后生成的对象则会最靠近玩家。</P>
-  <P>默认值为100。 <SPAN class=rgss3>(RGSS3)</SPAN></P>
+  <P>���ڵ� Z ���ꡣ��ֵ�����ƽ����������ҡ�Z ������ͬ�ģ�������ɵĶ�����������ҡ�</P>
+  <P>Ĭ��ֵΪ100�� <SPAN class=rgss3>(RGSS3)</SPAN></P>
   <DT>ox
   <DD>
-  <P>窗口内容的 X 坐标。滚动窗口时修改此数值。</P>
-  <P>也可作用于光标。 <SPAN class=rgss3>(RGSS3)</SPAN></P>
+  <P>�������ݵ� X ���ꡣ��������ʱ�޸Ĵ���ֵ��</P>
+  <P>Ҳ�������ڹ�ꡣ <SPAN class=rgss3>(RGSS3)</SPAN></P>
   <DT>oy
   <DD>
-  <P>窗口内容的&nbsp;Y 坐标。滚动窗口时修改此数值。</P>
-  <P>也可作用于光标。 <SPAN class=rgss3>(RGSS3)</SPAN></P>
+  <P>�������ݵ�&nbsp;Y ���ꡣ��������ʱ�޸Ĵ���ֵ��</P>
+  <P>Ҳ�������ڹ�ꡣ <SPAN class=rgss3>(RGSS3)</SPAN></P>
   <DT>padding <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
-  <P>窗口框架与内容之间的虚空区域宽度，默认值为12。 <SPAN class=rgss3>(RGSS3)</SPAN></P>
+  <P>���ڿ��������֮������������ȣ�Ĭ��ֵΪ12�� <SPAN class=rgss3>(RGSS3)</SPAN></P>
   <DT>padding_bottom <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
-  <P>窗口底部的填充物。必须在设置 padding 后才可使用，因为这二者是联动的。</P>
+  <P>���ڵײ����������������� padding ��ſ�ʹ�ã���Ϊ������������ġ�</P>
   <DT>opacity
   <DD>
-  <P>窗口的不透明度（0～255）。超出此范围的数值会自动修正。</P>
+  <P>���ڵĲ�͸���ȣ�0��255���������˷�Χ����ֵ���Զ�������</P>
   <DT>back_opacity
   <DD>
-  <P>窗口背景的不透明度（0～255）。超出此范围的数值会自动修正。默认值为192 <SPAN
-class=rgss3>(RGSS3)</SPAN>。</P>
+  <P>���ڱ����Ĳ�͸���ȣ�0��255���������˷�Χ����ֵ���Զ�������Ĭ��ֵΪ192 <SPAN
+class=rgss3>(RGSS3)</SPAN>��</P>
   <DT>contents_opacity
   <DD>
-  <P>窗口内容的不透明度（0～255）。超出此范围的数值会自动修正。默认值为255。</P>
+  <P>�������ݵĲ�͸���ȣ�0��255���������˷�Χ����ֵ���Զ�������Ĭ��ֵΪ255��</P>
   <DT>openness
   <DD>
-  <P>窗口的开启程度（0～255）。超出此范围的数值会自动修正。</P>
-  <P>将此数值从 0（完全关闭）至 255（完全开启）之间变换，可以产生窗口打开和关闭的动画效果。 openness 若低于
-  255，则不会显示其内容。默认值 255。</P></DD>
+  <P>���ڵĿ����̶ȣ�0��255���������˷�Χ����ֵ���Զ�������</P>
+  <P>������ֵ�� 0����ȫ�رգ��� 255����ȫ������֮��任�����Բ������ڴ򿪺͹رյĶ���Ч���� openness ������
+  255���򲻻���ʾ�����ݡ�Ĭ��ֵ 255��</P></DD>
   <DT>tone <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
-  <P>窗口的背景颜色（<A href="gc_tone.html">Tone</A>&nbsp;）。</P></DD></DL>
+  <P>���ڵı�����ɫ��<A href="gc_tone.html">Tone</A>&nbsp;����</P></DD></DL>
 <H6></H6></BODY></HTML>
