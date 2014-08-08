@@ -1,103 +1,103 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Math</TITLE>
-<META content="text/html; charset=ISO-8859-1" http-equiv=Content-Type>
+<META content="text/html; charset=GBK" http-equiv=Content-Type>
 <META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>Math</H1>
-<P>&#25903;&#25345;&#28014;&#28857;&#23567;&#25968;&#35745;&#31639;&#30340;&#27169;&#22359;&#12290;</P>
-<H2>&#27169;&#22359;&#26041;&#27861;</H2>
+<P>Ö§³Ö¸¡µãÐ¡Êý¼ÆËãµÄÄ£¿é¡£</P>
+<H2>Ä£¿é·½·¨</H2>
 <DL>
   <DT>Math.acos(<VAR>x</VAR>) 
   <DT>Math.asin(<VAR>x</VAR>) 
   <DT>Math.atan(<VAR>x</VAR>) 
   <DD>
-  <P>&#20197;&#24359;&#24230;&#36820;&#22238; <SPAN style="FONT-STYLE: italic">x</SPAN> &#30340;&#21453;&#19977;&#35282;&#20989;&#25968;&#35745;&#31639;&#20540;&#12290;</P>
-  <P>&#36820;&#22238;&#20540;&#30340;&#33539;&#22260;&#20998;&#21035;&#26159; [0, +&#960;]&#12289;[-&#960;/2, +&#960;/2] &#21644; (-&#960;/2, +&#960;/2)&#12290;</P>
-  <P>&#22312; acos(x) &#21644; asin(x) &#20013;&#65292;<VAR>x</VAR> &#20043;&#20540;&#24517;&#39035;&#26159; -1.0 &lt;= <VAR>x</VAR> &lt;= 1 
-  &#30340;&#33539;&#22260;&#65288;&#36890;&#24120;&#36820;&#22238; NaN&#65289;&#12290;</P>
-  <P>acos() &#21644; asin() &#36935;&#21040;&#36229;&#20986;&#33539;&#22260;&#30340;&#21442;&#25968;&#65292;&#20250;&#25243;&#20986; <A 
-  href="s_exceptions.html#Errno">Errno::EDOM</A> &#24322;&#24120;&#12290;</P>
+  <P>ÒÔ»¡¶È·µ»Ø <SPAN style="FONT-STYLE: italic">x</SPAN> µÄ·´Èý½Çº¯Êý¼ÆËãÖµ¡£</P>
+  <P>·µ»ØÖµµÄ·¶Î§·Ö±ðÊÇ [0, +&#960;]¡¢[-&#960;/2, +&#960;/2] ºÍ (-&#960;/2, +&#960;/2)¡£</P>
+  <P>ÔÚ acos(x) ºÍ asin(x) ÖÐ£¬<VAR>x</VAR> Ö®Öµ±ØÐëÊÇ -1.0 &lt;= <VAR>x</VAR> &lt;= 1 
+  µÄ·¶Î§£¨Í¨³£·µ»Ø NaN£©¡£</P>
+  <P>acos() ºÍ asin() Óöµ½³¬³ö·¶Î§µÄ²ÎÊý£¬»áÅ×³ö <A 
+  href="s_exceptions.html#Errno">Errno::EDOM</A> Òì³£¡£</P>
   <DT>Math.atan2(<VAR>y</VAR>, <VAR>x</VAR>) 
   <DD>
-  <P>&#36820;&#22238; [-&#960;, &#960;] &#33539;&#22260;&#20869;&#30340; <VAR>y</VAR>/<VAR>x</VAR> &#21453;&#27491;&#20999;&#20989;&#25968;&#12290;</P>
+  <P>·µ»Ø [-&#960;, &#960;] ·¶Î§ÄÚµÄ <VAR>y</VAR>/<VAR>x</VAR> ·´ÕýÇÐº¯Êý¡£</P>
   <DT>Math.acosh(<VAR>x</VAR>) 
   <DT>Math.asinh(<VAR>x</VAR>) 
   <DT>Math.atanh(<VAR>x</VAR>) 
   <DD>
-  <P>&#36820;&#22238; <SPAN style="FONT-STYLE: italic">x</SPAN> &#30340;&#21453;&#21452;&#26354;&#32447;&#20989;&#25968;&#35745;&#31639;&#20540;&#12290;</P><PRE>asinh(x) = log(x + sqrt(x * x + 1))
+  <P>·µ»Ø <SPAN style="FONT-STYLE: italic">x</SPAN> µÄ·´Ë«ÇúÏßº¯Êý¼ÆËãÖµ¡£</P><PRE>asinh(x) = log(x + sqrt(x * x + 1))
 acosh(x) = log(x + sqrt(x * x - 1)) [x &gt;= 1]
 atanh(x) = log((1+x)/(1-x)) / 2     [-1 &lt; x &lt; 1]
 </PRE>
-  <P>&#22312;&nbsp;acosh(x)&#65292;<VAR>x</VAR> &#24517;&#39035; &gt;= 1&#65288;&#36890;&#24120;&#20250;&#25243;&#20986; <A 
-  href="s_exceptions.html#Errno">Errno::EDOM</A> &#24322;&#24120;&#65289;&#12290;</P>
-  <P>&#22312;&nbsp;atanh(x)&#65292;<VAR>x</VAR> &#24517;&#39035;&#22312; -1.0 &lt; <VAR>x</VAR> &lt; 1 &#30340;&#33539;&#22260;&#20869;&#65288;&#36890;&#24120;&#20250;&#25243;&#20986; 
-  <A href="s_exceptions.html#Errno">Errno::EDOM</A> &#24322;&#24120;&#65289;&#12290;</P>
+  <P>ÔÚ&nbsp;acosh(x)£¬<VAR>x</VAR> ±ØÐë &gt;= 1£¨Í¨³£»áÅ×³ö <A 
+  href="s_exceptions.html#Errno">Errno::EDOM</A> Òì³££©¡£</P>
+  <P>ÔÚ&nbsp;atanh(x)£¬<VAR>x</VAR> ±ØÐëÔÚ -1.0 &lt; <VAR>x</VAR> &lt; 1 µÄ·¶Î§ÄÚ£¨Í¨³£»áÅ×³ö 
+  <A href="s_exceptions.html#Errno">Errno::EDOM</A> Òì³££©¡£</P>
   <DT>Math.cos(<VAR>x</VAR>) 
   <DT>Math.sin(<VAR>x</VAR>) 
   <DT>Math.tan(<VAR>x</VAR>) 
   <DD>
-  <P>&#20197;&#24359;&#24230;&#36820;&#22238; x &#30340;&#19977;&#35282;&#20989;&#25968; [-1, 1] &#30340;&#33539;&#22260;&#20869;&#30340;&#35745;&#31639;&#20540;&#12290;</P>
+  <P>ÒÔ»¡¶È·µ»Ø x µÄÈý½Çº¯Êý [-1, 1] µÄ·¶Î§ÄÚµÄ¼ÆËãÖµ¡£</P>
   <DT>Math.cosh(<VAR>x</VAR>) 
   <DT>Math.sinh(<VAR>x</VAR>) 
   <DT>Math.tanh(<VAR>x</VAR>) 
   <DD>
-  <P>&#36820;&#22238; <SPAN style="FONT-STYLE: italic">x</SPAN> &#30340;&#21452;&#26354;&#32447;&#20989;&#25968;&#35745;&#31639;&#20540;&#12290;</P><PRE>cosh(x) = (exp(x) + exp(-x)) / 2
+  <P>·µ»Ø <SPAN style="FONT-STYLE: italic">x</SPAN> µÄË«ÇúÏßº¯Êý¼ÆËãÖµ¡£</P><PRE>cosh(x) = (exp(x) + exp(-x)) / 2
 sinh(x) = (exp(x) - exp(-x)) / 2
 tanh(x) = sinh(x) / cosh(x)
 </PRE>
   <DT>Math.erf(<VAR>x</VAR>) 
   <DT>Math.erfc(<VAR>x</VAR>) 
   <DD>
-  <P>&#36820;&#22238; <SPAN style="FONT-STYLE: italic">x</SPAN> 
-  &#30340;&#35823;&#24046;&#20989;&#25968;&#65288;erf&#65289;&#12289;&#34917;&#20313;&#35823;&#24046;&#20989;&#25968;&#65288;erfc&#65289;&#30340;&#35745;&#31639;&#20540;&#12290;</P>
+  <P>·µ»Ø <SPAN style="FONT-STYLE: italic">x</SPAN> 
+  µÄÎó²îº¯Êý£¨erf£©¡¢²¹ÓàÎó²îº¯Êý£¨erfc£©µÄ¼ÆËãÖµ¡£</P>
   <DT>Math.exp(<VAR>x</VAR>) 
   <DD>
-  <P>&#36820;&#22238; <VAR>x</VAR> &#30340;&#25351;&#25968;&#20989;&#25968;&#35745;&#31639;&#20540;&#12290;</P>
+  <P>·µ»Ø <VAR>x</VAR> µÄÖ¸Êýº¯Êý¼ÆËãÖµ¡£</P>
   <DT>Math.frexp(<VAR>x</VAR>) 
   <DD>
-  <P>&#36820;&#22238;&#23454;&#25968; <VAR>x</VAR> &#30340;&#28014;&#28857;&#25968;&#23383;&#34920;&#31034;&#27861;&#65288;<FONT class=post>exponent and mantissa 
-  </FONT><FONT class=post>&#25351;&#25968;&#19982;&#20551;&#25968;</FONT>&#65289;&#12290;</P>
+  <P>·µ»ØÊµÊý <VAR>x</VAR> µÄ¸¡µãÊý×Ö±íÊ¾·¨£¨<FONT class=post>exponent and mantissa 
+  </FONT><FONT class=post>Ö¸ÊýÓë¼ÙÊý</FONT>£©¡£</P>
   <DT>Math.hypot(<VAR>x</VAR>, <VAR>y</VAR>) 
   <DD>
-  <P>&#36820;&#22238;&nbsp;sqrt(x*x + y*y)&#12290;&#65288;sqrt&#20026;&#27714;&#24179;&#26041;&#26681;&#20989;&#25968;&#65292;&#20063;&#21363;&#26159;&#27714;x&#12289;y&#22312;&#30452;&#35282;&#19977;&#35282;&#24418;&#20013;&#30340;&#26012;&#36793;&#65289;</P>
+  <P>·µ»Ø&nbsp;sqrt(x*x + y*y)¡££¨sqrtÎªÇóÆ½·½¸ùº¯Êý£¬Ò²¼´ÊÇÇóx¡¢yÔÚÖ±½ÇÈý½ÇÐÎÖÐµÄÐ±±ß£©</P>
   <DT>Math.ldexp(<VAR>x</VAR>, <VAR>exp</VAR>) 
   <DD>
-  <P>&#36820;&#22238;&#23454;&#25968; <SPAN style="FONT-STYLE: italic">x</SPAN> &#20056;&#20197; 2 &#30340; <SPAN 
-  style="FONT-STYLE: italic">exp</SPAN> &#24130;&#25968;&#30340;&#26368;&#32456;&#32467;&#26524;&#12290;&#65288;x * 2<SUP>exp</SUP>&#65289;&nbsp;</P>
+  <P>·µ»ØÊµÊý <SPAN style="FONT-STYLE: italic">x</SPAN> ³ËÒÔ 2 µÄ <SPAN 
+  style="FONT-STYLE: italic">exp</SPAN> ÃÝÊýµÄ×îÖÕ½á¹û¡££¨x * 2<SUP>exp</SUP>£©&nbsp;</P>
   <DT>Math.log(<VAR>x</VAR>) 
   <DD>
-  <P>&#36820;&#22238; <SPAN style="FONT-STYLE: italic">x</SPAN> &#30340;&#33258;&#28982;&#23545;&#25968;<SPAN 
-  style="FONT-STYLE: italic">&#12290;</SPAN><VAR></VAR></P>
-  <P><VAR>x</VAR> &#24517;&#39035;&#26159;&#27491;&#20540;&#65288;&#36890;&#24120;&#36127;&#20540;&#20250;&#36820;&#22238; NaN&#65292;0 &#20250;&#36820;&#22238;&#36127;&#26080;&#31351;&#65289;&#12290;</P>
-  <P>&#36229;&#20986;&#33539;&#22260;&#30340;&#21442;&#25968;&#65292;&#36127;&#25968;&#20250;&#25243;&#20986; <A href="s_exceptions.html#Errno">Errno::EDOM</A> &#24322;&#24120;&#65292;&#32780; 0 &#20250;&#25243;&#20986; 
-  <A href="s_exceptions.html#Errno">Errno::ERANGE</A> &#24322;&#24120;&#12290;</P>
+  <P>·µ»Ø <SPAN style="FONT-STYLE: italic">x</SPAN> µÄ×ÔÈ»¶ÔÊý<SPAN 
+  style="FONT-STYLE: italic">¡£</SPAN><VAR></VAR></P>
+  <P><VAR>x</VAR> ±ØÐëÊÇÕýÖµ£¨Í¨³£¸ºÖµ»á·µ»Ø NaN£¬0 »á·µ»Ø¸ºÎÞÇî£©¡£</P>
+  <P>³¬³ö·¶Î§µÄ²ÎÊý£¬¸ºÊý»áÅ×³ö <A href="s_exceptions.html#Errno">Errno::EDOM</A> Òì³££¬¶ø 0 »áÅ×³ö 
+  <A href="s_exceptions.html#Errno">Errno::ERANGE</A> Òì³£¡£</P>
   <DT>Math.log10(<VAR>x</VAR>) 
   <DD>
-  <P>&#36820;&#22238; <SPAN style="FONT-STYLE: italic">x</SPAN> &#30340;&#24120;&#29992;&#23545;&#25968;<SPAN 
-  style="FONT-STYLE: italic">&#12290;</SPAN><VAR></VAR></P>
-  <P><VAR>x</VAR> &#24517;&#39035;&#26159;&#27491;&#20540;&#65288;&#36890;&#24120;&#36127;&#20540;&#20250;&#36820;&#22238; NaN&#65292;0 &#20250;&#36820;&#22238;&#36127;&#26080;&#31351;&#65289;&#12290;</P>
-  <P>&#36229;&#20986;&#33539;&#22260;&#30340;&#21442;&#25968;&#65292;&#36127;&#25968;&#20250;&#25243;&#20986; <A 
+  <P>·µ»Ø <SPAN style="FONT-STYLE: italic">x</SPAN> µÄ³£ÓÃ¶ÔÊý<SPAN 
+  style="FONT-STYLE: italic">¡£</SPAN><VAR></VAR></P>
+  <P><VAR>x</VAR> ±ØÐëÊÇÕýÖµ£¨Í¨³£¸ºÖµ»á·µ»Ø NaN£¬0 »á·µ»Ø¸ºÎÞÇî£©¡£</P>
+  <P>³¬³ö·¶Î§µÄ²ÎÊý£¬¸ºÊý»áÅ×³ö <A 
   href="ata/Local/Temp/RPGVXAce/rgss/s_exceptions.html#Errno">Errno::EDOM</A> 
-  &#24322;&#24120;&#65292;&#32780; 0 &#20250;&#25243;&#20986; <A 
+  Òì³££¬¶ø 0 »áÅ×³ö <A 
   href="ata/Local/Temp/RPGVXAce/rgss/s_exceptions.html#Errno">Errno::ERANGE</A> 
-  &#24322;&#24120;&#12290;</P>
+  Òì³£¡£</P>
   <DT>Math.sqrt(<VAR>x</VAR>) 
   <DD>
-  <P>&#36820;&#22238; <VAR>x</VAR> &#30340;&#24179;&#26041;&#26681;&#21495;&#12290;&#33509; <VAR>x</VAR> &#20026;&#36127;&#25968;&#65292;&#25243;&#20986; <A 
-  href="s_exceptions.html#ArgumentError">ArgumentError&#65288;&#24322;&#24120;&#65306;&#21442;&#25968;&#38169;&#35823;&#65289;</A> &#24322;&#24120;&#12290;</P>
-  <P>&#36890;&#24120;&#36127;&#25968;&#20250;&#25243;&#20986; <A href="s_exceptions.html#Errno">Errno::EDOM</A> &#24322;&#24120;&#12290;</P></DD></DL>
-<H2>&#23450;&#25968;</H2>
+  <P>·µ»Ø <VAR>x</VAR> µÄÆ½·½¸ùºÅ¡£Èô <VAR>x</VAR> Îª¸ºÊý£¬Å×³ö <A 
+  href="s_exceptions.html#ArgumentError">ArgumentError£¨Òì³££º²ÎÊý´íÎó£©</A> Òì³£¡£</P>
+  <P>Í¨³£¸ºÊý»áÅ×³ö <A href="s_exceptions.html#Errno">Errno::EDOM</A> Òì³£¡£</P></DD></DL>
+<H2>¶¨Êý</H2>
 <DL>
   <DT>E 
   <DD>
-  <P>&#33258;&#28982;&#23545;&#25968;&#30340;&#24213;&#25968;&#12290;</P><PRE>p Math::E
+  <P>×ÔÈ»¶ÔÊýµÄµ×Êý¡£</P><PRE>p Math::E
 # =&gt; 2.718281828
 </PRE>
   <DT>PI 
   <DD>
-  <P>&#22278;&#21608;&#29575;&#12290;</P><PRE>p Math::PI
+  <P>Ô²ÖÜÂÊ¡£</P><PRE>p Math::PI
 # =&gt; 3.141592654
 </PRE></DD></DL>
 <H6></H6></BODY></HTML>
