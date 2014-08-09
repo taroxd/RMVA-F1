@@ -222,7 +222,7 @@
 				<param name="Local" value="rpgvxace/5410_ev_routesetting.html">
 				</OBJECT>
 		</UL>
-		<LI> <OBJECT type="text/sitemap">
+			<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="资料集">
 			<param name="Local" value="rpgvxace/6000_appendix.html">
 			<param name="ImageNumber" value="1">
@@ -249,58 +249,58 @@
 			<param name="Local" value="vx_user/010_002.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
-		<UL>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="角色">
-				<param name="Local" value="vx_user/010_002a.html">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="职业">
-				<param name="Local" value="vx_user/010_002b.html">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="技能·道具">
-				<param name="Local" value="vx_user/010_002c.html">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="武器">
-				<param name="Local" value="vx_user/010_002d.html">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="护甲">
-				<param name="Local" value="vx_user/010_002e.html">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="敌人">
-				<param name="Local" value="vx_user/010_002f.html">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="敌群">
-				<param name="Local" value="vx_user/010_002g.html">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="状态">
-				<param name="Local" value="vx_user/010_002h.html">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="系统">
-				<param name="Local" value="vx_user/010_002i.html">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="用语">
-				<param name="Local" value="vx_user/010_002j.html">
-				</OBJECT>
-			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="地图">
-				<param name="Local" value="vx_user/010_002k.html">
-				</OBJECT>
-		</UL>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="角色">
+					<param name="Local" value="vx_user/010_002a.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="职业">
+					<param name="Local" value="vx_user/010_002b.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="技能·道具">
+					<param name="Local" value="vx_user/010_002c.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="武器">
+					<param name="Local" value="vx_user/010_002d.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="护甲">
+					<param name="Local" value="vx_user/010_002e.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="敌人">
+					<param name="Local" value="vx_user/010_002f.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="敌群">
+					<param name="Local" value="vx_user/010_002g.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="状态">
+					<param name="Local" value="vx_user/010_002h.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="系统">
+					<param name="Local" value="vx_user/010_002i.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="用语">
+					<param name="Local" value="vx_user/010_002j.html">
+					</OBJECT>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="地图">
+					<param name="Local" value="vx_user/010_002k.html">
+					</OBJECT>
+			</UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="给VX用户的建议">
 			<param name="Local" value="vx_user/010_004.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
-		<UL>
+			<UL>
 			<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="普通攻击的命中率">
 				<param name="Local" value="vx_user/010_004.html#01">
@@ -317,13 +317,13 @@
 				<param name="Name" value="将 VX 的图像素材用于 VX Ace">
 				<param name="Local" value="vx_user/010_004.html#04">
 				</OBJECT>
-		</UL>
+			</UL>
 		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="VX Ace主要功能的VX对应表">
 			<param name="Local" value="vx_user/010_003.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>
-		<UL>
+			<UL>
 			<LI> <OBJECT type="text/sitemap">
 				<param name="Name" value="特性">
 				<param name="Local" value="vx_user/010_003.html#01">
@@ -344,8 +344,8 @@
 				<param name="Name" value="特殊能力值">
 				<param name="Local" value="vx_user/010_003.html#05">
 				</OBJECT>
+			</UL>
 		</UL>
-	</UL>
 	<LI> <OBJECT type="text/sitemap">
 		<param name="Name" value="脚本入门">
 		<param name="Local" value="intro/index.html">
