@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>数据库</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>数据库</h1>
+<ul>
+<li><a href="#data_xxxx">$data_xxxx</a></li>
+<li><a href="#contents">数据库的内容</a></li>
+<li><a href="#access">获取数据库的内容</a></li>
+</ul>
+
+<p>默认的脚本到底在做什么？在解读篇中，笔者会给出一些用来解读这些脚本的提示。</p>
+<p>而本章会解释在脚本中是如何处理 VA 的<strong>数据库</strong>的。</p>
+
+
+<h2><a name="data_xxxx">$data_xxxx</a></h2>
+<p>请先从脚本编辑器左侧的列表中，找到 DataManager 项，在这页脚本刚开始的地方，能看见下方的代码对吧。这个 load_normal_database 是在游戏开始之后，在标题画面显示之前会先调用的方法。</p>
+
+<pre>
+  def self.load_normal_database
+    $data_actors        = load_data(&quot;Data/Actors.rvdata2&quot;)
+    $data_classes       = load_data(&quot;Data/Classes.rvdata2&quot;)
+    $data_skills        = load_data(&quot;Data/Skills.rvdata2&quot;)
+    $data_items         = load_data(&quot;Data/Items.rvdata2&quot;)
+    $data_weapons       = load_data(&quot;Data/Weapons.rvdata2&quot;)
+    $data_armors        = load_data(&quot;Data/Armors.rvdata2&quot;)
+    $data_enemies       = load_data(&quot;Data/Enemies.rvdata2&quot;)
+    $data_troops        = load_data(&quot;Data/Troops.rvdata2&quot;)
+    $data_states        = load_data(&quot;Data/States.rvdata2&quot;)
+    $data_animations    = load_data(&quot;Data/Animations.rvdata2&quot;)
+    $data_tilesets      = load_data(&quot;Data/Tilesets.rvdata2&quot;)
+    $data_common_events = load_data(&quot;Data/CommonEvents.rvdata2&quot;)
+    $data_system        = load_data(&quot;Data/System.rvdata2&quot;)
+    $data_mapinfos      = load_data(&quot;Data/MapInfos.rvdata2&quot;)
+  end
+</pre>
+
+<p>在这段代码中，RM 会从保存好的文件中读取数据库，并让里面的各种数据可以从脚本中获取。凡是以$这个符号为开头的变量称作<strong>全局变量</strong>，顾名思义，这些数据在这段代码之后，不论是在脚本的哪个地方都能够由此获取。</p>
+<p>所谓的 load_data 是<a href="../rgss/g_functions.html">RGSS
+内建函数</a>之一，是可以从指定的文件中读取数据的函数，比方说上面第一行代码的意思是：从 Data 文件夹中的 Actors.rvdata2 这个文件中读取数据,并将数据赋值给叫做 $data_actors 的变量中。</p>
+<p>此外，在定义 load_data 方法最开始的地方写着 self.，这是定义
+<strong>模块方法</strong>的方式。
+关于模块会在下一章解释，现在请先将注意集中在方法的内容里面。</p>
+
+
+<h2><a name="contents">数据库的内容</a></h2>
+<p>每个对象所代表的东西如下：</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>变量名</th>
+ <th>对应的数据库</th>
+ <th>使用的类</th>
+</tr><tr>
+ <td>$data_actors</td>
+ <td>角色</td>
+ <td><a href="../rgss/gc_rpg_actor.html">RPG::Actor</a>
+     的数组</td>
+</tr><tr>
+ <td>$data_classes</td>
+ <td>职业</td>
+ <td><a href="../rgss/gc_rpg_class.html">RPG::Class</a>
+     的数组</td>
+</tr><tr>
+ <td>$data_skills</td>
+ <td>技能</td>
+ <td><a href="../rgss/gc_rpg_skill.html">RPG::Skill</a>
+     的数组</td>
+</tr><tr>
+ <td>$data_items</td>
+ <td>物品</td>
+ <td><a href="../rgss/gc_rpg_item.html">RPG::Item</a>
+     的数组</td>
+</tr><tr>
+ <td>$data_weapons</td>
+ <td>武器</td>
+ <td><a href="../rgss/gc_rpg_weapon.html">RPG::Weapon</a>
+      的数组</td>
+</tr><tr>
+ <td>$data_armors</td>
+ <td>护甲</td>
+ <td><a href="../rgss/gc_rpg_armor.html">RPG::Armor</a>
+     的数组</td>
+</tr><tr>
+ <td>$data_enemies</td>
+ <td>敌人</td>
+ <td><a href="../rgss/gc_rpg_enemy.html">RPG::Enemy</a>
+     的数组</td>
+</tr><tr>
+ <td>$data_troops</td>
+ <td>敌群</td>
+ <td><a href="../rgss/gc_rpg_troop.html">RPG::Troop</a>
+     的数组</td>
+</tr><tr>
+ <td>$data_states</td>
+ <td>状态</td>
+ <td><a href="../rgss/gc_rpg_state.html">RPG::State</a>
+     的数组</td>
+</tr><tr>
+ <td>$data_animations</td>
+ <td>动画</td>
+ <td><a href="../rgss/gc_rpg_animation.html">RPG::Animation</a>
+     的数组</td>
+</tr><tr>
+ <td>$data_tilesets</td>
+ <td>图块</td>
+ <td><a href="../rgss/gc_rpg_tileset.html">RPG::Tileset</a>
+     的数组</td>
+</tr><tr>
+ <td>$data_common_events</td>
+ <td>公共事件</td>
+ <td><a href="../rgss/gc_rpg_commonevent.html">RPG::CommonEvent</a>
+     的数组</td>
+</tr><tr>
+ <td>$data_system</td>
+ <td>系统</td>
+ <td><a href="../rgss/gc_rpg_system.html">RPG::System</a>
+     </td>
+</tr><tr>
+ <td>$data_mapinfos</td>
+ <td>地图信息</td>
+ <td><a href="../rgss/gc_rpg_mapinfo.html">RPG::MapInfo</a>
+     的哈希表</td>
+</tr></table>
+<p>从角色到公共事件这11种数据都是数组，对应数据库中每个项目的每个编号。不过在 VA 中，每个项目的数据ID都是从1开始，为了让数据ID跟数组的编号对齐，每个项目的第一个项目（也就是[0]项）的内容都是 nil。</p>
+
+
+<h2><a name="access">获取数据库的内容</a></h2>
+<p>接下来也差不多和基础篇一样，在先前的 TEST 脚本页里写下获得数据库的代码试试看，但我们还存在一个问题。那就是在我们写在最上方的 TEST 这页脚本开始运行的时候，DataManager 这个模块还没有被定义。</p>
+<p>所以我们快像下面一样，把跟 load_normal_database 方法一模一样的内容以及处理加上去吧。</p>
+<pre>
+$data_actors        = load_data(&quot;Data/Actors.rvdata2&quot;)
+$data_classes       = load_data(&quot;Data/Classes.rvdata2&quot;)
+$data_skills        = load_data(&quot;Data/Skills.rvdata2&quot;)
+$data_items         = load_data(&quot;Data/Items.rvdata2&quot;)
+$data_weapons       = load_data(&quot;Data/Weapons.rvdata2&quot;)
+$data_armors        = load_data(&quot;Data/Armors.rvdata2&quot;)
+$data_enemies       = load_data(&quot;Data/Enemies.rvdata2&quot;)
+$data_troops        = load_data(&quot;Data/Troops.rvdata2&quot;)
+$data_states        = load_data(&quot;Data/States.rvdata2&quot;)
+$data_animations    = load_data(&quot;Data/Animations.rvdata2&quot;)
+$data_tilesets      = load_data(&quot;Data/Tilesets.rvdata2&quot;)
+$data_common_events = load_data(&quot;Data/CommonEvents.rvdata2&quot;)
+$data_system        = load_data(&quot;Data/System.rvdata2&quot;)
+$data_mapinfos      = load_data(&quot;Data/MapInfos.rvdata2&quot;)
+</pre>
+<p>这么一来就能使用 $data_actors 等变量了吧。<a href="110_array.html">数组</a>的使用方法没有忘记吧？</p>
+<p>举个例子，只要看一下 <a href="../rgss/gc_rpg_actor.html">RPG::Actor</a> 的页面应该就能马上找到，下面是显示1号角色名称的单行脚本。</p>
+<pre>
+p $data_actors[1].nickname
+</pre>
+<p>接下来的脚本用来显示敌方2号角色的名称：name这个变量不是在 <td><a href="../rgss/gc_rpg_enemy.html">RPG::Enemy</a>
+中定义的，而是在它的父类
+<a href="../rgss/gc_rpg_baseitem.html">RPG::BaseItem</a>
+ 中定义的。</p>
+<pre>
+p $data_enemies[2].name
+</pre>
+<p>再来的范例用来显示3号物品所指定的物品图标的编号：</p>
+<pre>
+p $data_items[3].icon_index
+</pre>
+<p>最后一个脚本则用来显示出4号开关的名称：</p>
+<pre>
+p $data_system.switches[4]
+</pre>
+<p>想要获得数据库，诀窍就在于，从RGSS参考中检索到想要获得的数据的属性（变量）名称就可以了。</p>
+<p>多试几次看看，确定自己能够正确获得数据之后就往下一章迈进吧！</p>
+
+
+<h6></h6>
+
+</body>
+</html>
