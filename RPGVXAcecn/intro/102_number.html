@@ -1,23 +1,27 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML lang=zh><HEAD><TITLE>数值的计算</TITLE>
-<META http-equiv=Content-Type content="text/html; charset=GBK">
-<META http-equiv=Content-Style-Type content=text/css><LINK href="../style.css"
-type=text/css rel=stylesheet>
-<META content="MSHTML 6.00.2900.3199" name=GENERATOR></HEAD>
-<BODY>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>数値の計算</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
 <H1>数值的计算</H1>
 <UL>
   <li><a href="#console">显示主控制台</a></li>
   <LI><A href="#number">数值</A>
   <LI><A href="#display">显示数值</A>
   <LI><A href="#calculate">计算方法</A> </LI></UL>
-<P>是关于 Ruby 中数字和计算的基础知识。作为例子将使用计算器那样简单的计算来解说。</P>
+<P>这是关于 Ruby 中数字和计算的基础知识。作为例子将使用计算器那样简单的计算来解说。</P>
 <h2><a name="console">显示主控制台</a></h2>
 <img src="img/console.png" alt="数値の表示" class="float_r">
 <p>一开始，请先在VA的[游戏]菜单中选择[显示主控制台]。启用了这个选项之后，在游戏测试时控制台界面会与游戏窗口同时打开。</p>
 <p>控制台窗口是显示文字信息专用的窗口，主要功能是在调试时通过显示适当的文字来检查运行情况。在实际完成的游戏并不会显示出来。</p>
-<H2><A name=number>数值</A></H2>
-<P>Ruby 中能使用的数值，包括<STRONG>整数</STRONG>和<STRONG>浮点数</STRONG>两种。</P><PRE>3          # 整数
+<H2><A name="number">数值</A></H2>
+<P>Ruby 中能使用的数值，包括<STRONG>整数</STRONG>和<STRONG>浮点数</STRONG>两种。</P>
+<PRE>
+3           # 整数
 52          # 整数
 -99         # 整数
 1.5         # 浮点数
@@ -25,15 +29,18 @@ type=text/css rel=stylesheet>
 </PRE>
 <P>所谓浮点数，就是使用小数点以下计算的数。数值相同的话写作 3 是整数，而写作 3.0
 即是浮点数。整数计算速度快，如果不需要小数点以下的话尽量使用整数。</P>
-<H2><A name=display>显示数值</A></H2>
-<P>即在画面上显示数值。想显示某些数值时，使用 <STRONG>p</STRONG> 命令。</P>
+<p>请注意，要表示 15 时，不要在前方加 0 变成 015。如果加上的话，该数字会被解释成八进制数，意思就变了。这里不再赘述八进制数，只是请记住写数字时不要在前面加上 0。</p>
+<H2><A name="display">显示</A></H2>
+<img src="img/image3.png" alt="数値の表示" class="float_r">
+<p>
+<P>即在控制台上显示数值。想显示某些数值时，使用 <STRONG>p</STRONG> 命令。</P>
 <P>小写字母
 p，半角字符，再把想要显示的数值按顺序输入后换行。今后会出现各种各样的命令和符号，除注释外其它一律使用半角输入。不小心输入全角字符的话，要注意发现错误。</P><PRE>p 3
 </PRE>
 <P>这个 p 命令可以在排除程序故障时使用，学习显示数值将会是十分有用的。</P>
-<P>运行这个程序，会看到在弹出的对话框中显示 3。原本 p 不是显示对话框的命令，但是游戏开发时特殊化的 RGSS
-在没有其它输出地点时就会自动显示对话框。</P>
-<H2><A name=calculate>计算方法</A></H2>
+<P>运行正常的话，你会看到控制台上显示了 3。p 命令在调试时常常使用，在学习时用来显示数值也很方便。</P>
+<p>此外，p 函数在 RGSS2 之前一直是弹出消息框的方法，这一点在 RGSS3 有所更改。希望像以前一样显示消息框的话，请使用 msgbox 函数。</p>
+<H2><A name="calculate">计算方法</A></H2>
 <P>在 Ruby 上进行计算吧。</P><PRE>p 1 + 1             # 加法
 p 10 - 3            # 减法
 p 7 * 5             # 乘法

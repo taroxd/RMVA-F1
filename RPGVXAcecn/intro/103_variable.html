@@ -36,13 +36,25 @@ break    elsif    in       redo     then     while
 case     end      module   rescue   true     yield
 class    ensure   next     retry    undef
 </pre>
-<p>除上面列出的保留字以外，其它的词都可以作变量的名称。</p>
+<p>除上面列出的保留字以外，其它的词基本都可以作变量的名称。</p>
+<p>正确:</p>
+<pre>
+foo
+tkool2000
+_test
+</pre>
+<p>错误:</p>
+<pre>
+2003tkool   # 以数字开头
+Alex        # 以大写字母开头
+def         # 使用了保留字
+</pre>
 <h2><a name="subst">赋值和引用</a></h2>
 <p>在实际中使用变量看看吧。</p>
 <pre>
 x = 3
 y = 4
-p x + y     # => 7
+p x + y     # =&gt; 7
 </pre>
 <p>第一行和第二行是进行变量的<strong>赋值</strong>。
 其中 = 号是<strong>赋值运算符</strong>。和数学上使用等号
@@ -59,7 +71,7 @@ p zzz       # ERROR!!
 <p>请记住，变量一定要进行赋值后才能使用。</p>
 <pre>
 zzz = 5
-p zzz       # => 5
+p zzz       # =&gt; 5
 </pre>
 <p>这个示例中，第一行变量 zzz 为其赋值代入 5 后，第二行引用。</p>
 <h2><a name="self">自运算</a></h2>
@@ -69,11 +81,11 @@ x = 1
 x += 7
 x -= 3
 x *= 2
-p x         # => 10
+p x         # =&gt; 10
 </pre>
 <p>第二行的 x += 7 相当于 x = x + 7，总之就是向变量 x 里加上 7。
 同样 -=、*=、/=、%= 等也是如此使用。这些运算符就是<strong>自运算运算符</strong>。</p>
-<p>RPGXP 的变量进行自运算计算处理时思考方法都相似。
+<p>RM 的变量进行自运算计算处理时思考方法都相似。
 这个示例中第一行是赋值直接代入 1，第二行加上 7，这时 x 的值其实是 8，
 第三行减去 3，第四行再乘以 2，最后的计算结果就是 10。</p>
 <h2><a name="global">全局变量</a></h2>
