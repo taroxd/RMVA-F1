@@ -7,7 +7,7 @@ type=text/css href="../style.css">
 <BODY>
 <H1>Bitmap</H1>
 <P>位图类，其实就是图像类。</P>
-<P>在画面上显示位图，必须使用精灵（<A href="gc_sprite.html">Sprite</A>&nbsp;)之类的对象。</P>
+<P>在画面上显示位图，必须使用精灵（<A href="gc_sprite.html">Sprite</A>)之类的对象。</P>
 <H2>超类</H2>
 <UL>
   <LI><A href="sc_object.html">Object</A> </LI></UL>
@@ -16,8 +16,8 @@ type=text/css href="../style.css">
   <DT><A name=new>Bitmap.new(<VAR>filename</VAR>)</A>
   <DD>
   <P>载入由 filename 参数所指定的图像，并生成一个对应的位图类对象。</P>
-  <P>函数会自动搜索 <A href="rgss.html#rgss_rtp">RGSS-RTP</A>&nbsp;和 <A
-  href="rgss.html#encryption_archive">加密档案</A>&nbsp;中的文件，并且扩展名可以省略。</P>
+  <P>函数会自动搜索 <A href="rgss.html#rgss_rtp">RGSS-RTP</A> 和 <A
+  href="rgss.html#encryption_archive">加密档案</A> 中的文件，并且扩展名可以省略。</P>
   <DT>Bitmap.new(<VAR>width</VAR>, <VAR>height</VAR>)
   <DD>
   <P>生成指定大小的位图对象。</P></DD></DL>
@@ -37,27 +37,26 @@ type=text/css href="../style.css">
   <P>获取位图的高度。</P>
   <DT>rect
   <DD>
-  <P>获取位图矩形（ <A href="gc_rect.html">Rect</A>&nbsp;）。</P>
+  <P>获取位图矩形（<A href="gc_rect.html">Rect</A>）。</P>
   <DT>blt(<VAR>x</VAR>, <VAR>y</VAR>, <VAR>src_bitmap</VAR>,
   <VAR>src_rect</VAR>[, <VAR>opacity</VAR>])
   <DD>
-  <P>执行从位图 <VAR>src_bitmap</VAR> 的矩形 <VAR>src_rect&nbsp;
-  </VAR>(<A href="gc_rect.html">Rect</A>&nbsp;) 到指定的位图坐标 (<VAR>x</VAR>, <VAR>y</VAR>) 之间的区块过渡。</P>
+  <P>执行从位图 <VAR>src_bitmap</VAR> 的矩形 <VAR>src_rect</VAR>（<A href="gc_rect.html">Rect</A>）到指定的位图坐标 (<VAR>x</VAR>, <VAR>y</VAR>) 之间的区块过渡。</P>
   <P><VAR>opacity</VAR> 是透明度，范围 0～255。</P>
   <DT>stretch_blt(<VAR>dest_rect</VAR>, <VAR>src_bitmap</VAR>,
   <VAR>src_rect</VAR>[, <VAR>opacity</VAR>])
   <DD>
   <P>执行从位图 <VAR>src_bitmap</VAR> 的矩形
-  <VAR>src_rec</VAR>t（<A href="gc_rect.html">Rect</A>&nbsp;）带指定的位图目标矩形 <VAR>dest_rect</VAR>（<A
-  href="gc_rect.html">Rect</A>&nbsp;）之间的区块过渡。</P>
+  <VAR>src_rec</VAR>t（<A href="gc_rect.html">Rect</A>）带指定的位图目标矩形 <VAR>dest_rect</VAR>（<A
+  href="gc_rect.html">Rect</A>）之间的区块过渡。</P>
   <P><VAR>opacity</VAR> 是透明度，范围 0～255。</P>
   <DT>fill_rect(<VAR>x</VAR>, <VAR>y</VAR>, <VAR>width</VAR>,
   <VAR>height</VAR>, <VAR>color</VAR>)
   <DT>fill_rect(<VAR>rect</VAR>, <VAR>color</VAR>)
   <DD>
   <P>将位图区域 (<VAR>x</VAR>, <VAR>y</VAR>, <VAR>width</VAR>,
-  <VAR>height</VAR>) 或矩形（<A href="gc_rect.html">Rect</A>&nbsp;）填满指定的颜色 <VAR>color</VAR> （<A
-  href="gc_color.html">Color</A>&nbsp;）。</P>
+  <VAR>height</VAR>) 或矩形（<A href="gc_rect.html">Rect</A>）填满指定的颜色 <VAR>color</VAR> （<A
+  href="gc_color.html">Color</A>）。</P>
   <DT>gradient_fill_rect(<VAR>x</VAR>, <VAR>y</VAR>,
   <VAR>width</VAR>, <VAR>height</VAR>, <VAR>color1</VAR>, <VAR>color2</VAR>[,
   <VAR>vertical</VAR>])
@@ -65,8 +64,8 @@ type=text/css href="../style.css">
   <VAR>color2</VAR>[, <VAR>vertical</VAR>])
   <DD>
   <P>将位图区域 (<VAR>x</VAR>, <VAR>y</VAR>, <VAR>width</VAR>,
-  <VAR>height</VAR>) 或矩形（<A href="gc_rect.html">Rect</A>&nbsp;) 填满从颜色 <VAR>color</VAR>1（<A href="gc_color.html">Color</A>&nbsp;) 至<VAR>
-  color2</VAR>（<A href="rgss/gc_color.html">Color</A>&nbsp;）的渐层色彩。</P>
+  <VAR>height</VAR>) 或矩形（<A href="gc_rect.html">Rect</A>）填满从颜色 <VAR>color</VAR>1（<A href="gc_color.html">Color</A>）至<VAR>
+  color2</VAR>（<A href="rgss/gc_color.html">Color</A>）的渐层色彩。</P>
   <P>将 <VAR>vertical</VAR> 设为 true 生成纵向的渐层色彩，预设为横向渐层。</P>
   <DT>clear
   <DD>
@@ -82,8 +81,7 @@ type=text/css href="../style.css">
   <DT>get_pixel(<VAR>x</VAR>, <VAR>y</VAR>)
   <DD>
   <P>获取指定像素点 (<VAR>x</VAR>, <VAR>y</VAR>) 的色彩（<A
-  href="rgss/gc_color.html">Color</A>
-  )。</P>
+  href="rgss/gc_color.html">Color</A>）。</P>
   <DT>set_pixel(<VAR>x</VAR>, <VAR>y</VAR>, <VAR>color</VAR>)
 
   <DD>
@@ -109,8 +107,8 @@ type=text/css href="../style.css">
   <VAR>align</VAR>])
   <DD>
   <P>在位图区域 (<VAR>x</VAR>, <VAR>y</VAR>, <VAR>width</VAR>,
-  <VAR>height</VAR>) 或矩形 <VAR>rect</VAR>&nbsp;（<A
-  href="rgss/gc_rect.html">Rect</A> )
+  <VAR>height</VAR>) 或矩形 <VAR>rect</VAR>（<A
+  href="rgss/gc_rect.html">Rect</A>）
   中描绘字符串 <VAR>str</VAR> 。</P>
   <P>若 <VAR>str</VAR> 不是字符串对象，则会在执行之前，先调用 to_s
   方法转换成字符串。</P>
@@ -132,5 +130,5 @@ type=text/css href="../style.css">
   <DT>font
   <DD>
   <P>使用draw_text方法描绘字符串时所使用的字体。（<A
-  href="gc_font.html">Font</A>&nbsp;）。</P></DD></DL>
+  href="gc_font.html">Font</A>）。</P></DD></DL>
 <H6></H6></BODY></HTML>

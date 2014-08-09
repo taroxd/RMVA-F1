@@ -1,42 +1,42 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Tone</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>Tone</H1>
-<P>色调的类。每个成分使用浮点小数值（<A href="sc_float.html">Float</A>&nbsp;）。</P>
+<P>色调的类。每个成分使用浮点小数值（<A href="sc_float.html">Float</A>）。</P>
 <H2>超类</H2>
 <UL>
   <LI><A href="sc_object.html">Object</A> </LI></UL>
 <H2>类方法</H2>
 <DL>
-  <DT>Tone.new(<VAR>red</VAR>, <VAR>green</VAR>, <VAR>blue</VAR>[, 
-  <VAR>gray</VAR>]) 
-  <DT>Tone.new <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT>Tone.new(<VAR>red</VAR>, <VAR>green</VAR>, <VAR>blue</VAR>[,
+  <VAR>gray</VAR>])
+  <DT>Tone.new <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
   <P>生成色调对象。<VAR>gray</VAR> 值省略时使用 0。</P>
   <P>若没有指定参数，则取默认值为(0, 0, 0, 0)。 <SPAN class=rgss3>(RGSS3)</SPAN></P></DD></DL>
 <H2>方法</H2>
 <DL>
-  <DT>set(<VAR>red</VAR>, <VAR>green</VAR>, <VAR>blue</VAR>[, <VAR>gray</VAR>]) 
-  <DT>set(<VAR>tone</VAR>) <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT>set(<VAR>red</VAR>, <VAR>green</VAR>, <VAR>blue</VAR>[, <VAR>gray</VAR>])
+  <DT>set(<VAR>tone</VAR>) <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
   <P>一次设置所有属性。</P>
   <P>第二种方法可以从参数色调类中复制所有属性。 <SPAN class=rgss3>(RGSS3)</SPAN></P></DD></DL>
 <H2>属性</H2>
 <DL>
-  <DT>red 
+  <DT>red
   <DD>
   <P>红色值（-255～255）。超出范围的数值会自动修正。</P>
-  <DT>green 
+  <DT>green
   <DD>
   <P>绿色值（-255～255）。超出范围的数值会自动修正。</P>
-  <DT>blue 
+  <DT>blue
   <DD>
   <P>蓝色值（-255～255）。超出范围的数值会自动修正。</P>
-  <DT>gray 
+  <DT>gray
   <DD>
   <P>灰阶滤色镜强度值（0～255）。超出范围的数值会自动修正。</P>
   <P>当此值非 0 时，处理时间会比单独使用色调平衡调整来的长。</P></DD></DL>

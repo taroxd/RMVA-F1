@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Viewport</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
@@ -12,53 +12,53 @@ type=text/css href="../style.css">
   <LI><A href="sc_object.html">Object</A> </LI></UL>
 <H2>类方法</H2>
 <DL>
-  <DT>Viewport.new(<VAR>x</VAR>, <VAR>y</VAR>, <VAR>width</VAR>, 
-  <VAR>height</VAR>) 
-  <DT>Viewport.new(<VAR>rect</VAR>) 
-  <DT>Viewport.new <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT>Viewport.new(<VAR>x</VAR>, <VAR>y</VAR>, <VAR>width</VAR>,
+  <VAR>height</VAR>)
+  <DT>Viewport.new(<VAR>rect</VAR>)
+  <DT>Viewport.new <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
   <P>生成显示端口对象。</P>
   <P>如果没有指定参数，则将参数默认为全屏幕的数值。 <SPAN class=rgss3>(RGSS3)</SPAN></P></DD></DL>
 <H2>方法</H2>
 <DL>
-  <DT>dispose 
+  <DT>dispose
   <DD>
   <P>释放显示端口。若是已经若显示端口已释放则什么都不做。</P>
   <P>释放显示端口并不会同时自动释放所关联的单独对象。 </P>
-  <DT>disposed? 
+  <DT>disposed?
   <DD>
   <P>当显示端口已释放则返回 true。</P>
-  <DT><A name=flash>flash(<VAR>color</VAR>, <VAR>duration</VAR>)</A> 
+  <DT><A name=flash>flash(<VAR>color</VAR>, <VAR>duration</VAR>)</A>
   <DD>
   <P>开始闪烁显示端口。<VAR>duration</VAR> 指定闪烁的帧数。</P>
   <P>若 <VAR>color</VAR> 设为 nil，闪光时显示端口会消失。</P>
-  <DT>update 
+  <DT>update
   <DD>
   <P>刷新显示端口的闪烁效果。原则上，此方法一帧调用一次。</P>
   <P>若是没有使用闪烁效果时，无须调用此方法。</P></DD></DL>
 <H2>属性</H2>
 <DL>
-  <DT>rect 
+  <DT>rect
   <DD>
-  <P>定义显示端口区域的矩形（<A href="gc_rect.html">Rect</A>&nbsp;）。</P>
-  <DT>visible 
+  <P>定义显示端口区域的矩形（<A href="gc_rect.html">Rect</A>）。</P>
+  <DT>visible
   <DD>
   <P>显示端口的可见状态，true 代表可见。</P>
-  <DT>z 
+  <DT>z
   <DD>
   <P>显示端口的 Z 坐标。数值愈大的平面愈靠近玩家。Z 坐标相同的，最后生成的对象则会最靠近玩家。</P>
-  <DT>ox 
+  <DT>ox
   <DD>
   <P>显示端口开始点的 X 坐标。画面震动等效果时修改此数值。</P>
-  <DT>oy 
+  <DT>oy
   <DD>
   <P>显示端口开始点的 Y 坐标。画面震动等效果时修改此数值。</P>
-  <DT>color 
+  <DT>color
   <DD>
-  <P>与显示端口合成的颜色（<A href="gc_color.html">Color</A>&nbsp;）色彩的 alpha 
+  <P>与显示端口合成的颜色（<A href="gc_color.html">Color</A>）色彩的 alpha
   值作为合成的比例。</P>
   <P>此颜色与 <A href="#flash">flash</A> 效果的颜色分开处理。</P>
-  <DT>tone 
+  <DT>tone
   <DD>
-  <P>显示端口的色调（<A href="gc_tone.html">Tone</A>&nbsp;）。</P></DD></DL>
+  <P>显示端口的色调（<A href="gc_tone.html">Tone</A>）。</P></DD></DL>
 <H6></H6></BODY></HTML>

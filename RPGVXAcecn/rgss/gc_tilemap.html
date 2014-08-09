@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Tilemap</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
@@ -12,25 +12,25 @@ type=text/css href="../style.css">
   <LI><A href="sc_object.html">Object</A> </LI></UL>
 <H2>类方法</H2>
 <DL>
-  <DT>Tilemap.new([<VAR>viewport</VAR>]) 
+  <DT>Tilemap.new([<VAR>viewport</VAR>])
   <DD>
-  <P>生成一个元件地图对象。必要时指定一个显示端口（<A href="gc_viewport.html">Viewport</A>&nbsp;）。</P></DD></DL>
+  <P>生成一个元件地图对象。必要时指定一个显示端口（<A href="gc_viewport.html">Viewport</A>）。</P></DD></DL>
 <H2>方法</H2>
 <DL>
-  <DT>dispose 
+  <DT>dispose
   <DD>
   <P>释放元件地图。若是已经若显示端口已释放则什么都不做。</P>
-  <DT>disposed? 
+  <DT>disposed?
   <DD>
   <P>当元件地图已释放则返回 true。</P>
-  <DT>update 
+  <DT>update
   <DD>
   <P>刷新自动元件的动画。原则上，此方法一帧调用一次。</P></DD></DL>
 <H2>属性</H2>
 <DL>
-  <DT>bitmaps[<VAR>index</VAR>] 
+  <DT>bitmaps[<VAR>index</VAR>]
   <DD>
-  <P>引用作为元件组的第 index （0～8）号码的位图（<A href="gc_bitmap.html">Bitmap</A>&nbsp;）对象。</P>
+  <P>引用作为元件组的第 index （0～8）号码的位图（<A href="gc_bitmap.html">Bitmap</A>）对象。</P>
   <P>号码与对应的元件组关系如下面列表所示：</P>
   <TABLE class=sys border=1 cellSpacing=0 cellPadding=4>
     <TBODY>
@@ -55,34 +55,34 @@ type=text/css href="../style.css">
       <TD>TileD</TD>
       <TH>8</TH>
       <TD>TileE</TD></TR></TBODY></TABLE>
-  <DT>map_data 
+  <DT>map_data
   <DD>
-  <P>引用地图信息（<A href="gc_table.html">Table</A>&nbsp;），定义一个 [ 横尺寸 * 纵尺寸 * 3 ] 
+  <P>引用地图信息（<A href="gc_table.html">Table</A>），定义一个 [ 横尺寸 * 纵尺寸 * 3 ]
   的数组。</P>
-  <DT>flash_data 
+  <DT>flash_data
   <DD>
-  <P>引用仿真游戏等中显示可以移动的范围时所用的闪烁信息（<A 
-  href="rgss/gc_table.html">Table</A> ），定义一个 [ 横尺寸 * 纵尺寸 ] 的二维数组。此数组必须与地图信息数组相同。每个元素使用位来代表元件闪烁颜色的RGB值；例如： 
+  <P>引用仿真游戏等中显示可以移动的范围时所用的闪烁信息（<A
+  href="rgss/gc_table.html">Table</A>），定义一个 [ 横尺寸 * 纵尺寸 ] 的二维数组。此数组必须与地图信息数组相同。每个元素使用位来代表元件闪烁颜色的RGB值；例如：
   0xf84 代表闪烁颜色为 RGB(15,8,4)。</P>
-  <DT>flags <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT>flags <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
-  <P>引用标记列表（<A href="gc_table.html">Table</A>&nbsp;）。定义一个与元件ID对应的一维数组。</P>
-  <DT>viewport 
+  <P>引用标记列表（<A href="gc_table.html">Table</A>）。定义一个与元件ID对应的一维数组。</P>
+  <DT>viewport
   <DD>
-  <P>引用与此元件地图相关联的显示端口（<A href="gc_viewport.html">Viewport</A>&nbsp;）。</P>
-  <DT>visible 
+  <P>引用与此元件地图相关联的显示端口（<A href="gc_viewport.html">Viewport</A>）。</P>
+  <DT>visible
   <DD>
   <P>元件地图可见的状态。true 表示可见。</P>
-  <DT>ox 
+  <DT>ox
   <DD>
   <P>元件地图开始点的 X 坐标。元件地图滚动可修改此数值。</P>
-  <DT>oy 
+  <DT>oy
   <DD>
   <P>元件地图开始点的 Y 坐标。元件地图滚动时修改此数值。</P></DD></DL>
 <H2>备注</H2>
 <P>组成元件地图的每个精灵之 Z 坐标都是固定的。</P>
 <OL>
-  <LI>显示在角色之下的元件，其 Z 坐标为 0。 
+  <LI>显示在角色之下的元件，其 Z 坐标为 0。
   <LI>显示在角色之上的元件，其 Z 坐标为 200。 </LI></OL>
 <P>在修改地图上人物的 Z 坐标时，请先参考一下。</P>
 <H6></H6></BODY></HTML>

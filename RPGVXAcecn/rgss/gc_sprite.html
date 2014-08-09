@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Sprite</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
@@ -12,105 +12,105 @@ type=text/css href="../style.css">
   <LI><A href="sc_object.html">Object</A> </LI></UL>
 <H2>类方法</H2>
 <DL>
-  <DT>Sprite.new([<VAR>viewport</VAR>]) 
+  <DT>Sprite.new([<VAR>viewport</VAR>])
   <DD>
-  <P>生成一个精灵对象。必要时指定一个显示端口（<A href="gc_viewport.html">Viewport</A>&nbsp;）。</P></DD></DL>
+  <P>生成一个精灵对象。必要时指定一个显示端口（<A href="gc_viewport.html">Viewport</A>）。</P></DD></DL>
 <H2>方法</H2>
 <DL>
-  <DT>dispose 
+  <DT>dispose
   <DD>
   <P>释放精灵。若是已经若显示端口已释放则什么都不做。</P>
-  <DT>disposed? 
+  <DT>disposed?
   <DD>
   <P>当精灵已释放则返回 true。</P>
-  <DT><A name=flash>flash(<VAR>color</VAR>, <VAR>duration</VAR>)</A> 
+  <DT><A name=flash>flash(<VAR>color</VAR>, <VAR>duration</VAR>)</A>
   <DD>
   <P>开始精灵闪烁。<VAR>duration</VAR> 是指定闪烁的帧数。</P>
   <P>若 <VAR>color</VAR> 设为 nil，闪光时精灵会消失。</P>
-  <DT>update 
+  <DT>update
   <DD>
   <P>进行精灵的闪烁或波浪周相。原则上，此方法一帧调用一次。</P>
   <P>若是没有使用闪烁或波浪周相效果时，无须调用此方法。</P>
-  <DT>width 
+  <DT>width
   <DD>
   <P>获取精灵的宽度，相当于 src_rect.width。</P>
-  <DT>height 
+  <DT>height
   <DD>
   <P>获取精灵的高度，相当于 src_rect.height。</P></DD></DL>
 <H2>属性</H2>
 <DL>
-  <DT>bitmap 
+  <DT>bitmap
   <DD>
-  <P>引用作为精灵起始点的位图（<A href="gc_bitmap.html">Bitmap</A>&nbsp;）。</P>
-  <DT>src_rect 
+  <P>引用作为精灵起始点的位图（<A href="gc_bitmap.html">Bitmap</A>）。</P>
+  <DT>src_rect
   <DD>
-  <P>位图的矩形（<A href="gc_rect.html">Rect</A>&nbsp;）区域。</P>
-  <DT>viewport 
+  <P>位图的矩形（<A href="gc_rect.html">Rect</A>）区域。</P>
+  <DT>viewport
   <DD>
-  <P>引用与精灵相关联的显示端口（<A href="gc_viewport.html">Viewport</A>&nbsp;）。</P>
-  <DT>visible 
+  <P>引用与精灵相关联的显示端口（<A href="gc_viewport.html">Viewport</A>）。</P>
+  <DT>visible
   <DD>
   <P>精灵的可见状态，true代表可见。</P>
-  <DT><A name=x>x</A> 
+  <DT><A name=x>x</A>
   <DD>
   <P>精灵的 X 坐标。</P>
-  <DT>y 
+  <DT>y
   <DD>
   <P>精灵的 Y 坐标。</P>
-  <DT>z 
+  <DT>z
   <DD>
   <P>显示端口的 Z 坐标。数值愈大的平面愈靠近玩家。</P>
   <DD>
   <P>Z 坐标相同的精灵，Y坐标愈大的会愈靠近玩家。若 Y 坐标也相同，最后生成的对象则会最靠近玩家。</P></DD>
-  <DT>ox 
+  <DT>ox
   <DD>
   <P>精灵起始点的 X 坐标。</P>
-  <DT>oy 
+  <DT>oy
   <DD>
   <P>精灵起始点的 Y 坐标。</P>
-  <DT>zoom_x 
+  <DT>zoom_x
   <DD>
   <P>精灵的横向放大率，1.0 代表原始大小。</P>
-  <DT>zoom_y 
+  <DT>zoom_y
   <DD>
   <P>精灵的纵向放大率，1.0 代表原始大小。</P>
-  <DT>angle 
+  <DT>angle
   <DD>
   <P>精灵的旋转角度。以逆时钟方向指定，最高到（逆时钟）360度。然而绘制旋转的精灵会消耗大量的时间，所以请避免过量使用。</P>
-  <DT>wave_amp 
-  <DT>wave_length 
-  <DT>wave_speed 
-  <DT>wave_phase 
+  <DT>wave_amp
+  <DT>wave_length
+  <DT>wave_speed
+  <DT>wave_phase
   <DD>
   <P>定义波浪效果的幅度、频度、速度、周相（又称相位）。波动效果是使用正弦曲线函数来绘制精灵，使精灵的横向位置比上次绘制的位置稍有不同。</P>
   <P>wave_amp 是波浪的幅度、 wave_length 是波浪的频度，以像素数来指定。</P>
   <P>wave_speed 是波浪效果动画的速度，默认为 360，数值愈大速度愈快。</P>
-  <P>wave_phase 使用角度（最大360度）指定精灵顶行的周相。每次调用 update 
+  <P>wave_phase 使用角度（最大360度）指定精灵顶行的周相。每次调用 update
   方法会更新周相一次。一般情况下不需要使用此属性，除非需要同步化两个精灵的波浪效果。</P></DD>
-  <DT>mirror 
+  <DT>mirror
   <DD>
   <P>精灵已经横向翻转的复选框，true代表翻转。默认值为false。</P>
-  <DT>bush_depth 
-  <DT>bush_opacity 
+  <DT>bush_depth
+  <DT>bush_opacity
   <DD>
   <P>精灵的草木繁茂处的深度和不透明度。可以用来表示，如：角色的腿被草丛半遮住等等，的效果。</P>
   <P>bush_depth 是草木繁茂处的像素数。默认值为 0。</P>
   <P>bush_opacity 是草木繁茂处的不透明度，范围是0～255。超出范围的数值会自动修正。默认值 128。</P>
   <DD>
-  <P>bush_opacity 之值会乘以 opacity之值。举例来说：opacity 和 bush_opacity 都设为 
+  <P>bush_opacity 之值会乘以 opacity之值。举例来说：opacity 和 bush_opacity 都设为
   128，就会视为透明度上再加上透明度来处理，所以实际的不透明度为 64。</P></DD>
-  <DT>opacity 
+  <DT>opacity
   <DD>
   <P>精灵的不透明度（0～255）。超出范围的数值会自动修正。</P>
-  <DT>blend_type 
+  <DT>blend_type
   <DD>
   <P>精灵的合成方式（0：正常、1：加法、2：减法）。</P>
-  <DT>color 
+  <DT>color
   <DD>
-  <P>与精灵合成的颜色（<A href="gc_color.html">Color</A>&nbsp;）色彩的 alpha 
+  <P>与精灵合成的颜色（<A href="gc_color.html">Color</A>）色彩的 alpha
 值作为合成的比例。</P>
   <P>此颜色与 <A href="#flash">flash</A> 效果的颜色分开处理。然而，alpha 值较高的颜色在合成时，优先度较高。</P>
-  <DT>tone 
+  <DT>tone
   <DD>
-  <P>精灵的色调（<A href="gc_tone.html">Tone</A>&nbsp;）。</P></DD></DL>
+  <P>精灵的色调（<A href="gc_tone.html">Tone</A>）。</P></DD></DL>
 <H6></H6></BODY></HTML>
