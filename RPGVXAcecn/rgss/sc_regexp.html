@@ -35,7 +35,7 @@ p Regexp.last_match(2)   # =&gt; "b"
 p Regexp.last_match(3)   # =&gt; nil
 </PRE>
   <P>不带参数的 Regexp.last_match，当整个正则表达式匹配失败时会返回 nil，因此 last_match[1] 的格式会抛出 <A
-  href="s_exceptions.html#NameError">NameError（异常：名称错误）</A> 异常，相反的 last_match(1)
+  href="s_exceptions.html#NameError">NameError</A> 异常，相反的 last_match(1)
   会返回 nil。</P></DD></DL>
 <H2>方法</H2>
 <DL>
@@ -48,7 +48,7 @@ p Regexp.last_match(3)   # =&gt; nil
   <A href="s_exceptions.html#TypeError">TypeError</A> ）异常。</P>
   <DT><A name=L001322>match(<VAR>str</VAR>)</A>
   <DD>
-  <P>相当于 self=~str，只是不会返回 <A href="sc_matchdata.html">MatchData）</A>
+  <P>相当于 self=~str，只是不会返回 <A href="sc_matchdata.html">MatchData</A>
   对象。若匹配失败则返回 nil。</P>
   <P>若是只需要用正则表达式匹配子字符串时，可以这样使用 match(str) ：</P><PRE>bar = /foo(.*)baz/.match("foobarbaz").to_a[1]
 

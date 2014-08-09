@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Enumerable</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.17785"></HEAD>
 <BODY>
@@ -9,8 +9,8 @@ type=text/css href="../style.css">
 <P>包含重复关系操作类的模块，此模快的方法都是通过 each 定义的，所以包含此模块的类必须定义 each 方法。</P>
 <H2>方法</H2>
 <DL>
-  <DT>all? 
-  <DT>all? {|<VAR>item</VAR>| ... } 
+  <DT>all?
+  <DT>all? {|<VAR>item</VAR>| ... }
   <DD>
   <P>当所有的项目都为真时返回 true。若任一项目为伪则返回 false。</P>
   <DD>
@@ -18,36 +18,36 @@ type=text/css href="../style.css">
   <DD><PRE>p [1,2,3].all? {|v| v &gt; 0}   # =&gt; true
 p [1,2,3].all? {|v| v &gt; 1}   # =&gt; false
 </PRE>
-  <DT>any? 
-  <DT>any? {|<VAR>item</VAR>| ... } 
+  <DT>any?
+  <DT>any? {|<VAR>item</VAR>| ... }
   <DD>
   <P>当所有的项目都为伪时返回 false。若任一项目为真则返回 true。</P>
   <P>使用区块时，则依次以各个元素执行区块的计算，若所有的结果都是伪则返回 false，一旦区块返回真时，立刻返回 true。</P><PRE>p [1,2,3].any? {|v| v &gt; 3}   # =&gt; false
 p [1,2,3].any? {|v| v &gt; 1}   # =&gt; true
 </PRE>
-  <DT>collect {|<VAR>item</VAR>| ... } 
+  <DT>collect {|<VAR>item</VAR>| ... }
   <DD>
   <P>以数组的形式返回所有区块的计算结果。</P>
-  <DT>find {|<VAR>item</VAR>| ... } 
+  <DT>find {|<VAR>item</VAR>| ... }
   <DD>
   <P>依次以各个元素执行区块的计算，返回第一个计算为 true 的项目。若没有项目计算为 true，则返回 nil。</P>
-  <DT>find_all {|<VAR>item</VAR>| ... } 
-  <DT>select {|<VAR>item</VAR>| ... } 
+  <DT>find_all {|<VAR>item</VAR>| ... }
+  <DT>select {|<VAR>item</VAR>| ... }
   <DD>
   <P>依次以各个元素执行区块的计算，将所有计算为 true 的项目以数组形式返回。若没有项目计算为 true，则返回空数组。</P>
-  <DT>include?(<VAR>val</VAR>) 
+  <DT>include?(<VAR>val</VAR>)
   <DD>
-  <P>当列表中任一项目符合 val ==&nbsp;时，返回 
+  <P>当列表中任一项目符合 val ==&nbsp;时，返回
   true。</P>
-  <DT>inject([<VAR>init</VAR>]) {|<VAR>result</VAR>, <VAR>item</VAR>| ... } 
+  <DT>inject([<VAR>init</VAR>]) {|<VAR>result</VAR>, <VAR>item</VAR>| ... }
   <DD>
-  <P>再执行区块之前，将 init 的初始值和 第一个item 确定为参数。在第二次和随后的循环中，将上一次区块的运算结果和下一个 item 
+  <P>再执行区块之前，将 init 的初始值和 第一个item 确定为参数。在第二次和随后的循环中，将上一次区块的运算结果和下一个 item
   作为参数，随后继续执行区块。最后一个 item 也作为参数后，返回最后一次区块运算得出的结果。</P>
   <P>如果一个 item 是空的，那么就返回 init&nbsp;。</P>
-  <P>如果没有设定参数 <VAR>init</VAR>&nbsp;的初始值，则将第一、第二个 item 传递给区块。假如只有一个 item 
+  <P>如果没有设定参数 <VAR>init</VAR>&nbsp;的初始值，则将第一、第二个 item 传递给区块。假如只有一个 item
   被定义的话，那么区块不会被执行，第一个 item 会被返回。如果没有 item&nbsp;被定义，那么就会返回 nil 。</P>
   <DL>
-    <DT>范例 
+    <DT>范例
     <DD>
     <P>运算结果：</P><PRE>p [1,2,3,4,5].inject(0) {|result, item| result + item }
   =&gt; 15
@@ -57,43 +57,43 @@ p [1,2,3].any? {|v| v &gt; 1}   # =&gt; true
 p result
 =&gt; 15
 </PRE></DD></DL>
-  <DT>max 
+  <DT>max
   <DD>
   <P>返回最大的项目，前提是所有的项目都能够使用 &lt;=&gt; 方法做比较。</P>
-  <DT>max {|<VAR>a</VAR>, <VAR>b</VAR>| ... } 
+  <DT>max {|<VAR>a</VAR>, <VAR>b</VAR>| ... }
   <DD>
   <P>依次将各个项目与区块的计算结果比较并返回最大的项目。</P>
-  <P>要求区块的计算值为：a &gt; b 时计算值为正整数、 a == b 时为 0、a &lt; b 时为负整数。若区块返回非整数数值，则抛出 <A 
-  href="s_exceptions.html#TypeError">TypeError型错误）</A> 异常。</P>
-  <DT>max_by {|<VAR>item</VAR>| ... } 
+  <P>要求区块的计算值为：a &gt; b 时计算值为正整数、 a == b 时为 0、a &lt; b 时为负整数。若区块返回非整数数值，则抛出 <A
+  href="s_exceptions.html#TypeError">TypeError</A> 异常。</P>
+  <DT>max_by {|<VAR>item</VAR>| ... }
   <DD>
-  <P>将各个区块的结果计算出来后，返回最大的那个项目，如果参数为空，那么就返回nil。（前提是所有的项目都能够使用 &lt;=&gt; 
+  <P>将各个区块的结果计算出来后，返回最大的那个项目，如果参数为空，那么就返回nil。（前提是所有的项目都能够使用 &lt;=&gt;
 方法做比较。）</P>
-  <DT>min 
+  <DT>min
   <DD>
   <P>返回最小的项目，前提是所有的项目都能够使用 &lt;=&gt; 方法做比较。</P>
-  <DT>min {|<VAR>a</VAR>, <VAR>b</VAR>| ... } 
+  <DT>min {|<VAR>a</VAR>, <VAR>b</VAR>| ... }
   <DD>
   <P>依次将各个项目与区块的计算结果比较并返回最小的项目。</P>
-  <P>要求区块的计算值为：a &gt; b 时计算值为正整数、 a == b 时为 0、a &lt; b 时为负整数。若区块返回非整数数值，则抛出 <A 
-  href="s_exceptions.html#TypeError">TypeError型错误）</A> 异常。</P>
-  <DT>min_by {|<VAR>item</VAR>| ... } 
+  <P>要求区块的计算值为：a &gt; b 时计算值为正整数、 a == b 时为 0、a &lt; b 时为负整数。若区块返回非整数数值，则抛出 <A
+  href="s_exceptions.html#TypeError">TypeError</A> 异常。</P>
+  <DT>min_by {|<VAR>item</VAR>| ... }
   <DD>
-  <P>将各个区块的结果计算出来后，返回最小的那个项目，如果参数为空，那么就返回nil。（前提是所有的项目都能够使用 &lt;=&gt; 
+  <P>将各个区块的结果计算出来后，返回最小的那个项目，如果参数为空，那么就返回nil。（前提是所有的项目都能够使用 &lt;=&gt;
 方法做比较。）</P>
-  <DT>sort 
-  <DT>sort {|<VAR>a</VAR>, <VAR>b</VAR>| ... } 
+  <DT>sort
+  <DT>sort {|<VAR>a</VAR>, <VAR>b</VAR>| ... }
   <DD>
   <P>将所有项目依照升序排列后，生成并返回包含所有项目的数组。</P>
   <P>若没有使用区块，则调用 &lt;=&gt;&nbsp;比较来进行排序。</P>
-  <P>若想调用其他非 &lt;=&gt; 的方法进行排序，就使用区块，以区块的计算结果进行排序。要求区块的计算值为：a &gt; b 时计算值为正整数、 a 
-  == b 时为 0、a &lt; b 时为负整数。若区块返回非整数数值，则抛出 <A 
-  href="s_exceptions.html#TypeError">TypeError型错误）</A> 异常。</P>
-  <DT>sort_by {|<VAR>item</VAR>| ... } 
+  <P>若想调用其他非 &lt;=&gt; 的方法进行排序，就使用区块，以区块的计算结果进行排序。要求区块的计算值为：a &gt; b 时计算值为正整数、 a
+  == b 时为 0、a &lt; b 时为负整数。若区块返回非整数数值，则抛出 <A
+  href="s_exceptions.html#TypeError">TypeError</A> 异常。</P>
+  <DT>sort_by {|<VAR>item</VAR>| ... }
   <DD>
   <P>将所有区块按照计算结果进行升序排列，生成并返回一个包含所有项目的新数组。</P>
-  <DT>to_a 
-  <DT>entries 
+  <DT>to_a
+  <DT>entries
   <DD>
   <P>返回包含所有项目的数组。</P></DD></DL>
 <H6></H6></BODY></HTML>
