@@ -11,7 +11,7 @@
 <ul>
   <li><a href="#print">print</a></li>
   <li><a href="#subst">为变量赋值</a></li>
-  <li><a href="#backslash">句柄</a></li>
+  <li><a href="#backslash">转义符</a></li>
   <li><a href="#unfold">内嵌表达式</a></li>
 </ul>
 <p>一般来说，由文字连接起来的数据就称为<strong>字符串</strong>。</p>
@@ -29,23 +29,23 @@
 <pre>a = "RPG "<br>b = "Maker"<br>print a + b                     # =&gt; RPG Maker<br></pre>
 <p>还可以作乘法，字符串乘以一个整数，就会得到该整数次重复的字符串为答案。</p>
 <pre>a = "Maker"<br>print a * 2                     # =&gt; MakerMaker<br></pre>
-<h2><a name="backslash">句柄</a></h2>
+<h2><a name="backslash">转义符</a></h2>
 <p>字符串中的 \ 符号，是作为一段连续文字中换行等操作使用的特殊文字。
 比如 \n 是表示换行。</p>
-<p>句柄有 \t（Tab）和 \s（空格）等多种代码，
+<p>转义符有 \t（Tab）和 \s（空格）等多种代码，
 另外 \n 表示换行，重叠起来的 \\ 表示 \ 文字本身，这两个一定要记住。</p>
 <pre>a = "Maker"<br>b = "\\13,440"<br>print a + "\n" + b              # =&gt; Maker<br>                                #    \13,440<br></pre>
 <p>单引号 '' 中间的字符串，除 \\（\ 符号本身）和 \'（单引号）外不能使用
-任何的句柄。这在打算原样显示文字本身的情况下使用会十分方便。</p>
+任何的转义符。这在打算原样显示文字本身的情况下使用会十分方便。</p>
 <pre>print 'Maker\n'              # =&gt; Maker\n<br></pre>
-<p>\ 符号本身即为计算器内部的句柄。以后实际字符串操作中应注意正确使用。</p>
+<p>\ 符号本身即为计算器内部的转义符。以后实际字符串操作中应注意正确使用。</p>
 <h2><a name="unfold">内嵌表达式</a></h2>
 <p>在字符串里面，可以用 #{变量名} 的形式把变量的内容嵌入在字符串当中。</p>
 <pre>game = "RPG"<br>print "#{game} Maker"         # =&gt; RPG Maker<br></pre>
 <p>上述示例里，第一行是为 game 变量赋值代入字符串「RPG」。第二行里面，
 其中 #{game} 是表示直接嵌入变量 game 的值字符串「RPG」，
 和后面的「 Maker」组合在一起，从而输出一个新的字符串。
-VA 的事件指令「显示文章」里，在文章中使用 \V[n] 和 \N[n] 句柄可以
+VA 的事件指令「显示文章」里，在文章中使用 \V[n] 和 \N[n] 转义符可以
 把变量的值和角色的名称作为信息嵌入文字中，这个功能好像和那个十分相似。</p>
 <p>当然，</p>
 <pre>
@@ -53,7 +53,7 @@ game = &quot;RPG&quot;
 print game + &quot; Maker&quot;         # =&gt; RPG Maker
 </pre>
 <p>像这样写也可以，使用内嵌表达式的方法会使读取程序变得很容易。</p>
-<p>另外内嵌表达式和句柄一样，在单引号 '' 中间的字符串里使用也会无效。</p>
+<p>另外内嵌表达式和转义符一样，在单引号 '' 中间的字符串里使用也会无效。</p>
 <h6></h6>
 </body>
 </html>
