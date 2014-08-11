@@ -36,9 +36,12 @@ end
 class Bar &lt; Foo
   def foo(arg)
     super(5)       # 以 5 作为参数进行调用
-    super(arg)    #以 5 作为参数进行调用
-    super           # 以 5 作为参数进行调用；super(arg)的简写<BR>    arg = 1
-    super           # 以 1 作为参数进行调用；super(arg)的简写<BR>    super( )        # 无参数调用<BR>  end
+    super(arg)     # 以 5 作为参数进行调用
+    super          # 以 5 作为参数进行调用；super(arg)的简写
+    arg = 1
+    super          # 以 1 作为参数进行调用；super(arg)的简写
+    super( )       # 无参数调用
+  end
 end
 Bar.new.foo 5</PRE>
 <H2>迭代器</H2>
@@ -72,7 +75,7 @@ href="#L000323">迭代器</A>&nbsp;时使用的语句。</P><PRE>def foo
 end
 
 foo {|a,b| p [a,b]}</PRE>
-<P>区块参数的赋值操作遵从 <A href="syntax04.html#L000288">多重赋值</A>&nbsp;的规律，若是没有提供区块给执行
+<P>区块参数的赋值操作遵从 <A href="syntax04.html#L000288">并行赋值</A>&nbsp;的规律，若是没有提供区块给执行
 yield 的方法（也就是说该方法非迭代器）则会抛出 <A
 href="s_exceptions.html#LocalJumpError">LocalJumpError</A> 异常。</P>
 <P><CODE>yield 返回该区块最后计算的表达式结果。若是区块的执行由</CODE> <A

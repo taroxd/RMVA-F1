@@ -1,68 +1,51 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Operator Expressions</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.17744"></HEAD>
 <BODY>
 <H1>运算符表达式</H1>
 <UL>
-  <LI><A href="#L000286">赋值</A> 
+  <LI><A href="#L000286">赋值</A>
   <UL>
-    <LI><A href="#L000287">自运算</A> 
-    <LI><A href="#L000288">多重赋值</A> </LI></UL>
-  <LI><A href="#L000290">and</A> 
-  <LI><A href="#L000291">or</A> 
-  <LI><A href="#L000292">not</A> 
+    <LI><A href="#L000287">自运算</A>
+    <LI><A href="#L000288">并行赋值</A> </LI></UL>
+  <LI><A href="#L000290">and</A>
+  <LI><A href="#L000291">or</A>
+  <LI><A href="#L000292">not</A>
   <LI><A href="#L000293">条件运算符</A> </LI></UL>
 <P>实例：</P><PRE>1+2*3/4</PRE>
-<P>为了编程方便，有些方法调用和控制结构是以运算符的形式出现的。Ruby包含了下列的运算符：</P><PRE> 优先级     符号
-   高       ::
-      
-     &#8593;           [ ]
-
-     &#8593;           **
-      
-     &#8593;           -(单目运算符)  +(单目运算符)  !  ~
-      
-     &#8593;           *  /  %
-      
-     &#8593;           +  -
-      
-     &#8593;           &lt;&lt; &gt;&gt;
-      
-     &#8593;           &amp;
-      
-     &#8593;            |  ^
-      
-     &#8593;            &gt; &gt;=  &lt; &lt;=
-      
-     &#8593;            &lt;=&gt; ==  === !=  =~  !~
-      
-     &#8593;            &amp;&amp;
-      
-     &#8593;            ||
-      
-     &#8593;            ..  ...
-      
-     &#8593;            ?:(conditional operator)
-      
-     &#8593;            =(+=, -= ... )
-      
-     &#8593;            not
-      
-    低        and or</PRE>
+<P>为了编程方便，有些方法调用和控制结构是以运算符的形式出现的。Ruby包含了下列的运算符：</P><PRE>
+   高优先级     ::
+                [ ]
+                **
+                -(一元)  +(一元)  !  ~
+                *  /  %
+                +  -
+                &lt;&lt; &gt;&gt;
+                &amp;
+                |  ^
+                &gt; &gt;=  &lt; &lt;=
+                &lt;=&gt; ==  === !=  =~  !~
+                &amp;&amp;
+                ||
+                ..  ...
+                ?:(条件运算符)
+                =(+=, -= ... )
+                not
+    低优先级    and or</PRE>
 <P>上表从「高」到「低」按运算符的优先度排列。如「&amp;&amp;」的优先度高于「||」，如下所示：</P><PRE>a &amp;&amp; b || c   # =&gt; (a &amp;&amp; b) || c
 a || b &amp;&amp; c   # =&gt;  a || (b &amp;&amp; c)</PRE>
 <P>大多数的运算符都是特殊型态的方法调用，但是有些是嵌入语言中的运算符，因而无法重新定义。</P>
 <UL>
   <LI>
   <P>可重新定义运算符（方法调用）</P>
-  <P>+@ 和 -@ 代表一元运算符 + 和 -（目测是自增自减运算符），在方法定义的情况下使用这种表示法。</P><PRE>|  ^  &amp;  &lt;=&gt;  ==  ===  =~  &gt;   &gt;=  &lt;   &lt;=   &lt;&lt;  &gt;&gt;
-+  -  *  /    %   **   ~   +@  -@  [ ]  [ ]=  `</PRE>
+  <P>+@ 和 -@ 代表一元运算符 + 和 -，在方法定义的情况下使用这种表示法。</P><PRE>|  ^  &amp;  &lt;=&gt;  ==  ===  =~  &gt;   &gt;=  &lt;   &lt;=   &lt;&lt;  &gt;&gt;
++  -  *  /    %   **   ~   +@  -@  [ ]  [ ]=  `  !</PRE>
   <LI>
   <P>不可重新定义运算符（控制结构）</P>
-  <P>复合运算符（自运算运算符!= 和 !~）无法重新定义。</P><PRE>=  ?:  ..  ...  !  not  &amp;&amp;  and  ||  or  ::</PRE></LI></UL>
+  <P>复合运算符无法重新定义。</P><PRE>=  ?:  ..  ...  not  &amp;&amp;  and  ||  or  ::</PRE></LI></UL>
 <H2><A name=L000286>赋值</A></H2>
 <P>实例：</P><PRE>foo = bar
 foo[0] = bar
@@ -73,33 +56,27 @@ foo.bar = baz</PRE>
 表达式 '.' 标识符 '=' 表达式</PRE>
 <P>赋值表达式是用来对变量之类的对象进行赋值的语句，赋值也可以当作区域变量或常量的声明，但是赋值表达式的左方必须为下列其中之一：</P>
 <UL>
-  <LI>
-  <P>变量</P><PRE>变量 '=' 表达式</PRE>
-  <P>若是左方为变量，则将表达式之值代入变量中。</P>
-  <LI>
-  <P>数组调用</P><PRE>表达式1 '[' 表达式2 ... ']' '=' 表达式N</PRE></LI></UL>
-<DIV style="MARGIN-RIGHT: 0px" dir=ltr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-计算表达式1获取对象，使用表达式2至表达式N作为调用「[ ]=」方法的参数。 </DIV>
-<UL>
-  <LI><PRE>class C
+<LI><P>变量</P><PRE>变量 '=' 表达式</PRE>
+<P>若是左方为变量，则将表达式之值代入变量中。</P></LI>
+<LI><P>数组调用</P><PRE>表达式1 '[' 表达式2 ... ']' '=' 表达式N</PRE>
+<p>计算表达式1获取对象，使用表达式2至表达式N作为调用「[ ]=」方法的参数。</p>
+<PRE>class C
   def initialize
     @ary = [0,1,2,3,4,5,6,7]
   end
-  def [ ](i)
+  def [](i)
     @ary[i * 2]
   end
-  def [ ]=( i, v )
+  def []=( i, v )
     @ary[i * 2] = v
   end
 end
 c = C.new
 p c[3]      # converted to c.[]( 3 ); result is 6
-p c[3] = 1  # converted to c.[]=(3,1); result is 1</PRE>
-  <LI>
-  <P>属性调用</P><PRE>表达式1 '.' 标识符 '=' 表达式2</PRE></LI></UL>
-<DIV>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 计算表达式1获取对象，用表达式2作为调用「标识符=」方法的参数。</DIV>
-<UL>
-  <LI><PRE>class C
+p c[3] = 1  # converted to c.[]=(3,1); result is 1</PRE></LI>
+<LI><P>属性调用</P><PRE>表达式1 '.' 标识符 '=' 表达式2</PRE>
+<p>计算表达式1获取对象，用表达式2作为调用「标识符=」方法的参数。</p>
+<PRE>class C
   def foo
     @foo
   end
@@ -111,7 +88,7 @@ c = C.new
 c.foo = 5   # converted to c.foo=( 5 )
 p c.foo     # =&gt; 5</PRE>
   <P>属性同样可以用 <A href="sc_module.html#L001113">attr_accessor</A> 来定义。</P>
-  <LI><PRE>class C
+<PRE>class C
   attr_accessor :foo
 end
 c = C.new
@@ -123,20 +100,20 @@ foo *= 3        # foo = foo * 3</PRE>
 <P>语法：</P><PRE>表达式1 op= 表达式2 # 表达式1是右方赋值的一部分。<BR></PRE>
 <P>op 代表下面的运算符，运算符和 = 之间不可以有间隔。</P><PRE>+, -, *, /, %, **, &amp;, |, ^, &lt;&lt;, &gt;&gt;, &amp;&amp;, ||</PRE>
 <P>在多数的情况下，自运算解读为：</P><PRE>表达式1 = 表达式1 op 表达式2</PRE>
-<H3>多重赋值</H3>
+<H3>并行赋值</H3>
 <P>实例：</P><PRE>foo, bar, baz = 1, 2, 3
 foo, = list( )
 foo, *rest = list2( )</PRE>
 <P>语法：</P><PRE>表达式 [',' [ 表达式 ',' ... ] ['*' [ 表达式 ]]] = 表达式 [, 表达式 ... ]['*' 表达式 ]
 '*' [ 表达式 ] = 表达式 [, 表达式 ... ]['*' 表达式 ]</PRE>
-<P>多重赋值对多重表达式或数组进行赋值。左方的所有表达式必须是可以执行赋值操作的表达式。若是右方只有一个表达式，则将该表达式之值转为数组，在将数组中的元素依次赋值给左边的表达式。若数组的元素数量多于左方的表达式数量，多余的元素则无视，若是数组的元素数量较少，则多余的表达式则代入nil。</P>
+<P>并行赋值对多个表达式或数组进行赋值。左方的所有表达式必须是可以执行赋值操作的表达式。若是右方只有一个表达式，则将该表达式之值转为数组，在将数组中的元素依次赋值给左边的表达式。若数组的元素数量多于左方的表达式数量，多余的元素则无视，若是数组的元素数量较少，则多余的表达式则代入nil。</P>
 <P>在左方最后一个表达式前面加上 * ，则会将右方多余的元素转为数组代入其中，若没有多余的元素，则代入空数组。</P><PRE>foo, bar  = [1, 2]      # foo = 1; bar = 2
 foo, bar  = 1, 2        # foo = 1; bar = 2
-foo, bar  = 1            # foo = 1; bar = nil
+foo, bar  = 1           # foo = 1; bar = nil
 foo, bar  = 1, 2, 3     # foo = 1; bar = 2
-foo       = 1, 2, 3      # foo = [1, 2, 3]
+foo       = 1, 2, 3     # foo = [1, 2, 3]
 *foo      = 1, 2, 3     # foo = [1, 2, 3]
-foo, *bar = 1, 2, 3    # foo = 1; bar = [2, 3]</PRE>
+foo, *bar = 1, 2, 3     # foo = 1; bar = [2, 3]</PRE>
 <H2><A name=L000290>and</A></H2>
 <P>实例：</P><PRE>test &amp;&amp; set
 test and set</PRE>
@@ -148,7 +125,6 @@ test and set</PRE>
 demo or die</PRE>
 <P>语法：</P><PRE>表达式 '||' 表达式
 表达式 or 表达式</PRE>
-<P>&nbsp;</P>
 <P>先计算左边的表达式，若结果为 false则接着计算右边。or 与 || 作用相同，但是优先度较低。</P>
 <H2><A name=L000292>not</A></H2>
 <P>实例：</P><PRE>! me
@@ -157,11 +133,10 @@ i != you</PRE>
 <P>语法：</P><PRE>'!' 表达式
 not 表达式</PRE>
 <P>若表达式之值为 true，则返回 false；若表达式之值为 false，则返回 true。</P>
-<P>也可以用下面的语法：</P><PRE>表达式 '!=' 表达式          # same as !(表达式 == 表达式)
-表达式 '!~' 表达式          # same as !(表达式 =~ 表达式)</PRE>
+<P>也可以用下面的语法：</P><PRE>表达式 '!=' 表达式          # 等价于 !(表达式 == 表达式)
+表达式 '!~' 表达式          # 等价于 !(表达式 =~ 表达式)</PRE>
 <H2><A name=L000293>条件运算符</A></H2>
 <P>实例：</P><PRE>obj == 1 ? foo : bar</PRE>
 <P>语法：</P><PRE>表达式1 ? 表达式2 : 表达式3</PRE>
-<P>依照表达式1的计算结果，选择要返回表达式2或表达式3<SPAN style="FONT-FAMILY: monospace"><FONT 
-face=Verdana>。相当于：</FONT></SPAN></P><PRE>if 表达式1 then 表达式2 else 表达式3 end</PRE>
-<H6>&nbsp;</H6></BODY></HTML>
+<P>依照表达式1的计算结果，选择要返回表达式2或表达式3。相当于：</P><PRE>if 表达式1 then 表达式2 else 表达式3 end</PRE>
+<H6></H6></BODY></HTML>

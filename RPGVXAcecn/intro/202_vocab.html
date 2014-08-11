@@ -26,15 +26,13 @@
 <pre>
 module Vocab
 </pre>
-<p>在这行定义了一个叫做 Vocab 的新模块。在进行基础篇的<a href="109_graphics.html">图片的显示</a>这章的时候，使用过 Graphics 这个内建模块。这些模块和类一样是可以自行定义的。具体来说就是遵循下面的语法：</p>
+<p>在这行定义了一个叫做 Vocab 的新模块。在进行基础篇的<a href="109_graphics.html">显示图片</a>这章的时候，使用过 Graphics 这个内建模块。这些模块和类一样是可以自行定义的。具体来说就是遵循下面的语法：</p>
 <pre>
 module 模块名
 end
 </pre>
-<p>这跟<a href="112_class.html">类的定义</a>の
-的方法几乎是一样的。扣除掉无法产生实例以外，只要把模块当成和类相同的东西来思考就可以了吧。</p>
-<p>不过实际上，模块还有另一项重要功能，就跟在基础篇<a href="110_array.html">数组</a>这一章中的最后所说到的<a href="../rgss/sm_enumerable.html">Enumerable</a>
-模块一样，模块可以针对其他的类添加自己的方法——这项功能叫做 <strong>Mix-in</strong>  。不过关于 Mix-in 只需要理解一件事，那就是写在RGSS参考中「包含的模块」里面的方法也能使用。这是因为在默认脚本中也没有使用到 Mix-in 的功能，不用太过留意也没关系。</p>
+<p>这跟<a href="112_class.html">类定义</a>的方法几乎是一样的。扣除掉无法产生实例以外，只要把模块当成和类相同的东西来思考就可以了吧。</p>
+<p>不过实际上，模块还有另一项重要功能，就跟在基础篇<a href="110_array.html">数组</a>这一章中的最后所说到的 <a href="../rgss/sm_enumerable.html">Enumerable</a> 模块一样，模块可以针对其他的类添加自己的方法——这项功能叫做 <strong>Mix-in</strong>  。不过关于 Mix-in 只需要理解一件事，那就是写在RGSS参考中「包含的模块」里面的方法也能使用。这是因为在默认脚本中也没有使用到 Mix-in 的功能，不用太过留意也没关系。</p>
 <p>顺带一提， Vocab 这个名字是 vocabulary (词汇)这个英文单词的略写。</p>
 
 
@@ -73,7 +71,7 @@ end
   EscapeStart     = "%s逃跑了！"
 </pre>
 <p>笔者挑出了较容易理解的部分。看见这几行，应该想象得到 %s 这个部分是用来和角色名、物品名等等作置换用的。</p>
-<p>这是叫做<a href="../rgss/s_functions.html#L000402">sprintf</a> 的
+<p>这是叫做 <a href="../rgss/s_functions.html#L000402">sprintf</a> 的
 这个内建函数中的<strong>格式化字符串</strong>。所谓的 sprintf ，是从 C 语言开始就使用的传统函数之一。s 代表 string（字符串） 的第一个字母，print 则表示输出，f 则为 format（格式）的第一个字母。</p>
 <p>在 Ruby 中会像下面一样使用格式化字符串。请在 TEST 脚本页中试试看。</p>
 <pre>

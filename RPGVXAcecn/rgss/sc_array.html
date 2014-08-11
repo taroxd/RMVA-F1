@@ -24,8 +24,8 @@ href="syntax03.html#L000279">Array 表达式</A>&nbsp;。</P>
 <dt><a name="Array.2enew_3" id="Array.2enew_3"></a>Array.new(<var>size</var>) {|<var>index</var>| ... }</dt>
 <DD>
 <P>创建一个数组。当它的 <var>size</var> 也就是长度被指定时，相应长度的数组会被创建出来，只不过所有的元素都是
-  nil。如果第二个参数 <var>val</var> 也被指定了的话，那么参数中的数据会取代掉数组中的&nbsp;nil 元素。 (请注意，并不是每个元素都把 <var>val</var> 复制了一遍。所有元素都是对同一个对象 <var>val</var> 的引用。
-<A href="trap_Array.html">trap::Array</A>)</P>
+  nil。如果第二个参数 <var>val</var> 也被指定了的话，那么参数中的数据会取代掉数组中的&nbsp;nil 元素。（请注意，并不是每个元素都把 <var>val</var> 复制了一遍。所有元素都是对同一个对象 <var>val</var> 的引用。
+<A href="trap_Array.html">trap::Array</A>）</P>
 <P>第二种格式生成参数的一个副本：</P><PRE>p Array.new([1,2,3]) # =&gt; [1,2,3]</PRE>
 <P>第三种格式是以区块的运算结果作为元素的值。区块对每一个元素分别执行，因此可以让所有元素都是某一对象的副本。</P><PRE>p Array.new(5) {|i| i }         # =&gt; [0, 1, 2, 3, 4]
 

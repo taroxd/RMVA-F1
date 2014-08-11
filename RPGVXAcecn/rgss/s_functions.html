@@ -81,8 +81,8 @@ end
   <DD>
   <P>将参数转换为文本格式输出，就像C语言中的同名函数一样。如果没有指定的参数，那就什么都不做。</P>
   <P>可以参考 <A href="appendix02.html">sprintf
-  格式化字符串</A>&nbsp;以获得更多有关Ruby语言中格式化字符串扩展的信息。</P>
-  <P>返回&nbsp;nil。</P>
+  格式</A> 以获得更多有关Ruby语言中格式化字符串扩展的信息。</P>
+  <P>返回 nil。</P>
   <DT><A name=putc></A>putc(<VAR>ch</VAR>)
   <DD>
   <P>输出文本 ch。如果 ch 是一个数字的话，就输出在ASCII码对照表中与之相对应的字母；而如果 ch 是一个字符串的话，则输出第一个字符。</P>
@@ -109,31 +109,31 @@ puts "foo"
 
    foo
 </PRE>
-  <P>返回&nbsp;nil。</P>
+  <P>返回 nil。</P>
   <DT><A name=L000388>raise</A>
   <DT>raise(<VAR>message</VAR>)
   <DT>raise(<VAR>exception</VAR>)
   <DT>raise(<VAR>error_type</VAR>, <VAR>message</VAR>)
   <DD>
-  <P>抛出异常，详情请参阅 <A href="syntax05.html#L000313">raise</A>&nbsp;。</P>
+  <P>抛出异常，详情请参阅 <A href="syntax05.html#L000313">raise</A> 。</P>
   <DT><A name=L000393>rand([<VAR>max=0</VAR>])</A>
   <DD>
-  <P>生成在 0 &#8804; 整数 &lt; max (0 ～ max(不含))范围之间的随机整数。若是没有调用 <A
-  href="#L000404">srand</A>&nbsp;，则会自动调用之。</P>
-  <P>若 max 是 nil 或 0 ，则以 <A href="sc_float.html">Float</A> 格式返回 0 &#8804; 实数 &lt; 1 (0
+  <P>生成在 0 ≤ 整数 &lt; max (0 ～ max(不含))范围之间的随机整数。若是没有调用 <A
+  href="#L000404">srand</A>，则会自动调用之。</P>
+  <P>若 max 是 nil 或 0 ，则以 <A href="sc_float.html">Float</A> 格式返回 0 ≤ 实数 &lt; 1 (0
   ～ 1(不含))范围之内的随机实数。</P>
   <DT><A name=sprintf>sprintf(<VAR>format</VAR>[, <VAR>arg</VAR>[, ...]])</A>
   <DD>
   <P>以C语言的 sprintf 一样的方式解释 format 字符串，将参数格式化之后返回结果字符串。</P>
-  <P>详情请参阅&nbsp;<A href="appendix02.html">sprintf 格式</A>&nbsp;。</P>
+  <P>详情请参阅 <A href="appendix02.html">sprintf 格式</A>。</P>
   <DT><A name=L000404>srand([<VAR>seed</VAR>])</A>
   <DD>
-  <P>设定&nbsp;<A href="#L000393">rand</A> 方法的产生随机数的种子，返回旧的初始值。省略了 seed
+  <P>设定 <A href="#L000393">rand</A> 方法的产生随机数的种子，返回旧的初始值。省略了 seed
   ，则使用当前时间做为种子。</P>
   <DT><A name=L000413>throw(<VAR>tag</VAR>[, <VAR>value</VAR>])</A>
   <DD>
   <P>跳出（方法）至使用相同 tag 的 <A href="#L000355">catch</A> 区块结尾处。若是没有相同 tag 的 catch
-  区块，就会以&nbsp;<A
-  href="s_exceptions.html#NameError">NameError</A>&nbsp;结束线程。 value 则是
+  区块，就会以 <A
+  href="s_exceptions.html#NameError">NameError</A> 结束线程。 value 则是
   catch 的返回值。</P></DD></DL>
 <H6></H6></BODY></HTML>
