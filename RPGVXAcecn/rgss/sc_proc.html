@@ -1,14 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Proc</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>Proc</H1>
-<P>Proc 是一个由区块及其运行环境（堆栈帧和参数范围）被封装为一体的程序对象。Proc 
-可以被像一个没有名字的方法一样使用棗除了它没有自己固定的参数范围。</P>
-<P>我们可以看到 Proc 是保留有参数范围的，但尽管如此，可以看到参数是可以被引用的，就像下面这样：</P>
+<P>Proc 是一个由区块及其运行环境（堆栈帧和局部变量作用域）的对象化封装。除了无法导入局部变量作用域，Proc 可以像一个没有名字的方法一样使用。</P>
+<P>从下面 Proc 可以引用局部变量 var，我们可以看出 Proc 是保留局部变量作用域的：</P>
 <P>（换句话说，Proc 所用到参数的取值永远是被调用的那一刻，对应参数的取值，而非某一特定节点的取值）</P><PRE>var = 1
 $foo = Proc.new { var }
 var = 2
@@ -24,13 +23,13 @@ p foo       # =&gt; 2
   <LI><A href="sc_object.html">Object</A> </LI></UL>
 <H2>类方法</H2>
 <DL>
-  <DT>Proc.new</A> 
-  <DT>Proc.new { ... } 
+  <DT>Proc.new</A>
+  <DT>Proc.new { ... }
   <DD>
-  <P>将区块及其运行环境封装进一个对象中，并返回该对象。</P>
-  <P>如果没有区块被指定，但是目标对象已经包含了一个区块，这个区块会作为一个 Proc 类对象被创建并返回。</P></DD></DL>
+  <P>将区块及其上下文对象化，并返回该对象。</P>
+  <P>如果没有区块被指定，当前的方法中附带了一个区块，这个区块会生成一个 Proc 对象并返回。</P></DD></DL>
 <H2>方法</H2>
 <DL>
-  <DT>call(<VAR>arg</VAR> ... )</A> 
+  <DT>call(<VAR>arg</VAR> ... )</A>
   <DD>
-  <P>执行一个程序对象并返回其运算结果，参数会原封不动地传递入区块内（根据多参数的分配规则）。</P></DD></DL></BODY></HTML>
+  <P>执行程序的内容并返回其运算结果，参数会原封不动地传递给区块（根据并行赋值的规则）。</P></DD></DL></BODY></HTML>

@@ -42,15 +42,15 @@ href="sm_kernel.html">Kernel</A>
   <DT><A name=L000379>open(<VAR>file</VAR>[, <VAR>mode</VAR>])</A>
   <DT>open(<VAR>file</VAR>[, <VAR>mode</VAR>]) {|<VAR>io</VAR>| ... }
   <DD>
-  <P>将文件 file 打开并返回一个 File） 对象。使用 mode 指定下面的字符串当 mode 省略时，默认值为 "r"。</P>
+  <P>将文件 file 打开并返回一个 <a href="sc_file.html">File</a> 对象。使用 mode 指定下面的字符串当 mode 省略时，默认值为 "r"。</P>
   <UL>
     <LI>"r"：以读取模式打开文件。
     <LI>"w": "：以写入模式打开文件。打开时若文件已存在，则会删除文件内容。
     <LI>"a": 以写入模式打开文件。输出写入的内容一定会附在文件的结尾部分。 </LI></UL>
   <P>使用 "+" 时就以读写模式（RDWR）打开文件：</P>
   <UL>
-    <LI>"r+"：将读写的位置设置在文件开头的部分。&nbsp;
-    <LI>"w+"：与"r+"相同，打开时若文件已存在，则会删除文件内容。&nbsp;
+    <LI>"r+"：将读写的位置设置在文件开头的部分。
+    <LI>"w+"：与"r+"相同，打开时若文件已存在，则会删除文件内容。
     <LI>"a+": 与"r+"相同，打开时若文件已存在，则会将读写的位置设置在文件尾的部分。 </LI></UL>
   <P>也可以使用 "b" 标志（如： "r+b"）表示以二进制模式打开文件。</P>
   <P>当 open 带区块时，则会打开文件、执行区块，然后在执行结束时关闭文件。此时则会返回区块计算的结果。也就是说：</P><PRE>open(path, mode) do |f|
@@ -67,8 +67,8 @@ end
 </PRE>
   <DT><A name=p>p(<VAR>obj</VAR>, [<VAR>obj2</VAR>, ...])</A>
   <DD>
-  <P>将&nbsp;obj 以人类可读的形式输出。相当于下面的代码（参看 <A
-  href="sc_object.html#L000572">Object#inspect</A>&nbsp;）：</P><PRE>print obj.inspect, "\n", obj2.inspect, "\n", ...
+  <P>将 obj 以人类可读的形式输出。相当于下面的代码（参看 <A
+  href="sc_object.html#L000572">Object#inspect</A> ）：</P><PRE>print obj.inspect, "\n", obj2.inspect, "\n", ...
 </PRE>
   <P>返回 nil。</P>
   <DD>
