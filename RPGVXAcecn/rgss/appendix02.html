@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>sprintf Format</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>sprintf 格式</H1>
-<P>Ruby的 sprintf 格式基本上与 C 语言相同。差别是：一、没有针对 C 语言特有类型 short 或 long 
+<P>Ruby的 sprintf 格式基本上与 C 语言相同。差别是：一、没有针对 C 语言特有类型 short 或 long
 的修饰符，二、增加了二进制变量指示字符(%b)，三、不完全支持所有 sprintf 的方言式语法。</P>
 <P>下面是对于 Ruby 的 sprintf 格式进行详细的说明。</P>
 <P>这是 sprintf 的格式，包含在 [] 的表示可以省略。</P><PRE>%[flag][width][.accuracy]indicator
@@ -17,9 +17,9 @@ type=text/css href="../style.css">
 <H2><A name=L006324>卷标字符</A></H2>
 <P>卷标字符共有五种：「#」、「+」、「(空格)」、「 - 」、「0」。 </P>
 <DL>
-  <DT># 
+  <DT>#
   <DD>
-  <P>与二、八、十六进制指示字符(「b」、「o」、「x」、「X」)同用时，会自动加上对应前缀「0b」、「0」、「0x」和「0X」。 
+  <P>与二、八、十六进制指示字符(「b」、「o」、「x」、「X」)同用时，会自动加上对应前缀「0b」、「0」、「0x」和「0X」。
   </P><PRE>p sprintf("%#b", 10) # =&gt; "0b1010"
 p sprintf("%#o", 10) # =&gt; "012"
 p sprintf("%#x", 10) # =&gt; "0xa"
@@ -33,16 +33,16 @@ p sprintf("%#.0e", 10) # =&gt; "1.e+01"
   <P>除了上述特性，「g」、「G」会在后面加上剩余位数的 0。 </P><PRE>p sprintf("%.05g", 10) # =&gt; "10"
 p sprintf("%#.05g", 10) # =&gt; "10.000"
 </PRE>
-  <DT>+ 
+  <DT>+
   <DD>
-  <P>代表输出的字符会带符号。正数会自动加上「+」号。只能对数值指示字符「d」、「i」、「b」、「o」、「x」、「X」、「u」、「f」、「e」、「E」、「g」 
+  <P>代表输出的字符会带符号。正数会自动加上「+」号。只能对数值指示字符「d」、「i」、「b」、「o」、「x」、「X」、「u」、「f」、「e」、「E」、「g」
   和 「G」起作用。另外，对于「b」、「o」、「x」、「X」和「u」，会自动在负数前加上「 -」号。</P><PRE>p sprintf("%d", 1)   # =&gt; "1"
 p sprintf("%+d", 1)  # =&gt; "+1"
 
 p sprintf("%x", -1)  # =&gt; "..f"  # ".." shows that f continues infinitely
 p sprintf("%+x", -1) # =&gt; "-1"
 </PRE>
-  <DT>' ' （空格） 
+  <DT>' ' （空格）
   <DD>
   <P>与「+」相同，以空格代替「+」号。只对下列数值指示字符有效：「d」、「i」、「b」、「o」、「x」、「X」、「u」、「f」、「e」、「E」、「g」、「G」。</P><PRE>p sprintf("%d", 1)   # =&gt; "1"
 p sprintf("%+d", 1)  # =&gt; "+1"
@@ -52,11 +52,11 @@ p sprintf("%x", -1)  # =&gt; "..f"
 p sprintf("% x", 1)  # =&gt; " 1"
 p sprintf("% x", -1) # =&gt; "-1"
 </PRE>
-  <DT>- 
+  <DT>-
   <DD>
-  <P>使输出内容靠左对齐，只在已经指定 "<A 
+  <P>使输出内容靠左对齐，只在已经指定 "<A
   href="rgss/appendix02.html#L006330">宽度</A>" 时有效。。</P>
-  <DT>0 
+  <DT>0
   <DD>
   <P>当输出内容靠右对齐其，以「0」替代空格填补多余部分。</P>
   <P>只对下列数值指示字符有效：（对「e」或「E」无效）。</P><PRE>p sprintf("%010d", 10)
@@ -75,10 +75,10 @@ p sprintf("%#10o", 10)   # =&gt; "       012"
 p sprintf("%#10b", 10)   # =&gt; "    0b1010"
 </PRE></DD></DL>
 <H2><A name=L006330>宽度</A></H2>
-<P>任何以 非 0 开头的数字字符串指定宽度。宽度是指字符串显示出来的宽度。不受下文的<A 
+<P>任何以 非 0 开头的数字字符串指定宽度。宽度是指字符串显示出来的宽度。不受下文的<A
 href="rgss/appendix02.html#L006331">精度</A>影响。</P>
-<P>宽度包含了由<A 
-href="rgss/appendix02.html#L006324">卷标字符</A>添加的 
+<P>宽度包含了由<A
+href="rgss/appendix02.html#L006324">卷标字符</A>添加的
 「(空格)」、「+」、「-」、「0b」、「0」、「0x」、「0X」的宽度。</P><PRE>p sprintf("%#05x", 10) # =&gt; "0x00a"
 </PRE>
 <P>宽度是指「需要的宽度」。若结果的数字字符串超过指定的宽度，则会无视宽度的设定。</P>
@@ -86,7 +86,7 @@ href="rgss/appendix02.html#L006324">卷标字符</A>添加的
 p sprintf("%*s", 10, "foo") # =&gt; "       foo"
 </PRE>
 <H2><A name=L006331>精度</A></H2>
-<P>接续在「.」之后的数字字符串指定精度。（若是只有「.」 
+<P>接续在「.」之后的数字字符串指定精度。（若是只有「.」
 ，就与「.0」相同）。<BR>若与整数的指示字符「d」、「i」、「b」、「o」、「x」、「X」、「u」同用的话，精度表示数值部分的长度。</P><PRE>p sprintf("%10.5d", 1)  # =&gt; "     00001"
 p sprintf("%#10.5x", 1) # =&gt; "   0x00001"
 p sprintf("%+10.5x", 1) # =&gt; "    +00001"
@@ -110,40 +110,40 @@ p sprintf("%.*s", 5, "foobar") # =&gt; "fooba"
 <H2>指示字符</H2>
 <P>指出参数的类型。不可以被省略，分成下面几类：</P>
 <UL>
-  <LI>表示字符串的指示字符： 「c」、「s」、「p」&nbsp;&nbsp; 
-  <LI>表示整数的指示字符： 「d」、「i」、「u」、「b」、「o」、「x」、「X」 
+  <LI>表示字符串的指示字符： 「c」、「s」、「p」&nbsp;&nbsp;
+  <LI>表示整数的指示字符： 「d」、「i」、「u」、「b」、「o」、「x」、「X」
   <LI>表示浮点数的指示字符：「f」、「g」、「e」、「E」、「G」</LI></UL>
 <DL>
-  <DT>c 
+  <DT>c
   <DD>
-  <P>将参数的数值（0～255）视为字符代码，并输出相对应的字符。若参数非整数、字符串、nil、true、和 false 
+  <P>将参数的数值（0～255）视为字符代码，并输出相对应的字符。若参数非整数、字符串、nil、true、和 false
   则使用 to_int 方法进行转换。</P>
   <DD>
-  <P>但这仅适用于 <A 
-  href="rgss/appendix02.html#L006324">卷标字符</A>「-」和 <A 
+  <P>但这仅适用于 <A
+  href="rgss/appendix02.html#L006324">卷标字符</A>「-」和 <A
   href="rgss/appendix02.html#L006330">宽度</A> 都被指定的情况下。</P>
-  <DT>s 
+  <DT>s
   <DD>
   <P>输出字符串。</P>
   <DD>
-  <P>若参数非 <A 
-  href="rgss/sc_string.html">String</A> 对象，则使用 to_s 
+  <P>若参数非 <A
+  href="rgss/sc_string.html">String</A> 对象，则使用 to_s
   方法将参数对象转成字符串。</P>
-  <DT>p 
+  <DT>p
   <DD>
   <P>输出&nbsp;<A href="sc_object.html#L000572">Object#inspect</A> 的结果。</P><PRE>p sprintf("%s", [1, 2, 3])      # =&gt; "123"
 p sprintf("%p", [1, 2, 3])      # =&gt; "[1, 2, 3]"
 </PRE>
-  <DT>d 
-  <DT>i 
+  <DT>d
+  <DT>i
   <DD>
   <P>将参数值以 10 进制整数输出。</P>
   <P>若参数非整数则转换为整数。</P>
   <DD>
   <P>&nbsp;</P>
-  <DT>u 
+  <DT>u
   <DD>
-  <P>将参数值视为无符号整数，并以 10 
+  <P>将参数值视为无符号整数，并以 10
   进制整数输出。</P><PRE>p sprintf("%u", -1) # =&gt; "4294967295"
 </PRE>
   <P>会输出 p 0xffff_ffff.to_s.</P>
@@ -152,10 +152,10 @@ p sprintf("%p", [1, 2, 3])      # =&gt; "[1, 2, 3]"
   <P>对于负整数 n 来说，相当于：</P><PRE>printf("%d", n &amp; ~(-1 &lt;&lt; n.size*8))
 </PRE>
   <P>&nbsp;</P>
-  <DT>b 
-  <DT>o 
-  <DT>x 
-  <DT>X 
+  <DT>b
+  <DT>o
+  <DT>x
+  <DT>X
   <DD>
   <P>将整数以二进制、八进制、十六进制、（大写）十六进制的字符串输出。</P>
   <P>若指定了卷标字符「#」指定时，会分别在前方加上「0b」、「0」、「0x」、「0X」。</P>
@@ -165,7 +165,7 @@ p sprintf("%p", [1, 2, 3])      # =&gt; "[1, 2, 3]"
 p sprintf("%#o", 10)    # =&gt; "012"
 p sprintf("%#x", 10)    # =&gt; "0xa"
 
-# ".." is added to # negative numbers
+# ".." 添加在负数前方
 p sprintf("%#b", -1)    # =&gt; "0b..1"
 p sprintf("%#o", -1)    # =&gt; "0..7"
 p sprintf("%#x", -1)    # =&gt; "0x..f"
@@ -173,14 +173,14 @@ p sprintf("%#x", -1)    # =&gt; "0x..f"
 p sprintf("%10x", -1)   # =&gt; "       ..f"
 p sprintf("%-10x", -1)  # =&gt; "..f       "
 
-# If "precision" has been specified, ".." is not added.
+# 指定精度时，不会添加 ".."
 p sprintf("%.10x", -1)  # =&gt; "ffffffffff"
 </PRE>
-  <DT>f 
-  <DT>e 
-  <DT>E 
-  <DT>g 
-  <DT>G 
+  <DT>f
+  <DT>e
+  <DT>E
+  <DT>g
+  <DT>G
   <DD>
   <P>「f」将数值以十进制输出(xxx.xxx)。</P>
   <P>「e」将数值以指数形式输出(x.xxxe+xx)。</P>
@@ -200,7 +200,7 @@ p sprintf("%g", 10 ** -5) # =&gt; "1e-005"
 <H2>指定参数</H2>
 <P>并不常使用，因此最后解释。</P>
 <DL>
-  <DT>nth$ 
+  <DT>nth$
   <DD>
   <P>指定第 nth 个执行的参数。</P><PRE>p sprintf("%1$d, %1$x, %1$o", 10)
 =&gt; "10, a, 12"
@@ -208,7 +208,7 @@ p sprintf("%g", 10 ** -5) # =&gt; "1e-005"
 p sprintf("%3$d, %2$x, %1$o", 1, 2, 3)
 =&gt; "3, 2, 1"
 </PRE>
-  <P>当想要依照场合改变格式，又不想要变更参数的顺序时可以使用。 
+  <P>当想要依照场合改变格式，又不想要变更参数的顺序时可以使用。
   </P><PRE>case ENV['LC_TIME']
 when /^ja_JP/
    fmt = "%1$d年%2$d月%3$d日"

@@ -70,12 +70,12 @@ type=text/css href="../style.css">
   href="rgss/sc_string.html#L001412">scan</A>
   或 <A
   href="rgss/sc_string.html#L001390">gsub</A>
-  一起使用。在想要在上次匹配成功的位置之后进行匹配时使用。</P><PRE>#  Takes values from the front of the line three digits at a time (for as long as the values continue.)
+  一起使用。在想要在上次匹配成功的位置之后进行匹配时使用。</P><PRE># 从开始处一次取出3位数字（前提是数字连续）
 str = "123456 789"
 str.scan(/\G\d\d\d/) {|m| p m }
 </PRE>
   <LI>
-  <P>[ ]</P>
+  <P>[]</P>
   <P>设置字符集。参看 <A
   href="rgss/appendix01.html#L000161">字符集</A>。</P>
   <LI>
@@ -96,8 +96,8 @@ str.scan(/\G\d\d\d/) {|m| p m }
   <P>{m,n}</P>
   <P>控制重复返回的次数的区间（区间数量定义词 interval quantifier）。返回前面所有的正则表达式：</P>
   <UL>
-    <LI>m&nbsp;次
-    <LI>至少 m 次&nbsp;
+    <LI>m 次
+    <LI>至少 m 次
     <LI>至少 m 次，至多 n 次 </LI></UL>
   <P>{n} 或 {,} 会匹配失败。</P><PRE>str = "foofoofoo"
 p str[/(foo){1}/]   # =&gt; "foo"
@@ -111,8 +111,8 @@ p str[/(foo){1,2}/] # =&gt; "foofoo"
   <P>{m,n}?</P>
   <P>区间数量定义词，返回前面所有的正则表达式： </P>
   <UL>
-    <LI>m&nbsp;次
-    <LI>大于 m 次&nbsp;
+    <LI>m 次
+    <LI>大于 m 次
     <LI>大于 m 次，小于 n 次 </LI></UL>
   <P>匹配最短的子字符串。 </P>
   <LI>
@@ -130,7 +130,7 @@ p str[/(foo){1,2}/] # =&gt; "foofoo"
   <LI>
   <P>\1, \2 ... \<VAR>n</VAR></P>
   <P>后位引用。参看 <A
-  href="rgss/appendix01.html#L000160">后位引用</A>&nbsp;。</P>
+  href="rgss/appendix01.html#L000160">后位引用</A> 。</P>
   <LI>
   <P>(?# )</P>
   <P>注释。忽视括号中的所有子字符串。</P>
@@ -160,13 +160,13 @@ p $&amp;    # =&gt; "foo"    （没有 bar 的信息）
   <P>(?! )</P>
   <P>反前提匹配。根据模板的反面指定匹配位置（无间隔）。</P><PRE>(?!re1)re2
 </PRE>
-  <P>上述正则表达式匹配不匹配 re1，但匹配 re2 的字符串。</P><PRE># A three-digit number that excludes 000
+  <P>上述正则表达式匹配不匹配 re1，但匹配 re2 的字符串。</P><PRE># 一个非 000 的三位数字
 re = /(?!000)\d\d\d/
 p re =~ "000"   # =&gt; nil
 p re =~ "012"   # =&gt; 0
 p re =~ "123"   # =&gt; 0
 
-# C identifier (A character string starting with [A-Za-z_] and continue with [0-9A-Za-z_])
+# C 语言标识符（以 [A-Za-z_] 开始，后面由 [0-9A-Za-z_] 构成的字符串）
 /\b(?![0-9])\w+\b/
 </PRE></LI></UL>
 <H2><A name=L000160>后位引用 </A></H2>
@@ -187,32 +187,32 @@ p /(foo)\2/ =~ "foo\2"  # =&gt; nil
 <P>虽然可以指定大于二位数的后位引用，但是千万不要与<A
 href="rgss/syntax03.html#L000255">转义符</A>的
 \nnn （对应八进制的nnn字符）搞混。若其数值为单位数，则是后位引用。若是没有匹配的括号，大于二位数的数字就会视为八进制代码。 </P>
-<P>同样若在正则表达式中使用 1 位的八进制代码时，请以 0 开头（如 \01 等）（因为没有 \0 的后位引用，所以不会混淆）。 </P><PRE>p   /\1/ =~ "\1"   # =&gt; nil     # back reference that doesn乫t use parentheses.
-p  /\01/ =~ "\1"   # =&gt; 0       # octal code
-p  /\11/ =~ "\11"  # =&gt; 0       # octal code
+<P>同样若在正则表达式中使用 1 位的八进制代码时，请以 0 开头（如 \01 等）（因为没有 \0 的后位引用，所以不会混淆）。 </P><PRE>p   /\1/ =~ "\1"   # =&gt; nil     # 没有括号的后位引用
+p  /\01/ =~ "\1"   # =&gt; 0       # 八进制代码
+p  /\11/ =~ "\11"  # =&gt; 0       # 八进制代码
 
-# octal code (because there are no corresponding parentheses)
+# 八进制代码（因为没有对应的括号）
 p /(.)\10/ =~ "1\10" # =&gt; 0
 
-# back reference (because there are corresponding parentheses)
+# 后位引用（因为存在对应的括号）
 p /((((((((((.))))))))))\10/ =~ "aa"  # =&gt; 0
 
-# octal code (Though there is no such
-# \08 "\0" + "8" octal code)
+# 八进制代码（尽管不会有 "\0" + "8"
+# 变成 \08 这样的八进制代码）
 p /(.)\08/ =~ "1\0008" # =&gt; 0
 
-# If you want to write numbers following a back reference,
-# you have to use parentheses to group them and split them up.
+# 想在后位引用后面跟一个数字，
+# 必须用括号分群来分割开来。
 p /(.)(\1)1/ =~ "111"   # =&gt; 0
 </PRE>
-<H2>字符集 </H2>
+<H2>字符集</H2>
 <P>正则表达式的 [] 指定字符集。会匹配 [] 内的任何一个字符。 </P>
 <P>举例来说： /[abc]/ 可以成功匹配 "a"、"b" 或 "c"。 若是这些字符依照 ASCII 代码顺序，也可以使用 "-"，例如：/[a-c]/
 来表示从 a 至 c 。若第一个字符为「 ^ 」，表示匹配指定字符以外的字符。 </P>
-<P>若「 ^ 」不是再开头的话，就会匹配 ^ 这个字符。同样的，当「-」出现在最前方或最后方则表示匹配「-」字符。 </P><PRE>p /[a^]/ =~ "^"   # =&gt; 0
+<P>若 '^' 不是在开头的话，就会匹配 '^'' 这个字符本身。同样的，当 '-'出现在最前方或最后方则表示匹配 '-' 字符本身。 </P><PRE>p /[a^]/ =~ "^"   # =&gt; 0
 p /[-a]/ =~ "-"   # =&gt; 0
 p /[a-]/ =~ "-"   # =&gt; 0
-p /[-]/ =~ "-"   # =&gt; 0
+p /[-]/ =~ "-"    # =&gt; 0
 </PRE>
 <P>空的字符集会导致错误。</P><PRE>p /[]/ =~ ""
 p /[^]/ =~ "^"
