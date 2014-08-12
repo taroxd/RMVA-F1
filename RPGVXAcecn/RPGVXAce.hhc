@@ -64,63 +64,63 @@
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="角色设定">
+				<param name="Name" value="角色设置">
 				<param name="Local" value="rpgvxace/3210_db_actor.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="职业设定">
+				<param name="Name" value="职业设置">
 				<param name="Local" value="rpgvxace/3220_db_job.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="技能设定">
+				<param name="Name" value="技能设置">
 				<param name="Local" value="rpgvxace/3230_db_skill.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="物品设定">
+				<param name="Name" value="物品设置">
 				<param name="Local" value="rpgvxace/3240_db_item.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="武器/护甲设定">
+				<param name="Name" value="武器/护甲设置">
 				<param name="Local" value="rpgvxace/3250_db_arms.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="敌人设定">
+				<param name="Name" value="敌人设置">
 				<param name="Local" value="rpgvxace/3270_db_enemy.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="敌群设定">
+				<param name="Name" value="敌群设置">
 				<param name="Local" value="rpgvxace/3280_db_enemygroup.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="状态设定">
+				<param name="Name" value="状态设置">
 				<param name="Local" value="rpgvxace/3290_db_state.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="动画设定">
+				<param name="Name" value="动画设置">
 				<param name="Local" value="rpgvxace/3300_db_animation.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="图块设定">
+				<param name="Name" value="图块设置">
 				<param name="Local" value="rpgvxace/3310_db_tileset.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="公共事件设定">
+				<param name="Name" value="公共事件设置">
 				<param name="Local" value="rpgvxace/3320_db_commonevent.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="系统设定">
+				<param name="Name" value="系统设置">
 				<param name="Local" value="rpgvxace/3330_db_system.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="用语设定">
+				<param name="Name" value="用语设置">
 				<param name="Local" value="rpgvxace/3340_db_terms.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="特性的设定方法">
+				<param name="Name" value="特性的设置方法">
 				<param name="Local" value="rpgvxace/3410_db_feature.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="使用效果的设定方法">
+				<param name="Name" value="使用效果的设置方法">
 				<param name="Local" value="rpgvxace/3420_db_effect.html">
 				</OBJECT>
 		</UL>
@@ -135,7 +135,7 @@
 				<param name="Local" value="rpgvxace/4120_ev_mapevent_outline.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="操作地图事件">
+				<param name="Name" value="新建/操作地图事件">
 				<param name="Local" value="rpgvxace/4130_ev_mapevent_operation.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
@@ -245,7 +245,7 @@
 		</OBJECT>
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="设定方法与VX不同的功能">
+			<param name="Name" value="设置方法与VX不同的功能">
 			<param name="Local" value="vx_user/010_002.html">
 			<param name="ImageNumber" value="1">
 			</OBJECT>

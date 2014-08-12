@@ -85,13 +85,13 @@ end
 <p>从第二行开始的 initialize 方法的定义，
 表示实例变量 @name 的初始值被赋值为字符串 "游客"。
 这样，生成新的 Person 对象的时候，会自动以 "游客" 初始化实例变量。</p>
-<p>initialize 方法中设定有形式参数的情况下，new 会取该参数为初始值。</p>
+<p>initialize 方法中设有形式参数的情况下，new 会取该参数为初始值。</p>
 <pre>class Person<br>  def initialize(name)<br>    @name = name<br>  end<br>end<br><br>alex = Person.new("阿莱库斯")<br></pre>
-<p>上述示例中，initialize 方法里设定有形式参数 name，
+<p>上述示例中，initialize 方法里设有形式参数 name，
 那么实例变量 @name 的初始值就会使用该参数。
 参数 name 实际在 Person 类 new 时传递。
 最后一行，生成 Person 类对象时指定参数为 "阿莱库斯"，
-那么 @name 的初始值也就设定为 "阿莱库斯"。</p>
+那么 @name 的初始值也就设为 "阿莱库斯"。</p>
 <h2><a name="override">方法的覆盖</a></h2>
 <p>超类中已定义的方法在子类中再次被定义称为<strong>覆盖</strong>。
 在子类方法中调用超类相同方法的情况下，要使用关键词 <strong>super</strong>。</p>

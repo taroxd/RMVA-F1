@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Audio</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 8.00.7601.17785"></HEAD>
 <BODY>
@@ -9,63 +9,63 @@ type=text/css href="../style.css">
 <P>执行音乐和声音处理的模块。</P>
 <H2>模块方法</H2>
 <DL>
-  <DT>Audio.setup_midi <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT>Audio.setup_midi <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
   <P>利用DirectMusic加载MIDI播放功能。</P>
   <P>原本是RGSS2中默认加载的功能，但是在RGSS3中需要手动加载，当然，任何时候都可以执行此语句。</P>
   <P>在本语句没有被调用的情况下，MIDI文件也是可以被播放的，但是在Windows Vista及其后续版本的环境下，将会导致一到两秒的延迟。</P>
-  <DT><A name=bgm_play>Audio.bgm_play(<VAR>filename</VAR>[, <VAR>volume</VAR>[, 
-  <VAR>pitch</VAR>[, <VAR>pos</VAR>]]])</A> <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT><A name=bgm_play>Audio.bgm_play(<VAR>filename</VAR>[, <VAR>volume</VAR>[,
+  <VAR>pitch</VAR>[, <VAR>pos</VAR>]]])</A> <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
   <P>开始播放背景音乐（BGM）。可以在参数中指定文件名、音量、频率和起始时间。</P>
-  <P>但是只有ogg格式和wav格式的音频文件支持设定起始时间功能。 <SPAN class=rgss3>(RGSS3)</SPAN>&nbsp;</P>
+  <P>但是只有ogg格式和wav格式的音频文件支持设置起始时间功能。 <SPAN class=rgss3>(RGSS3)</SPAN></P>
   <P>也会自动搜索包含在 <A href="rgss.html#rgss_rtp">RGSS-RTP</A> 内的文件。扩展名可以省略。</P>
-  <DT>Audio.bgm_stop 
+  <DT>Audio.bgm_stop
   <DD>
   <P>停止播放背景音乐（BGM）。</P>
-  <DT>Audio.bgm_fade(<VAR>time</VAR>) 
+  <DT>Audio.bgm_fade(<VAR>time</VAR>)
   <DD>
   <P>开始淡出背景音乐（BGM）。<VAR>time</VAR> 是以毫秒计算的淡出时间。</P>
-  <DT>Audio.bgm_pos <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT>Audio.bgm_pos <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
   <P>获取当前播放的背景音乐（BGM）在文件中的进行到的时间位置（仅支持ogg格式和wav格式的音频文件）。如果参数无效，则返回0。</P>
-  <DT><A name=bgs_play>Audio.bgs_play(<VAR>filename</VAR>[, <VAR>volume</VAR>[, 
-  <VAR>pitch</VAR>[, <VAR>pos</VAR>]]])</A> <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT><A name=bgs_play>Audio.bgs_play(<VAR>filename</VAR>[, <VAR>volume</VAR>[,
+  <VAR>pitch</VAR>[, <VAR>pos</VAR>]]])</A> <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
   <P>开始播放背景音效（BGS）。可以在参数中指定文件名、音量、频率和起始时间。</P>
-  <P>但是只有ogg格式和wav格式的音频文件支持设定起始时间功能。 <SPAN class=rgss3>(RGSS3)</SPAN>&nbsp;</P>
-  <P>也会自动搜索包含在 <A 
-  href="ata/Local/Temp/RPGVXAce/rgss/rgss.html#rgss_rtp">RGSS-RTP</A> 
+  <P>但是只有ogg格式和wav格式的音频文件支持设置起始时间功能。 <SPAN class=rgss3>(RGSS3)</SPAN></P>
+  <P>也会自动搜索包含在 <A
+  href="ata/Local/Temp/RPGVXAce/rgss/rgss.html#rgss_rtp">RGSS-RTP</A>
   内的文件。扩展名可以省略。</P></DD>
-  <DT>Audio.bgs_stop 
+  <DT>Audio.bgs_stop
   <DD>
   <P>停止播放背景音效（BGS）。</P>
-  <DT>Audio.bgs_fade(<VAR>time</VAR>) 
+  <DT>Audio.bgs_fade(<VAR>time</VAR>)
   <DD>
   <P>开始淡出背景音效（BGS）。<VAR>time</VAR> 是以毫秒计算的淡出时间。</P>
-  <DT>Audio.bgs_pos <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT>Audio.bgs_pos <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
   <P>获取当前播放的背景音效（BGS）在文件中的进行到的时间位置（仅支持ogg格式和wav格式的音频文件）。如果参数无效，则返回0。</P>
-  <DT><A name=me_play>Audio.me_play(<VAR>filename</VAR>[, <VAR>volume</VAR>[, 
-  <VAR>pitch</VAR>]])</A> 
+  <DT><A name=me_play>Audio.me_play(<VAR>filename</VAR>[, <VAR>volume</VAR>[,
+  <VAR>pitch</VAR>]])</A>
   <DD>
   <P>开始播放事件音乐（ME），依次设置文件名、音量和音调。</P>
   <DD>
   <P>也会自动搜索包含在 <A href="rgss.html#rgss_rtp">RGSS-RTP</A> 内的文件。扩展名可以省略。</P>
   <P>播放事件音乐时，会将背景音乐暂停。背景音乐重新开始的时机与 RGSS1 稍微不同。</P>
-  <DT>Audio.me_stop 
+  <DT>Audio.me_stop
   <DD>
   <P>停止播放事件音乐（ME）。</P>
-  <DT>Audio.me_fade(<VAR>time</VAR>) 
+  <DT>Audio.me_fade(<VAR>time</VAR>)
   <DD>
   <P>开始淡出事件音乐（ME）。<VAR>time</VAR> 是以毫秒计算的淡出时间。</P>
-  <DT><A name=se_play>Audio.se_play(<VAR>filename</VAR>[, <VAR>volume</VAR>[, 
-  <VAR>pitch</VAR>]])</A> 
+  <DT><A name=se_play>Audio.se_play(<VAR>filename</VAR>[, <VAR>volume</VAR>[,
+  <VAR>pitch</VAR>]])</A>
   <DD>
   <P>开始播放事件音效（SE），依次设置文件名、音量和音调。</P>
   <P>也会自动搜索包含在 <A href="rgss.html#rgss_rtp">RGSS-RTP</A> 内的文件。扩展名名可以省略。</P>
   <P>若是在极短时间内重复播放同一个事件音效，会进行过渡处理，以防出现声音撕裂现象。</P>
-  <DT>Audio.se_stop 
+  <DT>Audio.se_stop
   <DD>
   <P>停止播放事件音效（SE）。</P></DD></DL>
 <H6></H6></BODY></HTML>
