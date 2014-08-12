@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>RPG::Tileset</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
@@ -12,16 +12,16 @@ type=text/css href="../style.css">
   <LI><A href="sc_object.html">Object</A> </LI></UL>
 <H2>属性</H2>
 <DL>
-  <DT>id 
+  <DT>id
   <DD>
   <P>图块页编号。</P>
-  <DT>name 
+  <DT>name
   <DD>
   <P>图块页名称。</P>
-  <DT>mode 
+  <DT>mode
   <DD>
   <P>图块页模式（0：世界地图，1：区域地图，2：兼容VX型）。</P>
-  <DT>tileset_names[<VAR>index</VAR>] 
+  <DT>tileset_names[<VAR>index</VAR>]
   <DD>
   <P>图块索引（0-8）中所使用的素材文件名。</P>
   <P>其中参数所使用的编号代表之意如下：</P>
@@ -48,26 +48,26 @@ type=text/css href="../style.css">
       <TD>TileD</TD>
       <TH>8</TH>
       <TD>TileE</TD></TR></TBODY></TABLE>
-  <DT>flags 
+  <DT>flags
   <DD>
-  <P>通行度设定。利用一维数组储存着通行度设定（<A href="gc_table.html">Table</A>&nbsp;）。</P>
+  <P>通行度设置。利用一维数组储存着通行度设置（<A href="gc_table.html">Table</A>）。</P>
   <P>用这些标识标注可通行状态，其含义如下所示:</P>
   <UL>
-    <LI>0x0001:&nbsp;不可向下通行 
-    <LI>0x0002: 不可向左通行 
-    <LI>0x0004: 不可向右通行 
-    <LI>0x0008: 不可向上通行 
-    <LI>0x0010:&nbsp;显示优先度在角色之上 
-    <LI>0x0020:&nbsp;梯子 
-    <LI>0x0040:&nbsp;草木繁茂处标记 
-    <LI>0x0080:&nbsp;柜台标记 
-    <LI>0x0100: 有害地形 
-    <LI>0x0200:&nbsp;小船无法穿越 
-    <LI>0x0400: 大船无法穿越 
-    <LI>0x0800: 飞艇无法着陆 
+    <LI>0x0001: 不可向下通行
+    <LI>0x0002: 不可向左通行
+    <LI>0x0004: 不可向右通行
+    <LI>0x0008: 不可向上通行
+    <LI>0x0010: 显示优先度在角色之上
+    <LI>0x0020: 梯子
+    <LI>0x0040: 草木繁茂处标记
+    <LI>0x0080: 柜台标记
+    <LI>0x0100: 有害地形
+    <LI>0x0200: 小船无法穿越
+    <LI>0x0400: 大船无法穿越
+    <LI>0x0800: 飞艇无法着陆
     <LI>0xF000: 地形标志</LI></UL>
   <P>尽管这与C语言中的位操作有着种种相似之处，但本手册中并不讨论这种东西。我们更建议您在互联网上自行搜索有关十六进制位操作的信息。</P>
-  <DT>note 
+  <DT>note
   <DD>
   <P>备注。</P></DD></DL>
 <H2>定义</H2><PRE>class RPG::Tileset

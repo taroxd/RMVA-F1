@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>Hash</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>Hash</H1>
-<P>哈希表的类，详情请参看 <A href="syntax03.html#L000280">哈希表表达式</A>&nbsp;。</P>
+<P>哈希表的类，详情请参看<A href="syntax03.html#L000280">哈希表表达式</A>。</P>
 <H2>超类</H2>
 <UL>
   <LI><A href="sc_object.html">Object</A> </LI></UL>
@@ -15,67 +15,67 @@ type=text/css href="../style.css">
   <LI><A href="sm_enumerable.html">Enumerable</A> </LI></UL>
 <H2>方法</H2>
 <DL>
-  <DT>self[key] 
+  <DT>self[key]
   <DD>
-  <P>返回对应主键为 <VAR>key</VAR> 的元素值。若是对应的主键不存在，则返回 default 
+  <P>返回对应主键为 <VAR>key</VAR> 的元素值。若是对应的主键不存在，则返回 default
   的对应值（若没有指定 default 则返回 nil）。</P>
-  <DT>self[key]=value 
+  <DT>self[key]=value
   <DD>
-  <P>将元素值 <VAR>value</VAR> 设定成对应主键 <VAR>key</VAR>。返回 
+  <P>将元素值 <VAR>value</VAR> 设置成对应主键 <VAR>key</VAR>。返回
   <VAR>value</VAR>。</P>
-  <DT>clear 
+  <DT>clear
   <DD>
   <P>清除哈希表内容。返回 self。</P>
-  <DT>clone 
-  <DT>dup 
+  <DT>clone
+  <DT>dup
   <DD>
-  <P>返回一个与调用者有同样内容的哈希表。对冻结的哈希表使用 clone 会返回同一个冻结的哈希表，但是 dup 
+  <P>返回一个与调用者有同样内容的哈希表。对冻结的哈希表使用 clone 会返回同一个冻结的哈希表，但是 dup
   会返回一个未冻结的相同内容的哈希表。</P>
-  <P>返回&nbsp;<VAR>value 。</VAR></P>
-  <DT>delete(<VAR>key</VAR>) 
-  <DT>delete(<VAR>key</VAR>) {|<VAR>key</VAR>| ... } 
+  <P>返回 <VAR>value 。</VAR></P>
+  <DT>delete(<VAR>key</VAR>)
+  <DT>delete(<VAR>key</VAR>) {|<VAR>key</VAR>| ... }
   <DD>
-  <P>删除并返回对应主键 <VAR>key</VAR> 的元素值。若没有对应的元素值，就返回 nil。 
+  <P>删除并返回对应主键 <VAR>key</VAR> 的元素值。若没有对应的元素值，就返回 nil。
 </P>
   <DD>
   <P>若带区块的话，在找不到对应的元素值时，就会计算区块，并返回其计算值。</P>
-  <DT>each {|<VAR>key</VAR>, <VAR>value</VAR>| ... } 
-  <DT>each_pair {|<VAR>key</VAR>, <VAR>value</VAR>| ... } 
+  <DT>each {|<VAR>key</VAR>, <VAR>value</VAR>| ... }
+  <DT>each_pair {|<VAR>key</VAR>, <VAR>value</VAR>| ... }
 
   <DD>
-  <P>使用 <VAR>key</VAR> 和 <VAR>value</VAR> 作为参数对区块进行计算，返回 
+  <P>使用 <VAR>key</VAR> 和 <VAR>value</VAR> 作为参数对区块进行计算，返回
   self。</P>
-  <DT>each_key {|<VAR>key</VAR>| ... } 
+  <DT>each_key {|<VAR>key</VAR>| ... }
   <DD>
   <P>使用 <VAR>key </VAR>作为参数对区块进行计算，返回 self。</P>
-  <DT>each_value {|<VAR>value</VAR>| ... } 
+  <DT>each_value {|<VAR>value</VAR>| ... }
   <DD>
   <P>使用<VAR> value</VAR> 作为参数对区块进行计算，返回 self。</P>
-  <DT>empty? 
+  <DT>empty?
   <DD>
   <P>若哈希表为空则返回 true。</P>
-  <DT>has_key?(<VAR>key</VAR>) 
-  <DT>include?(<VAR>key</VAR>) 
+  <DT>has_key?(<VAR>key</VAR>)
+  <DT>include?(<VAR>key</VAR>)
   <DD>
   <P>若哈希表含有主键 <VAR>key</VAR> 则返回 true。</P>
-  <DT>has_value?(<VAR>value</VAR>) 
+  <DT>has_value?(<VAR>value</VAR>)
   <DD>
-  <P>使用 == 判断哈希表是否含有&nbsp;<VAR>value</VAR> 
-  作为其元素值之一，若含有&nbsp;<VAR>value </VAR>则返回 true。</P>
-  <DT>index(<VAR>val</VAR>) 
+  <P>使用 == 判断哈希表是否含有 <VAR>value</VAR>
+  作为其元素值之一，若含有 <VAR>value </VAR>则返回 true。</P>
+  <DT>index(<VAR>val</VAR>)
   <DD>
-  <P>返回与 val 
+  <P>返回与 val
   对应的主键。若无法对应则返回 nil。</P>
-  <P>若有许多与 val 
+  <P>若有许多与 val
   对应的主键，则随机返回一个。</P>
-  <DT>keys 
+  <DT>keys
   <DD>
   <P>返回一个包含所有主键的数组。</P>
-  <DT>length 
-  <DT>size 
+  <DT>length
+  <DT>size
   <DD>
   <P>返回哈希表元素的数目。</P>
-  <DT>values 
+  <DT>values
   <DD>
   <P>返回包含所有元素值的数组。</P></DD></DL>
 <H6></H6></BODY></HTML>
