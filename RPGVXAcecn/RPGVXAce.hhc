@@ -131,15 +131,15 @@
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="地图事件的结构">
+				<param name="Name" value="地图事件系统">
 				<param name="Local" value="rpgvxace/4120_ev_mapevent_outline.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="地图事件的制作·操作">
+				<param name="Name" value="操作地图事件">
 				<param name="Local" value="rpgvxace/4130_ev_mapevent_operation.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="地图事件的设定">
+				<param name="Name" value="地图事件的设置">
 				<param name="Local" value="rpgvxace/4140_ev_mapevent_setting.html">
 				</OBJECT>
 		</UL>
