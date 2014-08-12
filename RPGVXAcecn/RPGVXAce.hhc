@@ -49,11 +49,11 @@
 				<param name="Local" value="rpgvxace/2120_map_design.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="地图数据的操作">
+				<param name="Name" value="地图数据的处理">
 				<param name="Local" value="rpgvxace/2130_map_operation.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="地图数据的设定">
+				<param name="Name" value="地图数据的设置">
 				<param name="Local" value="rpgvxace/2140_map_setting.html">
 				</OBJECT>
 		</UL>
