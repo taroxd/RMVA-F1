@@ -13,54 +13,54 @@ type=text/css href="../style.css">
   <LI><A href="sc_object.html">Object</A> </LI></UL>
 <H2>类方法</H2>
 <DL>
-  <DT>Font.new([<VAR>name</VAR>[, <VAR>size</VAR>]]) 
+  <DT>Font.new([<VAR>name</VAR>[, <VAR>size</VAR>]])
   <DD>
   <P>生成字体对象。</P>
-  <DT>Font.exist?(<VAR>name</VAR>) 
+  <DT>Font.exist?(<VAR>name</VAR>)
   <DD>
   <P>若系统中存在指定的字体则返回 true。</P></DD></DL>
 <H2>属性</H2>
 <DL>
-  <DT>name 
+  <DT>name
   <DD>
   <P>字体的名称。可以依照喜欢的顺序指定为包含多个字体名称的字符串数组。</P><PRE>font.name = ["Myriad", "Verdana"]</PRE>
-  <P>在例子中，我们为了跨平台正常显示汉字而使用了字体的英文名，若系统中不存在优先度高的「Myriad」，则会使用第二选择「Verdana推。</P>
+  <P>在例子中，我们为了跨平台正常显示汉字而使用了字体的英文名，若系统中不存在优先度高的「Myriad」，则会使用第二选择「Verdana」。</P>
   <P>预设是["Verdana", "Arial", "Courier New"]。</P>
-  <DT>size 
+  <DT>size
   <DD>
   <P>字号，预设为 24 <SPAN class=rgss3>(RGSS3)</SPAN>.</P>
-  <DT>bold 
+  <DT>bold
   <DD>
   <P>粗体标记。预设为 false。</P>
-  <DT>italic 
+  <DT>italic
   <DD>
   <P>斜体标记。预设为 false。</P>
-  <DT>outline <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT>outline <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
   <P>文字轮廓标记，预设为true。</P>
-  <DT>shadow 
+  <DT>shadow
   <DD>
   <P>文字阴影标记。预设为 true <SPAN class=rgss3>(RGSS3)</SPAN>。设为 true
   时会在文字的右下方描绘黑色的文字阴影。 </P>
-  <DT>color 
+  <DT>color
   <DD>
   <P>文字颜色（<A href="gc_color.html">Color</A> ）。也可以调整 alpha 值。预设为
   (255,255,255,255)。</P>
   <P>alpha 值也同时用来描绘文字阴影和文字轮廓 <SPAN class=rgss3>(RGSS3)</SPAN>
   。</P>
-  <DT>out_color <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT>out_color <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
   <P>文字轮廓颜色（<A href="gc_color.html">Color</A>&nbsp;），预设值为(0,0,0,128)。</P></DD></DL>
 <H2>类属性</H2>
 <DL>
-  <DT>default_name 
-  <DT>default_size 
-  <DT>default_bold 
-  <DT>default_italic 
-  <DT>default_shadow 
-  <DT>default_outline <SPAN class=rgss3>(RGSS3)</SPAN> 
-  <DT>default_color 
-  <DT>default_out_color <SPAN class=rgss3>(RGSS3)</SPAN> 
+  <DT>default_name
+  <DT>default_size
+  <DT>default_bold
+  <DT>default_italic
+  <DT>default_shadow
+  <DT>default_outline <SPAN class=rgss3>(RGSS3)</SPAN>
+  <DT>default_color
+  <DT>default_out_color <SPAN class=rgss3>(RGSS3)</SPAN>
   <DD>
   <P>每样属性的默认值，在生成字体对象时应指定其取值。</P><PRE>Font.default_name = ["Myriad", "Verdana"]
 Font.default_size = 22

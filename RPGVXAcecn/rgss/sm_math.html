@@ -26,7 +26,7 @@ type=text/css href="../style.css">
   <DT>Math.asinh(<VAR>x</VAR>)
   <DT>Math.atanh(<VAR>x</VAR>)
   <DD>
-  <P>返回 x 的反双曲线函数计算值。</P><PRE>asinh(x) = log(x + sqrt(x * x + 1))
+  <P>返回 x 的反双曲函数计算值。</P><PRE>asinh(x) = log(x + sqrt(x * x + 1))
 acosh(x) = log(x + sqrt(x * x - 1)) [x &gt;= 1]
 atanh(x) = log((1+x)/(1-x)) / 2     [-1 &lt; x &lt; 1]
 </PRE>
@@ -43,7 +43,7 @@ atanh(x) = log((1+x)/(1-x)) / 2     [-1 &lt; x &lt; 1]
   <DT>Math.sinh(<VAR>x</VAR>)
   <DT>Math.tanh(<VAR>x</VAR>)
   <DD>
-  <P>返回 x 的双曲线函数计算值。</P><PRE>cosh(x) = (exp(x) + exp(-x)) / 2
+  <P>返回 x 的双曲函数计算值。</P><PRE>cosh(x) = (exp(x) + exp(-x)) / 2
 sinh(x) = (exp(x) - exp(-x)) / 2
 tanh(x) = sinh(x) / cosh(x)
 </PRE>
@@ -61,10 +61,10 @@ tanh(x) = sinh(x) / cosh(x)
   </FONT><FONT class=post>指数与假数</FONT>）。</P>
   <DT>Math.hypot(<VAR>x</VAR>, <VAR>y</VAR>)
   <DD>
-  <P>返回&nbsp;sqrt(x*x + y*y)。（sqrt为求平方根函数，也即是求x、y在直角三角形中的斜边）</P>
+  <P>返回 sqrt(x*x + y*y)。</P>
   <DT>Math.ldexp(<VAR>x</VAR>, <VAR>exp</VAR>)
   <DD>
-  <P>返回实数 x 乘以 2 的 exp 幂数的最终结果。（x * 2<SUP>exp</SUP>）&nbsp;</P>
+  <P>返回实数 x 乘以 2 的 exp 次方。</P>
   <DT>Math.log(<VAR>x</VAR>)
   <DD>
   <P>返回 x 的自然对数。<VAR></VAR></P>
@@ -82,7 +82,7 @@ tanh(x) = sinh(x) / cosh(x)
   异常。</P>
   <DT>Math.sqrt(<VAR>x</VAR>)
   <DD>
-  <P>返回 <VAR>x</VAR> 的平方根号。若 <VAR>x</VAR> 为负数，抛出 <A
+  <P>返回 <VAR>x</VAR> 的平方根。若 <VAR>x</VAR> 为负数，抛出 <A
   href="s_exceptions.html#ArgumentError">ArgumentError</A> 异常。</P>
   <P>通常负数会抛出 <A href="s_exceptions.html#Errno">Errno::EDOM</A> 异常。</P></DD></DL>
 <H2>定数</H2>

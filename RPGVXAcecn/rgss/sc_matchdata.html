@@ -1,24 +1,24 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML lang=zh><HEAD><TITLE>MatchData</TITLE>
 <META content="text/html; charset=GBK" http-equiv=Content-Type>
-<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet 
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet
 type=text/css href="../style.css">
 <META name=GENERATOR content="MSHTML 9.00.8112.16447"></HEAD>
 <BODY>
 <H1>MatchData</H1>
-<P>处理正规表达是匹配数据的类。此类的实例通过下面的三个途径获得：</P>
+<P>处理正则表达式匹配数据的类。此类的实例通过下面的三个途径获得：</P>
 <UL>
-  <LI><A href="sc_regexp.html#L001314">Regexp.last_match</A>, 
-  <LI><A href="sc_regexp.html#L001322">Regexp#match</A> 
+  <LI><A href="sc_regexp.html#L001314">Regexp.last_match</A>,
+  <LI><A href="sc_regexp.html#L001322">Regexp#match</A>
   <LI><A href="s_variables.html#L000428">$~</A>. </LI></UL>
 <H2>超类</H2>
 <UL>
   <LI><A href="sc_object.html">Object</A> </LI></UL>
 <H2>方法</H2>
 <DL>
-  <DT>self[n] 
+  <DT>self[n]
   <DD>
-  <P>返回第 <VAR>n</VAR> 个子字符串。0 代表整个匹配字符串。当 <VAR>n</VAR> 
+  <P>返回第 <VAR>n</VAR> 个子字符串。0 代表整个匹配字符串。当 <VAR>n</VAR>
   为负值时，则会从尾部算起（最后一个元素的索引是 -1）。若第 <VAR>n</VAR> 个元素不存在，则返回 nil。</P><PRE>/(foo)(bar)(BAZ)?/ =~ "foobarbaz"
 p $~.to_a       # =&gt; ["foobar", "foo", "bar", nil]
 p $~[0]         # =&gt; "foobar"
@@ -28,18 +28,18 @@ p $~[3]         # =&gt; nil        (doesn't match)
 p $~[4]         # =&gt; nil        (out of range)
 p $~[-2]        # =&gt; "bar"
 </PRE>
-  <DT>post_match 
+  <DT>post_match
   <DD>
   <P>返回匹配部分后面的字符串。</P>
-  <DT>pre_match 
+  <DT>pre_match
   <DD>
   <P>返回匹配部分前面的字符串。</P>
-  <DT>to_a 
+  <DT>to_a
   <DD>
-  <P>返回包含 <A href="s_variables.html#L000427">$&amp;</A>, <A 
-  href="s_variables.html#L000432">$1</A>, 
+  <P>返回包含 <A href="s_variables.html#L000427">$&amp;</A>, <A
+  href="s_variables.html#L000432">$1</A>,
   <A href="s_variables.html#L000433">$2</A>, ... 的数组。</P>
-  <DT>to_s 
+  <DT>to_s
   <DD>
   <P>返回整个匹配字符串。</P></DD></DL>
 <H6></H6></BODY></HTML>

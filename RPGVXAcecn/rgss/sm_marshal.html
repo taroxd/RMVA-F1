@@ -12,16 +12,16 @@ type=text/css href="../style.css">
   <DT>Marshal.dump(<VAR>obj</VAR>[, <VAR>port</VAR>][, <VAR>limit</VAR>])
   <DD>
   <P>将 <VAR>obj</VAR> 对象递归写入文件。</P>
-  <P>有些对象，如 <A href="sc_file.html">File</A>&nbsp;或 <A
-  href="c_matchdata.html">MatchData</A>&nbsp;，或定义了特殊方法的对象，无法写入文件中。若尝试将这类对象写入文件会抛出 <A
+  <P>有些对象，如 <A href="sc_file.html">File</A> 或 <A
+  href="c_matchdata.html">MatchData</A> ，或定义了特殊方法的对象，无法写入文件中。若尝试将这类对象写入文件会抛出 <A
   href="s_exceptions.html#TypeError">TypeError</A> 异常。</P>
-  <P><VAR>port</VAR> 指定 IO）的实例。此时会返回 <VAR>port</VAR>。省略时，dump
-  会将对象递归以字符串形式返回。</P>
-  <P>若指定了&nbsp;<VAR>limit</VAR> ，则不会将递归深于 <VAR>limit</VAR> （预设100）层的链接对象。若
+  <P><VAR>port</VAR> 指定 IO（或其子类）的实例。此时会返回 <VAR>port</VAR>。省略时，dump
+  返回将对象序列化之后的字符串。</P>
+  <P>若指定了 <VAR>limit</VAR> ，则不会序列化深于 <VAR>limit</VAR> （默认100）层链接的对象。若
   <VAR>limit</VAR> 为负数，则不会进行层数检查。</P>
   <DT>Marshal.load(<VAR>port</VAR>)
   <DD>
   <P>从 <VAR>port</VAR>
-  中读取递归数据（Marshal.dump所输出的字符串）并生成与原对象同样状态的对象。<VAR>port</VAR> 指定
-  IO）的实例。</P></DD></DL>
+  中读取序列化数据（Marshal.dump 所输出的字符串）并生成与原对象同样状态的对象。<VAR>port</VAR> 指定
+  字符串或IO（或其子类）的实例。</P></DD></DL>
 <H6></H6></BODY></HTML>

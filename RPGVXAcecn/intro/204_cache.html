@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Cache 模块</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Cache 模块</h1>
+<ul>
+<li><a href="#what">什么是缓存</a></li>
+<li><a href="#use">缓存的用法</a></li>
+<li><a href="#detail">实现的细节</a></li>
+<li><a href="#nil_guard">空值保护（nil_guard）</a></li>
+<li><a href="#methods">各个方法调用</a></li>
+<li><a href="#bitmap">创建位图</a></li>
+</ul>
+
+<p>Cache 是用来快速读取图像文件的模块。</p>
+
+
+<h2><a name="what">什么是缓存</a></h2>
+<p>在基础篇<a href="109_graphics.html">显示图片</a>的时候，我们把 <a href="../rgss/gc_bitmap.html">Bitmap</a> 类像下面一样使用过：</p>
+<pre>
+skeleton.bitmap = Bitmap.new(&quot;Graphics/Battlers/Skeleton&quot;)
+</pre>
+<p>这样，在生成 Bitmap 类的实例时、指定该图片的文件名作为参数，这样、就可以以此来读取图片了。</p>
+<p>不过、每次需要图片的时候都需要读一次文件，这样运行效率就会变差。
+因此RM提供了将生成过一次的位图 Bitmap 对象保存下来的机制，而这指的就是 Cache 模块。</p>
+<p>Cache（缓存）原本是有「仓库」意思的单词，不过在电脑的世界里，它已经被固定为「用来放置经常会使用到的数据的地方」的意思。本模块的命名也是仿照这一点。</p>
+
+
+<h2><a name="use">缓存的用法</a></h2>
+<p>比起 Cache 模块的內部到底是如何定义的，更重要的是这些东西该如何使用。</p>
+<p>实际上它的用法如下（注意：由于 Cache 模块还没有定义到，所以不能在前面的 TEST 脚本页使用）。</p>
+<pre>
+skeleton.bitmap = Cache.battler(&quot;Skeleton&quot;, 0)
+</pre>
+<p>这段脚本的意思是从缓存中获取敌方角色里 &quot;Skeleton&quot; 位图。所取得的位图对象即是返回值。就跟直接调用 Bitmap.new 时一样，我们即使没有指定&quot;Graphics/Battlers/&quot; 这个文件夹路径也是可以的。</p>
+<p>第二个参数「0」表示的是色调的变化。值的范围为 0~360，只有「动画」和「敌人」这两种素材才可以指定。</p>
+<p>各种素材的文件夹对应的方法如下。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>方法名</th>
+ <th>参数</th>
+ <th>文件夹</th>
+</tr><tr>
+ <td>Cache.animation</td>
+ <td>文件名、色调</td>
+ <td>Graphics/Animations/</td>
+</tr><tr>
+ <td>Cache.battleback1</td>
+ <td>文件名</td>
+ <td>Graphics/Battlebacks1/</td>
+</tr><tr>
+ <td>Cache.battleback2</td>
+ <td>文件名</td>
+ <td>Graphics/Battlebacks2/</td>
+</tr><tr>
+ <td>Cache.battler</td>
+ <td>文件名、色调</td>
+ <td>Graphics/Battlers/</td>
+</tr><tr>
+ <td>Cache.character</td>
+ <td>文件名</td>
+ <td>Graphics/Characters/</td>
+</tr><tr>
+ <td>Cache.face</td>
+ <td>文件名</td>
+ <td>Graphics/Faces/</td>
+</tr><tr>
+ <td>Cache.parallax</td>
+ <td>文件名</td>
+ <td>Graphics/Parallaxes/</td>
+</tr><tr>
+ <td>Cache.picture</td>
+ <td>文件名</td>
+ <td>Graphics/Pictures/</td>
+</tr><tr>
+ <td>Cache.system</td>
+ <td>文件名</td>
+ <td>Graphics/System/</td>
+</tr><tr>
+ <td>Cache.tileset</td>
+ <td>文件名</td>
+ <td>Graphics/Tilesets/</td>
+</tr><tr>
+ <td>Cache.title1</td>
+ <td>文件名</td>
+ <td>Graphics/Titles1/</td>
+</tr><tr>
+ <td>Cache.title2</td>
+ <td>文件名</td>
+ <td>Graphics/Titles2/</td>
+</tr></table>
+<p>此外、与 Sound 模块相同、这个模块设计成即使指定空的文件名也不会出错、遇到这种情况的时候，会生成一个 32&times;32 大小的空白位图返回。之所以大小不是 1&times;1 是为了配合 RGSS 内部实际操作上的方便性。这种做法比较不会让效率变低。</p>
+
+
+<h2><a name="detail">实现的细节</a></h2>
+<p>为了能够更加了解有关缓存的内容，让我们看看他是如何实现的吧。首先从 Cache.battler 方法开始。</p>
+<pre>
+  def self.battler(filename, hue)
+    load_bitmap(&quot;Graphics/Battlers/&quot;, filename, hue)
+  end
+</pre>
+<p>很简单对吧。就只是将敌人文件夹名一起指定为参数，然后调用 load_bitmap 这另一个方法而已。好了，接着看看所调用的 load_bitmap 方法。</p>
+<pre>
+  def self.load_bitmap(folder_name, filename, hue = 0)
+    @cache ||= {}
+    if filename.empty?
+      empty_bitmap
+    elsif hue == 0
+      normal_bitmap(folder_name + filename)
+    else
+      hue_changed_bitmap(folder_name + filename, hue)
+    end
+  end
+</pre>
+<p>这一段可能比较难理解。让我们分割得细一点来解释吧。</p>
+<pre>
+  def self.load_bitmap(folder_name, filename, hue = 0)
+</pre>
+<p>第一行是模块方法的定义，把文件夹名、文件、色调当做参数取用的定义方式。指定给色调 (hue) 的「0」是<strong>默认参数</strong>。
+它和<a href="107_function.html">函数</a>基本上是类似的。</p>
+
+
+<h2><a name="nil_guard">空值保护（nil_guard）</a></h2>
+<p>解释第二行就有点麻烦了。</p>
+<pre>
+    @cache ||= {}
+</pre>
+<p>这就是 <strong>空值保护（nil_guard）</strong>，是 Ruby
+特有的惯用语法。||= 这个东西，是把 「OR 运算」和「自赋值」两者结合在一起的产物。如果两者都不省略的话就会变得像下面这样:</p>
+<pre>
+    @cache = @cache || {}
+</pre>
+<p>不过这样说还是很难明白吧。|| 运算，在<a href=
+"105_branch.html">分支条件</a>中有提过，主要是用来表示「或者」这个意思，这就是实际使用时的写法。</p>
+<p>在 Ruby 中 nil 和 false 以外的值全都当做 true 处理。而 || 这个运算符，如果 true 时就会执行返回左边，如果是 false 就返回右边的值。因此，上一段脚本又等同下方的脚本：</p>
+<pre>
+    if @cache != nil
+      @cache = @cache
+    else
+      @cache = {}
+    end
+</pre>
+<p>记得 {} 这个符号是什么吗？他是制作空的哈希表的方法。将以上整理起来的意思就是，如果 @cache 这个实例变量的值为空，那么就生成一个空的<a href="111_hash.html">哈希表</a>对象赋值到 @cache。实例变量通常是通过类中定义的一般的方法来使用，不过这里则是在模块方法中使用。像本次的情况，实例变量可以理解为隶属于 Cache 模块本身的变量。</p>
+<p>这是一个比较高级的写法，但是为了让脚本更加简洁，在预设脚本中也会用到。</p>
+
+
+<h2><a name="methods">各个方法调用</a></h2>
+<p>接着继续往下看吧</p>
+<pre>
+    if filename.empty?
+      empty_bitmap
+    elsif hue == 0
+      normal_bitmap(folder_name + filename)
+    else
+      hue_changed_bitmap(folder_name + filename, hue)
+    end
+</pre>
+<p>这个条件分支虽然很长，但内容并没有那么复杂。</p>
+<p>首先是确认 filename 是否为空、如果是的话就调用 empty_bitmap 然后返回该方法的值。如果 filename 不为空、当 hue (色调) 的值为 0 时调用 normal_bitmap 方法、
+0 以外的场合调用 hue_changed_bitmap 方法。</p>
+<p>也就是说 load_bitmap 方法、在内部又调用了别的方法。就像这个方法一样，VX Ace 的脚本相对上来说，会倾向将各种处理以「方法」为单元划分撰写。如此一来初学者可能會在解读上产生困惑，但是这正是让方法的重复利用性和可读性提高的做法，到最后你也会认为这样比较好吧。</p>
+<p>保险起见也来解释一下下面这段。</p>
+<pre>
+  folder_name + filename
+</pre>
+<p>这个纯粹只是<a href="104_string.html">字符串</a>的加法。比方说 folder_name 是&quot;Graphics/Battlers/&quot;、filename 是&quot;Skeleton&quot; 的时候、会把这两者连接起来变成&quot;Graphics/Battlers/Skeleton&quot;。</p>
+
+
+<h2><a name="bitmap">创建位图</a></h2>
+<p>接下来，先确认 normal_bitmap 的操作。</p>
+<pre>
+  def self.normal_bitmap(path)
+    @cache[path] = Bitmap.new(path) unless include?(path)
+    @cache[path]
+  end
+</pre>
+<p>unless 置于右侧，这是修饰符（modifier）形式的<a
+href="105_branch.html">分支条件</a>。在这里进行的是这样的处理：如果对应该路径的位图并不存在于缓存中的话，就会以新增的方式读取图片，如果已经存在，就直接返回。</p>
+<p>include? 方法的操作如下：</p>
+<pre>
+  def self.include?(key)
+    @cache[key] &amp;&amp; !@cache[key].disposed?
+  end
+</pre>
+<p>这个条件进行判定的是，@cache 所指向的哈希表对象中是否含key值，且这个位图是否已经被释放。有关 disposed? 方法，请参考 <a href="../rgss/gc_bitmap.html">Bitmap</a>。</p>
+<p>Cache 模块中还包含色调变化等等的处理，但也没有非看不可的部分，所以就省略解释了。</p>
+
+<h6></h6>
+
+</body>
+</html>
