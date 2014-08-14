@@ -259,7 +259,7 @@
 					<param name="Local" value="vx_user/010_002b.html">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
-					<param name="Name" value="技能·道具">
+					<param name="Name" value="技能/物品">
 					<param name="Local" value="vx_user/010_002c.html">
 					</OBJECT>
 				<LI> <OBJECT type="text/sitemap">
@@ -453,7 +453,7 @@
 			</OBJECT>
 		<UL>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="计时器的改造">
+				<param name="Name" value="改造计时器">
 				<param name="Local" value="intro/301_timer.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
@@ -461,7 +461,7 @@
 				<param name="Local" value="intro/302_story.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="制作逃跑道具">
+				<param name="Name" value="制作逃脱物品">
 				<param name="Local" value="intro/303_escape.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
@@ -473,7 +473,7 @@
 				<param name="Local" value="intro/305_prizeshop.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">
-				<param name="Name" value="制作传送道具">
+				<param name="Name" value="制作传送物品">
 				<param name="Local" value="intro/306_teleport.html">
 				</OBJECT>
 			<LI> <OBJECT type="text/sitemap">

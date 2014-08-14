@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>改造计时器</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>改造计时器</h1>
+<ul>
+<li><a href="#event">制作计时器事件</a></li>
+<li><a href="#material">制作插件脚本</a></li>
+<li><a href="#find">寻找要修改的部分</a></li>
+<li><a href="#redefine">重新定义类和方法</a></li>
+<li><a href="#change">改变方法的定义内容</a></li>
+<li><a href="#alias">别名</a></li>
+</ul>
+
+<p>在实践篇中，笔者会一边实际改造游戏内容，一边解说必要的知识。</p>
+<p>一开始先来个简单的范例，我们的目标是改造通过事件指令打开的计时器的显示方式。</p>
+
+
+<h2><a name="event">制作计时器事件</a></h2>
+<img src="img/timer.png" alt="计时器事件" class="float_r">
+<p>首先将脚本编辑器关闭后，制作一个测试用的事件。</p>
+<p>按照右边的截图，在一个自动执行的事件中设置[计时器操作]，让自己能够马上在游戏中测试这个计时器是如何显示的。</p>
+<div class="clear_both"></div>
+
+
+<h2><a name="material">制作插件脚本</a></h2>
+<p>在基础篇中，我们一开始设置在最上方的脚本已经没有用，请把它移除。并在最下方标着「▼ 插件脚本」的项目下方新建一个脚本页。给它随便取一个名字即可。</p>
+<p>要直接编辑预设的脚本也没关系，不过将自己更改的部分集合在同一个地方，在很多方面会比较方便。也因此，即使没有打算把脚本当成插件发布给其他人，建议也请把它当成一个「插件脚本」来处理。</p>
+
+
+<h2><a name="find">寻找要修改的部分</a></h2>
+<p>制作插件脚本的时候，要做的第一件事，是找出修改哪一部分才能得到希望的结果。</p>
+<p>因为我们这次想改造的是计时器，所以先用「计时器」这个关键字去搜索全部的脚本。「仅全词匹配」的选项请不要打勾。等到数个搜索结果显示之后，依序往下找就能找到可能和计时器的显示有关的脚本。</p>
+<p>在本次的情况 <strong>Sprite_Timer</strong> 这个类就是我们要的。这个类在<a
+href="206_sprites.html">精灵管理</a>这个章节一开始的表也有提到呢。锁定自己要改造的脚本并不是每次都可以这么简单，不过如果能够掌握诀窍的话，就能在相对较少的时间内找到。</p>
+
+
+<h2><a name="redefine">重新定义类和方法</a></h2>
+<p>点进在插件脚本区新建的脚本页后，按照下方输入。</p>
+<pre>
+class Sprite_Timer
+end
+</pre>
+<p>在 Ruby 中，已经定义过的类可以在后面更改内容。所以只要在新的类中写进方法，会把它们当作是在原来 Sprite_Timer 这个类中定义一样进行处理。</p>
+<p>读读看原本的 Sprite_Timer，我们会发现 create_bitmap 这个方法。该方法新建了一个位图作为精灵的传输元，并设置显示的文字大小与颜色。笔者这次想改造的就是这个部分，因此将这个方法复制粘贴到到插件脚本的类里面。</p>
+<pre>
+class Sprite_Timer
+  def create_bitmap
+    self.bitmap = Bitmap.new(96, 48)
+    self.bitmap.font.size = 32
+    self.bitmap.font.color.set(255, 255, 255)
+  end
+end
+</pre>
+<p>如果定义了相同名字的方法，后定义的方法有较高的优先度，这样一来，我们就能只将 create_bitmap 这个方法的内容作出替换。</p>
+
+<h2><a name="change">改变方法的定义内容</a></h2>
+<p>接着实际改改看计时器的显示方式吧。</p>
+<pre>
+class Sprite_Timer
+  def create_bitmap
+    self.bitmap = Bitmap.new(<span class="red">128</span>, <span class="red">96</span>)
+    self.bitmap.font.size = <span class="red">64</span>
+    self.bitmap.font.color.set(255, <span class="red">0</span>, <span class="red">0</span>)
+  end
+end
+</pre>
+<p>像上方一样修改数值，接着进入游戏测试吧。如果计时器变成用大大的红字显示的话就是成功了。</p>
+<p>若是有人不清楚这里改变的数值所代表的意义，不妨自己改成别的数值，实验看看会有什么变化吧。而如果想要更多详细的设置内容，请参考以下类的参考资料：<a
+href="../rgss/gc_bitmap.html">Bitmap</a>、<a
+href="../rgss/gc_font.html">Font</a>、<a
+href="../rgss/gc_color.html">Color</a>
+。</p>
+
+
+<h2><a name="alias">别名</a></h2>
+<p>按照上述方式，这样就算是完成了「用大大的红字显示计时器的插件脚本」，不过若是真的要当成「插件」发布的时候，一旦将原本的方法全部改写，有可能会发生和其他的插件脚本相冲突的状况。所以若是不通过改写，而是想在原本的处理中的前后新增一些处理的话，会使用 <strong>alias</strong> （别名）这个功能。</p>
+<pre>
+class Sprite_Timer
+  alias xxx001_create_bitmap create_bitmap
+  def create_bitmap
+    xxx001_create_bitmap
+    self.bitmap.font.color.set(255, 0, 0)
+  end
+end
+</pre>
+<p>按照上面定义后，就能在执行原本的 create_bitmap 方法后，单纯改变字体的颜色。</p>
+<pre>
+  alias xxx001_create_bitmap create_bitmap
+</pre>
+<p>我们利用这一行，给了旧的 create_bitmap 一个新的名字 xxx001_create_bitmap，让它避免冲突。因为先写了这一行，所以才能够在这个新的 create_bitmap 中调用旧的处理内容。只不过如果取的别名本身也撞名，那还是会发生冲突。因此为了避免 xxx001 和其他素材撞名，独自取一个名字是有必要的。这一点，在自己的多个插件脚本中重定义同一部分时也是一样的。</p>
+<p>这个部分容易搞混，重新定义 create_bitmap 方法，并不因此代表旧的 create_bitmap 方法的内容遭到取代。比较像是把另一个方法用同样的名字定义，只是我们从外部直接观察结果的时候，看起来就是这个方法的内容有被置换过。事先将旧的方法利用别名避免冲突的话，旧方法的内容并不会受到新的方法中定义的影响。</p>
+
+
+<h6></h6>
+
+</body>
+</html>
