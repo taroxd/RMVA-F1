@@ -41,14 +41,14 @@ type=text/css href="../style.css">
   <DT>blt(<VAR>x</VAR>, <VAR>y</VAR>, <VAR>src_bitmap</VAR>,
   <VAR>src_rect</VAR>[, <VAR>opacity</VAR>])
   <DD>
-  <P>执行从位图 <VAR>src_bitmap</VAR> 的矩形 <VAR>src_rect</VAR>（<A href="gc_rect.html">Rect</A>）到指定的位图坐标 (<VAR>x</VAR>, <VAR>y</VAR>) 之间的区块过渡。</P>
+  <P>将位图 <VAR>src_bitmap</VAR> 的矩形 <VAR>src_rect</VAR>（<A href="gc_rect.html">Rect</A>）中的数据整体传送到当前位图的坐标 (<VAR>x</VAR>, <VAR>y</VAR>) 处。</P>
   <P><VAR>opacity</VAR> 是透明度，范围 0～255。</P>
   <DT>stretch_blt(<VAR>dest_rect</VAR>, <VAR>src_bitmap</VAR>,
   <VAR>src_rect</VAR>[, <VAR>opacity</VAR>])
   <DD>
-  <P>执行从位图 <VAR>src_bitmap</VAR> 的矩形
-  <VAR>src_rec</VAR>t（<A href="gc_rect.html">Rect</A>）带指定的位图目标矩形 <VAR>dest_rect</VAR>（<A
-  href="gc_rect.html">Rect</A>）之间的区块过渡。</P>
+  <P>将位图 <VAR>src_bitmap</VAR> 的矩形
+  <VAR>src_rect</VAR>（<A href="gc_rect.html">Rect</A>）中的数据整体传送到当前位图的矩形 <VAR>dest_rect</VAR>（<A
+  href="gc_rect.html">Rect</A>）处。</P>
   <P><VAR>opacity</VAR> 是透明度，范围 0～255。</P>
   <DT>fill_rect(<VAR>x</VAR>, <VAR>y</VAR>, <VAR>width</VAR>,
   <VAR>height</VAR>, <VAR>color</VAR>)
@@ -65,8 +65,8 @@ type=text/css href="../style.css">
   <DD>
   <P>将位图区域 (<VAR>x</VAR>, <VAR>y</VAR>, <VAR>width</VAR>,
   <VAR>height</VAR>) 或矩形（<A href="gc_rect.html">Rect</A>）填满从颜色 <VAR>color</VAR>1（<A href="gc_color.html">Color</A>）至<VAR>
-  color2</VAR>（<A href="rgss/gc_color.html">Color</A>）的渐层色彩。</P>
-  <P>将 <VAR>vertical</VAR> 设为 true 生成纵向的渐层色彩，预设为横向渐层。</P>
+  color2</VAR>（<A href="rgss/gc_color.html">Color</A>）的渐变色彩。</P>
+  <P>将 <VAR>vertical</VAR> 设为 true 生成纵向的渐变色彩，默认为横向渐变。</P>
   <DT>clear
   <DD>
   <P>清除整个位图。</P>
@@ -91,7 +91,7 @@ type=text/css href="../style.css">
   <DT>hue_change(<VAR>hue</VAR>)
   <DD>
   <P>在 360 度内变换位图的色相。</P>
-  <P>此处理需要花费时间，另外色彩转换的误差，反复转换可能会导致色彩损失。</P>
+  <P>此处理需要花费时间，另外色彩转换有误差，反复转换可能会导致色彩损失。</P>
   <DT>blur
   <DD>
   <P>对位图执行模糊效果。此处理需要花费时间。</P>
@@ -129,6 +129,6 @@ type=text/css href="../style.css">
 <DL>
   <DT>font
   <DD>
-  <P>使用draw_text方法描绘字符串时所使用的字体。（<A
+  <P>使用 draw_text 方法描绘字符串时所使用的字体。（<A
   href="gc_font.html">Font</A>）。</P></DD></DL>
 <H6></H6></BODY></HTML>

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>制作剧情提示画面</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>制作剧情提示画面</h1>
+<ul>
+<li><a href="#command">新增自制选项</a></li>
+<li><a href="#handler">设置 command handler</a></li>
+<li><a href="#scene">制作场景</a></li>
+<li><a href="#window">制作窗口</a></li>
+<li><a href="#variable">使用游戏中的变量</a></li>
+</ul>
+
+<p>在本章中笔者会解说在菜单画面中加入新的选项，呼出专属的场景的方法。</p>
+<p>我们这次以全屏显示的窗口「剧情提示」为例，制作「剧情提示」选项。</p>
+
+
+<h2><a name="command">新增自制选项</a></h2>
+<p>在菜单画面中，与含有「物品」、「技能」之类选项的那块窗口对应的类是 Window_MenuCommand。</p>
+<p>请到 Window_MenuCommand 的脚本页，大致看一遍内容。有看见 add_original_commands 这个空的方法吧。在 VX Ace 里面，只要重新定义这个方法，就可以很容易地追加选项。具体的写法如下所述：</p>
+<pre>
+class Window_MenuCommand
+  alias xxx001_add_original_commands add_original_commands
+  def add_original_commands
+    xxx001_add_original_commands
+    add_command("剧情提示", :story)
+  end
+end
+</pre>
+<p>请将这段代码加到插件脚本的地方，在测试游戏的时确认指令是否已经增加到菜单中。</p>
+<p>尽管这个方法原本就是空白的，使用别名是考虑到别的脚本素材可能已经重新定义过这个方法，所以才会用这个方法避免冲突。让笔者再重复一次，在网络上发布独立的插件脚本时，请务必更改 xxx001 这一处。</p>
+<pre>
+    add_command("剧情提示", :story)
+</pre>
+<p>add_command 这个方法，是在解读篇的<a
+href="207_windows.html">窗口管理</a>中解说过的东西。
+我们在这里使叫作「剧情提示」的选项和叫作 :story 的符号（symbol）产生联系。</p>
+
+
+<h2><a name="handler">设置 command handler</a></h2>
+<p>选项被选择时，实际在进行处理的不是 Window_MenuCommand，而是 Scene_Menu 这个类。请进到 Scene_Menu 的脚本页，并大致看一下内容。应该会在 create_command_window 这个方法中，看见以下的这一行：</p>
+<pre>
+    @command_window.set_handler(:item,      method(:command_item))
+</pre>
+<p>就像在<a href="207_windows.html">窗口管理</a>中解说过的，这是在对应 :item 的选项被选择之后，呼叫出 command_item 这个方法的指定方式。</p>
+<p>呼叫出的 command_item 以下面的方式定义。在这里使用了在解读篇的<a href="208_scene.html">场景管理</a
+>中解说过的场景的呼叫方式。</p>
+<pre>
+  def command_item
+    SceneManager.call(Scene_Item)
+  end
+</pre>
+<p>接下来，在选择了和 :story 这个符号关联的指令之后，要切换到 Scene_Story 的话，脚本如下方所写。基本上只要模仿预设脚本，依样画葫芦就可以了。</p>
+<pre>
+class Scene_Menu
+  alias xxx001_create_command_window create_command_window
+  def create_command_window
+    xxx001_create_command_window
+    @command_window.set_handler(:story, method(:command_story))
+  end
+  def command_story
+    SceneManager.call(Scene_Story)
+  end
+end
+</pre>
+
+
+<h2><a name="scene">制作场景</a></h2>
+<p>接下来要制作转移到的 Scene_Story 这个类。这次当作范例制作的「剧情提示」画面属于菜单画面类，因此将 Scene_MenuBase 指定为父类。</p>
+<pre>
+class Scene_Story &lt; Scene_MenuBase
+end
+</pre>
+<p>我们覆盖掉场景开始时调用的 start 方法，进行创建窗口的处理。在以下所用到的 Window_Story 这个类会在后面定义。</p>
+<pre>
+class Scene_Story &lt; Scene_MenuBase
+  def start
+    super
+    @story_window = Window_Story.new
+    @story_window.set_handler(:cancel, method(:return_scene))
+  end
+end
+</pre>
+<p>只要是从 Window_Selectable 这个类衍生出来的窗口，因为已经设置了 :cancel 这个符号的 handler，所以可以指定在「有效状态」下按下取消按钮后所进行的处理。return_scene 是在 Scene_Base 类中定义的方法。方法如其名，它负责进行回到上一个场景的处理。</p>
+<p>此外，场景类中，直接赋值给实例变量的窗口，会由 Scene_Base 自动释放，因此在这里不需要写下 dispose 的处理。</p>
+
+
+<h2><a name="window">制作窗口</a></h2>
+<p>再来是制作显示出剧情提示画面的窗口，也就是 Window_Story 这个类。如前面所说，虽然我们没有使用选项的处理，因为笔者想使用 :cancel 的处理，所以让这个类继承了 Window_Selectable 类。</p>
+<pre>
+class Window_Story &lt; Window_Selectable
+  def initialize
+    super(0, 0, Graphics.width, Graphics.height)
+    draw_text_ex(4, 0, &quot;要显示在窗口裡的字符串&quot;)
+    activate
+  end
+end
+</pre>
+<p>在基础篇的<a href="112_class.html">类定义</a>中也解说过，initialize 是用来初始化的方法，在一个对象创建时会自动调用。super 则是调用父类中同名方法的保留字。我们在这里调用了 Window_Selectable 类的 initialize 方法。</p>
+<p>至于 Graphics.width 和 Graphics.height，则是分别取得画面宽度与高度的方法。通过这两者，我们创建了一个充满整个画面的窗口。</p>
+<p>draw_text_ex 是在窗口中绘制字符串的方法，也对应 \C[n] 或是 \V[n] 等指令文字。但是要注意，Ruby 本身在处理字符串时，\ 这个符号本身就具有特殊意义，在利用 "" 双引号夹住字符串的时候，必须要用 \\ 这样的双重写法来表示\。</p>
+<p>所谓的 activate，是让窗口成为有效状态的方法。这样一来 :cancel 的处理才会生效（这次我们只设置了:cancel 的处理，因此像是按下确定键也不会发生任何事情）。</p>
+<p>输入完以上的代码后，就可以测试游戏了。赶快执行看看吧。</p>
+
+
+<h2><a name="variable">使用游戏中的变量</a></h2>
+<p>如果要依据事件的进行状况来改变显示的内容，利用 RM 的变量功能就很简单。比方说要使用变量 07 的值，可以用 $game_variables[7]。如果要在游戏中控制变量的值，请利用事件指令（变量的操作），或者是用 F9 叫出 debug 画面后再进行操作。</p>
+<pre>
+class Window_Story &lt; Window_Selectable
+  def initialize
+    super(0, 0, Graphics.width, Graphics.height)
+    case $game_variables[7]
+    when 0
+      story = &quot;显示的是剧情在第0阶段时的提示&quot;
+    when 1
+      story = &quot;显示的是剧情在第1阶段时的提示&quot;
+    when 2
+      story = &quot;显示的是剧情在第2阶段时的提示&quot;
+    end
+    draw_text_ex(4, 0, story)
+    activate
+  end
+end
+</pre>
+<p>这次的范例用的是 case ~ end 形式的分支条件，但若使用<a href=
+"111_hash.html">哈希表</a>的话，可以写得更漂亮。学有余力的人不妨一试。</p>
+
+
+<h6></h6>
+
+</body>
+</html>

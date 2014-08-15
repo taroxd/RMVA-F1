@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>窗口管理</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>窗口管理</h1>
+<ul>
+<li><a href="#basic">窗口的基础知识</a></li>
+<li><a href="#handler">handler</a></li>
+<li><a href="#command_window">指令窗口</a></li>
+<li><a href="#class_list">窗口类一览</a></li>
+</ul>
+
+<p>以信息窗口、状态窗口为首，RPG中有非常多的窗口要处理。在本章将会解释这些窗口是如何管理的。</p>
+
+<h2><a name="basic">窗口的基础知识</a></h2>
+<p>脚本编辑器里有很多名为 Window_Xxxx 的脚本。按照惯例，这些名称直接对应了类的名字。在这些当中特别重要的是头两个类。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>类</th>
+ <th>内容</th>
+ <th>父类</th>
+</tr><tr>
+ <td>Window_Base</td>
+ <td>基本窗口</td>
+ <td><a href="../rgss/gc_window.html">Window</a></td>
+</tr><tr>
+ <td>Window_Selectable</td>
+ <td>带有选项的窗口</td>
+ <td>Window_Base</td>
+</tr></table>
+<p>RGSS 已经预先内置了名为 <a href="../rgss/gc_window.html">Window</a> 的类。这个类控制了窗口的边框、背景的描绘、内容卷动等基本的处理。</p>
+<p>Window_Base 类继承了 <a href="../rgss/gc_window.html">Window</a> 类，新增了 RPG 窗口必要的基本功能。这个类重要的功能是，自动把设置为当前窗口外观的素材图片读取进来。此外各种文字的颜色也是在这个类里定义的。在 VX Ace 中，\C[n] 这类基本文字控制符的处理也是在这个类中进行的。</p>
+<p>Window_Selectable 类继承了 Window_Base 类，新增了检测方向键输入使光标移动、调用事先链接到的窗口方法之类的处理。例如道具的选择等等，在游戏中进行选择的窗口就经常需要用到。这个类就定义了那些窗口共通的功能。而实际上光标移动的处理，是在叫做 update 的法被调用的时候进行的。</p>
+<p>调用窗口的 update 方法的是<strong>场景类</strong>，会在下一章进行解释。</p>
+
+
+<h2><a name="handler">handler</a></h2>
+<p>前面说到 Window_Selectable 类有「调用事先链接到的窗口方法」的处理。这个就叫做 <strong>handler</strong>。这个概念是在 VX Ace 才新引进来的。</p>
+<p>它的思路、举例来说就是将方法调用事先链接到「按下确定键之后」、「按下取消键之后」这些动作上，而实际上调用方法的处理则是在窗口类中进行的。</p>
+<p>在 Window_Selectable 的中间附近有个叫做 set_handler 的方法，我们先找到它。</p>
+<pre>
+  def set_handler(symbol, method)
+    @handler[symbol] = method
+  end
+</pre>
+<p>这就是设置 handler 的方法。在内部使用到的实例变量 @handler 是一个<a
+href="111_hash.html">哈希表</a>对象。</p>
+<p>实际上在设置handler的时候会像下面这样调用：</p>
+<pre>
+  @window.set_handler(:cancel, method(:on_cancel))
+</pre>
+<p>这句指令是把叫作 on_cancel 的方法设置为名为 cancel 的 handler。意思是当按下取消键之后就会自动调用 on_cancel 这个方法。method 这个东西则是 <a href="../rgss/sc_object.html">Object</a> 类的方法，拥有把当作它的参数的该名称的方法转变成 <a href="../rgss/sc_method.html">Method</a> 对象的功能。</p>
+<p>前面说明过不少次，在指定方法或者是 handler 的名字会使用符号。这在<a href="109_graphics.html">显示图片</a>的最后一节也有简单提起过，符号是一对一的对应于任何字符串的对象，通过冒号（&quot;:&quot;）后面写上任意的字符串来指定。虽然很像字符串，从内部处理的效率考虑的话，不需要利用字符串操作时就会使用符号。符号是 <a href="../rgss/sc_symbol.html">Symbol</a> 类的实例。</p>
+<p>Window_Selectable 类在窗口为生效状态
+（当光标闪烁）会根据需要调用以下四种 handler：</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>符号</th>
+ <th>内容</th>
+</tr><tr>
+ <td>:ok</td>
+ <td>确定</td>
+</tr><tr>
+ <td>:cancel</td>
+ <td>取消</td>
+</tr><tr>
+ <td>:pageup</td>
+ <td>上一页 (L)</td>
+</tr><tr>
+ <td>:pagedown</td>
+ <td>下一页 (R)</td>
+</tr></table>
+<p>另外，如果没有设置 handler 就不会执行任何动作。</p>
+
+
+<h2><a name="command_window">指令窗口</a></h2>
+<p>Window_Selectable 类又派生出了 Window_Command 类。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>类</th>
+ <th>内容</th>
+ <th>父类</th>
+</tr><tr>
+ <td>Window_Command</td>
+ <td>指令窗口 (泛用)</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_HorzCommand</td>
+ <td>指令窗口 (横向选择)</td>
+ <td>Window_Command</td>
+</tr></table>
+<p>这些类控制所有指令窗口的基本处理。菜单画面或战斗画面的各种指令窗口都有定义各自的类，不过所有的类都是以 Window_Command 类作为父类的。</p>
+<p>Window_Command 类使用了前一节解释的 handler 的结构，每个指令都链接到一个符号上。比如要让「道具」这个指令链接到 :item 这个符号上，就要像下方一样使用 add_command 。</p>
+<pre>
+  add_command("道具", :item)
+</pre>
+<p>add_command 的第一个参数是要当做指令名称显示的字符串，第二个参数则是用来指定所对应的符号。</p>
+<p>像这个例子所进行的指定是，当选择「道具」这个指令并按下确定键后，对应 :item 的 handler（通过 set_handler 方法）有设置的话，那么就调用该方法。</p>
+<p>掌握 handler 的使用会有点辛苦，不过只要先记住大致的概念就足够了。在实践篇中将会用具体的例子进一步说明。</p>
+
+
+<h2><a name="class_list">窗口类一览</a></h2>
+<p>接下来一口气介绍其他相关窗口的类。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>类</th>
+ <th>使用画面</th>
+ <th>内容</th>
+ <th>父类</th>
+</tr><tr>
+ <td>Window_Help</td>
+ <td>各窗口</td>
+ <td>帮助窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_Gold</td>
+ <td>菜单、商店</td>
+ <td>显示持有金币窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_MenuCommand</td>
+ <td>菜单</td>
+ <td>指令窗口</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_MenuStatus</td>
+ <td>菜单</td>
+ <td>状态窗口</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_MenuActor</td>
+ <td>道具、技能</td>
+ <td>项目选择窗口</td>
+ <td>Window_MenuStatus</td>
+</tr><tr>
+ <td>Window_ItemCategory</td>
+ <td>道具、商店</td>
+ <td>分类选择窗口</td>
+ <td>Window_HorzCommand</td>
+</tr><tr>
+ <td>Window_ItemList</td>
+ <td>道具</td>
+ <td>物品选择窗口</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_SkillCommand</td>
+ <td>技能</td>
+ <td>指令窗口</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_SkillStatus</td>
+ <td>技能</td>
+ <td>状态窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_SkillList</td>
+ <td>技能</td>
+ <td>技能选择窗口</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_SkillStatus</td>
+ <td>技能</td>
+ <td>状态窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_EquipStatus</td>
+ <td>装备</td>
+ <td>状态窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_EquipCommand</td>
+ <td>装备</td>
+ <td>指令窗口</td>
+ <td>Window_HorzCommand</td>
+</tr><tr>
+ <td>Window_EquipSlot</td>
+ <td>装备</td>
+ <td>当前装备窗口</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_EquipItem</td>
+ <td>装备</td>
+ <td>道具窗口</td>
+ <td>Window_ItemList</td>
+</tr><tr>
+ <td>Window_Status</td>
+ <td>状态</td>
+ <td>状态窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_SaveFile</td>
+ <td>保存、读取</td>
+ <td>存档窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_ShopCommand</td>
+ <td>商店</td>
+ <td>指令窗口</td>
+ <td>Window_HorzCommand</td>
+</tr><tr>
+ <td>Window_ShopBuy</td>
+ <td>商店</td>
+ <td>买入窗口</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_ShopSell</td>
+ <td>商店</td>
+ <td>出售窗口</td>
+ <td>Window_Item</td>
+</tr><tr>
+ <td>Window_ShopNumber</td>
+ <td>商店</td>
+ <td>输入数量窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_ShopStatus</td>
+ <td>商店</td>
+ <td>状态窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_NameEdit</td>
+ <td>名字输入</td>
+ <td>名字窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_NameInput</td>
+ <td>名字输入</td>
+ <td>文字选择窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_ChoiceList</td>
+ <td>地图</td>
+ <td>选项窗口</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_NumberInput</td>
+ <td>地图</td>
+ <td>数值输入窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_KeyItem</td>
+ <td>地图</td>
+ <td>物品选择窗口</td>
+ <td>Window_ItemList</td>
+</tr><tr>
+ <td>Window_Message</td>
+ <td>地图</td>
+ <td>文字信息窗口</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_ScrollText</td>
+ <td>地图</td>
+ <td>滚动文字窗口</td>
+ <td>Window_Base</td>
+</tr><tr>
+ <td>Window_BattleLog</td>
+ <td>战斗</td>
+ <td>战斗信息窗口</td>
+ <td>Window_Message</td>
+</tr><tr>
+ <td>Window_PartyCommand</td>
+ <td>战斗</td>
+ <td>队伍指令窗口</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_ActorCommand</td>
+ <td>战斗</td>
+ <td>角色指令窗口</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_BattleStatus</td>
+ <td>战斗</td>
+ <td>状态窗口</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_BattleActor</td>
+ <td>战斗</td>
+ <td>角色选择窗口</td>
+ <td>Window_BattleStatus</td>
+</tr><tr>
+ <td>Window_BattleEnemy</td>
+ <td>战斗</td>
+ <td>敌人选择窗口</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_BattleSkill</td>
+ <td>战斗</td>
+ <td>技能选择窗口</td>
+ <td>Window_SkillList</td>
+</tr><tr>
+ <td>Window_BattleItem</td>
+ <td>战斗</td>
+ <td>物品选择窗口</td>
+ <td>Window_ItemList</td>
+</tr><tr>
+ <td>Window_TitleCommand</td>
+ <td>标题</td>
+ <td>指令窗口</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_GameEnd</td>
+ <td>结束游戏</td>
+ <td>指令窗口</td>
+ <td>Window_Command</td>
+</tr><tr>
+ <td>Window_DebugLeft</td>
+ <td>调试</td>
+ <td>左边的窗口</td>
+ <td>Window_Selectable</td>
+</tr><tr>
+ <td>Window_DebugRight</td>
+ <td>调试</td>
+ <td>右边的窗口</td>
+ <td>Window_Selectable</td>
+</tr></table>
+
+
+<h6></h6>
+
+</body>
+</html>
