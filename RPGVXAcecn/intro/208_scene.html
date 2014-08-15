@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>场景管理</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+<h1>场景管理</h1>
+<ul>
+<li><a href="#main">Main 脚本页</a></li>
+<li><a href="#manager">SceneManager 模块</a></li>
+<li><a href="#scene">场景类</a></li>
+<li><a href="#base">场景的基本处理</a></li>
+<li><a href="#kind">场景类的种类</a></li>
+<li><a href="#trans">场景切换</a></li>
+</ul>
+
+<p>地图画面，菜单画面这类游戏中通常称作「画面」的概念、在程序中则称为<strong>场景</strong>（Scene）。各场景的转换由 SceneManager 模块管理。</p>
+
+
+<h2><a name="main">Main 脚本页</a></h2>
+<p>首先先来确认脚本 Main 的内容吧。扣掉注释的话 Main 的内容只有一行。</p>
+<pre>
+rgss_main { SceneManager.run }
+</pre>
+<p>实际上在内建的脚本中，与模块和类的定义无关的只有这个部分。某种程度上可以把这当成脚本真正开始执行的地方。</p>
+<p><a href="../rgss/g_functions.html#rgss_main">rgss_main</a>是在 RGSS3 新增的内建函数。这个函数基本上只会执行 { } 括住的部分一遍，不过如果在过程中按下 F12 重置时，该函数会从头开始重新处理。如果无视重置处理，在这行就只会调用 SceneManager 模块的 run 方法。</p>
+
+
+<h2><a name="manager">SceneManager 模块</a></h2>
+<p>尽管 SceneManager 模块一直在脚本列表的最上方，但是我们到目前完全没有谈到相关的内容。SceneManager 即是管理场景切换的模块。</p>
+<p>首先、先来看看刚刚确认刚才在一开始调用出来的 run 方法。</p>
+<pre>
+  def self.run
+    DataManager.init
+    Audio.setup_midi if use_midi?
+    @scene = first_scene_class.new
+    @scene.main while @scene
+  end
+</pre>
+<p>内容只有四行，我们就一行一行看吧。</p>
+<pre>
+    DataManager.init
+</pre>
+<p>这里调用了 DataManager 模块的 init 方法<ahref="201_database.html">数据库</a>的读取<ahref="205_gameobjects.html">游戏对象</a>的初始化，就是在这里面进行的。</p>
+<pre>
+    Audio.setup_midi if use_midi?
+</pre>
+<p>数据库的[系统]标签页里面的[启动时初始化 MIDI]的选项如果打了勾，就会进行 MIDI 的初始化。</p>
+<pre>
+    @scene = first_scene_class.new
+</pre>
+<p>这句调用了同样是 SceneManager 模块的 first_scene_class 方法，生成了当做返回的类的实例，并将其代入实例变量 @scene 中。相关内容会在下一节详细解释。</p>
+<pre>
+    @scene.main while @scene
+</pre>
+<p>这里所使用的 while 是<strong>修饰符</strong>的形式。和 if
+或 unless 同样，while 也有这样的用法。
+如果采用基础篇学到的<a
+href="106_loop.html">循环</a
+>的语法再写一遍就会变成这个样子。</p>
+<pre>
+    while @scene
+      @scene.main
+    end
+</pre>
+<p>以内容来看，只要实例变量 @scene 不为 nil ，就会持续调用 @scene 的 main 方法。虽然看起来或许很像无限循环，但它的构造是在 main 方法的内部链接到 SceneManager 里面，@scene 所指向的对象是由外部变更，因此不成问题。</p>
+
+
+<h2><a name="scene">场景类</a></h2>
+<p>再回到第三行。</p>
+<pre>
+    @scene = first_scene_class.new
+</pre>
+<p>我们来看看这里调用的 first_scene_class 方法定义的内容吧。</p>
+<pre>
+  def self.first_scene_class
+    $BTEST ? Scene_Battle : Scene_Title
+  end
+</pre>? 加上 : 这样的符号是运算符形式的<ahref="105_branch.html">分支条件</a>。如果 $BTEST 变量的值为真则返回 Scene_Battle 为假则返回 Scene_Title 。所谓的 Scene_Battle 或 Scene_Title 是类的名称，在 Ruby 里面可以像这样把类当成方法的返回值。</p>
+<p>全局变量 $BTEST 是由 RGSS 自动设定的变量，表示是否开启了战斗测试。也就是说如果开启了战斗测试，那么游戏的开始画面就会是战斗画面，如果没开启那就会是标题画面。</p>
+
+
+<h2><a name="base">场景的基本处理</a></h2>
+<p>SceneManager 调用出 main 方法是在场景域的最上方的 Scene_Base 类所定义的。来确认看看吧。</p>
+<pre>
+  def main
+    start
+    post_start
+    update until scene_changing?
+    pre_terminate
+    terminate
+  end
+</pre>
+<p>这里依次调用了以下五个方法：</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>方法</th>
+ <th>内容</th>
+</tr><tr>
+ <td>start</td>
+ <td>开始处理</td>
+</tr><tr>
+ <td>post_start</td>
+ <td>开始后处理</td>
+</tr><tr>
+ <td>update</td>
+ <td>更新帧</td>
+</tr><tr>
+ <td>pre_terminate</td>
+ <td>结束前处理</td>
+</tr><tr>
+ <td>terminate</td>
+ <td>结束处理</td>
+</tr></table>
+<p>开始处理和开始后处理、结束处理和结束前处理的主要差别在于，该画面的图形是否已经实际显示出来。由于通过子类重新定义来新增一些处理比较好控制这些时间点，所以又像下方这样细分：</p>
+<pre>
+    update until scene_changing?
+</pre>
+<p>位于正中间的这行，表示的是在场景切换（画面切换)）之前的这段时间，会持续调用 update 方法。在各场景中如果有需要每一帧都处理的话，可以重新定义这个 update 方法。</p>
+
+
+<h2><a name="kind">场景类的种类</a></h2>
+<p>下表为各场景类对应的画面。类的名字与脚本页的名称是一一对应的。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>类</th>
+ <th>内容</th>
+ <th>父类</th>
+</tr><tr>
+ <td>Scene_Title</td>
+ <td>标题画面</td>
+ <td>Scene_Base</td>
+</tr><tr>
+ <td>Scene_Map</td>
+ <td>地图画面</td>
+ <td>Scene_Base</td>
+</tr><tr>
+ <td>Scene_MenuBase</td>
+ <td>菜单画面系的基本处理</td>
+ <td>Scene_Base</td>
+</tr><tr>
+ <td>Scene_Menu</td>
+ <td>菜单画面</td>
+ <td>Scene_MenuBase</td>
+</tr><tr>
+ <td>Scene_ItemBase</td>
+ <td>道具画面和技能画面的共通处理</td>
+ <td>Scene_MenuBase</td>
+</tr><tr>
+ <td>Scene_Item</td>
+ <td>道具画面</td>
+ <td>Scene_ItemBase</td>
+</tr><tr>
+ <td>Scene_Skill</td>
+ <td>技能画面</td>
+ <td>Scene_ItemBase</td>
+</tr><tr>
+ <td>Scene_Equip</td>
+ <td>装备画面</td>
+ <td>Scene_MenuBase</td>
+</tr><tr>
+ <td>Scene_Status</td>
+ <td>状态画面</td>
+ <td>Scene_MenuBase</td>
+</tr><tr>
+ <td>Scene_File</td>
+ <td>存档画面和读取画面的共通处理</td>
+ <td>Scene_MenuBase</td>
+</tr><tr>
+ <td>Scene_Save</td>
+ <td>存档画面</td>
+ <td>Scene_File</td>
+</tr><tr>
+ <td>Scene_Load</td>
+ <td>读取画面</td>
+ <td>Scene_File</td>
+</tr><tr>
+ <td>Scene_End</td>
+ <td>游戏结束画面</td>
+ <td>Scene_MenuBase</td>
+</tr><tr>
+ <td>Scene_Shop</td>
+ <td>商店画面</td>
+ <td>Scene_MenuBase</td>
+</tr><tr>
+ <td>Scene_Name</td>
+ <td>输入名字画面</td>
+ <td>Scene_MenuBase</td>
+</tr><tr>
+ <td>Scene_Debug</td>
+ <td>调试画面</td>
+ <td>Scene_MenuBase</td>
+</tr><tr>
+ <td>Scene_Battle</td>
+ <td>战斗画面</td>
+ <td>Scene_Base</td>
+</tr><tr>
+ <td>Scene_Gameover</td>
+ <td>游戏结束画面</td>
+ <td>Scene_Base</td>
+</tr></table>
+<p>负责菜单画面类的基本处理的 Scene_MenuBase 类被许多别的类所继承。在这个类中，包含了把地图画面模糊化后的图像当做背景显示的处理。</p>
+
+
+<h2><a name="trans">场景切换</a></h2>
+<p>游戏中的场景切换的方法有 goto、call、return 三种。</p>
+<p>像是游戏结束这种切换过去就不会再回原场景的画面，会使用最简单的 goto。</p>
+<pre>
+SceneManager.goto(Scene_Gameover)
+</pre>
+<p>call 则是像菜单画面这种，需要回到调用呼出菜单的原场景时使用的。</p>
+<pre>
+SceneManager.call(Scene_Menu)
+</pre>
+<p>return 则是，当我们要从用 call 调用呼出的场景回到原场景时会使用的。</p>
+<pre>
+SceneManager.return
+</pre>
+<p>实际上场景切换如何使用。在接下来的实践篇中会解说。</p>
+<p>补充、直到 VX 之前的版本，是通过将场景对象赋值到 $scene 这个全局变量的形式进行场景切换，不过随着导入了更完整的 SceneManager 模块后，该方法就被废弃了。以前使用到现在的使用者请注意这一点。</p>
+
+
+<h6></h6>
+
+</body>
+</html>
