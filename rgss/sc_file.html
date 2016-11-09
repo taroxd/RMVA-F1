@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>File</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>File</h1>
+<p>访问文件的类，实例通常由 <a href="s_functions.html#L000379">open</a> 或 <a href="#L000976">File.open</a> 创建。</p>
+<p>一个打开但没有引用的 File 对象会被垃圾回收 close 后丢弃。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_io.html">IO</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>File.mtime(<var>filename</var>)</dt>
+<dd>
+<p>返回最后修改时间 （<a href="sc_time.html">Time</a> 对象）。</p>
+<p>若是读取失败，抛出 <a href="s_exceptions.html#Errno">Errno::EXXX</a> 异常。</p></dd>
+<dt>
+<a name="L000960">File.basename(<var>filename</var>[, <var>suffix</var>])</a></dt>
+<dd>
+<p>返回 <var>filename </var>最后一个斜线后面的部分。若是提供了 <var>suffix</var> 参数，并且与 <var>filename</var> 的后缀一致时，则会去除后缀后返回。</p>
+<pre>p File.basename("ruby/ruby.c")        # =&gt; "ruby.c"
+p File.basename("ruby/ruby.c", ".c")  # =&gt; "ruby"
+p File.basename("ruby/ruby.c", ".*")  # =&gt; "ruby"
+p File.basename("ruby/ruby.exe", ".*")  # =&gt; "ruby"
+</pre>
+<p>参看 <a href="#L000967">File.dirname</a> 和 <a href="#L000969">File.extname</a>。</p></dd>
+<dt>File.delete(<var>filename</var> ... )</dt>
+<dd>
+<p>删除文件，并返回所删除的文件数目。若删除失败，则抛出 <a href="s_exceptions.html#Errno">Errno::EXXX</a> 异常。</p>
+<p>此方法是用来删除文件的，无法删除目录。</p></dd>
+<dt>
+<a name="L000967">File.dirname(<var>filename</var>)</a></dt>
+<dd>
+<p>返回 <var>filename </var>最后一个斜线前面的部分。若 <var>filename</var> 不包含斜线，则返回 "."（当前目录）。</p>
+<pre>p File.dirname("dir/file.ext")    # =&gt; "dir"
+p File.dirname("file.ext")        # =&gt; "."
+p File.dirname("foo/bar/")        # =&gt; "foo"
+p File.dirname("foo//bar")        # =&gt; "foo"
+</pre>
+<p>参见 <a href="#L000960">File.basename</a> 和 <a href="#L000969">File.extname</a>。</p></dd>
+<dt>File.expand_path(<var>path</var>[, <var>default_dir</var>])</dt>
+<dd>
+<p>以字符串形式返回 <var>path</var> 展开的绝对路径。若 <var>path</var> 是相对路径，则将 <var>default_dir</var> 设为基准目录。省略了 <var>default_dir</var> 或值为 nil
+时，使用当前目录。</p>
+<pre>p File.expand_path("..")         # =&gt; "/home/matz/work"
+p File.expand_path("..", "/tmp") # =&gt; "/"
+</pre></dd>
+<dt>
+<a name="L000969">File.extname(<var>filename</var>)</a></dt>
+<dd>
+<p>返回 <var>filename</var> 的扩展名（最后一个.后面的字符串）。在目录名称或文件名开头的 . 不会被看做是扩展名的一部份。若 <var>filename</var> 不包含扩展名，则返回空字符串。</p>
+<pre>p File.extname("foo/foo.txt")     # =&gt; ".txt"
+p File.extname("foo/foo.tar.gz")  # =&gt; ".gz"
+p File.extname("foo/bar")         # =&gt; ""
+p File.extname("foo/.bar")        # =&gt; ""
+p File.extname("foo.txt/bar")     # =&gt; ""
+p File.extname(".foo")            # =&gt; ""
+</pre>
+<p>参见 <a href="#L000960">File.basename</a> 和 <a href="#L000967">File.dirname</a> 。</p></dd>
+<dt>
+<a name="L000976">File.open(<var>path</var>[, <var>mode</var>])</a></dt>
+<dt>File.open(<var>path</var>[, <var>mode</var>]) {|<var>file</var>| ... }</dt>
+<dd>
+<p>开启由 <var>path</var> 指定的文件，并返回文件对象。若开启文件失败，则抛出 <a href="s_exceptions.html#Errno">Errno::EXXX</a> 异常。</p>
+<p>参数 mode 的用法与内建函数 <a href="rgss/s_functions.html#L000379">open</a> 相同。</p>
+<p>open() 可以带区块，此时以指定的文件对象运行区块。区块执行结束后自动关闭文件。</p>
+<p>带区块时，返回值为区块的计算结果。 </p></dd>
+<dt>File.rename(<var>from</var>, <var>to</var>)</dt>
+<dd>
+<p>重命名文件，若是目录不同则会将文件移动至指定文件夹。若是目标文件夹已有同名文件，则会予以覆盖。</p>
+<p>移动成功时，返回 0，失败则抛出 <a href="s_exceptions.html#Errno">Errno::EXXX</a> 异常。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>mtime</dt>
+<dd>
+<p>返回上次修改时间（<a href="sc_time.html">Time</a> 对象）。</p>
+<p>若是读取失败，抛出 <a href="s_exceptions.html#Errno">Errno::EXXX</a> 异常。</p></dd>
+<dt>path</dt>
+<dd>
+<p>返回所打开的文件路径。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

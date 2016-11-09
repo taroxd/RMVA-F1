@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>Object</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 8.00.7601.17744">
+</head>
+<body>
+<h1>Object</h1>
+<p>所有类的超类，定义了一般对象的行为。</p>
+<h2>包含的模块</h2>
+<ul>
+<li><a href="sm_kernel.html">Kernel</a></li></ul>
+<h2>方法</h2>
+<dl>
+<dt>
+<a name="L000555"><var>self</var> == <var>other</var></a></dt>
+<dd>
+<p>检查 <var>self</var> 和 <var>other</var> 是否相等，预设情况下与
+  <var>equal?</var>有相同的效果。</p>
+<p>此方法应需要依照各类的性质来重新定义。</p></dd>
+<dt>
+<var>self</var> === <var>other</var></dt>
+<dd>
+<p>此方法多是是用于 <a href="syntax05.html#L000301">case</a> 判断句中。预设情况下与 <a href="#L000555">Object#==</a> 相同。在子类中进行归属检查时，可以根据情况重新定义。</p></dd>
+<dt>class</dt>
+<dd>
+<p>返回调用者所属的类。</p></dd>
+<dt>clone</dt>
+<dt>dup</dt>
+<dd>
+<p>生成对象的副本。clone 返回对象的完整副本，包括冻结状态和特殊方法。而 dup 只有复制对象内容而已。</p>
+<p>注意，clone 和 dup 执行的是简单复制。所复制的是对象本身，而不是对象所指的对象（例如数组元素）。</p>
+<p>复制的对象</p>
+<pre>obj.equal?(obj.clone)
+</pre>
+<p>通常不成立，但是</p>
+<pre>obj == obj.clone
+</pre>
+<p>则通常都会成立。</p>
+<p>若是尝试复制 true、false、nil、<a href="sc_numeric.html">Numeric 数字</a>、 <a href="sc_symbol.html">Symbol 符号</a> 之类的对象则会抛出 <a href="s_exceptions.html#TypeError">TypeError</a> 异常。</p></dd>
+<dt>equal?(<var>other</var>)</dt>
+<dd>
+<p>当 <var>other</var> 是 <var>self</var> 时，返回 true。此方法不可以被重新定义。</p></dd>
+<dt>freeze</dt>
+<dd>
+<p>冻结对象，即禁止改动对象的内容，若是修改冻结对象会抛出 <a href="s_exceptions.html#TypeError">TypeError</a> 异常。</p></dd>
+<dt>frozen?</dt>
+<dd>
+<p>若是对象被冻结则返回 true。</p></dd>
+<dt>
+<a name="L000572">inspect</a></dt>
+<dd>
+<p>将对象以人类可读的字符串形式返回。</p></dd>
+<dt>instance_of?(<var>klass</var>)</dt>
+<dd>
+<p>若 <var>self</var> 是 klass
+  类的直属实例，则返回 true。当 obj.instance_of?(c) 成立时，obj.kind_of?(c) 也一定会成立。</p></dd>
+<dt>
+<a name="instance_variable_get">instance_variable_get(<var>var</var>)</a></dt>
+<dd>
+<p>获取并返回该对象的实例变量。</p>
+<p>其中的参数 var 必须是字符串或者 <a href="ata/Local/Temp/RPGVXAce/rgss/sc_symbol.html">Symbol 符号</a> 的形式。</p>
+<p>如果目标变量没有被定义，则会返回nil。</p>
+<pre>class Foo
+  def initialize
+    @foo = 1
+  end
+end
+obj = Foo.new
+p obj.instance_variable_get("@foo")     # =&gt; 1
+p obj.instance_variable_get(:@foo)      # =&gt; 1
+p obj.instance_variable_get(:@bar)      # =&gt; nil
+</pre></dd>
+<dt>
+<a name="instance_variable_set">instance_variable_set(<var>var</var>,
+  <var>val</var>)</a></dt>
+<dd>
+<p>设置对象中的变量的变量名 var 和变量值 val 。</p>
+<p>其中的参数 var 必须是字符串或者 <a href="ata/Local/Temp/RPGVXAce/rgss/sc_symbol.html">Symbol 符号</a> 的形式。</p>
+<p>如果所输入的变量在之前并没有被定义，那么它会被函数自动定义。</p>
+<pre>obj = Object.new
+p obj.instance_variable_set("@foo", 1)  # =&gt; 1
+p obj.instance_variable_set(:@foo, 2)   # =&gt; 2
+p obj.instance_variable_get(:@foo)      # =&gt; 2
+</pre></dd>
+<dt>
+<a name="instance_variables">instance_variables</a></dt>
+<dd>
+<p>以符号数组的形式返回对象中所有变量的名字。</p>
+<pre>obj = Object.new
+obj.instance_eval { @foo, @bar = nil }
+p obj.instance_variables
+# =&gt; [:@foo, :@bar]
+</pre></dd>
+<dt>is_a?(<var>mod</var>)</dt>
+<dt>
+<a name="L000580">kind_of?(<var>mod</var>)</a></dt>
+<dd>
+<p>当 <var>self</var> 是 <var>mod</var> 类（或其子类）或是包含了 <var>mod</var>
+  模块的类（或其子类）的实例时，返回 true。</p>
+<pre>module M
+end
+class C &lt; Object
+  include M
+end
+class S &lt; C
+end
+obj = S.new
+p obj.is_a? S       # true
+p obj.is_a? M       # true
+p obj.is_a? C       # true
+p obj.is_a? Object  # true
+p obj.is_a? Hash    # false
+</pre></dd>
+<dt>
+<a name="method">method(<var>name</var>)</a></dt>
+<dd>
+<p>返回对象中名为 name 的 <a href="sc_method.html">Method</a> 对象。
+  <var>name</var> 可以是 <a href="sc_symbol.html">符号</a> 或者字符串。</p></dd>
+<dt>nil?</dt>
+<dd>
+<p>检查调用者是否为 nil。</p></dd>
+<dt>respond_to?(<var>name</var>[, <var>priv</var>=<var>false</var>])</dt>
+<dd>
+<p>如果该对象有公共方法 name 的话，返回 true 。</p>
+<p><var>name</var> 可以是 <a href="sc_symbol.html">符号</a> 或者字符串。 如果参数
+  priv 的默认值为true ，那么即使 name 是私有方法，函数也依旧返回 true 。</p></dd>
+<dt>send(<var>name</var>[, <var>args</var> ... ])</dt>
+<dt>send(<var>name</var>[, <var>args</var> ... ]) { .... }</dt>
+<dd>
+<p>将 <var>args</var> 作为参数，调用 name 方法，并返回方法的返回值。</p>
+<p>当然，包含着块的数据也是可以传递的。方法名 <var>name</var> 可以是字符串或者 <a href="sc_symbol.html">符号</a> 。</p></dd>
+<dt>
+<a name="L000571">object_id</a></dt>
+<dd>
+<p>返回与每个对象对应的独特整数。一个对象得到怎样的ID是不确定的。</p></dd>
+<dt>to_ary</dt>
+<dd>
+<p>需要将对象隐式转为数组时，在内部自动调用。</p></dd>
+<dt>to_hash</dt>
+<dd>
+<p>需要将对象隐式转为哈希表时，在内部自动调用。</p></dd>
+<dt>to_int</dt>
+<dd>
+<p>需要将对象隐式转为整数时，在内部自动调用。</p></dd>
+<dt>to_s</dt>
+<dd>
+<p>返回对象的字符串形式，由 print 和 sprintf 在内部调用。 </p>
+<p>传递非字符串对象给 <a href="s_functions.html#print">print</a> 和 <a href="s_functions.html#sprintf">sprintf</a> ，做参数时，调用此方法将对象转成字符串。</p></dd>
+<dt>to_str</dt>
+<dd>
+<p>需要将对象暗中转为字符串时，在内部自动调用。</p></dd></dl>
+<h2>私有方法</h2>
+<dl>
+<dt>
+<a name="L000609">initialize</a></dt>
+<dd>
+<p>用户定义的类所使用的初始化方法。此方法是由 <a href="sc_class.html#L001138">Class#new</a>
+  调用来初始化新生成的对象。预设情况下，没有任何动作；假定此方法会在子类中依照需求重新定义。若是向  <a href="sc_class.html#L001138">Class#new</a> 传递了任何参数，则会原封不动的传递给
+  <var>initialize</var>。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

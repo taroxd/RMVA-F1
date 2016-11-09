@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>Proc</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>Proc</h1>
+<p>Proc 是一个由区块及其运行环境（堆栈帧和局部变量作用域）的对象化封装。除了无法导入局部变量作用域，Proc 可以像一个没有名字的方法一样使用。</p>
+<p>从下面 Proc 可以引用局部变量 var，我们可以看出 Proc 是保留局部变量作用域的：</p>
+<p>（换句话说，Proc 所用到参数的取值永远是被调用的那一刻，对应参数的取值，而非某一特定节点的取值）</p>
+<pre>var = 1
+$foo = Proc.new { var }
+var = 2
+def foo
+  $foo.call
+end
+p foo       # =&gt; 2
+</pre>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Proc.new</dt>
+<dt>Proc.new { ... }</dt>
+<dd>
+<p>将区块及其上下文对象化，并返回该对象。</p>
+<p>如果没有区块被指定，当前的方法中附带了一个区块，这个区块会生成一个 Proc 对象并返回。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>call(<var>arg</var> ... )</dt>
+<dd>
+<p>执行程序的内容并返回其运算结果，参数会原封不动地传递给区块（根据并行赋值的规则）。</p></dd></dl>
+</body>
+</html>

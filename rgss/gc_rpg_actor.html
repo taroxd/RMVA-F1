@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Actor</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RPG::Actor</h1>
+<p>角色的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="gc_rpg_baseitem.html">RPG::BaseItem</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>nickname</dt>
+<dd>
+<p>称号。</p></dd>
+<dt>class_id</dt>
+<dd>
+<p>职业 ID。</p></dd>
+<dt>initial_level</dt>
+<dd>
+<p>初始等级。</p></dd>
+<dt>max_level</dt>
+<dd>
+<p>最终等级。</p></dd>
+<dt>character_name</dt>
+<dd>
+<p>行走图的文件名。</p></dd>
+<dt>character_index</dt>
+<dd>
+<p>行走图的序号（0..7）。</p></dd>
+<dt>face_name</dt>
+<dd>
+<p>脸图的文件名。</p></dd>
+<dt>face_index</dt>
+<dd>
+<p>脸图的序号（0..7）。</p></dd>
+<dt>equips</dt>
+<dd>
+<p>初始装备。以下面这些为下标的武器 ID 或 装备 ID 的数组。</p>
+<ul>
+<li>0: 武器</li>
+<li>1: 盾牌</li>
+<li>2: 头盔</li>
+<li>3: 铠甲</li>
+<li>4: 饰品</li></ul></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::Actor &lt; RPG::BaseItem
+  def initialize
+    super
+    @nickname = ''
+    @class_id = 1
+    @initial_level = 1
+    @max_level = 99
+    @character_name = ''
+    @character_index = 0
+    @face_name = ''
+    @face_index = 0
+    @equips = [0,0,0,0,0]
+  end
+  attr_accessor :nickname
+  attr_accessor :class_id
+  attr_accessor :initial_level
+  attr_accessor :max_level
+  attr_accessor :character_name
+  attr_accessor :character_index
+  attr_accessor :face_name
+  attr_accessor :face_index
+  attr_accessor :equips
+end
+</pre>
+<h6></h6>
+</body>
+</html>

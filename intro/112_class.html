@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>类定义</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>类定义</h1>
+<ul>
+<li><a href="#define">类的定义</a></li>
+<li><a href="#method">方法的定义</a></li>
+<li><a href="#instance">实例变量</a></li>
+<li><a href="#accessor">accessor 的定义</a></li>
+<li><a href="#initialize">对象初始化</a></li>
+<li><a href="#override">方法的覆盖</a></li></ul>
+<p>基础篇的最后，让我们来学习定义新类的方法。</p>
+<h2><a name="define">类的定义</a></h2>
+<p>直到今天，我们都是一直在使用 <a href="../rgss/sc_string.html">String</a>
+类、<a href="../rgss/sc_array.html">Array</a> 类或者
+<a href="../rgss/gc_sprite.html">Sprite</a> 类等这些系统内部类的方法来进行学习。
+实际上如果想使用类，也可以自己定义。所谓「建立类」几乎和「程序设计」是一个意思。
+其实预置脚本中，除外最后一个 Main 组其余的全部都是类定义。</p>
+<p>比如新定义一个 Person 类，可以如下操作。</p>
+<pre>class Person<br>end<br></pre>
+<p>类定义的话这样就行了。
+但现在只是个「什么都没有的类」，让我们再来进行以下操作。</p>
+<pre>alex = Person.new<br></pre>
+<p>这样就生成了一个 Person 类的实例。</p>
+<p>想要指定超类也很简单。
+比如，定义继承于超类 Person 类的 Man 类可以如下操作。</p>
+<pre>
+class Man &lt; Person
+end
+</pre>
+<h2><a name="method">方法的定义</a></h2>
+<p>方法的定义，和定义普通函数的情况相同。
+如果在类定义当中加上 def ~ end 的话，就会自动成为该类的方法。</p>
+<pre>class Person<br>  def hello<br>    print "您好"<br>  end<br>end<br></pre>
+<p>这样，就定义了调用后会显示「您好」字符串的 hello 方法。再进行如下操作。</p>
+<p>
+</p>
+<pre>alex = Person.new<br>alex.hello                  # =&gt; 您好<br></pre>
+<p>这样就能调用 hello 方法了。</p>
+<p>此外，Ruby 中称为函数的东西，事实上就是「任何地方都能调用的方法」。这里不作详细解说。</p>
+<h2><a name="instance">实例变量</a></h2>
+<p>属于个体对象的变量称为<strong>实例变量</strong>。
+名称以 @ 开头的变量，自动作为实例变量使用。
+局部变量只有在 def ~ end 等结构内部使用时才有效，
+然而使用实例变量的话，只要其对象存在，变量的值就会被保存。
+实例变量一般作为对象的属性来使用。</p>
+<pre>class Person<br>  def name<br>    return @name<br>  end<br>  def name=(name)<br>    @name = name<br>  end<br>  def hello<br>    print "我是" + @name<br>  end<br>end<br><br>alex = Person.new<br>alex.name = "阿莱库斯"<br>alex.hello                  # =&gt; 我是阿莱库斯<br></pre>
+<p>上面的示例是先准备 @name 实例变量，
+使用 name、name= 方法使对象的实例变量在对象外也可以访问。
+另外，末尾带有 = 记号的方法，可以用 foo.name = bar 的形式调用。
+</p>
+<p>实例变量和全局变量一样，获取未赋值的实例变量时不会产生错误而会返回 nil。</p>
+<h2><a name="accessor">accessor 的定义</a></h2>
+<p>就像 name、name= 这样，为了读取对象内部数据的方法称为
+ <strong>accessor</strong>。</p>
+<p>accessor 可以像下面这样写为更加简洁的形式。</p>
+<pre>
+  attr_accessor :name
+</pre>
+<p>这样写表示，自动定义与 : 右侧的名字同名的实例变量的存取方法。</p>
+<pre>
+  def name
+    return @name
+  end
+  def name=(name)
+    @name = name
+  end
+</pre>
+<p>这段代码和 attr_accessor :name 是相同的意思。</p>
+<p>预设的脚本中大量使用了这样的 attr_accessor。
+只想要定义读取方法时，我们使用 attr_reader 代替 attr_accessor。</p>
+<h2><a name="initialize">对象初始化</a></h2>
+<p>生成对象时，把实例变量初始化为某个特定的值。
+先定义一个名称为 initialize 的方法，
+在使用 new 生成新实例时会自动调用该方法。</p>
+<pre>class Person<br>  def initialize<br>    @name = "游客"<br>  end<br>end<br></pre>
+<p>从第二行开始的 initialize 方法的定义，
+表示实例变量 @name 的初始值被赋值为字符串 "游客"。
+这样，生成新的 Person 对象的时候，会自动以 "游客" 初始化实例变量。</p>
+<p>initialize 方法中设有形式参数的情况下，new 会取该参数为初始值。</p>
+<pre>class Person<br>  def initialize(name)<br>    @name = name<br>  end<br>end<br><br>alex = Person.new("阿莱库斯")<br></pre>
+<p>上述示例中，initialize 方法里设有形式参数 name，
+那么实例变量 @name 的初始值就会使用该参数。
+参数 name 实际在 Person 类 new 时传递。
+最后一行，生成 Person 类对象时指定参数为 "阿莱库斯"，
+那么 @name 的初始值也就设为 "阿莱库斯"。</p>
+<h2><a name="override">方法的覆盖</a></h2>
+<p>超类中已定义的方法在子类中再次被定义称为<strong>覆盖</strong>。
+在子类方法中调用超类相同方法的情况下，要使用关键词 <strong>super</strong>。</p>
+<pre>class Hahaha<br>  def laugh(x)<br>    return "哈" * x<br>  end<br>end<br><br>class Wahaha &lt; Hahaha<br>  def laugh(x)<br>    return "哇" + super<br>  end<br>end<br><br>man = Wahaha.new<br>p man.laugh(4)      # =&gt; "哇哈哈哈哈"<br></pre>
+<p>上述示例是，对新建实例调用 Wahaha 类的 laugh 方法，
+其中 super 能调用其超类 Hahaha 类的 laugh 方法。
+那么，最后一行调用 laugh 方法可以理解为 "哇" + "哈" * 4，
+于是输出结果就为 "哇哈哈哈哈"。</p>
+<p>我们已经把使用脚本需要的基础知识走马观花地讲解了一遍。
+接下来，就去挑战预设脚本的解读吧。</p>
+<h6></h6>
+</body>
+</html>

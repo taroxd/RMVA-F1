@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>Range</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>Range</h1>
+<p>范围对象的类。详细参看 <a href="syntax03.html#L000281">范围表达式</a> 。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>包含的模块</h2>
+<ul>
+<li><a href="sm_enumerable.html">Enumerable</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Range.new(<var>first</var>, <var>last</var>[, <var>exclude_end</var>])</dt>
+<dd>
+<p>创建并返回一个从 first 到 last 的范围对象。如果 exclude_end 为 true
+  ，则该范围对象不包含结束点，如果被省略，则包含结束点。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>
+<var>self</var> === <var>other</var></dt>
+<dd>
+<p>此方法大部分是用在 <a href="syntax05.html#L000301">case</a> 条件句比较用的。若
+  <var>other</var> 在范围内则返回 true。</p></dd>
+<dt>begin</dt>
+<dt>first</dt>
+<dd>
+<p>返回第一个元素。</p></dd>
+<dt>each {|<var>item</var>| ... }</dt>
+<dd>
+<p>迭代范围内所有元素。</p></dd>
+<dt>end</dt>
+<dt>last</dt>
+<dd>
+<p>返回最后一个元素，无论该范围对象是否包含最后元素</p>
+<pre>p (1..5).end   # =&gt; 5
+p (1...5).end  # =&gt; 5
+</pre></dd>
+<dt>exclude_end?</dt>
+<dd>
+<p>若该范围对象包含最后一个元素，则返回 true。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

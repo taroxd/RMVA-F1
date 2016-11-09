@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::UsableItem::Effect</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::UsableItem::Effect</h1>
+<p>使用效果的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_usableitem.html">RPG::UsableItem</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>code</dt>
+<dd>
+<p>使用效果编号.</p></dd>
+<dt>data_id</dt>
+<dd>
+<p>使用效果类型编号。</p></dd>
+<dt>value1</dt>
+<dd>
+<p>使用效果参数1。</p></dd>
+<dt>value2</dt>
+<dd>
+<p>使用效果参数2。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::UsableItem::Effect
+  def initialize(code = 0, data_id = 0, value1 = 0, value2 = 0)
+    @code = code
+    @data_id = data_id
+    @value1 = value1
+    @value2 = value2
+  end
+  attr_accessor :code
+  attr_accessor :data_id
+  attr_accessor :value1
+  attr_accessor :value2
+end
+</pre>
+<h6></h6>
+</body>
+</html>

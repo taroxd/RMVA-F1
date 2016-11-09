@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Vocab 模块</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Vocab 模块</h1>
+<ul>
+<li><a href="#define_module">模块的定义</a></li>
+<li><a href="#constant">常量</a></li>
+<li><a href="#sprintf">sprintf</a></li>
+<li><a href="#module_method">模块方法</a></li>
+<li><a href="#read_terms">获取用语数据</a></li></ul>
+<p>我们就从脚本页开头依序往下解读吧。首先， Vocab 是处理「用语」跟「信息」的模块</p>
+<h2><a name="define_module">模块的定义</a></h2>
+<p>请先从编辑器左侧列表中选进 Vocab 。</p>
+<p>第 1 ~ 6 行就只是注释所以没啥困难，请直接看第 8 行。</p>
+<pre>
+module Vocab
+</pre>
+<p>在这行定义了一个叫做 Vocab 的新模块。在进行基础篇的<a href="109_graphics.html">显示图片</a>这章的时候，使用过 Graphics 这个内建模块。这些模块和类一样是可以自行定义的。具体来说就是遵循下面的语法：</p>
+<pre>
+module 模块名
+end
+</pre>
+<p>这跟<a href="112_class.html">类定义</a>的方法几乎是一样的。扣除掉无法产生实例以外，只要把模块当成和类相同的东西来思考就可以了吧。</p>
+<p>不过实际上，模块还有另一项重要功能，就跟在基础篇<a href="110_array.html">数组</a>这一章中的最后所说到的 <a href="../rgss/sm_enumerable.html">Enumerable</a> 模块一样，模块可以针对其他的类添加自己的方法——这项功能叫做 <strong>Mix-in</strong>  。不过关于 Mix-in 只需要理解一件事，那就是写在RGSS参考中「包含的模块」里面的方法也能使用。这是因为在默认脚本中也没有使用到 Mix-in 的功能，不用太过留意也没关系。</p>
+<p>顺带一提， Vocab 这个名字是 vocabulary (词汇)这个英文单词的略写。</p>
+<h2><a name="constant">常量</a></h2>
+<p>一大写字母为开头的变量名称会当做<strong>常量</strong>来处理。所谓的常量是一旦定义之后就无法改变的数据，虽然名字是叫常「量」，但不一定非得定义数字不可。如字符串或者是其他的数据也能以常量的形式使用。</p>
+<pre>
+  ShopBuy         = "买入"
+  ShopSell        = "卖出"
+  ShopCancel      = "取消"
+  Possession      = "持有数"
+</pre>
+<p>Vocab 脚本页的 11 ~ 14 行中，如上面般定义了常量。将这个字符串的内容改写的话，就可以改变商店场景的指令名称。像这样把可能在之后重新改写的东西统一到一个地方，是常量最常见的用法之一。</p>
+<img src="img/search.png" alt="全セクションから検索" class="float_r">
+<p>好了，我们来找找实际上脚本是从哪里操作这些常量的吧。在这种情况下我们会使用「全局搜索」的功能。</p>
+<p>请在脚本编辑器中按下 Ctrl+Shift+F ，并在弹出的全局搜索对话框中输入 ShopBuy 这个字符串搜索看看。这个阶段注意不要把全局搜索和一般的搜索 (Ctrl+F) 搞混了。这次请将「仅全词匹配」打钩后再搜索。</p>
+<p>搜索成功之后，应该会看见两个搜索结果，其中一项是我们刚打开的 Vocab 模块里的定义内容，所以我们要看的是另一项搜索结果，请双击进入。</p>
+<pre>
+    add_command(Vocab::ShopBuy,    :buy)
+    add_command(Vocab::ShopSell,   :sell,   !@purchase_only)
+    add_command(Vocab::ShopCancel, :cancel)
+</pre>
+<p>打开了 Window_ShopCommand 这页代码之后，光标应该是停在上面这段代码附近吧。也就是说这就是使用 Vocab 模块内的常量的方式。</p>
+<pre>
+模块名::常量名
+</pre>
+<p>'::' 这个运算符号，在解读前一章的数据库的内容时也有以 RPG::Actor 的形式出现过。由于类或者模块的名称和常量是以同样的方式来处理，因此这是表示，在 RPG 这个模块中定义了 Actor 这个类。</p>
+<p>Window_ShopCommand 脚本页的其他部分跟目前已经没有关联，所以请回到 Vocab 模块中。</p>
+<h2><a name="sprintf">sprintf</a></h2>
+<p>从 Vocab 的定义内容依序从上往下读，会发现包含 %s 这个记号的字符串。</p>
+<pre>
+  Emerge          = "%s出现了！"
+  Preemptive      = "%s先发制人！"
+  Surprise        = "%s被偷袭了！"
+  EscapeStart     = "%s逃跑了！"
+</pre>
+<p>笔者挑出了较容易理解的部分。看见这几行，应该想象得到 %s 这个部分是用来和角色名、物品名等等作置换用的。</p>
+<p>这是叫做 <a href="../rgss/s_functions.html#L000402">sprintf</a> 的
+这个内建函数中的<strong>格式化字符串</strong>。所谓的 sprintf ，是从 C 语言开始就使用的传统函数之一。s 代表 string（字符串） 的第一个字母，print 则表示输出，f 则为 format（格式）的第一个字母。</p>
+<p>在 Ruby 中会像下面一样使用格式化字符串。请在 TEST 脚本页中试试看。</p>
+<pre>
+p sprintf("%s 受到了 %s 点的伤害！", "龙", 999)
+</pre>
+<p>第一个引号是格式化字符串，而第二个引号之后，请记住是依序指定要内嵌在格式化字符串里的字符串或是数值。s 的地方叫做<strong>指示符号</strong>，是用来塞「字符串」的，因此虽然我们有指定 999 这样的数值，在 Ruby 中它也会自动变成字符串，所以不必担心数据类型的问题。在这个例子中我们是直接将字符串跟数值当做引用，不过当然实际上是拿变量当成引用的情况居多。</p>
+<p>格式化后的字符串是新的字符串，当成 sprintf 的返回值返回，因此当然可以把这个返回值直接带入别的函数，例如像上面使用 p 函数来显示。</p>
+<p>使用 sprintf，不但能将需要的字符串塞进格式化字符串里面，还可以进行一些更精细的操作，比方说输出指定位数的数值等等。目前的阶段之需要了解 %s 的功能即可，不过如果以后有需要，请参考<a href="../rgss/appendix02.html">
+sprintf 格式</a>。</p>
+<h2><a name="module_method">模块方法</a></h2>
+<p>再往下看，应该会看见下面的东西。</p>
+<pre>
+  def self.basic(basic_id)
+    $data_system.terms.basic[basic_id]
+  end
+</pre>
+<p>这看起来像是在定义方法，而且写着 'self.' 这些字对吧。这就是<strong>模块方法</strong>的定义方式。</p>
+<p>补充说明一下，跟上面同样的定义方式，在类的定义中进行的话就叫做<strong>类方法</strong>，我们将这两个方法称作特殊的方法——相较于一般的<strong>方法</strong>。这个概念是 Ruby 独有的，学过其他编程语言的人或许会感到有点困惑。</p>
+<p>撇开这些复杂的话题，只要记得，如果要在模块内定义方法，在方法名称前面加上 'self.' 这个就够用了。</p>
+<p>照上面这样定义之后，我们就能像这样：
+</p>
+<pre>
+Vocab.basic(0)
+</pre>
+或者是：
+<pre>
+Vocab::basic(0)
+</pre>
+<p>来调用了。在真正的脚本中，为了让形式长得跟常量的定义方法一样，所以使用的是第二种写法。</p>
+<p>如果将方法的定义写成：</p>
+<pre>
+  def basic(basic_id)
+    $data_system.terms.basic[basic_id]
+  end
+</pre>
+<p>这样子的「普通的方法」的话，使用 Vocab.basic(0) 这个方法的时候会发生「找不到这个方法」的错误，务必注意。</p>
+<p>另外在学习<a href="107_function.html">函数</a>的定义方式的时候笔者说明过，排除掉中断方法的情况，return 在一般状况下是可以省略的。上面的代码就是省略了 return 的写法，如果不想省略 return 的话就会长得像下面一样：</p>
+<pre>
+  def self.basic(basic_id)
+    return $data_system.terms.basic[basic_id]
+  end
+</pre>
+<h2><a name="read_terms">获取用语数据</a></h2>
+<p>接着来看看方法的内容吧。</p>
+<pre>
+    $data_system.terms.basic[basic_id]
+</pre>
+<p>如果在前一章<a href="201_database.html">数据库</a>中认真地学习了获取方法，这里应该难不倒你吧。</p>
+<p>$data_system 变量指向的是 <a href="../rgss/gc_rpg_system.html">RPG::System</a>
+ 类的实例，在那当中的 terms 这个属性则是指向
+<a href="../rgss/gc_rpg_system_terms.html">RPG::System::Terms</a>
+ 类的实例，basic 则是指向装有基础状态的字符串的数组，比方说 basic_id 如果是 0，就会取得对应了「等级」的用语。在 RM 的数据库中，「系统」和「用语」这两个标签是分开的，不过在实际的数据处理中，「系统」和「用语」是当成同一个项目处理。</p>
+<p>再继续往下看，会发现以下的段落。</p>
+<pre>
+  def self.level;       basic(0);     end   # 等级
+</pre>
+<p>因为这里进行了大量同样形式的定义，使用了分号让方法只需要一行就可以定义完毕。平常的写法是长成下面这样：</p>
+<pre>
+  # 等级
+  def self.level
+    basic(0)
+  end
+</pre>
+<p>这是用来让 Vocab::basic(0) 可以用 Vocab::level这个形式来写的方法。其他行也是同样的作用。</p>
+<h6></h6>
+</body>
+</html>

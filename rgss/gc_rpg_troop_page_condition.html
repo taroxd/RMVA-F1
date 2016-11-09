@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::Troop::Page::Condition</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::Troop::Page::Condition</h1>
+<p>战斗事件的「条件」数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_troop_page.html">RPG::Troop::Page</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>turn_ending</dt>
+<dd>
+<p>「回合结束时」条件是否有效的复选框。</p></dd>
+<dt>turn_valid</dt>
+<dd>
+<p>「回合数」条件是否有效的复选框。</p></dd>
+<dt>enemy_valid</dt>
+<dd>
+<p>「敌人」条件是否有效的复选框。</p></dd>
+<dt>actor_valid</dt>
+<dd>
+<p>「角色」条件是否有效的复选框。</p></dd>
+<dt>switch_valid</dt>
+<dd>
+<p>「开关」条件是否有效的复选框。</p></dd>
+<dt>turn_a</dt>
+<dt>turn_b</dt>
+<dd>
+<p>指定「回合数」条件的 a b 值，输入为 a + bx 的形式。</p></dd>
+<dt>enemy_index</dt>
+<dd>
+<p>「敌人」条件的敌人队员索引（0～7）。</p></dd>
+<dt>enemy_hp</dt>
+<dd>
+<p>指定「敌人」条件的敌人HP值百分比。</p></dd>
+<dt>actor_id</dt>
+<dd>
+<p>「角色」条件的角色 ID 编号。</p></dd>
+<dt>actor_hp</dt>
+<dd>
+<p>指定「角色」条件的角色HP值百分比。</p></dd>
+<dt>switch_id</dt>
+<dd>
+<p>指定「开关」条件的开关 ID 编号。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::Troop::Page::Condition
+  def initialize
+    @turn_ending = false
+    @turn_valid = false
+    @enemy_valid = false
+    @actor_valid = false
+    @switch_valid = false
+    @turn_a = 0
+    @turn_b = 0
+    @enemy_index = 0
+    @enemy_hp = 50
+    @actor_id = 1
+    @actor_hp = 50
+    @switch_id = 1
+  end
+  attr_accessor :turn_ending
+  attr_accessor :turn_valid
+  attr_accessor :enemy_valid
+  attr_accessor :actor_valid
+  attr_accessor :switch_valid
+  attr_accessor :turn_a
+  attr_accessor :turn_b
+  attr_accessor :enemy_index
+  attr_accessor :enemy_hp
+  attr_accessor :actor_id
+  attr_accessor :actor_hp
+  attr_accessor :switch_id
+end
+</pre>
+<h6></h6>
+</body>
+</html>

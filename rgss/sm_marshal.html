@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Marshal</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Marshal</h1>
+<p>提供将 Ruby 对象写入或读出文件（或字符串）的功能。</p>
+<h2>模块方法</h2>
+<dl>
+<dt>Marshal.dump(<var>obj</var>[, <var>port</var>][, <var>limit</var>])</dt>
+<dd>
+<p>将 <var>obj</var> 对象递归写入文件。</p>
+<p>有些对象，如 <a href="sc_file.html">File</a> 或 <a href="c_matchdata.html">MatchData</a> ，或定义了特殊方法的对象，无法写入文件中。若尝试将这类对象写入文件会抛出 <a href="s_exceptions.html#TypeError">TypeError</a> 异常。</p>
+<p><var>port</var> 指定 IO（或其子类）的实例。此时会返回 <var>port</var>。省略时，dump 返回将对象序列化之后的字符串。</p>
+<p>若指定了 <var>limit</var> ，则不会序列化深于 <var>limit</var> （默认 100）层链接的对象。若
+<var>limit</var> 为负数，则不会进行层数检查。</p></dd>
+<dt>Marshal.load(<var>port</var>)</dt>
+<dd>
+<p>从 <var>port</var>
+中读取序列化数据（Marshal.dump 所输出的字符串）并生成与原对象状态相同的对象。<var>port</var> 指定字符串或 IO（或其子类）的实例。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

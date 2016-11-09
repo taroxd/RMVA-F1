@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Module</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Module</h1>
+<p>模块的类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>方法</h2>
+<dl>
+<dt>
+<var>self</var> === <var>obj</var></dt>
+<dd>
+<p>此方法主要用于 <a href="syntax05.html#L000301">case</a> 语句中的比较。若是 <var>obj</var> 与 <var>self</var> 之间有 <a href="sc_object.html#L000580">Object#kind_of?</a> 的关系则返回 true。换句话说，在 <a href="syntax05.html#L000301">case</a> 中可以用来检查类、模块的从属关系。</p>
+<pre>str = String.new
+case str
+when String     # evaluates String === str
+  p true        # =&gt; true
+end
+</pre></dd></dl>
+<h2>私有方法</h2>
+<dl>
+<dt>
+<a name="L001113">attr_accessor(<var>name</var> ...)</a></dt>
+<dd>
+<p>定义属性 <var>name</var> 的读写方法，<var>name</var> 由 <a href="sc_symbol.html">Symbol</a> 或字符串指定。</p>
+<p>该方法定义的方法如下：</p>
+<pre>def name
+  @name
+end
+def name=(val)
+  @name = val
+end
+</pre></dd>
+<dt>attr_reader(<var>name</var> ... )</dt>
+<dd>
+<p>定义属性 <var>name</var> 的读取方法，<var>name</var> 由 <a href="sc_symbol.html">Symbol</a> 或字符串指定。</p>
+<p>该方法定义的方法如下：</p>
+<pre>def name
+  @name
+end
+</pre></dd>
+<dt>attr_writer(<var>name</var> ... )</dt>
+<dd>
+<p>定义属性 <var>name</var> 的写入方法（name=），<var>name</var> 由 <a href="sc_symbol.html">Symbol</a> 或字符串指定。</p></dd>
+<dd>
+<p>该方法定义的方法如下：</p></dd>
+<dd>
+<pre>def name=(val)
+  @name = val
+end
+</pre></dd>
+<dt>
+<a name="L001119">include(<var>module</var> ...)</a></dt>
+<dd>
+<p>添加指定模块的性质（方法和常量）。返回 self。include 用于实现替代多重继承的 Mix-in。</p>
+<pre>class C
+  include FileTest
+  include Math
+end
+</pre>
+<p>模块追加功能是通过在类的继承关系中插入该模块来实现的。因此，在搜索方法时，包含的模块会优先于超类进行搜索。</p>
+<p>若是重复包含同个模块时，无视第二次之后的 include。此外，若是执行 include 时会导致模块间循环继承，则会抛出 <a href="s_exceptions.html#ArgumentError">ArgumentError</a> 异常。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

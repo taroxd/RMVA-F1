@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>分支条件</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>分支条件</h1>
+<ul>
+<li><a href="#compare">比较运算符</a></li>
+<li><a href="#boolean">真伪值</a></li>
+<li><a href="#logical">逻辑运算符</a></li>
+<li><a href="#if">if ~ elsif ~ else ~ end</a></li>
+<li><a href="#unless">unless ~ end</a></li>
+<li><a href="#case">case ~ end</a></li>
+<li><a href="#if2">条件运算符</a></li>
+<li><a href="#modifier">修饰符</a></li></ul>
+<p>满足特定的条件与否，之后的动作会根据其不同而改变就叫作<strong>分支条件</strong>。</p>
+<h2><a name="compare">比较运算符</a></h2>
+<p>在具体地学习处理分支条件的方法之前，要先记住条件构成中使用的运算符。</p>
+<p>下面 6 个运算符称为<strong>比较运算符</strong>。使用这些运算符，和给予的条件（数字和字符串）相比较，然后返回结果。</p>
+<table border="1" cellpadding="2" cellspacing="0">
+  <tbody>
+  <tr>
+    <td width="40">==</td>
+    <td>等于</td>
+    </tr>
+  <tr>
+    <td width="40">!=</td>
+    <td>不等于</td>
+    </tr>
+  <tr>
+    <td width="40">&lt;</td>
+    <td>小于</td>
+    </tr>
+  <tr>
+    <td width="40">&gt;</td>
+    <td>大于</td>
+    </tr>
+  <tr>
+    <td width="40">&lt;=</td>
+    <td>小于等于</td>
+  </tr>
+    <tr>
+    <td width="40">&gt;=</td>
+    <td>大于等于</td>
+    </tr>
+  </tbody>
+</table>
+<p>这里一定要注意的是，判断相等的运算符不是 = 而是 ==。像已学习过的那样，所谓 = 符号表示的不是比较而是代入。请注意不要弄混淆了。</p>
+<h2><a name="boolean">真伪值</a></h2>
+<p>比较运算的运算结果就称为<strong>真伪值</strong>。有真（正确）、伪（错误）两种情况。</p>
+<p>比较后是正确的话为 <strong>true</strong> 值，是错误的话就为 <strong>false</strong> 值。请试试看吧。</p>
+<pre>p ("早安" == "早安")                 # =&gt; true
+p ("早安" == "你好")                 # =&gt; false
+p (3 + 1 == 3 + 5)                  # =&gt; false
+p (3 + 1 == 2 + 2)                  # =&gt; true
+</pre>
+<h2><a name="logical">逻辑运算符</a></h2>
+<p>下面 6 个运算符称为<strong>逻辑运算符</strong>。</p>
+<table border="1" cellpadding="2" cellspacing="0">
+  <tr>
+    <td width="40">and<br>&amp;&amp;</td>
+    <td>「~，与，~」的意思</td>
+  </tr>
+  <tr>
+    <td width="40">or<br>||</td>
+    <td>「~，或，~」的意思</td>
+  </tr>
+  <tr>
+    <td width="40">not<br>!</td>
+    <td>「非~」的意思</td>
+  </tr>
+</table>
+<p>英文单词运算符和符号运算符，无论用哪个都是一样的。在预置脚本中运用的主要是符号。使用这些逻辑运算符就能指定更加复杂的条件。</p>
+<pre>
+p (100 &gt; 77 and 1 + 1 == 2)         # =&gt; true
+p (100 &gt; 77 &amp;&amp; 1 + 1 == 2)          # =&gt; true
+</pre>
+<p>上述示例中，第一行和第二行表示的都是一个内容「100 大于 77 同时 1 + 1 等于 2」。不用说 100 是比 77 大的整数，1 + 1 答案也为
+2，两个运算都成立。所以输出结果就为 true（真，正确）。</p>
+<p>那么，看下一个算式吧。</p>
+<pre>
+p (1 + 1 == 3 or 2 + 2 == 3)        # =&gt; false
+p (1 + 1 == 3 || 2 + 2 == 3)        # =&gt; false
+</pre>
+<p>上述示例中，第一行和第二行表示的也都是一个内容「1 + 1 等于 3 或 2 + 2 等于 3」。很显然，1 + 1 不等于 3，2 + 2 也不等于
+3，这样两个运算都不成立。比较运算符 or（||）是只要有一个运算成立就为 ture（真，正确），而这里两个运算全都不成立，所以输出结果就为
+false（伪，错误）。</p>
+<p>另外，not（!）和上面的例子稍微有些不同， not（!）表示的内容为后面的条件不成立。可以理解为颠倒 true 或 false 的运算符。</p>
+<pre>
+p (not true)                        # =&gt; false
+p (! true)                          # =&gt; false
+</pre>
+<p>上述示例中的内容是「非 true」的意思，所以输出结果为 false。</p>
+<p>此外，不只是 + 和 - 等用于计算的运算符优先级，比较运算符和逻辑运算符也有优先级。目前，只需要记住 == 之类的比较运算符的优先级高于 &amp;&amp; 这类的逻辑运算符就足够了。详情请见RGSS参考中的<a href="../rgss/syntax04.html">运算符</a>。</p>
+<h2><a name="if">if ~ elsif ~ else ~ end</a></h2>
+<p>if ~ end 语句是分支条件的语法。这个和英文的 if（如果~就）意思相同，表示「如果 if
+后面的条件成立的话，就运行下面的处理」的意思。下面示例中的 3~5行就是分支条件。</p>
+<pre>
+a = 20              # 把变量 a 赋值为 20。
+if a &gt;= 10          # 如果 a 大于等于 10，
+  print "big"       #   显示 big。
+end                 # 分支结束
+</pre>
+<p>在条件不满足时也要进行处理的情况下就使用 else，条件不满足但指定另一个条件的情况下就使用 elsif。</p>
+<pre>
+a = 7               # 把变量 a 赋值为 7。
+if a &gt;= 10          # 如果 a 大于等于 10，
+  print "big"       #   显示 big。
+elsif a &gt;= 5        # 否则，如果 a 大于等于 5，
+  print "medium"    #   显示 medium。
+else                # 否则，
+  print "small"     #   显示 small。
+end                 # 分支结束。
+</pre>
+<h2><a name="unless">unless ~ end</a></h2>
+<p>与 if 相反，在条件<strong>不</strong>满足时才进行某些处理的情况下使用 unless 语句。</p>
+<pre>
+a = 7               # 把变量 a 赋值为 7。
+unless a &gt;= 10      # 如果 a 不大于等于 10，
+  print "small"     #   显示 small。
+end                 # 分支结束。
+</pre>
+<p>虽然上边的例子不是很好，但是根据上下文，用 unless 更加容易理解的时候也是有的。</p>
+<h2><a name="case">case ~ end</a></h2>
+<p>想要根据特定的变量值进行分支的情况下，使用 case 语句会更方便。</p>
+<pre>
+a = 0               # 把变量 a 赋值为 0。
+case a              # 开始分支。
+when 0              #  a 为 0 时，
+  print "石头"      #   显示 石头。
+when 1              #  a 为 1 时，
+  print "剪刀"      #   显示 剪刀。
+when 2              #  a 为 2 时，
+  print "布"        #   显示 布。
+end                 # 分支结束。
+</pre>
+<p>把第一行 a = 后面的 0 改为 1 和 2，然后再来看看分支的结果吧。当 a 赋值 1 时会显示「剪刀」，赋值 2 时会显示「布」。</p>
+<h2><a name="if2">条件运算符</a></h2>
+<p>也有使用符号 ? 和 : 的运算符形式的分支条件。</p>
+<pre>
+a = 3
+p (a &gt;= 10 ? "big" : "small")   # =&gt; "small"
+</pre>
+<p>这个示例的意思是，变量 a 的值在 10 以上的话就显示 "big"， 9 以下的话就显示 "small"。条件运算符的语法是「条件 ? 真时的值 :
+伪时的值」。上述的条件是 a &gt;= 10，真时的值为 "big"，伪时的值为 "small"，会根据条件是否满足来决定使用 ? 或 : 的值。</p>
+<p>当然使用 if 语句也能完成同样的事情。</p>
+<pre>a = 3
+if a &gt;= 10
+  p "big"
+else
+  p "small"
+end</pre>
+<p>使用 if 语句的语法会像上面写的那样，但是使用条件运算符语句会更加简洁。该语句在预设脚本中也使用得很多，所以最好记住。</p>
+<h2><a name="modifier">修饰符</a></h2>
+<p>如同下面所示，想要执行的命令后面可以写 if 和 unless 等。</p>
+<pre>print "big" if a &gt;= 10      # a 大于等于 10 的话就显示 big</pre>
+<p>记住很多语法的确不容易，但做的内容是相同的。此时，选择易于理解的语法就好。</p>
+<h6></h6>
+</body>
+</html>

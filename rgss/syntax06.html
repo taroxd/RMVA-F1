@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>方法调用</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 8.00.7601.17744">
+</head>
+<body>
+<h1>方法调用</h1>
+<ul>
+<li><a href="#L000322">super</a></li>
+<li><a href="#L000323">迭代器</a></li>
+<li><a href="#L000324">yield</a></li></ul>
+<p>实例：</p>
+<pre>foo.bar()
+foo.bar
+bar()
+print "hello world\n"
+print</pre>
+<p>语法：</p>
+<pre>[表达式 '.'] 标识符 ['(' 表达式 ... ['*' [表达式]] ')']</pre>
+<p>方法调用表示调用目标（点「.」左边的表达式之值）的方法。若是没有指定目标，则表示调用自身的方法。</p>
+<p>方法的名称可以为一般的标识符，也可以以「?」或「!」结尾。依照惯例，「?」用在谓词型的方法名称，也就是返回 true 或
+false 值的方法。而「!」是用在比同名（无「!」）方法更具破坏性的方法名称上（例如：tr 与 tr!）。</p>
+<p>若是最后的参数以 * 开头，则先展开该参数的值，然后再传递：</p>
+<pre>foo(*[1,2,3])   # 相当于 foo(1,2,3)</pre>
+<h2><a name="L000322">super</a></h2>
+<p>实例：</p>
+<pre>super
+super(1,2,3)</pre>
+<p>语法：</p>
+<pre>super
+super(表达式 , ... )</pre>
+<code>
+<p>super
+呼叫超类中正由当前方法所覆盖的函数。若是省略了括号和参数，当前方法的参数则原封不动的传递给超类中的同名方法。若是调用超类方法而不想使用当前参数时，用空的括号如：
+super()。</p></code><pre>class Foo
+  def foo(arg=nil)
+    p arg
+  end
+end
+class Bar &lt; Foo
+  def foo(arg)
+    super(5)       # 以 5 作为参数进行调用
+    super(arg)     # 以 5 作为参数进行调用
+    super          # 以 5 作为参数进行调用；super(arg)的简写
+    arg = 1
+    super          # 以 1 作为参数进行调用；super(arg)的简写
+    super( )       # 无参数调用
+  end
+end
+Bar.new.foo 5</pre>
+<h2><a name="L000323">迭代器</a></h2>
+<p>实例：</p>
+<pre>[1,2,3].each do |i| print i*2, "\n" end
+[1,2,3].each {|i| print i*2, "\n" }</pre>
+<p>语法：</p>
+<pre>方法（参数1, 参数2, ...）  do ['|' 表达式 ... '|'] 表达式 ... end
+方法（参数1, 参数2, ...） '{' ['|' 表达式 ... '|'] 表达式 ... '}'</pre>
+<p>迭代器是用来精简控制结构（尤其是循环）。若是调用了接着 do ... end 或 { ... }
+（称为区块）的方法，则该方法就是在该区块中所计算。迭代器所调用的区块就是使用 <a href="#L000324">yield</a> 表达式，传递给
+yield 值会被两条杠「||」之间的变量赋值。</p>
+<code>
+<p>{ ... }区块的约束力比 do ... end 区块强。</p></code><pre>foobar a, b do .. end                           #foobar 为迭代器方法<br>foobar a, b { .. }                                   # b 为迭代器方法</pre>
+<p>在区块当中第一次赋值（声明）的区域变量仅在该区块中有效。</p>
+<pre>foobar {
+  i = 20                #    声明区域变量 「i」
+   ...
+}
+                           # 「i」在此没有被定义
+foobar a, b do
+  i = 11                #    声明一个完全不同的「i」
+   ...
+end</pre>
+<p>与大多数的方法相同，若是迭代器在区块中由 <a href="syntax05.html#L000308">break</a> 所中断则返回 nil 。当
+break 带参数时则迭代器返回该参数之值。</p>
+<h2><a name="L000324">yield</a></h2>
+<p>实例：</p>
+<pre>yield data</pre>
+<p>语法：</p>
+<pre>yield '(' [ 表达式 [',' 表达式 ... ]] ')'
+yield [ 表达式 [',' 表达式 ... ]]</pre>
+<p>将参数传递给区块作为参数，然后对区块进行计算。yield 是在 <a href="syntax07.html#L000330">方法定义</a> 定义 <a href="#L000323">迭代器</a> 时使用的语句。</p>
+<pre>def foo
+  yield(1,2)
+end
+foo {|a,b| p [a,b]}</pre>
+<p>区块参数的赋值操作遵从 <a href="syntax04.html#L000288">并行赋值</a> 的规律，若是没有提供区块给执行
+yield 的方法（也就是说该方法非迭代器）则会抛出 <a href="s_exceptions.html#LocalJumpError">LocalJumpError</a> 异常。</p>
+<p><code>yield 返回该区块最后计算的表达式结果。若是区块的执行由</code> <a href="syntax05.html#L000309">next</a> 中断则返回 nil 。当 next 包含参数时，则返回该参数之值。</p>
+<h6></h6>
+</body>
+</html>

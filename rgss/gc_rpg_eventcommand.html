@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::EventCommand</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::EventCommand</h1>
+<p>事件指令的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_event_page.html">RPG::Event::Page</a></li>
+<li><a href="gc_rpg_troop_page.html">RPG::Troop::Page</a></li>
+<li><a href="gc_rpg_commonevent.html">RPG::CommonEvent</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>code</dt>
+<dd>
+<p>事件指令代码。</p></dd>
+<dt>indent</dt>
+<dd>
+<p>指令缩排深度。一般为0，每次使用「条件分歧」之类的指令就会增加 1。</p></dd>
+<dt>parameters</dt>
+<dd>
+<p>包含事件指令各项参数的数组，不同事件指令有不同内容。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::EventCommand
+  def initialize(code = 0, indent = 0, parameters = [])
+    @code = code
+    @indent = indent
+    @parameters = parameters
+  end
+  attr_accessor :code
+  attr_accessor :indent
+  attr_accessor :parameters
+end
+</pre>
+<h6></h6>
+</body>
+</html>

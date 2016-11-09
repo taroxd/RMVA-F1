@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>内建异常类</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>内建异常类</h1>
+<dl>
+<dt>
+<a href="sc_exception.html">Exception</a></dt>
+<dd>所有异常类的超类。
+<dl>
+<dt>
+<a name="NoMemoryError"><em>NoMemoryError</em></a></dt>
+<dd>同时要求过多的内存空间时会抛出此异常。</dd>
+<dt>
+<a name="ScriptError"><em>ScriptError</em></a></dt>
+<dd>代表脚本错误的异常。
+<dl>
+<dt>
+<a name="NotImplementedError"><em>NotImplementedError</em></a></dt>
+<dd>调用未实现的功能时会抛出此异常。</dd>
+<dt>
+<a name="SyntaxError"><em>SyntaxError</em></a></dt>
+<dd>语法错误时会抛出此异常。</dd></dl></dd>
+<dt>
+<a name="StandardError"><em>StandardError</em></a></dt>
+<dd>当 <a href="syntax05.html#L000314">rescue</a> 没有提供异常类时，会捕捉此类的所有子类错误。
+<dl>
+<dt>
+<a name="ArgumentError"><em>ArgumentError</em></a></dt>
+<dd>参数个数或值不正确时会抛出此异常。</dd>
+<dt>
+<a name="IndexError"><em>IndexError</em></a></dt>
+<dd>当索引超出范围时抛出此异常。</dd>
+<dt>
+<a name="IOError"><em>IOError</em></a></dt>
+<dd>当 I/O 发生错误时抛出此异常。
+<dl>
+<dt>
+<a name="EOFError"><em>EOFError</em></a></dt>
+<dd>当到达 EOF（End Of File）时抛出此异常。</dd></dl></dd>
+<dt>
+<a name="LocalJumpError"><em>LocalJumpError</em></a></dt>
+<dd>当控制结构中找不到跳转目标时抛出此异常。</dd>
+<dt>
+<a name="NameError"><em>NameError</em></a></dt>
+<dd>使用未定义局部变量或常量时抛出此异常。
+<dl>
+<dt>
+<a name="NoMethodError"><em>NoMethodError</em></a></dt>
+<dd>调用未定义的方法时抛出此异常。</dd></dl></dd>
+<dt>
+<a name="RangeError"><em>RangeError</em></a></dt>
+<dd>范围异常，在进行超出范围的整数转换（例如由 <a href="sc_bignum.html">Bignum</a> 转为 <a href="sc_fixnum.html">Fixnum</a> 等）时会抛出此异常。
+<dl>
+<dt>
+<a name="FloatDomainError"><em>FloatDomainError</em></a></dt>
+<dd>在进行正负无穷或 NaN（Not a Number）转换成 <a href="sc_bignum.html">Bignum</a>，或将数字与 NaN 进行比较时会抛出此异常。</dd></dl></dd>
+<dt>
+<a name="RegexpError"><em>RegexpError</em></a></dt>
+<dd>当编译正则表达式失败时抛出此异常。</dd>
+<dt>
+<a name="RuntimeError"><em>RuntimeError</em></a></dt>
+<dd>运行时错误。当调用 <a href="s_functions.html#L000388">raise</a>
+而没有指定异常类型时抛出此异常。</dd>
+<dt>
+<a name="SystemCallError"><em>SystemCallError</em></a></dt>
+<dd>系统调用失败时抛出此异常。
+<dl>
+<dt>
+<a name="Errno"><em>Errno::EXXX</em></a></dt>
+<dd>每个 Errno 错误都有其对应的异常类，每个类的名称与含义请参看 <a href="sm_errno.html">Errno</a> 模块。</dd></dl></dd>
+<dt>
+<a name="SystemStackError"><em>SystemStackError</em></a></dt>
+<dd>当堆栈深度过深时抛出此异常。</dd>
+<dt>
+<a name="TypeError"><em>TypeError</em></a></dt>
+<dd>使用错误的类型时抛出此异常。</dd>
+<dt>
+<a name="ZeroDivisionError"><em>ZeroDivisionError</em></a></dt>
+<dd>当除数为 0 时抛出此异常。</dd></dl></dd>
+<dt>
+<a name="SystemExit"><em>SystemExit</em></a></dt>
+<dd>强行结束程序，详情请参看 <a href="s_functions.html#L000363">exit</a>。</dd>
+<dt>
+<a name="fatal"><em>fatal</em></a></dt>
+<dd>致命（内部）错误。该对象无法使用一般方法察看。</dd></dl></dd></dl>
+<h6></h6>
+</body>
+</html>

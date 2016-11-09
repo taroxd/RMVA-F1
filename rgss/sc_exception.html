@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>Exception</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>Exception</h1>
+<p>所有异常的超类。</p>
+<p>关于所有的子类信息，请参看 <a href="s_exceptions.html">内建异常类</a> 。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Exception.new([<var>error_message</var>])</dt>
+<dd>
+<p>生成并返回一个新的异常对象。可以提供一个作为错误信息的字符串作为参数。该信息就是 <a href="#L000732">message</a>
+  属性（参看下方）的值，并由默认的异常处理器显示出来。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>exception([<var>error_message</var>])</dt>
+<dd>
+<p>未指定参数时返回 <var>self</var>
+  。否则就会生成及返回一个自身的副本，并使用参数中指定的错误信息作为 <a href="#L000732">message</a>
+  <var>error_message</var>。</p>
+<p><a href="s_functions.html#L000388">raise</a> 方法实际上调用的就是exception对象。</p></dd>
+<dt>backtrace</dt>
+<dd>
+<p>返回关于错误追踪结果的信息。</p>
+<ul>
+<li><p>"#{sourcefile}:#{sourceline}:in `#{method}'"</p>
+<p>(方法内)</p></li>
+<li><p>"#{sourcefile}:#{sourceline}"</p>
+<p>(最上一层代码内)</p></li>
+<li><p>备注：sourcefile为源文件，sourceline为源行，method则是方法</p></li></ul>
+<p>返回值的形式为一个 <a href="sc_string.html">String</a> 数组。</p></dd>
+<dt>
+<a name="L000732">message</a></dt>
+<dd>
+<p>返回错误讯息字符串。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>改造标题画面</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>改造标题画面</h1>
+<ul>
+<li><a href="#opacity">窗口透明化</a></li>
+<li><a href="#command">更改指令</a></li>
+<li><a href="#font">更改字体</a></li>
+<li><a href="#align">更改对齐方式</a></li>
+<li><a href="#afterword">结语</a></li></ul>
+<p>在最后，我们来简单地自定义窗口的呈现方式，让本阶段的学习告个尾声吧。</p>
+<p>笔者这次要示范的是，将在标题画面中显示[开始游戏]等指令的窗口进行改造。如果有人用自己的图片设计标题画面，通过更改指令窗口的显示方式，画面的呈现就能更具有原创性。</p>
+<h2><a name="opacity">窗口透明化</a></h2>
+<p>从 Window_TitleCommand 这个类改造起吧。第一步是重新定义 initialize。</p>
+<pre>
+class Window_TitleCommand
+  alias xxx001_initialize initialize
+  def initialize
+    xxx001_initialize
+    self.opacity = 0
+  end
+end
+</pre>
+<p>进行游戏测试之后，应该会马上发现变化之处。opacity 是在 RGSS 内建的 <a href="../rgss/gc_window.html">Window</a> 中定义的属性，表示不透明度。将这个值设为零的话，应该就看不见窗口了。</p>
+<p>此外，窗口内的东西（例如光标或是[开始游戏]等字符串）不会受到 opacity 的影响。</p>
+<h2><a name="command">更改指令</a></h2>
+<p>因为我们要利用较具设计性的欧语字体，所以将指令名称更改为英文。将 make_command_list 以下面的方式重新定义 。</p>
+<pre>
+class Window_TitleCommand
+  def make_command_list
+    add_command("New Game", :new_game)
+    add_command("Continue", :continue, continue_enabled)
+    add_command("Shutdown", :shutdown)
+  end
+end
+</pre>
+<p>我们这次不调用原本的 make_command_list，而是覆写掉它。这种重新定义的作法在不想要继承原本的处理时是比较有效率的方法，不过因为和其他插件脚本冲突的可能性会变高，所以使用时务必多留意。</p>
+<p>add_command 的第三个参数是用来指定该项指令是否处于有效的状态。省略不写的话会视为 true。</p>
+<pre>
+    add_command("Continue", :continue, continue_enabled)
+</pre>
+<p>在这行中，如果[继续游戏]是有效的，代表 continue_enabled 这个方法返回的是 true，反之则是 false ────实际到游戏上的时候，存在存档时会返回 true。</p>
+<h2><a name="font">更改字体</a></h2>
+<p>为了更改字体，我们重新定义 create_contents 方法。create_contents 是实际产生出以窗口为呈现方式的位图 contents 这个对象，并对其设置的方法。</p>
+<pre>
+class Window_TitleCommand
+  alias xxx001_create_contents create_contents
+  def create_contents
+    xxx001_create_contents
+    contents.font.name = "Times New Roman"
+    contents.font.bold = true
+    contents.font.size = 28
+  end
+end
+</pre>
+<p>结束调用原本的 create_contents 之后的下一步，contents 指的是 Bitmap 的对象，因此只要和在<a href="301_timer.html">改造计时器</a>的时候用一样的诀窍更改属性就 OK 了。在这里将文字的使用指定为字体 "Times New Roman"
+、粗体字、大小为 28 pt。详情请参考 <a href="../rgss/gc_window.html">Window</a>、<a href="../rgss/gc_bitmap.html">Bitmap</a>、<a href="../rgss/gc_font.html">Font</a>。</p>
+<h2><a name="align">更改对齐方式</a></h2>
+<p>在呈现字符串的时候，字要从左边、中间还是右边为基准线对齐就叫作对齐方式。对应的是 <a href="../rgss/gc_bitmap.html">Bitmap</a> 中 draw_text 方法的最后一个参数。Window_Command 这个类通常是左对齐，不过通过重新定义 alignment 这个方法就能够轻松更改。</p>
+<pre>
+class Window_TitleCommand
+  def alignment
+    return 1
+  end
+end
+</pre>
+<p>像这样，返回 1 的话就是用中间对齐的方式呈现。返回 0 的话就和预设一样是左对齐，2的话就是右对齐。</p>
+<h2><a name="afterword">结语</a></h2>
+<p>「脚本入门」在这里告一段落，辛苦各位了。</p>
+<p>在实践篇中，笔者通过对简单的脚本改造，解说了插件脚本的制作是用什么样的流程进行的。只要和基础篇以及解读篇学习到的知识融会贯通的话，在这里没有解说到的部分，也应该能够解读和改造了。<a href="../rgss/index.html">RGSS 参考</a>也请务必有效活用。万一找不到方法或类的说明，就用用看帮助区的搜索功能吧。</p>
+<p>只要熟习 RGSS 的话，大致上的目标都可以实现，不过如果突然间就立下「自制战斗系统」这种很高的目标的话，会很容易受到挫折。建议大家从自己比较可能学会的项目开始磨练技术。此外尝试解读看看网络上公开的插件脚本，应该也会有很大的帮助吧。</p>
+<h6></h6>
+</body>
+</html>

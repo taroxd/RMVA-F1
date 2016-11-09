@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>变量与常量</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>变量与常量</h1>
+<ul>
+<li><a href="#L000225">局部变量</a></li>
+<li><a href="#L000226">实例变量</a></li>
+<li><a href="#L000227">类变量</a></li>
+<li><a href="#L000228">全局变量</a></li>
+<li><a href="#L000229">伪变量</a></li>
+<li><a href="#L000236">常量</a></li></ul>
+<p>在 Ruby 之中，变量的类型——局部变量、实例实例变量、类变量、全局变量、常量——是以名称的第一个字符来决定的。通常变量名称，除了第一个字符以外，都是由英数字符或下划线所组成。不过有些内建变量是由「'$' + 一个字符」所组成的。（参考 <a href="s_variables.html">内建变量</a>）</p>
+<p>变量或常量会指向特定对象，将对象赋值给变量/常量只是变更了变量指向的对象，因此并不会复制并生成新对象。</p>
+<h2><a name="L000225">局部变量</a></h2>
+<p>例：</p>
+<pre>foobar</pre>
+<p>以小写字母或是下划线开头的标识符就是局部变量或是方法调用。</p>
+<p>在局部变量作用域（类、模块、方法定义体）内，初次对这类的标识符赋值则视为该作用域内的变量声明。引用未声明的标识符则视为调用无参数的方法。</p>
+<h2><a name="L000226">实例变量</a></h2>
+<p>例：</p>
+<pre>@foobar</pre>
+<p>以 '@' 开头的变量就是实例变量，属于一个特定对象。实例变量可以在本类或子类方法内引用。引用时，未初始化的实例变量值为 nil。</p>
+<h2><a name="L000227">类变量</a></h2>
+<p>例：</p>
+<pre>
+class Foo
+  @@foo = 1
+  def bar
+    puts @@foo
+  end
+end
+</pre>
+<p>以 <code>@@</code> 开头的变量就是类变量。类变量在类定义中声明，可以由类的单例方法和实例方法等引用或赋值。</p>
+<p>类变量与 <a href="#L000236">常量</a> 的差异如下：</p>
+<ul>
+<li>可以重新赋值（常量会出现警告。）</li>
+<li>无法在本类以外直接引用，但可以在子类中引用/赋值。</li></ul>
+<h2><a name="L000228">全局变量</a></h2>
+<p>例：</p>
+<pre>$foobar</pre>
+<p>以 '$' 开头的变量就是全局变量，可以在程序中任何一处引用（因此使用时要特别注意）。全局变量不需要声明，引用时若未初始化其值为 nil。</p>
+<h2><a name="L000229">伪变量</a></h2>
+<p>除了一般变量外，还有一种叫做伪变量的特殊变量。</p>
+<dl>
+<dt>self</dt>
+<dd>
+<p>当前方法的执行主体。</p></dd>
+<dt>
+nil</dt>
+<dd>
+<p><a href="sc_nilclass.html">NilClass</a> 类唯一的实例。表示伪。</p></dd>
+<dt>true</dt>
+<dd>
+<p><a href="sc_trueclass.html">TrueClass</a> 类唯一的实例。表示真。</p></dd>
+<dt>
+false</dt>
+<dd>
+<p><a href="sc_falseclass.html">FalseClass</a>
+类唯一的实例。表示伪。</p></dd></dl>
+<p>伪变量的值无法修改，对伪变量赋值会出现语法错误。</p>
+<h2><a name="L000236">常量</a></h2>
+<p>例：</p>
+<pre>FOOBAR</pre>
+<p>以大写英文字母开头的标识符为常量。对常量赋值就是定义（与初始化）。常量不可在方法中定义。存取未定义常量会产生 <a href="s_exceptions.html#NameError">NameError</a> 异常。</p>
+<p>常量可以在定义常量的类/模块、子类、包含模块的类/模块中引用。在外部引用常量需要使用运算符 '::' 。</p>
+<pre>
+class Foo
+  FOO = 'FOO'
+end
+class Bar &lt; Foo
+  p FOO             # =&gt; "FOO"
+end
+p Foo::FOO          # =&gt; "FOO"
+</pre>
+<p>类和模块的名称视为常量处理。</p>
+<h6></h6>
+</body>
+</html>

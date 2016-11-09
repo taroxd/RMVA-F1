@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Font</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Font</h1>
+<p>字体的类。字体是 <a href="gc_bitmap.html">Bitmap</a> 类的属性。</p>
+<p>如果游戏根目录下存在“Fonts”文件夹，那么就算系统中没有安装相应字体，游戏中依然可以使用该文件夹中存在的字体。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Font.new([<var>name</var>[, <var>size</var>]])</dt>
+<dd>
+<p>生成字体对象。</p></dd>
+<dt>Font.exist?(<var>name</var>)</dt>
+<dd>
+<p>若系统中存在指定的字体则返回 true。</p></dd></dl>
+<h2>属性</h2>
+<dl>
+<dt>name</dt>
+<dd>
+<p>字体的名称。默认值是 "nsimsun" <span class="rgss3">(RGSS3)</span>。如果设置为字符串数组，可以依照喜欢的顺序指定多个字体。</p>
+<pre>font.name = ["微软雅黑", "黑体"]</pre>
+<p>在这个例子中，若系统中不存在优先度高的 "微软雅黑"，则会使用第二选择 "黑体"。</p></dd>
+<dt>size</dt>
+<dd>
+<p>字体大小，默认为 24 <span class="rgss3">(RGSS3)</span>。</p></dd>
+<dt>bold</dt>
+<dd>
+<p>粗体标记。默认为 false。</p></dd>
+<dt>italic</dt>
+<dd>
+<p>斜体标记。默认为 false。</p></dd>
+<dt>outline <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>文字轮廓标记，默认为 true。</p></dd>
+<dt>shadow</dt>
+<dd>
+<p>文字阴影标记。默认为 false <span class="rgss3">(RGSS3)</span>。启用时会在文字的右下方描绘黑色阴影。 </p></dd>
+<dt>color</dt>
+<dd>
+<p>文字颜色（<a href="gc_color.html">Color</a>）。也可以调整 alpha 值。默认为 (255,255,255,255)。</p>
+<p>alpha 值也同时用来描绘文字轮廓 <span class="rgss3">(RGSS3) </span>和文字阴影。</p></dd>
+<dt>out_color <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>文字轮廓颜色（<a href="gc_color.html">Color</a>），默认值为 (0,0,0,128)。</p></dd></dl>
+<h2>类属性</h2>
+<dl>
+<dt>default_name</dt>
+<dt>default_size</dt>
+<dt>default_bold</dt>
+<dt>default_italic</dt>
+<dt>default_shadow</dt>
+<dt>default_outline <span class="rgss3">(RGSS3)</span></dt>
+<dt>default_color</dt>
+<dt>default_out_color <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>可以更改生成新的 Font 对象时各属性的默认值。</p>
+<pre>Font.default_name = "微软雅黑"
+Font.default_size = 22
+Font.default_bold = true
+</pre></dd></dl>
+<h6></h6>
+</body>
+</html>

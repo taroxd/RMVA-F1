@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>精灵管理</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>精灵管理</h1>
+<ul>
+<li><a href="#sprite">精灵</a></li>
+<li><a href="#spriteset">精灵组</a></li>
+<li><a href="#z">Z 坐标和显示端口</a></li>
+<li><a href="#map">Spriteset_Map</a></li>
+<li><a href="#battle">Spriteset_Battle</a></li></ul>
+<p>游戏对象并不具有任何用来将自己显示在画面上的方法。因此，将游戏对象的内容显示出来──以图形的方式显示到画面上的类是不可或缺的。</p>
+<h2><a name="sprite">精灵</a></h2>
+<p>在脚本编辑器左方的脚本页列表里，有关 Game_Xxxx 部分的作用已经解释过了。接下来要解释的是叫做 Sprite_Xxxx 的部分。类的名称就是这些脚本页的名称。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>类</th>
+ <th>内容</th>
+ <th>超类</th>
+</tr>
+<tr>
+ <td>Sprite_Base</td>
+ <td>显示动画的精灵</td>
+ <td><a href="../rgss/gc_sprite.html">Sprite</a></td>
+</tr>
+<tr>
+ <td>Sprite_Character</td>
+ <td>显示人物的精灵</td>
+ <td>Sprite_Base</td>
+</tr>
+<tr>
+ <td>Sprite_Battler</td>
+ <td>显示战斗者的精灵</td>
+ <td>Sprite_Base</td>
+</tr>
+<tr>
+ <td>Sprite_Picture</td>
+ <td>显示图片的精灵</td>
+ <td><a href="../rgss/gc_sprite.html">Sprite</a></td>
+</tr>
+<tr>
+ <td>Sprite_Timer</td>
+ <td>显示计时器的精灵</td>
+ <td><a href="../rgss/gc_sprite.html">Sprite</a></td>
+</tr>
+</table>
+<p>这些类继承了在基础篇中学过的<a href="../rgss/gc_sprite.html">Sprite</a> 类，拥有让各图片的精灵实际显示出来的功能。</p>
+<p>各精灵类的实例会实时监控对应的游戏对象，当对象的状态发生改变时，会自动反映到屏幕上。举例来说，Sprite_Character 是用来显示角色的精灵，所以会随时监控继承了 Game_Character 的实例。当角色在地图上有任何动作，这个行动会反映在精灵上。实际上这个「反映」，是 update 方法调用时执行的处理。而调用这个方法的就是下面要解释的<strong>精灵组</strong>。</p>
+<h2><a name="spriteset">精灵组</a></h2>
+<p>精灵组有以下三个类。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>类</th>
+ <th>内容</th>
+</tr>
+<tr>
+ <td>Spriteset_Weather</td>
+ <td>天气效果</td>
+</tr>
+<tr>
+ <td>Spriteset_Map</td>
+ <td>显示地图画面</td>
+</tr>
+<tr>
+ <td>Spriteset_Battle</td>
+ <td>显示战斗画面</td>
+</tr>
+</table>
+<p>其中，Spriteset_Weather 类只在 Spriteset_Map 的内部使用。</p>
+<p>Spriteset_Map 类和 Spriteset_Battle 类，分别统一管理着构成这两个画面的几乎所有图片（不包含窗口）。上一节所解说到的精灵类不必说，它们还将地图本身、远景以及所有的图片对象集合起来，再来只要调用名为 update 的方法，所有图片就能根据游戏的情况进行更新。</p>
+<p>调用精灵组的 update 方法的正是下面将解释的<strong>场景类</strong>。</p>
+<h2><a name="z">Z 坐标和显示端口</a></h2>
+<p>除了用来表示要显示在画面上哪个位置的 X 坐标和 Y 坐标以外，每个精灵还拥有一个 Z 坐标，表示自己和其他的精灵要用怎样的顺序叠在一起的值。原则上，Z 坐标越大越显示在屏幕前方，如果 Z 坐标相同的话，则 Y 坐标越大显示的越前面，如果 Y 坐标也一样的话，那就是越新生成出来的对象越前面。</p>
+<p>另外、在精灵组中还使用了叫做<strong>显示端口</strong>的概念。显示端口属于<a href="../rgss/gc_viewport.html">Viewport</a>类的对象，他的功能是当做精灵的「容器」。</p>
+<p>当精灵与显示端口连接后，它的 Z 坐标就变成了一种表示显示端口内部优先顺序的东西。由于这两者为继承关系，不论精灵的 Z 坐标多大，相对于更上层的显示端口中的精灵，前者不会显示在后者的前方。</p>
+<h2><a name="map">Spriteset_Map</a></h2>
+<p>Spriteset_Map 整合了地图画面的图形，在这个类的对象中，包含了下面的显示端口和精灵。括号内的数字为 Z 坐标的值。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <td>@viewport3 (100)</td>
+ <td colspan="2">用来调节屏幕的亮度</td>
+</tr>
+<tr>
+ <td rowspan="3">@viewport2 (50)</td>
+ <td>@timer_sprite (200)</td>
+ <td>计时器</td>
+</tr>
+<tr>
+ <td>@picture_sprites (1..100)</td>
+ <td>图片</td>
+</tr>
+<tr>
+ <td>@weather (0)</td>
+ <td>天气</td>
+</tr>
+<tr>
+ <td rowspan="4">@viewport1 (0)</td>
+ <td>@shadow_sprite (180)</td>
+ <td>飞艇的影子</td>
+</tr>
+<tr>
+ <td>@character_sprites (0..200)</td>
+ <td>人物</td>
+</tr>
+<tr>
+ <td>@tilemap (0..200)</td>
+ <td>地图</td>
+</tr>
+<tr>
+ <td>@parallax (-100)</td>
+ <td>远景</td>
+</tr>
+</table>
+<h2><a name="battle">Spriteset_Battle</a></h2>
+<p>Spriteset_Battle 整合了战斗画面的图形，在这个类的对象中，包含了下面的显示端口和精灵。括号内的数字为 Z 坐标的值。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <td>@viewport3 (100)</td>
+ <td colspan="2">用来调节屏幕的亮度</td>
+</tr>
+<tr>
+ <td rowspan="2">@viewport2 (50)</td>
+ <td>@timer_sprite (200)</td>
+ <td>计时器</td>
+</tr>
+<tr>
+ <td>@picture_sprites (1..100)</td>
+ <td>图片</td>
+</tr>
+<tr>
+ <td rowspan="3">@viewport1 (0)</td>
+ <td>@enemy_sprites (100)</td>
+ <td>敌人</td>
+</tr>
+<tr>
+ <td>@back2_sprite (1)</td>
+ <td>战斗背景 (墙壁)</td>
+</tr>
+<tr>
+ <td>@back1_sprite (0)</td>
+ <td>战斗背景 (地面)</td>
+</tr>
+</table>
+<h6></h6>
+</body>
+</html>

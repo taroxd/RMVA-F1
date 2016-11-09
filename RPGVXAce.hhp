@@ -1,0 +1,21 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=RPGVXAce.chm
+Contents file=RPGVXAce.hhc
+Default Font=微软雅黑,8,0
+Default Window=RPGVXAce
+Default topic=rpgvxace\index.html
+Display compile progress=No
+Index file=RPGVXAce.hhk
+Language=0x804 中文(简体，中国)
+Title=RPG Maker VX Ace
+
+[WINDOWS]
+RPGVXAce=,"RPGVXAce.hhc","RPGVXAce.hhk","rpgvxace\index.html",,,,,,0x2120,,0x300e,,,,,,,,0
+
+
+[FILES]
+img/back.png
+
+[INFOTYPES]
+

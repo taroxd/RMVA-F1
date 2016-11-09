@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::UsableItem</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RPG::UsableItem</h1>
+<p>技能和物品的超类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="gc_rpg_baseitem.html">RPG::BaseItem</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>scope</dt>
+<dd>
+<p>效果范围。</p>
+<ul>
+<li>0: 无</li>
+<li>1: 单个敌人</li>
+<li>2: 全体敌人</li>
+<li>3: 一个随机敌人</li>
+<li>4: 两个随机敌人</li>
+<li>5: 三个随机敌人</li>
+<li>6: 四个随机敌人</li>
+<li>7: 单个队友</li>
+<li>8: 全体队友</li>
+<li>9: 单个队友（战斗不能）</li>
+<li>10: 全体队友（战斗不能）</li>
+<li>11: 使用者</li></ul></dd>
+<dt>occasion</dt>
+<dd>
+<p>使用场合。</p>
+<ul>
+<li>0: 随时可用</li>
+<li>1: 仅战斗中</li>
+<li>2: 仅菜单中</li>
+<li>3: 不能使用</li></ul></dd>
+<dt>speed</dt>
+<dd>
+<p>速度修正。</p></dd>
+<dt>success_rate</dt>
+<dd>
+<p>成功几率。</p></dd>
+<dt>repeats</dt>
+<dd>
+<p>连续次数。</p></dd>
+<dt>tp_gain</dt>
+<dd>
+<p>获取特技值。</p></dd>
+<dt>hit_type</dt>
+<dd>
+<p>命中类型。</p>
+<ul>
+<li>0: 必定命中</li>
+<li>1: 物理攻击</li>
+<li>2: 魔法攻击</li></ul></dd>
+<dt>animation_id</dt>
+<dd>
+<p>释放动画编号。</p></dd>
+<dt>damage</dt>
+<dd>
+<p>伤害（<a href="gc_rpg_usableitem_damage.html">RPG::UsableItem::Damage</a>）。</p></dd>
+<dt>effects</dt>
+<dd>
+<p>使用效果列表。<a href="gc_rpg_usableitem_effect.html">RPG::UsableItem::Effect</a> 的数组。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>for_opponent?</dt>
+<dd>
+<p>判断效果范围是否为敌方。当 scope 的值为 1、2、3、4、5、6 时返回 true。</p></dd>
+<dt>for_friend?</dt>
+<dd>
+<p>判断效果范围是否为队友。当 scope 的值为 7、8、9、10、11 时返回 true。</p></dd>
+<dt>for_dead_friend?</dt>
+<dd>
+<p>判断效果范围是否为无法战斗的队友。当 scope 的值为 9、10 时返回 true。</p></dd>
+<dt>for_user?</dt>
+<dd>
+<p>判断效果范围是否为使用者。当 scope 的值为 11 时返回 true。</p></dd>
+<dt>for_one?</dt>
+<dd>
+<p>判断效果范围是否为单体。当 scope 的值为 1、3、7、9、11 时返回 true。</p></dd>
+<dt>for_random?</dt>
+<dd>
+<p>判断效果范围是否随机，当 scope 的值为 3、4、5、6 时返回 true。</p></dd>
+<dt>number_of_targets</dt>
+<dd>
+<p>效果范围为随机时目标的数量。</p></dd>
+<dt>for_all?</dt>
+<dd>
+<p>判断效果范围是否为全体。当 scope 的值为 2、8、10 时返回 true。</p></dd>
+<dt>need_selection?</dt>
+<dd>
+<p>判断是否需要选择技能目标。当 scope 的值为 1、7、9 时返回 true。</p></dd>
+<dt>battle_ok?</dt>
+<dd>
+<p>判断物品是否可以在战斗中使用。当 occasion 的值为 0、1 时返回 true。</p></dd>
+<dt>menu_ok?</dt>
+<dd>
+<p>判断物品是否可以在菜单中使用。当 occasion 的值为 0、2 时返回 true。</p></dd>
+<dt>certain?</dt>
+<dd>
+<p>判断命中类型是否为必定命中。当 hit_type 的值为 0 时返回 true。</p></dd>
+<dt>physical?</dt>
+<dd>
+<p>判断命中类型是否为物理攻击。当 hit_type 的值为 1 时返回 true。</p></dd>
+<dt>magical?</dt>
+<dd>
+<p>判断命中类型是否为魔法攻击。当 hit_type 的值为 2 时返回 true。</p></dd></dl>
+<h2>内部类</h2>
+<ul>
+<li><a href="gc_rpg_usableitem_damage.html">RPG::UsableItem::Damage</a></li>
+<li><a href="gc_rpg_usableitem_effect.html">RPG::UsableItem::Effect</a></li></ul>
+<h2>定义</h2>
+<pre>class RPG::UsableItem &lt; RPG::BaseItem
+  def initialize
+    super
+    @scope = 0
+    @occasion = 0
+    @speed = 0
+    @success_rate = 100
+    @repeats = 1
+    @tp_gain = 0
+    @hit_type = 0
+    @animation_id = 0
+    @damage = RPG::UsableItem::Damage.new
+    @effects = []
+  end
+  def for_opponent?
+    [1, 2, 3, 4, 5, 6].include?(@scope)
+  end
+  def for_friend?
+    [7, 8, 9, 10, 11].include?(@scope)
+  end
+  def for_dead_friend?
+    [9, 10].include?(@scope)
+  end
+  def for_user?
+    @scope == 11
+  end
+  def for_one?
+    [1, 3, 7, 9, 11].include?(@scope)
+  end
+  def for_random?
+    [3, 4, 5, 6].include?(@scope)
+  end
+  def number_of_targets
+    for_random? ? @scope - 2 : 0
+  end
+  def for_all?
+    [2, 8, 10].include?(@scope)
+  end
+  def need_selection?
+    [1, 7, 9].include?(@scope)
+  end
+  def battle_ok?
+    [0, 1].include?(@occasion)
+  end
+  def menu_ok?
+    [0, 2].include?(@occasion)
+  end
+  def certain?
+    @hit_type == 0
+  end
+  def physical?
+    @hit_type == 1
+  end
+  def magical?
+    @hit_type == 2
+  end
+  attr_accessor :scope
+  attr_accessor :occasion
+  attr_accessor :speed
+  attr_accessor :animation_id
+  attr_accessor :success_rate
+  attr_accessor :repeats
+  attr_accessor :tp_gain
+  attr_accessor :hit_type
+  attr_accessor :damage
+  attr_accessor :effects
+end
+</pre>
+<h6></h6>
+</body>
+</html>

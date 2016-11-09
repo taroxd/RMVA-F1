@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Animation::Timing</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RPG::Animation::Timing</h1>
+<p>动画的[声效与闪烁效果]的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_animation.html">RPG::Animation</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>frame</dt>
+<dd>
+<p>帧编号，编辑器中显示的编号减 1。</p></dd>
+<dt>se</dt>
+<dd>
+<p>SE（<a href="gc_rpg_se.html">RPG::SE</a>）。</p></dd>
+<dt>flash_scope</dt>
+<dd>
+<p>闪烁范围（0：无、1：闪烁目标、2：闪烁画面、3：隐藏目标）。</p></dd>
+<dt>flash_color</dt>
+<dd>
+<p>闪烁颜色（<a href="gc_color.html">Color</a>）。</p></dd>
+<dt>flash_duration</dt>
+<dd>
+<p>闪烁持续时间。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::Animation::Timing
+  def initialize
+    @frame = 0
+    @se = RPG::SE.new('', 80)
+    @flash_scope = 0
+    @flash_color = Color.new(255,255,255,255)
+    @flash_duration = 5
+  end
+  attr_accessor :frame
+  attr_accessor :se
+  attr_accessor :flash_scope
+  attr_accessor :flash_color
+  attr_accessor :flash_duration
+end
+</pre>
+<h6></h6>
+</body>
+</html>

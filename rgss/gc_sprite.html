@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Sprite</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Sprite</h1>
+<p>精灵的类。精灵是为了在游戏画面上显示角色等图像的基本概念。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Sprite.new([<var>viewport</var>])</dt>
+<dd>
+<p>生成一个精灵对象。必要时指定一个显示端口（<a href="gc_viewport.html">Viewport</a>）。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>dispose</dt>
+<dd>
+<p>释放精灵。若是已释放则什么都不做。</p></dd>
+<dt>disposed?</dt>
+<dd>
+<p>当精灵已释放则返回 true。</p></dd>
+<dt>
+<a name="flash">flash(<var>color</var>, <var>duration</var>)</a></dt>
+<dd>
+<p>开始精灵闪烁。<var>duration</var> 是指定闪烁的帧数。</p>
+<p>若 <var>color</var> 设为 nil，闪烁时精灵会消失。</p></dd>
+<dt>update</dt>
+<dd>
+<p>更新精灵的闪烁或波的相位。原则上，此方法一帧调用一次。</p>
+<p>若是没有使用闪烁或波动效果，则无须调用此方法。</p></dd>
+<dt>width</dt>
+<dd>
+<p>获取精灵的宽度，相当于 src_rect.width。</p></dd>
+<dt>height</dt>
+<dd>
+<p>获取精灵的高度，相当于 src_rect.height。</p></dd></dl>
+<h2>属性</h2>
+<dl>
+<dt>bitmap</dt>
+<dd>
+<p>精灵传输元位图（<a href="gc_bitmap.html">Bitmap</a>）的引用。</p></dd>
+<dt>src_rect</dt>
+<dd>
+<p>从位图传输的矩形（<a href="gc_rect.html">Rect</a>）。</p></dd>
+<dt>viewport</dt>
+<dd>
+<p>与精灵关联的显示端口（<a href="gc_viewport.html">Viewport</a>）的引用。</p></dd>
+<dt>visible</dt>
+<dd>
+<p>精灵的可见状态，true 代表可见。默认为 true。</p></dd>
+<dt>
+<a name="x">x</a></dt>
+<dd>
+<p>精灵的 X 坐标。</p></dd>
+<dt>y</dt>
+<dd>
+<p>精灵的 Y 坐标。</p></dd>
+<dt>z</dt>
+<dd>
+<p>精灵的 Z 坐标。数值越大的显示在越前方。</p>
+<p>Z 坐标相同时，Y 坐标越大的显示在越前方。Y 坐标也相同时，越晚生成的对象显示在越前方。</p></dd>
+<dt>ox</dt>
+<dd>
+<p>精灵原点的 X 坐标。</p></dd>
+<dt>oy</dt>
+<dd>
+<p>精灵原点的 Y 坐标。</p></dd>
+<dt>zoom_x</dt>
+<dd>
+<p>精灵的横向放大率，1.0 代表原始大小。</p></dd>
+<dt>zoom_y</dt>
+<dd>
+<p>精灵的纵向放大率，1.0 代表原始大小。</p></dd>
+<dt>angle</dt>
+<dd>
+<p>精灵的旋转角度。以逆时针方向指定角度数。绘制旋转效果需要时间，所以请避免过量使用。</p></dd>
+<dt>wave_amp</dt>
+<dt>wave_length</dt>
+<dt>wave_speed</dt>
+<dt>wave_phase</dt>
+<dd>
+<p>波的振幅、周期、速度、相位。波动效果是根据正弦波函数，使每行产生横向的偏移，也就是像光栅一样的效果。</p>
+<p>wave_amp 是波的振幅、 wave_length 是波浪的周期，分别以像素数来指定。</p>
+<p>wave_speed 是波浪效果动画的速度，默认为 360，数值愈大速度愈快。</p>
+<p>wave_phase 使用角度制指定精灵最上面一行的相位。每次调用 update 方法会更新一次。一般情况下不需要使用此属性，除非需要同步两个精灵的波动效果。</p></dd>
+<dt>mirror</dt>
+<dd>
+<p>精灵是否左右翻转。设为 true 时会左右反转绘制。默认为 false。</p></dd>
+<dt>bush_depth</dt>
+<dt>bush_opacity</dt>
+<dd>
+<p>精灵在草木繁茂处的深度和不透明度。可以用来表示角色的脚隐藏在草丛中等等的效果。</p>
+<p>bush_depth 指定草木繁茂处的像素数。默认为 0。</p>
+<p>bush_opacity 指定草木繁茂处的不透明度，范围是 0～255。超出范围的数值会自动修正。默认为 128。</p></dd>
+<dd>
+<p>bush_opacity 的值会与 opacity 相乘。举例来说，opacity 和 bush_opacity 都设为 128，就会视为半透明再加上半透明，实际的不透明度为 64。</p></dd>
+<dt>opacity</dt>
+<dd>
+<p>精灵的不透明度，范围是 0~255。超出范围的数值会自动修正。</p></dd>
+<dt>blend_type</dt>
+<dd>
+<p>精灵的合成方式（0：正常、1：加法、2：减法）。</p></dd>
+<dt>color</dt>
+<dd>
+<p>与精灵合成的颜色（<a href="gc_color.html">Color</a>）。色彩的 alpha 值作为合成的比例。</p>
+<p>此颜色与 <a href="#flash">flash</a> 的颜色分开处理。然而，alpha 值较高的颜色会优先合成。</p></dd>
+<dt>tone</dt>
+<dd>
+<p>精灵的色调（<a href="gc_tone.html">Tone</a>）。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

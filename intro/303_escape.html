@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>制作逃脱物品</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>制作逃脱物品</h1>
+<ul>
+<li><a href="#data">制作物品数据</a></li>
+<li><a href="#use">使用物品的处理</a></li>
+<li><a href="#scene">场景的转移</a></li>
+<li><a href="#transfer">场所移动</a></li>
+<li><a href="#disable">物品的无效化</a></li></ul>
+<p>在这部分，笔者将会解说从菜单画面使用物品或技能时，进行该技能或物品的专属处理的方法。</p>
+<p>我们这次以制作从迷宫内部瞬间移动到入口的物品为范例。</p>
+<h2><a name="data">制作物品数据</a></h2>
+<p>在制作脚本之前，先打开数据库设置逃脱物品。请在适当的地方增加一个新的项目。</p>
+<p>把该物品的效果范围设为[无]，使用场合设为[仅菜单中]，然后在备注栏输入
+&lt;ESCAPE&gt; (包括 &lt;&gt;) 。</p>
+<p>要设置物品或技能的专属效果时，利用[备注]这个设置项目很方便，因为系统可以透过备注中是否含有特定的关键字进行判定，比起通过物品名称或 ID 来判断更具泛用性。本次的系统在物品含有 &lt;ESCAPE&gt; 这个关键词时，就会将之认定为逃脱物品。</p>
+<p>数据库的设置结束之后，请制作一个含有[增减物品]指令的事件，让自己能够马上在测试游戏中使用它。</p>
+<h2><a name="use">使用物品的处理</a></h2>
+<p>从菜单画面使用技能或物品时，进行处理的是 Scene_ItemBase 类的 use_item 方法（虽然叫作 item，但也包含技能的处理）。像下面一样重新定义该方法，迈出第一步吧。</p>
+<pre>
+class Scene_ItemBase
+  alias xxx001_use_item use_item
+  def use_item
+    xxx001_use_item
+    use_escape_item if item.note.include?("&lt;ESCAPE&gt;")
+  end
+  def use_escape_item
+    print "逃脱！\n"
+  end
+end
+</pre>
+<p>在这几行中，追加了这样的处理：如果使用的物品的[备注]中含有 &lt;ESCAPE&gt; 这个字符串的话，会调用 use_escape_item 方法。</p>
+<pre>
+    use_escape_item if item.note.include?("&lt;ESCAPE&gt;")
+</pre>
+<p>所谓的 item，指的是返回所使用的物品对象，也就是
+<a href="../rgss/gc_rpg_item.html">RPG::Item</a> 或是
+<a href="../rgss/gc_rpg_skill.html">RPG::Skill</a> 类的实例的方法（item 方法并不是在 Scene_ItemBase 类里定义的，而是在继承这个类的 Scene_Item 以及 Scene_Skill 这两者中定义）。note 则是对应[备注]的字符串。至于字串类
+<a href="../rgss/sc_string.html">String</a> 中的 include? 方法，则是判定字符串是否包含特定的字符串部分。</p>
+<p>而 use_escape_item 中的内容则是将「逃脱!」字符串输出到控制台──先用这个替代实际处理。</p>
+<pre>
+  def use_escape_item
+    print "逃脱！\n"
+  end
+</pre>
+<p>实际进行测试，使用刚才制作的逃脱物品，确定方法有没有被正常调用，有的话就进到下一步吧。</p>
+<h2><a name="scene">场景的转移</a></h2>
+<p>请将 use_escape_item 按照下面的方式改写。使用物品之后，就能够自动回到地图画面。在前一章我们使用过 call 这个方法，不过在不需要回到前一个画面时，就直接用 goto 方法。</p>
+<pre>
+  def use_escape_item
+    SceneManager.goto(Scene_Map)
+  end
+</pre>
+<p>Scene_Map 正如其名，是对应地图画面的场景类。因为像这样调用了 SceneManager 模块的 goto 方法，在使用物品后就能够自动回到地图画面。</p>
+<h2><a name="transfer">场所移动</a></h2>
+<p>在对应主角人物的 Game_Player 这个类中有能够保存传送的目的地的 reserve_transfer 方法。</p>
+<pre>
+  def use_escape_item
+    $game_player.reserve_transfer(1, 10, 8)
+    SceneManager.goto(Scene_Map)
+  end
+</pre>
+<p>参数依序是地图 ID、X 坐标和 Y 坐标。上面的例子表示往地图 ID = 1，x 座标 = 10，y 座标 = 8 的地点传送。请像这样先指定出适合的地点，实验看看是否能够正常传送。</p>
+<p>确保了场所移动的动作之后，将代码改变为由游戏内的变量决定目的地。</p>
+<pre>
+  def use_escape_item
+    m = $game_variables[21]
+    x = $game_variables[22]
+    y = $game_variables[23]
+    $game_player.reserve_transfer(m, x, y)
+    SceneManager.goto(Scene_Map)
+  end
+</pre>
+<p>在这例子中笔者使用了变量 21 ~ 23 当作场所移动的参数。当然使用的变量编号不是这三个也无妨。</p>
+<h2><a name="disable">物品的无效化</a></h2>
+<p>逃脱物品在迷宫以外的地方不能使用，这样的想法很自然吧。所以更改一下物品可以使用的判定条件，当存放地图 ID 的 21 号变量为 0 的时候，就设为无法选用。</p>
+<pre>
+class Game_BattlerBase
+  alias xxx001_usable_item_conditions_met? usable_item_conditions_met?
+  def usable_item_conditions_met?(item)
+    if item.note.include?("&lt;ESCAPE&gt;") &amp;&amp; $game_variables[21] == 0
+      false
+    else
+      xxx001_usable_item_conditions_met?(item)
+    end
+  end
+end
+</pre>
+<p>判定物品或技能是否可以使用，主要是由 Game_BattlerBase 类所负责。在这里我们重新定义了 usable_item_conditions_met? 这个方法。就像脚本内的注释所写的一样，这个方法是用来确认技能或物品可以使用的共通条件。返回 true 的话代表可以使用，false 的话则代表不能。</p>
+<p>如果想要掌握是否可以使用的判定，只要从 usable? 方法开始追溯并尝试解读看看就好咯。</p>
+<h6></h6>
+</body>
+</html>

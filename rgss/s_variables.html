@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>内建变量</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>内建变量</h1>
+<p>内建变量是全局变量的一种，但是其中的值并非只限于全局使用。</p>
+<p>下面是以作用范围不同区分的一些内建变量例子：</p>
+<h2>区域范围</h2>
+<dl>
+<dt>
+<a name="L000428">$~</a></dt>
+<dd>
+<p>在当前的作用域之内，上一次所匹配成功的信息（<a href="sc_matchdata.html">MatchData</a>）。设置此变量会改变 $&amp;、$1 ... $9 等变量的值。</p>
+<p>相当于 <a href="sc_regexp.html#L001314">Regexp.last_match</a> 。</p></dd>
+<dt>
+<a name="L000427">$&amp;</a></dt>
+<dd>
+<p>在当前的作用域之内，上一次所匹配成功的字符串，若匹配失败，此变量之值则为 nil 。</p>
+<p>相当于 <a href="sc_regexp.html#L001314">Regexp.last_match</a>[0]</p></dd>
+<dt>
+<a name="L000432">$1</a></dt>
+<dt>
+<a name="L000433">$2</a></dt>
+<dt>$3 ...</dt>
+<dd>
+<p>分别对应上次匹配成功时第 n 个括号匹配的值，若没有对应括号则为 nil 。</p>
+<p>相当于 <a href="sc_regexp.html#L001314">Regexp.last_match</a>[1], <a href="sc_regexp.html#L001314">Regexp.last_match</a>[2], ...</p></dd></dl>
+<h2>全局范围</h2>
+<dl>
+<dt>
+<a name="L000437">$!</a></dt>
+<dd>
+<p>最近抛出的异常的信息。由 <a href="s_functions.html#L000388">raise</a> 进行设置。</p></dd>
+<dt>
+<a name="L000462">$DEBUG</a></dt>
+<dd>
+<p>调试模式的标志。</p>
+<h6></h6>
+</body>
+</html>

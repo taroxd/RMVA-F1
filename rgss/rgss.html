@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RGSS 规格</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RGSS 规格</h1>
+<ul>
+<li><a href="#whats_new">RGSS3 的新功能</a></li>
+<li><a href="#game_run">开始游戏</a></li>
+<li><a href="#game_ini">Game.ini</a></li>
+<li><a href="#rgss_rtp">RGSS-RTP</a>
+<ul>
+<li><a href="#rgss_rtp_install">安装数据</a></li></ul></li>
+<li><a href="#encryption_archive">加密档案</a></li>
+<li><a href="#others">其他</a>
+<ul>
+<li><a href="#ext_lib">扩展库</a></li>
+<li><a href="#character_code">字符集</a></li>
+<li><a href="#property">属性</a></li></ul></li></ul>
+<h2>
+<a name="whats_new">RGSS3 的新功能</a><span class="rgss3">(RGSS3)</span>
+</h2>
+<p>RGSS3 是内置于 RPG Maker VX Ace 的一套脚本系统， 和 RMVX 中的 RGSS2
+比起来有一些的不同之处，主要的变化如下：</p>
+<ul>
+<li>程序建立在 Ruby 1.9.2 的基础之上。Ruby 1.9 有了很多方面的改良，其中包括运行效率的提高。</li>
+<li>已经集成了日文和英文的 DLL 支持库。系统会自动判断 Windows 是否为日语环境，在非日语环境下以英语提示信息。</li>
+<li>对加密档案的算法做出了改进，有效地改善了大型游戏启动时间漫长的弊病。</li>
+<li>可以控制 F12 按键返回的位置。使用 <a href="g_functions.html#rgss_main">rgss_main</a> 函数。</li>
+<li><a href="gc_window.html">Window</a> 类可以调整窗口边框和内容之间的空隙了。</li>
+<li><a href="gc_font.html">Font</a> 类中默认支持了带边缘文字的描绘。</li>
+<li>允许通过编辑器选项选择是否在测试游戏时开启调试控制台。</li>
+<li>p 函数可以输出为对话框的功能已经被废除，取而代之的是 <a href="g_functions.html#msgbox">msgbox</a> 和 <a href="g_functions.html#msgbox_p">msgbox_p</a> 两个函数。</li>
+<li>支持了 Ogg Theora 影像的播放。使用 <a href="gm_graphics.html#play_movie">Graphics.play_movie</a> 方法。</li>
+<li><a href="gm_audio.html">Audio</a> 模块支持了 ogg 格式以及 wav 格式的音频文件从中间开始播放。</li>
+<li><a href="gm_input.html">Input</a> 模块允许使用符号来指定按钮名称，使记法比以前更加简洁，比如 Input.trigger?(:C)。</li>
+<li>发生 Syntax Error 的时候，将会在对话框中显示详细信息。</li></ul>
+<p>除此之外，还有一些小变化留待用户自行探索。</p>
+<p>在本文中，所有在 RGSS3 中重新定义的部分都会用此符号进行标注： <span class="rgss3">(RGSS3)</span></p>
+<h2>开始游戏</h2>
+<img class="float_r" alt="game folder" src="img/folder.png">
+<p>一般而言，当你双击 Game.exe（不显示扩展名时为 Game） 文件的时候，RGSS 就会开始执行。而存储该文件的文件夹，通常就被称为「游戏目录」。</p>
+<p>正在编辑中的游戏可以通过在菜单中选择[运行]，或者在数据库[敌群]中选择[战斗测试]。此时全局变量 $TEST
+的值将会被设置为 true。如果你选择了战斗测试，变量 $BTEST 的值也会被设置为 true。</p>
+<p>游戏其他的一些设置则存储于 <a href="#game_ini">Game.ini</a> 这个配置文件当中。</p>
+<h2><a name="game_ini">Game.ini</a></h2>
+<p>Game.ini 是由编辑器自动创建并更新的，但是它也可以由记事本以及其他文本编辑器直接编辑。</p>
+<p>范例：</p>
+<pre>[Game]
+RTP=RPGVXAce
+Library=System\RGSS300.dll
+Scripts=Data\Scripts.rvdata2
+Title=RubyQuest
+</pre>
+<dl>
+<dt>RTP</dt>
+<dd>
+<p>这是在这个游戏中使用的 <a href="#rgss_rtp">RGSS-RTP</a> 名称，通常是
+"RPGVXAce"。</p>
+<p>如果这个RTP模组没有被安装，那么游戏程序就会报错。</p></dd>
+<dt>Library</dt>
+<dd>
+<p>RGSS 所使用的 DLL 名称，通常使用游戏文件夹中 System 文件夹中的副本。<span class="rgss3">(RGSS3)</span></p></dd>
+<dt>Scripts</dt>
+<dd>
+<p>储存脚本的数据文件，指定其在游戏文件夹的相对路径。</p>
+<p>Ruby的脚本通常以 .rb 作为后缀名，但是 RGSS 是使用特殊的方法压缩成一个文件。这个文件通常只能用 RPG Maker VX
+Ace 的脚本编辑器进行编辑。其中的数据由多个脚本页构成，按照列表显示的顺序执行。</p></dd>
+<dt>Title</dt>
+<dd>
+<p>游戏标题，在游戏窗口的标题栏显示。</p></dd></dl>
+<h2><a name="rgss_rtp">RGSS-RTP</a></h2>
+<p>RTP (Run-Time
+Package)，是用来减少发布游戏文件大小的构件，RTP 包含了许多游戏共享的标准图文件和音乐文件，游戏前安装这些共享文件可以免于重复下载这些文件。</p>
+<p>RTP
+文件可以使用下列内建游戏库的方法调用，就与调用游戏文件夹下的文件一样。在调用下面的方法时，文件的后缀名（.png、.mid 等）会自动判断，因此可以省略不写。</p>
+<p><a href="gc_bitmap.html#new">Bitmap.new</a>, <a href="gm_audio.html#bgm_play">Audio.bgm_play</a>, <a href="gm_audio.html#bgs_play">Audio.bgs_play</a>, <a href="gm_audio.html#me_play">Audio.me_play</a>, <a href="gm_audio.html#se_play">Audio.se_play</a>, <a href="gm_graphics.html#transition">Graphics.transition</a></p>
+<h3>安装数据</h3>
+<p>RPG Maker VX
+Ace 中唯一标准的 RTP 就是 "RPGVXAce"，但是你可以使用独立的 RTP。如果你知道如何制作安装包，
+那么你就可以遵循以下规则来制作独立的 RTP。</p>
+<p>RTP 默认会安装进这个目录： </p>
+<pre>[CommonFilesFolder]\Enterbrain\RGSS3\[RTPName]
+</pre>这里的 [CommonFilesFolder] 其实就是操作系统中的 Common Files 文件夹，而
+[RTPName] 则是 RTP 的名字。比如： <pre>C:\Program Files\Common Files\Enterbrain\RGSS3\Standard
+</pre>
+<p>RTP 安装程序会在注册表的 "HKEY_LOCAL_MACHINE\SOFTWARE\Enterbrain\RGSS3\RTP" 位置新建一个字符串类型的键值（RTP 的名称），在值中设定路径名。在该键下设置的字符串会被 RGSS 判定为 RTP。</p>
+<h2><a name="encryption_archive">加密档案</a></h2>
+<p>加密档案可以让人难以对游戏进行解析、修改。Game.rgss3a 文件中，通常包含所有的数据文件和图像文件（不包含声音文件和字体文件）。你可以在[制作游戏发行包]时选择[生成加密数据文件]来制作加密档案。</p>
+<p>对于已经被打包进加密档案中的素材文件，你可通过以下内置函数进行调用，就像调用原文件夹中的文件一样：</p>
+<p><a href="g_functions.html#load_data">load_data</a>, <a href="gc_bitmap.html#new">Bitmap.new</a>, <a href="gm_graphics.html#transition">Graphics.transition</a></p>
+<p>当程序在游戏目录下检测到加密档案的时候，在 <a href="#game_ini">Game.ini</a> 中的 Scripts 指定的脚本文件（一般是 Data\Scripts.rvdata）一定会直接读取加密档案中的脚本。这个限制是为了防止外部脚本读取到内部文件。</p>
+<p>鉴于加密档案的设计初衷，我们不会公布加密档案的内部格式，请不要试图解析。</p>
+<h2><a name="others">其他</a></h2>
+<h3><a name="ext_lib">扩展库</a></h3>
+<p>RGSS 无法加载在 C 语言编写的 Ruby 扩展库，因此，我们加载了以下扩展库：</p>
+<ul>
+<li>dl</li>
+<li>zlib</li>
+<li>single_byte</li>
+<li>utf_16_32</li>
+<li>japanese_sjis</li>
+<li>Win32API</li></ul>
+<h3><a name="character_code">字符集</a></h3>
+<p>RGSS 使用的是 UTF-8 字符编码。UTF-8 是 Unicode 字符编码的一个分支，而 Unicode 字符编码可以支持世界上所有类型文字的显示。</p>
+<p>RPG Maker 所输出的脚本数据及其他字符串的编码方式全部为 UTF-8 ，所以不必担心因为字符编码方式不同而产生的冲突。</p>
+<h3><a name="property">属性</a></h3>
+<p>「属性」是 <a href="g_index.html">游戏库</a> 解说中的用语，它并非 Ruby 语言的概念，而是 RGSS 的用语。</p>
+<p>比如，利用下面的代码可以获取和设置一个精灵的坐标（<a href="gc_sprite.html#x">Sprite#x</a>）：</p>
+<pre>
+x = sprite1.x         # 获取
+sprite2.x = x + 32    # 设置
+</pre>
+<p>为了方便起见，这被定义为可通过赋值运算符进行获取（读）和设置（写）的方法，就称为属性。</p>
+<p><a href="gc_color.html">Color</a> 类、 <a href="gc_tone.html">Tone</a> 类、<a href="gc_rect.html">Rect</a> 类作为属性定义时，所返回的是对象本身的引用，而非对象的副本。因此可以用下面的格式修改字体颜色：</p>
+<pre>color = font1.color
+color.set(255, 0, 0)</pre>
+<h6></h6>
+</body>
+</html>

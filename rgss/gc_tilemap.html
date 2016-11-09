@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Tilemap</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Tilemap</h1>
+<p>管理元件地图的类。元件地图是显示二维游戏地图所使用的特殊概念，内部由多个精灵构成。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Tilemap.new([<var>viewport</var>])</dt>
+<dd>
+<p>生成一个 Tilemap 对象。必要时指定一个显示端口（<a href="gc_viewport.html">Viewport</a>）。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>dispose</dt>
+<dd>
+<p>释放元件地图。若是已经释放则什么都不做。</p></dd>
+<dt>disposed?</dt>
+<dd>
+<p>若元件地图已释放则返回 true。</p></dd>
+<dt>update</dt>
+<dd>
+<p>更新自动元件的动画等等。原则上，此方法一帧调用一次。</p></dd></dl>
+<h2>属性</h2>
+<dl>
+<dt>bitmaps[<var>index</var>]</dt>
+<dd>
+<p>作为元件组的第 index（0~8）号的位图（<a href="gc_bitmap.html">Bitmap</a>）对象的引用。</p>
+<p>号码与对应的元件组关系如下面列表所示：</p>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+ <th>0</th>
+<td>TileA1</td> <th>1</th>
+<td>TileA2</td> <th>2</th>
+<td>TileA3</td>
+</tr>
+<tr>
+ <th>3</th>
+<td>TileA4</td> <th>4</th>
+<td>TileA5</td> <th>5</th>
+<td>TileB</td>
+</tr>
+<tr>
+ <th>6</th>
+<td>TileC</td> <th>7</th>
+<td>TileD</td> <th>8</th>
+<td>TileE</td>
+</tr>
+</table></dd>
+<dt>map_data</dt>
+<dd>
+<p>地图数据的引用（<a href="gc_table.html">Table</a>），设置一个 [ 横尺寸 * 纵尺寸 * 3 ]
+的三维数组。</p></dd>
+<dt>flash_data</dt>
+<dd>
+<p>闪烁数据的表格（<a href="gc_table.html">Table</a>）的引用，可以在模拟游戏中显示移动范围等。设置一个 [ 横尺寸 * 纵尺寸 ] 的二维数组。此数组大小必须与地图数据相同。每个元素代表元件闪烁的颜色，RGB 各 4 位。例如：0xf84 代表闪烁颜色为 RGB(15,8,4)。</p></dd>
+<dt>flags <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>标志列表（<a href="gc_table.html">Table</a>）的引用。设置一个以图块 ID 为下标的一维数组。</p></dd>
+<dt>viewport</dt>
+<dd>
+<p>元件地图相关联的显示端口（<a href="gc_viewport.html">Viewport</a>）的引用。</p></dd>
+<dt>visible</dt>
+<dd>
+<p>元件地图可见的状态。true 表示可见。默认为 true。</p></dd>
+<dt>ox</dt>
+<dd>
+<p>元件地图原点的 X 坐标。修改此数值可滚动元件地图。</p></dd>
+<dt>oy</dt>
+<dd>
+<p>元件地图原点的 Y 坐标。修改此数值可滚动元件地图。</p></dd></dl>
+<h2>备注</h2>
+<p>组成元件地图的每个精灵的 Z 坐标都是固定的。</p>
+<ol>
+<li>显示在角色之下的元件，其 Z 坐标为 0。</li>
+<li>显示在角色之上的元件，其 Z 坐标为 200。</li>
+</ol>
+<p>在修改地图上人物的 Z 坐标时，必须以此为前提做出决定。</p>
+<h6></h6>
+</body>
+</html>

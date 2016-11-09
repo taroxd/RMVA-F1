@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Table</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Table</h1>
+<p>多维数组的类。每个元素都是带符号的两字节整数，也就是 -32,768~32,767 之间的整数。</p>
+<p>Ruby <a href="sc_array.html">Array</a> 类在处理大量信息时效率很差，因此使用了此类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Table.new(<var>xsize</var>[, <var>ysize</var>[, <var>zsize</var>]])</dt>
+<dd>
+<p>生成 Table 对象。指定多维数组各维的长度。生成的数组可以是 1~3 维。生成没有元素的数组也可以。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>resize(<var>xsize</var>[, <var>ysize</var>[, <var>zsize</var>]])</dt>
+<dd>
+<p>更改数组的长度。保留更改前的数据。</p></dd>
+<dt>xsize</dt>
+<dt>ysize</dt>
+<dt>zsize</dt>
+<dd>
+<p>获取数组各维的长度。</p></dd></dl>
+<h2>属性</h2>
+<dl>
+<dt>self[<var>x</var>]</dt>
+<dt>self[<var>x</var>, <var>y</var>]</dt>
+<dt>self[<var>x</var>, <var>y</var>, <var>z</var>]</dt>
+<dd>
+<p>存取数组的元素。生成的数组有几维，该方法就接受几个参数。若指定的元素不存在则返回 nil。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

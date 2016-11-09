@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>内建函数</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 8.00.7601.17744">
+</head>
+<body>
+<h1>内建函数</h1>
+<p>严格来说，本页所描述的东西在 Ruby 中并不能称为「函数」，而是应该叫做「方法」。但是在 <a href="sm_kernel.html">Kernel</a>
+里定义的方法可以在任何地方调用，那就和其他语言中的函数使用方式没有差别。重新定义这些方法时，请务必考虑由此所带来的影响。</p>
+<dl>
+<dt>block_given?</dt>
+<dd>
+<p>若某方法带区块则返回 true ；否则返回 false。可参看 <a href="syntax06.html#L000323">迭代器</a> 以获得更多的信息。</p></dd>
+<dt>
+<a name="L000355">catch(<var>tag</var>) {|<var>tag</var>| .... }</a></dt>
+<dd>
+<p>执行区块并返回其计算值。区块执行时若遇到与 tag 同名的 <a href="#L000413">throw</a> ，则返回该 throw
+  的第二个参数。</p></dd>
+<dd>
+<p>使用 <a href="syntax05.html#L000308">break</a> 无法一次跳出所有嵌套在一起的循环。在这些情况下，可以使用
+  catch 代替。</p></dd>
+<dd>
+<pre>catch(:loop1) {
+  for i in 1..2
+    for j in 1..2
+      throw :loop1, j
+    end
+  end
+}
+</pre></dd>
+<dt>eval(<var>expr</var>)</dt>
+<dd>
+<p>将 expr 字符串作为 Ruby 程序来计算，并返回其计算值。</p></dd>
+<dt>
+<a name="L000363">exit</a></dt>
+<dd>
+<p>跳出 Ruby 程序。</p>
+<p>exit 会抛出 <a href="s_exceptions.html#SystemExit">SystemExit</a> 异常来终止程序，所以它可以在必要的时候被 rescue 语句捕捉。</p></dd>
+<dt>loop { ... }</dt>
+<dd>
+<p>只要不被中断，就不断反复对区块进行计算。</p></dd>
+<dt>
+<a name="L000379">open(<var>file</var>[, <var>mode</var>])</a></dt>
+<dt>open(<var>file</var>[, <var>mode</var>]) {|<var>io</var>| ... }</dt>
+<dd>
+<p>将文件 file 打开并返回一个 <a href="sc_file.html">File</a> 对象。使用 mode 指定下面的字符串当 mode 省略时，默认值为 "r"。</p>
+<ul>
+<li>"r"：以读取模式打开文件。</li>
+<li>"w": "：以写入模式打开文件。打开时若文件已存在，则会删除文件内容。</li>
+<li>"a": 以写入模式打开文件。输出写入的内容一定会附在文件的结尾部分。</li></ul>
+<p>使用 "+" 时就以读写模式（RDWR）打开文件：</p>
+<ul>
+<li>"r+"：将读写的位置设置在文件开头的部分。</li>
+<li>"w+"：与"r+"相同，打开时若文件已存在，则会删除文件内容。</li>
+<li>"a+": 与"r+"相同，打开时若文件已存在，则会将读写的位置设置在文件尾的部分。</li></ul>
+<p>也可以使用 "b" 标志（如： "r+b"）表示以二进制模式打开文件。</p>
+<p>当 open 带区块时，则会打开文件、执行区块，然后在执行结束时关闭文件。此时则会返回区块计算的结果。也就是说：</p>
+<pre>open(path, mode) do |f|
+   ...
+end
+# 几乎相当于上面的代码
+f = open(path, mode)
+begin
+   ...
+ensure
+  f.close
+end
+</pre></dd>
+<dt>
+<a name="p">p(<var>obj</var>, [<var>obj2</var>, ...])</a></dt>
+<dd>
+<p>将 obj 以人类可读的形式输出。相当于下面的代码（参看 <a href="sc_object.html#L000572">Object#inspect</a> ）：</p>
+<pre>print obj.inspect, "\n", obj2.inspect, "\n", ...
+</pre>
+<p>返回 nil。</p></dd>
+<dd>
+<p>在RGSS3中，该语句再次变为了标准输出语句，不再具有显示对话窗口的效能，但是在DEBUG控制台中很有用处。</p></dd>
+<dt>
+<a name="print">print(<var>arg</var>[, ...])</a></dt>
+<dd>
+<p>将参数依次输出，若参数为非字符串对象，则自动用 to_s 转换成字符串输出。然而若参数为 nil 则输出字符串「nil」。</p>
+<p>返回 nil。</p></dd>
+<dt>
+<a name="printf"></a>printf(<var>format</var>[, <var>arg</var>[, ...]])</dt>
+<dd>
+<p>将参数转换为文本格式输出，就像C语言中的同名函数一样。如果没有指定的参数，那就什么都不做。</p>
+<p>可以参考 <a href="appendix02.html">sprintf
+  格式</a> 以获得更多有关Ruby语言中格式化字符串扩展的信息。</p>
+<p>返回 nil。</p></dd>
+<dt>
+<a name="putc"></a>putc(<var>ch</var>)</dt>
+<dd>
+<p>输出文本 ch。如果 ch 是一个数字的话，就输出在ASCII码对照表中与之相对应的字母；而如果 ch 是一个字符串的话，则输出第一个字符。</p></dd>
+<dd>
+<p>返回 ch。</p></dd>
+<dd>
+<p>注：参数中的特殊符号以及大于255的数字会被该函数直接无视。</p>
+<pre>putc("ch")
+putc(?c)
+putc(99)
+# =&gt; ccc
+</pre></dd>
+<dt>
+<a name="puts"></a>puts([<var>obj</var>[, <var>obj2</var>[, ....]]] )</dt>
+<dd>
+<p>输出参数中的对象以及一个换行符，如果没有参数则输出一个换行符。</p>
+<p>如果参数是一个数组，那么数组中的元素会按照顺序进行输出，如果一个数组和字符串以外类型的对象，函数会先用to_ary方法转换为数组，然后用to_s方法转换为字符串再进行输出，如果最终所得的是nil，那么它也会输出nil。</p>
+<p>如果一个参数以换行符结束，那么这个换行符不会被输出。</p>
+<pre>puts "foo", "bar\n", "baz"
+puts ""    # 仅仅输出一个换行符
+puts       # 仅仅输出一个换行符
+puts "foo"
+=&gt; foo
+   bar
+   baz
+   foo
+</pre>
+<p>返回 nil。</p></dd>
+<dt>
+<a name="L000388">raise</a></dt>
+<dt>raise(<var>message</var>)</dt>
+<dt>raise(<var>exception</var>)</dt>
+<dt>raise(<var>error_type</var>, <var>message</var>)</dt>
+<dd>
+<p>抛出异常，详情请参阅 <a href="syntax05.html#L000313">raise</a> 。</p></dd>
+<dt>
+<a name="L000393">rand([<var>max=0</var>])</a></dt>
+<dd>
+<p>生成在 0 ≤ 整数 &lt; max (0 ～ max(不含))范围之间的随机整数。若是没有调用 <a href="#L000404">srand</a>，则会自动调用之。</p>
+<p>若 max 是 nil 或 0 ，则以 <a href="sc_float.html">Float</a> 格式返回 0 ≤ 实数 &lt; 1 (0
+  ～ 1(不含))范围之内的随机实数。</p></dd>
+<dt>
+<a name="sprintf">sprintf(<var>format</var>[, <var>arg</var>[, ...]])</a></dt>
+<dd>
+<p>以C语言的 sprintf 一样的方式解释 format 字符串，将参数格式化之后返回结果字符串。</p>
+<p>详情请参阅 <a href="appendix02.html">sprintf 格式</a>。</p></dd>
+<dt>
+<a name="L000404">srand([<var>seed</var>])</a></dt>
+<dd>
+<p>设置 <a href="#L000393">rand</a> 方法的产生随机数的种子，返回旧的初始值。省略了 seed
+  ，则使用当前时间做为种子。</p></dd>
+<dt>
+<a name="L000413">throw(<var>tag</var>[, <var>value</var>])</a></dt>
+<dd>
+<p>跳出（方法）至使用相同 tag 的 <a href="#L000355">catch</a> 区块结尾处。若是没有相同 tag 的 catch
+  区块，就会以 <a href="s_exceptions.html#NameError">NameError</a> 结束线程。 value 则是
+  catch 的返回值。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>Hash</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>Hash</h1>
+<p>哈希表的类，详情请参看<a href="syntax03.html#L000280">哈希表表达式</a>。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>包含模块</h2>
+<ul>
+<li><a href="sm_enumerable.html">Enumerable</a></li></ul>
+<h2>方法</h2>
+<dl>
+<dt>self[key]</dt>
+<dd>
+<p>返回对应主键为 <var>key</var> 的元素值。若是对应的主键不存在，则返回 default
+  的对应值（若没有指定 default 则返回 nil）。</p></dd>
+<dt>self[key]=value</dt>
+<dd>
+<p>将元素值 <var>value</var> 设置成对应主键 <var>key</var>。返回
+  <var>value</var>。</p></dd>
+<dt>clear</dt>
+<dd>
+<p>清除哈希表内容。返回 self。</p></dd>
+<dt>clone</dt>
+<dt>dup</dt>
+<dd>
+<p>返回一个与调用者有同样内容的哈希表。对冻结的哈希表使用 clone 会返回同一个冻结的哈希表，但是 dup
+  会返回一个未冻结的相同内容的哈希表。</p>
+<p>返回 <var>value 。</var></p></dd>
+<dt>delete(<var>key</var>)</dt>
+<dt>delete(<var>key</var>) {|<var>key</var>| ... }</dt>
+<dd>
+<p>删除并返回对应主键 <var>key</var> 的元素值。若没有对应的元素值，就返回 nil。
+</p></dd>
+<dd>
+<p>若带区块的话，在找不到对应的元素值时，就会计算区块，并返回其计算值。</p></dd>
+<dt>each {|<var>key</var>, <var>value</var>| ... }</dt>
+<dt>each_pair {|<var>key</var>, <var>value</var>| ... }</dt>
+<dd>
+<p>使用 <var>key</var> 和 <var>value</var> 作为参数对区块进行计算，返回
+  self。</p></dd>
+<dt>each_key {|<var>key</var>| ... }</dt>
+<dd>
+<p>使用 <var>key </var>作为参数对区块进行计算，返回 self。</p></dd>
+<dt>each_value {|<var>value</var>| ... }</dt>
+<dd>
+<p>使用<var> value</var> 作为参数对区块进行计算，返回 self。</p></dd>
+<dt>empty?</dt>
+<dd>
+<p>若哈希表为空则返回 true。</p></dd>
+<dt>has_key?(<var>key</var>)</dt>
+<dt>include?(<var>key</var>)</dt>
+<dd>
+<p>若哈希表含有主键 <var>key</var> 则返回 true。</p></dd>
+<dt>has_value?(<var>value</var>)</dt>
+<dd>
+<p>使用 == 判断哈希表是否含有 <var>value</var>
+  作为其元素值之一，若含有 <var>value </var>则返回 true。</p></dd>
+<dt>index(<var>val</var>)</dt>
+<dd>
+<p>返回与 val
+  对应的主键。若无法对应则返回 nil。</p>
+<p>若有许多与 val
+  对应的主键，则随机返回一个。</p></dd>
+<dt>keys</dt>
+<dd>
+<p>返回一个包含所有主键的数组。</p></dd>
+<dt>length</dt>
+<dt>size</dt>
+<dd>
+<p>返回哈希表元素的数目。</p></dd>
+<dt>values</dt>
+<dd>
+<p>返回包含所有元素值的数组。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

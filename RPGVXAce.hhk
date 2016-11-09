@@ -1,0 +1,1071 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="物品">
+		<param name="Local" value="rpgvxace/3240_db_item.html#key_item">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="角色">
+		<param name="Local" value="rpgvxace/3210_db_actor.html#key_actor">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="动画">
+		<param name="Local" value="rpgvxace/3300_db_animation.html#key_animation">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="移动路线">
+		<param name="Local" value="rpgvxace/5410_ev_routesetting.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="事件">
+		<param name="Local" value="rpgvxace/4110_ev_outline.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="简易制作事件">
+		<param name="Local" value="rpgvxace/4130_ev_mapevent_operation.html#key_mapevent_operation_eventmaker">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="事件页">
+		<param name="Local" value="rpgvxace/4120_ev_mapevent_outline.html#key_mapevent_outline_eventpage">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="遇敌">
+		<param name="Local" value="rpgvxace/2140_map_setting.html#key_map_setting_encounter">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="选项">
+		<param name="Local" value="rpgvxace/1140_intro_supporttool.html#option">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="音乐">
+		<param name="Local" value="rpgvxace/3330_db_system.html#key_system_bgm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="角色生成">
+		<param name="Local" value="rpgvxace/1140_intro_supporttool.html#chara_tkool">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="制作游戏发行包">
+		<param name="Local" value="rpgvxace/1140_intro_supporttool.html#archive">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="游戏方式">
+		<param name="Local" value="rpgvxace/1150_intro_gameplay.html#key_gameplay">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="音效">
+		<param name="Local" value="rpgvxace/3330_db_system.html#key_system_se">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="行为模式">
+		<param name="Local" value="rpgvxace/3270_db_enemy.html#key_enemy_action">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="行为模式的规则">
+		<param name="Local" value="rpgvxace/3270_db_enemy.html#action_rule">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="公共事件">
+		<param name="Local" value="rpgvxace/3320_db_commonevent.html#key_commonevent">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="声音测试">
+		<param name="Local" value="rpgvxace/1140_intro_supporttool.html#sound_test">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="系统">
+		<param name="Local" value="rpgvxace/3330_db_system.html#key_system">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="执行内容的编辑方式">
+		<param name="Local" value="rpgvxace/4140_ev_mapevent_setting.html#command_list">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="出现条件">
+		<param name="Local" value="rpgvxace/4120_ev_mapevent_outline.html#key_mapevent_outline_condition">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="使用效果的设置方法">
+		<param name="Local" value="rpgvxace/3420_db_effect.html#key_effect">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="初始位置（系统）">
+		<param name="Local" value="rpgvxace/3330_db_system.html#key_system_initialposition">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="初始位置（地图事件）">
+		<param name="Local" value="rpgvxace/4130_ev_mapevent_operation.html#key_mapevent_operation_initialposition">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="初始同伴">
+		<param name="Local" value="rpgvxace/3330_db_system.html#key_system_initialparty">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="职业">
+		<param name="Local" value="rpgvxace/3220_db_job.html#key_job">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="开关">
+		<param name="Local" value="rpgvxace/4120_ev_mapevent_outline.html#key_mapevent_outline_switch">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="技能">
+		<param name="Local" value="rpgvxace/3230_db_skill.html#key_skill">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="技能类型">
+		<param name="Local" value="rpgvxace/3340_db_terms.html#key_tarms_skilltype">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="脚本编辑器">
+		<param name="Local" value="rpgvxace/1140_intro_supporttool.html#script_editor">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="状态">
+		<param name="Local" value="rpgvxace/3290_db_state.html#key_state">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="独立开关">
+		<param name="Local" value="rpgvxace/4120_ev_mapevent_outline.html#key_mapevent_outline_selfswitch">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="属性">
+		<param name="Local" value="rpgvxace/3340_db_terms.html#key_tarms_attribute">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="媒体库">
+		<param name="Local" value="rpgvxace/1140_intro_supporttool.html#material">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="素材规格">
+		<param name="Local" value="rpgvxace/6100_resource.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="图块组">
+		<param name="Local" value="rpgvxace/3310_db_tileset.html#key_tileset">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="图块的功能">
+		<param name="Local" value="rpgvxace/2110_map_outline.html#key_map_tile">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="生成迷宫">
+		<param name="Local" value="rpgvxace/2130_map_operation.html#key_map_operation_dungeon">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="数据库">
+		<param name="Local" value="rpgvxace/3110_db_outline.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="敌人">
+		<param name="Local" value="rpgvxace/3270_db_enemy.html#key_enemy">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="敌群">
+		<param name="Local" value="rpgvxace/3280_db_enemygroup.html#key_enemygroup">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="游戏测试">
+		<param name="Local" value="rpgvxace/1140_intro_supporttool.html#testplay">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="特性的设置方法">
+		<param name="Local" value="rpgvxace/3410_db_feature.html#key_feature">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="触发条件（公共事件）">
+		<param name="Local" value="rpgvxace/3320_db_commonevent.html#key_commonevent_trigger">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="触发条件（公共事件）">
+		<param name="Local" value="rpgvxace/4140_ev_mapevent_setting.html#key_mapevent_setting_trigger">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="能力值">
+		<param name="Local" value="rpgvxace/6200_rules.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="能力值成长曲线">
+		<param name="Local" value="rpgvxace/3220_db_job.html#status_setting">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="载具图像">
+		<param name="Local" value="rpgvxace/3330_db_system.html#key_system_shipgraphic">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="战斗事件">
+		<param name="Local" value="rpgvxace/3280_db_enemygroup.html#key_enemygroup_battleevent">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="绘图工具">
+		<param name="Local" value="rpgvxace/2120_map_design.html#key_map_design_draw">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="武器">
+		<param name="Local" value="rpgvxace/3250_db_arms.html#key_arms">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="武器类型">
+		<param name="Local" value="rpgvxace/3340_db_terms.html#key_tarms_armstype">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="单帧图的操作方法">
+		<param name="Local" value="rpgvxace/3300_db_animation.html#key_animation_frameview">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="项目">
+		<param name="Local" value="rpgvxace/1110_intro_start.html#key_project">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="变量">
+		<param name="Local" value="rpgvxace/4120_ev_mapevent_outline.html#key_mapevent_outline_variable">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="护甲">
+		<param name="Local" value="rpgvxace/3250_db_arms.html#key_wear">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="护甲类型">
+		<param name="Local" value="rpgvxace/3340_db_terms.html#key_tarms_weartype">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="辅助工具">
+		<param name="Local" value="rpgvxace/1140_intro_supporttool.html#key_supporttool">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="地图">
+		<param name="Local" value="rpgvxace/2110_map_outline.html#key_map">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="地图事件的制作和操作">
+		<param name="Local" value="rpgvxace/4130_ev_mapevent_operation.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="地图事件的结构">
+		<param name="Local" value="rpgvxace/4120_ev_mapevent_outline.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="地图事件的设置">
+		<param name="Local" value="rpgvxace/4140_ev_mapevent_setting.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="地图数据的设置">
+		<param name="Local" value="rpgvxace/2140_map_setting.html#map_setting">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="地图数据的操作">
+		<param name="Local" value="rpgvxace/2130_map_operation.html#key_map_operation">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="地图样式">
+		<param name="Local" value="rpgvxace/2120_map_design.html#key_map_design">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="地图的基本规格">
+		<param name="Local" value="rpgvxace/2110_map_outline.html#key_map_tile">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="主窗口">
+		<param name="Local" value="rpgvxace/1120_intro_basicoperation.html#key_mainwindow">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="菜单栏">
+		<param name="Local" value="rpgvxace/1130_intro_menubar.html#key_menubar">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="用语">
+		<param name="Local" value="rpgvxace/3340_db_terms.html#key_terms">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="区域">
+		<param name="Local" value="rpgvxace/2140_map_setting.html#key_map_setting_region">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="事件指令">
+		<param name="Local" value="rpgvxace/5100_ev_commandlist.html">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="播放BGM">
+			<param name="Local" value="rpgvxace/5260_ev_ref_bgmse.html#bgmse01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="还原BGM">
+			<param name="Local" value="rpgvxace/5260_ev_ref_bgmse.html#bgmse04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="淡出BGM">
+			<param name="Local" value="rpgvxace/5260_ev_ref_bgmse.html#bgmse02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="保存BGM">
+			<param name="Local" value="rpgvxace/5260_ev_ref_bgmse.html#bgmse03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="播放BGS">
+			<param name="Local" value="rpgvxace/5260_ev_ref_bgmse.html#bgmse05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="淡出BGS">
+			<param name="Local" value="rpgvxace/5260_ev_ref_bgmse.html#bgmse06">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减HP">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="播放ME">
+			<param name="Local" value="rpgvxace/5260_ev_ref_bgmse.html#bgmse07">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减MP">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="播放SE">
+			<param name="Local" value="rpgvxace/5260_ev_ref_bgmse.html#bgmse08">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="停止SE">
+			<param name="Local" value="rpgvxace/5260_ev_ref_bgmse.html#bgmse09">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="物品选择处理">
+			<param name="Local" value="rpgvxace/5110_ev_ref_message.html#message04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减物品">
+			<param name="Local" value="rpgvxace/5140_ev_ref_party.html#party02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更换角色行走图">
+			<param name="Local" value="rpgvxace/5320_ev_ref_system.html#system08">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="显示动画">
+			<param name="Local" value="rpgvxace/5220_ev_ref_character.html#character04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="设置移动路线">
+			<param name="Local" value="rpgvxace/5210_ev_ref_move.html#move05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="中止事件处理">
+			<param name="Local" value="rpgvxace/5130_ev_ref_flow.html#flow04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="暂时消除事件">
+			<param name="Local" value="rpgvxace/5220_ev_ref_character.html#character06">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="设置事件位置">
+			<param name="Local" value="rpgvxace/5210_ev_ref_move.html#move03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改窗口颜色">
+			<param name="Local" value="rpgvxace/5320_ev_ref_system.html#system07">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="等待">
+			<param name="Local" value="rpgvxace/5240_ev_ref_wait.html#wait01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="启用/禁用遇敌">
+			<param name="Local" value="rpgvxace/5320_ev_ref_system.html#system05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改地图远景图">
+			<param name="Local" value="rpgvxace/5340_ev_ref_map.html#map04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="震动画面">
+			<param name="Local" value="rpgvxace/5230_ev_ref_screen.html#screen05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改画面色调">
+			<param name="Local" value="rpgvxace/5230_ev_ref_screen.html#screen03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="淡出画面">
+			<param name="Local" value="rpgvxace/5230_ev_ref_screen.html#screen01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="淡入画面">
+			<param name="Local" value="rpgvxace/5230_ev_ref_screen.html#screen02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="闪烁画面">
+			<param name="Local" value="rpgvxace/5230_ev_ref_screen.html#screen04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减经验值">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="游戏结束">
+			<param name="Local" value="rpgvxace/5310_ev_ref_scene.html#scene06">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="公共事件">
+			<param name="Local" value="rpgvxace/5130_ev_ref_flow.html#flow05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="获取指定位置的信息">
+			<param name="Local" value="rpgvxace/5340_ev_ref_map.html#map05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="条件分歧">
+			<param name="Local" value="rpgvxace/5130_ev_ref_flow.html#flow01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更换职业">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor11">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减金钱">
+			<param name="Local" value="rpgvxace/5140_ev_ref_party.html#party01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="商店处理">
+			<param name="Local" value="rpgvxace/5310_ev_ref_scene.html#scene02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="开关操作">
+			<param name="Local" value="rpgvxace/5120_ev_ref_progress.html#progress01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="数值输入处理">
+			<param name="Local" value="rpgvxace/5110_ev_ref_message.html#message03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减技能">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor08">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="脚本">
+			<param name="Local" value="rpgvxace/5360_ev_ref_highclass.html#highclass01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改状态">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="打开存档画面">
+			<param name="Local" value="rpgvxace/5310_ev_ref_scene.html#scene05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="启用/禁用存档">
+			<param name="Local" value="rpgvxace/5320_ev_ref_system.html#system03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="独立开关操作">
+			<param name="Local" value="rpgvxace/5120_ev_ref_progress.html#progress03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="完全恢复">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="显示选项">
+			<param name="Local" value="rpgvxace/5110_ev_ref_message.html#message02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改战斗BGM">
+			<param name="Local" value="rpgvxace/5320_ev_ref_system.html#system01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="显示战斗动画">
+			<param name="Local" value="rpgvxace/5350_ev_ref_battle.html#battle07">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="强制战斗指令">
+			<param name="Local" value="rpgvxace/5350_ev_ref_battle.html#battle08">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改战斗结束ME">
+			<param name="Local" value="rpgvxace/5320_ev_ref_system.html#system02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改战斗背景图">
+			<param name="Local" value="rpgvxace/5340_ev_ref_map.html#map03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更换装备">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor09">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="返回标题画面">
+			<param name="Local" value="rpgvxace/5310_ev_ref_scene.html#scene07">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="计时器操作">
+			<param name="Local" value="rpgvxace/5120_ev_ref_progress.html#progress04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更换地图图块组">
+			<param name="Local" value="rpgvxace/5340_ev_ref_map.html#map02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改队列行进">
+			<param name="Local" value="rpgvxace/5220_ev_ref_character.html#character02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="集合队列成员">
+			<param name="Local" value="rpgvxace/5220_ev_ref_character.html#character03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="注释">
+			<param name="Local" value="rpgvxace/5130_ev_ref_flow.html#flow08">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减敌人HP">
+			<param name="Local" value="rpgvxace/5350_ev_ref_battle.html#battle01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减敌人MP">
+			<param name="Local" value="rpgvxace/5350_ev_ref_battle.html#battle02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="敌人出现">
+			<param name="Local" value="rpgvxace/5350_ev_ref_battle.html#battle05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改敌人状态">
+			<param name="Local" value="rpgvxace/5350_ev_ref_battle.html#battle03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="敌人完全恢复">
+			<param name="Local" value="rpgvxace/5350_ev_ref_battle.html#battle04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="敌人变身">
+			<param name="Local" value="rpgvxace/5350_ev_ref_battle.html#battle06">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="设置天气效果">
+			<param name="Local" value="rpgvxace/5250_ev_ref_picture.html#picture06">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改透明状态">
+			<param name="Local" value="rpgvxace/5220_ev_ref_character.html#character01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="名字输入处理">
+			<param name="Local" value="rpgvxace/5310_ev_ref_scene.html#scene03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改名字">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor10">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="启用/禁用整队">
+			<param name="Local" value="rpgvxace/5320_ev_ref_system.html#system06">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减能力值">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor07">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="设置载具位置">
+			<param name="Local" value="rpgvxace/5210_ev_ref_move.html#move02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更换载具图像">
+			<param name="Local" value="rpgvxace/5320_ev_ref_system.html#system09">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="载具乘/降">
+			<param name="Local" value="rpgvxace/5210_ev_ref_move.html#move06">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="场所移动">
+			<param name="Local" value="rpgvxace/5210_ev_ref_move.html#move01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="战斗处理">
+			<param name="Local" value="rpgvxace/5310_ev_ref_scene.html#scene01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="中止战斗">
+			<param name="Local" value="rpgvxace/5350_ev_ref_battle.html#battle09">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="移动图片">
+			<param name="Local" value="rpgvxace/5250_ev_ref_picture.html#picture02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="旋转图片">
+			<param name="Local" value="rpgvxace/5250_ev_ref_picture.html#picture03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改图片色调">
+			<param name="Local" value="rpgvxace/5250_ev_ref_picture.html#picture04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="消除图片">
+			<param name="Local" value="rpgvxace/5250_ev_ref_picture.html#picture05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="显示图片">
+			<param name="Local" value="rpgvxace/5250_ev_ref_picture.html#picture01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="显示心情">
+			<param name="Local" value="rpgvxace/5220_ev_ref_character.html#character05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减武器">
+			<param name="Local" value="rpgvxace/5140_ev_ref_party.html#party03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="更改称号">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor12">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="显示滚动文字">
+			<param name="Local" value="rpgvxace/5110_ev_ref_message.html#message05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="显示文字">
+			<param name="Local" value="rpgvxace/5110_ev_ref_message.html#message01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="变量操作">
+			<param name="Local" value="rpgvxace/5120_ev_ref_progress.html#progress02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减护甲">
+			<param name="Local" value="rpgvxace/5140_ev_ref_party.html#party04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="卷动地图">
+			<param name="Local" value="rpgvxace/5210_ev_ref_move.html#move04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="启用/禁用显示地图名称">
+			<param name="Local" value="rpgvxace/5340_ev_ref_map.html#map01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="播放影像">
+			<param name="Local" value="rpgvxace/5330_ev_ref_movie.html#movie01">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="打开菜单画面">
+			<param name="Local" value="rpgvxace/5310_ev_ref_scene.html#scene04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="启用/禁用菜单">
+			<param name="Local" value="rpgvxace/5320_ev_ref_system.html#system04">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="队伍管理">
+			<param name="Local" value="rpgvxace/5140_ev_ref_party.html#party05">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="添加标签">
+			<param name="Local" value="rpgvxace/5130_ev_ref_flow.html#flow06">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="转至标签">
+			<param name="Local" value="rpgvxace/5130_ev_ref_flow.html#flow07">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="循环">
+			<param name="Local" value="rpgvxace/5130_ev_ref_flow.html#flow02">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="跳出循环">
+			<param name="Local" value="rpgvxace/5130_ev_ref_flow.html#flow03">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="增减等级">
+			<param name="Local" value="rpgvxace/5150_ev_ref_actor.html#actor06">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Object">
+		<param name="Local" value="rgss/sc_object.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Array">
+		<param name="Local" value="rgss/sc_array.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Exception">
+		<param name="Local" value="rgss/sc_exception.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="FalseClass">
+		<param name="Local" value="rgss/sc_falseclass.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Fiber">
+		<param name="Local" value="rgss/sc_fiber.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Hash">
+		<param name="Local" value="rgss/sc_hash.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="IO">
+		<param name="Local" value="rgss/sc_io.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="File">
+		<param name="Local" value="rgss/sc_file.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="MatchData">
+		<param name="Local" value="rgss/sc_matchdata.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Method">
+		<param name="Local" value="rgss/sc_method.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Module">
+		<param name="Local" value="rgss/sc_module.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Class">
+		<param name="Local" value="rgss/sc_class.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="NilClass">
+		<param name="Local" value="rgss/sc_nilclass.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Numeric">
+		<param name="Local" value="rgss/sc_numeric.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Integer">
+		<param name="Local" value="rgss/sc_integer.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Bignum">
+		<param name="Local" value="rgss/sc_bignum.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Fixnum">
+		<param name="Local" value="rgss/sc_fixnum.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Float">
+		<param name="Local" value="rgss/sc_float.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Range">
+		<param name="Local" value="rgss/sc_range.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Proc">
+		<param name="Local" value="rgss/sc_proc.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Regexp">
+		<param name="Local" value="rgss/sc_regexp.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="String">
+		<param name="Local" value="rgss/sc_string.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Symbol">
+		<param name="Local" value="rgss/sc_symbol.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Time">
+		<param name="Local" value="rgss/sc_time.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="TrueClass">
+		<param name="Local" value="rgss/sc_trueclass.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Comparable">
+		<param name="Local" value="rgss/sm_comparable.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Enumerable">
+		<param name="Local" value="rgss/sm_enumerable.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Errno">
+		<param name="Local" value="rgss/sm_errno.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="FileTest">
+		<param name="Local" value="rgss/sm_filetest.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="GC">
+		<param name="Local" value="rgss/sm_gc.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Kernel">
+		<param name="Local" value="rgss/sm_kernel.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Marshal">
+		<param name="Local" value="rgss/sm_marshal.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Math">
+		<param name="Local" value="rgss/sm_math.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Bitmap">
+		<param name="Local" value="rgss/gc_bitmap.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Color">
+		<param name="Local" value="rgss/gc_color.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Font">
+		<param name="Local" value="rgss/gc_font.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Plane">
+		<param name="Local" value="rgss/gc_plane.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Rect">
+		<param name="Local" value="rgss/gc_rect.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Sprite">
+		<param name="Local" value="rgss/gc_sprite.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Table">
+		<param name="Local" value="rgss/gc_table.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Tilemap">
+		<param name="Local" value="rgss/gc_tilemap.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Tone">
+		<param name="Local" value="rgss/gc_tone.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Viewport">
+		<param name="Local" value="rgss/gc_viewport.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Window">
+		<param name="Local" value="rgss/gc_window.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RGSSError">
+		<param name="Local" value="rgss/gc_rgsserror.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RGSSReset">
+		<param name="Local" value="rgss/gc_rgssreset.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Audio">
+		<param name="Local" value="rgss/gm_audio.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Graphics">
+		<param name="Local" value="rgss/gm_graphics.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Input">
+		<param name="Local" value="rgss/gm_input.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG">
+		<param name="Local" value="rgss/gm_rpg.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Map">
+		<param name="Local" value="rgss/gc_rpg_map.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Map::Encounter">
+		<param name="Local" value="rgss/gc_rpg_map_encounter.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::MapInfo">
+		<param name="Local" value="rgss/gc_rpg_mapinfo.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Event">
+		<param name="Local" value="rgss/gc_rpg_event.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Event::Page">
+		<param name="Local" value="rgss/gc_rpg_event_page.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Event::Page::Condition">
+		<param name="Local" value="rgss/gc_rpg_event_page_condition.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Event::Page::Graphic">
+		<param name="Local" value="rgss/gc_rpg_event_page_graphic.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::EventCommand">
+		<param name="Local" value="rgss/gc_rpg_eventcommand.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::MoveRoute">
+		<param name="Local" value="rgss/gc_rpg_moveroute.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::MoveCommand">
+		<param name="Local" value="rgss/gc_rpg_movecommand.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Class::Learning">
+		<param name="Local" value="rgss/gc_rpg_class_learning.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::BaseItem">
+		<param name="Local" value="rgss/gc_rpg_baseitem.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Actor">
+		<param name="Local" value="rgss/gc_rpg_actor.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Class">
+		<param name="Local" value="rgss/gc_rpg_class.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::UsableItem">
+		<param name="Local" value="rgss/gc_rpg_usableitem.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Skill">
+		<param name="Local" value="rgss/gc_rpg_skill.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Item">
+		<param name="Local" value="rgss/gc_rpg_item.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::EquipItem">
+		<param name="Local" value="rgss/gc_rpg_equipitem.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Weapon">
+		<param name="Local" value="rgss/gc_rpg_weapon.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Armor">
+		<param name="Local" value="rgss/gc_rpg_armor.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Enemy">
+		<param name="Local" value="rgss/gc_rpg_enemy.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::State">
+		<param name="Local" value="rgss/gc_rpg_state.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::BaseItem::Feature">
+		<param name="Local" value="rgss/gc_rpg_baseitem_feature.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::UsableItem::Damage">
+		<param name="Local" value="rgss/gc_rpg_usableitem_damage.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::UsableItem::Effect">
+		<param name="Local" value="rgss/gc_rpg_usableitem_effect.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Enemy::DropItem">
+		<param name="Local" value="rgss/gc_rpg_enemy_drop_item.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Enemy::Action">
+		<param name="Local" value="rgss/gc_rpg_enemy_action.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Troop">
+		<param name="Local" value="rgss/gc_rpg_troop.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Troop::Member">
+		<param name="Local" value="rgss/gc_rpg_troop_member.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Troop::Page">
+		<param name="Local" value="rgss/gc_rpg_troop_page.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Troop::Page::Condition">
+		<param name="Local" value="rgss/gc_rpg_troop_page_condition.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Animation">
+		<param name="Local" value="rgss/gc_rpg_animation.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Animation::Frame">
+		<param name="Local" value="rgss/gc_rpg_animation_frame.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Animation::Timing">
+		<param name="Local" value="rgss/gc_rpg_animation_timing.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::Tileset">
+		<param name="Local" value="rgss/gc_rpg_tileset.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::CommonEvent">
+		<param name="Local" value="rgss/gc_rpg_commonevent.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::System">
+		<param name="Local" value="rgss/gc_rpg_system.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::System::Vehicle">
+		<param name="Local" value="rgss/gc_rpg_system_vehicle.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::System::Terms">
+		<param name="Local" value="rgss/gc_rpg_system_terms.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::System::TestBattler">
+		<param name="Local" value="rgss/gc_rpg_system_testbattler.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::AudioFile">
+		<param name="Local" value="rgss/gc_rpg_audiofile.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::BGM">
+		<param name="Local" value="rgss/gc_rpg_bgm.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::BGS">
+		<param name="Local" value="rgss/gc_rpg_bgs.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::ME">
+		<param name="Local" value="rgss/gc_rpg_me.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="RPG::SE">
+		<param name="Local" value="rgss/gc_rpg_se.html">
+		</OBJECT>
+</UL>
+</BODY></HTML>

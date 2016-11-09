@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>制作传送物品</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>制作传送物品</h1>
+<ul>
+<li><a href="#data">制作物品数据</a></li>
+<li><a href="#window">制作窗口</a></li>
+<li><a href="#show">显示窗口</a></li>
+<li><a href="#places">制作传送点的清单</a></li>
+<li><a href="#select">选择传送点的位置</a></li>
+<li><a href="#handler">设置 handler</a></li></ul>
+<p>在本章，笔者会解说在菜单画面中选择物品或技能之后，又在另一个新窗口进行分岐处理的方法。</p>
+<p>在包含城镇等地点的菜单中选择任意地点之后就会进行传送──这次将以这样的物品作为制作范例。</p>
+<h2><a name="data">制作物品数据</a></h2>
+<p>和<a href="303_escape.html">制作逃脱物品</a>时相同，我们先设置传送用的物品数据。</p>
+<p>效果范围是[无]，使用场合则设为[仅菜单中]，备注栏就记入 &lt;TELEPORT&gt; 吧。设置完毕以后，再麻烦制作一个包含[增减物品]事件指令的事件，测试看看物品的效果。</p>
+<p>补充一点，为了方便起见，笔者都是用[物品]这个词进行说明，但在本章制作的脚本，是可以直接对应[技能]的。换句话说，若在技能的备注栏中写下 &lt;TELEPORT&gt;，并让效果范围和使用场合都采用同样的设置的话，那样也能够做出同样效果的技能出来。</p>
+<h2><a name="window">制作窗口</a></h2>
+<p>接着我们新增选择传送地点用的窗口的类。</p>
+<p>这次别继承 Window_Selectable，改继承看看 Window_Command 类吧。什么时候要继承哪个类视情况而定，而这次用 Window_Command 的话，因为不需要自己写绘制选项的代码，所以用起来比较方便。</p>
+<pre>
+class Window_Teleport &lt; Window_Command
+  def initialize
+    super(0, 0)
+    hide
+    deactivate
+  end
+end
+</pre>
+<p>Window_Command 类的 initialize 方法会接收 x 坐标以及 y 坐标两个参数。这次不需要指定坐标，所以笔者不设置 Window_Teleport 类的 initialize 方法的参数，而是用 super(0, 0) 的形式调用父类的方法，将 x、y 坐标都设为 0。</p>
+<p>再来调用 hide 让窗口成为隐藏状态，调用 deactivate 方法将窗口设为无效中的状态。这是因为窗口实际上产生的时间点是在移动到物品画面之后，如果没有选择物品的就显示这个画面的话时机就错误了。</p>
+<p>接着还需要设置窗口的大小。请将下面的代码写在 Window_Teleport 类中。</p>
+<pre>
+  def window_width
+    return 240
+  end
+  def window_height
+    Graphics.height
+  end
+</pre>
+<p>在 Window_Command 类中，可以通过调用自己内部的 window_width 和 window_height 这两个方法取得窗口的宽与高。这个设计是为了能够进行更具弹性的处理，比方说如果指令的数量不同，窗口的大小就可以随之调整。</p>
+<p>这次我们用 240 这个值返回宽，用 Graphics.height 返回高。顺带一提，<a href="../rgss/gm_graphics.html#height">Graphics.height</a> 是返回整个画面高度的方法。</p>
+<h2><a name="show">显示窗口</a></h2>
+<p>前一项制作出的窗口，我们在 Scene_ItemBase 类中把它当成实例变量储存。然后像下面一样重新定义 start 方法，加上产生出 Window_Teleport 类的实例变量的处理。另外在<a href="302_story.html">制作剧情提示画面</a>时也说过的，Window_Base 中已经包含了所有窗口的释放处理，所以不需要写出 dispose 的处理。
+</p>
+<pre>
+class Scene_ItemBase
+  alias xxx001_start start
+  def start
+    xxx001_start
+    @teleport_window = Window_Teleport.new
+  end
+end
+</pre>
+<p>然后我们重新定义 determine_item 方法。</p>
+<pre>
+  alias xxx001_determine_item determine_item
+  def determine_item
+    if item.note.include?("&lt;TELEPORT&gt;")
+      show_sub_window(@teleport_window)
+    else
+      xxx001_determine_item
+    end
+  end
+</pre>
+<p>determine_item 是在将光标移动到物品上方，按下确定键的瞬间调用的方法。这部分的处理指定的是，如果在备注栏中含有 &lt;TELEPORT&gt; 这个字符串的话，就会调用 show_sub_window 方法，而如果没有包含的话则是进行一般的处理。</p>
+<p>show_sub_window 方法是用来在物品画面或技能画面上方显示别的窗口。在默认的脚本中，只有在选择物品或技能要作用在哪个角色上时有使用到。这个方法所进行的处理是，通过操作显示端口（viewport）的位置等参数，让窗口在重叠的时候不会看起来怪怪的。只不过使用这个方法有一个前提，那就是窗口的高度一定要和整个画面的高度一样。</p>
+<p>虽然目前只写到一半，我们先在这里测试一下吧。虽然会在选择物品的瞬间变得无法操作，至少可以确认一下窗口现在是如何显示的吧。</p>
+<h2><a name="places">制作传送点的清单</a></h2>
+<p>我们把传送点的数据用常量的形式准备一下吧。</p>
+<p>Ruby 的数组可以不受限制地同时储存数值或是字符串，所以直接写出像下面这样的代码很方便。</p>
+<pre>
+TELEPORT_PLACES =
+[
+  [41, "场所A", 1, 10, 10],
+  [42, "场所B", 2, 25, 20],
+  [43, "场所C", 3, 30, 15],
+]
+</pre>
+<p>这个二维数组构造，可以将内部储存各种常量的数组当成一整个单位看待，然后这些数组又包含在 TELEPORT_PLACES 这个数组里头。笔者打算将各个常量，依序作为开关 ID、传送点的名称、地图 ID、X 坐标和 Y 坐标使用。</p>
+<p>所谓的开关 ID 是指，当指定的开关打开时，就可以传送到到那个地点。举例来说可以作为这样的目的使用：当进入新的城镇时打开开关，那么以后就能传送到那个城镇。</p>
+<p>为了确保能够运作，请把地点改写为测试用的工程里头有效的地点。上面的范例只列有三个地点，但当然要几个都没有关系。然后麻烦再制作一个可以打开指定开关的事件。</p>
+<h2><a name="select">选择传送点的位置</a></h2>
+<p>接下来要让传送点的窗口能够显示刚才制作出来的场所数据。</p>
+<p>请在 Window_Teleport 类中加入以下的代码：</p>
+<pre>
+  def make_command_list
+    TELEPORT_PLACES.each do |place|
+      if $game_switches[place[0]]
+        add_command(place[1], :teleport, true, place)
+      end
+    end
+  end
+</pre>
+<p>利用数组的 each 方法进行循环，指定的开关如果打开，那么属于该开关的地点的名称就会以指令的形式追加上去。</p>
+<p>add_command 的第四个参数能够指定扩充数据。所谓的扩充数据是指附带在那些指令之后的数据，这里的例子就是让指令带有传送点的数据本身。关于第三个参数，笔者会在下一章说明。</p>
+<h2><a name="handler">设置 handler</a></h2>
+<p>最后要进行确定和取消处理的设置。</p>
+<p>请将 Scene_ItemBase 类的 start 方法如下修正。</p>
+<pre>
+  alias xxx001_start start
+  def start
+    xxx001_start
+    @teleport_window = Window_Teleport.new
+    @teleport_window.set_handler(:teleport, method(:on_teleport))
+    @teleport_window.set_handler(:cancel, method(:on_teleport_cancel))
+  end
+</pre>
+<p>接着定义 on_teleport 和 on_teleport_cancel 方法。</p>
+<pre>
+  def on_teleport
+    place = @teleport_window.current_ext
+    $game_player.reserve_transfer(place[2], place[3], place[4])
+    SceneManager.goto(Scene_Map)
+  end
+  def on_teleport_cancel
+    hide_sub_window(@teleport_window)
+  end
+</pre>
+<p>current_ext 方法可以取得目前被选取的指令所对应的扩充数据。这里表示的就是这些地点的数据，然后再从中取出地图 ID 和坐标，进行地点移动。</p>
+<p>hide_sub_window 方法是进行和 show_sub_window 相反的处理。在按下取消键后会关闭窗口，回到物品选择的画面。</p>
+<p>通过以上的代码，就完成了传送的基本处理。如果要更加实用，还需要一些例如让传送本身无效的处理等等，但那一点在<a href="303_escape.html">制作逃脱物品</a>已经解说过所以在此省略。要是有人一直留着之前的逃脱物品脚本，会造成同样的地方被多次定义，因此有必要注意别名造成的冲突。</p>
+<h6></h6>
+</body>
+</html>

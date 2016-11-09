@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>对象</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>对象</h1>
+<ul>
+<li><a href="#object">对象和类</a></li>
+<li><a href="#method">方法</a></li>
+<li><a href="#superclass">超类</a></li>
+<li><a href="#instance">生成实例</a></li></ul>
+<p>Ruby 是面向对象的语言。这里，所谓<strong>对象</strong>可以解释为任何东西。</p>
+<h2><a name="object">对象和类</a></h2>
+<p>Ruby 所使用的一切数据就称为<strong>对象</strong>。</p>
+<pre>3               # 整数对象<br>1.5             # 浮点数对象<br>"Ruby"          # 字符串对象<br>1..10           # 范围对象<br></pre>
+<p>而对象的种类就称为<strong>类</strong>。比如字符串对象是属于 String 类，
+范围对象是属于 Range 类。关于 Ruby 中所有类的详细介绍，
+见 <a href="../rgss/index.html">RGSS 参考</a> 中
+的 <a href="../rgss/s_classes.html">内置类</a> 部分。</p>
+<p>要强调特定类所属的对象，有时使用<strong>实例</strong>这种说法。
+所谓类可以说是其所属对象的描述。大的设计方案都有很多类，决定对象的行为。 对象必定是属于哪个类的。因此，「属于这个类的对象」也可以说成是「这个类的实例」。</p>
+<h2><a name="method">方法</a></h2>
+<p>尝试着看看 <a href="../rgss/sc_string.html">String</a> 类的部分吧。
+现在或许不太了解其中的意思，但不用太介意。
+实际中自已编写脚本时将会经常参照这个参考，有必要尽快习惯。</p>
+<p>看到<strong>方法</strong>栏下方列出的项目了吧。
+这些就是该类所属对象专用的函数即方法。</p>
+<p>方法列表中有个名称为 size 的项目。使用这个看看吧。</p>
+<pre>a = "Ruby"<br><br>p a.size        # =&gt; 4<br></pre>
+<p>String 类的 size 方法，是返回字符串字符数的方法。"Ruby" 这个字符串有四个字符，因此方法返回了数字 4。（从 Ruby 1.9 起，全角字符也算作一个字符）
+</p>
+<p>再来试试这个吧。把字符串转换为大写字母的 upcase 方法。</p>
+<pre>a = "Ruby"<br><br>p a.upcase      # =&gt; "RUBY"<br></pre>
+<p>上面示例中，调用对象的方法时于变量名称后面会加上符号「.」，
+在其后面记述要调用的方法。而操作的对象称为<strong>接收者</strong>。
+这里 a.upcase 中的 a 就是接收者。</p>
+<p>但是，对字符串以外的对象调用 String 类的方法比如 upcase 方法的话会怎样呢？</p>
+<pre>a = 3<br><br>p a.upcase      # ERROR!!<br></pre>
+<p>这样会出现错误。因为 3 是一个整数，
+没有定义 upcase 方法。</p>
+<p>还有，没有必要记住这些方法的名称。
+在对字符串进行某些操作时要使用 String 类的方法，
+直接打开 RGSS 参考文件进行查找会十分方便。使用方法的次数多了，
+自然就会记住它们。</p>
+<h2><a name="superclass">超类</a></h2>
+<p>3 和 65 等整数，是 <a href="../rgss/sc_fixnum.html">Fixnum</a> 类的实例。</p>
+<p>看到 Fixnum 类的方法列表了吧，它的方法数量是如此的少会不会觉得不可思议。
+当然整数能使用的方法不只这几个。关键在<strong>超类</strong>这栏里。
+到 <a href="../rgss/sc_integer.html">Integer</a> 里面去看看吧。</p>
+<p>在 Integer 类中有个名称为 chr 的方法。
+这是个将数字转换为该数字编码的文字并返回的方法。试试看吧。</p>
+<pre>a = 65<br><br>p a.chr         # =&gt; "A"<br></pre>
+<p>上例正确的返回了一个结果。但是 65 是 Fixnum 类的一个实例，
+为何调用 Integer 类的方法 chr 也不出现错误呢？这是因为 Integer 类
+是 Fixnum 类的超类，而 Fixnum 类<strong>继承</strong>了超类的方法。</p>
+<p>所谓继承，就是在一个原有类中扩充定义一个新类，其新定义的类可以使
+用原有类的方法和属性。这样原来的类就称为<strong>超类</strong>，
+而新定义的类则称为<strong>子类</strong>。</p>
+<p>总之，Fixnum 类是 Integer 类中扩充定义的一个新类。也可以这样
+说，Integer 类是 Fixnum 类的超类。Fixnum 类继承了 Integer 类的性质，
+也同样继承了超类的方法。当然，继承的还包括 Integer 类的父
+类 <a href="../rgss/sc_numeric.html">Numeric</a> 类，以及 Numeric 类的父
+类 <a href="../rgss/sc_object.html">Object</a> 类中定义的方法，Fixnum 类的实例都可以使用。</p>
+<p>看到这里也许有人会问，为何要特意把这些类给分开呢？回答会有一点困难：
+继承的意义在于，不同的类共享同一种行为。
+比如，浮点数是 <a href="../rgss/sc_float.html">Float</a> 类的实例，
+这个类是从 Numeric 类中继承而来的。整数和浮点数的性质是不相同的，
+然而无论哪个都是表示「数字」这个概念却是共同的，
+所以在 Numeric 类中定义共同的部分而不用在各个子类中重复定义。</p>
+<p>用 RM 的概念来说的话，比如「装备」这个超类有「武器」、「护甲」两个子类。「装备」所共有的特征写在超类中，而子类里则编写了「武器」和「护甲」的不同点。</p>
+<h2><a name="instance">生成实例</a></h2>
+<p>由类生成实例（对象），大体上分为两种方法。</p>
+<p>第一种方法是使用<strong>字面值</strong>。
+字面值是指，在源代码中直接写下的值。到现在为止，我们自然地使用了
+65 、 "Ruby" 这样的值，严密地说，这实际上是「利用字面值生成了整数和字符串的实例」。</p>
+<p>第二种方法，是以对象为接收者调用 new 方法。举例来说，由于范围对象是
+<a href="../rgss/sc_range.html">Range</a> 类的实例，可以调用 Range.new 来生成。在后面会讲到，生成自定义类的实例时常常会使用这个方法。</p>
+<p>下面的代码都是生成范围对象。前者使用了第一种方法，后者使用了第二种方法。</p>
+<pre>
+p 1..10               # =&gt; 1..10
+p Range.new(1, 10)    # =&gt; 1..10
+</pre>
+<h6></h6>
+</body>
+</html>

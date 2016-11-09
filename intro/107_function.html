@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>函数</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>函数</h1>
+<ul>
+<li><a href="#call">函数的使用</a></li>
+<li><a href="#define">函数的定义</a></li>
+<li><a href="#param">参数</a></li>
+<li><a href="#default">默认参数</a></li>
+<li><a href="#redefine">函数的重定义</a></li></ul>
+<p>数字的计算和字符串的显示等，能够进行某种处理的被命名的功能称为<strong>函数</strong>。</p>
+<h2><a name="call">函数的使用</a></h2>
+<p>函数这一个词语来源于数学，但在程序中使用的函数，实际上更加接近「命令」。
+我们一直在使用的 p、print 命令其实也是函数的一种。</p>
+<p>学习自定义函数的方法前，让我们像函数那样来使用函数吧。
+先介绍生成随机数的 <strong>rand</strong> 函数。</p>
+<pre>p rand(100)<br></pre>
+<p>这个示例是每次运行都会显示出（0～99）中的任意一个随机数字的程
+序。rand 函数是从 0 到指定整数这个不大的范围中随机选取一个数字并返回的函数。
+这个「指定的值」就称为<strong>参数</strong>。
+参数通常在函数名称后面的括号 () 内指定。（像之前 print 函数的调用，不产生歧义的话也可以省略括号）上面示例里 100 就是 rand 函数的参数。
+参数如不直接指定数值的话，还可以像下面的示例那样使用任意的运算。</p>
+<pre>x = 10<br>y = 20<br>p rand(x + y)       # 等同于 p rand(30)<br></pre>
+<p>与参数相反，函数将原始数值进行处理后返回的结果数值称为<strong>返回值</strong>。
+也就是说，rand 函数的返回值是在特定范围内的随机数值。
+函数的返回值可以像普通数字和变量那样被使用。</p>
+<pre>p rand(6) + 1<br></pre>
+<p>上面示例的意思是 rand 函数的返回值加上 1，并显示其计算结果。rand 函数
+在给予的参数为 6 的情况下返回值为 0 到 5 范围内的任意一个数，
+所以再加上 1，就像丢骰子一样随机显示一个 1 到 6 范围内的数值。</p>
+<p>像 print 和 rand 那样的函数已预先内建于系统中，所以称为<strong>内建函数</strong>。</p>
+<h2><a name="define">函数的定义</a></h2>
+<p>函数的定义是从 <strong>def</strong> 开始到 <strong>end</strong> 结束。
+具体的语法如下所示。</p>
+<pre>def 函数的名称<br>  函数的内容<br>end<br></pre>
+<p>函数名称的命名方法，基本上和局部变量相同。
+虽然可以在开头使用大写字母，但不推荐函数命名时使用。
+另外，作为函数命名的例外，在名称的最后还可以添加 ? 或 ! 符号。</p>
+<p>比如，先前的 rand(6) + 1 处理可以定义为 dice 名称的函数，
+我们下面就来进行。这样定义了该函数，
+从此以后只要写 dice 就会得到一个 1 到 6 的随机数字。</p>
+<pre>def dice<br>  return rand(6) + 1<br>end<br><br>p dice              # 等同于 p rand(6) + 1<br></pre>
+<p>这里的 return 就是结束函数处理的命令。函数可以考虑为 VA 的公共事件，
+而 return 就是相当于「中断事件处理」的意思。return 右侧所写的运算，
+就是该函数的返回值。函数不在中途中断的话还可以省略 return。</p>
+<h2><a name="param">参数</a></h2>
+<p>含有参数的函数，如下面示例那样定义。</p>
+<pre>def abs(x)<br>  if x &lt; 0          # 如果 x 小于 0 的话，<br>    return -x       #   结束函数，返回值 -x。<br>  else              # 除此之外，<br>    return x        #   结束函数，返回值 x。<br>  end               # 分歧结束。<br>end<br><br>p abs(-3)           # =&gt; 3<br></pre>
+<p>这个是返回指定参数数值绝对值的函数。这里「指定参数数值」暂时定义为 x。
+这个 x 称为<strong>形式参数</strong>。在函数内部使用有条件分歧，x 小
+于 0 时（为负数）返回值 -x，除此之外（为 0 以上的数）返回值 x。
+最后一行是指定参数为 -3 的实际情况下使用函数，其结果用 p 函数输出。
+与 x 为形式参数相比，这儿的 -3 称为<strong>实际参数</strong>。</p>
+<p>顺便讲一下，所谓绝对值是数学上提出的概念，是表示到原点（上述情况
+可以认为是 0）距离的数值。-3 也好 +3 也好，原点为 0 的情况下，
+每个到 0 的距离都为 3。</p>
+<p>含有多个参数的函数也能定义。多个参数要用逗号 ',' 分开来指定。</p>
+<pre>def sum(x, y)<br>  return x + y      # 结束函数，返回值 x + y。<br>end<br><br>p sum(2, 3)         # =&gt; 5<br></pre>
+<p>这个是返回指定参数两个数值之和的函数。当然实际中写成 2 + 3 更快更容易，
+一般不会定义这样简单的函数。这只是说明语法的示例。</p>
+<p>实际中参数省略括号 () 也能使用。</p>
+<h2><a name="default">默认参数</a></h2>
+<p>定义函数时就已指定且使用时可以省略的参数称为<strong>默认参数</strong>。
+默认参数是在形式参数后面加上符号 = 来指定的。事先设置好了默认参数，
+在使用函数时未指定括号 () 内实际参数数值的情况下，形式参数就会自动代入默认参数数值。</p>
+<pre>def dice(n = 6)<br>  return rand(n) + 1<br>end<br><br>p dice              # 等同于 p dice(6)<br></pre>
+<p>上述示例中未指定参数，使用函数时会返回一个 1～6 的随机数字，
+然而指定参数的话，就能更改随机数字的最大值。比如，
+使用 dice(8) 就会返回一个 1～8 的随机数字。</p>
+<p>大部分内置函数都有这样省略参数的功能。</p>
+<h2><a name="redefine">函数的重定义</a></h2>
+<p>下面的示例中，hello 名称的函数被重复定义了 2 回。</p>
+<pre>def hello<br>  return "您好"<br>end<br><br>def hello<br>  return "晚安"<br>end<br><br>p hello         # =&gt; "晚安"<br></pre>
+<p>在 Ruby 中，函数名称重复的话不会出现错误。
+这种情况下系统会认定后面定义的函数有效，而先前的定义就无效了。</p>
+<h6></h6>
+</body>
+</html>

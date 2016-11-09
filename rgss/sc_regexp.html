@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>Regexp</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>Regexp</h1>
+<p><a href="appendix01.html">正则表达式</a> 的类，详细请参考 <a href="syntax03.html#L000274">正则表达式</a> 。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>
+<a name="L001314">Regexp.last_match</a></dt>
+<dd>
+<p>返回在当前作用域中上次匹配成功正则表达式 <a href="sc_matchdata.html">MatchData</a> 对象，与调用 <a href="s_variables.html#L000428">$~</a> 相当。</p>
+<pre>/(.)(.)/ =~ "ab"
+p Regexp.last_match      # =&gt; #&lt;MatchData:0x4599e58&gt;
+p Regexp.last_match[0]   # =&gt; "ab"
+p Regexp.last_match[1]   # =&gt; "a"
+p Regexp.last_match[2]   # =&gt; "b"
+p Regexp.last_match[3]   # =&gt; nil
+</pre></dd>
+<dt>Regexp.last_match([<var>nth</var>])</dt>
+<dd>
+<p>若整数 <var>nth</var> 为 0，返回匹配字符串（<a href="s_variables.html#L000427">$&amp;</a>）。否则返回匹配第 <var>nth</var> 组括号的子字符串（<a href="s_variables.html#L000432">$1</a>, <a href="s_variables.html#L000433">$2</a>, ）。若没有对应的括号或该组括号没有匹配成功，则返回 nil。</p>
+<pre>/(.)(.)/ =~ "ab"
+p Regexp.last_match      # =&gt; #&lt;MatchData:0x4599e58&gt;
+p Regexp.last_match(0)   # =&gt; "ab"
+p Regexp.last_match(1)   # =&gt; "a"
+p Regexp.last_match(2)   # =&gt; "b"
+p Regexp.last_match(3)   # =&gt; nil
+</pre>
+<p>不带参数的 Regexp.last_match，当整个正则表达式匹配失败时会返回 nil，因此 last_match[1] 的格式会抛出 <a href="s_exceptions.html#NameError">NameError</a> 异常，相反的 last_match(1)
+  会返回 nil。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>
+<var>self</var> =~ <var>string</var></dt>
+<dt>
+<var>self</var> === <var>string</var></dt>
+<dd>
+<p>将 string 字符串与正则表达式进行匹配。若参数非字符串或匹配失败，则返回 false；若匹配成功，返回 true。</p>
+<p>匹配的信息储存于内建变量 <a href="s_variables.html#L000428">$~</a> 中。</p>
+<p>若 <var>string</var> 非 nil 也非 <a href="sc_string.html">String</a> 对象，抛出
+  <a href="s_exceptions.html#TypeError">TypeError</a> ）异常。</p></dd>
+<dt>
+<a name="L001322">match(<var>str</var>)</a></dt>
+<dd>
+<p>相当于 self=~str，只是不会返回 <a href="sc_matchdata.html">MatchData</a>
+  对象。若匹配失败则返回 nil。</p>
+<p>若是只需要用正则表达式匹配子字符串时，可以这样使用 match(str) ：</p>
+<pre>bar = /foo(.*)baz/.match("foobarbaz").to_a[1]
+_, foo, bar, baz = */(foo)(bar)(baz)/.match("foobarbaz")
+</pre>
+<p>to_a 则可以允许出现匹配失败的情况。</p></dd>
+<dt>to_s</dt>
+<dd>
+<p>生成并返回正则表达式的字符串表达式。既使将返回的字符串嵌入在另一个正则表达式中，依然保留其意义。</p>
+<pre>re = /foo|bar|baz/i
+p re.to_s       # =&gt; "(?i-mx:foo|bar|baz)"
+p /#{re}+/o     # =&gt; /(?i-mx:foo|bar|baz)+/
+</pre>
+<p>然而，一些包含后位引用的正则表达式可能会出现意想不到的情况。这是因为目前后向引用只可以用数字来指定。</p>
+<pre>re = /(foo|bar)\1/      # # \1 is foo or bar
+p /(baz)#{re}/          # \1 is baz
+# =&gt; /(baz)(?-mix:(foo|bar)\1)/
+</pre></dd></dl>
+<h6></h6>
+</body>
+</html>

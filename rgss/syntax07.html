@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>类定义与方法定义</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 8.00.7601.17744">
+</head>
+<body>
+<h1>类定义与方法定义</h1>
+<ul>
+<li><a href="#L000327">类的定义</a></li>
+<li><a href="#L000329">模块的定义</a></li>
+<li><a href="#L000330">方法的定义</a>
+<ul>
+<li><a href="#L000332">方法求值</a></li></ul></li>
+<li><a href="#L000333">特殊方法的定义</a></li>
+<li><a href="#L000334">类方法的定义</a></li>
+<li><a href="#L000336">定义操作</a>
+<ul>
+<li><a href="#L000337">alias</a></li></ul></li></ul>
+<h2>类的定义</h2>
+<p>实例：</p>
+<pre>class Foo &lt; Super
+  def test
+     :
+  end
+     :
+end</pre>
+<p>语法：</p>
+<pre>class 标识符 ['&lt;' 超类 ]
+  表达式 ..
+end</pre>
+<p>以上语法可以定义一个类的内容。类的名称是大写字母开头的标识符。</p>
+<p>类的定义将类的内容赋值给一个由类名称标识符所指定的常量（在 Ruby 也是一个对象，是 <a href="sc_class.html">Class</a> 类的一个实例。）</p>
+<p>在一个类已定义时，重写一个类定义会将新的内容附加到原本已存在的类定义中。</p>
+<pre>class Foo &lt; Array
+  def foo
+  end
+end
+class Foo
+  def bar
+  end
+end</pre>
+<p>在类定义之中，self 就是指该类本身，否则与顶层定义相同。类定义中可以包含任何表达式，定义类时会执行这些表达式。</p>
+<p>类定义可以嵌套运行。在下面的范例当中，内部的类 (Bar) 与外部的类 (Foo) 完全没有功能上的关联（如继承），唯一的关联是常数 Bar 属于 Foo
+的内部常数 Foo::Bar 只有代表内部的类与外部的类（或模块）语意上相关，可以表达包含的关系。</p>
+<pre>class Foo
+  class Bar
+  end
+end</pre>
+<p>类定义表达式返回最后计算的表达式计算值。若该表达式无返回值，则返回 nil。</p>
+<h2>模块的定义</h2>
+<p>实例：</p>
+<pre>module Foo
+  def test
+     :
+  end
+     :
+end</pre>
+<p>语法：</p>
+<pre>module 标识符
+  表达式 ..
+end</pre>
+<p>以上语法可以定义一个模块的内容。模块的名称是大写字母开头的标识符。</p>
+<p>模块的定义将模块的内容赋值给一个由模块名称标识符所指定的常量（在 Ruby 中模块也是一个对象，是 <a href="sc_module.html">Module</a> 类的一个实例。）</p>
+<p>在一个模块已定义时，重写一个模块定义会将新的内容附加到原本已存在的模块定义中。</p>
+<p>模块定义表达式返回最后计算的表达式计算值。若该表达式无返回值，则返回 nil。</p>
+<h2>方法的定义</h2>
+<p>实例：</p>
+<pre>def fact(n)
+  if n == 1 then
+     1
+  else
+    n * fact(n-1)
+  end
+end</pre>
+<p>语法：</p>
+<pre>def 方法名称 ['(' [参数 ['=' 参数默认值]] ... [',' '*' 参数] ')']
+  表达式 ..
+[rescue [异常类型,..] [then]
+  表达式 ..]..
+[ensure
+  表达式 ..]
+end</pre>
+<p>以上语法可以定义一个方法。换句话说，（在类定义或模块定义中）定义一个类或模块所拥有的方法。在顶层定义的话，则定义的方法可以在任何地方调用。这类的方法可以与其他脚本语言的「函数」一样调用。</p>
+<p>方法的名称可以是一般的标识符或是可重新定义的运算符（==、 +、 - 等，参看 <a href="syntax04.html">运算符表达式</a> ）。</p>
+<p>若是提供参数默认值，当调用此方法而没有提供参数时，参数默认值就会取代真正的参数。参数默认值的表达式在调用方法时计算其值。</p>
+<p>当最后一个参数名称前面带有 * 号时，后面其余的所有参数全部以数组型态传递给带 * 的参数中。</p>
+<p>实例：</p>
+<pre># 无参数方法，以下方法中的end省略<br>def foo
+end
+# 带参数方法<br>def foo(arg, arg2)
+# 带参数默认值的方法<br>def foo(arg = nil)
+# 各种参数全部到齐<br>def foo(arg, arg2, arg3 = nil, *rest)
+# 运算符格式<br>def ==(other)
+def +(other)
+def *(other)</pre>
+<p>定义方法时，各种参数必须以下面的顺序指定，亦可省略不用：</p>
+<ul>
+<li>不带默认值的参数表达式（可以指定多个）</li>
+<li>带默认值的参数表达式（可以指定多个）</li>
+<li>带 * 的参数（最多指定一个）</li></ul>
+<p>下面是几个特殊的参数定义格式：</p>
+<pre># 一元加/减<br>def +@
+def -@
+# 赋值参数<br>def foo=(value)             # obj.foo = value
+# [] 和 []=
+def [](key)                 # obj[key]
+def []=(key, value)         # obj[key] = value
+def []=(key, key2, value)   # obj[key, key2] = value</pre>
+<p>此外，也可以指定如 <a href="syntax05.html#L000314">begin</a> 表达式中的 rescue 和/或 ensure
+子句来捕捉执行方法时所抛出的异常。</p>
+<p>方法定义表达式返回 nil。</p>
+<h3>方法求值</h3>
+<p>调用方法时，方法的表达式以下列的顺序进行计算：</p>
+<ul>
+<li>参数默认值的表达式（若有指定的话）</li>
+<li>该方法本身的内容</li>
+<li>抛出异常时，计算该方法的 rescue 或 else 子句（若有指定的话）</li>
+<li>该方法的 ensure 子句（若有指定的话）</li></ul>
+<p>以上都是在方法中依照情况而进行计算，包括参数默认值的表达式。</p>
+<p>方法的返回值就是传递给 <a href="syntax05.html#L000317">return</a> 的数值。若是没有调用
+return，则返回方法中（在ensure之前）最后计算的表达式。</p>
+<p>方法不能在定义之前调用，比如说：</p>
+<pre>foo
+def foo
+  print "foo\n"
+end</pre>
+<p>调用未定义方法会抛出 <a href="s_exceptions.html#NameError">NameError</a>
+异常。</p>
+<h2>特殊方法的定义</h2>
+<p>实例：</p>
+<pre>def foo.test
+  print "this is foo\n"
+end</pre>
+<p>语法：</p>
+<pre>def 表达式 '.' 标识符 ['(' [ 参数 ['=' 参数默认值]] ... [',' '*' 参数 ]')']
+  表达式 ..
+[rescue [异常类型,..] [then]
+  表达式 ..]..
+[else
+  表达式 ..]
+[ensure
+  表达式 ..]
+end</pre>
+<p>特殊方法是专属于一个对象而不是一个类。特殊方法不能够嵌套。 </p>
+<p>特殊方法可以由子类所继承，也就是说，特殊方法的作用就好比其他面向对象语言中的类方法。</p>
+<p>特殊方法定义表达式返回 nil。</p>
+<h2>类方法的定义</h2>
+<p>在 Ruby 里方法就是指定给一个类的方法。类也是对象，所以也可以像一般对象一样指定方法。</p>
+<p>因此，在类对象当中定义一个方法时，该方法就会成为类方法。具体的定义方法如下（模块中亦同）：</p>
+<pre># 特殊方法定义<br>class Hoge
+  def Hoge.foo
+  end
+end
+# 在类定义之外定义也可以<br>def Hoge.bar
+end
+# 这样定义的话，既使类名称改变也不用修改方法<br>class Hoge
+  def self.baz
+  end
+end</pre>
+<h2>定义操作</h2>
+<h3><a name="L000337">alias</a></h3>
+<p>实例：</p>
+<pre>alias foo bar
+alias :foo :bar</pre>
+<p>语法：</p>
+<pre>alias 新方法名称 旧方法名称<br></pre>
+<p>以上语法可以给一个方法或全局变量指定其别名。指定的方法名称可以是标识符或 <a href="sc_symbol.html">符号</a> （不可使用如 obj.method
+这样的表达式）。调用方法时不会计算别名的参数表达式。</p>
+<p>使用方法别名时，既使重新定义该方法，该方法的原有定义依然会被保留。当想要改变方法的行为，又要在新定义的方法内使用旧定义方法的结果时可以使用。</p>
+<pre># 定义方法 foo<br>def foo
+  "foo"
+end
+# 设置别名（保留方法定义）<br>alias :_orig_foo :foo
+# 重新定义 foo 方法（使用以前的定义）<br>def foo
+  _orig_foo * 2
+end
+p foo  # =&gt; "foofoo"</pre>
+<p><code>alias 表达式返回 nil。</code></p>
+<h6></h6>
+</body>
+</html>

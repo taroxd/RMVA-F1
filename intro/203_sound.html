@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Sound 模块</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Sound 模块</h1>
+<ul>
+<li><a href="#se_object">音效对象</a></li>
+<li><a href="#data_def">数据库的定义</a></li>
+<li><a href="#audio">Audio 模块</a></li>
+<li><a href="#check_empty">空字符串的判定</a></li>
+<li><a href="#nest">嵌套定义</a></li></ul>
+<p>Sound 是用来方便播放数据库的「系统」中所设置的音效的模块。</p>
+<h2><a name="se_object">音效对象</a></h2>
+<p>请从左边的脚本列表中选择 Sound 部分。</p>
+<pre>
+module Sound
+</pre>
+<p>这一行、和前一章 Vocab 是一样的。也是模块的定义方式。</p>
+<pre>
+  def self.play_system_sound(n)
+    $data_system.sounds[n].play
+  end
+</pre>
+<p>play_system_sound 定义了模块方法。</p>
+<p>$data_system 即是我们熟悉的指向 <a href="../rgss/gc_rpg_system.html">RPG::System</a> 类的实例的全局变量。</p>
+<p>sounds 则是和参考手册中写的一样，是保存 <a
+href="../rgss/gc_rpg_se.html">RPG::SE</a> 类的实例的数组。这就是所谓的「音效对象」。每个音效并没有名字，对应的是数组的编号，顺序和数据库中显示的一样。换句话说，0 的情况就是 [移动游标] ，而 1 的情况就是[确定]。</p>
+<p>音效对象中，会记录住在RM中设置的音效 SE 的文件名，音量以及音调的信息，而且还具有可以让自己被播放的 play 方法。因此，比方说我们将参数设为 0 去调用这个方法的话，就会播放[移动游标]所设置的音效。而 play_cursor 这个方法所进行的正是以上说明的动作。</p>
+<pre>
+  def self.play_cursor
+    play_system_sound(0)
+  end
+</pre>
+<p>不过在真正想要播放音效的时候，会像下面一样调用模块方法：</p>
+<pre>
+Sound.play_cursor
+</pre>
+<p>只要在想要播放音效的场合时照以上写的话，比起每次都写成 $data_system.sounds[0].play 会比较容易阅读。这正是 Sound 模块存在的目的。利用[全局搜索]查一查，应该会发现很多在调用这个方法的地方。</p>
+<p>因为在这个模块的后面的脚本，就单纯只是在不断定义对应的音效方法而已，所以我们现在没有必要再继续看下去，而是要看和 RPG::SE 类相关的内容。让我们来更深入地探讨吧。</p>
+<h2><a name="data_def">数据库的定义</a></h2>
+<p>现在我们已经知道，音效对象拥有 play 这个方法，调用该方法的话就能够播放音效。可是音效说到底也算是一种数据类型，如果只会用却不了解其内部的运作方式也不太好吧。</p>
+<p>首先先在参考手册中确认 <a href="../rgss/gc_rpg_se.html">RPG::SE</a> 类的内容。有看见在<strong>定义</strong>这个项目中写着以下脚本吧。</p>
+<pre>
+class RPG::SE &lt; RPG::AudioFile
+  def play
+    unless @name.empty?
+      Audio.se_play('Audio/SE/' + @name, @volume, @pitch)
+    end
+  end
+  def self.stop
+    Audio.se_stop
+  end
+end
+</pre>
+<p>这个脚本并不存在于脚本编辑器中。他表示的是在 RGSS 的内部，RPG::SE 是这样定义的。以 <a href="../rgss/gc_rpg_system.html">RPG::System</a> 为首，这些写在参考手册中，处理数据库的类也一定有在内部定义，如果有兴趣的话读一读参考手册也好。</p>
+<h2><a name="audio">Audio 模块</a></h2>
+<p>在定义 RPG::SE 类时有几个重要点，不过我们先看看以下这行吧：</p>
+<pre>
+      Audio.se_play('Audio/SE/' + @name, @volume, @pitch)
+</pre>
+<p>在这里调用了 <a href="../rgss/gm_audio.html">Audio</a> 模块的 se_play 这个方法。实际上进行音效播放的就是这个 Audio 模块。我们很少直接调用 Audio 模块的方法，不过这个模块和基础篇中使用的 <a href="../rgss/gm_graphics.html">Graphics</a> 是同等重要的东西，所以麻烦记住有这么个模块的存在。</p>
+<p>接着，名称以 @ 这个符号开头的变量叫做<strong>实例变量</strong>，忘记的人请复习一下基础篇的<a href="112_class.html">类定义</a>，这里用到了 @name、@volume、@pitch 这三个实例变量，顾名思义，他们分别指向 SE 的文件名，音量和音调。由于 @name 所代表的文件名中没有包含路径，所以把它和 "Audio/SE/" 这样的字符串连接起来形成完整的路径名。</p>
+<h2><a name="check_empty">空字符串的判定</a></h2>
+<p>RPG::SE 类的 play 方法的内容实际上就是以下三行：</p>
+<pre>
+    unless @name.empty?
+      Audio.se_play('Audio/SE/' + @name, @volume, @pitch)
+    end
+</pre>
+<p>unless 这个保留字我们已经在基础篇的<a href="105_branch.html">分支条件</a>中学过了。他的操控形式跟 if 相反，在没有满足条件的情况下会执行特定的处理。</p>
+<p>empty? 方法则到目前为止还没出现过。虽然说从名字来看多少能猜出它的功能，但具体而言应该要从哪里查起才比较好弄懂它呢？以这次的情况为例，该方法的<strong>接收者</strong>应该会是某个对象。因为 @name 代表文件名，所以可以推测是 <a href="../rgss/sc_string.html">String</a> 类。再把参考手册打开找找看叫做 empty? 的方法吧。</p>
+<p>和参考手册所写的一样，字符串对象的 empty? 方法会在字符串为空值的时候返回 true。因为我们在这里是用 unless 当作条件判定，因此换句话说，是以「文件名不为空值」作为分支条件。而在 RM 这里，如果我们将 SE 设置为「无」的时候， @name 就会变成空字符串。如果我们不这样先检查过，硬是要向音效模块下达播放 "Audio/SE/" 这个音效的命令，自然就会因为文件不存在发生错误。为了避免这种情况的发生，才加入这个分支条件的。</p>
+<h2><a name="nest">嵌套定义</a></h2>
+<p>接下来让我们把焦点集中在类定义的外部框架上吧。</p>
+<pre>
+class RPG::SE &lt; RPG::AudioFile
+end
+</pre>
+<p>上面看起来像是在定义叫做 RPG::SE 的类，不过真正的意义是，在 RPG 模块中定义了叫做 SE 的类。更具体一点来说，等于下面的脚本：</p>
+<pre>
+module RPG
+  class SE &lt; AudioFile
+  end
+end
+</pre>
+<p>在 Ruby 中，可以像这样在模块或类的里面再定义别的模块或类。引用的方式就跟前一章的<strong>常量</strong>一样，所以上面的类就变成了 RPG::SE。只不过如果使用了第一种表示方法，要是 RPG 模块或是方法没有事先定义好的话，就会发生错误。</p>
+<p>如果要参照同一个模块内的东西，可以省略 'RPG::' 这一段的指定。在这里被指定成父类的 AudioFile 实际上等同于 <a href="../rgss/gc_rpg_audiofile.html">RPG::AudioFile</a> 类，然而因为同样都在 RPG 模块内的缘故，在我们使用第二种表示方法时就采用了省略模块名的形式。</p>
+<p>在 RPG::SE 类的探索在此告一段落吧。如果有人忘记了父类跟子类之间的关系，麻烦先复习一下<a href="108_object.html">对象</a>和<a href="112_class.html">类定义</a>这两个章节吧。</p>
+<h6></h6>
+</body>
+</html>

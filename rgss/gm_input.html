@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Input</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Input</h1>
+<p>处理手柄、键盘输入的模块。</p>
+<p>在 RGSS3 中，使用符号而非按键序号来管理。<span class="rgss3">(RGSS3)</span></p>
+<h2>模块方法</h2>
+<dl>
+<dt>Input.update</dt>
+<dd>
+<p>更新输入信息。原则上一帧调用一次。</p></dd>
+<dt>Input.press?(<var>sym</var>) <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>检测符号 sym 对应的按键当前是否被按下。</p>
+<p>如果按键被按下，则返回 true ，否则返回 false 。</p>
+<pre>
+if Input.press?(:C)
+  do_something
+end
+</pre></dd>
+<dt>Input.trigger?(<var>sym</var>) <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>检测符号 sym 对应的按键是否被重新按下。</p>
+<p>从没有按下的状态转变为按下的瞬间才被视为「重新按下」。</p>
+<p>如果按钮被重新按下，则返回 true，如果不是，返回 false。</p></dd>
+<dt>Input.repeat?(<var>sym</var>) <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>检测符号 sym 对应的按键是否被重新按下。</p>
+<p>不同于 trigger? ，按住按键时会考虑按键的重复。</p>
+<p>如果按钮被按下，则返回 true，如果不是，返回 false 。</p></dd>
+<dt>Input.dir4</dt>
+<dd>
+<p>判断方向键的状态，以 4 方向输入的形式，返回与小键盘上的数字对应的整数（2, 4, 6, 8）。</p>
+<p>没有方向键按下时（或等价的情况下）返回 0。</p></dd>
+<dt>Input.dir8</dt>
+<dd>
+<p>判断方向键的状态，以 8 方向输入的形式，返回与小键盘上的数字对应的整数（1, 2, 3, 4, 6, 7, 8, 9）。</p>
+<p>没有方向键按下时（或等价的情况下）返回 0。</p></dd></dl>
+<h2>常量</h2>
+<dl>
+<p>这些常量名即对应符号名。比如，方向键中的右键可以用记号 :RIGHT 来指定。<span class="rgss3">(RGSS3)</span></p>
+<dt>DOWN LEFT RIGHT UP</dt>
+<dd>
+<p>分别对应方向键中的下、左、右、上。</p></dd>
+<dt>A B C X Y Z L R</dt>
+<dd>
+<p>对应各自的按键。</p></dd>
+<dt>SHIFT CTRL ALT</dt>
+<dd>
+<p>直接对应键盘上面的 SHIFT、CTRL 和 ALT 键。</p></dd>
+<dt>F5 F6 F7 F8 F9</dt>
+<dd>
+<p>对应键盘上的各功能键，其他的功能键被系统保留，不可获取。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

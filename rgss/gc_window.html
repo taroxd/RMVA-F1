@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Window</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Window</h1>
+<p>游戏内窗口的类，内部由多个精灵构成。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Window.new([<var>x</var>, <var>y</var>, <var>width</var>,
+<var>height</var>]) <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>生成一个 Window 对象，根据需要指定位置与大小。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>dispose</dt>
+<dd>
+<p>释放窗口。若是已释放则什么都不做。</p></dd>
+<dt>disposed?</dt>
+<dd>
+<p>当窗口已释放则返回 true。</p></dd>
+<dt>update</dt>
+<dd>
+<p>刷新光标的闪烁和暂停标记的动画。该方法原则上每帧调用一次。</p></dd>
+<dt>move(<var>x</var>, <var>y</var>, <var>width</var>, <var>height</var>)
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>同时设置窗口的 X 坐标、Y 坐标、宽度、高度。</p></dd>
+<dt>open? <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>如果窗口完全打开（openness == 255）则返回 true。</p></dd>
+<dt>close? <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>如果窗口完全关闭（openness == 0）则返回 true。</p></dd></dl>
+<h2>属性</h2>
+<dl>
+<dt>windowskin</dt>
+<dd>
+<p>窗口皮肤位图（<a href="gc_bitmap.html">Bitmap</a>）的引用。</p>
+<p>皮肤规格和 RMVX 基本相同，详情请参见 <a href="../rpgvxace/6100_resource.html#windowskin">素材规格：窗口皮肤</a>。</p></dd>
+<dt>contents</dt>
+<dd>
+<p>窗口内容位图（<a href="gc_bitmap.html">Bitmap</a>）的引用。</p></dd>
+<dt>cursor_rect</dt>
+<dd>
+<p>光标矩形（<a href="gc_rect.html">Rect</a>）。</p>
+<p>以窗口内容为基准指定坐标。<span class="rgss3">(RGSS3)</span></p></dd>
+<dt>viewport</dt>
+<dd>
+<p>窗口关联的显示端口（<a href="gc_viewport.html">Viewport</a>）的引用。</p></dd>
+<dt>active</dt>
+<dd>
+<p>光标闪烁的状态。true 表示闪烁。默认为 true。</p></dd>
+<dt>visible</dt>
+<dd>
+<p>窗口可见的状态。true 表示可见。默认为 true。</p></dd>
+<dt>arrows_visible <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>滚动箭头可见的状态，true 表示可见。默认为 true。</p></dd>
+<dt>pause</dt>
+<dd>
+<p>暂停标记可见的状态。暂停标记是表示消息窗口等待输入的记号。true 表示可见。默认为 false。</p></dd>
+<dt>x</dt>
+<dd>
+<p>窗口的 X 坐标。</p></dd>
+<dt>y</dt>
+<dd>
+<p>窗口的 Y 坐标。</p></dd>
+<dt>width</dt>
+<dd>
+<p>窗口的宽度。</p></dd>
+<dt>height</dt>
+<dd>
+<p>窗口的高度。</p></dd>
+<dt>z</dt>
+<dd>
+<p>窗口的 Z 坐标。数值越大的窗口显示在越前方。</p>
+<p>Z 坐标相同的，越晚生成的对象显示在越前方。</p>
+<p>默认为 100。<span class="rgss3">(RGSS3)</span></p></dd>
+<dt>ox</dt>
+<dd>
+<p>窗口内容原点的 X 坐标。修改此数值可以滚动窗口。</p>
+<p>该属性同样影响光标。<span class="rgss3">(RGSS3)</span></p></dd>
+<dt>oy</dt>
+<dd>
+<p>窗口内容原点的 Y 坐标。修改此数值可以滚动窗口。</p>
+<p>该属性同样影响光标。<span class="rgss3">(RGSS3)</span></p></dd>
+<dt>padding <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>窗口边框与内容之间的边距，默认为 12。<span class="rgss3">(RGSS3)</span></p></dd>
+<dt>padding_bottom <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>底端用的 padding。由于该属性会随着 padding 的改变而改变，因此必须在 padding 之后设置。</p></dd>
+<dt>opacity</dt>
+<dd>
+<p>窗口的不透明度（0～255）。超出此范围的数值会自动修正。默认为 255。</p></dd>
+<dt>back_opacity</dt>
+<dd>
+<p>窗口背景的不透明度（0～255）。超出此范围的数值会自动修正。默认为 192。<span class="rgss3">(RGSS3)</span></p></dd>
+<dt>contents_opacity</dt>
+<dd>
+<p>窗口内容的不透明度（0～255）。超出此范围的数值会自动修正。默认为 255。</p></dd>
+<dt>openness</dt>
+<dd>
+<p>窗口的打开程度（0～255）。超出此范围的数值会自动修正。</p>
+<p>将此数值从 0（完全关闭）至 255（完全打开）之间变换，可以产生窗口打开和关闭的动画效果。openness 不满 255 时，窗口的内容不会显示。默认为 255。</p></dd>
+<dt>tone <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>窗口背景的色调（<a href="gc_tone.html">Tone</a>）。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

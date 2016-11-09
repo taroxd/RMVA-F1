@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>Enumerable</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 8.00.7601.17785">
+</head>
+<body>
+<h1>Enumerable</h1>
+<p>包含重复关系操作类的模块，此模快的方法都是通过 each 定义的，所以包含此模块的类必须定义 each 方法。</p>
+<h2>方法</h2>
+<dl>
+<dt>all?</dt>
+<dt>all? {|<var>item</var>| ... }</dt>
+<dd>
+<p>当所有的项目都为真时返回 true。若任一项目为伪则返回 false。</p></dd>
+<dd>
+<p>使用区块时，则依次以各个元素执行区块的计算，若所有的结果都是真则返回 true，一旦区块返回伪时，立刻返回 false。</p></dd>
+<dd>
+<pre>p [1,2,3].all? {|v| v &gt; 0}   # =&gt; true
+p [1,2,3].all? {|v| v &gt; 1}   # =&gt; false
+</pre></dd>
+<dt>any?</dt>
+<dt>any? {|<var>item</var>| ... }</dt>
+<dd>
+<p>当所有的项目都为伪时返回 false。若任一项目为真则返回 true。</p>
+<p>使用区块时，则依次以各个元素执行区块的计算，若所有的结果都是伪则返回 false，一旦区块返回真时，立刻返回 true。</p>
+<pre>p [1,2,3].any? {|v| v &gt; 3}   # =&gt; false
+p [1,2,3].any? {|v| v &gt; 1}   # =&gt; true
+</pre></dd>
+<dt>collect {|<var>item</var>| ... }</dt>
+<dd>
+<p>以数组的形式返回所有区块的计算结果。</p></dd>
+<dt>find {|<var>item</var>| ... }</dt>
+<dd>
+<p>依次以各个元素执行区块的计算，返回第一个计算为 true 的项目。若没有项目计算为 true，则返回 nil。</p></dd>
+<dt>find_all {|<var>item</var>| ... }</dt>
+<dt>select {|<var>item</var>| ... }</dt>
+<dd>
+<p>依次以各个元素执行区块的计算，将所有计算为 true 的项目以数组形式返回。若没有项目计算为 true，则返回空数组。</p></dd>
+<dt>include?(<var>val</var>)</dt>
+<dd>
+<p>当列表中任一项目符合 val == 时，返回
+  true。</p></dd>
+<dt>inject([<var>init</var>]) {|<var>result</var>, <var>item</var>| ... }</dt>
+<dd>
+<p>再执行区块之前，将 init 的初始值和一个 item 确定为参数。在第二次和随后的循环中，将上一次区块的运算结果和下一个 item
+  作为参数，随后继续执行区块。最后一个 item 也作为参数后，返回最后一次区块运算得出的结果。</p>
+<p>如果一个 item 是空的，那么就返回 init 。</p>
+<p>如果没有设置参数 <var>init</var> 的初始值，则将第一、第二个 item 传递给区块。假如只有一个 item
+  被定义的话，那么区块不会被执行，第一个 item 会被返回。如果没有 item 被定义，那么就会返回 nil 。</p>
+<dl>
+<dt>范例</dt>
+<dd>
+<p>运算结果：</p>
+<pre>p [1,2,3,4,5].inject(0) {|result, item| result + item }
+  =&gt; 15
+</pre>
+<p>它等同于下面的代码：</p>
+<pre>result = 0
+[1,2,3,4,5].each {|v| result += v }
+p result
+=&gt; 15
+</pre></dd></dl></dd>
+<dt>max</dt>
+<dd>
+<p>返回最大的项目，前提是所有的项目都能够使用 &lt;=&gt; 方法做比较。</p></dd>
+<dt>max {|<var>a</var>, <var>b</var>| ... }</dt>
+<dd>
+<p>依次将各个项目与区块的计算结果比较并返回最大的项目。</p>
+<p>要求区块的计算值为：a &gt; b 时计算值为正整数、 a == b 时为 0、a &lt; b 时为负整数。若区块返回非整数数值，则抛出 <a href="s_exceptions.html#TypeError">TypeError</a> 异常。</p></dd>
+<dt>max_by {|<var>item</var>| ... }</dt>
+<dd>
+<p>将各个区块的结果计算出来后，返回最大的那个项目，如果参数为空，那么就返回nil。（前提是所有的项目都能够使用 &lt;=&gt;
+方法做比较。）</p></dd>
+<dt>min</dt>
+<dd>
+<p>返回最小的项目，前提是所有的项目都能够使用 &lt;=&gt; 方法做比较。</p></dd>
+<dt>min {|<var>a</var>, <var>b</var>| ... }</dt>
+<dd>
+<p>依次将各个项目与区块的计算结果比较并返回最小的项目。</p>
+<p>要求区块的计算值为：a &gt; b 时计算值为正整数、 a == b 时为 0、a &lt; b 时为负整数。若区块返回非整数数值，则抛出 <a href="s_exceptions.html#TypeError">TypeError</a> 异常。</p></dd>
+<dt>min_by {|<var>item</var>| ... }</dt>
+<dd>
+<p>将各个区块的结果计算出来后，返回最小的那个项目，如果参数为空，那么就返回nil。（前提是所有的项目都能够使用 &lt;=&gt;
+方法做比较。）</p></dd>
+<dt>sort</dt>
+<dt>sort {|<var>a</var>, <var>b</var>| ... }</dt>
+<dd>
+<p>将所有项目依照升序排列后，生成并返回包含所有项目的数组。</p>
+<p>若没有使用区块，则调用 &lt;=&gt; 比较来进行排序。</p>
+<p>若想调用其他非 &lt;=&gt; 的方法进行排序，就使用区块，以区块的计算结果进行排序。要求区块的计算值为：a &gt; b 时计算值为正整数、 a
+  == b 时为 0、a &lt; b 时为负整数。若区块返回非整数数值，则抛出 <a href="s_exceptions.html#TypeError">TypeError</a> 异常。</p></dd>
+<dt>sort_by {|<var>item</var>| ... }</dt>
+<dd>
+<p>将所有区块按照计算结果进行升序排列，生成并返回一个包含所有项目的新数组。</p></dd>
+<dt>to_a</dt>
+<dt>entries</dt>
+<dd>
+<p>返回包含所有项目的数组。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::Event::Page::Graphic</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::Event::Page::Graphic</h1>
+<p>地图事件块事件页「图片」的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_event_page.html">RPG::Event::Page</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>tile_id</dt>
+<dd>
+<p>地图元件 ID 编号。当指定图像非地图元件时，此值为 0。</p></dd>
+<dt>character_name</dt>
+<dd>
+<p>角色行走图的文件名。</p></dd>
+<dt>character_index</dt>
+<dd>
+<p>角色行走图索引（0～7）。</p></dd>
+<dt>direction</dt>
+<dd>
+<p>角色的面向方向。（2：下、4：左、6：右、8：上）。</p></dd>
+<dt>pattern</dt>
+<dd>
+<p>角色的步伐画格（0～2）。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::Event::Page::Graphic
+  def initialize
+    @tile_id = 0
+    @character_name = ''
+    @character_index = 0
+    @direction = 2
+    @pattern = 0
+  end
+  attr_accessor :tile_id
+  attr_accessor :character_name
+  attr_accessor :character_index
+  attr_accessor :direction
+  attr_accessor :pattern
+end
+</pre>
+<h6></h6>
+</body>
+</html>

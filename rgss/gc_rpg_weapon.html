@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Weapon</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RPG::Weapon</h1>
+<p>武器的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="gc_rpg_equipitem.html">RPG::EquipItem</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>wtype_id</dt>
+<dd>
+<p>武器类型 ID。</p></dd>
+<dt>animation_id</dt>
+<dd>
+<p>动画 ID。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>performance</dt>
+<dd>
+<p>评价武器的性能。在最强装备指令中使用。</p>
+<p>返回物理攻击 + 魔法攻击 + 所有能力之和。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::Weapon &lt; RPG::EquipItem
+  def initialize
+    super
+    @wtype_id = 0
+    @animation_id = 0
+    @features.push(RPG::BaseItem::Feature.new(31, 1, 0))
+    @features.push(RPG::BaseItem::Feature.new(22, 0, 0))
+  end
+  def performance
+    params[2] + params[4] + params.inject(0) {|r, v| r += v }
+  end
+  attr_accessor :wtype_id
+  attr_accessor :animation_id
+end
+</pre>
+<h6></h6>
+</body>
+</html>

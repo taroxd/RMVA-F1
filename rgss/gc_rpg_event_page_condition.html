@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::Event::Page::Condition</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::Event::Page::Condition</h1>
+<p>地图事件块事件页条件的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_event_page.html">RPG::Event::Page</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>switch1_valid</dt>
+<dd>
+<p>是否勾选第一个「开关」条件选项的复选框。</p></dd>
+<dt>switch2_valid</dt>
+<dd>
+<p>是否勾选第二个「开关」条件选项的复选框。</p></dd>
+<dt>variable_valid</dt>
+<dd>
+<p>是否勾选「变量」条件选项的复选框。</p></dd>
+<dt>self_switch_valid</dt>
+<dd>
+<p>是否勾选「独立开关」条件选项的复选框。</p></dd>
+<dt>item_valid</dt>
+<dd>
+<p>是否勾选「物品」条件选项的复选框。</p></dd>
+<dt>actor_valid</dt>
+<dd>
+<p>是否勾选「主角同伴」条件选项的复选框。</p></dd>
+<dt>switch1_id</dt>
+<dd>
+<p>当勾选第一个「开关」条件选项，所使用的开关 ID 编号。</p></dd>
+<dt>switch2_id</dt>
+<dd>
+<p>当勾选第二个「开关」条件选项，所使用的开关 ID 编号。</p></dd>
+<dt>variable_id</dt>
+<dd>
+<p>当勾选「变量」条件选项，所使用的变量 ID 编号。</p></dd>
+<dt>variable_value</dt>
+<dd>
+<p>当勾选「物品」条件选项，所使用的变量基准值（大于或等于此值）</p></dd>
+<dt>self_switch_ch</dt>
+<dd>
+<p>当勾选「独立开关」条件选项，所使用的独立开关字母编号（A~D）。</p></dd>
+<dt>item_id</dt>
+<dd>
+<p>当勾选「物品」条件选项，所使用的物品 ID 编号。</p></dd>
+<dt>actor_id</dt>
+<dd>
+<p>当勾选「物品」条件选项，所使用的角色 ID 编号。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::Event::Page::Condition
+  def initialize
+    @switch1_valid = false
+    @switch2_valid = false
+    @variable_valid = false
+    @self_switch_valid = false
+    @item_valid = false
+    @actor_valid = false
+    @switch1_id = 1
+    @switch2_id = 1
+    @variable_id = 1
+    @variable_value = 0
+    @self_switch_ch = 'A'
+    @item_id = 1
+    @actor_id = 1
+  end
+  attr_accessor :switch1_valid
+  attr_accessor :switch2_valid
+  attr_accessor :variable_valid
+  attr_accessor :self_switch_valid
+  attr_accessor :item_valid
+  attr_accessor :actor_valid
+  attr_accessor :switch1_id
+  attr_accessor :switch2_id
+  attr_accessor :variable_id
+  attr_accessor :variable_value
+  attr_accessor :self_switch_ch
+  attr_accessor :item_id
+  attr_accessor :actor_id
+end
+</pre>
+<h6></h6>
+</body>
+</html>

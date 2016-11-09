@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>字符串</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>字符串</h1>
+<ul>
+<li><a href="#print">print</a></li>
+<li><a href="#subst">为变量赋值</a></li>
+<li><a href="#backslash">转义符</a></li>
+<li><a href="#unfold">内嵌表达式</a></li></ul>
+<p>一般来说，由文字连接起来的数据就称为<strong>字符串</strong>。</p>
+<h2><a name="print">print</a></h2>
+<p>双引号 "" 或单引号 '' 中间的部分，就作为字符串数据使用。</p>
+<pre>p "Maker"                    # =&gt; "Maker"<br>p 'Maker'                    # =&gt; "Maker"<br></pre>
+<p>p 命令会导致双引号和字符串一起输出，所以使用 print 命令代替。</p>
+<pre>print "Maker"                # =&gt; Maker<br></pre>
+<p>这次双引号就没有了。p 是按照人们容易理解的形式来显示的命令，
+所以它会加上双引号来强调字符串。print 和 p 相似，但它只显示字符串本身。</p>
+<h2><a name="subst">为变量赋值</a></h2>
+<p>和数字一样，字符串也能代入变量为该变量赋值。</p>
+<pre>a = "Maker"<br>print a                         # =&gt; Maker<br></pre>
+<p>字符串也能作加法，字符串加上字符串，就会得到一个连接起来的字符串为答案。</p>
+<pre>a = "RPG "<br>b = "Maker"<br>print a + b                     # =&gt; RPG Maker<br></pre>
+<p>还可以作乘法，字符串乘以一个整数，就会得到该整数次重复的字符串为答案。</p>
+<pre>a = "Maker"<br>print a * 2                     # =&gt; MakerMaker<br></pre>
+<h2><a name="backslash">转义符</a></h2>
+<p>字符串中的 \ 符号，是作为一段连续文字中换行等操作使用的特殊文字。
+比如 \n 是表示换行。</p>
+<p>转义符有 \t（Tab）和 \s（空格）等多种代码，
+另外 \n 表示换行，重叠起来的 \\ 表示 \ 文字本身，这两个一定要记住。</p>
+<pre>a = "Maker"<br>b = "\\13,440"<br>print a + "\n" + b              # =&gt; Maker<br>                                #    \13,440<br></pre>
+<p>单引号 '' 中间的字符串，除 \\（\ 符号本身）和 \'（单引号）外不能使用
+任何的转义符。这在打算原样显示文字本身的情况下使用会十分方便。</p>
+<pre>print 'Maker\n'              # =&gt; Maker\n<br></pre>
+<p>\ 符号本身即为计算器内部的转义符。以后实际字符串操作中应注意正确使用。</p>
+<h2><a name="unfold">内嵌表达式</a></h2>
+<p>在字符串里面，可以用 #{变量名} 的形式把变量的内容嵌入在字符串当中。</p>
+<pre>game = "RPG"<br>print "#{game} Maker"         # =&gt; RPG Maker<br></pre>
+<p>上述示例里，第一行是为 game 变量赋值代入字符串「RPG」。第二行里面，
+其中 #{game} 是表示直接嵌入变量 game 的值字符串「RPG」，
+和后面的「 Maker」组合在一起，从而输出一个新的字符串。
+VA 的事件指令[显示文字]里，在文章中使用 \V[n] 和 \N[n] 转义符可以
+把变量的值和角色的名称作为信息嵌入文字中，这个功能好像和那个十分相似。</p>
+<p>当然，</p>
+<pre>
+game = "RPG"
+print game + " Maker"         # =&gt; RPG Maker
+</pre>
+<p>像这样写也可以，但使用内嵌表达式的方法有时会使程序变得更加可读，因此才有了内嵌表达式的功能。</p>
+<p>另外内嵌表达式和转义符一样，在单引号 '' 中间的字符串里使用也会无效。</p>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Map</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RPG::Map</h1>
+<p>地图数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>display_name</dt>
+<dd>
+<p>地图显示名。</p></dd>
+<dt>tileset_id</dt>
+<dd>
+<p>地图使用的图块组 ID。</p></dd>
+<dt>width</dt>
+<dd>
+<p>地图宽度。</p></dd>
+<dt>height</dt>
+<dd>
+<p>地图高度。</p></dd>
+<dt>scroll_type</dt>
+<dd>
+<p>循环方式（0：不循环、1：纵向循环、2：横向循环、3：纵横循环）。</p></dd>
+<dt>specify_battleback</dt>
+<dd>
+<p>是否使用战斗背景图像。</p></dd>
+<dt>battleback1_name</dt>
+<dd>
+<p>使用战斗背景图像时地板图像的文件名。</p></dd>
+<dt>battleback2_name</dt>
+<dd>
+<p>使用战斗背景图像时墙壁图像的文件名。</p></dd>
+<dt>autoplay_bgm</dt>
+<dd>
+<p>是否自动切换背景音乐。</p></dd>
+<dt>bgm</dt>
+<dd>
+<p>自动切换背景音乐时对应的背景音乐（<a href="gc_rpg_bgm.html">RPG::BGM</a>）。</p></dd>
+<dt>autoplay_bgs</dt>
+<dd>
+<p>是否自动切换背景声音。</p></dd>
+<dt>bgs</dt>
+<dd>
+<p>自动切换背景声音时对应的背景声音（<a href="gc_rpg_bgs.html">RPG::BGS</a>）。</p></dd>
+<dt>disable_dashing</dt>
+<dd>
+<p>是否禁止跑步。</p></dd>
+<dt>encounter_list</dt>
+<dd>
+<p>遇敌列表。<a href="gc_rpg_map_encounter.html">RPG::Map::Encounter</a> 的数组。</p></dd>
+<dt>encounter_step</dt>
+<dd>
+<p>平均遇敌步数。</p></dd>
+<dt>parallax_name</dt>
+<dd>
+<p>远景图像文件名。</p></dd>
+<dt>parallax_loop_x</dt>
+<dd>
+<p>远景是否启用了[横向循环]选项。</p></dd>
+<dt>parallax_loop_y</dt>
+<dd>
+<p>远景是否启用了[纵向循环]选项。</p></dd>
+<dt>parallax_sx</dt>
+<dd>
+<p>远景横向自动卷动的速度。</p></dd>
+<dt>parallax_sy</dt>
+<dd>
+<p>远景纵向自动卷动的速度。</p></dd>
+<dt>parallax_show</dt>
+<dd>
+<p>远景是否启用了[在地图编辑器中显示]选项。</p></dd>
+<dt>note</dt>
+<dd>
+<p>备注。</p></dd>
+<dt>data</dt>
+<dd>
+<p>地图数据。图块 ID 及其附属数据的三维数组。（<a href="gc_table.html">Table</a>）。</p></dd>
+<dt>events</dt>
+<dd>
+<p>地图事件。以事件 ID 为主键，<a href="rgss/gc_rpg_event.html">RPG::Event</a> 的实例为值的哈希表。</p></dd></dl>
+<h2>内部类</h2>
+<ul>
+<li><a href="gc_rpg_map_encounter.html">RPG::Map::Encounter</a></li></ul>
+<h2>定义</h2>
+<pre>
+class RPG::Map
+  def initialize(width, height)
+    @display_name = ''
+    @tileset_id = 1
+    @width = width
+    @height = height
+    @scroll_type = 0
+    @specify_battleback = false
+    @battleback_floor_name = ''
+    @battleback_wall_name = ''
+    @autoplay_bgm = false
+    @bgm = RPG::BGM.new
+    @autoplay_bgs = false
+    @bgs = RPG::BGS.new('', 80)
+    @disable_dashing = false
+    @encounter_list = []
+    @encounter_step = 30
+    @parallax_name = ''
+    @parallax_loop_x = false
+    @parallax_loop_y = false
+    @parallax_sx = 0
+    @parallax_sy = 0
+    @parallax_show = false
+    @note = ''
+    @data = Table.new(width, height, 4)
+    @events = {}
+  end
+  attr_accessor :display_name
+  attr_accessor :tileset_id
+  attr_accessor :width
+  attr_accessor :height
+  attr_accessor :scroll_type
+  attr_accessor :specify_battleback
+  attr_accessor :battleback1_name
+  attr_accessor :battleback2_name
+  attr_accessor :autoplay_bgm
+  attr_accessor :bgm
+  attr_accessor :autoplay_bgs
+  attr_accessor :bgs
+  attr_accessor :disable_dashing
+  attr_accessor :encounter_list
+  attr_accessor :encounter_step
+  attr_accessor :parallax_name
+  attr_accessor :parallax_loop_x
+  attr_accessor :parallax_loop_y
+  attr_accessor :parallax_sx
+  attr_accessor :parallax_sy
+  attr_accessor :parallax_show
+  attr_accessor :note
+  attr_accessor :data
+  attr_accessor :events
+end
+</pre>
+<h6></h6>
+</body>
+</html>

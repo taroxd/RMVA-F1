@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RGSS 内建函数</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RGSS 内建函数</h1>
+<p>RGSS中定义了下面的内建函数：</p>
+<dl>
+<dt>
+<a name="rgss_main">rgss_main { ... }</a> <span class="rgss3">(RGSS3)</span>
+<p></p></dt>
+<dd>
+<p>仅进行一次加载的函数。</p>
+<p>当检测到用户按下F12的时候，这个函数会被重置。</p>
+<pre>rgss_main { SceneManager.run }
+</pre></dd>
+<dt>
+<a name="rgss_stop">rgss_stop</a> <span class="rgss3">(RGSS3)</span>
+<p></p></dt>
+<dd>
+<p>停止脚本的执行，只保留画面的刷新。关于使用的定义请查阅 <a href="../intro/index.html">脚本入门</a></p>
+<p>等效于下面这一句：</p>
+<pre>loop { Graphics.update }
+</pre></dd>
+<dt>
+<a name="load_data">load_data(<var>filename</var>)</a></dt>
+<dd>
+<p>加载由 <var>filename</var> 指定的数据文件并还原成对象。</p>
+<pre>$data_actors = load_data("Data/Actors.rvdata2")
+</pre>这个函数基本上与下面的语句相同：<pre>
+File.open(filename, "rb") { |f|
+  obj = Marshal.load(f)
+}
+</pre>
+<p>不同之处在于，本函数可以从<a href="rgss.html#encryption_archive">加密档案</a>内加载数据文件。</p></dd>
+<dt>
+<a name="save_data">save_data(<var>obj</var>, <var>filename</var>)</a></dt>
+<dd>
+<p>将对象 <var>obj</var> 写入名为 <var>filename</var> 的数据文件。</p>
+<pre>save_data($data_actors, "Data/Actors.rvdata2")
+</pre>这个函数等价于： <pre>
+File.open(filename, "wb") { |f|
+  Marshal.dump(obj, f)
+}
+</pre></dd>
+<dt>
+<a name="msgbox">msgbox(<var>arg</var>[, ...])</a> <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>将参数输出到对话框。如果参数并不是字符串，则会使用 to_s 方法转换为字符串后再进行输出。</p>
+<p>返回 nil 。</p></dd>
+<dt>
+<a name="msgbox_p">msgbox_p(<var>obj</var>, [<var>obj2</var>, ...])</a>
+<span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>将 obj 以人类可读的格式输出到对话框，相当于下面的代码（参考 <a href="sc_object.html#L000572">Object#inspect</a>）。</p>
+<pre>msgbox obj.inspect, "\n", obj2.inspect, "\n", ...
+</pre>
+<p>返回 nil 。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

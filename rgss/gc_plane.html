@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Plane</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Plane</h1>
+<p>平面的类。平面是将位图的图案在整个画面上平铺显示的特殊精灵，用于显示远景图等。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Plane.new([<var>viewport</var>])</dt>
+<dd>
+<p>生成一个 Plane 对象。必要时指定一个显示端口（<a href="gc_viewport.html">Viewport</a>）。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>dispose</dt>
+<dd>
+<p>释放平面。若是已经释放则什么都不做。</p></dd>
+<dt>disposed?</dt>
+<dd>
+<p>当平面已释放则返回 true。</p></dd></dl>
+<h2>属性</h2>
+<dl>
+<dt>bitmap</dt>
+<dd>
+<p>平面所使用的位图（<a href="gc_bitmap.html">Bitmap</a>）的引用。</p></dd>
+<dt>viewport</dt>
+<dd>
+<p>与平面关联的显示端口（<a href="gc_viewport.html">Viewport</a>）的引用。</p></dd>
+<dt>visible</dt>
+<dd>
+<p>平面可见的状态。true 表示可见。默认为 true。</p></dd>
+<dt>z</dt>
+<dd>
+<p>平面的 Z 坐标。数值越大的显示在越前方。</p>
+<p>Z 坐标相同的，越晚生成的对象显示在越前方。</p></dd>
+<dt>ox</dt>
+<dd>
+<p>平面原点的 X 坐标。修改此数值可以滚动平面。</p></dd>
+<dt>oy</dt>
+<dd>
+<p>平面原点的 Y 坐标。修改此数值可以滚动平面。</p></dd>
+<dt>zoom_x</dt>
+<dd>
+<p>平面的横向放大率，1.0 代表原始大小。</p></dd>
+<dt>zoom_y</dt>
+<dd>
+<p>平面的纵向放大率，1.0 代表原始大小。</p></dd>
+<dt>opacity</dt>
+<dd>
+<p>平面的不透明度（0~255）。超出范围的数值会自动修正。</p></dd>
+<dt>blend_type</dt>
+<dd>
+<p>平面的合成方式（0：正常、1：加法、2：减法）。</p></dd>
+<dt>color</dt>
+<dd>
+<p>与平面合成的颜色（<a href="gc_color.html">Color</a>）色彩的 alpha
+值作为合成的比例。</p></dd>
+<dt>tone</dt>
+<dd>
+<p>平面的色调（<a href="gc_tone.html">Tone</a>）。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>FileTest</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>FileTest</h1>
+<p>包含文件测试函数的模块。</p>
+<h2>模块函数</h2>
+<dl>
+<dt>FileTest.exist?(<var>filename</var>)</dt>
+<dd>
+<p>当 <var>filename</var> 存在时，返回 true。</p></dd>
+<dt>FileTest.directory?(<var>filename</var>)</dt>
+<dd>
+<p>当 <var>filename</var> 是目录时，返回 true。</p></dd>
+<dt>FileTest.file?(<var>filename</var>)</dt>
+<dd>
+<p>当 <var>filename</var> 是普通文件时，返回 true。</p></dd>
+<dt>FileTest.size(<var>filename</var>)</dt>
+<dd>
+<p>返回 <var>filename</var> 的大小。若 <var>filename</var> 不存在，则抛出 <a href="s_exceptions.html#Errno">Errno::EXXX</a>（可能是 Errno::ENOENT）异常。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

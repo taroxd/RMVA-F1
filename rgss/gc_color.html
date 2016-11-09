@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Color</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Color</h1>
+<p>RGBA 颜色的类。每个成分以浮点数（<a href="sc_float.html">Float</a>）管理。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Color.new(<var>red</var>, <var>green</var>, <var>blue</var>[, <var>alpha</var>])</dt>
+<dt>Color.new <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>生成 Color 对象。<var>alpha</var> 值省略时使用 255。</p>
+<p>如果没有指定参数，默认为(0, 0, 0, 0)。<span class="rgss3">(RGSS3)</span></p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>set(<var>red</var>, <var>green</var>, <var>blue</var>[, <var>alpha</var>])</dt>
+<dt>set(<var>color</var>) <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>一次设置所有属性。</p>
+<p>第二种形式会从另一个 Color 对象上复制所有的属性。<span class="rgss3">(RGSS3)</span></p></dd></dl>
+<h2>属性</h2>
+<dl>
+<dt>red</dt>
+<dd>
+<p>红色值（0～255）。超出范围的数值会自动修正。</p></dd>
+<dt>green</dt>
+<dd>
+<p>绿色值（0～255）。超出范围的数值会自动修正。</p></dd>
+<dt>blue</dt>
+<dd>
+<p>蓝色值（0～255）。超出范围的数值会自动修正。</p></dd>
+<dt>alpha</dt>
+<dd>
+<p>alpha 值（0～255）。超出范围的数值会自动修正。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

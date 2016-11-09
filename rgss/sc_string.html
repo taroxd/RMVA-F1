@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>String</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>String</h1>
+<p>字符串的类。可以处理任意长度的字节串。详细参看 <a href="syntax03.html#L000254">Sprintf
+格式</a>。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>包含的模块</h2>
+<ul>
+<li><a href="sm_comparable.html">Comparable</a></li></ul>
+<h2>方法</h2>
+<dl>
+<dt>
+<var>self</var> + <var>other</var></dt>
+<dd>
+<p>返回连接起来的新字符串。</p></dd>
+<dt>
+<var>self</var> * <var>times</var></dt>
+<dd>
+<p>生成并返回一个重复字符串内容 <var>times</var> 次的新字符串。</p></dd>
+<dt>
+<var>self</var> &lt;=&gt; <var>other</var></dt>
+<dd>
+<p>将 <var>self</var> 与 <var>other</var> 依照 ASCII 码顺序进行比较，若是 self 大于 other
+则返回正整数、若是 self 等于 other 则返回 0、若是 self 小于 other 则返回负整数。</p></dd>
+<dt>
+<var>self</var> == <var>other</var></dt>
+<dd>
+<p>判断字符串是否相等。</p></dd>
+<dt>self[<var>nth</var>, <var>len</var>]</dt>
+<dd>
+<p>返回从第 nth 位开始， <var>len</var> 位长度的子字符串。当 <var>nth</var> 是负值时，从字符串尾部开始算起。</p>
+<p>若 <var>nth</var> 超出范围，返回 nil。</p></dd>
+<dt>self[regexp]</dt>
+<dd>
+<p>返回第一个匹配 <var>regexp</var> 的子字符串。匹配信息储存于内建变量 <a href="s_variables.html#L000428">$~</a> 中。</p>
+<p>若是 <var>regexp</var> 匹配失败，返回 nil。</p>
+<pre>p "foobar"[/bar/]   # =&gt; "bar"
+</pre></dd>
+<dt>
+<a name="L001349">self[<var>nth</var>, <var>len</var>]=<var>val</var></a></dt>
+<dd>
+<p>将从第 <var>nth</var> 位开始计算 <var>len</var>
+位长度的子字符串替换为 <var>val</var> 字符串。当 <var>nth</var> 是负值时，从字符串尾部开始算起。</p>
+<p>返回 <var>val</var> 。</p></dd>
+<dt>self[regexp]=val</dt>
+<dd>
+<p>将第一个匹配 <var>regexp</var> 的子字符串替换为 <var>val</var> 字符串。</p>
+<p>若匹配失败，抛出 <a href="s_exceptions.html#IndexError">IndexError</a> 异常。</p>
+<p>返回 <var>val。</var></p></dd>
+<dt>clone</dt>
+<dt>dup</dt>
+<dd>
+<p>返回与原字符串相同内容的新字符串。对冻结的字符串使用 clone 返回相同的冻结字符串，而 dup 返回相同内容的非冻结字符串。</p></dd>
+<dt>concat(<var>other</var>)</dt>
+<dd>
+<p>将 other 和 self 的内容连接起来并返回 self。</p></dd>
+<dt>
+<a name="L001383">downcase</a></dt>
+<dt>downcase!</dt>
+<dd>
+<p>将所有的大写字母替换成小写字母。</p>
+<p>downcase 生成并返回新修改的字符串，而 downcase! 修改并返回 self，但是若没有替换任何字符，返回 nil。</p>
+<p>参考 <a href="#L001450">upcase</a>。</p></dd>
+<dt>each_line {|<var>line</var>| ... }</dt>
+<dd>
+<p>迭代字符串中的每一行。</p>
+<p>返回 self。</p></dd>
+<dt>each_byte {|<var>byte</var>| ... }</dt>
+<dd>
+<p>迭代字符串中的每一字节。返回 self。</p></dd>
+<dt>empty?</dt>
+<dd>
+<p>若字符串为空（长度为 0）则返回 true。</p></dd>
+<dt>
+<a name="L001390">gsub(<var>pattern</var>) {|<var>matched</var>| .... }</a></dt>
+<dt>gsub!(<var>pattern</var>) {|<var>matched</var>| .... }</dt>
+<dd>
+<p>以区块的计算结果替换<em>所有</em>匹配 <var>pattern</var>
+的子字符串。匹配成功的子字符串会传递给区块作为参数。内建变量 <a href="s_variables.html">$&lt;digits&gt;</a>
+可以在区块内引用。</p>
+<pre>p 'abcabc'.gsub(/b/) {|s| s.upcase }    # =&gt; "aBcaBc"
+p 'abcabc'.gsub(/b/) { $&amp;.upcase }      # =&gt; "aBcaBc"
+p 'abbbcd'.gsub(/a(b+)/) { $1 }         # =&gt; "bbbcd"
+</pre>
+<p>gsub 生成并返回替换后的字符串。gsub! 修改并返回 self，但是若没有发生替换，返回 nil。</p>
+<p>参考 <a href="#L001433">sub</a>。</p></dd>
+<dt>
+<a name="L001393"></a><var>include?(<var>substr</var>)</var></dt>
+<dd>
+<p>若字符串文字包含子字符串 <var>substr</var> 则返回 true。</p></dd>
+<dt>
+<a name="L001394"></a><var>index(<var>pattern</var>[, <var>pos</var>])</var></dt>
+<dd>
+<p>从左至右寻找子字符串，返回所找到字符串左端的位置。若找不到字符串，返回 <var>nil</var> 。</p>
+<p><var>pattern</var> 参数使用字符串或正则表达式指定所寻找的子字符串。</p>
+<p>若指定了 <var>pos</var> ，则从该位置开始寻找，省略时默认值为 0。</p></dd>
+<dt>insert(<var>nth</var>, <var>other</var>)</dt>
+<dd>
+<p>将字符串 <var>other</var> 插入在第 nth
+位的字符的前面。返回 self。</p>
+<pre>p "foobaz".insert(3, "bar")         # =&gt; "foobarbaz"
+</pre></dd>
+<dt>
+<a name="L001398">to_sym</a></dt>
+<dd>
+<p>返回对应字符串的符号值（<a href="sc_symbol.html">Symbol</a>）。</p>
+<p>使用 <a href="sc_symbol.html#L001480">Symbol#id2name</a> 获取对应符号的字符串。</p>
+<pre>p "foo".to_sym                      # =&gt; :foo
+p "foo".to_sym.to_s == "foo"        # =&gt; true
+</pre></dd>
+<dt>length</dt>
+<dt>size</dt>
+<dd>
+<p>返回字符串的字符数。</p></dd>
+<dt>
+<a name="L001412">scan(<var>re</var>)</a></dt>
+<dt>scan(<var>re</var>) {|<var>s</var>| ... }</dt>
+<dd>
+<p>重复将 self 与正则表达式 <var>re</var> 进行匹配，并返回匹配成功的子字符串的数组。 </p>
+<pre>p "foobarbazfoobarbaz".scan(/ba./)
+# =&gt; ["bar", "baz", "bar", "baz"]
+p "abcde".scan(/./)
+# =&gt; ["a", "b", "c", "d", "e"]
+</pre>
+<p>当指定区块时，匹配成功的子字符串成为区块的参数（若包含括号时，区块的参数是匹配括号部分的字符串数组）。指定区块时，返回 self。</p>
+<pre>"foobarbazfoobarbaz".scan(/ba./) {|s| p s}
+# =&gt; "bar"
+   "baz"
+   "bar"
+   "baz"
+</pre></dd>
+<dt>slice(<var>nth</var>, <var>len</var>)</dt>
+<dt>slice(<var>regexp</var>)</dt>
+<dd>
+<p>与 <a href="#L001349">self[]</a> 相同。</p></dd>
+<dt>slice!(<var>nth</var>, <var>len</var>)</dt>
+<dt>slice!(<var>regexp</var>)</dt>
+<dd>
+<p>移除并返回字符串中指定范围（参考 <a href="#L001349">self[]</a>）的子字符串。</p>
+<p>若参数超出范围，返回 nil。</p></dd>
+<dt>
+<a name="L001433">sub(<var>pattern</var>) {|<var>matched</var>| ... }</a></dt>
+<dt>sub!(<var>pattern</var>) {|<var>matched</var>| ... }</dt>
+<dd>
+<p>以区块的计算结果替换<em>第一个</em>匹配 <var>pattern</var>
+的子字符串。匹配成功的子字符串会传递给区块作为参数。</p>
+<p>sub 生成并返回替换后的字符串。sub! 修改并返回 self，但是若没有发生替换，返回 nil。</p>
+<p>与 <a href="#L001390">gsub</a> 相同，但是 sub 只会匹配一次。 </p></dd>
+<dt>to_f</dt>
+<dd>
+<p>将字符串视为 10 进制的表达式并转换成浮点数（<a href="sc_float.html">Float</a>）。</p></dd>
+<dt>to_i([<var>base</var>])</dt>
+<dd>
+<p>将字符串视为数值表达式并转换成整数。</p>
+<p>默认为十进制。若指定了 <var>base</var>，可以进行 2～36 进制的转换。</p></dd>
+<dt>
+<a name="L001450">upcase</a></dt>
+<dt>upcase!</dt>
+<dd>
+<p>将所有的小写字母替换成大写字母。</p>
+<p>upcase 生成并返回新修改的字符串。upcase! 修改并返回 self，但是若没有替换任何字符，返回 nil。</p>
+<p>参考 <a href="#L001383">downcase</a>。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

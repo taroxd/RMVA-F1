@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>Time</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>Time</h1>
+<p>时间的类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>包含的模块</h2>
+<ul>
+<li><a href="sm_comparable.html">Comparable</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Time.now</dt>
+<dd>
+<p>返回当前时间对象。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>
+<var>self</var> + <var>other</var></dt>
+<dd>
+<p>返回 <var>self</var> 在 <var>other</var> 秒后的时间。</p></dd>
+<dt>
+<var>self</var> - <var>other</var></dt>
+<dd>
+<p>若 <var>other</var> 是时间对象，以 <a href="sc_float.html">Float</a> 返回两个时间的差。若 <var>other</var> 数值，则返回 self 在 other 秒之前的时间。</p></dd>
+<dt>
+<var>self</var> &lt;=&gt; <var>other</var></dt>
+<dd>
+<p>比较时间。<var>other</var> 必须是时间对象或数值。若是数值，则是以时间开始计时已过的秒数来做比较。</p></dd>
+<dt>strftime(<var>format</var>)</dt>
+<dd>
+<p>返回时间，转化为 <var>format</var> 格式字符串。<var>format</var> 格式字符串可指定下面的格式：</p>
+<ul>
+<li><p>%A</p>
+<p>星期（Sunday、Monday、 ... ）</p></li>
+<li><p>%a</p>
+<p>星期简称（Sun、Mon、 ... ）</p></li>
+<li><p>%B</p>
+<p>月份（January、February、 ...）</p></li>
+<li><p>%b</p>
+<p>月份简称（Jan、Feb、 ... ）</p></li>
+<li><p>%c</p>
+<p>时间和日期</p></li>
+<li><p>%d</p>
+<p>一月日期（01～31）</p></li>
+<li><p>%H</p>
+<p>一日时间，24 小时制（00～23）</p></li>
+<li><p>%I</p>
+<p>一日时间，12 小时制（01～12）</p></li>
+<li><p>%j</p>
+<p>一年日计数（001～366）</p></li>
+<li><p>%M</p>
+<p>分（00～59）</p></li>
+<li><p>%m</p>
+<p>一年月份（01～12）</p></li>
+<li><p>%p</p>
+<p>AM 或 PM</p></li>
+<li><p>%S</p>
+<p>秒（00～60，60 代表闰秒）</p></li>
+<li><p>%U</p>
+<p>一年星期计数，第一个星期从第一个星期天开始算起（00～53）</p></li>
+<li><p>%W</p>
+<p>一年星期计数，第一个星期从第一个星期一开始算起（00～53）</p></li>
+<li><p>%w</p>
+<p>一星期日子（0～6， 0 代表星期天）</p></li>
+<li><p>%X</p>
+<p>时间</p></li>
+<li><p>%x</p>
+<p>日期</p></li>
+<li><p>%Y</p>
+<p>年，4 位数</p></li>
+<li><p>%y</p>
+<p>年，2 位数（00～99）</p></li>
+<li><p>%Z</p>
+<p>时区</p></li>
+<li><p>%%</p>
+<p>% 符号本身</p></li></ul></dd>
+<dt>sec</dt>
+<dd>
+<p>返回秒。</p></dd>
+<dt>min</dt>
+<dd>
+<p>返回分。</p></dd>
+<dt>hour</dt>
+<dd>
+<p>返回时。</p></dd>
+<dt>mday</dt>
+<dd>
+<p>返回日。</p></dd>
+<dt>mon</dt>
+<dd>
+<p>返回月。</p></dd>
+<dt>year</dt>
+<dd>
+<p>返回年。</p></dd>
+<dt>wday</dt>
+<dd>
+<p>返回一星期中的日子的替代数字。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

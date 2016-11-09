@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::Troop::Page</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::Troop::Page</h1>
+<p>战斗事件（页）的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_troop.html">RPG::Troop</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>condition</dt>
+<dd>
+<p>条件 (<a href="gc_rpg_troop_page_condition.html">RPG::Troop::Page::Condition</a>）。</p></dd>
+<dt>span</dt>
+<dd>
+<p>间隔（0：战斗，1：回合，2：即时）。</p></dd>
+<dt>list</dt>
+<dd>
+<p>执行内容（<a href="gc_rpg_eventcommand.html">RPG::EventCommand</a>）。</p></dd></dl>
+<h2>内部类</h2>
+<ul>
+<li><a href="gc_rpg_troop_page_condition.html">RPG::Troop::Page::Condition</a></li></ul>
+<h2>定义</h2>
+<pre>class RPG::Troop::Page
+  def initialize
+    @condition = RPG::Troop::Page::Condition.new
+    @span = 0
+    @list = [RPG::EventCommand.new]
+  end
+  attr_accessor :condition
+  attr_accessor :span
+  attr_accessor :list
+end
+</pre>
+<h6></h6>
+</body>
+</html>

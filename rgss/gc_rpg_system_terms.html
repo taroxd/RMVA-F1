@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::System::Terms</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RPG::System::Terms</h1>
+<p>用语的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_system.html">RPG::System</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>basic</dt>
+<dd>
+<p>基本状态，下标如下的字符串数组。</p>
+<ul>
+<li>0: 等级</li>
+<li>1: 等级(缩写)</li>
+<li>2: 体力值</li>
+<li>3: 体力值(缩写)</li>
+<li>4: 魔力值</li>
+<li>5: 魔力值(缩写)</li>
+<li>6: 特技值</li>
+<li>7: 特技值(缩写)</li></ul></dd>
+<dt>params</dt>
+<dd>
+<p>能力，下标如下的字符串数组。</p>
+<ul>
+<li>0: 体力上限</li>
+<li>1: 魔力上限</li>
+<li>2: 物理攻击</li>
+<li>3: 物理防御</li>
+<li>4: 魔法攻击</li>
+<li>5: 魔法防御</li>
+<li>6: 敏捷值</li>
+<li>7: 幸运值</li></ul></dd>
+<dt>etypes</dt>
+<dd>
+<p>装备位置，下标如下的字符串数组。</p>
+<ul>
+<li>0: 武器</li>
+<li>1: 盾牌</li>
+<li>2: 头盔</li>
+<li>3: 铠甲</li>
+<li>4: 饰品</li></ul></dd>
+<dt>commands</dt>
+<dd>
+<p>指令，下标如下的字符串数组。</p>
+<ul>
+<li>0: 战斗</li>
+<li>1: 撤退</li>
+<li>2: 攻击</li>
+<li>3: 防御</li>
+<li>4: 物品</li>
+<li>5: 技能</li>
+<li>6: 装备</li>
+<li>7: 状态</li>
+<li>8: 整队</li>
+<li>9: 存档</li>
+<li>10: 结束游戏</li>
+<li>11: （未使用）</li>
+<li>12: 武器</li>
+<li>13: 护甲</li>
+<li>14: 贵重物品</li>
+<li>15: 更换装备</li>
+<li>16: 最强装备</li>
+<li>17: 全部卸下</li>
+<li>18: 开始游戏</li>
+<li>19: 继续游戏</li>
+<li>20: 退出游戏</li>
+<li>21: 回到标题</li>
+<li>22: 取消</li></ul></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::System::Terms
+  def initialize
+    @basic = Array.new(8) {''}
+    @params = Array.new(8) {''}
+    @etypes = Array.new(5) {''}
+    @commands = Array.new(23) {''}
+  end
+  attr_accessor :basic
+  attr_accessor :params
+  attr_accessor :etypes
+  attr_accessor :commands
+end
+</pre>
+<h6></h6>
+</body>
+</html>

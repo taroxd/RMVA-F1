@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>Integer</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>Integer</h1>
+<p>整数的抽象类，子类有 <a href="sc_fixnum.html">Fixnum</a> 和
+<a href="sc_bignum.html">Bignum</a>。这两种类型的整数会自动根据它们的值相互转化。在位运算中，整数可以当做无限长的位串来处理。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_numeric.html">Numeric</a></li></ul>
+<h2>方法</h2>
+<dl>
+<dt>self[nth]</dt>
+<dd>
+<p>若是整数的第 nth 位（LSB ─
+  最低意义位 ─ 是第 0 位）是 1 就返回 1，否则返回 0。</p>
+<p>self[nth]=bit 不是 Integer 方法，因为与 Numeric 有关的类都是不可变的。</p></dd>
+<dt>
+<var>self</var> + <var>other</var></dt>
+<dt>
+<var>self</var> - <var>other</var></dt>
+<dt>
+<var>self</var> * <var>other</var></dt>
+<dt>
+<var>self</var> / <var>other</var></dt>
+<dt>
+<var>self</var> % <var>other</var></dt>
+<dt>
+<var>self</var> ** <var>other</var></dt>
+<dd>
+<p>数学运算符。分别计算：和（加）、差（减）、积（乘）、商（除）、余（模数计算）、幂（指数计算）。</p></dd>
+<dt>
+<var>self</var> &lt;=&gt; <var>other</var></dt>
+<dd>
+<p>比较 other 与 self；若是 self 大于 other 则返回正整数、若是 self 等于 other
+  则返回 0、若是 self 小于 other 则返回负整数。</p></dd>
+<dt>
+<var>self</var> == <var>other</var></dt>
+<dt>
+<var>self</var> &lt; <var>other</var></dt>
+<dt>
+<var>self</var> &lt;= <var>other</var></dt>
+<dt>
+<var>self</var> &gt; <var>other</var></dt>
+<dt>
+<var>self</var> &gt;= <var>other</var></dt>
+<dd>
+<p>比较运算符。</p></dd>
+<dt>~ <var>self</var></dt>
+<dt>
+<var>self</var> | <var>other</var></dt>
+<dt>
+<var>self</var> &amp; <var>other</var></dt>
+<dt>
+<var>self</var> ^ <var>other</var></dt>
+<dd>
+<p>位运算符。分别计算位的逻辑非、逻辑或、逻辑与、逻辑异或。</p></dd>
+<dt>
+<var>self</var> &lt;&lt; <var>bits</var></dt>
+<dt>
+<var>self</var> &gt;&gt; <var>bits</var></dt>
+<dd>
+<p>移动运算符，将位左移或右移。</p>
+<p>符号位（MSB ─ 最大意义位）在右移时会保留。</p></dd>
+<dt>chr</dt>
+<dd>
+<p>返回在字符表中数字对应的 1 位字符串。举例来说：65.chr 返回 "A"。</p>
+<p>使用这个方法的整数必须在 0～255的范围内。超出此范围的整数会抛出 <a href="s_exceptions.html#RangeError">RangeError</a> 异常。</p></dd>
+<dt>
+<a name="L001200">downto(<var>min</var>) {|<var>n</var>| ...
+  }</a></dt>
+<dd>
+<p>自 self 迭代至 <var>min</var>，依次迭减 1。若 self &lt;
+  <var>min</var>，则什么都不做。</p></dd>
+<dd>
+<p>参看 <a href="#L001211">upto</a>, <a href="#L001203">step</a> 和 <a href="#L001204">times</a> 。</p></dd>
+<dt>next</dt>
+<dt>succ</dt>
+<dd>
+<p>返回整数的「下」一个值。</p></dd>
+<dt>
+<a name="L001203">step(<var>limit</var>, <var>step</var>)
+  {|<var>n</var>| ... }</a></dt>
+<dd>
+<p>从 self 依次计算区块，每次增加 <var>step</var>直到 <var>limit</var>
+  。<var>step</var> 可以是负数。</p>
+<p>当 <var>step</var> 设为 0 时，抛出 <a href="s_exceptions.html#ArgumentError">ArgumentError</a> 异常。</p>
+<p>返回 self。</p>
+<p>参看 <a href="#L001211">upto</a>, <a href="#L001200">downto</a> 和 <a href="#L001204">times</a>。</p></dd>
+<dt>
+<a name="L001204">times {|<var>n</var>| ...
+  }</a></dt>
+<dd>
+<p>依次迭代执行 self 次，从 0 至 self-1。若 self 为负数，则什么都不做。</p>
+<p>返回 self。</p>
+<p>参看 <a href="#L001211">upto</a>, <a href="#L001200">downto</a> 和 <a href="#L001203">step</a> 。</p></dd>
+<dt>to_f</dt>
+<dd>
+<p>将数值转换成浮点数（<a href="sc_float.html">Float</a>）。</p></dd>
+<dt>to_s([<var>base</var>])</dt>
+<dd>
+<p>将整数转为 10 进制的字符串表达式。</p>
+<p>若是指定了参数，则会进行 base 进制的转换。若 base 超出 2～36 的范围，会抛出 <a href="s_exceptions.html#ArgumentError">ArgumentError</a> 异常。 </p>
+<pre>p 10.to_s(2)    # =&gt; "1010"
+p 10.to_s(8)    # =&gt; "12"
+p 10.to_s(16)   # =&gt; "a"
+p 35.to_s(36)   # =&gt; "z"
+</pre></dd>
+<dt>
+<a name="L001211">upto(<var>max</var>) {|<var>n</var>| ...
+  }</a></dt>
+<dd>
+<p>自 self 迭代至 <var>max</var>，依次迭加 1。若 self &gt;
+  <var>max</var>，则什么都不做。</p>
+<p>返回 self。</p>
+<p>参看 <a href="#L001200">downto</a>, <a href="#L001203">step</a> 和 <a href="#L001204">times</a>。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

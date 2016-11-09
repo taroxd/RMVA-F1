@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::CommonEvent</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RPG::CommonEvent</h1>
+<p>公共事件的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>id</dt>
+<dd>
+<p>ID。</p></dd>
+<dt>name</dt>
+<dd>
+<p>名称。</p></dd>
+<dt>trigger</dt>
+<dd>
+<p>触发条件（0：正常执行，1：自动执行，2：并行处理）。</p></dd>
+<dt>switch_id</dt>
+<dd>
+<p>条件开关 ID。</p></dd>
+<dt>list</dt>
+<dd>
+<p>执行内容（<a href="gc_rpg_eventcommand.html">RPG::EventCommand</a>）的数组。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>autorun?</dt>
+<dd>
+<p>判断事件是否自动执行，当 trigger 的值为 1 时返回 true。</p></dd>
+<dt>parallel?</dt>
+<dd>
+<p>判断事件是否并行处理，当 trigger 的值为 2 时返回 true。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::CommonEvent
+  def initialize
+    @id = 0
+    @name = ''
+    @trigger = 0
+    @switch_id = 1
+    @list = [RPG::EventCommand.new]
+  end
+  def autorun?
+    @trigger == 1
+  end
+  def parallel?
+    @trigger == 2
+  end
+  attr_accessor :id
+  attr_accessor :name
+  attr_accessor :trigger
+  attr_accessor :switch_id
+  attr_accessor :list
+end
+</pre>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::EquipItem</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RPG::EquipItem</h1>
+<p>武器与护甲的超类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="gc_rpg_baseitem.html">RPG::BaseItem</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>price</dt>
+<dd>
+<p>价格。</p></dd>
+<dt>etype_id</dt>
+<dd>
+<p>装备类型。</p>
+<ul>
+<li>0: 武器</li>
+<li>1: 盾牌</li>
+<li>2: 头盔</li>
+<li>3: 铠甲</li>
+<li>4: 饰品</li></ul></dd>
+<dt>params</dt>
+<dd>
+<p>能力值变化量，以下方的 ID 为下标的整数数组。</p>
+<ul>
+<li>0: 体力上限</li>
+<li>1: 魔力上限</li>
+<li>2: 物理攻击</li>
+<li>3: 物理防御</li>
+<li>4: 魔法攻击</li>
+<li>5: 魔法防御</li>
+<li>6: 敏捷值</li>
+<li>7: 幸运值</li></ul></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::EquipItem &lt; RPG::BaseItem
+  def initialize
+    super
+    @price = 0
+    @etype_id = 0
+    @params = [0] * 8
+  end
+  attr_accessor :price
+  attr_accessor :etype_id
+  attr_accessor :params
+end
+</pre>
+<h6></h6>
+</body>
+</html>

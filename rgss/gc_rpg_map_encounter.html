@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::Map::Encounter</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::Map::Encounter</h1>
+<p>存储遇敌设置的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_troop.html">RPG::Map</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>troop_id</dt>
+<dd>
+<p>遇敌队伍编号。</p></dd>
+<dt>weight</dt>
+<dd>
+<p>权重。</p></dd>
+<dt>region_set</dt>
+<dd>
+<p>区域 ID 构成的数组。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::Map::Encounter
+  def initialize
+    @troop_id = 1
+    @weight = 10
+    @region_set = []
+  end
+  attr_accessor :troop_id
+  attr_accessor :weight
+  attr_accessor :region_set
+end
+</pre>
+<h6></h6>
+</body>
+</html>

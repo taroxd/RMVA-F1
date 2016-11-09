@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Math</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Math</h1>
+<p>支持浮点小数计算的模块。</p>
+<h2>模块方法</h2>
+<dl>
+<dt>Math.acos(<var>x</var>)</dt>
+<dt>Math.asin(<var>x</var>)</dt>
+<dt>Math.atan(<var>x</var>)</dt>
+<dd>
+<p>以弧度返回 <var>x</var> 的反三角函数值。</p>
+<p>返回值的范围分别是 [0, +π]、[-π/2, +π/2] 和 (-π/2, +π/2)。</p>
+<p>在 acos(x) 和 asin(x) 中，<var>x</var> 之值必须是 -1.0 &lt;= <var>x</var> &lt;= 1
+的范围（通常返回 NaN）。</p>
+<p>acos() 和 asin() 遇到超出范围的参数，会抛出 Math::DomainError 异常。</p></dd>
+<dt>Math.atan2(<var>y</var>, <var>x</var>)</dt>
+<dd>
+<p>返回 [-π, π] 范围内的 <var>y</var>/<var>x</var> 反正切。</p></dd>
+<dt>Math.acosh(<var>x</var>)</dt>
+<dt>Math.asinh(<var>x</var>)</dt>
+<dt>Math.atanh(<var>x</var>)</dt>
+<dd>
+<p>返回 <var>x</var> 的反双曲函数值。</p>
+<pre>
+asinh(x) = log(x + sqrt(x * x + 1))
+acosh(x) = log(x + sqrt(x * x - 1)) [x &gt;= 1]
+atanh(x) = log((1+x)/(1-x)) / 2     [-1 &lt; x &lt; 1]
+</pre>
+<p>在 acosh(x)，<var>x</var> 必须 &gt;= 1（通常会抛出 Math::DomainError 异常）。</p>
+<p>在 atanh(x)，<var>x</var> 必须在 -1.0 &lt; <var>x</var> &lt; 1 的范围内（通常会抛出 Math::DomainError 异常）。</p></dd>
+<dt>Math.cos(<var>x</var>)</dt>
+<dt>Math.sin(<var>x</var>)</dt>
+<dt>Math.tan(<var>x</var>)</dt>
+<dd>
+<p>以弧度制表示 <var>x</var>，返回三角函数值。</p></dd>
+<dt>Math.cosh(<var>x</var>)</dt>
+<dt>Math.sinh(<var>x</var>)</dt>
+<dt>Math.tanh(<var>x</var>)</dt>
+<dd>
+<p>返回 <var>x</var> 的双曲函数计算值。</p>
+<pre>
+cosh(x) = (exp(x) + exp(-x)) / 2
+sinh(x) = (exp(x) - exp(-x)) / 2
+tanh(x) = sinh(x) / cosh(x)
+</pre></dd>
+<dt>Math.erf(<var>x</var>)</dt>
+<dt>Math.erfc(<var>x</var>)</dt>
+<dd>
+<p>返回 <var>x</var> 的误差函数（erf）、补余误差函数（erfc）值。</p></dd>
+<dt>Math.exp(<var>x</var>)</dt>
+<dd>
+<p>返回 <var>x</var> 的指数函数值。</p></dd>
+<dt>Math.frexp(<var>x</var>)</dt>
+<dd>
+<p>返回实数 <var>x</var> 的尾数和阶码。</p></dd>
+<dt>Math.hypot(<var>x</var>, <var>y</var>)</dt>
+<dd>
+<p>返回 sqrt(x*x + y*y)。</p></dd>
+<dt>Math.ldexp(<var>x</var>, <var>exp</var>)</dt>
+<dd>
+<p>返回实数 <var>x</var> 乘以 2 的 <var>exp</var> 次方。</p></dd>
+<dt>Math.log(<var>x</var>)</dt>
+<dd>
+<p>返回 <var>x</var> 的自然对数。</p>
+<p><var>x</var> 必须是正值（参数为 0 会返回 -Infinity，参数为负数会抛出 Math::DomainError 异常）。</p></dd>
+<dt>Math.log10(<var>x</var>)</dt>
+<dd>
+<p>返回 <var>x</var> 的常用对数。<var></var></p>
+<p><var>x</var> 必须是正值（参数为 0 会返回 -Infinity，参数为负数会抛出 Math::DomainError 异常）。</p></dd>
+<dt>Math.sqrt(<var>x</var>)</dt>
+<dd>
+<p>返回 <var>x</var> 的平方根。若 <var>x</var> 为负数，抛出 Math::DomainError 异常。</p></dd></dl>
+<h2>常数</h2>
+<dl>
+<dt>E</dt>
+<dd>
+<p>自然对数的底数。</p>
+<pre>
+p Math::E
+# =&gt; 2.718281828
+</pre></dd>
+<dt>PI</dt>
+<dd>
+<p>圆周率。</p>
+<pre>
+p Math::PI
+# =&gt; 3.141592654
+</pre></dd></dl>
+<h6></h6>
+</body>
+</html>

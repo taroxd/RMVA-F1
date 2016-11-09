@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::Troop::Member</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::Troop::Member</h1>
+<p>敌方队员的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_troop.html">RPG::Troop</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>enemy_id</dt>
+<dd>
+<p>敌人 ID 编号。</p></dd>
+<dt>x</dt>
+<dd>
+<p>脚底的 X 坐标。</p></dd>
+<dt>y</dt>
+<dd>
+<p>脚底的 Y 坐标。</p></dd>
+<dt>hidden</dt>
+<dd>
+<p>是否勾选「中途出现」选项的复选框。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::Troop::Member
+  def initialize
+    @enemy_id = 1
+    @x = 0
+    @y = 0
+    @hidden = false
+  end
+  attr_accessor :enemy_id
+  attr_accessor :x
+  attr_accessor :y
+  attr_accessor :hidden
+end
+</pre>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>MatchData</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>MatchData</h1>
+<p>处理正则表达式匹配数据的类。此类的实例通过下面的三个途径获得：</p>
+<ul>
+<li><a href="sc_regexp.html#L001314">Regexp.last_match</a>,</li>
+<li><a href="sc_regexp.html#L001322">Regexp#match</a></li>
+<li><a href="s_variables.html#L000428">$~</a>.</li></ul>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>方法</h2>
+<dl>
+<dt>self[n]</dt>
+<dd>
+<p>返回第 <var>n</var> 个子字符串。0 代表整个匹配字符串。当 <var>n</var>
+  为负值时，则会从尾部算起（最后一个元素的索引是 -1）。若第 <var>n</var> 个元素不存在，则返回 nil。</p>
+<pre>/(foo)(bar)(BAZ)?/ =~ "foobarbaz"
+p $~.to_a       # =&gt; ["foobar", "foo", "bar", nil]
+p $~[0]         # =&gt; "foobar"
+p $~[1]         # =&gt; "foo"
+p $~[2]         # =&gt; "bar"
+p $~[3]         # =&gt; nil        (doesn't match)
+p $~[4]         # =&gt; nil        (out of range)
+p $~[-2]        # =&gt; "bar"
+</pre></dd>
+<dt>post_match</dt>
+<dd>
+<p>返回匹配部分后面的字符串。</p></dd>
+<dt>pre_match</dt>
+<dd>
+<p>返回匹配部分前面的字符串。</p></dd>
+<dt>to_a</dt>
+<dd>
+<p>返回包含 <a href="s_variables.html#L000427">$&amp;</a>, <a href="s_variables.html#L000432">$1</a>,
+  <a href="s_variables.html#L000433">$2</a>, ... 的数组。</p></dd>
+<dt>to_s</dt>
+<dd>
+<p>返回整个匹配字符串。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

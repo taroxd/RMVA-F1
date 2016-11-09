@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>状态</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<h1>状态</h1>
+<ul>
+<li><a href="#01">[不能使用魔法]设置方法</a></li>
+<li><a href="#02">[无法行动与回避]设置方法</a></li>
+<li><a href="#03">[能力值变动]设置方法</a></li>
+<li><a href="#04">[不能抵抗]设置方法</a></li>
+<li><a href="#05">[抵消逆向状态]设置方法</a></li>
+<li><a href="#06">[连续伤害]设置方法</a></li>
+<li><a href="#07">[减少命中率]设置方法</a></li>
+<li><a href="#08">[经过特定回合后特定机率解除]设置方法</a></li>
+<li><a href="#09">[半减属性]设置方法</a></li>
+<li><a href="#10">[解除状态]设置方法</a></li></ul>
+<h2>
+<a name="01"></a>[不能使用魔法]设置方法</h2>
+<p>无法使用魔法关系度（VX称为精神关系度）为1以上技能的状态。 </p>
+<p class="red">[状态]特性 - 技能 - 禁用技能类型</p>
+<p><img src="img/010/010_002h_01.png" width="331" height="308" border="0" class="float_n"></p>
+<ul>
+<li>在 VA 中不是使用攻击或魔法关系度，而是采用技能类型作区分。</li>
+<li>要得到与 VX 相同的效果时请将魔法关系度为1以上的技能设置成同一类型(例:[魔法])，再将该类型禁用即可。</li></ul>
+<h2>
+<a name="02"></a>[无法行动与回避]设置方法</h2>
+<p>在 VA 中若需要设置战斗中无法输入指令、无法回避敌人攻击的状态时可以同时设置[无法行动]与[无法回避]。 </p>
+<h6>无法行动</h6>
+<p class="red">[状态]基本设置 - 限制 - 无法行动</p>
+<p><img src="img/010/010_002h_02.png" width="347" height="117" border="0" class="float_n"></p>
+<ul>
+<li>这样设置可以让角色在战斗中无法输入指令。</li></ul>
+<h6>无法回避</h6>
+<p class="red">[状态]特性 - 能力 - 添加能力 - 物理闪避几率</p>
+<p><img src="img/010/010_002h_03.png" width="331" height="308" border="0" class="float_n"></p>
+<ul>
+<li>要得到与 VX 相同的效果时请设置为 <b>-100%</b>。</li>
+<li>要让魔法也无法回避时，同时把<b>[魔法闪避几率]</b>也设置为 <b>-100%</b> 即可。</li></ul>
+<h2>
+<a name="03"></a>[能力值变动]设置方法</h2>
+<p>设置攻击力等能力的变化。 </p>
+<p class="red">[状态]特性 - 能力 - 普通能力</p>
+<p><img src="img/010/010_002h_04.png" width="331" height="308" border="0" class="float_n"></p>
+<ul>
+<li>这样设置后，效果就和 VX 一样了。</li></ul>
+<h2>
+<a name="04"></a>[不能抵抗]设置方法</h2>
+<p>设置一个必中的状态，需要在技能（物品）上设置。 </p>
+<p class="red">[技能/物品]使用 - 命中类型 - 必定命中</p>
+<p><img src="img/010/010_002h_05.png" width="348" height="117" border="0" class="float_n"></p>
+<ul>
+<li>将附加状态的技能（物品）设置为必定命中，就一定会执行附加状态的判定。</li></ul>
+<p class="red">[技能/物品]使用效果 - 状态 - 附加状态</p>
+<p><img src="img/010/010_002h_06.png" width="331" height="308" border="0" class="float_n"></p>
+<ul>
+<li>通常只要设置为 <b>100%</b> 即可，若对象的状态有效度有可能低于 100% 的话，可设置为最大值 <b>1000%</b>。</li></ul>
+<h2>
+<a name="05"></a>[抵消逆向状态]设置方法</h2>
+<p>在 VA 中取消了这个功能。 </p>
+<p>不过可以在技能(物品)的[使用效果]中设置[能力强化/能力弱化]来得到几乎与[抵消逆向状态]同样的效果。
+例如对使用过防御强化的敌人施放防御弱化的技能或物品，就会抵消防御强化，并且让敌人的数值回到强化前。 </p>
+<p><img src="img/010/010_002h_07.png" width="662" height="308" border="0" class="float_n"></p>
+<h2>
+<a name="06"></a>[连续伤害]设置方法</h2>
+<p>在地图中移动时或战斗回合中会减少 HP 的状态。 </p>
+<p class="red">[状态]特性 - 能力 - 添加能力 - 体力值再生速度</p>
+<p><img src="img/010/010_002h_08.png" width="331" height="308" border="0" class="float_n"></p>
+<ul>
+<li>要得到与 VX 相同的效果时请设置为 <b>-10%</b>。</li>
+<li>在地图上默认20步等同于战斗中的1回合，一样会受到伤害。</li></ul>
+<h2>
+<a name="07"></a>[减少命中率]设置方法</h2>
+<p>设置会降低物理攻击命中率的状态。 </p>
+<p class="red">[状态]特性 - 能力 - 添加能力 - 物理命中几率</p>
+<p><img src="img/010/010_002h_09.png" width="331" height="308" border="0" class="float_n"></p>
+<ul>
+<li>要得到与 VX 相同的效果时请设置为 <b>-75%</b>。</li></ul>
+<h2>
+<a name="08"></a>[经过特定回合后特定机率解除]设置方法</h2>
+<p>在 VA 中可以设置解除状态需要的最短和最长的时间(回合)。也就是说可以透过调整最短与最长间的幅度设置解除的机率。 </p>
+<p><img src="img/010/010_002h_10.png" width="347" height="110" border="0" class="float_n"></p>
+<h2>
+<a name="09"></a>[半减属性]设置方法</h2>
+<p>设置一个令伴随属性的攻击伤害减半的状态。 </p>
+<p class="red">[状态]特性 - 抗性 - 属性抗性</p>
+<p><img src="img/010/010_002h_11.png" width="331" height="308" border="0" class="float_n"></p>
+<ul>
+<li>要得到与 VX 相同的效果时请设置为 <b>50%</b>。</li></ul>
+<h2>
+<a name="10"></a>[解除状态]设置方法</h2>
+<p>在 VA 中取消了这个功能。 </p>
+<ul>
+<li>无法战斗时会自动将所有状态解除。</li>
+<li>透过<font color="#ff0000">[状态]特性 - 抗性 - 状态免疫</font>可以解除特定状态，但之后就无法再次附加这个状态了。</li></ul>
+<hr>
+</body>
+</html>

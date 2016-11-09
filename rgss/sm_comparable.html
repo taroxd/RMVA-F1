@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Comparable</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Comparable</h1>
+<p>为了允许比较操作的类的 Mix-in。包含此模块的类必须定义基本的比较运算符 &lt;=&gt;。其他的比较运算符可以从这些定义中衍生。</p>
+<h2>方法</h2>
+<dl>
+<dt>
+<var>self</var> == <var>other</var></dt>
+<dd>
+<p>若 <var>self</var> 等于 <var>other</var> 则返回 true。</p>
+<p>若 &lt;=&gt; 返回 nil，则返回 nil。</p></dd>
+<dt>
+<var>self</var> &gt; <var>other</var></dt>
+<dd>
+<p>若 <var>self</var> 大于 <var>other</var> 则返回 true。</p>
+<p>若 &lt;=&gt; 返回 nil，则抛出 <a href="s_exceptions.html#ArgumentError">ArgumentError</a> 异常。</p></dd>
+<dt>
+<var>self</var> &gt;= <var>other</var></dt>
+<dd>
+<p>若 <var>self</var> 大于等于 <var>other</var> 则返回 true。</p>
+<p>若 &lt;=&gt; 返回 nil，则抛出 <a href="s_exceptions.html#ArgumentError">ArgumentError</a> 异常。</p></dd>
+<dt>
+<var>self</var> &lt; <var>other</var></dt>
+<dd>
+<p>若 <var>self</var> 小于 <var>other</var> 则返回 true。</p>
+<p>若 &lt;=&gt; 返回 nil，则抛出 <a href="s_exceptions.html#ArgumentError">ArgumentError</a> 异常。</p></dd>
+<dt>
+<var>self</var> &lt;= <var>other</var></dt>
+<dd>
+<p>若 <var>self</var> 小于等于 <var>other</var> 则返回 true。</p>
+<p>若 &lt;=&gt; 返回 nil，则抛出 <a href="s_exceptions.html#ArgumentError">ArgumentError</a> 异常。</p></dd>
+<dt>between?(<var>min</var>, <var>max</var>)</dt>
+<dd>
+<p>若 <var>self</var> 在 <var>min</var> 至 <var>max</var> 的范围内（包含两端）则返回 true。</p>
+<p>若 <var>self</var> &lt;=&gt; <var>min</var> 或 <var>self</var> &lt;=&gt; <var>max</var> 返回 nil，则抛出 <a href="s_exceptions.html#ArgumentError">ArgumentError</a>
+异常。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

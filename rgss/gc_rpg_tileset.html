@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::Tileset</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::Tileset</h1>
+<p>图块的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>id</dt>
+<dd>
+<p>图块页编号。</p></dd>
+<dt>name</dt>
+<dd>
+<p>图块页名称。</p></dd>
+<dt>mode</dt>
+<dd>
+<p>图块页模式（0：世界地图类型，1：区域地图类型，2：兼容VX的类型）。</p></dd>
+<dt>tileset_names[<var>index</var>]</dt>
+<dd>
+<p>图块索引（0-8）中所使用的素材文件名。</p>
+<p>其中参数所使用的编号代表之意如下：</p>
+  <table class="sys" border="1" cellspacing="0" cellpadding="4">
+    <tbody>
+    <tr>
+      <th>0</th>
+      <td>TileA1</td>
+      <th>1</th>
+      <td>TileA2</td>
+      <th>2</th>
+      <td>TileA3</td>
+</tr>
+    <tr>
+      <th>3</th>
+      <td>TileA4</td>
+      <th>4</th>
+      <td>TileA5</td>
+      <th>5</th>
+      <td>TileB</td>
+</tr>
+    <tr>
+      <th>6</th>
+      <td>TileC</td>
+      <th>7</th>
+      <td>TileD</td>
+      <th>8</th>
+      <td>TileE</td>
+</tr>
+</tbody>
+</table></dd>
+<dt>flags</dt>
+<dd>
+<p>标志的表格。利用一维数组储存着各类标志（<a href="gc_table.html">Table</a>）。</p>
+<p>这是图块 ID 的补充。每一位表示的内容如下。</p>
+<ul>
+<li>0x0001: 不可向下通行</li>
+<li>0x0002: 不可向左通行</li>
+<li>0x0004: 不可向右通行</li>
+<li>0x0008: 不可向上通行</li>
+<li>0x0010: 显示优先度在角色之上</li>
+<li>0x0020: 梯子属性</li>
+<li>0x0040: 流体属性</li>
+<li>0x0080: 柜台属性</li>
+<li>0x0100: 有害地形</li>
+<li>0x0200: 小舟无法通行</li>
+<li>0x0400: 大船无法通行</li>
+<li>0x0800: 飞艇无法着陆</li>
+<li>0xF000: 地形标志</li></ul>
+<p>尽管本手册中并不讨论位运算，但这与C语言等都是共通的。需要时，我们建议您在互联网上搜索有关「十六进制位运算」的信息。</p></dd>
+<dt>note</dt>
+<dd>
+<p>备注。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::Tileset
+  def initialize
+    @id = 0
+    @mode = 1
+    @name = ''
+    @tileset_names = Array.new(9).collect{''}
+    @flags = Table.new(8192)
+    @flags[0] = 0x0010
+    (2048..2815).each {|i| @flags[i] = 0x000F}
+    (4352..8191).each {|i| @flags[i] = 0x000F}
+    @note = ''
+  end
+  attr_accessor :id
+  attr_accessor :mode
+  attr_accessor :name
+  attr_accessor :tileset_names
+  attr_accessor :flags
+  attr_accessor :note
+end
+</pre>
+<h6></h6>
+</body>
+</html>

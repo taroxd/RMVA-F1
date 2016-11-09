@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::System::Vehicle</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::System::Vehicle</h1>
+<p>交通工具的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_system.html">RPG::System</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>character_name</dt>
+<dd>
+<p>交通工具的行走图文件名。</p></dd>
+<dt>character_index</dt>
+<dd>
+<p>交通工具的行走图索引（0～7）</p></dd>
+<dt>bgm</dt>
+<dd>
+<p>交通工具背景音乐（<a href="gc_rpg_bgm.html">RPG::BGM</a> ）。</p></dd>
+<dt>start_map_id</dt>
+<dd>
+<p>交通工具初始位置所在的地图 ID 编号。</p></dd>
+<dt>start_x</dt>
+<dd>
+<p>交通工具初始位置的 X 坐标。</p></dd>
+<dt>start_y</dt>
+<dd>
+<p>交通工具初始位置的 Y 坐标。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::System::Vehicle
+  def initialize
+    @character_name = ''
+    @character_index = 0
+    @bgm = RPG::BGM.new
+    @start_map_id = 0
+    @start_x = 0
+    @start_y = 0
+  end
+  attr_accessor :character_name
+  attr_accessor :character_index
+  attr_accessor :bgm
+  attr_accessor :start_map_id
+  attr_accessor :start_x
+  attr_accessor :start_y
+end
+</pre>
+<h6></h6>
+</body>
+</html>

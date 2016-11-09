@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::State</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RPG::State</h1>
+<p>状态的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="gc_rpg_baseitem.html">RPG::BaseItem</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>restriction</dt>
+<dd>
+<p>限制。</p>
+<ul>
+<li>0: 无</li>
+<li>1: 攻击敌人</li>
+<li>2: 攻击双方</li>
+<li>3: 攻击队友</li>
+<li>4: 无法行动</li></ul></dd>
+<dt>priority</dt>
+<dd>
+<p>显示优先级（0..100）。</p></dd>
+<dt>remove_at_battle_end</dt>
+<dd>
+<p>战斗结束时解除（true / false）。</p></dd>
+<dt>remove_by_restriction</dt>
+<dd>
+<p>获得其他限制性状态时解除（true / false）。</p></dd>
+<dt>auto_removal_timing</dt>
+<dd>
+<p>自动解除的时机。</p>
+<ul>
+<li>0: 无</li>
+<li>1: 行动结束时</li>
+<li>2: 回合结束时</li></ul></dd>
+<dt>min_turns</dt>
+<dt>max_turns</dt>
+<dd>
+<p>状态持续回合数的最小最大值。</p></dd>
+<dt>remove_by_damage</dt>
+<dd>
+<p>受到伤害时解除（true / false）。</p></dd>
+<dt>chance_by_damage</dt>
+<dd>
+<p>受到伤害时解除的概率（%）。</p></dd>
+<dt>remove_by_walking</dt>
+<dd>
+<p>一定步数后解除（true / false）。</p></dd>
+<dt>steps_to_remove</dt>
+<dd>
+<p>解除状态所需要经过的步数。</p></dd>
+<dt>message1</dt>
+<dt>message2</dt>
+<dt>message3</dt>
+<dt>message4</dt>
+<dd>
+<p>状态提示信息。从上到下依次为：附加到队友、附加到敌人、状态持续、状态解除。</p></dd></dl>
+<h2>定义</h2>
+<pre>
+class RPG::State &lt; RPG::BaseItem
+  def initialize
+    super
+    @restriction = 0
+    @priority = 50
+    @remove_at_battle_end = false
+    @remove_by_restriction = false
+    @auto_removal_timing = 0
+    @min_turns = 1
+    @max_turns = 1
+    @remove_by_damage = false
+    @chance_by_damage = 100
+    @remove_by_walking = false
+    @steps_to_remove = 100
+    @message1 = ''
+    @message2 = ''
+    @message3 = ''
+    @message4 = ''
+  end
+  attr_accessor :restriction
+  attr_accessor :priority
+  attr_accessor :remove_at_battle_end
+  attr_accessor :remove_by_restriction
+  attr_accessor :auto_removal_timing
+  attr_accessor :min_turns
+  attr_accessor :max_turns
+  attr_accessor :remove_by_damage
+  attr_accessor :chance_by_damage
+  attr_accessor :remove_by_walking
+  attr_accessor :steps_to_remove
+  attr_accessor :message1
+  attr_accessor :message2
+  attr_accessor :message3
+  attr_accessor :message4
+end
+</pre>
+<h6></h6>
+</body>
+</html>

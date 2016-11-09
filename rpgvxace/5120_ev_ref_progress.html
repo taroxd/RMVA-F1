@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<title>条件控制</title>
+<link href="../style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1>条件控制</h1>
+<h2>
+<a name="progress01"></a>开关操作</h2>
+<img src="img/5120_01.png" alt="开关操作" class="float_r">
+<dl>
+<dt>● 功能</dt>
+<dd><p>打开或关闭开关。</p></dd>
+<dt>设置项目</dt>
+<dd>
+<dl>
+<dt>开关</dt>
+<dd><p>指定需要更改的开关。操作一个开关时选择[单个]，并指定所要操作的开关。同时更改编号连续的开关时选择[批量]，指定开关编号的范围。</p></dd>
+<dt>操作</dt>
+<dd>
+<p>要代入开关的值（打开/关闭）</p></dd></dl></dd></dl>
+<br>
+<h2>
+<a name="progress02"></a>变量操作</h2>
+<img src="img/5120_02.png" alt="变量操作" class="float_r">
+<dl>
+<dt>● 功能</dt>
+<dd><p>更改变量中的值。</p></dd>
+<dt>● 设置项目</dt>
+<dd><dl>
+<dt>变量</dt>
+<dd><p>指定需要更改的变量。</p></dd>
+<dt>操作</dt>
+<dd><p>指定需要更改的变量。操作一个变量时选择[单个]，并指定所要操作的变量。同时更改编号连续的变量时选择[批量]，指定变量编号的范围。</p></dd>
+<dt>数值</dt>
+<dd><p>指定用于[操作]计算中的值。</p></dd></dl></dd>
+<dt>● 备注</dt>
+<dd><p>· 用操作指定的计算方法内容如下。</p></dd>
+<dd>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+<th>复制</th>
+<td>代入数值（无计算）</td>
+</tr>
+<tr>
+<th>加法</th>
+<td>代入“操作前变量的值+数值”的计算结果</td>
+</tr>
+<tr>
+<th>减法</th>
+<td>代入“操作前变量的值-数值”的计算结果</td>
+</tr>
+<tr>
+<th>乘法</th>
+<td>代入“操作前变量的值×数值”的计算结果</td>
+</tr>
+<tr>
+<th>除法</th>
+<td>代入“操作前变量的值÷数值”的计算结果</td>
+</tr>
+<tr>
+<th>取余</th>
+<td>代入“操作前变量的值÷数值”的余数</td>
+</tr>
+</table></dd>
+<dd><p>· [数值]中指定的值如下。</p></dd>
+<dd>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+<th>常量</th>
+<td>应用一个固定的值。在右侧指定该值。</td>
+</tr>
+<tr>
+<th>变量</th>
+<td>应用一个变量的值。在右侧指定需要引用的变量。</td>
+</tr>
+<tr>
+<th>随机数</th>
+<td>应用一个随机数值。指定所要产生的随机数范围（-99999999~99999999）</td>
+</tr>
+<tr>
+<th>数据</th>
+<td>应用一个有关游戏进行状况的值。点击[…]可以打开窗口，指定所要引用的信息。（参考下方）</td>
+</tr>
+<tr>
+<th>脚本</th>
+<td>应用输入的Ruby脚本的求值结果。</td>
+</tr>
+</table></dd>
+<dd><p>· [数值]指定了[数据]时，指定下列项目之一作为数值。</p></dd>
+<dd>
+<table class="sys" border="1" cellspacing="0" cellpadding="4">
+<tr>
+<th>物品</th>
+<td>应用指定物品的持有数。</td>
+</tr>
+<tr>
+<th>武器</th>
+<td>应用指定武器的持有数。</td>
+</tr>
+<tr>
+<th>护甲</th>
+<td>应用指定护甲的持有数。</td>
+</tr>
+<tr>
+<th>角色</th>
+<td>应用角色的属性（HP、MP等）值。指定目标角色和对应属性。该项只在地图移动时有效。</td>
+</tr>
+<tr>
+<th>敌人</th>
+<td>应用敌人的属性（HP、MP等）值。指定目标敌人和对应属性。该项只在战斗中时有效。</td>
+</tr>
+<tr>
+<th>人物</th>
+<td>
+<p>应用一个有关玩家和地图事件的位置和状态的值。指定以下项目之一。</p>
+<table class="nb">
+<tr>
+<td class="nb">地图 X，地图 Y</td>
+<td class="nb">：当前的地图坐标</td>
+</tr>
+<tr>
+<td class="nb">方向</td>
+<td class="nb">：现在的朝向（上＝8/左＝4/右＝6/下＝2）</td>
+</tr>
+<tr>
+<td class="nb">画面 X，画面 Y</td>
+<td class="nb">：画面上显示位置的坐标（像素）</td>
+</tr>
+<tr>
+<td class="nb">地图 ID</td>
+<td class="nb">：当前地图的ID</td>
+</tr>
+<tr>
+<td class="nb">队伍人数</td>
+<td class="nb">：队伍中包含的成员数</td>
+</tr>
+<tr>
+<td class="nb">持有金钱</td>
+<td class="nb">：队伍持有的金钱</td>
+</tr>
+<tr>
+<td class="nb">步数</td>
+<td class="nb">：玩家从游戏开始到现在移动的步数</td>
+</tr>
+<tr>
+<td class="nb">游戏时间</td>
+<td class="nb">：从游戏开始到现在经过的秒数</td>
+</tr>
+<tr>
+<td class="nb">计时器</td>
+<td class="nb">：计时器的剩余时间（秒数）</td>
+</tr>
+<tr>
+<td class="nb">存档次数</td>
+<td class="nb">：从游戏开始到现在存档的次数</td>
+</tr>
+</table>
+</td>
+</tr>
+</table></dd></dl>
+<br>
+<h2>
+<a name="progress03"></a>独立开关操作</h2>
+<img src="img/5120_03.png" alt="独立开关操作" class="float_r">
+<dl>
+<dt>● 功能</dt>
+<dd><p>操作独立开关的值。战斗事件中不可使用。</p></dd>
+<dt>● 设置项目</dt>
+<dd><dl>
+<dt>独立开关</dt>
+<dd><p>指定要操作的独立开关（A~D）</p></dd>
+<dt>操作</dt>
+<dd><p>指定代入开关的值（打开/关闭）。</p></dd></dl></dd>
+<dt>● 备注</dt>
+<dd><p>· 战斗事件中不可使用。</p></dd></dl>
+<br>
+<h2>
+<a name="progress04"></a>计时器操作</h2>
+<img src="img/5120_04.png" alt="计时器操作" class="float_r">
+<dl>
+<dt>● 功能</dt>
+<dd>
+<p>启动/停止计时器。计时器可以计量时间限制（剩余时间）。启动计时器后，画面右上角就会自动显示剩余时间。打开菜单时，计时器的倒计时会暂停（不计量时间）。要根据计时器的剩余时间进行处理的分支，可以使用事件指令[分支条件]等。</p></dd>
+<dt>● 设置项目</dt></dl>
+<dl>
+<dd><dl>
+<dt>操作</dt>
+<dd><p>开始计量时间限制则指定[启动]，停止计量则指定[停止]。</p></dd>
+<dt>时间</dt>
+<dd><p>[操作]中选择[启动]时，指定限制的时间（0分0秒~99分99秒）。</p></dd></dl></dd>
+<br></dl>
+<h6></h6>
+</body>
+</html>

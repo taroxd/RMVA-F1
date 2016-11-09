@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::Troop</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::Troop</h1>
+<p>敌人队伍的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>id</dt>
+<dd>
+<p>敌人队伍 ID 编号。</p></dd>
+<dt>name</dt>
+<dd>
+<p>敌人队伍名称。</p></dd>
+<dt>members</dt>
+<dd>
+<p>敌方队员（<a href="gc_rpg_troop_member.html">RPG::Troop::Member</a>）。</p></dd>
+<dt>pages</dt>
+<dd>
+<p>战斗事件（<a href="gc_rpg_troop_page.html">RPG::Troop::Page</a>）。</p></dd></dl>
+<h2>内部类</h2>
+<ul>
+<li><a href="gc_rpg_troop_member.html">RPG::Troop::Member</a></li>
+<li><a href="gc_rpg_troop_page.html">RPG::Troop::Page</a></li></ul>
+<h2>定义</h2>
+<pre>class RPG::Troop
+  def initialize
+    @id = 0
+    @name = ''
+    @members = []
+    @pages = [RPG::Troop::Page.new]
+  end
+  attr_accessor :id
+  attr_accessor :name
+  attr_accessor :members
+  attr_accessor :pages
+end
+</pre>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>RPG::Enemy</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>RPG::Enemy</h1>
+<p>敌人的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="gc_rpg_baseitem.html">RPG::BaseItem</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>battler_name</dt>
+<dd>
+<p>战斗图的文件名。</p></dd>
+<dt>battler_hue</dt>
+<dd>
+<p>战斗图的色调调整（0..360）。</p></dd>
+<dt>params</dt>
+<dd>
+<p>能力值。以下面的 ID 为下标的整数数组。</p>
+<ul>
+<li>0: 体力上限</li>
+<li>1: 魔力上限</li>
+<li>2: 物理攻击</li>
+<li>3: 物理防御</li>
+<li>4: 魔法攻击</li>
+<li>5: 魔法防御</li>
+<li>6: 敏捷值</li>
+<li>7: 幸运值</li></ul></dd>
+<dt>exp</dt>
+<dd>
+<p>经验。</p></dd>
+<dt>gold</dt>
+<dd>
+<p>金钱。</p></dd>
+<dt>drop_items</dt>
+<dd>
+<p>掉落物品。<a href="gc_rpg_enemy_drop_item.html">RPG::Enemy::DropItem</a> 的数组。</p></dd>
+<dt>actions</dt>
+<dd>
+<p>行为模式。<a href="gc_rpg_enemy_action.html">RPG::Enemy::Action</a> 的数组。</p></dd></dl>
+<h2>内部类</h2>
+<ul>
+<li><a href="gc_rpg_enemy_drop_item.html">RPG::Enemy::DropItem</a></li>
+<li><a href="gc_rpg_enemy_action.html">RPG::Enemy::Action</a></li></ul>
+<h2>定义</h2>
+<pre>
+class RPG::Enemy &lt; RPG::BaseItem
+  def initialize
+    super
+    @battler_name = ''
+    @battler_hue = 0
+    @params = [100,0,10,10,10,10,10,10]
+    @exp = 0
+    @gold = 0
+    @drop_items = Array.new(3) { RPG::Enemy::DropItem.new }
+    @actions = [RPG::Enemy::Action.new]
+    @features.push(RPG::BaseItem::Feature.new(22, 0, 0.95))
+    @features.push(RPG::BaseItem::Feature.new(22, 1, 0.05))
+    @features.push(RPG::BaseItem::Feature.new(31, 1, 0))
+  end
+  attr_accessor :battler_name
+  attr_accessor :battler_hue
+  attr_accessor :params
+  attr_accessor :exp
+  attr_accessor :gold
+  attr_accessor :drop_items
+  attr_accessor :actions
+end
+</pre>
+<h6></h6>
+</body>
+</html>

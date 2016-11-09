@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Array</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Array</h1>
+<p>数组类。数组的元素可以是任何 Ruby 对象。详细请参阅<a href="syntax03.html#L000279">数组表达式</a>。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>包含的模块</h2>
+<ul>
+<li><a href="sm_enumerable.html">Enumerable</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Array[item,...]</dt>
+<dd>
+<p>生成一个以参数为元素的数组。</p></dd>
+<dt>
+<a name="Array.2enew" id="Array.2enew"></a>Array.new([<var>size</var>[, <var>val</var>]])</dt>
+<dt>
+<a name="Array.2enew_2" id="Array.2enew_2"></a>Array.new(<var>ary</var>)</dt>
+<dt>
+<a name="Array.2enew_3" id="Array.2enew_3"></a>Array.new(<var>size</var>) {|<var>index</var>| ... }</dt>
+<dd>
+<p>创建一个数组。指定 <var>size</var> 时，相应长度的数组会被创建出来，并以 nil 初始化。如果第二个参数 <var>val</var> 也被指定了的话，那么数组的元素会全部设为该对象。（请注意，并不是每个元素都把 <var>val</var> 复制了一遍。所有元素都是对同一个对象 <var>val</var> 的引用。</p>
+<p>第二种格式生成参数的一个副本：</p>
+<pre>p Array.new([1,2,3]) # =&gt; [1,2,3]</pre>
+<p>第三种格式是以区块的运算结果作为元素的值。区块对每一个元素分别执行，因此可以让所有元素都是某一对象的副本。</p>
+<pre>
+p Array.new(5) {|i| i }         # =&gt; [0, 1, 2, 3, 4]
+
+ary = Array.new(3, "foo")
+ary.each {|obj| p obj.object_id }
+# =&gt; 537774036
+     537774036
+     537774036
+
+ary = Array.new(3) { "foo" }
+ary.each {|obj| p obj.object_id }
+# =&gt; 537770448
+     537770436
+     537770424
+</pre></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>self[nth]</dt>
+<dd>
+<p>获取第 <var>nth</var> 个数组元素。第一个元素的下标是 0。若 <var>nth</var> 为负值，则从尾部开始算起（最后一个元素的下标为 -1）。若第 <var>nth</var> 个元素不存在，则返回 nil。</p></dd>
+<dt>self[start, <var>length</var>]</dt>
+<dd>
+<p>返回从 start 算起，包含 length 个元素的数组。若 start 为负值，则从尾部开始算起（最后一个元素的下标为 -1）。若 length 超出从 start 算起的数组剩余长度，则忽略超出的部分。若 length 为负值则返回 nil。 </p></dd>
+<dt>self[nth]=val</dt>
+<dd>
+<p>将数组的第 <var>nth</var> 个元素之值设为 <var>val</var>。若 <var>nth</var> 超出数组范围，则数组会自动延伸。所延伸的部分初始化为 nil。</p>
+<p>返回 <var>val。</var></p></dd>
+<dt>self[start, <var>length</var>]=<var>val</var></dt>
+<dd>
+<p>将数组中从 start 开始算起 length 个元素的内容替换成 val 。若 val 非数组，则调用 val.to_ary 或使用 [val] 来进行替换。</p></dd>
+<dd>
+<p>返回 <var>val</var>。</p>
+<pre>ary = [0, 1, 2, 3]
+ary[1, 2] = ["a", "b", "c"]
+p ary                        # =&gt; [0, "a", "b", "c", 3]
+ary[2, 1] = 99
+p ary                        # =&gt; [0, "a", 99, "c", 3]
+ary[1, 0] = ["inserted"]
+p ary                        # =&gt; [0, "inserted", "a", 99, "c", 3]</pre></dd>
+<dt>
+<var>self</var> + <var>other</var></dt>
+<dd>
+<p>将 self 和 other 的内容连结起来并返回一个新的数组。若 <var>other</var> 不是数组，则使用 other.to_ary 的返回值。若返回值不是数组，抛出 <a href="s_exceptions.html#TypeError">TypeError</a> 异常。</p>
+<pre>a = [1, 2]
+b = [8, 9]
+p a + b     # =&gt; [1, 2, 8, 9]
+p a         # =&gt; [1, 2]        (不变)
+p b         # =&gt; [8, 9]        (同样不变)</pre></dd>
+<dt>
+<var>self</var> * <var>times</var></dt>
+<dd>
+<p>创建并返回一个新的数组，其成员为原数组成员重复 times 遍的结果。</p>
+<pre>p [1, 2, 3] * 3  #=&gt; [1, 2, 3, 1, 2, 3, 1, 2, 3]</pre></dd>
+<dt>
+<var>self</var> - <var>other</var></dt>
+<dd>
+<p>差集操作。返回一个包含所有 self 元素、但是不含所有 other 元素的新数组。</p></dd>
+<dt>
+<var>self</var> &amp; <var>other</var></dt>
+<dd>
+<p>交集操作。返回一个包含在 self 和 other 共有元素的数组。移除重复的元素。</p></dd>
+<dt>
+<var>self</var> | <var>other</var></dt>
+<dd>
+<p>并集操作。返回一个包含在 self 和
+  other 所有元素的数组。移除重复的元素。</p></dd>
+<dt>
+<var>self</var> &lt;=&gt; <var>other</var></dt>
+<dd>
+<p>使用 &lt;=&gt;依次比较 self 和 other 的元素，若 self 大于 other，则返回 1、若 self 等于 other，则返回 0、若 self 小于 other，则返回 -1。若是各元素均相等，且其中一个数组已到达尾部时，较短的数组判定为小。</p></dd>
+<dt>
+<var>self</var> == <var>other</var></dt>
+<dd>
+<p>使用 == 依次比较各个元素，若所有元素都相等则返回 true。</p></dd>
+<dt>clear</dt>
+<dd>
+<p>将数组清空，删除所有元素。返回 self。</p>
+<pre>ary = [1, 2]
+ary.clear
+p ary     # =&gt; []</pre></dd>
+<dt>clone</dt>
+<dt>dup</dt>
+<dd>
+<p>返回一个与调用者有同样内容的数组。clone 完完全全复制一个数组、包括冻结状态、特殊方法等，而 dup 只复制对象的内容。clone 和 dup 都不会复制元素自身。</p></dd>
+<dt>compact</dt>
+<dt>compact!</dt>
+<dd>
+<p>返回一个除了 nil 元素以外，包含所有 self 元素的数组。compact! 则是执行破坏性更新，若发生修改，就返回 self，否则返回 nil。</p>
+<pre>ary = [1, nil, 2, nil, 3, nil]
+p ary.compact   # =&gt; [1, 2, 3]
+p ary           # =&gt; [1, nil, 2, nil, 3, nil]
+ary.compact!
+p ary           # =&gt; [1, 2, 3]
+p ary.compact!  # =&gt; nil</pre></dd>
+<dt>concat(<var>other</var>)</dt>
+<dd>
+<p>将 other 连结到 self（破坏性操作）。返回 <var>self</var>。</p>
+<pre>array = [1, 2]
+a     = [3, 4]
+array.concat a
+p array          # =&gt; [1, 2, 3, 4]
+p a              # =&gt; [3, 4]       # 没有变化</pre></dd>
+<dt>delete(<var>val</var>)</dt>
+<dt>delete(<var>val</var>) { ... }</dt>
+<dd>
+<p>删除所有等于 <var>val</var> （借由 ==）的元素。若有任意元素与 <var>val</var> 相等，返回 <var>val</var>。</p>
+<p>若没有任何元素与 <var>val</var> 相等，返回 nil。若指定了区块，则对区块进行计算并返回计算结果。</p>
+<pre>array = [1, 2, 3, 2, 1]
+p array.delete(2)       # =&gt; 2
+p array                 # =&gt; [1, 3, 1]
+# 若参数为 nil 而没有指定区块，则无法从返回值判断到底有没有进行删除<br>ary = [nil,nil,nil]
+p ary.delete(nil)       # =&gt; nil
+p ary                   # =&gt; []
+p ary.delete(nil)       # =&gt; nil</pre></dd>
+<dt>delete_at(<var>pos</var>)</dt>
+<dd>
+<p>删除在 pos 位置的元素，并返回被删除的元素。若 <var>pos</var> 超出数组范围则返回 nil。</p>
+<pre>array = [0, 1, 2, 3, 4]
+array.delete_at 2
+p array             # =&gt; [0, 1, 3, 4]</pre></dd>
+<dt>delete_if {|<var>x</var>| ... }</dt>
+<dt>reject! {|<var>x</var>| ... }</dt>
+<dd>
+<p>依次使用各个元素对区块进行计算，并删除所有运算结果为真的元素。</p>
+<p>delete_if 会返回 self ，而 reject! 会返回 self（如果有元素被删除）或者 nil（如果没有元素被删除）。</p></dd>
+<dt>each {|<var>item</var>| .... }</dt>
+<dd>
+<p>依次使用各个元素来对区块进行计算。返回 <var>self</var>。</p>
+<pre># 1, 2, 3 会依次输出
+[1, 2, 3].each do |i|
+  puts i
+end</pre></dd>
+<dt>each_index {|<var>index</var>| .... }</dt>
+<dd>
+<p>依每个元素的下标，对区块进行计算。与下面的语句相同：</p>
+<pre>(0 ... ary.size).each {|index| ....  }</pre>
+<p>返回 self。</p></dd>
+<dt>empty?</dt>
+<dd>
+<p>若元素数为 0，返回真。</p></dd>
+<dt>include?(<var>val</var>)</dt>
+<dd>
+<p>若数组中任一元素等于 val（使用 ==），返回真。</p></dd>
+<dt>index(<var>val</var>)</dt>
+<dd>
+<p>返回数组第一个等于 <var>val</var>（使用 ==）的元素的下标。若找不到相等的元素则返回 nil。</p></dd>
+<dt>insert(<var>nth</var>, [<var>val</var>[, <var>val2</var>
+  ...]])</dt>
+<dd>
+<p>在下标为 nth 的元素前插入第二个参数以及后面的所有参数。返回 <var>self</var>。定义如下：</p>
+<pre>class Array
+  def insert( n, *vals )
+    self[n, 0] = vals
+    self
+  end
+end
+</pre>
+<pre>ary = ["foo", "bar", "baz"]
+ary.insert 2, 'a', 'b'
+p ary                  # =&gt; ["foo", "bar", "a", "b", "baz"]</pre>
+<p>若没有指定 <var>val</var> 的参数，则什么都不做。</p></dd>
+<dt>length</dt>
+<dt>size</dt>
+<dd>
+<p>返回数组的长度。若数组为空，返回 0。</p></dd>
+<dt>pop</dt>
+<dd>
+<p>删除并返回最后一个元素。若数组为空，返回 nil。</p>
+<pre>array = [1, [2, 3], 4]
+p array.pop      # =&gt; 4
+p array.pop      # =&gt; [2, 3]
+p array          # =&gt; [1]
+p array.pop      # =&gt; 1
+p array.pop      # =&gt; nil
+p array          # =&gt; []</pre></dd>
+<dt>push(<var>obj1</var>[, <var>obj2</var> ...])</dt>
+<dd>
+<p>依次将 <var>obj1</var>, <var>obj2</var> ... 插入数组的尾部。</p>
+<p>返回 <var>self</var>。</p>
+<pre>array = [1, 2, 3]
+array.push 4
+array.push [5, 6]
+array.push 7, 8
+p array          # =&gt; [1, 2, 3, 4, [5, 6], 7, 8]</pre></dd>
+<dt>reverse</dt>
+<dt>reverse!</dt>
+<dd>
+<p>reverse 返回一个与原数组元素顺序相反的新数组。reverse! 则是执行破坏性更新。</p>
+<p>reverse 总是返回一个新的数组，而 reverse! 返回 <var>self</var>。</p></dd>
+<dt>shift</dt>
+<dd>
+<p>删除并返回第一个元素。剩余的元素会自动向前补足空缺。若数组为空，返回 nil。</p></dd>
+<dt>sort</dt>
+<dt>sort!</dt>
+<dt>sort {|<var>a</var>, <var>b</var>| ... }</dt>
+<dt>sort! {|<var>a</var>, <var>b</var>| ... }</dt>
+<dd>
+<p>将数组内容排序。若是带区块调用，则传递两个参数给区块，用区块计算的结果进行排序。不带区块时，使用 &lt;=&gt; 对元素进行比较。sort! 则是对数组元素进行破坏型更新。</p></dd>
+<dd>
+<p>sort 返回一个进行过排序的新数组，而 sort! 必定返回 <var>self</var>。</p></dd>
+<dt>uniq</dt>
+<dt>uniq!</dt>
+<dd>
+<p>uniq 返回一个移除重复元素的新数组。剩余的元素会自动向前补足空缺。uniq! 进行破坏性删除，成功执行删除时返回 self ，否则返回 nil。</p></dd>
+<dt>unshift(<var>obj1</var>[, <var>obj2</var> ...])</dt>
+<dd>
+<p>将 <var>obj1</var>、<var>obj2</var> ...
+依次插入在数组的头部。</p>
+<p>返回 <var>self</var>。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>控制结构</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 8.00.7601.17744">
+</head>
+<body>
+<h1>控制结构</h1>
+<ul>
+<li><a href="#L000296">条件分歧</a>
+<ul>
+<li><a href="#L000297">if</a></li>
+<li><a href="#L000298">if 修饰符</a></li>
+<li><a href="#L000299">unless</a></li>
+<li><a href="#L000300">unless 修饰符</a></li>
+<li><a href="#L000301">case</a></li></ul></li>
+<li><a href="#L000302">循环</a>
+<ul>
+<li><a href="#L000303">while</a></li>
+<li><a href="#L000304">while 修饰符</a></li>
+<li><a href="#L000305">until</a></li>
+<li><a href="#L000306">until 修饰符</a></li>
+<li><a href="#L000307">for</a></li>
+<li><a href="#L000308">break</a></li>
+<li><a href="#L000309">next</a></li></ul></li>
+<li><a href="#L000312">异常处理</a>
+<ul>
+<li><a href="#L000313">raise</a></li>
+<li><a href="#L000314">begin</a></li>
+<li><a href="#L000315">rescue 修饰符</a></li></ul></li>
+<li><a href="#L000316">方法结束</a>
+<ul>
+<li><a href="#L000317">return</a></li></ul></li></ul>
+<p>与 C 语言不同，Ruby的控制结构是可能会返回值的表达式。</p>
+<p>Ruby 从 C 和 Perl 语言承继了部分的控制结构，但是也有一种精简循环的特别结构——<a href="syntax06.html#L000323">迭代器</a>，一种允许用户自定义循环的控制结构。</p>
+<h2><a name="L000296">条件分歧</a></h2>
+<h3><a name="L000297">if</a></h3>
+<p>实例：</p>
+<pre>if age &gt;= 12 then
+  print "adult fee\n"
+else
+  print "child fee\n"
+end
+gender = if foo.gender == "male" then "male" else "female" end</pre>
+<p>语法：</p>
+<pre>if 表达式 [then]
+  表达式 ...
+[elsif 表达式 [then]
+  表达式 ... ]
+...
+[else
+  表达式 ... ]
+end</pre>
+<p>若是条件表达式计算为 true，则计算以 then 开头的表达式。若 if 表达式为 false，则计算 elsif 条件。可以指定多个 elsif
+条件子句，当 if 或所有的 elsif 条件表达式都是 false 时，则计算 else 表达式（如果有的话）。</p>
+<p>if 返回条件表达式中（或 else 子句）最后计算的表达式计算值。若条件表达式中无 else 子句，并且没有一个条件表达式成立，则返回 nil。</p>
+<p>在Ruby中，代表「伪」的值只有 false 和 nil；其余的包括0和空字符串都代表「真」。</p>
+<p>注意在 Ruby 中，if 后面使用的是 elsif ，而不是 C 语言所用的 else if 或 sh 所使用的 elif 。</p>
+<h3><a name="L000298">if 修饰符</a></h3>
+<p>实例：</p>
+<pre>print "debug\n" if $DEBUG</pre>
+<p>语法：</p>
+<pre>表达式 if 表达式</pre>
+<p>若右方的表达式计算为 true， 则计算并返回左方的表达式。若右方的表达式不成立，则返回 nil。</p>
+<h3><a name="L000299">unless</a></h3>
+<p>实例：</p>
+<pre>unless baby?
+  feed_meat
+else
+  feed_milk
+end</pre>
+<p>语法：</p>
+<pre>unless 表达式 [then]
+  表达式 ...
+[else
+  表达式 ... ]
+end</pre>
+<p><code>unless 是 if 的相反方法；当条件表达式为 false 时，执行 then
+开头的表达式。unless 不能使用 elsif 语句。</code></p>
+<h3><a name="L000300">unless 修饰符</a></h3>
+<p>实例：</p>
+<pre>print "stop\n" unless valid(passwd)</pre>
+<p>语法：</p>
+<pre>表达式 unless 表达式</pre>
+<p>若右方的表达式计算为 false， 则计算并返回左方的表达式。否则返回 nil。</p>
+<h3><a name="L000301">case</a></h3>
+<p>实例：</p>
+<pre>case $age
+when 0 .. 2
+  "baby"
+when 3 .. 6
+  "little child"
+when 7 .. 12
+  "child"
+when 13 .. 18
+  "youth"
+else
+  "adult"
+end</pre>
+<p>语法：</p>
+<pre>case 表达式
+[when 表达式 [, 表达式] ... [then]
+  表达式 ..]..
+[else
+  表达式 ..]
+end</pre>
+<p><code>case 先对单一的表达式进行匹配判断。使用===运算符比较第一个表达式的计算值以及 when
+子句的指定值，当计算值与指定值匹配时，则计算 when 子句的内容。</code></p>
+<p><code>case 返回最后一个计算的 when（或else）子句的计算值，所有条件均不成立时，则返回
+nil。</code></p>
+<h2><a name="L000302">循环</a></h2>
+<h3><a name="L000303">while</a></h3>
+<p>实例：</p>
+<pre>ary = [0,2,4,8,16,32,64,128,256,512,1024]
+i = 0
+while i &lt; ary.length
+  print ary[i]
+  i += 1
+end</pre>
+<p>语法：</p>
+<pre>while 表达式 [do]
+   ...
+end</pre>
+<p>只要表达式的计算值为 true，就不断执行 while 语句之间的内容。</p>
+<p>while 返回 nil。如果内容中有带参数的 break，则 while 会返回该参数的值。</p>
+<h3><a name="L000304">while 修饰符</a></h3>
+<p>实例：</p>
+<pre>sleep(60) while io_not_ready?</pre>
+<p>语法：</p>
+<pre>表达式 while 表达式</pre>
+<p>只要右边的表达式为 true，就不断执行左边的表达式。若是左方的表达式是 begin，则 while 先计算左方，再执行循环。</p>
+<p>while 修饰符返回 nil。如果内容中有带参数的 break，则 while 修饰符会返回该参数的值。</p>
+<h3><a name="L000305">until</a></h3>
+<p>实例：</p>
+<pre>until f.eof?
+  print f.gets
+end</pre>
+<p>语法：</p>
+<pre>until 表达式 [do]
+   ...
+end</pre>
+<p>在表达式的计算值为 true 之前，就不断执行 until 语句之间的内容。</p>
+<p>until 返回 nil。如果内容中有带参数的 break，则 until 会返回该参数的值。</p>
+<h3><a name="L000306">until 修饰符</a></h3>
+<p>实例：</p>
+<pre>print(f.gets) until f.eof?</pre>
+<p>语法：</p>
+<pre>表达式 until 表达式</pre>
+<p>只要右边的表达式为 false，就不断执行左边的表达式。若是左方的表达式是 begin，则 until 先计算左方，再执行循环。</p>
+<p>until 修饰符返回 nil。如果内容中有带参数的 break，则 until 修饰符会返回该参数的值。</p>
+<h3><a name="L000307">for</a></h3>
+<p>实例：</p>
+<pre>for i in [1, 2, 3]
+  print i*2, "\n"
+end</pre>
+<p>语法：</p>
+<pre>for lhs ...  in 表达式 [do]
+  表达式 ..
+end</pre>
+<p>计算表达式中的每一个元素，然后针对每一个元素重复执行 for 的内容。几乎与下面的语法一样：</p>
+<pre>(表达式).each '{' '|' lhs..'|' 表达式 .. '}'</pre>
+<p>只是「几乎」一样因为使用 do ... end 或 { } 的区块导入了新的局部变量作用域，而 for 对于局部变量作用域没有影响。</p>
+<p>for 返回 in 指定的对象的 each 方法的返回值。</p>
+<h3><a name="L000308">break</a></h3>
+<p>实例：</p>
+<pre>i = 0
+while i &lt; 3
+  print i, "\n"
+  break
+end</pre>
+<p>语法：</p>
+<pre>break [表达式]</pre>
+<p><code>break 从最内层的循环中退出，循环是指下列的任何一项：</code></p>
+<ul>
+<li><code>while</code></li>
+<li><code>until</code></li>
+<li><code>for</code></li>
+<li>迭代</li></ul>
+<p>与 C 语言不同， break 只能退出循环，而不能退出 case。</p>
+<p>for 或迭代器若是使用 break 退出则返回 nil，然而若是指定了参数，则退出时返回该参数。</p>
+<h3><a name="L000309">next</a></h3>
+<p>实例：</p>
+<pre>str.each_line do |line|
+  next if line.empty?
+  print line
+end</pre>
+<p>语法：</p>
+<pre>next [表达式]</pre>
+<p>next 跳到最内层的循环的开始处。而在<a href="syntax06.html#L000323">迭代器</a>中，next 则可以中断 <a href="syntax06.html#L000324">yield</a> 的调用。</p>
+<p>yield 可以依靠 next 中断并返回 nil。然而，若是指定了参数， yield 则会返回该参数。</p>
+<h2><a name="L000312">异常处理</a></h2>
+<h3><a name="L000313">raise</a></h3>
+<p>实例：</p>
+<pre>raise
+raise "you lose"
+raise SyntaxError.new("invalid syntax")
+raise SyntaxError, "invalid syntax"</pre>
+<p>语法：</p>
+<pre>raise
+raise message
+raise exception
+raise error_type, message</pre>
+<p>抛出异常。第一种形式是重抛上一次发生的异常，第二种形式是指定一个字符串参数，并抛出以该字符串为讯息的 <a href="s_exceptions.html#RuntimeError">RuntimeError</a>
+异常。第三种形式则抛出作为参数的异常对象。最后一种形式则是抛出第一个参数的异常对象，并以第二个参数的字符串作为讯息。</p>
+<p>抛出的异常可以由 begin 表达式中的 rescue 字句所捕捉。</p>
+<p><a href="s_functions.html#L000388">raise</a> 并非 Ruby 中的保留字，而是内建函数。</p>
+<h3><a name="L000314">begin</a></h3>
+<p>实例：</p>
+<pre>begin
+  do_something
+rescue
+  recover
+ensure
+  must_to_do
+end</pre>
+<p>语法：</p>
+<pre>begin
+  表达式 ..
+[rescue [error_type,..] [then]
+  表达式 ..]..
+[ensure
+  表达式 ..]
+end</pre>
+<p>当 begin 执行中时抛出了任何异常，就会由一个 rescue 子句所捕捉（可以使用多个 rescue 子句）。当抛出的异常符合某个
+rescue所指定的异常类型时，就会执行该 rescue 子句。所抛出的异常可以使用内建变量 <a href="s_variables.html#L000437">$!</a> 来引用。</p>
+<p>在没有指定异常类型时，rescue 则会捕捉所有 <a href="s_exceptions.html#StandardError">StandardError</a> 子类的异常，大多数的内建异常都是 <a href="s_exceptions.html#StandardError">StandardError</a> 的子类。详情请参看<a href="s_exceptions.html">内建异常类</a>。</p>
+<p>在 rescue 子句中，将错误类型是作为一般参数来计算，当其匹配时就执行该子句。若是异常类型并非类或是模块的话，则 rescue 会抛出 <a href="s_exceptions.html#TypeError">TypeError</a> 异常。</p>
+<p>若是有 ensure 子句的话，在 begin 表达式退出前，一定会计算该子句。</p>
+<p>begin 返回的是在其自身或是 rescue 中最后计算的参数结果。</p>
+<h3><a name="L000315">rescue 修饰符</a></h3>
+<p>实例：</p>
+<pre>File.open("file") rescue print "can't open\n"</pre>
+<p>语法：</p>
+<pre>表达式1 rescue 表达式2</pre>
+<p>当第一个表达式抛出异常时，则计算第二个表达式。但是无法指定所捕捉的异常类，也就是说只能捕捉 <a href="s_exceptions.html#StandardError">StandardError</a> 子类的异常类。</p>
+<p>与 rescue 修饰符关连的表达式在没有抛出异常时返回表达式1 ，否则则返回表达式2 。</p>
+<h2><a name="L000316">方法结束</a></h2>
+<h3><a name="L000317">return</a></h3>
+<p>实例：</p>
+<pre>return
+return 12
+return 1,2,3</pre>
+<p>语法：</p>
+<pre>return [表达式[',' 表达式 ... ]]</pre>
+<p>使用返回值结束方法。提供两个或以上的表达式时，则该方法返回包含所有表达式的计算值数组。若是没有表达式，则返回值为 nil。</p>
+<h6></h6>
+</body>
+</html>

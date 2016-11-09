@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>游戏对象</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>游戏对象</h1>
+<ul>
+<li><a href="#game_xxxx">$game_xxxx</a></li>
+<li><a href="#contents">游戏对象的内容</a></li>
+<li><a href="#other">其他相关的类</a></li></ul>
+<p>数据库、原则上不会在游戏中改变。相对于此，像是在地图画面上移动的人物这种状态时时刻刻都在改变的数据，是由<strong>游戏对象</strong>处理的。</p>
+<h2><a name="game_xxxx">$game_xxxx</a></h2>
+<p>DataManager 脚本页中存在着 create_game_objects 这个方法。在数据库生成的同一时刻，这个方法也会被调用。</p>
+<pre>
+  def self.create_game_objects
+    $game_temp          = Game_Temp.new
+    $game_system        = Game_System.new
+    $game_timer         = Game_Timer.new
+    $game_message       = Game_Message.new
+    $game_switches      = Game_Switches.new
+    $game_variables     = Game_Variables.new
+    $game_self_switches = Game_SelfSwitches.new
+    $game_actors        = Game_Actors.new
+    $game_party         = Game_Party.new
+    $game_troop         = Game_Troop.new
+    $game_map           = Game_Map.new
+    $game_player        = Game_Player.new
+  end
+</pre>
+<p>和数据库的 $data_xxxx 系列相同，他们都属于<strong>全局变量</strong>。生成 Game_Xxxx 类的实例并让这些变量可以引用。你应该对 Game_Xxxx 这个名字有点印象吧？在脚本编辑器里，上半部分的脚本中都带着这一类名称。也就是说，这里是把在那些部分中定义好的类实例化的意思。</p>
+<p>在类的名称后面加上 .new 就是表示「要创建一个类的实例」如果有人忘记了实例是什么，那么请先复习一下<a href="108_object.html">对象</a>。</p>
+<h2><a name="contents">游戏对象的内容</a></h2>
+<p>各个对象如下表所示。和数据库的情况不同，这些对象所属的类并没有事先內嵌在 RGSS 中，而是在脚本编辑器里定义的。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>变量名</th>
+ <th>内容</th>
+ <th>类</th>
+</tr>
+<tr>
+ <td>$game_temp</td>
+ <td>临时数据</td>
+ <td>Game_Temp</td>
+</tr>
+<tr>
+ <td>$game_system</td>
+ <td>系统数据</td>
+ <td>Game_System</td>
+</tr>
+<tr>
+ <td>$game_timer</td>
+ <td>计时器</td>
+ <td>Game_Timer</td>
+</tr>
+<tr>
+ <td>$game_message</td>
+ <td>文字信息</td>
+ <td>Game_Message</td>
+</tr>
+<tr>
+ <td>$game_switches</td>
+ <td>开关</td>
+ <td>Game_Switches</td>
+</tr>
+<tr>
+ <td>$game_variables</td>
+ <td>变量</td>
+ <td>Game_Variables</td>
+</tr>
+<tr>
+ <td>$game_self_switches</td>
+ <td>独立开关</td>
+ <td>Game_SelfSwitches</td>
+</tr>
+<tr>
+ <td>$game_actors</td>
+ <td>角色</td>
+ <td>Game_Actors</td>
+</tr>
+<tr>
+ <td>$game_party</td>
+ <td>队伍</td>
+ <td>Game_Party</td>
+</tr>
+<tr>
+ <td>$game_troop</td>
+ <td>敌群</td>
+ <td>Game_Troop</td>
+</tr>
+<tr>
+ <td>$game_map</td>
+ <td>地图</td>
+ <td>Game_Map</td>
+</tr>
+<tr>
+ <td>$game_player</td>
+ <td>玩家</td>
+ <td>Game_Player</td>
+</tr>
+</table>
+<p>这些类原则上只提供一种数据结构，并不具有显示图片、接受输入按钮等等的功能。不过，Game_Player 类为了方便，有包含利用方向键移动、确定键启动事件的处理。</p>
+<h2><a name="other">其他相关的类</a></h2>
+<p>能够当成全局变量直接取用的游戏对象就只有上述那些，不过在这些对象的内部，又包含了其他的游戏对象。这些游戏对象如下表所示。</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>类</th>
+ <th>内容</th>
+ <th>说明</th>
+</tr>
+<tr>
+ <td>Game_Screen</td>
+ <td>画面效果</td>
+ <td>Game_Map、Game_Troop 内部使用</td>
+</tr>
+<tr>
+ <td>Game_Picture</td>
+ <td>图片</td>
+ <td>Game_Pictures 内部使用</td>
+</tr>
+<tr>
+ <td>Game_Pictures</td>
+ <td>图片列表</td>
+ <td>Game_Screen 内部使用</td>
+</tr>
+<tr>
+ <td>Game_BaseItem</td>
+ <td>物品/技能</td>
+ <td>Game_Action、Game_Actor、Game_Party 内部使用</td>
+</tr>
+<tr>
+ <td>Game_Action</td>
+ <td>战斗行动</td>
+ <td>Game_Battler、Game_Actor 内部使用</td>
+</tr>
+<tr>
+ <td>Game_ActionResult</td>
+ <td>战斗行动的结果</td>
+ <td>Game_Battler 内部使用</td>
+</tr>
+<tr>
+ <td>Game_Actor</td>
+ <td>角色</td>
+ <td>Game_Actors 内部使用</td>
+</tr>
+<tr>
+ <td>Game_Enemy</td>
+ <td>敌人</td>
+ <td>Game_Troop 内部使用</td>
+</tr>
+<tr>
+ <td>Game_CommonEvent</td>
+ <td>公共事件</td>
+ <td>Game_Map 内部使用</td>
+</tr>
+<tr>
+ <td>Game_Follower</td>
+ <td>队伍跟随(队列行进)</td>
+ <td>Game_Followers 内部使用</td>
+</tr>
+<tr>
+ <td>Game_Followers</td>
+ <td>队伍跟随列表</td>
+ <td>Game_Player 内部使用</td>
+</tr>
+<tr>
+ <td>Game_Vehicle</td>
+ <td>交通工具</td>
+ <td>Game_Map 内部使用</td>
+</tr>
+<tr>
+ <td>Game_Event</td>
+ <td>地图事件</td>
+ <td>Game_Map 内部使用</td>
+</tr>
+<tr>
+ <td>Game_Interpreter</td>
+ <td>事件指令解释器</td>
+ <td>Game_Map、Game_Troop、Game_Event 内部使用</td>
+</tr>
+</table>
+<p>此外、还有一些重要的类在下表：</p>
+<table border="1" cellspacing="0" cellpadding="2">
+<tr>
+ <th>类</th>
+ <th>内容</th>
+ <th>说明</th>
+</tr>
+<tr>
+ <td>Game_BattlerBase</td>
+ <td>战斗者（基本）</td>
+ <td>Game_Battler 的父类</td>
+</tr>
+<tr>
+ <td>Game_Battler</td>
+ <td>战斗者</td>
+ <td>Game_Actor、Game_Enemy 的父类</td>
+</tr>
+<tr>
+ <td>Game_Unit</td>
+ <td>单位</td>
+ <td>Game_Party、Game_Troop 的父类</td>
+</tr>
+<tr>
+ <td>Game_CharacterBase</td>
+ <td>人物（基本）</td>
+ <td>Game_Character 的父类</td>
+</tr>
+<tr>
+ <td>Game_Character</td>
+ <td>人物</td>
+ <td>Game_Player、Game_Event 的父类</td>
+</tr>
+</table>
+<p>所谓的父类（super class）是指被别的类<strong>继承</strong>的那一方。意思就是，角色与敌人、队伍与敌群、人物与事件等类都有各自共通的部分，将这些共通的部分整合成单一的类别。</p>
+<p>「脚本入门篇」的目的是要让读者了解内建脚本的大致轮廓，所以在本章提到的类无法一一介绍。不过在真正要挑战改造脚本的时候，理解这些类如何被定义是非常重要的事情。</p>
+<p>解读上的基本思考方针就跟在 Vocab、Sound、Cache 模块解释时一样，就算一开始会不得要领，也建议可以尝试浏览有兴趣的部分。</p>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>制作消耗物品的技能</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>制作消耗物品的技能</h1>
+<ul>
+<li><a href="#data">新增物品和技能</a></li>
+<li><a href="#regexp">正则表达式</a></li>
+<li><a href="#item_id">取得物品 ID</a></li>
+<li><a href="#payable">判定是否可以支付</a></li>
+<li><a href="#pay">支付消耗</a></li></ul>
+<p>本章，笔者将针对技能，解说如何设置 MP 和 TP 以外的消耗条件。</p>
+<p>这一次就以制作会消耗物品的技能作为范例。</p>
+<h2><a name="data">新增物品和技能</a></h2>
+<p>首先打开数据库，新增测试用的数据。</p>
+<p>数据的内容是没什么，只是如果用以下的概念设置，也许比较好理解：使用「毒云箭」技能需要消耗「毒箭」物品。不过这只是范例的缘故，所以使用的场合不设成战斗用的也无所谓。像是[使用场合]设置为[随时可用]、[效果范围]则为[无]的话，会比较容易测试运作。</p>
+<p>至於物品消耗的设置，则麻烦在新增的技能的备注栏中写入：&lt;ITEM_COST <var>n</var>&gt;。将 <var>n</var> 指定为物品 ID ────举例来说，「毒箭」的物品 ID 为 25，就在「毒云箭」的备注栏写进 &lt;ITEM_COST 25&gt; 。</p>
+<p>新增的技能就让想要的角色学会吧。要让角色学会技能，就看一下该角色的职业，追加到该职业上。还有也别忘了制作一个可以取得所需物品的事件。</p>
+<h2><a name="regexp">正则表达式</a></h2>
+<p>在前一章我们利用了 include? 对备注栏的字符串进行判定，然而如果我们想指定物品 ID 等等参数的话，不适合用这个方法。</p>
+<p>通常这种情况会使用<strong>正则表达式</strong>这个功能。所谓的正则表达式是，用单一字符串表达复数的字符串的一种表达方式。不光是 Ruby，其他的编程语言或是工具和文本编辑器的搜索功能常常使用到。</p>
+<p>而 Ruby 的情况，只要是前后用 / 这个记号包住的地方，就会被视作是正则表达式，成为<a href="../rgss/sc_regexp.html">Regexp</a> 这个类的实例。对应我们这次备注栏写法的正则表达式长得像下面这样：</p>
+<pre>
+/&lt;ITEM_COST\s*(\d+)&gt;/
+</pre>
+<p>\s 表示「空格」，\d 表示「数字0~9」，* 表示「重复0次以上」，+ 表示「重复1次以上」，() 代表把括号内的内容分群，以便后位引用。</p>
+<p>有关正则表达式的详细写法，请参考 RGSS 参考<a href="../rgss/appendix01.html">正则表达式</a>的页面。</p>
+<h2><a name="item_id">取得物品 ID</a></h2>
+<p>接着就实际使用正则表达式，制作用来取得消耗的物品 ID 的方法。</p>
+<pre>
+class RPG::Skill
+  def item_cost
+    /&lt;ITEM_COST\s*(\d+)&gt;/ =~ note ? $1.to_i : 0
+  end
+end
+</pre>
+<p>这次我们在 <a href="../rgss/gc_rpg_skill.html">RPG::Skill</a> 类中追加了这个方法。只要像这样做，就算是 RGSS 内部定义好的类，也可以用这个方法更改定义的内容。而且我们并不是重新定义 item_cost 方法，只是纯粹地添加一个方法，所以不需要使用到别名。</p>
+<p>下方将进行解说内容的部分。</p>
+<pre>
+    /&lt;ITEM_COST\s*(\d+)&gt;/ =~ note ? $1.to_i : 0
+</pre>
+<p>=~ 这个运算符号，是用来判断字符串（的一部分）是否符合正则表达式。</p>
+<p>note 在上一章也使用过，是对应备注栏的字符串。因为 note 是 RPG::Skill 自己的方法，所以省略了方法的接收者。</p>
+<p>这里的 $1，是一种<a href="../rgss/s_variables.html">内建变量</a>，在这里是指正则表达式中被括号括起来的部分。比方说我们指定的是 &lt;ITEM_COST 25&gt; 这个内容，$1 的内容就是 "25" 这一部分。因为 $1 是字符串的关系，我们使用了 to_i 方法将之转换为整数的形式。</p>
+<p>简言之，以上的方法表示的是，如果我们有指定消耗物品的 ID，就会返回该 ID，反之就返回 0。</p>
+<h2><a name="payable">判定是否可以支付</a></h2>
+<p>Game_BattlerBase 类中的 skill_cost_payable? 方法，负责判定支付消耗是否达到条件，在这里如果返回了 false，则代表判定了该技能无法使用。。</p>
+<p>但由于这次是物品的消耗，且和敌人没有任何关联，因此改在 Game_BattlerBase 的子类 Game_Actor 中重新定义。</p>
+<pre>
+class Game_Actor
+  alias xxx001_skill_cost_payable? skill_cost_payable?
+  def skill_cost_payable?(skill)
+    item = $data_items[skill.item_cost]
+    xxx001_skill_cost_payable?(skill) &amp;&amp;
+    (!item || $game_party.has_item?(item))
+  end
+end
+</pre>
+<p>就像在解说<a href="201_database.html">数据库</a>时提到的，$data_items 是物品的数组，第一个元素（也就是编号 0）中放置的是 nil。正因此，因为刚刚制作的 item_cost 在没有指定消耗物品的 ID 的时候一律返回 0，导致：</p>
+<pre>
+    item = $data_items[skill.item_cost]
+</pre>
+<p>这里的 item 在消耗物品 ID 有指定的情况下被赋值为该物品，没有的话就会赋值为 nil。</p>
+<pre>
+    xxx001_skill_cost_payable?(skill) &amp;&amp;
+    (!item || $game_party.has_item?(item))
+</pre>
+<p>!item 是用来判断 item 是真是伪的语句（是 nil 的话就会判定为伪）。$game_party.has_item? 方法则是判定队伍中是否持有一个以上的该物品。</p>
+<p>换句话说，这个判断式除了判定是否符合原本的使用条件（MP 等等），又进行了「是否有指定消耗物品的 ID、队伍中是否持有所指定的消耗物品」这两个条件判定。</p>
+<h2><a name="pay">支付消耗</a></h2>
+<p>使用技能后，实际进行使用消耗的处理的是 pay_skill_cost 这个方法。我们同样在 Game_Actor 中重新定义。</p>
+<pre>
+class Game_Actor
+  alias xxx001_pay_skill_cost pay_skill_cost
+  def pay_skill_cost(skill)
+    xxx001_pay_skill_cost(skill)
+    item = $data_items[skill.item_cost]
+    $game_party.lose_item(item, 1) if item
+  end
+end
+</pre>
+<p>$game_party.lose_item 这个方法是用来减少队伍中持有的某物品我们指定的数量。</p>
+<pre>
+    $game_party.lose_item(item, 1) if item
+</pre>
+<p>这句的意思是，只要 item 不为空值，就会调用 lose_item 方法，减少该物品一个数量。</p>
+<p>这次解说的使用消耗的改造，在许多的应用上都能发挥作用。比方说 HP 的消耗、金钱的消耗，或者是导致使用者的状态产生变化等等，有兴趣的话务必挑战看看。</p>
+<h6></h6>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Tone</title>
+<link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1>Tone</h1>
+<p>色调的类。各个属性以浮点数（<a href="sc_float.html">Float</a>）管理。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>类方法</h2>
+<dl>
+<dt>Tone.new(<var>red</var>, <var>green</var>, <var>blue</var>[, <var>gray</var>])</dt>
+<dt>Tone.new <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>生成 Tone 对象。<var>gray</var> 值省略时使用 0。</p>
+<p>若没有指定参数，默认值为 (0, 0, 0, 0)。<span class="rgss3">(RGSS3)</span></p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>set(<var>red</var>, <var>green</var>, <var>blue</var>[, <var>gray</var>])</dt>
+<dt>set(<var>tone</var>) <span class="rgss3">(RGSS3)</span></dt>
+<dd>
+<p>一次设置所有属性。</p>
+<p>第二种形式会从另一个 Tone 对象上复制所有的属性。<span class="rgss3">(RGSS3)</span></p></dd></dl>
+<h2>属性</h2>
+<dl>
+<dt>red</dt>
+<dd>
+<p>红色值（-255~255）。超出范围的数值会自动修正。</p></dd>
+<dt>green</dt>
+<dd>
+<p>绿色值（-255~255）。超出范围的数值会自动修正。</p></dd>
+<dt>blue</dt>
+<dd>
+<p>蓝色值（-255~255）。超出范围的数值会自动修正。</p></dd>
+<dt>gray</dt>
+<dd>
+<p>灰度滤镜强度值（0~255）。超出范围的数值会自动修正。</p>
+<p>当此值非 0 时，处理时间会比只用色调调整平衡要长。</p></dd></dl>
+<h6></h6>
+</body>
+</html>

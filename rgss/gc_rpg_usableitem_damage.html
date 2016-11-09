@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh">
+<head>
+<title>RPG::UsableItem::Damage</title>
+<meta content="text/html; charset=GBK" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="GENERATOR" content="MSHTML 9.00.8112.16447">
+</head>
+<body>
+<h1>RPG::UsableItem::Damage</h1>
+<p>伤害的数据类。</p>
+<h2>超类</h2>
+<ul>
+<li><a href="sc_object.html">Object</a></li></ul>
+<h2>调用者</h2>
+<ul>
+<li><a href="gc_rpg_usableitem.html">RPG::UsableItem</a></li></ul>
+<h2>属性</h2>
+<dl>
+<dt>type</dt>
+<dd>
+<p>伤害类型。</p>
+<ul>
+<li>0: 无</li>
+<li>1: 体力值伤害</li>
+<li>2: 魔力值伤害</li>
+<li>3: 体力值恢复</li>
+<li>4: 魔力值恢复</li>
+<li>5: 体力值吸收</li>
+<li>6: 魔力值吸收</li></ul></dd>
+<dt>element_id</dt>
+<dd>
+<p>属性编号。</p></dd>
+<dt>formula</dt>
+<dd>
+<p>计算公式。</p></dd>
+<dt>variance</dt>
+<dd>
+<p>离散度。</p></dd>
+<dt>critical</dt>
+<dd>
+<p>允许必杀（true/false）。</p></dd></dl>
+<h2>方法</h2>
+<dl>
+<dt>none?</dt>
+<dd>
+<p>判断伤害对象是否为空，当伤害类型为 0 时返回true。</p></dd>
+<dt>to_hp?</dt>
+<dd>
+<p>判断伤害对象是否为 HP型为 1、3 或 5 时返回true。</p></dd>
+<dt>to_mp?</dt>
+<dd>
+<p>判断伤害对象是否为 MP型为 2、4 或 6 时返回true。</p></dd>
+<dt>recover?</dt>
+<dd>
+<p>判断伤害结果是否为恢复，当伤害类型为 3、4 时返回true。</p></dd>
+<dt>drain?</dt>
+<dd>
+<p>判断伤害结果是否为吸收，当伤害类型为 5、6 时返回true。</p></dd>
+<dt>sign</dt>
+<dd>
+<p>判断伤害结果，如果是恢复，则返回 -1 ，否则返回 1 。</p></dd>
+<dt>eval(<var>a</var>, <var>b</var>, <var>v</var>)</dt>
+<dd>
+<p>根据参数执行计算公式，参数 a，b，v 分别指定了技能释放者所在队伍、技能承受者所在队伍以及所需的变量。</p>
+<p>如果伤害结果是恢复，那么就会返回一个负值。</p></dd></dl>
+<h2>定义</h2>
+<pre>class RPG::UsableItem::Damage
+  def initialize
+    @type = 0
+    @element_id = 0
+    @formula = '0'
+    @variance = 20
+    @critical = false
+  end
+  def none?
+    @type == 0
+  end
+  def to_hp?
+    [1,3,5].include?(@type)
+  end
+  def to_mp?
+    [2,4,6].include?(@type)
+  end
+  def recover?
+    [3,4].include?(@type)
+  end
+  def drain?
+    [5,6].include?(@type)
+  end
+  def sign
+    recover? ? -1 : 1
+  end
+  def eval(a, b, v)
+    [Kernel.eval(@formula), 0].max * sign rescue 0
+  end
+  attr_accessor :type
+  attr_accessor :element_id
+  attr_accessor :formula
+  attr_accessor :variance
+  attr_accessor :critical
+end
+</pre>
+<h6></h6>
+</body>
+</html>
